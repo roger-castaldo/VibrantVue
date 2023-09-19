@@ -1,0 +1,41 @@
+@include define-skin("lux") {
+    @import "./variables.scss";
+
+    @include define-variable("grey",$grey);
+    @include define-variable("grey-light",$grey-light);
+    @include define-variable("grey-lighter",$grey-lighter);
+
+    @include define-variable("green",$green);
+    @include define-variable("blue",$blue);
+    @include define-variable("red",$red);
+
+    @include define-variable("primary",$primary);
+    @include define-variable("link",$link);
+
+    @include define-variable("family-sans-serif",$family-sans-serif);
+    @include define-variable("body-size",$body-size);
+
+    @include define-variable("radius",$radius);
+    @include define-variable("radius-small",$radius-small);
+
+    @include define-variable("navbar-height",$navbar-height);
+    @include define-variable("navbar-background-color",$navbar-background-color);
+    @include define-variable("navbar-item-color",$navbar-item-color);
+    @include define-variable("navbar-item-hover-color",$navbar-item-hover-color);
+    @include define-variable("navbar-item-active-color",$navbar-item-active-color);
+    @include define-variable("navbar-item-hover-background-color",$navbar-item-hover-background-color);
+    @include define-variable("navbar-item-active-background-color",$navbar-item-active-background-color);
+    @include define-variable("navbar-dropdown-arrow",$navbar-dropdown-arrow);
+    @include define-variable("navbar-dropdown-background-color",$navbar-dropdown-background-color);
+    @include define-variable("navbar-dropdown-border-top",$navbar-dropdown-border-top);
+    @include define-variable("navbar-divider-background-color",$navbar-divider-background-color);
+    @include define-variable("navbar-dropdown-item-active-color",$navbar-dropdown-item-active-color);
+    @include define-variable("navbar-dropdown-item-hover-color",$navbar-dropdown-item-hover-color);
+    @include define-variable("navbar-dropdown-item-hover-background-color",$navbar-dropdown-item-hover-background-color);
+    @include define-variable("navbar-dropdown-item-active-background-color",$navbar-dropdown-item-active-background-color);
+
+    @include define-variable("box-shadow",$box-shadow);
+
+    @import "../../bulma/sass/colors.scss";
+    @import "./overrides.scss";
+}

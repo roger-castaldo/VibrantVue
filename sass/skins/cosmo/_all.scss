@@ -1,0 +1,45 @@
+@include define-skin("cerulean") {
+    @import "./variables.scss";
+
+    @include define-variable("grey-darker",$grey-darker);
+    @include define-variable("black-ter",$black-ter);
+
+    @include define-variable("orange",$orange);
+    @include define-variable("yellow",$yellow);
+    @include define-variable("green",$green);
+    @include define-variable("turquoise",$turquoise);
+    @include define-variable("blue",$blue);
+    @include define-variable("purple",$purple);
+    @include define-variable("red",$red);
+    @include define-variable("grey",$grey);
+
+    @include define-variable("primary",$primary);
+    @include define-variable("primary-dark",$primary-dark);
+    @include define-variable("warning",$warning);
+    @include define-variable("info",$info);
+
+    @include define-variable("orange-invert",$orange-invert);
+    @include define-variable("warning-invert",$warning-invert);
+
+    @include define-variable("family-sans-serif",$family-sans-serif);
+
+    @include define-variable("body-size",$body-size);
+
+    @include define-variable("radius",$radius);
+    @include define-variable("radius-small",$radius-small);
+    @include define-variable("radius-large",$radius-large);
+
+    @include define-variable("link-hover",$link-hover);
+    @include define-variable("link-focus",$link-focus);
+    @include define-variable("link-active",$link-active);
+
+    @include define-variable("button-hover-color",$button-hover-color);
+    @include define-variable("button-focus",$button-focus);
+    @include define-variable("button-active-color",$button-active-color);
+
+    @include define-variable("box-shadow",$box-shadow);
+    @include define-variable("card-shadow",$card-shadow);
+
+    @import "../../bulma/sass/colors.scss";
+    @import "./overrides.scss";
+}

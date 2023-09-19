@@ -1,0 +1,44 @@
+.card.is-fullwidth,
+.panel.is-fullwidth,
+.columns.is-fullwidth
+	width: 100%
+
+.card.is-fullheight,
+.panel.is-fullheight,
+.columns.is-fullheight
+	height: 100%
+
+.modal-card.is-fullwidth,
+.modal-content.is-fullwidth
+	width: -webkit-max-content
+	width: -moz-max-content
+	max-width: calc(100vw - #{$modal-card-spacing})
+	min-width: 300px
+
+.modal-card.is-fullheight,
+.modal-content.is-fullheight
+	height: -webkit-max-content
+	height: -moz-max-content
+	
+.modal-card.is-maxwidth,
+.modal-content.is-maxwidth
+	width: calc(100vw - #{$modal-card-spacing})
+
+.modal-card.is-maxheight,
+.modal-content.is-maxheight
+	height: calc(100vh - #{$modal-card-spacing})
+
+.modal-card.is-maxheight > .modal-card-body 
+	padding-top: 0
+	padding-bottom: 0
+
+.modal-card.is-maxwidth > .modal-card-body 
+	padding-left: 0
+	padding-right: 0
+
+.tabs.is-centered,
+.tabs.is-right
+	width: 100%
+	
+.tabs.is-centered.is-fullwidth > ul > li 
+	flex-grow: initial

@@ -1,0 +1,29 @@
+
+
+$container-offset: var(--container-offset)
+$container-max-width: var(--container-max-width)
+
+.container
+  flex-grow: 1
+  margin: 0 auto
+  position: relative
+  width: auto
+  &.is-fluid
+    max-width: none !important
+    padding-left: $gap
+    padding-right: $gap
+    width: 100%
+  +desktop
+    max-width: calc(#{$desktop} - #{$container-offset})
+  +until-widescreen
+    &.is-widescreen:not(.is-max-desktop)
+      max-width: calc(min(#{$widescreen}, #{$container-max-width}) - #{$container-offset})
+  +until-fullhd
+    &.is-fullhd:not(.is-max-desktop):not(.is-max-widescreen)
+      max-width: calc(min(#{$fullhd}, #{$container-max-width}) - #{$container-offset})
+  +widescreen
+    &:not(.is-max-desktop)
+      max-width: calc(min(#{$widescreen}, #{$container-max-width}) - #{$container-offset})
+  +fullhd
+    &:not(.is-max-desktop):not(.is-max-widescreen)
+      max-width: calc(min(#{$fullhd}, #{$container-max-width}) - #{$container-offset})

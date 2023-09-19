@@ -1,0 +1,39 @@
+@include define-skin("sandstone") {
+    @import "./variables.scss";
+
+    @include define-variable("grey-darker",$grey-darker);
+    @include define-variable("grey-dark",$grey-dark);
+    @include define-variable("grey",$grey);
+    @include define-variable("grey-light",$grey-light);
+    @include define-variable("grey-lighter",$grey-lighter);
+
+    @include define-variable("white-ter",$white-ter);
+
+    @include define-variable("orange",$orange);
+    @include define-variable("green",$green);
+    @include define-variable("blue",$blue);
+    @include define-variable("red",$red);
+
+    @include define-variable("primary",$primary);
+    @include define-variable("warning",$warning);
+    @include define-variable("warning-invert",$warning-invert);
+
+    @include define-variable("family-sans-serif",$family-sans-serif);
+    @include define-variable("body-size",$body-size);
+
+    @include define-variable("link",$link);
+
+    @include define-variable("pagination-background-color",$pagination-background-color);
+
+    @include define-variable("navbar-background-color",$navbar-background-color);
+    @include define-variable("navbar-item-color",$navbar-item-color);
+    @include define-variable("navbar-item-hover-color",$navbar-item-hover-color);
+    @include define-variable("navbar-item-active-color",$navbar-item-active-color);
+    @include define-variable("navbar-item-hover-background-color",$navbar-item-hover-background-color);
+    @include define-variable("navbar-dropdown-arrow",$navbar-dropdown-arrow);
+
+    @include define-variable("card-shadow",$card-shadow);
+
+    @import "../../bulma/sass/colors.scss";
+    @import "./overrides.scss";
+}

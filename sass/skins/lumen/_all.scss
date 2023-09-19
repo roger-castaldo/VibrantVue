@@ -1,0 +1,30 @@
+@include define-skin("lumen") {
+    @import "./variables.scss";
+
+    @include define-variable("orange",$orange);
+    @include define-variable("green",$green);
+    @include define-variable("blue",$blue);
+    @include define-variable("red",$red);
+
+    @include define-variable("primary",$primary);
+
+    @include define-variable("info-invert",$info-invert);
+
+    @include define-variable("family-sans-serif",$family-sans-serif);
+
+    @include define-variable("thickness",$thickness);
+
+    @include define-variable("pagination-current-border",$pagination-current-border);
+
+    @include define-variable("navbar-item-active-color",$navbar-item-active-color);
+
+    @include define-variable("dropdown-content-shadow",$dropdown-content-shadow);
+
+    @include define-variable("navbar-dropdown-boxed-shadow",$navbar-dropdown-boxed-shadow);
+
+
+    @include define-variable("box-shadow",$box-shadow);
+
+    @import "../../bulma/sass/colors.scss";
+    @import "./overrides.scss";
+}

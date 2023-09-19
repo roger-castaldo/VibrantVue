@@ -1,0 +1,35 @@
+@include define-skin("cerulean") {
+    @import "./variables.scss";
+
+    @include define-variable("orange",$orange);
+    @include define-variable("yellow",$yellow);
+    @include define-variable("green",$green);
+    @include define-variable("turquoise",$turquoise);
+    @include define-variable("blue",$blue);
+    @include define-variable("purple",$purple);
+    @include define-variable("red",$red);
+    @include define-variable("grey",$grey);
+
+    @include define-variable("primary",$primary);
+    @include define-variable("primary-dark",$primary-dark);
+    @include define-variable("warning",$warning);
+    @include define-variable("info",$info);
+
+    @include define-variable("info-invert",$info-invert);
+    @include define-variable("orange-invert",$orange-invert);
+    @include define-variable("warning-invert",$warning-invert);
+
+    @include define-variable("family-sans-serif",$family-sans-serif);
+
+    @include define-variable("title-color",$title-color);
+    @include define-variable("title-weight",$title-weight);
+    @include define-variable("title-weight-bold",$title-weight-bold);
+
+    @include define-variable("subtitle-weight",$subtitle-weight);
+    @include define-variable("subtitle-strong-color",$subtitle-strong-color);
+
+    @include define-variable("box-shadow",$box-shadow);
+
+    @import "../../bulma/sass/colors.scss";
+    @import "./overrides.scss";
+}

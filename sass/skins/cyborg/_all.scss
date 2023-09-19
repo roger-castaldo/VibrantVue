@@ -1,0 +1,92 @@
+@include define-skin("cyborg") {
+    @import "./variables.scss";
+
+    @include define-variable("grey-accent",$grey-accent);
+    @include define-variable("grey-darker",$grey-darker);
+    @include define-variable("grey-dark",$grey-dark);
+    @include define-variable("grey",$grey);
+    @include define-variable("grey-light",$grey-light);
+    @include define-variable("grey-lighter",$grey-lighter);
+
+    @include define-variable("primary",$primary);
+    @include define-variable("primary-light",$primary-light);
+    @include define-variable("link",$link);
+
+    @include define-variable("white",$white);
+    @include define-variable("white-ter",$white-ter);
+
+    @include define-variable("body-background-color",$body-background-color);
+    @include define-variable("background",$background);
+    @include define-variable("footer-background-color",$footer-background-color);
+
+    @include define-variable("border",$border);
+
+    @include define-variable("title-color",$title-color);
+    @include define-variable("subtitle-color",$subtitle-color);
+    @include define-variable("subtitle-strong-color",$subtitle-strong-color);
+
+    @include define-variable("text",$text);
+    @include define-variable("text-light",$text-light);
+    @include define-variable("text-strong",$text-strong);
+
+    @include define-variable("box-color",$box-color);
+    @include define-variable("box-background-color",$box-background-color);
+    @include define-variable("box-shadow",$box-shadow);
+
+    @include define-variable("link-hover",$link-hover);
+    @include define-variable("link-focus",$link-focus);
+    @include define-variable("link-active",$link-active);
+    @include define-variable("link-hover-border",$link-hover-border);
+    @include define-variable("link-active-border",$link-active-border);
+
+    @include define-variable("button-color",$button-color);
+    @include define-variable("button-background-color",$button-background-color);
+    @include define-variable("button-border-color",$button-border-color);
+    @include define-variable("button-hover-color",$button-hover-color);
+    @include define-variable("button-focus",$button-focus);
+    @include define-variable("button-active-color",$button-active-color);
+
+    @include define-variable("input-color",$input-color);
+    @include define-variable("input-icon-color",$input-icon-color);
+    @include define-variable("input-icon-active-color",$input-icon-active-color);
+
+    @include define-variable("table-color",$table-color);
+    @include define-variable("table-head",$table-head);
+    @include define-variable("table-background-color",$table-background-color);
+    @include define-variable("table-cell-border",$table-cell-border);
+
+    @include define-variable("table-row-hover-background-color",$table-row-hover-background-color);
+    @include define-variable("table-striped-row-even-background-color",$table-striped-row-even-background-color);
+    @include define-variable("table-striped-row-even-hover-background-color",$table-striped-row-even-hover-background-color);
+
+    @include define-variable("pagination-border-color",$pagination-border-color);
+    @include define-variable("pagination-disabled",$pagination-disabled);
+    @include define-variable("pagination-disabled-background-color",$pagination-disabled-background-color);
+
+    @include define-variable("dropdown-content-background-color",$dropdown-content-background-color);
+    @include define-variable("dropdown-item-color",$dropdown-item-color);
+
+    @include define-variable("navbar-background-color",$navbar-background-color);
+    @include define-variable("navbar-item-color",$navbar-item-color);
+    @include define-variable("navbar-item-hover-color",$navbar-item-hover-color);
+    @include define-variable("navbar-item-hover-background-color",$navbar-item-hover-background-color);
+    @include define-variable("navbar-item-active-color",$navbar-item-active-color);
+    @include define-variable("navbar-item-active-background-color",$navbar-item-active-background-color);
+
+    @include define-variable("navbar-dropdown-background-color",$navbar-dropdown-background-color);
+    @include define-variable("navbar-dropdown-item-hover-color",$navbar-dropdown-item-hover-color);
+    @include define-variable("navbar-dropdown-item-hover-background-color",$navbar-dropdown-item-hover-background-color);
+    @include define-variable("navbar-dropdown-item-active-background-color",$navbar-dropdown-item-active-background-color);
+    @include define-variable("navbar-dropdown-arrow",$navbar-dropdown-arrow);
+
+    @include define-variable("tabs-boxed-link-active-background-color",$tabs-boxed-link-active-background-color);
+
+    @include define-variable("file-cta-background-color",$file-cta-background-color);
+
+    @include define-variable("progress-bar-background-color",$progress-bar-background-color);
+
+    @include define-variable("panel-heading-background-color",$panel-heading-background-color);
+
+    @import "../../bulma/sass/colors.scss";
+    @import "./overrides.scss";
+}

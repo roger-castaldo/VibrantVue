@@ -1,0 +1,316 @@
+$extendedColors: (
+  "black","white","primary","info",
+  "success","warning","danger",
+  "light","dark"
+);
+
+$basicColors:(
+  "black-bis","black-ter","grey-darker",
+  "grey-dark","grey","grey-light",
+  "grey-lighter","grey-lightest","white-ter",
+  "white-bis","orange","yellow","green",
+  "turquoise","cyan","blue","purple",
+  "red","text","text-strong",
+  "link","link-light","link-dark","scheme-main",
+  "scheme-invert"
+);
+
+$invertableColors: (
+  "black","black-bis","black-ter",
+  "blue","link","cyan","info",
+  "green","success","primary",
+  "purple","red","danger",
+  "text","turquoise",
+  "white","white-ter","white-bis",
+  "yellow","warning",
+  "light"
+);
+
+$lightDarkColors:(
+  "primary","info","success",
+  "warning","danger",
+  "link","text","border","code"
+);
+
+$variableMaps:(
+  "background":(
+    "hr-background-color","code-background","pre-background","message-background-color",
+    "button-text-hover-background-color","menu-item-hover-background-color",
+    "tabs-boxed-link-hover-background-color","tabs-toggle-link-hover-background-color",
+    "panel-block-hover-background-color","navbar-box-shadow-color","navbar-dropdown-item-hover-background-color",
+    "navbar-dropdown-item-active-background-color","navbar-divider-background-color","modal-card-head-background-color",
+    "dropdown-item-hover-background-color","tag-background-color","notification-background-color",
+    "content-blockquote-background-color","input-disabled-background-color","input-disabled-border-color"
+  ),
+  "black":("scheme-invert"),
+  "black-bis":("scheme-invert-bis"),
+  "black-ter":("scheme-invert-ter"),
+  "blue":("link","link-focus-border"),
+  "border":(
+    "message-body-border-color","tabs-border-bottom-color",
+    "tabs-boxed-link-hover-border-bottom-color", "tabs-boxed-link-active-border-color",
+    "tabs-toggle-link-border-color","pagination-border-color","pagination-disabled-background-color",
+    "pagination-disabled-border-color","button-border-color","button-disabled-border-color",
+    "button-static-border-color","input-border-color","input-icon-color",
+    "file-border-color","file-name-border-color"
+  ),
+  "border-hover":(
+    "tabs-toggle-link-hover-border-color","breadcrumb-item-separator-color","input-hover-border-color"
+  ),
+  "border-light":(
+    "panel-heading-background-color","dropdown-divider-background-color","progress-bar-background-color"
+  ),
+  "cyan":("info"),
+  "green":("success"),
+  "grey":("text-light"),
+  "grey-dark":("text","link-active-border"),
+  "grey-darker":("dark","text-strong","link-hover","link-focus","link-active"),
+  "grey-light":("border-hover","border-light-hover","link-hover-border","pagination-ellipsis-color"),
+  "grey-lighter":("border"),
+  "grey-lightest":("border-light"),
+  "link":(
+    "breadcrumb-item-color", "menu-item-active-background-color","tabs-link-active-border-bottom-color",
+    "tabs-link-active-color", "tabs-toggle-link-active-background-color", "tabs-toggle-link-active-border-color",
+    "panel-list-item-hover-color","panel-block-active-border-left-color","panel-block-active-icon-color",
+    "pagination-current-background-color","pagination-current-border-color","navbar-item-hover-color",
+    "navbar-tab-hover-border-bottom-color","navbar-tab-active-color","navbar-tab-active-border-bottom-color",
+    "navbar-dropdown-arrow","navbar-dropdown-item-active-color","dropdown-content-arrow",
+    "dropdown-item-active-background-color","button-ghost-color","button-ghost-hover-color",
+    "input-focus-border-color","input-arrow"
+  ),
+  "link-active":(
+    "button-active-color","panel-tab-active-color","panel-block-active-color",
+    "pagination-active-color"
+  ),
+  "link-active-border":(
+    "button-active-border-color","panel-tab-active-border-bottom-color","pagination-active-border-color"
+  ),
+  "link-focus":("button-focus-color","pagination-focus-color"),
+  "link-focus-border":(
+    "button-focus-border-color","pagination-focus-border-color"
+  ),
+  "link-hover":(
+    "button-hover-color","breadcrumb-item-hover-color","pagination-hover-color"
+  ),
+  "link-hover-border":(
+    "button-hover-border-color","pagination-hover-border-color"
+  ),
+  "link-invert":(
+    "menu-item-active-color","tabs-toggle-link-active-color","pagination-current-color",
+    "dropdown-item-active-color"
+  ),
+  "navbar-item-color":("navbar-burger-color"),
+  "primary":("table-row-active-background-color"),
+  "primary-invert":("table-row-active-color"),
+  "purple":("link-visited"),
+  "red":("danger"),
+  "scheme-invert":(
+    "footer-color","navbar-item-active-color","navbar-dropdown-item-hover-color",
+    "dropdown-item-hover-color"
+  ),
+  "scheme-main":(
+    "body-background-color","card-background-color","button-background-color","message-body-pre-background-color",
+    "tabs-boxed-link-active-background-color","navbar-background-color","navbar-dropdown-background-color",
+    "modal-card-body-background-color","dropdown-content-background-color","card-background-color",
+    "table-background-color","notification-code-background-color","button-disabled-background-color",
+    "box-background-color","input-background-color"
+  ),
+  "scheme-main-bis":(
+    "navbar-item-hover-background-color","table-row-hover-background-color","table-striped-row-even-background-color",
+    "footer-background-color"
+  ),
+  "scheme-main-ter":(
+    "table-striped-row-even-hover-background-color","button-static-background-color","file-cta-background-color"
+  ),
+  "shadow":(
+    "card-shadow","panel-shadow","card-shadow",
+    "box-shadow","dropdown-content-shadow"
+  ),
+  "text":(
+    "body-color","pre","card-color","message-header-background-color","button-text-color",
+    "message-body-color","menu-item-color","tabs-link-color","panel-list-item-color",
+    "navbar-item-color","dropdown-item-color","card-color",
+    "tag-color","progress-value-background-color","box-color",
+    "input-icon-active-color","file-cta-color"
+  ),
+  "text-invert":("message-header-color"),
+  "text-light":(
+    "menu-label-color","panel-icon-color","pagination-disabled-color",
+    "button-static-color","input-disabled-color"
+  ),
+  "text-strong":(
+    "strong-color","breadcrumb-item-active-color","card-header-color",
+    "button-color","button-text-hover-color","menu-item-hover-color",
+    "tabs-link-hover-border-bottom-color","tabs-link-hover-color","panel-heading-color",
+    "panel-block-color","pagination-color","modal-card-title-color",
+    "title-color","subtitle-strong-color",
+    "table-color","table-cell-heading-color","table-head-cell-color",
+    "table-foot-cell-color","content-heading-color","content-table-cell-heading-color",
+    "content-table-head-cell-color","content-table-foot-cell-color","label-color",
+    "input-color","input-hover-color","input-focus-color",
+    "file-cta-hover-color","file-cta-active-color"
+  ),
+  "turquoise":("primary"),
+  "white":("scheme-main"),
+  "white-ter":("scheme-main-ter","background","light","dark-invert"),
+  "white-bis":("scheme-main-bis"),
+  "yellow":("warning"),
+
+  "family-code":("code-family"),
+  "family-monospace":("family-code"),
+  "family-primary":("body-family"),
+  "family-sans-serif":("family-primary","family-secondary","title-family","subtitle-family"),
+  
+  "size-3":("title-size"),
+  "size-4":("size-large","modal-card-title-size"),
+  "size-5":("size-medium"),
+  "size-6":("size-normal"),
+  "size-7":("size-small"),
+  "size-small":("help-size"),
+  "weight-bold":(
+    "strong-weight","card-header-weight","message-header-weight",
+    "panel-heading-weight","card-header-weight","label-weight"
+  ),
+  "weight-normal":("body-font-size","body-weight","subtitle-weight"),
+  "weight-semibold":(
+    "title-weight","subtitle-strong-weight","content-heading-weight"
+  ),
+
+  "block-spacing":("card-media-margin","panel-margin","card-media-margin"),
+  "control-border-width":("button-border-width"),
+  "control-height":("pagination-min-width","input-height"),
+  "control-padding-horizontal":("textarea-padding"),
+  "radius":(
+    "control-radius","message-radius","message-header-radius","message-body-radius",
+    "tabs-boxed-link-radius", "tabs-toggle-link-radius","panel-heading-radius",
+    "dropdown-content-radius", "tag-radius","notification-radius",
+    "input-radius","file-radius"
+  ),
+  "radius-large":(
+    "panel-radius","navbar-dropdown-radius","navbar-dropdown-boxed-radius",
+    "modal-card-head-radius","modal-card-foot-radius","box-radius"
+  ),
+  "radius-rounded":("progress-border-radius"),
+  "radius-small":("control-radius-small","menu-item-radius")
+);
+
+@function contains($list,$var) {
+  @return index($list, $var);
+}
+
+@mixin define-hero-gradiants($name){
+  --#{$name}-gradient-top-left: hsl(calc(var(--#{$name}-h) - 10deg), calc(var(--#{$name}-s) + 10%), calc(var(--#{$name}-l) - 10%));
+  --#{$name}-gradient-bottom-right: hsl(calc(var(--#{$name}-h) + 10deg), calc(var(--#{$name}-s) + 5%), calc(var(--#{$name}-l) + 5%));
+}
+
+@mixin define-message-light-dark($name){
+  --#{$name}-messages-light: hsl(var(--#{$name}-h),var(--#{$name}-s),calc((max(100% - var(--#{$name}-l)) - 2%, 0%)));
+  --#{$name}-messages-dark: hsl(var(--#{$name}-h),calc(var(--#{$name}-s) - (var(--#{$name}-l) * 30%)),calc(var(--#{$name}-l) - (var(--#{$name}-l) * 70%)));
+}
+
+@mixin define-color-hsl($name,$value){
+  @if type-of($value) == color {
+    --#{$name}-h: #{round(hue($value))};
+    --#{$name}-s: #{round(saturation($value))};
+    --#{$name}-l: #{round(lightness($value))};
+  }@else{
+    $varname: #{str-slice('#{$value}', 5, -2)};
+    --#{$name}-h: var(#{$varname}-h);
+    --#{$name}-s: var(#{$varname}-s);
+    --#{$name}-l: var(#{$varname}-l);
+  }
+}
+
+@mixin define-skin($name){
+  body[data-skin="#{$name}"] {
+    @content;
+  }
+}
+
+@mixin define-value($name,$value){
+  --#{$name}:#{$value};
+}
+
+@mixin define-basic-color($name,$value){
+  @include define-color-hsl($name,$value);
+}
+
+@mixin define-extended-color($name,$value){
+  @include define-basic-color($name,$value);
+  @include define-hero-gradiants($name);
+  @include define-message-light-dark($name);
+}
+
+@mixin define-color-invert($name,$value){
+  $color:$value; 
+  @if type-of($value) == color {
+    $color:findColorInvert($value);
+  }@else{
+    $varname: #{str-slice('#{$value}', 5, -2)};
+    $color:var(#{$varname}-invert);
+  }
+  @include define-variable($name+"-invert", $color);
+}
+    
+@mixin define-variable($name,$value){
+  @include define-value($name,$value);
+
+  //extend colors
+  @if contains($extendedColors,$name){
+    @include define-extended-color($name,$value);
+  }@else if contains($basicColors,$name){
+    @include define-basic-color($name,$value);
+  }
+
+  @if contains($invertableColors,$name){
+    @include define-color-invert($name,$value);
+  }
+
+  @if contains($lightDarkColors,$name){
+    @include define-variable($name+"-light",findLightColor($value));
+    @include define-variable($name+"-dark",findDarkColor($value));
+  }
+
+  //extend maps
+  @if map-has-key($variableMaps, $name) {
+    @each $var in map-get($variableMaps,$name){
+      @include define-variable($var,var(--#{$name}));
+    }
+  }
+  
+  @if $name=="scheme-invert"{
+    @include define-variable("shadow", (0 0.5em 1em -0.125em rgba($value, 0.1), 0 0px 0 1px rgba($value, 0.02)));
+    @include define-variable("modal-background-background-color",bulmaRgba($value, 0.86));
+    @include define-variable("card-header-shadow",(0 0.125em 0.25em rgba($value, 0.1)));
+    @include define-variable("box-link-hover-shadow",(0 0.5em 1em -0.125em rgba($value, 0.1), 0 0 0 1px var(--link)));
+    @include define-variable("box-link-active-shadow",(inset 0 1px 2px rgba($value, 0.2), 0 0 0 1px var(--link)));
+    @include define-variable("input-shadow",(inset 0 0.0625em 0.125em rgba($value, 0.05)));
+    @include define-variable("navbar-dropdown-boxed-shadow",(0 8px 8px bulmaRgba($value, 0.1), 0 0 0 1px bulmaRgba($value, 0.1)));
+    @include define-variable("pagination-shadow-inset",(inset 0 1px 2px rgba($value, 0.2)));
+  } @else if $name=="border"{
+    @include define-variable("media-border-color", bulmaRgba($value, 0.5));
+    @include define-variable("content-blockquote-border-left",(5px solid var(--#{$name})));
+    @include define-variable("content-table-cell-border",(1px solid var(--#{$name})));
+    @include define-variable("table-cell-border",(1px solid var(--#{$name})));
+  } @else if $name=="block-spacing"{
+    @include define-variable("level-item-spacing",(calc(var(--#{$name}) * 0.5)));
+  } @else if $name=="link"{
+    @include define-variable("button-focus-box-shadow-color",bulmaRgba($value, 0.25));
+    @include define-variable("input-focus-box-shadow-color",bulmaRgba($value, 0.25));
+  } @else if $name=="input-color"{
+    @include define-variable("input-placeholder-color",bulmaRgba($value, 0.3));
+  } @else if $name=="input-disabled-color"{
+    @include define-variable("input-disabled-placeholder-color",bulmaRgba($value, 0.3)); 
+  } @else if $name=="border-light" {
+    @include define-variable("card-footer-border-top",(1px solid var(--#{$name})));
+    @include define-variable("panel-item-border",(1px solid var(--#{$name})));
+    @include define-variable("panel-tab-border-bottom",(1px solid var(--#{$name})));
+  } @else if $name=="gap"{
+    @include define-variable("container-offset",calc(2 * var(--#{$name})));
+  } @else if $name=="control-border-width"{
+    @include define-variable("control-padding-vertical", calc(0.5em - var(--#{$name}))); 
+    @include define-variable("control-padding-horizontal",calc(0.75em - var(--#{$name}))); 
+  } @else if $name=="red"{
+    @include define-variable("code",hsl(var(--#{$name}-h,var(--#{$name}-s),calc(var(--#{$name}-l) - 15%))));
+  }
+}

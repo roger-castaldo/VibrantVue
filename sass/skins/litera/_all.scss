@@ -1,0 +1,43 @@
+@include define-skin("litera") {
+    @import "./variables.scss";
+
+    @include define-variable("grey-darker",$grey-darker);
+    @include define-variable("grey-dark",$grey-dark);
+    @include define-variable("grey",$grey);
+    @include define-variable("grey-light",$grey-light);
+    @include define-variable("grey-lighter",$grey-lighter);
+
+    @include define-variable("orange",$orange);
+    @include define-variable("yellow",$yellow);
+    @include define-variable("green",$green);
+    @include define-variable("blue",$blue);
+    @include define-variable("red",$red);
+
+    @include define-variable("link",$link);
+    @include define-variable("primary",$primary);
+    @include define-variable("danger",$danger);
+
+    @include define-variable("subtitle-color",$subtitle-color);
+
+    @include define-variable("family-heading",$family-heading);
+
+    @include define-variable("body-size",$body-size);
+
+    @include define-variable("family-serif",$family-serif);
+
+    @include define-variable("navbar-height",$navbar-height);
+    @include define-variable("navbar-item-hover-color",$navbar-item-hover-color);
+    @include define-variable("navbar-item-hover-background-color",$navbar-item-hover-background-color);
+    @include define-variable("navbar-item-active-color",$navbar-item-active-color);
+    @include define-variable("navbar-item-active-background-color",$navbar-item-active-background-color);
+
+    @include define-variable("navbar-dropdown-item-hover-color",$navbar-dropdown-item-hover-color);
+    @include define-variable("navbar-dropdown-item-hover-background-color",$navbar-dropdown-item-hover-background-color);
+    @include define-variable("navbar-dropdown-item-active-color",$navbar-dropdown-item-active-color);
+    @include define-variable("navbar-dropdown-item-active-background-color",$navbar-dropdown-item-active-background-color);
+
+    @include define-variable("box-shadow",$box-shadow);
+
+    @import "../../bulma/sass/colors.scss";
+    @import "./overrides.scss";
+}

@@ -1,0 +1,46 @@
+@include define-skin("minty") {
+    @import "./variables.scss";
+
+    @include define-variable("grey",$grey);
+    @include define-variable("grey-light",$grey-light);
+    @include define-variable("grey-lighter",$grey-lighter);
+
+    @include define-variable("orange",$orange);
+    @include define-variable("yellow",$yellow);
+    @include define-variable("green",$green);
+    @include define-variable("cyan",$cyan);
+    @include define-variable("blue",$blue);
+    @include define-variable("red",$red);
+    @include define-variable("turquoise",$turquoise);
+
+    @include define-variable("danger",$danger);
+
+    @include define-variable("text",$text);
+    @include define-variable("subtitle-color",$subtitle-color);
+
+    @include define-variable("size-1",$size-1);
+    @include define-variable("size-2",$size-2);
+    @include define-variable("size-3",$size-3);
+    @include define-variable("size-4",$size-4);
+    @include define-variable("size-5",$size-5);
+    @include define-variable("size-6",$size-6);
+    @include define-variable("size-7",$size-7);
+
+    @include define-variable("radius-small",$radius-small);
+    @include define-variable("radius",$radius);
+    @include define-variable("radius-large",$radius-large);
+
+    @include define-variable("family-heading",$family-heading);
+
+    @include define-variable("navbar-background-color",$navbar-background-color);
+    @include define-variable("navbar-item-color",$navbar-item-color);
+    @include define-variable("navbar-item-hover-color",$navbar-item-hover-color);
+    @include define-variable("navbar-item-active-color",$navbar-item-active-color);
+    @include define-variable("navbar-item-hover-background-color",$navbar-item-hover-background-color);
+    @include define-variable("navbar-dropdown-arrow",$navbar-dropdown-arrow);
+
+    @include define-variable("box-shadow",$box-shadow);
+
+    @import "../../bulma/sass/colors.scss";
+    @import "./overrides.scss";
+}

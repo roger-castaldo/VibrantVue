@@ -1,0 +1,29 @@
+@include define-skin("spacelab") {
+    @import "./variables.scss";
+
+    @include define-variable("grey-darker",$grey-darker);
+    @include define-variable("grey-dark",$grey-dark);
+    @include define-variable("grey",$grey);
+    @include define-variable("grey-light",$grey-light);
+    @include define-variable("grey-lighter",$grey-lighter);
+    
+    @include define-variable("orange",$orange);
+    @include define-variable("green",$green);
+    @include define-variable("blue",$blue);
+    @include define-variable("red",$red);
+    
+    @include define-variable("primary",$primary);
+    @include define-variable("warning",$warning);
+    @include define-variable("warning-invert",$warning-invert);
+    @include define-variable("link",$link);
+    
+    @include define-variable("family-sans-serif",$family-sans-serif);
+    
+    @include define-variable("subtitle-color",$subtitle-color);
+    
+    @include define-variable("navbar-item-active-color",$navbar-item-active-color);
+    @include define-variable("navbar-item-hover-background-color",$navbar-item-hover-background-color);
+
+    @import "../../bulma/sass/colors.scss";
+    @import "./overrides.scss";
+}

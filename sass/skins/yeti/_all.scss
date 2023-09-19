@@ -1,0 +1,46 @@
+@include define-skin("yeti") {
+    @import "./variables.scss";
+
+    @include define-variable("grey-darker",$grey-darker);
+    @include define-variable("grey-dark",$grey-dark);
+    @include define-variable("grey",$grey);
+    @include define-variable("grey-light",$grey-light);
+    @include define-variable("grey-lighter",$grey-lighter);
+
+    @include define-variable("orange",$orange);
+    @include define-variable("green",$green);
+    @include define-variable("cyan",$cyan);
+    @include define-variable("red",$red);
+
+    @include define-variable("primary",$primary);
+    @include define-variable("warning",$warning);
+
+    @include define-variable("orange-invert",$orange-invert);
+    @include define-variable("warning-invert",$warning-invert);
+
+    @include define-variable("border",$border);
+    @include define-variable("family-sans-serif",$family-sans-serif);
+    @include define-variable("body-size",$body-size);
+
+    @include define-variable("radius",$radius);
+    @include define-variable("radius-small",$radius-small);
+    @include define-variable("radius-large",$radius-large);
+
+    @include define-variable("subtitle-color",$subtitle-color);
+
+    @include define-variable("button-background-color",$button-background-color);
+    @include define-variable("button-border-color",$button-border-color);
+
+    @include define-variable("navbar-background-color",$navbar-background-color);
+    @include define-variable("navbar-item-color",$navbar-item-color);
+    @include define-variable("navbar-item-hover-color",$navbar-item-hover-color);
+    @include define-variable("navbar-item-active-color",$navbar-item-active-color);
+    @include define-variable("navbar-item-hover-background-color",$navbar-item-hover-background-color);
+    @include define-variable("navbar-dropdown-arrow",$navbar-dropdown-arrow);
+
+    @include define-variable("box-shadow",$box-shadow);
+    @include define-variable("card-shadow",$card-shadow);
+
+    @import "../../bulma/sass/colors.scss";
+    @import "./overrides.scss";
+}

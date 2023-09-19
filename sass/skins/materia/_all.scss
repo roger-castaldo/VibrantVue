@@ -1,0 +1,41 @@
+@include define-skin("materia") {
+    @import "./variables.scss";
+
+    @include define-variable("orange",$orange);
+    @include define-variable("yellow",$yellow);
+    @include define-variable("green",$green);
+    @include define-variable("turquoise",$turquoise);
+    @include define-variable("cyan",$cyan);
+    @include define-variable("blue",$blue);
+    @include define-variable("purple",$purple);
+    @include define-variable("red",$red);
+
+    @include define-variable("primary",$primary);
+
+    @include define-variable("family-sans-serif",$family-sans-serif);
+    @include define-variable("title-weight",$title-weight);
+    @include define-variable("title-weight-bold",$title-weight-bold);
+
+    @include define-variable("radius",$radius);
+    @include define-variable("shadow",$shadow);
+    @include define-variable("shadow-large",$shadow-large);
+
+    @include define-variable("button-border-color",$button-border-color);
+    @include define-variable("button-hover-border",$button-hover-border);
+    @include define-variable("button-focus-border-color",$button-focus-border-color);
+    @include define-variable("button-active-border-color",$button-active-border-color);
+
+    @include define-variable("input-disabled-background-color",$input-disabled-background-color);
+
+    @include define-variable("border-width",$border-width);
+
+    @include define-variable("navbar-height",$navbar-height);
+
+    @include define-variable("dropdown-content-shadow",$dropdown-content-shadow);
+    @include define-variable("dropdown-content-radius",$dropdown-content-radius);
+
+    @include define-variable("box-shadow",$box-shadow);
+
+    @import "../../bulma/sass/colors.scss";
+    @import "./overrides.scss";
+}

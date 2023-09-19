@@ -1,0 +1,50 @@
+@include define-skin("nuclear") {
+    @import "./variables.scss";
+
+    @include define-variable("black",$black);
+    @include define-variable("black-bis",$black-bis);
+    @include define-variable("black-ter",$black-ter);
+    @include define-variable("grey-darker",$grey-darker);
+    @include define-variable("grey-dark",$grey-dark);
+    @include define-variable("grey",$grey);
+    @include define-variable("grey-light",$grey-light);
+    @include define-variable("grey-lighter",$grey-lighter);
+
+    @include define-variable("white-ter",$white-ter);
+    @include define-variable("white-bis",$white-bis);
+    @include define-variable("white",$white);
+
+    @include define-variable("black",$black);
+    @include define-variable("black-bis",$black-bis);
+    @include define-variable("black-ter",$black-ter);
+    @include define-variable("grey-darker",$grey-darker);
+    @include define-variable("grey-dark",$grey-dark);
+    @include define-variable("grey",$grey);
+    @include define-variable("grey-light",$grey-light);
+    @include define-variable("grey-lighter",$grey-lighter);
+    @include define-variable("white-ter",$white-ter);
+    @include define-variable("white-bis",$white-bis);
+    @include define-variable("white",$white);
+
+    @include define-variable("orange",$orange);
+    @include define-variable("yellow",$yellow);
+    @include define-variable("green",$green);
+    @include define-variable("turquoise",$turquoise);
+    @include define-variable("blue",$blue);
+    @include define-variable("purple",$purple);
+    @include define-variable("red",$red);
+
+    @include define-variable("primary",$primary);
+    @include define-variable("warning",$warning);
+    @include define-variable("border",$border);
+    @include define-variable("border-hover",$border-hover);
+
+    @include define-variable("body-background-color",$body-background-color);
+
+    @include define-variable("font-heading",$font-heading);
+
+    @include define-variable("box-background",$box-background);
+
+    @import "../../bulma/sass/colors.scss";
+    @import "./overrides.scss";
+}

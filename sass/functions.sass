@@ -1,0 +1,19 @@
+@function darken-variable($name,$percentage)
+    @return 'hsl(var(--'+$name+'-h),var(--'+$name+'-s),calc(var(--'+$name+'-l) - '+$percentage+'%))'
+
+@function darken-color($color,$percentage)
+    $name: #{str-slice('#{$color}', 5, -2)}
+    @return 'hsl(var('+$name+'-h),var('+$name+'-s),calc(var('+$name+'-l) - '+$percentage+'))'
+
+@function lighten-variable($name,$percentage)
+    @return 'hsl(var(--'+$name+'-h),var(--'+$name+'-s),calc(var(--'+$name+'-l) + '+$percentage+'%))'
+
+@function lighten-color($color,$percentage)
+    $name: #{str-slice('#{$color}', 5, -2)}
+    @return 'hsl(var('+$name+'-h),var('+$name+'-s),calc(var('+$name+'-l) + '+$percentage+'))'
+
+@function set-rgba-alpha($name,$alpha)
+    @return 'rgba(from var(--'+$name+'), '+$alpha+')'
+
+@function set-rgba-color-alpha($color,$alpha)
+    @return 'rgba(from '+$color+', '+$alpha+')'
