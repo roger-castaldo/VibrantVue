@@ -8,10 +8,11 @@ $page-heights: ("letter":11,"legal":14,"ledger":17,"tabloid":11,"executive":10.5
 		size: auto;
 	}
 
-	:not(.is-page *):not(:has(.is-page)):not(.is-page){
+	:not(.is-page *):not(:has(.is-page)):not(.is-page),
+	.is-not-printable{
 		display: none !important;
-	}	
-
+	}
+	
 	.is-page {
 		@import "../skins/default/_all.scss";
 
