@@ -59,11 +59,15 @@ $hero-colors: $colors;
   @return #{darken-variable(getColorName($color),$percentage)};
 }
 
-@function bulmaRgba($color, $alpha){
-  @return 'rgba(from #{$color}, #{$alpha})';
-}
-
 @function bulmaLighten($color, $amount){
   $percentage: str-slice('#{$amount}',1,-2);
   @return #{lighten-variable(getColorName($color),$percentage)};
+}
+
+@function bulmaRgba($color, $alpha){
+  @if type-of($color) != 'color'{
+    $varname: #{str-slice('#{$color}', 5, -2)};
+    @return 'rgba(var(#{$varname}-r),var(#{$varname}-g),var(#{$varname}-b), #{$alpha})';
+  }
+  @return rgba($color, $alpha);
 }
