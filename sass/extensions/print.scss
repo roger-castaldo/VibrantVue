@@ -8,10 +8,14 @@ $page-heights: ("letter":11,"legal":14,"ledger":17,"tabloid":11,"executive":10.5
 		size: auto;
 	}
 
-	.is-page {
+	:not(.is-page *):not(:has(.is-page)):not(.is-page){
+		display: none !important;
+	}	
 
+	.is-page {
 		@import "../skins/default/_all.scss";
 
+		display:block !important;
 		margin: 0;
 		overflow: hidden;
 		page-break-after: auto;
