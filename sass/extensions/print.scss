@@ -1,0 +1,80 @@
+$page-widths: ("letter":8.5,"legal":8.5,"ledger":11,"tabloid":17,"executive":7.25);
+$page-heights: ("letter":11,"legal":14,"ledger":17,"tabloid":11,"executive":10.55);
+
+@media print {
+
+	@page {
+		margin: 0;
+		size: auto;
+	}
+
+	.is-page {
+
+		@import "../skins/default/_all.scss";
+
+		margin: 0;
+		overflow: hidden;
+		page-break-after: auto;
+		position: relative;
+		line-height: normal !important;
+		font-size: 12pt;
+		padding-top: 0.75in;
+		padding-left: 0.75in;
+		padding-right: 0.75in;
+		padding-bottom: 0.75in;
+		background-color: white !important;
+		color: back !important;
+		&.is-narrow-margin{
+			padding-top: 0.39in;
+			padding-left: 0.39in;
+			padding-right: 0.39in;
+			padding-bottom: 0.39in;
+		}
+		&.is-wide-margin{
+			padding-top: 1.13in;
+			padding-left: 1.13in;
+			padding-right: 1.13in;
+			padding-bottom: 1.13in;
+		}
+
+		@each $name, $width in $page-widths{
+			&.is-#{$name} {
+				width: #{$width}in !important;
+			}
+			&.is-#{$name}-landscape{
+				height: #{$width}in !important;
+			}
+		}
+
+		@each $name, $height in $page-heights{
+			&.is-#{$name}{
+				height: #{$height}in !important;
+			}
+			&.is-#{$name}-landscape{
+				width: #{$height}in !important;
+			}
+		}
+
+		.footer{
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0.2in;
+		}
+
+		.header {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0.2in;
+		}
+
+		.progress, .modal, .menu, .is-animated-bounce-container, .is-page-notification-container {
+			display: none !important;
+		}
+	}
+
+	.is-page:last-child{
+		page-break-after: avoid;
+	}
+}

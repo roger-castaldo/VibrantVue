@@ -1,5 +1,7 @@
 @import "./mixins.scss";
-@import "./default/_all.scss";
+:root{
+    @import "./default/_all.scss";
+}
 @import "./cerulean/_all.scss";
 @import "./cosmo/_all.scss";
 @import "./cyborg/_all.scss";
