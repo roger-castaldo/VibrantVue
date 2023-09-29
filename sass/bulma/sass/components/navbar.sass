@@ -122,12 +122,12 @@ $navbar-bottom-box-shadow-size: var(--navbar-bottom-box-shadow-size)
   &.is-fixed-top
     top: 0
 
-html,
-body
-  &.has-navbar-fixed-top
-    padding-top: $navbar-height
-  &.has-navbar-fixed-bottom
-    padding-bottom: $navbar-height
+
+&:has(.navbar.is-fixed-top)
+  padding-top: $navbar-height
+
+&:has(.navbar.is-fixed-bottom)
+  padding-bottom: $navbar-height
 
 .navbar-brand,
 .navbar-tabs
@@ -268,9 +268,9 @@ a.navbar-item,
         overflow: auto
   html,
   body
-    &.has-navbar-fixed-top-touch
+    &:has(.navbar.has-navbar-fixed-top-touch)
       padding-top: $navbar-height
-    &.has-navbar-fixed-bottom-touch
+    &:has(.navbar.has-navbar-fixed-bottom-touch)
       padding-bottom: $navbar-height
 
 +from($navbar-breakpoint)

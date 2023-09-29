@@ -218,7 +218,7 @@ $variableMaps:(
 
 @mixin define-color-hsl($name,$value){
   @if type-of($value) == color {
-    --#{$name}-h: #{round(hue($value))};
+    --#{$name}-h: #{str-slice('#{round(hue($value))}',1,-4)};
     --#{$name}-s: #{round(saturation($value))};
     --#{$name}-l: #{round(lightness($value))};
   }@else{
