@@ -1,45 +1,47 @@
 @include define-skin("minty") {
     @import "./variables.scss";
 
-    @include define-variable("grey",$grey);
-    @include define-variable("grey-light",$grey-light);
-    @include define-variable("grey-lighter",$grey-lighter);
+    $map:define-variable("grey",$grey);
+    $map:define-variable("grey-light",$grey-light,$map);
+    $map:define-variable("grey-lighter",$grey-lighter,$map);
 
-    @include define-variable("orange",$orange);
-    @include define-variable("yellow",$yellow);
-    @include define-variable("green",$green);
-    @include define-variable("cyan",$cyan);
-    @include define-variable("blue",$blue);
-    @include define-variable("red",$red);
-    @include define-variable("turquoise",$turquoise);
+    $map:define-variable("orange",$orange,$map);
+    $map:define-variable("yellow",$yellow,$map);
+    $map:define-variable("green",$green,$map);
+    $map:define-variable("cyan",$cyan,$map);
+    $map:define-variable("blue",$blue,$map);
+    $map:define-variable("red",$red,$map);
+    $map:define-variable("turquoise",$turquoise,$map);
 
-    @include define-variable("danger",$danger);
+    $map:define-variable("danger",$danger,$map);
 
-    @include define-variable("text",$text);
-    @include define-variable("subtitle-color",$subtitle-color);
+    $map:define-variable("text",$text,$map);
+    $map:define-variable("subtitle-color",$subtitle-color,$map);
 
-    @include define-variable("size-1",$size-1);
-    @include define-variable("size-2",$size-2);
-    @include define-variable("size-3",$size-3);
-    @include define-variable("size-4",$size-4);
-    @include define-variable("size-5",$size-5);
-    @include define-variable("size-6",$size-6);
-    @include define-variable("size-7",$size-7);
+    $map:define-variable("size-1",$size-1,$map);
+    $map:define-variable("size-2",$size-2,$map);
+    $map:define-variable("size-3",$size-3,$map);
+    $map:define-variable("size-4",$size-4,$map);
+    $map:define-variable("size-5",$size-5,$map);
+    $map:define-variable("size-6",$size-6,$map);
+    $map:define-variable("size-7",$size-7,$map);
 
-    @include define-variable("radius-small",$radius-small);
-    @include define-variable("radius",$radius);
-    @include define-variable("radius-large",$radius-large);
+    $map:define-variable("radius-small",$radius-small,$map);
+    $map:define-variable("radius",$radius,$map);
+    $map:define-variable("radius-large",$radius-large,$map);
 
-    @include define-variable("family-heading",$family-heading);
+    $map:define-variable("family-heading",$family-heading,$map);
 
-    @include define-variable("navbar-background-color",$navbar-background-color);
-    @include define-variable("navbar-item-color",$navbar-item-color);
-    @include define-variable("navbar-item-hover-color",$navbar-item-hover-color);
-    @include define-variable("navbar-item-active-color",$navbar-item-active-color);
-    @include define-variable("navbar-item-hover-background-color",$navbar-item-hover-background-color);
-    @include define-variable("navbar-dropdown-arrow",$navbar-dropdown-arrow);
+    $map:define-variable("navbar-background-color",$navbar-background-color,$map);
+    $map:define-variable("navbar-item-color",$navbar-item-color,$map);
+    $map:define-variable("navbar-item-hover-color",$navbar-item-hover-color,$map);
+    $map:define-variable("navbar-item-active-color",$navbar-item-active-color,$map);
+    $map:define-variable("navbar-item-hover-background-color",$navbar-item-hover-background-color,$map);
+    $map:define-variable("navbar-dropdown-arrow",$navbar-dropdown-arrow,$map);
 
-    @include define-variable("box-shadow",$box-shadow);
+    $map:define-variable("box-shadow",$box-shadow,$map);
+
+    @include output-skin-map($map);
 
     @import "../../bulma/sass/colors.scss";
     @import "./overrides.scss";

@@ -1,35 +1,37 @@
 @include define-skin("cerulean") {
-    @import "./variables.scss";
+    @import "./_variables.scss";
 
-    @include define-variable("orange",$orange);
-    @include define-variable("yellow",$yellow);
-    @include define-variable("green",$green);
-    @include define-variable("turquoise",$turquoise);
-    @include define-variable("blue",$blue);
-    @include define-variable("purple",$purple);
-    @include define-variable("red",$red);
-    @include define-variable("grey",$grey);
+    $map:define-variable("orange",$orange);
+    $map:define-variable("yellow",$yellow,$map);
+    $map:define-variable("green",$green,$map);
+    $map:define-variable("turquoise",$turquoise,$map);
+    $map:define-variable("blue",$blue,$map);
+    $map:define-variable("purple",$purple,$map);
+    $map:define-variable("red",$red,$map);
+    $map:define-variable("grey",$grey,$map);
 
-    @include define-variable("primary",$primary);
-    @include define-variable("primary-dark",$primary-dark);
-    @include define-variable("warning",$warning);
-    @include define-variable("info",$info);
+    $map:define-variable("primary",$primary,$map);
+    $map:define-variable("primary-dark",$primary-dark,$map);
+    $map:define-variable("warning",$warning,$map);
+    $map:define-variable("info",$info,$map);
 
-    @include define-variable("info-invert",$info-invert);
-    @include define-variable("orange-invert",$orange-invert);
-    @include define-variable("warning-invert",$warning-invert);
+    $map:define-variable("info-invert",$info-invert,$map);
+    $map:define-variable("orange-invert",$orange-invert,$map);
+    $map:define-variable("warning-invert",$warning-invert,$map);
 
-    @include define-variable("family-sans-serif",$family-sans-serif);
+    $map:define-variable("family-sans-serif",$family-sans-serif,$map);
 
-    @include define-variable("title-color",$title-color);
-    @include define-variable("title-weight",$title-weight);
-    @include define-variable("title-weight-bold",$title-weight-bold);
+    $map:define-variable("title-color",$title-color,$map);
+    $map:define-variable("title-weight",$title-weight,$map);
+    $map:define-variable("title-weight-bold",$title-weight-bold,$map);
 
-    @include define-variable("subtitle-weight",$subtitle-weight);
-    @include define-variable("subtitle-strong-color",$subtitle-strong-color);
+    $map:define-variable("subtitle-weight",$subtitle-weight,$map);
+    $map:define-variable("subtitle-strong-color",$subtitle-strong-color,$map);
 
-    @include define-variable("box-shadow",$box-shadow);
+    $map:define-variable("box-shadow",$box-shadow,$map);
+
+    @include output-skin-map($map);
 
     @import "../../bulma/sass/colors.scss";
-    @import "./overrides.scss";
+    @import "./_overrides.scss";
 }

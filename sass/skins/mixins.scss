@@ -206,26 +206,34 @@ $variableMaps:(
   @return rgba($color, $alpha);
 }
 
-@mixin define-hero-gradiants($name){
-  --#{$name}-gradient-top-left: hsl(calc(var(--#{$name}-h) - 10deg), calc(var(--#{$name}-s) + 10%), calc(var(--#{$name}-l) - 10%));
-  --#{$name}-gradient-bottom-right: hsl(calc(var(--#{$name}-h) + 10deg), calc(var(--#{$name}-s) + 5%), calc(var(--#{$name}-l) + 5%));
+@function define-hero-gradiants($name,$map){
+  @return map-merge($map,(
+    #{"--#{$name}-gradient-top-left"}:hsl(calc(var(--#{$name}-h) - 10deg), calc(var(--#{$name}-s) + 10%), calc(var(--#{$name}-l) - 10%)),
+    #{"--#{$name}-gradient-bottom-right"}: hsl(calc(var(--#{$name}-h) + 10deg), calc(var(--#{$name}-s) + 5%), calc(var(--#{$name}-l) + 5%))
+  ));
 }
 
-@mixin define-message-light-dark($name){
-  --#{$name}-messages-light: hsl(var(--#{$name}-h),var(--#{$name}-s),calc((max(100% - var(--#{$name}-l)) - 2%, 0%)));
-  --#{$name}-messages-dark: hsl(var(--#{$name}-h),calc(var(--#{$name}-s) - (var(--#{$name}-l) * 30%)),calc(var(--#{$name}-l) - (var(--#{$name}-l) * 70%)));
+@function define-message-light-dark($name,$map){
+  @return map-merge($map,(
+    #{"--#{$name}-messages-light"}: "hsl(var(--#{$name}-h),var(--#{$name}-s),calc((max(100% - var(--#{$name}-l)) - 2%, 0%)))",
+    #{"--#{$name}-messages-dark"}: hsl(var(--#{$name}-h),calc(var(--#{$name}-s) - (var(--#{$name}-l) * 30%)),calc(var(--#{$name}-l) - (var(--#{$name}-l) * 70%)))
+  ));
 }
 
-@mixin define-color-hsl($name,$value){
+@function define-color-hsl($name,$value,$map){
   @if type-of($value) == color {
-    --#{$name}-h: #{str-slice('#{round(hue($value))}',1,-4)};
-    --#{$name}-s: #{round(saturation($value))};
-    --#{$name}-l: #{round(lightness($value))};
+    @return map-merge($map,(
+      #{"--#{$name}-h"}: #{str-slice('#{round(hue($value))}',1,-4)},
+      #{"--#{$name}-s"}: #{round(saturation($value))},
+      #{"--#{$name}-l"}: #{round(lightness($value))}
+    ));
   }@else{
     $varname: #{str-slice('#{$value}', 5, -2)};
-    --#{$name}-h: var(#{$varname}-h);
-    --#{$name}-s: var(#{$varname}-s);
-    --#{$name}-l: var(#{$varname}-l);
+    @return map-merge($map,(
+      #{"--#{$name}-h"}: var(#{$varname}-h),
+      #{"--#{$name}-s"}: var(#{$varname}-s),
+      #{"--#{$name}-l"}: var(#{$varname}-l)
+    ));
   }
 }
 
@@ -235,27 +243,33 @@ $variableMaps:(
   }
 }
 
-@mixin define-value($name,$value){
-  --#{$name}:#{$value};
+@function define-value($name,$value,$map){
+  $map:map-merge($map, (
+    #{"--#{$name}"}:#{$value}
+  ));
   @if type-of($value) == 'color'{
-    --#{$name}-r:#{red($value)};
-    --#{$name}-g:#{green($value)};
-    --#{$name}-b:#{blue($value)};
-    --#{$name}-a:#{alpha($value)};
+    $map:map-merge($map, (
+      #{"--#{$name}-r"}:#{red($value)},
+      #{"--#{$name}-g"}:#{green($value)},
+      #{"--#{$name}-b"}:#{blue($value)},
+      #{"--#{$name}-a"}:#{alpha($value)},
+    ));
   }
+  @return $map;
 }
 
-@mixin define-basic-color($name,$value){
-  @include define-color-hsl($name,$value);
+@function define-basic-color($name,$value,$map){
+  @return define-color-hsl($name,$value,$map);
 }
 
-@mixin define-extended-color($name,$value){
-  @include define-basic-color($name,$value);
-  @include define-hero-gradiants($name);
-  @include define-message-light-dark($name);
+@function define-extended-color($name,$value,$map){
+  $map:define-basic-color($name,$value,$map);
+  $map:define-hero-gradiants($name,$map);
+  $map:define-message-light-dark($name,$map);
+  @return $map;
 }
 
-@mixin define-color-invert($name,$value){
+@function define-color-invert($name,$value,$map){
   $color:$value; 
   @if type-of($value) == color {
     $color:findColorInvert($value);
@@ -263,68 +277,76 @@ $variableMaps:(
     $varname: #{str-slice('#{$value}', 5, -2)};
     $color:var(#{$varname}-invert);
   }
-  @include define-variable($name+"-invert", $color);
+  @return define-variable($name+"-invert", $color,$map);
 }
     
-@mixin define-variable($name,$value){
-  @include define-value($name,$value);
+@function define-variable($name,$value,$map:()){
+  $map:define-value($name,$value,$map);
 
   //extend colors
   @if contains($extendedColors,$name){
-    @include define-extended-color($name,$value);
+    $map:define-extended-color($name,$value,$map);
   }@else if contains($basicColors,$name){
-    @include define-basic-color($name,$value);
+    $map:define-basic-color($name,$value,$map);
   }
 
   @if contains($invertableColors,$name){
-    @include define-color-invert($name,$value);
+    $map:define-color-invert($name,$value,$map);
   }
 
   @if contains($lightDarkColors,$name){
-    @include define-variable($name+"-light",findLightColor($value));
-    @include define-variable($name+"-dark",findDarkColor($value));
+    $map:define-variable($name+"-light",findLightColor($value),$map);
+    $map:define-variable($name+"-dark",findDarkColor($value),$map);
   }
 
   //extend maps
   @if map-has-key($variableMaps, $name) {
     @each $var in map-get($variableMaps,$name){
-      @include define-variable($var,var(--#{$name}));
+      $map:define-variable($var,var(--#{$name}),$map);
     }
   }
   
   @if $name=="scheme-invert"{
-    @include define-variable("shadow", (0 0.5em 1em -0.125em bulmaRgba($value, 0.1), 0 0px 0 1px bulmaRgba($value, 0.02)));
-    @include define-variable("modal-background-background-color",bulmaRgba($value, 0.86));
-    @include define-variable("card-header-shadow",(0 0.125em 0.25em bulmaRgba($value, 0.1)));
-    @include define-variable("box-link-hover-shadow",(0 0.5em 1em -0.125em bulmaRgba($value, 0.1), 0 0 0 1px var(--link)));
-    @include define-variable("box-link-active-shadow",(inset 0 1px 2px bulmaRgba($value, 0.2), 0 0 0 1px var(--link)));
-    @include define-variable("input-shadow",(inset 0 0.0625em 0.125em bulmaRgba($value, 0.05)));
-    @include define-variable("navbar-dropdown-boxed-shadow",(0 8px 8px bulmaRgba($value, 0.1), 0 0 0 1px bulmaRgba($value, 0.1)));
-    @include define-variable("pagination-shadow-inset",(inset 0 1px 2px bulmaRgba($value, 0.2)));
+    $map:define-variable("shadow", (0 0.5em 1em -0.125em bulmaRgba($value, 0.1), 0 0px 0 1px bulmaRgba($value, 0.02)),$map);
+    $map:define-variable("modal-background-background-color",bulmaRgba($value, 0.86),$map);
+    $map:define-variable("card-header-shadow",(0 0.125em 0.25em bulmaRgba($value, 0.1)),$map);
+    $map:define-variable("box-link-hover-shadow",(0 0.5em 1em -0.125em bulmaRgba($value, 0.1), 0 0 0 1px var(--link)),$map);
+    $map:define-variable("box-link-active-shadow",(inset 0 1px 2px bulmaRgba($value, 0.2), 0 0 0 1px var(--link)),$map);
+    $map:define-variable("input-shadow",(inset 0 0.0625em 0.125em bulmaRgba($value, 0.05)),$map);
+    $map:define-variable("navbar-dropdown-boxed-shadow",(0 8px 8px bulmaRgba($value, 0.1), 0 0 0 1px bulmaRgba($value, 0.1)),$map);
+    $map:define-variable("pagination-shadow-inset",(inset 0 1px 2px bulmaRgba($value, 0.2)),$map);
   } @else if $name=="border"{
-    @include define-variable("media-border-color", bulmaRgba($value, 0.5));
-    @include define-variable("content-blockquote-border-left",(5px solid var(--#{$name})));
-    @include define-variable("content-table-cell-border",(1px solid var(--#{$name})));
-    @include define-variable("table-cell-border",(1px solid var(--#{$name})));
+    $map:define-variable("media-border-color", bulmaRgba($value, 0.5),$map);
+    $map:define-variable("content-blockquote-border-left",(5px solid var(--#{$name})),$map);
+    $map:define-variable("content-table-cell-border",(1px solid var(--#{$name})),$map);
+    $map:define-variable("table-cell-border",(1px solid var(--#{$name})),$map);
   } @else if $name=="block-spacing"{
-    @include define-variable("level-item-spacing",(calc(var(--#{$name}) * 0.5)));
+    $map:define-variable("level-item-spacing",(calc(var(--#{$name}) * 0.5)),$map);
   } @else if $name=="link"{
-    @include define-variable("button-focus-box-shadow-color",bulmaRgba($value, 0.25));
-    @include define-variable("input-focus-box-shadow-color",bulmaRgba($value, 0.25));
+    $map:define-variable("button-focus-box-shadow-color",bulmaRgba($value, 0.25),$map);
+    $map:define-variable("input-focus-box-shadow-color",bulmaRgba($value, 0.25),$map);
   } @else if $name=="input-color"{
-    @include define-variable("input-placeholder-color",bulmaRgba($value, 0.3));
+    $map:define-variable("input-placeholder-color",bulmaRgba($value, 0.3),$map);
   } @else if $name=="input-disabled-color"{
-    @include define-variable("input-disabled-placeholder-color",bulmaRgba($value, 0.3)); 
+    $map:define-variable("input-disabled-placeholder-color",bulmaRgba($value, 0.3),$map); 
   } @else if $name=="border-light" {
-    @include define-variable("card-footer-border-top",(1px solid var(--#{$name})));
-    @include define-variable("panel-item-border",(1px solid var(--#{$name})));
-    @include define-variable("panel-tab-border-bottom",(1px solid var(--#{$name})));
+    $map:define-variable("card-footer-border-top",(1px solid var(--#{$name})),$map);
+    $map:define-variable("panel-item-border",(1px solid var(--#{$name})),$map);
+    $map:define-variable("panel-tab-border-bottom",(1px solid var(--#{$name})),$map);
   } @else if $name=="gap"{
-    @include define-variable("container-offset",calc(2 * var(--#{$name})));
+    $map:define-variable("container-offset",calc(2 * var(--#{$name})),$map);
   } @else if $name=="control-border-width"{
-    @include define-variable("control-padding-vertical", calc(0.5em - var(--#{$name}))); 
-    @include define-variable("control-padding-horizontal",calc(0.75em - var(--#{$name}))); 
+    $map:define-variable("control-padding-vertical", calc(0.5em - var(--#{$name})),$map); 
+    $map:define-variable("control-padding-horizontal",calc(0.75em - var(--#{$name})),$map); 
   } @else if $name=="red"{
-    @include define-variable("code",hsl(var(--#{$name}-h,var(--#{$name}-s),calc(var(--#{$name}-l) - 15%))));
+    $map:define-variable("code",hsl(var(--#{$name}-h,var(--#{$name}-s),calc(var(--#{$name}-l) - 15%))),$map);
+  }
+
+  @return $map;
+}
+
+@mixin output-skin-map($map:()){
+  @each $name,$value in $map{
+    #{$name}:#{$value};
   }
 }

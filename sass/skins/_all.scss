@@ -1,7 +1,4 @@
 @import "./mixins.scss";
-:root{
-    @import "./default/_all.scss";
-}
 @import "./cerulean/_all.scss";
 @import "./cosmo/_all.scss";
 @import "./cyborg/_all.scss";
@@ -23,3 +20,6 @@
 @import "./superhero/_all.scss";
 @import "./united/_all.scss";
 @import "./yeti/_all.scss";
+:root{
+    @import "./default/_all.scss";
+}

@@ -1,42 +1,44 @@
 @include define-skin("simplex") {
     @import "./variables.scss";
 
-    @include define-variable("grey-darker",$grey-darker);
-    @include define-variable("grey-dark",$grey-dark);
-    @include define-variable("grey",$grey);
-    @include define-variable("grey-light",$grey-light);
-    @include define-variable("grey-lighter",$grey-lighter);
+    $map:define-variable("grey-darker",$grey-darker);
+    $map:define-variable("grey-dark",$grey-dark,$map);
+    $map:define-variable("grey",$grey,$map);
+    $map:define-variable("grey-light",$grey-light,$map);
+    $map:define-variable("grey-lighter",$grey-lighter,$map);
 
-    @include define-variable("orange",$orange);
-    @include define-variable("green",$green);
-    @include define-variable("blue",$blue);
-    @include define-variable("cyan",$cyan);
-    @include define-variable("purple",$purple);
-    @include define-variable("red",$red);
-    @include define-variable("white-bis",$white-bis);
+    $map:define-variable("orange",$orange,$map);
+    $map:define-variable("green",$green,$map);
+    $map:define-variable("blue",$blue,$map);
+    $map:define-variable("cyan",$cyan,$map);
+    $map:define-variable("purple",$purple,$map);
+    $map:define-variable("red",$red,$map);
+    $map:define-variable("white-bis",$white-bis,$map);
 
-    @include define-variable("primary",$primary);
-    @include define-variable("primary-dark",$primary-dark);
-    @include define-variable("warning",$warning);
-    @include define-variable("danger",$danger);
+    $map:define-variable("primary",$primary,$map);
+    $map:define-variable("primary-dark",$primary-dark,$map);
+    $map:define-variable("warning",$warning,$map);
+    $map:define-variable("danger",$danger,$map);
 
-    @include define-variable("orange-invert",$orange-invert);
-    @include define-variable("warning-invert",$warning-invert);
+    $map:define-variable("orange-invert",$orange-invert,$map);
+    $map:define-variable("warning-invert",$warning-invert,$map);
 
-    @include define-variable("family-sans-serif",$family-sans-serif);
-    @include define-variable("body-size",$body-size);
+    $map:define-variable("family-sans-serif",$family-sans-serif,$map);
+    $map:define-variable("body-size",$body-size,$map);
 
-    @include define-variable("navbar-background-color",$navbar-background-color);
-    @include define-variable("navbar-item-color",$navbar-item-color);
-    @include define-variable("navbar-item-hover-color",$navbar-item-hover-color);
-    @include define-variable("navbar-item-active-color",$navbar-item-active-color);
-    @include define-variable("navbar-item-hover-background-color",$navbar-item-hover-background-color);
-    @include define-variable("navbar-dropdown-arrow",$navbar-dropdown-arrow);
+    $map:define-variable("navbar-background-color",$navbar-background-color,$map);
+    $map:define-variable("navbar-item-color",$navbar-item-color,$map);
+    $map:define-variable("navbar-item-hover-color",$navbar-item-hover-color,$map);
+    $map:define-variable("navbar-item-active-color",$navbar-item-active-color,$map);
+    $map:define-variable("navbar-item-hover-background-color",$navbar-item-hover-background-color,$map);
+    $map:define-variable("navbar-dropdown-arrow",$navbar-dropdown-arrow,$map);
 
-    @include define-variable("box-shadow",$box-shadow);
-    @include define-variable("card-shadow",$card-shadow);
-    @include define-variable("card-header-shadow",$card-header-shadow);
-    @include define-variable("card-background-color",$card-background-color);
+    $map:define-variable("box-shadow",$box-shadow,$map);
+    $map:define-variable("card-shadow",$card-shadow,$map);
+    $map:define-variable("card-header-shadow",$card-header-shadow,$map);
+    $map:define-variable("card-background-color",$card-background-color,$map);
+
+    @include output-skin-map($map);
 
     @import "../../bulma/sass/colors.scss";
     @import "./overrides.scss";

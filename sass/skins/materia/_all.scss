@@ -1,40 +1,42 @@
 @include define-skin("materia") {
     @import "./variables.scss";
 
-    @include define-variable("orange",$orange);
-    @include define-variable("yellow",$yellow);
-    @include define-variable("green",$green);
-    @include define-variable("turquoise",$turquoise);
-    @include define-variable("cyan",$cyan);
-    @include define-variable("blue",$blue);
-    @include define-variable("purple",$purple);
-    @include define-variable("red",$red);
+    $map:define-variable("orange",$orange);
+    $map:define-variable("yellow",$yellow,$map);
+    $map:define-variable("green",$green,$map);
+    $map:define-variable("turquoise",$turquoise,$map);
+    $map:define-variable("cyan",$cyan,$map);
+    $map:define-variable("blue",$blue,$map);
+    $map:define-variable("purple",$purple,$map);
+    $map:define-variable("red",$red,$map);
 
-    @include define-variable("primary",$primary);
+    $map:define-variable("primary",$primary,$map);
 
-    @include define-variable("family-sans-serif",$family-sans-serif);
-    @include define-variable("title-weight",$title-weight);
-    @include define-variable("title-weight-bold",$title-weight-bold);
+    $map:define-variable("family-sans-serif",$family-sans-serif,$map);
+    $map:define-variable("title-weight",$title-weight,$map);
+    $map:define-variable("title-weight-bold",$title-weight-bold,$map);
 
-    @include define-variable("radius",$radius);
-    @include define-variable("shadow",$shadow);
-    @include define-variable("shadow-large",$shadow-large);
+    $map:define-variable("radius",$radius,$map);
+    $map:define-variable("shadow",$shadow,$map);
+    $map:define-variable("shadow-large",$shadow-large,$map);
 
-    @include define-variable("button-border-color",$button-border-color);
-    @include define-variable("button-hover-border",$button-hover-border);
-    @include define-variable("button-focus-border-color",$button-focus-border-color);
-    @include define-variable("button-active-border-color",$button-active-border-color);
+    $map:define-variable("button-border-color",$button-border-color,$map);
+    $map:define-variable("button-hover-border",$button-hover-border,$map);
+    $map:define-variable("button-focus-border-color",$button-focus-border-color,$map);
+    $map:define-variable("button-active-border-color",$button-active-border-color,$map);
 
-    @include define-variable("input-disabled-background-color",$input-disabled-background-color);
+    $map:define-variable("input-disabled-background-color",$input-disabled-background-color,$map);
 
-    @include define-variable("border-width",$border-width);
+    $map:define-variable("border-width",$border-width,$map);
 
-    @include define-variable("navbar-height",$navbar-height);
+    $map:define-variable("navbar-height",$navbar-height,$map);
 
-    @include define-variable("dropdown-content-shadow",$dropdown-content-shadow);
-    @include define-variable("dropdown-content-radius",$dropdown-content-radius);
+    $map:define-variable("dropdown-content-shadow",$dropdown-content-shadow,$map);
+    $map:define-variable("dropdown-content-radius",$dropdown-content-radius,$map);
 
-    @include define-variable("box-shadow",$box-shadow);
+    $map:define-variable("box-shadow",$box-shadow,$map);
+
+    @include output-skin-map($map);
 
     @import "../../bulma/sass/colors.scss";
     @import "./overrides.scss";

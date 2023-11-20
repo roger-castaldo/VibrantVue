@@ -1,29 +1,31 @@
 @include define-skin("lumen") {
     @import "./variables.scss";
 
-    @include define-variable("orange",$orange);
-    @include define-variable("green",$green);
-    @include define-variable("blue",$blue);
-    @include define-variable("red",$red);
+    $map:define-variable("orange",$orange);
+    $map:define-variable("green",$green,$map);
+    $map:define-variable("blue",$blue,$map);
+    $map:define-variable("red",$red,$map);
 
-    @include define-variable("primary",$primary);
+    $map:define-variable("primary",$primary,$map);
 
-    @include define-variable("info-invert",$info-invert);
+    $map:define-variable("info-invert",$info-invert,$map);
 
-    @include define-variable("family-sans-serif",$family-sans-serif);
+    $map:define-variable("family-sans-serif",$family-sans-serif,$map);
 
-    @include define-variable("thickness",$thickness);
+    $map:define-variable("thickness",$thickness,$map);
 
-    @include define-variable("pagination-current-border",$pagination-current-border);
+    $map:define-variable("pagination-current-border",$pagination-current-border,$map);
 
-    @include define-variable("navbar-item-active-color",$navbar-item-active-color);
+    $map:define-variable("navbar-item-active-color",$navbar-item-active-color,$map);
 
-    @include define-variable("dropdown-content-shadow",$dropdown-content-shadow);
+    $map:define-variable("dropdown-content-shadow",$dropdown-content-shadow,$map);
 
-    @include define-variable("navbar-dropdown-boxed-shadow",$navbar-dropdown-boxed-shadow);
+    $map:define-variable("navbar-dropdown-boxed-shadow",$navbar-dropdown-boxed-shadow,$map);
 
 
-    @include define-variable("box-shadow",$box-shadow);
+    $map:define-variable("box-shadow",$box-shadow,$map);
+
+    @include output-skin-map($map);
 
     @import "../../bulma/sass/colors.scss";
     @import "./overrides.scss";

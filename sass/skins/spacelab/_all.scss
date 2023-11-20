@@ -1,28 +1,30 @@
 @include define-skin("spacelab") {
     @import "./variables.scss";
 
-    @include define-variable("grey-darker",$grey-darker);
-    @include define-variable("grey-dark",$grey-dark);
-    @include define-variable("grey",$grey);
-    @include define-variable("grey-light",$grey-light);
-    @include define-variable("grey-lighter",$grey-lighter);
+    $map:define-variable("grey-darker",$grey-darker);
+    $map:define-variable("grey-dark",$grey-dark,$map);
+    $map:define-variable("grey",$grey,$map);
+    $map:define-variable("grey-light",$grey-light,$map);
+    $map:define-variable("grey-lighter",$grey-lighter,$map);
     
-    @include define-variable("orange",$orange);
-    @include define-variable("green",$green);
-    @include define-variable("blue",$blue);
-    @include define-variable("red",$red);
+    $map:define-variable("orange",$orange,$map);
+    $map:define-variable("green",$green,$map);
+    $map:define-variable("blue",$blue,$map);
+    $map:define-variable("red",$red,$map);
     
-    @include define-variable("primary",$primary);
-    @include define-variable("warning",$warning);
-    @include define-variable("warning-invert",$warning-invert);
-    @include define-variable("link",$link);
+    $map:define-variable("primary",$primary,$map);
+    $map:define-variable("warning",$warning,$map);
+    $map:define-variable("warning-invert",$warning-invert,$map);
+    $map:define-variable("link",$link,$map);
     
-    @include define-variable("family-sans-serif",$family-sans-serif);
+    $map:define-variable("family-sans-serif",$family-sans-serif,$map);
     
-    @include define-variable("subtitle-color",$subtitle-color);
+    $map:define-variable("subtitle-color",$subtitle-color,$map);
     
-    @include define-variable("navbar-item-active-color",$navbar-item-active-color);
-    @include define-variable("navbar-item-hover-background-color",$navbar-item-hover-background-color);
+    $map:define-variable("navbar-item-active-color",$navbar-item-active-color,$map);
+    $map:define-variable("navbar-item-hover-background-color",$navbar-item-hover-background-color,$map);
+
+    @include output-skin-map($map);
 
     @import "../../bulma/sass/colors.scss";
     @import "./overrides.scss";

@@ -1,371 +1,373 @@
-@include define-variable("background",$background);
-@include define-variable("black",$black);
-@include define-variable("black-bis",$black-bis);
-@include define-variable("black-ter",$black-ter);
-@include define-variable("blue",$blue);
-@include define-variable("border",$border);
-@include define-variable("border-hover",$border-hover);
-@include define-variable("border-light",$border-light);
-@include define-variable("cyan",$cyan);
-@include define-variable("dark",$dark);
-@include define-variable("green",$green);
-@include define-variable("grey",$grey);
-@include define-variable("grey-dark",$grey-dark);
-@include define-variable("grey-darker",$grey-darker);
+$map:define-variable("background",$background);
+$map:define-variable("black",$black,$map);
+$map:define-variable("black-bis",$black-bis,$map);
+$map:define-variable("black-ter",$black-ter,$map);
+$map:define-variable("blue",$blue,$map);
+$map:define-variable("border",$border,$map);
+$map:define-variable("border-hover",$border-hover,$map);
+$map:define-variable("border-light",$border-light,$map);
+$map:define-variable("cyan",$cyan,$map);
+$map:define-variable("dark",$dark,$map);
+$map:define-variable("green",$green,$map);
+$map:define-variable("grey",$grey,$map);
+$map:define-variable("grey-dark",$grey-dark,$map);
+$map:define-variable("grey-darker",$grey-darker,$map);
 
-@include define-variable("grey-light",$grey-light);
-@include define-variable("grey-lighter",$grey-lighter);
-@include define-variable("grey-lightest",$grey-lightest);
-@include define-variable("light",$light);
-@include define-variable("link",$link);
-@include define-variable("link-active",$link-active);
-@include define-variable("link-active-border",$link-active-border);
-@include define-variable("link-focus",$link-focus);
-@include define-variable("link-focus-border",$link-focus-border);
-@include define-variable("link-hover",$link-hover);
-@include define-variable("link-hover-border",$link-hover-border);
-@include define-variable("link-invert",$link-invert);
-@include define-variable("primary",$primary);
-@include define-variable("primary-invert",$primary-invert);
-@include define-variable("purple",$purple);
-@include define-variable("red",$red);
-@include define-variable("scheme-invert",$scheme-invert);
-@include define-variable("scheme-main",$scheme-main);
-@include define-variable("scheme-main-bis",$scheme-main-bis);
-@include define-variable("scheme-main-ter",$scheme-main-ter);
-@include define-variable("shadow",$shadow);
-@include define-variable("text",$text);
-@include define-variable("text-invert",$text-invert);
-@include define-variable("text-light",$text-light);
-@include define-variable("text-strong",$text-strong);
-@include define-variable("turquoise",$turquoise);
-@include define-variable("white",$white);
-@include define-variable("white-ter",$white-ter);
-@include define-variable("white-bis",$white-bis);
-@include define-variable("yellow",$yellow);
+$map:define-variable("grey-light",$grey-light,$map);
+$map:define-variable("grey-lighter",$grey-lighter,$map);
+$map:define-variable("grey-lightest",$grey-lightest,$map);
+$map:define-variable("light",$light,$map);
+$map:define-variable("link",$link,$map);
+$map:define-variable("link-active",$link-active,$map);
+$map:define-variable("link-active-border",$link-active-border,$map);
+$map:define-variable("link-focus",$link-focus,$map);
+$map:define-variable("link-focus-border",$link-focus-border,$map);
+$map:define-variable("link-hover",$link-hover,$map);
+$map:define-variable("link-hover-border",$link-hover-border,$map);
+$map:define-variable("link-invert",$link-invert,$map);
+$map:define-variable("primary",$primary,$map);
+$map:define-variable("primary-invert",$primary-invert,$map);
+$map:define-variable("purple",$purple,$map);
+$map:define-variable("red",$red,$map);
+$map:define-variable("scheme-invert",$scheme-invert,$map);
+$map:define-variable("scheme-main",$scheme-main,$map);
+$map:define-variable("scheme-main-bis",$scheme-main-bis,$map);
+$map:define-variable("scheme-main-ter",$scheme-main-ter,$map);
+$map:define-variable("shadow",$shadow,$map);
+$map:define-variable("text",$text,$map);
+$map:define-variable("text-invert",$text-invert,$map);
+$map:define-variable("text-light",$text-light,$map);
+$map:define-variable("text-strong",$text-strong,$map);
+$map:define-variable("turquoise",$turquoise,$map);
+$map:define-variable("white",$white,$map);
+$map:define-variable("white-ter",$white-ter,$map);
+$map:define-variable("white-bis",$white-bis,$map);
+$map:define-variable("yellow",$yellow,$map);
 
-@include define-variable("family-code",$family-code);
-@include define-variable("family-monospace",$family-monospace);
-@include define-variable("family-primary",$family-primary);
-@include define-variable("family-sans-serif",$family-sans-serif);
+$map:define-variable("family-code",$family-code,$map);
+$map:define-variable("family-monospace",$family-monospace,$map);
+$map:define-variable("family-primary",$family-primary,$map);
+$map:define-variable("family-sans-serif",$family-sans-serif,$map);
 
-@include define-variable("size-3",$size-3);
-@include define-variable("size-4",$size-4);
-@include define-variable("size-5",$size-5);
-@include define-variable("size-6",$size-6);
-@include define-variable("size-7",$size-7);
-@include define-variable("size-small",$size-small);
-@include define-variable("weight-bold",$weight-bold);
-@include define-variable("weight-normal",$weight-normal);
-@include define-variable("weight-semibold",$weight-semibold);
+$map:define-variable("size-3",$size-3,$map);
+$map:define-variable("size-4",$size-4,$map);
+$map:define-variable("size-5",$size-5,$map);
+$map:define-variable("size-6",$size-6,$map);
+$map:define-variable("size-7",$size-7,$map);
+$map:define-variable("size-small",$size-small,$map);
+$map:define-variable("weight-bold",$weight-bold,$map);
+$map:define-variable("weight-normal",$weight-normal,$map);
+$map:define-variable("weight-semibold",$weight-semibold,$map);
 
-@include define-variable("block-spacing",$block-spacing);
-@include define-variable("control-border-width",$control-border-width);
-@include define-variable("control-height",$control-height);
-@include define-variable("control-padding-horizontal",$control-padding-horizontal);
-@include define-variable("radius",$radius);
-@include define-variable("radius-large",$radius-large);
-@include define-variable("radius-rounded",$radius-rounded);
-@include define-variable("radius-small",$radius-small);
+$map:define-variable("block-spacing",$block-spacing,$map);
+$map:define-variable("control-border-width",$control-border-width,$map);
+$map:define-variable("control-height",$control-height,$map);
+$map:define-variable("control-padding-horizontal",$control-padding-horizontal,$map);
+$map:define-variable("radius",$radius,$map);
+$map:define-variable("radius-large",$radius-large,$map);
+$map:define-variable("radius-rounded",$radius-rounded,$map);
+$map:define-variable("radius-small",$radius-small,$map);
 
 //base/generic
-@include define-variable("body-size",$body-size);
-@include define-variable("body-min-width",$body-min-width);
-@include define-variable("body-rendering",$body-rendering);
-@include define-variable("body-overflow-x",$body-overflow-x);
-@include define-variable("body-overflow-y",$body-overflow-y);
+$map:define-variable("body-size",$body-size,$map);
+$map:define-variable("body-min-width",$body-min-width,$map);
+$map:define-variable("body-rendering",$body-rendering,$map);
+$map:define-variable("body-overflow-x",$body-overflow-x,$map);
+$map:define-variable("body-overflow-y",$body-overflow-y,$map);
 
-@include define-variable("body-line-height",$body-line-height);
+$map:define-variable("body-line-height",$body-line-height,$map);
 
-@include define-variable("code-padding",$code-padding);
-@include define-variable("code-weight",$code-weight);
-@include define-variable("code-size",$code-size);
+$map:define-variable("code-padding",$code-padding,$map);
+$map:define-variable("code-weight",$code-weight,$map);
+$map:define-variable("code-size",$code-size,$map);
 
-@include define-variable("small-font-size",$small-font-size);
+$map:define-variable("small-font-size",$small-font-size,$map);
 
-@include define-variable("hr-height",$hr-height);
-@include define-variable("hr-margin",$hr-margin);
+$map:define-variable("hr-height",$hr-height,$map);
+$map:define-variable("hr-margin",$hr-margin,$map);
 
-@include define-variable("pre-font-size",$pre-font-size);
-@include define-variable("pre-padding",$pre-padding);
-@include define-variable("pre-code-font-size",$pre-code-font-size);
+$map:define-variable("pre-font-size",$pre-font-size,$map);
+$map:define-variable("pre-padding",$pre-padding,$map);
+$map:define-variable("pre-code-font-size",$pre-code-font-size,$map);
 
 //components/breadcrumb
-@include define-variable("breadcrumb-item-padding-vertical",$breadcrumb-item-padding-vertical);
-@include define-variable("breadcrumb-item-padding-horizontal",$breadcrumb-item-padding-horizontal);
+$map:define-variable("breadcrumb-item-padding-vertical",$breadcrumb-item-padding-vertical,$map);
+$map:define-variable("breadcrumb-item-padding-horizontal",$breadcrumb-item-padding-horizontal,$map);
 
 //components/card
-@include define-variable("card-radius",$card-radius);
-@include define-variable("card-header-background-color",$card-header-background-color);
-@include define-variable("card-header-padding",$card-header-padding);
-@include define-variable("card-content-background-color",$card-content-background-color);
-@include define-variable("card-content-padding",$card-content-padding);
-@include define-variable("card-footer-background-color",$card-footer-background-color);
-@include define-variable("card-footer-padding",$card-footer-padding);
+$map:define-variable("card-radius",$card-radius,$map);
+$map:define-variable("card-header-background-color",$card-header-background-color,$map);
+$map:define-variable("card-header-padding",$card-header-padding,$map);
+$map:define-variable("card-content-background-color",$card-content-background-color,$map);
+$map:define-variable("card-content-padding",$card-content-padding,$map);
+$map:define-variable("card-footer-background-color",$card-footer-background-color,$map);
+$map:define-variable("card-footer-padding",$card-footer-padding,$map);
 
 //components/dropdown
-@include define-variable("dropdown-menu-min-width",$dropdown-menu-min-width);
-@include define-variable("dropdown-content-offset",$dropdown-content-offset);
-@include define-variable("dropdown-content-padding-bottom",$dropdown-content-padding-bottom);
-@include define-variable("dropdown-content-padding-top",$dropdown-content-padding-top);
-@include define-variable("dropdown-content-z",$dropdown-content-z);
+$map:define-variable("dropdown-menu-min-width",$dropdown-menu-min-width,$map);
+$map:define-variable("dropdown-content-offset",$dropdown-content-offset,$map);
+$map:define-variable("dropdown-content-padding-bottom",$dropdown-content-padding-bottom,$map);
+$map:define-variable("dropdown-content-padding-top",$dropdown-content-padding-top,$map);
+$map:define-variable("dropdown-content-z",$dropdown-content-z,$map);
 
 //components/level
 
 //components/media
-@include define-variable("media-border-size",$media-border-size);
-@include define-variable("media-spacing",$media-spacing);
-@include define-variable("media-spacing-large",$media-spacing-large);
-@include define-variable("media-content-spacing",$media-content-spacing);
-@include define-variable("media-level-1-spacing",$media-level-1-spacing);
-@include define-variable("media-level-1-content-spacing",$media-level-1-content-spacing);
-@include define-variable("media-level-2-spacing",$media-level-2-spacing);
+$map:define-variable("media-border-size",$media-border-size,$map);
+$map:define-variable("media-spacing",$media-spacing,$map);
+$map:define-variable("media-spacing-large",$media-spacing-large,$map);
+$map:define-variable("media-content-spacing",$media-content-spacing,$map);
+$map:define-variable("media-level-1-spacing",$media-level-1-spacing,$map);
+$map:define-variable("media-level-1-content-spacing",$media-level-1-content-spacing,$map);
+$map:define-variable("media-level-2-spacing",$media-level-2-spacing,$map);
 
 //components/menu
-@include define-variable("menu-list-line-height",$menu-list-line-height);
-@include define-variable("menu-list-link-padding",$menu-list-link-padding);
-@include define-variable("menu-nested-list-margin",$menu-nested-list-margin);
-@include define-variable("menu-nested-list-padding-left",$menu-nested-list-padding-left);
-@include define-variable("menu-label-font-size",$menu-label-font-size);
-@include define-variable("menu-label-letter-spacing",$menu-label-letter-spacing);
-@include define-variable("menu-label-spacing",$menu-label-spacing);
+$map:define-variable("menu-list-line-height",$menu-list-line-height,$map);
+$map:define-variable("menu-list-link-padding",$menu-list-link-padding,$map);
+$map:define-variable("menu-nested-list-margin",$menu-nested-list-margin,$map);
+$map:define-variable("menu-nested-list-padding-left",$menu-nested-list-padding-left,$map);
+$map:define-variable("menu-label-font-size",$menu-label-font-size,$map);
+$map:define-variable("menu-label-letter-spacing",$menu-label-letter-spacing,$map);
+$map:define-variable("menu-label-spacing",$menu-label-spacing,$map);
 
 //components/message
-@include define-variable("message-header-padding",$message-header-padding);
-@include define-variable("message-body-border-width",$message-body-border-width);
-@include define-variable("message-body-padding",$message-body-padding);
-@include define-variable("message-body-pre-code-background-color",$message-body-pre-code-background-color);
-@include define-variable("message-header-body-border-width",$message-header-body-border-width);
+$map:define-variable("message-header-padding",$message-header-padding,$map);
+$map:define-variable("message-body-border-width",$message-body-border-width,$map);
+$map:define-variable("message-body-padding",$message-body-padding,$map);
+$map:define-variable("message-body-pre-code-background-color",$message-body-pre-code-background-color,$map);
+$map:define-variable("message-header-body-border-width",$message-header-body-border-width,$map);
 
 //components/modal
-@include define-variable("modal-z",$modal-z);
-@include define-variable("modal-content-width",$modal-content-width);
-@include define-variable("modal-content-margin-mobile",$modal-content-margin-mobile);
-@include define-variable("modal-content-spacing-mobile",$modal-content-spacing-mobile);
-@include define-variable("modal-content-spacing-tablet",$modal-content-spacing-tablet);
-@include define-variable("modal-close-dimensions",$modal-close-dimensions);
-@include define-variable("modal-close-right",$modal-close-right);
-@include define-variable("modal-close-top",$modal-close-top);
-@include define-variable("modal-card-spacing",$modal-card-spacing);
-@include define-variable("modal-card-head-border-bottom",$modal-card-head-border-bottom);
-@include define-variable("modal-card-head-padding",$modal-card-head-padding);
-@include define-variable("modal-card-title-line-height",$modal-card-title-line-height);
-@include define-variable("modal-card-foot-border-top",$modal-card-foot-border-top);
-@include define-variable("modal-card-body-padding",$modal-card-body-padding);
+$map:define-variable("modal-z",$modal-z,$map);
+$map:define-variable("modal-content-width",$modal-content-width,$map);
+$map:define-variable("modal-content-margin-mobile",$modal-content-margin-mobile,$map);
+$map:define-variable("modal-content-spacing-mobile",$modal-content-spacing-mobile,$map);
+$map:define-variable("modal-content-spacing-tablet",$modal-content-spacing-tablet,$map);
+$map:define-variable("modal-close-dimensions",$modal-close-dimensions,$map);
+$map:define-variable("modal-close-right",$modal-close-right,$map);
+$map:define-variable("modal-close-top",$modal-close-top,$map);
+$map:define-variable("modal-card-spacing",$modal-card-spacing,$map);
+$map:define-variable("modal-card-head-border-bottom",$modal-card-head-border-bottom,$map);
+$map:define-variable("modal-card-head-padding",$modal-card-head-padding,$map);
+$map:define-variable("modal-card-title-line-height",$modal-card-title-line-height,$map);
+$map:define-variable("modal-card-foot-border-top",$modal-card-foot-border-top,$map);
+$map:define-variable("modal-card-body-padding",$modal-card-body-padding,$map);
 
 //components/navbar
-@include define-variable("navbar-box-shadow-size",$navbar-box-shadow-size);
-@include define-variable("navbar-height",$navbar-height);
-@include define-variable("navbar-padding-vertical",$navbar-padding-vertical);
-@include define-variable("navbar-padding-horizontal",$navbar-padding-horizontal);
-@include define-variable("navbar-z",$navbar-z);
-@include define-variable("navbar-fixed-z",$navbar-fixed-z);
-@include define-variable("navbar-item-active-background-color",$navbar-item-active-background-color);
-@include define-variable("navbar-item-img-max-height",$navbar-item-img-max-height);
-@include define-variable("navbar-tab-hover-background-color",$navbar-tab-hover-background-color);
-@include define-variable("navbar-tab-active-background-color",$navbar-tab-active-background-color);
-@include define-variable("navbar-tab-active-border-bottom-style",$navbar-tab-active-border-bottom-style);
-@include define-variable("navbar-tab-active-border-bottom-width",$navbar-tab-active-border-bottom-width);
-@include define-variable("navbar-dropdown-border-top",$navbar-dropdown-border-top);
-@include define-variable("navbar-dropdown-offset",$navbar-dropdown-offset);
-@include define-variable("navbar-dropdown-z",$navbar-dropdown-z);
-@include define-variable("navbar-divider-height",$navbar-divider-height);
-@include define-variable("navbar-bottom-box-shadow-size",$navbar-bottom-box-shadow-size);
+$map:define-variable("navbar-box-shadow-size",$navbar-box-shadow-size,$map);
+$map:define-variable("navbar-height",$navbar-height,$map);
+$map:define-variable("navbar-padding-vertical",$navbar-padding-vertical,$map);
+$map:define-variable("navbar-padding-horizontal",$navbar-padding-horizontal,$map);
+$map:define-variable("navbar-z",$navbar-z,$map);
+$map:define-variable("navbar-fixed-z",$navbar-fixed-z,$map);
+$map:define-variable("navbar-item-active-background-color",$navbar-item-active-background-color,$map);
+$map:define-variable("navbar-item-img-max-height",$navbar-item-img-max-height,$map);
+$map:define-variable("navbar-tab-hover-background-color",$navbar-tab-hover-background-color,$map);
+$map:define-variable("navbar-tab-active-background-color",$navbar-tab-active-background-color,$map);
+$map:define-variable("navbar-tab-active-border-bottom-style",$navbar-tab-active-border-bottom-style,$map);
+$map:define-variable("navbar-tab-active-border-bottom-width",$navbar-tab-active-border-bottom-width,$map);
+$map:define-variable("navbar-dropdown-border-top",$navbar-dropdown-border-top,$map);
+$map:define-variable("navbar-dropdown-offset",$navbar-dropdown-offset,$map);
+$map:define-variable("navbar-dropdown-z",$navbar-dropdown-z,$map);
+$map:define-variable("navbar-divider-height",$navbar-divider-height,$map);
+$map:define-variable("navbar-bottom-box-shadow-size",$navbar-bottom-box-shadow-size,$map);
 
 //components/pagination
-@include define-variable("pagination-margin",$pagination-margin);
-@include define-variable("pagination-item-font-size",$pagination-item-font-size);
-@include define-variable("pagination-item-margin",$pagination-item-margin);
-@include define-variable("pagination-item-padding-left",$pagination-item-padding-left);
-@include define-variable("pagination-item-padding-right",$pagination-item-padding-right);
-@include define-variable("pagination-nav-padding-left",$pagination-nav-padding-left);
-@include define-variable("pagination-nav-padding-right",$pagination-nav-padding-right);
+$map:define-variable("pagination-margin",$pagination-margin,$map);
+$map:define-variable("pagination-item-font-size",$pagination-item-font-size,$map);
+$map:define-variable("pagination-item-margin",$pagination-item-margin,$map);
+$map:define-variable("pagination-item-padding-left",$pagination-item-padding-left,$map);
+$map:define-variable("pagination-item-padding-right",$pagination-item-padding-right,$map);
+$map:define-variable("pagination-nav-padding-left",$pagination-nav-padding-left,$map);
+$map:define-variable("pagination-nav-padding-right",$pagination-nav-padding-right,$map);
 
 //components/panel
-@include define-variable("panel-heading-line-height",$panel-heading-line-height);
-@include define-variable("panel-heading-padding",$panel-heading-padding);
-@include define-variable("panel-heading-size",$panel-heading-size);
-@include define-variable("panel-tabs-font-size",$panel-tabs-font-size);
+$map:define-variable("panel-heading-line-height",$panel-heading-line-height,$map);
+$map:define-variable("panel-heading-padding",$panel-heading-padding,$map);
+$map:define-variable("panel-heading-size",$panel-heading-size,$map);
+$map:define-variable("panel-tabs-font-size",$panel-tabs-font-size,$map);
 
 //components/tabs
-@include define-variable("tabs-border-bottom-style",$tabs-border-bottom-style);
-@include define-variable("tabs-border-bottom-width",$tabs-border-bottom-width);
-@include define-variable("tabs-link-padding",$tabs-link-padding);
-@include define-variable("tabs-boxed-link-active-border-bottom-color",$tabs-boxed-link-active-border-bottom-color);
-@include define-variable("tabs-toggle-link-border-style",$tabs-toggle-link-border-style);
-@include define-variable("tabs-toggle-link-border-width",$tabs-toggle-link-border-width);
+$map:define-variable("tabs-border-bottom-style",$tabs-border-bottom-style,$map);
+$map:define-variable("tabs-border-bottom-width",$tabs-border-bottom-width,$map);
+$map:define-variable("tabs-link-padding",$tabs-link-padding,$map);
+$map:define-variable("tabs-boxed-link-active-border-bottom-color",$tabs-boxed-link-active-border-bottom-color,$map);
+$map:define-variable("tabs-toggle-link-border-style",$tabs-toggle-link-border-style,$map);
+$map:define-variable("tabs-toggle-link-border-width",$tabs-toggle-link-border-width,$map);
 
 //elements/box
-@include define-variable("box-padding",$box-padding);
+$map:define-variable("box-padding",$box-padding,$map);
 
 //elements/button
-@include define-variable("button-padding-vertical",$button-padding-vertical);
-@include define-variable("button-padding-horizontal",$button-padding-horizontal);
-@include define-variable("button-focus-box-shadow-size",$button-focus-box-shadow-size);
-@include define-variable("button-text-decoration",$button-text-decoration);
-@include define-variable("button-ghost-background",$button-ghost-background);
-@include define-variable("button-ghost-border-color",$button-ghost-border-color);
-@include define-variable("button-ghost-decoration",$button-ghost-decoration);
-@include define-variable("button-ghost-hover-decoration",$button-ghost-hover-decoration);
-@include define-variable("button-disabled-shadow",$button-disabled-shadow);
-@include define-variable("button-disabled-opacity",$button-disabled-opacity);
+$map:define-variable("button-padding-vertical",$button-padding-vertical,$map);
+$map:define-variable("button-padding-horizontal",$button-padding-horizontal,$map);
+$map:define-variable("button-focus-box-shadow-size",$button-focus-box-shadow-size,$map);
+$map:define-variable("button-text-decoration",$button-text-decoration,$map);
+$map:define-variable("button-ghost-background",$button-ghost-background,$map);
+$map:define-variable("button-ghost-border-color",$button-ghost-border-color,$map);
+$map:define-variable("button-ghost-decoration",$button-ghost-decoration,$map);
+$map:define-variable("button-ghost-hover-decoration",$button-ghost-hover-decoration,$map);
+$map:define-variable("button-disabled-shadow",$button-disabled-shadow,$map);
+$map:define-variable("button-disabled-opacity",$button-disabled-opacity,$map);
 
 //elements/container
 
 //elements/content
-@include define-variable("content-heading-line-height",$content-heading-line-height);
-@include define-variable("content-block-margin-bottom",$content-block-margin-bottom);
-@include define-variable("content-blockquote-padding",$content-blockquote-padding);
-@include define-variable("content-pre-padding",$content-pre-padding);
-@include define-variable("content-table-cell-border-width",$content-table-cell-border-width);
-@include define-variable("content-table-cell-padding",$content-table-cell-padding);
-@include define-variable("content-table-head-cell-border-width",$content-table-head-cell-border-width);
-@include define-variable("content-table-body-last-row-cell-border-bottom-width",$content-table-body-last-row-cell-border-bottom-width);
-@include define-variable("content-table-foot-cell-border-width",$content-table-foot-cell-border-width);
+$map:define-variable("content-heading-line-height",$content-heading-line-height,$map);
+$map:define-variable("content-block-margin-bottom",$content-block-margin-bottom,$map);
+$map:define-variable("content-blockquote-padding",$content-blockquote-padding,$map);
+$map:define-variable("content-pre-padding",$content-pre-padding,$map);
+$map:define-variable("content-table-cell-border-width",$content-table-cell-border-width,$map);
+$map:define-variable("content-table-cell-padding",$content-table-cell-padding,$map);
+$map:define-variable("content-table-head-cell-border-width",$content-table-head-cell-border-width,$map);
+$map:define-variable("content-table-body-last-row-cell-border-bottom-width",$content-table-body-last-row-cell-border-bottom-width,$map);
+$map:define-variable("content-table-foot-cell-border-width",$content-table-foot-cell-border-width,$map);
 
 //elements/icon
-@include define-variable("icon-dimensions",$icon-dimensions);
-@include define-variable("icon-dimensions-small",$icon-dimensions-small);
-@include define-variable("icon-dimensions-medium",$icon-dimensions-medium);
-@include define-variable("icon-dimensions-large",$icon-dimensions-large);
-@include define-variable("icon-text-spacing",$icon-text-spacing);
+$map:define-variable("icon-dimensions",$icon-dimensions,$map);
+$map:define-variable("icon-dimensions-small",$icon-dimensions-small,$map);
+$map:define-variable("icon-dimensions-medium",$icon-dimensions-medium,$map);
+$map:define-variable("icon-dimensions-large",$icon-dimensions-large,$map);
+$map:define-variable("icon-text-spacing",$icon-text-spacing,$map);
 
 //elements/notification
-@include define-variable("notification-padding",$notification-padding);
-@include define-variable("notification-padding-ltr",$notification-padding-ltr);
-@include define-variable("notification-padding-rtl",$notification-padding-rtl);
+$map:define-variable("notification-padding",$notification-padding,$map);
+$map:define-variable("notification-padding-ltr",$notification-padding-ltr,$map);
+$map:define-variable("notification-padding-rtl",$notification-padding-rtl,$map);
 
 
 //elements/progress
-@include define-variable("progress-indeterminate-duration",$progress-indeterminate-duration);
+$map:define-variable("progress-indeterminate-duration",$progress-indeterminate-duration,$map);
 
 //elements/table
-@include define-variable("table-cell-border-width",$table-cell-border-width);
-@include define-variable("table-cell-padding",$table-cell-padding);
-@include define-variable("table-cell-text-align",$table-cell-text-align);
-@include define-variable("table-head-cell-border-width",$table-head-cell-border-width);
-@include define-variable("table-foot-cell-border-width",$table-foot-cell-border-width);
-@include define-variable("table-head-background-color",$table-head-background-color);
-@include define-variable("table-body-background-color",$table-body-background-color);
-@include define-variable("table-foot-background-color",$table-foot-background-color);
+$map:define-variable("table-cell-border-width",$table-cell-border-width,$map);
+$map:define-variable("table-cell-padding",$table-cell-padding,$map);
+$map:define-variable("table-cell-text-align",$table-cell-text-align,$map);
+$map:define-variable("table-head-cell-border-width",$table-head-cell-border-width,$map);
+$map:define-variable("table-foot-cell-border-width",$table-foot-cell-border-width,$map);
+$map:define-variable("table-head-background-color",$table-head-background-color,$map);
+$map:define-variable("table-body-background-color",$table-body-background-color,$map);
+$map:define-variable("table-foot-background-color",$table-foot-background-color,$map);
 
 //elements/tag
-@include define-variable("tag-delete-margin",$tag-delete-margin);
+$map:define-variable("tag-delete-margin",$tag-delete-margin,$map);
 
 //elements/title
-@include define-variable("title-line-height",$title-line-height);
-@include define-variable("title-strong-color",$title-strong-color);
-@include define-variable("title-strong-weight",$title-strong-weight);
-@include define-variable("title-sub-size",$title-sub-size);
-@include define-variable("title-sup-size",$title-sup-size);
-@include define-variable("subtitle-line-height",$subtitle-line-height);
-@include define-variable("subtitle-negative-margin",$subtitle-negative-margin);
+$map:define-variable("title-line-height",$title-line-height,$map);
+$map:define-variable("title-strong-color",$title-strong-color,$map);
+$map:define-variable("title-strong-weight",$title-strong-weight,$map);
+$map:define-variable("title-sub-size",$title-sub-size,$map);
+$map:define-variable("title-sup-size",$title-sup-size,$map);
+$map:define-variable("subtitle-line-height",$subtitle-line-height,$map);
+$map:define-variable("subtitle-negative-margin",$subtitle-negative-margin,$map);
 
 //form/file
-@include define-variable("file-name-border-style",$file-name-border-style);
-@include define-variable("file-name-border-width",$file-name-border-width);
-@include define-variable("file-name-max-width",$file-name-max-width);
+$map:define-variable("file-name-border-style",$file-name-border-style,$map);
+$map:define-variable("file-name-border-width",$file-name-border-width,$map);
+$map:define-variable("file-name-max-width",$file-name-max-width,$map);
 
 //form/input-textarea
-@include define-variable("textarea-max-height",$textarea-max-height);
-@include define-variable("textarea-min-height",$textarea-min-height);
+$map:define-variable("textarea-max-height",$textarea-max-height,$map);
+$map:define-variable("textarea-min-height",$textarea-min-height,$map);
 
 //form/select
 
 //form/shared
-@include define-variable("input-focus-box-shadow-size",$input-focus-box-shadow-size);
+$map:define-variable("input-focus-box-shadow-size",$input-focus-box-shadow-size,$map);
 
 //form/tools
 
 //grid/columns
-@include define-variable("column-gap",$column-gap);
+$map:define-variable("column-gap",$column-gap,$map);
 
 //grid/tiles
-@include define-variable("tile-spacing",$tile-spacing);
+$map:define-variable("tile-spacing",$tile-spacing,$map);
 
 //layout/footer
-@include define-variable("footer-padding",$footer-padding);
+$map:define-variable("footer-padding",$footer-padding,$map);
 
 //layout/hero
-@include define-variable("hero-body-padding",$hero-body-padding);
-@include define-variable("hero-body-padding-tablet",$hero-body-padding-tablet);
-@include define-variable("hero-body-padding-small",$hero-body-padding-small);
-@include define-variable("hero-body-padding-medium",$hero-body-padding-medium);
-@include define-variable("hero-body-padding-large",$hero-body-padding-large);
+$map:define-variable("hero-body-padding",$hero-body-padding,$map);
+$map:define-variable("hero-body-padding-tablet",$hero-body-padding-tablet,$map);
+$map:define-variable("hero-body-padding-small",$hero-body-padding-small,$map);
+$map:define-variable("hero-body-padding-medium",$hero-body-padding-medium,$map);
+$map:define-variable("hero-body-padding-large",$hero-body-padding-large,$map);
 
 //layout/section
-@include define-variable("section-padding",$section-padding);
-@include define-variable("section-padding-desktop",$section-padding-desktop);
-@include define-variable("section-padding-medium",$section-padding-medium);
-@include define-variable("section-padding-large",$section-padding-large);
+$map:define-variable("section-padding",$section-padding,$map);
+$map:define-variable("section-padding-desktop",$section-padding-desktop,$map);
+$map:define-variable("section-padding-medium",$section-padding-medium,$map);
+$map:define-variable("section-padding-large",$section-padding-large,$map);
 
 //utilities/controls
-@include define-variable("control-border-width",$control-border-width);
-@include define-variable("control-height",$control-height);
-@include define-variable("control-line-height",$control-line-height);
+$map:define-variable("control-border-width",$control-border-width,$map);
+$map:define-variable("control-height",$control-height,$map);
+$map:define-variable("control-line-height",$control-line-height,$map);
 
 //utilties/derived-variables
 //utilities/initial-variables
 // Colors
 
-@include define-variable("black",$black);
-@include define-variable("black-bis",$black-bis);
-@include define-variable("black-ter",$black-ter);
+$map:define-variable("black",$black,$map);
+$map:define-variable("black-bis",$black-bis,$map);
+$map:define-variable("black-ter",$black-ter,$map);
 
-@include define-variable("grey-darker",$grey-darker);
-@include define-variable("grey-dark",$grey-dark);
-@include define-variable("grey",$grey);
-@include define-variable("grey-light",$grey-light);
-@include define-variable("grey-lighter",$grey-lighter);
-@include define-variable("grey-lightest",$grey-lightest);
+$map:define-variable("grey-darker",$grey-darker,$map);
+$map:define-variable("grey-dark",$grey-dark,$map);
+$map:define-variable("grey",$grey,$map);
+$map:define-variable("grey-light",$grey-light,$map);
+$map:define-variable("grey-lighter",$grey-lighter,$map);
+$map:define-variable("grey-lightest",$grey-lightest,$map);
 
-@include define-variable("white-ter",$white-ter);
-@include define-variable("white-bis",$white-bis);
-@include define-variable("white",$white);
+$map:define-variable("white-ter",$white-ter,$map);
+$map:define-variable("white-bis",$white-bis,$map);
+$map:define-variable("white",$white,$map);
 
-@include define-variable("orange",$orange);
-@include define-variable("yellow",$yellow);
-@include define-variable("green",$green);
-@include define-variable("turquoise",$turquoise);
-@include define-variable("cyan",$cyan);
-@include define-variable("blue",$blue);
-@include define-variable("purple",$purple);
-@include define-variable("red",$red);
+$map:define-variable("orange",$orange,$map);
+$map:define-variable("yellow",$yellow,$map);
+$map:define-variable("green",$green,$map);
+$map:define-variable("turquoise",$turquoise,$map);
+$map:define-variable("cyan",$cyan,$map);
+$map:define-variable("blue",$blue,$map);
+$map:define-variable("purple",$purple,$map);
+$map:define-variable("red",$red,$map);
 
 // Typography
 
-@include define-variable("family-sans-serif",$family-sans-serif);
-@include define-variable("family-monospace",$family-monospace);
-@include define-variable("render-mode",$render-mode);
+$map:define-variable("family-sans-serif",$family-sans-serif,$map);
+$map:define-variable("family-monospace",$family-monospace,$map);
+$map:define-variable("render-mode",$render-mode,$map);
 
-@include define-variable("size-1",$size-1);
-@include define-variable("size-2",$size-2);
-@include define-variable("size-3",$size-3);
-@include define-variable("size-4",$size-4);
-@include define-variable("size-5",$size-5);
-@include define-variable("size-6",$size-6);
-@include define-variable("size-7",$size-7);
+$map:define-variable("size-1",$size-1,$map);
+$map:define-variable("size-2",$size-2,$map);
+$map:define-variable("size-3",$size-3,$map);
+$map:define-variable("size-4",$size-4,$map);
+$map:define-variable("size-5",$size-5,$map);
+$map:define-variable("size-6",$size-6,$map);
+$map:define-variable("size-7",$size-7,$map);
 
-@include define-variable("weight-light",$weight-light);
-@include define-variable("weight-normal",$weight-normal);
-@include define-variable("weight-medium",$weight-medium);
-@include define-variable("weight-semibold",$weight-semibold);
-@include define-variable("weight-bold",$weight-bold);
+$map:define-variable("weight-light",$weight-light,$map);
+$map:define-variable("weight-normal",$weight-normal,$map);
+$map:define-variable("weight-medium",$weight-medium,$map);
+$map:define-variable("weight-semibold",$weight-semibold,$map);
+$map:define-variable("weight-bold",$weight-bold,$map);
 
 // Spacing
 
-@include define-variable("block-spacing",$block-spacing);
+$map:define-variable("block-spacing",$block-spacing,$map);
 
 // Responsiveness
 
 // The container horizontal gap, which acts as the offset for breakpoints
-@include define-variable("gap",$gap);
+$map:define-variable("gap",$gap,$map);
 
 // Miscellaneous
 
-@include define-variable("easing",$easing);
-@include define-variable("radius-small",$radius-small);
-@include define-variable("radius",$radius);
-@include define-variable("radius-large",$radius-large);
-@include define-variable("radius-rounded",$radius-rounded);
-@include define-variable("speed",$speed);
+$map:define-variable("easing",$easing,$map);
+$map:define-variable("radius-small",$radius-small,$map);
+$map:define-variable("radius",$radius,$map);
+$map:define-variable("radius-large",$radius-large,$map);
+$map:define-variable("radius-rounded",$radius-rounded,$map);
+$map:define-variable("speed",$speed,$map);
+
+@include output-skin-map($map);

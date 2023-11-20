@@ -1,49 +1,51 @@
 @include define-skin("nuclear") {
     @import "./variables.scss";
 
-    @include define-variable("black",$black);
-    @include define-variable("black-bis",$black-bis);
-    @include define-variable("black-ter",$black-ter);
-    @include define-variable("grey-darker",$grey-darker);
-    @include define-variable("grey-dark",$grey-dark);
-    @include define-variable("grey",$grey);
-    @include define-variable("grey-light",$grey-light);
-    @include define-variable("grey-lighter",$grey-lighter);
+    $map:define-variable("black",$black);
+    $map:define-variable("black-bis",$black-bis,$map);
+    $map:define-variable("black-ter",$black-ter,$map);
+    $map:define-variable("grey-darker",$grey-darker,$map);
+    $map:define-variable("grey-dark",$grey-dark,$map);
+    $map:define-variable("grey",$grey,$map);
+    $map:define-variable("grey-light",$grey-light,$map);
+    $map:define-variable("grey-lighter",$grey-lighter,$map);
 
-    @include define-variable("white-ter",$white-ter);
-    @include define-variable("white-bis",$white-bis);
-    @include define-variable("white",$white);
+    $map:define-variable("white-ter",$white-ter,$map);
+    $map:define-variable("white-bis",$white-bis,$map);
+    $map:define-variable("white",$white,$map);
 
-    @include define-variable("black",$black);
-    @include define-variable("black-bis",$black-bis);
-    @include define-variable("black-ter",$black-ter);
-    @include define-variable("grey-darker",$grey-darker);
-    @include define-variable("grey-dark",$grey-dark);
-    @include define-variable("grey",$grey);
-    @include define-variable("grey-light",$grey-light);
-    @include define-variable("grey-lighter",$grey-lighter);
-    @include define-variable("white-ter",$white-ter);
-    @include define-variable("white-bis",$white-bis);
-    @include define-variable("white",$white);
+    $map:define-variable("black",$black,$map);
+    $map:define-variable("black-bis",$black-bis,$map);
+    $map:define-variable("black-ter",$black-ter,$map);
+    $map:define-variable("grey-darker",$grey-darker,$map);
+    $map:define-variable("grey-dark",$grey-dark,$map);
+    $map:define-variable("grey",$grey,$map);
+    $map:define-variable("grey-light",$grey-light,$map);
+    $map:define-variable("grey-lighter",$grey-lighter,$map);
+    $map:define-variable("white-ter",$white-ter,$map);
+    $map:define-variable("white-bis",$white-bis,$map);
+    $map:define-variable("white",$white,$map);
 
-    @include define-variable("orange",$orange);
-    @include define-variable("yellow",$yellow);
-    @include define-variable("green",$green);
-    @include define-variable("turquoise",$turquoise);
-    @include define-variable("blue",$blue);
-    @include define-variable("purple",$purple);
-    @include define-variable("red",$red);
+    $map:define-variable("orange",$orange,$map);
+    $map:define-variable("yellow",$yellow,$map);
+    $map:define-variable("green",$green,$map);
+    $map:define-variable("turquoise",$turquoise,$map);
+    $map:define-variable("blue",$blue,$map);
+    $map:define-variable("purple",$purple,$map);
+    $map:define-variable("red",$red,$map);
 
-    @include define-variable("primary",$primary);
-    @include define-variable("warning",$warning);
-    @include define-variable("border",$border);
-    @include define-variable("border-hover",$border-hover);
+    $map:define-variable("primary",$primary,$map);
+    $map:define-variable("warning",$warning,$map);
+    $map:define-variable("border",$border,$map);
+    $map:define-variable("border-hover",$border-hover,$map);
 
-    @include define-variable("body-background-color",$body-background-color);
+    $map:define-variable("body-background-color",$body-background-color,$map);
 
-    @include define-variable("font-heading",$font-heading);
+    $map:define-variable("font-heading",$font-heading,$map);
 
-    @include define-variable("box-background",$box-background);
+    $map:define-variable("box-background",$box-background,$map);
+
+    @include output-skin-map($map);
 
     @import "../../bulma/sass/colors.scss";
     @import "./overrides.scss";
