@@ -1,0 +1,35 @@
+﻿<template>
+    <div class="field"><input type="checkbox" class="switch is-rounded" :id="props.name" :name="props.name" v-model="isChecked" :disabled="props.disabled"/>
+        <label v-bind:for="name">
+            {{Translator(props.label)}}
+            <span class="help is-danger" v-if="props.required">*</span>
+        </label>
+    </div>
+</template>
+
+<script lang="ts">
+    import { ref, watch } from 'vue';
+    import {commonFieldProps, useTranslator, useValueChanged} from './common';
+
+    interface fieldProps extends commonFieldProps{
+        label:string;
+        required?:boolean;
+    };
+</script>
+
+<script lang="ts" setup>
+    const props = defineProps<fieldProps>();
+    
+    const emit = useValueChanged();
+
+    const Translator = useTranslator(props);
+
+    const isChecked = ref(false);
+
+    watch(isChecked, (val) => emit('value_changed', { name: props.name, value: val }));
+
+    const getValue =  ():boolean=> { return isChecked.value; };
+    const setValue = (val:boolean):void=> { isChecked.value = val; };
+
+    defineExpose({ getValue, setValue });
+</script>

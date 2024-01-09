@@ -1,0 +1,159 @@
+﻿<template>
+    <div class="select">
+        <select :id="props.name" :name="props.name" :multiple="props.multiple" v-bind:class="[props.multiple ? 'is-multiple' : '']" v-model="vals" :disabled="props.disabled">
+            <Promised v-if="Values!=null" v-bind:promise="Values">
+                <template v-slot:resolved="{value}">
+                    <template  v-if="value!=null" v-for="val in value">
+                        <option v-if="val.values==undefined" :value="val.value" :selected="val.selected" v-show="!hiddenValues.some(v=>v===val.value)" v-bind:disabled="disabledValues.some(v=>v===val.value)">{{Translate(val.label)}}</option>
+                        <optgroup v-if="val.values!=undefined" v-bind:label="Translator(val.label)">
+                            <option v-for="v in val.values" :value="v.value" :selected="v.selected" v-show="!hiddenValues.some(v=>v===v.value)" v-bind:disabled="disabledValues.some(v=>v===v.value)">
+                                {{Translator(v.label)}}
+                            </option>
+                        </optgroup>
+                    </template>
+                </template>
+            </Promised>
+        </select>
+    </div>
+</template>
+
+<script lang="ts">
+    import { ref, watch, inject,computed } from 'vue';
+    import {Promised} from '../common/Promised';
+    import { SelectListItemValue} from './types';
+    import { commonFieldProps,useTranslator,useValueChanged, useValuesList } from './common';
+
+    const mergeValueGroups = (parent:string|null, value:SelectListItemValue, dest:SelectListItemValue[]):SelectListItemValue[]=> {
+        let base:any = {
+            label: (parent === null ? value.label : `${parent}->${value.label}`),
+            values: []
+        };
+        let idx = dest.length;
+        dest.push(base);
+        value.values.forEach(val=>{
+            if (val.values===undefined){
+                base.values.push(val);
+            }else{
+                dest = mergeValueGroups(base.label,val,dest);
+            }
+        });
+        if (dest[idx].values.length == 0) {
+            dest.splice(idx, 1);
+        }
+        return dest;
+    };
+
+    interface fieldProps extends commonFieldProps{
+        values:SelectListItemValue[]|Promise<SelectListItemValue[]>|(()=>SelectListItemValue[])|(()=>Promise<SelectListItemValue[]>);
+        multiple?:boolean;
+    };
+</script>
+
+<script lang="ts" setup>
+    const props = withDefaults(defineProps<fieldProps>(),
+    {
+        multiple:false
+    });
+
+    const emit = useValueChanged();
+
+    const Translator = useTranslator(props);
+
+    const vals = ref<any[]|null>(null);
+    const locked = ref<boolean>(false);
+    
+    const Values = computed<Promise<SelectListItemValue[]>>(async () => {
+        if (props.values == null) {
+            return [];
+        } else {
+            let p : Promise<any>|null = null;
+            let tmp:any = props.values;
+            if (props.values instanceof Function){
+                tmp = (props.values as Function)();
+            }
+            if (tmp instanceof Promise){
+                p=tmp;
+            }else{
+                p=Promise.resolve(tmp);
+            }
+            let result:SelectListItemValue[] = await p as SelectListItemValue[];
+            let tvalues:any[] = result.filter(s=>s.selected).map(s=>s.value);
+            if (result.some(s=>s.values!==undefined)){
+                result.filter(s=>s.values!==undefined)
+                .forEach(s=>{
+                    tvalues = tvalues.concat(
+                        s.values.filter(v=>v.selected).map(v=>v.value)
+                    );
+                });
+            }
+            if (vals.value === null || vals.value.length === 0) {
+                vals.value = (tmp.length===0 ? null : tmp);
+            } else {
+                result = result.map(r=>{
+                    let t = r;
+                    if (t.values!==undefined){
+                        t.values = t.values.map(sv=>{
+                            sv.selected=vals.value.some(v=>v===sv.value);
+                            return sv;
+                        });
+                    }
+                    return t;
+                });
+                vals.value.forEach(v=>{
+                    if (!result.some(r=>(r.value!==undefined && r.value===v)
+                    || (r.values!==undefined && r.values.some(sr=>sr.value===v)))){
+                        result.push({
+                            label:v,
+                            value:v
+                        });
+                    }
+                });
+            }
+            let dest:SelectListItemValue[] = [];
+            result.forEach(r=>{
+                if (r.values===undefined){
+                    dest.push(r);
+                }else{
+                    dest=mergeValueGroups(r.label,r,dest);
+                }
+            });
+            return dest;
+        }
+    });
+
+    const getValue = ():any[]|any=> { 
+        return (vals.value == null ? null : (vals.value.length == 0 ? null : (props.multiple ? vals.value.slice() : (Array.isArray(vals.value) ? vals.value[0] : vals.value)))); 
+    };
+
+    watch(vals, () => {
+        if (!locked.value)
+            emit('value_changed', { name: props.name, value: getValue() });
+    });
+    watch(locked, (val) => {
+        if (!val)
+            emit('value_changed', { name: props.name, value: getValue() });
+    });
+
+    const setValue = (val:any[]|any):void=> {
+        locked.value = true;
+        if (val !== null && val !== undefined) {
+            if (props.multiple) {
+                vals.value = (Array.isArray(val) ? val : [val]);
+            } else {
+                vals.value = val;
+            }
+        } else {
+            if (props.multiple){
+                vals.value=[];
+            }else{
+                vals.value=null;
+            }
+        }
+        locked.value = false;
+    };
+    
+    const {hiddenValues,disabledValues,hideValue,showValue,disableValue,enableValue} = useValuesList();
+
+    defineExpose({ getValue, setValue, hideValue, showValue, disableValue, enableValue });
+
+</script>

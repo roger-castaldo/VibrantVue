@@ -1,19 +1,43 @@
 {
-  "name": "bulma-skins",
+  "name": "bulma-skins-components",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "devDependencies": {
-    "clean-css-cli": "^4.3.0",
-    "express": "^4.18.2",
-    "sass": "^1.67.0"
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/bulma-skins-components.umd.cjs",
+  "module": "./dist/bulma-skins-components.js",
+  "exports": {
+    ".": {
+      "import": "./dist/bulma-skins-components.js",
+      "require": "./dist/bulma-skins-components.cjs"
+    },
+    "./src/css/animate.min.css": "./dist/css/animate.min.css",
+    "./src/css/bulma-skins.min.css": "./dist/css/bulma-skins.min.css",
+    "./src/css/bulma-skins.min.css.map": "./dist/css/bulma-skins.min.css.map",
+    "./src/css/skins.js": "./dist/css/skins.js"
   },
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "npm run css-build && npm run css-minify",
-    "css-build": "sass --source-map sass/bulma-skins.scss:dist/css/bulma-skins.css",
-    "css-minify": "cleancss --level 1 --format breaksWith=lf --source-map --source-map-inline-sources --output dist/css/bulma-skins.min.css dist/css/bulma-skins.css",
-    "serve": "npm run build && node index.js"
+    "build:translations": "node ./src/messages/runTranslations.js",
+    "build": "vite build --config vite.config.js",
+    "build:minify": "npm run build && uglifyjs ./dist/components.esm.js --compress --output ./dist/components.esm.min.js",
+    "serve": "npm run build:minify && node index.js"
   },
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "vue": "^3.3.9"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.29",
+    "@types/node": "^20.10.0",
+    "@types/summernote": "^0.8.10",
+    "@vitejs/plugin-vue": "^4.5.0",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2",
+    "sass": "^1.69.5",
+    "typescript": "^5.3.2",
+    "uglify-js": "^3.17.4",
+    "vite": "^4.3.9",
+    "vue-tsc": "^1.4.2"
+  }
 }
