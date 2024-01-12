@@ -1,14 +1,14 @@
 ﻿<template>
     <div class="columns">
-        <Component v-for="(input,index) in props.inputs" :input="input" v-on:value_changed="emit('value_changed',$event)" v-on:button_clicked="emit('button_clicked',$event)" :ref="refs[index]" :disabled="props.disabled||disabledFields.some(f=>f===input.name)" :hidden="hiddenInputs.some(f=>f===input.name)"/>
+        <FormComponent v-for="(input,index) in props.inputs" :ref="(el) => (refs[index] = el)"  :input="input" v-on:value_changed="emit('value_changed',$event)" v-on:button_clicked="emit('button_clicked',$event)" :disabled="props.disabled||disabledFields.some(f=>f===input.name)" :hidden="hiddenInputs.some(f=>f===input.name)"/>
     </div>
 </template>
 
 <script lang="ts">
-    import { ref } from 'vue';
-    import Component from './component.vue';
+    import { inject, ref ,watch} from 'vue';
+    import FormComponent from './form-component.vue';
     import { FormInputType, ValueChangedEvent } from './types';
-    import { useButtonClickedAndValueChanged } from './common';
+import { DISABLED_FIELDS_PROPERTY, HIDDEN_FIELDS_PROPERTY } from './common';
 </script>
 
 <script lang="ts" setup>
@@ -18,43 +18,45 @@
     }>(),{
         disabled:false
     });
-    
-    const emit = useButtonClickedAndValueChanged();
 
-    const refs = [];
-    const hiddenInputs = ref<string[]>([]);
-    const disabledFields = ref<string[]>([]);
+    const emit = defineEmits<{
+         value_changed:[data:ValueChangedEvent],
+         button_clicked:[name:string]
+    }>();
 
-    const setValues = (values:any):void=> {
+    const hiddenInputs = inject<string[]>(HIDDEN_FIELDS_PROPERTY);
+    const disabledFields = inject<string[]>(DISABLED_FIELDS_PROPERTY);
+
+    const setValue = (values:any):void=> {
         refs.forEach(input => {
-            switch (input.value.type) {
+            switch (input.type) {
                 case 'subform':
-                    input.value.setValues(values);
+                    input.setValue(values);
                     break;
                 default:
-                    if (input.value.setValue !== undefined) {
+                    if (input.setValue !== undefined) {
                         if (values === null) {
-                            input.value.setValue(null);
-                        } else if (Object.keys(values).some(k=>k===input.value.fieldName)) {
-                            input.value.setValue(values[input.value.fieldName]);
-                        } else if (Object.keys(values).some(k=>k===input.value.altFieldName)) {
-                            input.value.setValue(values[input.value.altFieldName]);
+                            input.setValue(null);
+                        } else if (Object.keys(values).some(k=>k===input.fieldName)) {
+                            input.setValue(values[input.fieldName]);
+                        } else if (Object.keys(values).some(k=>k===input.altFieldName)) {
+                            input.setValue(values[input.altFieldName]);
                         }
                     }
                     break;
             }
         });
     };
-    const getValues = ():any=> {
+    const getValue = ():any=> {
         var result:any = {};
         refs.forEach(input => {
-            if (input.value.getValue != undefined) {
-                switch (input.value.type) {
+            if (input.getValue != undefined) {
+                switch (input.type) {
                     case 'subform':
-                        result = $.extend(result,input.value.getValue());
+                        result = $.extend(result,input.getValue());
                         break;
                     default:
-                        result[input.value.fieldName] = input.value.getValue();
+                        result[input.fieldName] = input.getValue();
                         break;
                 }
             }
@@ -62,96 +64,10 @@
         return result;
     };
     const isValid = ():boolean=> {
-        return !refs.some(input=>!(input.value.isValid===undefined?true:input.value.isValid()));
+        return !refs.some(input=>!(input.isValid===undefined?true:input.isValid()));
     };
-    const hideField = (name:string):void=> {
-        refs.forEach(input => {
-            if (input.value.fieldName === name) {
-                if (!hiddenInputs.value.some(h=>h===name))
-                    hiddenInputs.value.push(name);
-            } else {
-                switch (input.value.type) {
-                    case 'subform':
-                        input.value.hideField(name);
-                        break;
-                    case 'checkbox-group':
-                    case 'radio-group':
-                    case 'select':
-                        if (name.startsWith(input.value.fieldName + '.')) {
-                            input.value.hideValue(name.split('.')[1]);
-                        }
-                        break;
-                }
-            }
-        });
-    };
-    const showField = (name:string):void=> {
-        refs.forEach(input => {
-            if (input.value.fieldName === name) {
-                hiddenInputs.value = hiddenInputs.value.filter(h=>h!==name);
-            } else {
-                switch (input.value.type) {
-                    case 'subform':
-                        input.value.showField(name);
-                        break;
-                    case 'checkbox-group':
-                    case 'radio-group':
-                    case 'select':
-                        if (name.startsWith(input.value.fieldName + '.')) {
-                            input.value.showValue(name.split('.')[1]);
-                        }
-                        break;
-                }
-            }
-        });
-    };
-    const disableField = (name:string):void=> {
-        refs.forEach(input => {
-            if (input.value.fieldName == name) {
-                if (!disabledFields.value.some(h=>h===name))
-                    disabledFields.value.push(name);
-            } else {
-                switch (input.value.type) {
-                    case 'subform':
-                        input.value.disableField(name);
-                        break;
-                    case 'checkbox-group':
-                    case 'radio-group':
-                    case 'select':
-                        if (name.startsWith(input.value.fieldName + '.')) {
-                            input.value.disableValue(name.split('.')[1]);
-                        }
-                        break;
-                }
-            }
-        });
-    };
-    const enableField = (name:string):void=> {
-        refs.forEach(input => {
-            if (input.value.fieldName === name) {
-                disabledFields.value = disabledFields.value.filter(f=>f!==name);
-            } else {
-                switch (input.type) {
-                    case 'subform':
-                        input.value.enableField(name);
-                        break;
-                    case 'checkbox-group':
-                    case 'radio-group':
-                    case 'select':
-                        if (name.startsWith(input.valuefieldName + '.')) {
-                            input.value.enableValue(name.split('.')[1]);
-                        }
-                        break;
-                }
-            }
-        });
-    };
+    
+    defineExpose({ setValue, getValue, isValid});
 
-    defineExpose({ setValues, getValues, isValid, hideField, showField, disableField, enableField });
-
-    if (props.inputs !== null) {
-        for (let x = 0; x < props.inputs.length; x++) {
-            refs[x] = ref(null);
-        }
-    }
+    const refs = props.inputs.map(i=>ref(null));
 </script>

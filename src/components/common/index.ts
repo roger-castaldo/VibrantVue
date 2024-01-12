@@ -22,8 +22,9 @@ import Notification from './notification.vue';
 import PageNotification from './page-notification.vue';
 import Pagination from './pagination.vue';
 import {Promised} from './Promised';
+import Progress from './progress.vue';
 
 
 export { Animation,Button,ButtonAdd,ButtonCancel,ButtonDelete,ButtonDisable,ButtonDownload,
 ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonUpload,
-Chart,CheckMark,DynamicSlot,Filter,Icon,Message,Notification,PageNotification,Pagination,Promised };
+Chart,CheckMark,DynamicSlot,Filter,Icon,Message,Notification,PageNotification,Pagination,Promised,Progress };

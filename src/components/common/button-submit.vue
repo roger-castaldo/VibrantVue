@@ -7,6 +7,7 @@
     import Button from './button.vue';
     import {computed,inject} from 'vue';
     import {ColorTypes,Sizes} from '../enums';
+    import { useLanguage } from '../shared';
 </script>
 
 <script lang="ts" setup>
@@ -21,7 +22,7 @@
        hidetablet?:boolean,
        hidedesktop?:boolean 
     }>();
-    const Language = inject<string>('Language');
+    const Language = useLanguage(inject);
     const Properties = computed(()=>{
         return {
             Title:translate('Button.Submit',Language),

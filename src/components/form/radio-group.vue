@@ -1,24 +1,34 @@
 ﻿<template>
     <div>
         <Promised v-bind:promise="Values">
-            <template v-slot:resolved="values:ListItemValue[]|null">
+            <template v-slot="values:ListItemValue[]|null">
                 <template v-for="val in values" v-if="values!=null">
-                    <label class="radio" v-show="!hiddenValues.some(v=>v===val.value)">
-                        <input type="radio" :name="props.name" :value="val.value" class="radio" :disabled="props.disabled||disabledValues.some(v=>v===val.value)"/>
+                    <label class="radio" v-show="!hiddenValues.some(v=>v===val.value.toString())">
+                        <input type="radio" :name="props.name" :value="val.value" class="radio" :disabled="props.disabled||disabledValues.some(v=>v===val.value.toString())"/>
                         {{Translator(val.label)}}
                     </label>
                     <br />
                 </template>
+            </template>
+            <template #pending>
+                <Progress/> 
+            </template>
+            <template #rejected>
+                <Notification :type="NoticeTypes.danger" :message="Error"/>
             </template>
         </Promised>
     </div>
 </template>
 
 <script lang="ts">
-    import { ref, computed, watch } from 'vue';
+    import { ref, computed, watch, inject } from 'vue';
     import {Promised} from '../common/Promised';
-    import {ListItemValue } from './types';
-    import { commonFieldProps,useTranslator,useValueChanged, useValuesList } from './common';
+    import {ListItemValue, ValueChangedEvent } from './types';
+    import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
+    import {Progress,Notification} from '../common/';
+    import {NoticeTypes} from '../enums';
+    import { useLanguage } from '../shared';
+    import translate from '../../messages/messages.js';
 
     interface fieldProps extends commonFieldProps {
         values:ListItemValue[]|Promise<ListItemValue[]>|(()=>ListItemValue[])|(()=>Promise<ListItemValue[]>);
@@ -28,9 +38,14 @@
 <script lang="ts" setup>
     const props = defineProps<fieldProps>();
 
-    const emit = useValueChanged();
+    const Language = useLanguage(inject);
+    const Error = computed<string>(()=>translate('Form.Error',Language));
 
-    const Translator = useTranslator(props);
+    const emit = defineEmits<{
+         value_changed:[data:ValueChangedEvent]
+    }>();
+
+    const Translator = useTranslator(props,inject);
 
     const val = ref<any|null>(null);
 
@@ -44,17 +59,7 @@
         if (props.values == null) {
             return [];
         } else {
-            let p : Promise<any>|null = null;
-            let tmp:any = props.values;
-            if (props.values instanceof Function){
-                tmp = (props.values as Function)();
-            }
-            if (tmp instanceof Promise){
-                p=tmp;
-            }else{
-                p=Promise.resolve(tmp);
-            }
-            let result:ListItemValue[] = await p as ListItemValue[];
+            let result:ListItemValue[] = await resolveListItems<ListItemValue>(props.values);
             if (val.value===null && result.some(r=>r.selected)){
                 val.value = result.find(r=>r.selected).value;
             }
@@ -71,7 +76,7 @@
         val.value = value;
     };
     
-    const {hiddenValues,disabledValues,hideValue,showValue,disableValue,enableValue} = useValuesList();
+    const {hiddenValues,disabledValues} = useValuesList(props.name,inject);
 
-    defineExpose({ getValue, setValue, hideValue, showValue, disableValue, enableValue });
+    defineExpose({ getValue, setValue});
 </script>

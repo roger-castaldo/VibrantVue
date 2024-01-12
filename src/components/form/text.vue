@@ -4,7 +4,8 @@
 
 <script lang="ts">
     import { ref, watch } from 'vue';
-    import { coreFieldProps, useValueChanged } from './common';
+    import { coreFieldProps } from './common';
+import { ValueChangedEvent } from './types';
 
     interface fieldProps extends coreFieldProps{
         subtype:string,
@@ -14,7 +15,9 @@
 
 <script lang="ts" setup>
     const props = defineProps<fieldProps>();
-    const emit = useValueChanged();
+    const emit = defineEmits<{
+         value_changed:[data:ValueChangedEvent]
+    }>();
     const value = ref(null);
 
     watch(value, (val) => emit('value_changed', { name: props.name, value: val }));

@@ -1,27 +1,37 @@
 ﻿<template>
     <div class="select">
-        <select :id="props.name" :name="props.name" :multiple="props.multiple" v-bind:class="[props.multiple ? 'is-multiple' : '']" v-model="vals" :disabled="props.disabled">
-            <Promised v-if="Values!=null" v-bind:promise="Values">
-                <template v-slot:resolved="{value}">
+        <Promised v-if="Values!=null" v-bind:promise="Values">
+            <template v-slot="{value}">
+                <select :id="props.name" :name="props.name" :multiple="props.multiple" v-bind:class="[props.multiple ? 'is-multiple' : '']" v-model="vals" :disabled="props.disabled">
                     <template  v-if="value!=null" v-for="val in value">
-                        <option v-if="val.values==undefined" :value="val.value" :selected="val.selected" v-show="!hiddenValues.some(v=>v===val.value)" v-bind:disabled="disabledValues.some(v=>v===val.value)">{{Translate(val.label)}}</option>
+                        <option v-if="val.values==undefined" :value="val.value" :selected="val.selected" v-show="!hiddenValues.some(h=>h===val.value.toString())" v-bind:disabled="disabledValues.some(d=>d===val.value.toString())">{{Translator(val.label)}}</option>
                         <optgroup v-if="val.values!=undefined" v-bind:label="Translator(val.label)">
-                            <option v-for="v in val.values" :value="v.value" :selected="v.selected" v-show="!hiddenValues.some(v=>v===v.value)" v-bind:disabled="disabledValues.some(v=>v===v.value)">
+                            <option v-for="v in val.values" :value="v.value" :selected="v.selected" v-show="!hiddenValues.some(h=>h===v.value.toString())" v-bind:disabled="disabledValues.some(d=>d===v.value.toString())">
                                 {{Translator(v.label)}}
                             </option>
                         </optgroup>
                     </template>
-                </template>
-            </Promised>
-        </select>
+                </select>
+            </template>
+            <template #pending>
+                <Progress/> 
+            </template>
+            <template #rejected>
+                <Notification :type="NoticeTypes.danger" :message="Error"/>
+            </template>
+        </Promised>
     </div>
 </template>
 
 <script lang="ts">
-    import { ref, watch, inject,computed } from 'vue';
+    import { ref, watch, inject,computed, toRaw } from 'vue';
     import {Promised} from '../common/Promised';
-    import { SelectListItemValue} from './types';
-    import { commonFieldProps,useTranslator,useValueChanged, useValuesList } from './common';
+    import { SelectListItemValue, ValueChangedEvent} from './types';
+    import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
+    import {Progress,Notification} from '../common/';
+    import {NoticeTypes} from '../enums';
+    import translate from '../../messages/messages.js';
+    import { useLanguage } from '../shared';
 
     const mergeValueGroups = (parent:string|null, value:SelectListItemValue, dest:SelectListItemValue[]):SelectListItemValue[]=> {
         let base:any = {
@@ -55,9 +65,14 @@
         multiple:false
     });
 
-    const emit = useValueChanged();
+    const Language = useLanguage(inject);
+    const Error = computed<string>(()=>translate('Form.Error',Language));
 
-    const Translator = useTranslator(props);
+    const emit = defineEmits<{
+         value_changed:[data:ValueChangedEvent]
+    }>();
+
+    const Translator = useTranslator(props,inject);
 
     const vals = ref<any[]|null>(null);
     const locked = ref<boolean>(false);
@@ -66,17 +81,7 @@
         if (props.values == null) {
             return [];
         } else {
-            let p : Promise<any>|null = null;
-            let tmp:any = props.values;
-            if (props.values instanceof Function){
-                tmp = (props.values as Function)();
-            }
-            if (tmp instanceof Promise){
-                p=tmp;
-            }else{
-                p=Promise.resolve(tmp);
-            }
-            let result:SelectListItemValue[] = await p as SelectListItemValue[];
+            let result:SelectListItemValue[] = await resolveListItems<SelectListItemValue>(props.values);
             let tvalues:any[] = result.filter(s=>s.selected).map(s=>s.value);
             if (result.some(s=>s.values!==undefined)){
                 result.filter(s=>s.values!==undefined)
@@ -87,7 +92,7 @@
                 });
             }
             if (vals.value === null || vals.value.length === 0) {
-                vals.value = (tmp.length===0 ? null : tmp);
+                vals.value = null;
             } else {
                 result = result.map(r=>{
                     let t = r;
@@ -152,8 +157,8 @@
         locked.value = false;
     };
     
-    const {hiddenValues,disabledValues,hideValue,showValue,disableValue,enableValue} = useValuesList();
+    const {hiddenValues,disabledValues} = useValuesList(props.name,inject);
 
-    defineExpose({ getValue, setValue, hideValue, showValue, disableValue, enableValue });
+    defineExpose({ getValue, setValue });
 
 </script>

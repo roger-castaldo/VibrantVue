@@ -8,8 +8,9 @@
 </template>
 
 <script lang="ts">
-    import { ref, watch } from 'vue';
-    import {commonFieldProps, useTranslator, useValueChanged} from './common';
+    import { inject, ref, watch } from 'vue';
+    import {commonFieldProps, useTranslator} from './common';
+import { ValueChangedEvent } from './types';
 
     interface fieldProps extends commonFieldProps{
         label:string;
@@ -20,9 +21,11 @@
 <script lang="ts" setup>
     const props = defineProps<fieldProps>();
     
-    const emit = useValueChanged();
+    const emit = defineEmits<{
+         value_changed:[data:ValueChangedEvent]
+    }>();
 
-    const Translator = useTranslator(props);
+    const Translator = useTranslator(props,inject);
 
     const isChecked = ref(false);
 

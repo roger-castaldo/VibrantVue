@@ -5,14 +5,15 @@
 <script lang="ts">
     import { ref, watch } from 'vue';
 import { ValueChangedEvent } from './types';
-import { useValueChanged } from './common';
 </script>
 
 <script lang="ts" setup>
     const props = defineProps<{
         name:string
     }>();
-    const emit = useValueChanged();
+    const emit = defineEmits<{
+         value_changed:[data:ValueChangedEvent]
+    }>();
 
     const value = ref<string|null>(null);
 

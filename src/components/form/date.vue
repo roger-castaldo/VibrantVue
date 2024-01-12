@@ -43,7 +43,7 @@
                             <tfoot v-if="props.includeTime">
                                 <tr>
                                     <td colspan="100%" class="has-text-centered">
-                                        <Time ref="time" v-on:value_changed="processTimeChange"/>
+                                        <Time :ref="time" :name="`${props.name}-time`" :disabled="props.disabled" @value_changed="processTimeChange"/>
                                     </td>
                                 </tr>
                             </tfoot>
@@ -66,7 +66,8 @@
     import Time from './time.vue';
     import translate from '../../messages/messages.js';
     import { ValueChangedEvent } from './types';
-    import { coreFieldProps,useTranslator,useValueChanged } from './common';
+    import { coreFieldProps } from './common';
+import { useLanguage } from '../shared';
 
     const regDate = RegExp('^(\\d{2})-(\\d{2})-(\\d{4})$');
     const regDateTime = RegExp('^(\\d{2})-(\\d{2})-(\\d{4}) (\\d{2}):(\\d{2})$');
@@ -91,7 +92,9 @@
         disabled:false
     });
 
-    const emit = useValueChanged();
+    const emit = defineEmits<{
+         value_changed:[data:ValueChangedEvent]
+    }>();
 
     const showInterface = ref<boolean>(false);
     const value = ref<string|null>(null);
@@ -102,7 +105,7 @@
         Today: new Date().getDay()
     });
 
-    const Language = inject<string>('Language','en');
+    const Language = useLanguage(inject);
 
     const Messages = readonly({
         Sun: computed(()=>(translate('Date.Weekdays.Sun',Language))),
@@ -246,7 +249,7 @@
 
     defineExpose({getValue,setValue});
 
-    const processTimeChange = (event:any):void=> {
+    const processTimeChange = (event:ValueChangedEvent):void=> {
         if (event.value == null) {
             if (value.value != null) {
                 value.value = value.value.split(' ')[0];

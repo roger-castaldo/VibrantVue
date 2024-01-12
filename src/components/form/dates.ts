@@ -1,3 +1,4 @@
+import { ComputedRef } from 'vue';
 import translate from '../../messages/messages.js';
 
 export const addDays = (date:Date,days:number) : Date => {
@@ -36,7 +37,7 @@ export const padLeft = (value:string,char:string,length:number):string=>{
     return result;
 };
 
-const processFormat = (curCode:string,language:string,date:Date):string=>{
+const processFormat = (curCode:string,language:ComputedRef<string>,date:Date):string=>{
     let result:string = '';
     switch (curCode) {
         case 'd':
@@ -193,7 +194,7 @@ const processFormat = (curCode:string,language:string,date:Date):string=>{
     return result;
 };
 
-export const format = (date:Date,language:string,format?:string):string=> {
+export const format = (date:Date,language:ComputedRef<string>,format?:string):string=> {
     format = format??'ddd MMM dd yyyy HH:mm:ss G\\MTzz00';
     let result:string = '';
     let curCode:string = '';

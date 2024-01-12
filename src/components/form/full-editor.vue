@@ -5,7 +5,8 @@
 <script lang="ts">
     import { watch, onMounted, onUnmounted, ref } from 'vue';
     import { css } from '../utilities';
-    import {coreFieldProps, useValueChanged} from './common';
+    import {coreFieldProps} from './common';
+import { ValueChangedEvent } from './types';
 
     css(['https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.css']);
 </script>
@@ -15,7 +16,9 @@
     const snote = ref(null);
 
     const props = defineProps<coreFieldProps>();
-    const emit = useValueChanged();
+        const emit = defineEmits<{
+         value_changed:[data:ValueChangedEvent]
+    }>();
 
     watch([props.disabled],(val)=>{
         if (snote.value!=null)

@@ -4,7 +4,8 @@
 
 <script lang="ts">
     import { watch,ref } from 'vue';
-    import { coreFieldProps, useValueChanged } from './common';
+    import { coreFieldProps } from './common';
+import { ValueChangedEvent } from './types';
 
     const tabKeyCode = 9;
     const tab = String.fromCharCode(tabKeyCode);
@@ -20,7 +21,9 @@
 
 <script lang="ts" setup>
     const props = defineProps<fieldProps>();
-    const emit = useValueChanged();
+    const emit = defineEmits<{
+         value_changed:[data:ValueChangedEvent]
+    }>();
 
     const value = ref<string|null>(null);
 

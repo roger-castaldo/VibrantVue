@@ -2,13 +2,13 @@
     <nav :class="['pagination',ButtonClass]" role="navigation" aria-label="pagination" v-show="props.hasmore||props.hasprevious">
         <a :class="['pagination-previous',ButtonClass]"
            v-bind:title="Previous" v-on:click="moveBack" v-bind:disabled="DisablePrevious">
-           <Icon type="backward" :size="IconSizes.small"/>
+           <Icon icon="backward" :size="IconSizes.small"/>
             {{Previous}}
         </a>
         <a :class="['pagination-next',ButtonClass]"
            v-bind:title="Next" v-on:click="moveForward" v-bind:disabled="DisableNext">
             {{Next}}
-            <Icon type="forward" :size="IconSizes.small"/>
+            <Icon icon="forward" :size="IconSizes.small"/>
         </a>
     </nav>
 </template>
@@ -18,6 +18,7 @@
     import translate from '../../messages/messages.js';
     import Icon from './icon.vue';
     import { Sizes,ColorTypes,IconSizes } from '../enums';
+import { useLanguage } from '../shared';
 </script>
 
 <script lang="ts" setup>
@@ -41,7 +42,7 @@
         moveBack:[]
     }>();
 
-    const Language = inject<string>('Language');
+    const Language = useLanguage(inject);
 
     const Previous = computed<string>(()=>translate((props.usenext ? 'Pagination.Previous' : 'Pagination.Older'),Language));
     const Next = computed<string>(()=>translate((props.usenext ? 'Pagination.Next' : 'Pagination.Newer'),Language));

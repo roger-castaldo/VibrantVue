@@ -5,6 +5,7 @@
 <script lang="ts" setup>
     import { TranslateMethod } from './types';
     import { useTranslator } from './common';
+    import { inject } from 'vue';
 
     const props = withDefaults(defineProps<{
         label:string,
@@ -14,5 +15,5 @@
         subtype:'h1'
     });
 
-    const Translator = useTranslator(props);
+    const Translator = useTranslator(props,inject);
 </script>

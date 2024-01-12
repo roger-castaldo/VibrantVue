@@ -6,6 +6,7 @@
     import { css } from '../utilities.js';
     import { computed,onMounted,inject } from 'vue';
     import {IconSizes} from '../enums';
+    import { useIconSet } from '../shared';
 
     const urlBase:string = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/';
     const brandsUrl:string = `${urlBase}brands.min.css`;
@@ -44,7 +45,7 @@
         size?:IconSizes
     }>();
 
-    const IconSet = inject<string>('IconSet');
+    const IconSet = useIconSet(inject);
 
     const clazz = computed(() => {
         let results = [];
@@ -53,11 +54,7 @@
                 results.push('fa-brands');
             } else {
                 results.push('fa-ico');
-                if (IconSet !== undefined && IconSet != null) {
-                    results.push('fa-' + IconSet);
-                } else {
-                    results.push('fa-solid');
-                }
+                results.push(`fa-${IconSet.value}`);
             }
         }
         if (props.icon !== undefined && props.icon !== null) {
@@ -76,7 +73,7 @@
         return results;
     });
 
-    onMounted(()=>css(`${urlBase}${IconSet??'solid'}.min.css`));
+    onMounted(()=>css(`${urlBase}${IconSet.value}.min.css`));
 </script>
 
 <style>

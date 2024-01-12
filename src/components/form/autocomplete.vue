@@ -27,9 +27,10 @@
 </template>
 
 <script lang="ts">
-    import { watch, ref} from 'vue';
+    import { watch, ref, inject} from 'vue';
     import 'jquery';
-    import { commonFieldProps,useTranslator,useValueChanged } from './common';
+    import { commonFieldProps,useTranslator } from './common';
+    import { ValueChangedEvent } from './types';
 
     type AutoCompleteItem = {
         id:string,
@@ -47,11 +48,13 @@
 </script>
 
 <script lang="ts" setup>
-    const emit = useValueChanged();
+    const emit = defineEmits<{
+         value_changed:[data:ValueChangedEvent]
+    }>();
 
     const props = defineProps<fieldProps>();
 
-    const Translator = useTranslator(props);
+    const Translator = useTranslator(props,inject);
 
     const selected = ref<AutoCompleteItem[]>([]);
     const searchString = ref<string|null>(null);

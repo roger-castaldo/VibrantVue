@@ -7,8 +7,9 @@
 </template>
 
 <script lang="ts">
-    import { ref, watch,computed} from 'vue';
-    import { commonFieldProps,useTranslator,useValueChanged} from './common';
+    import { ref, watch,computed, inject} from 'vue';
+    import { commonFieldProps,useTranslator} from './common';
+    import { ValueChangedEvent } from './types';
 
     interface fieldProps extends commonFieldProps {
         label:string;
@@ -22,9 +23,11 @@
         disabled:false
     });
 
-    const emit = useValueChanged();
+    const emit = defineEmits<{
+         value_changed:[data:ValueChangedEvent]
+    }>();
 
-    const Translator = useTranslator(props);
+    const Translator = useTranslator(props,inject);
 
     const Label = computed<string>(() => Translator.value(props.label));
 

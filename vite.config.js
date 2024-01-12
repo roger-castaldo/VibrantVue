@@ -13,6 +13,7 @@ export default defineConfig({
     }
   },
   build: {
+    sourcemap: true,
     outDir: "./dist",
     lib: {
       entry:resolve(__dirname, "./src/components/index.ts"),

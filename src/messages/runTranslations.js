@@ -8,8 +8,9 @@ const buttonPath = resolve("./src/messages/button/");
 const filterPath = resolve("./src/messages/filter/");
 const paginationPath = resolve("./src/messages/pagination/");
 const datePath = resolve('./src/messages/date/');
+const formPath = resolve('./src/messages/form/');
 
-const paths = [buttonPath,filterPath,paginationPath,datePath];
+const paths = [buttonPath,filterPath,formPath,paginationPath,datePath];
 
 let resp = await fetch(`${serverUrl}languages`);
 const json = await resp.json();

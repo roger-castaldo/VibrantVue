@@ -11,6 +11,7 @@
     import { onMounted, ref, watch, computed,inject } from 'vue';
     import Icon from './icon.vue';
     import translate from '../../messages/messages.js';
+import { useLanguage } from '../shared';
 </script>
 
 <script lang="ts" setup>
@@ -22,7 +23,7 @@
         filter:[value:string|null]
     }>();
 
-    const Language = inject<string>('Language');
+    const Language = useLanguage(inject);
     const Filter = computed<string>(()=>translate('Filter.Filter',Language));
 
     const filter = ref<string|null>(null);

@@ -5,6 +5,7 @@
 <script lang="ts">
     import { TranslateMethod } from './types';
     import { useTranslator } from './common';
+    import { inject } from 'vue';
 </script>
 
 <script lang="ts" setup>
@@ -14,5 +15,5 @@
         Translate?:TranslateMethod
     }>();
 
-    const Translator = useTranslator(props);
+    const Translator = useTranslator(props,inject);
 </script>

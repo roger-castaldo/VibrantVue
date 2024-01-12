@@ -9,9 +9,9 @@ export const {Animation,Button,ButtonAdd,ButtonCancel,ButtonDelete,ButtonDisable
     ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonUpload,
     Chart,CheckMark,DynamicSlot,Filter,Icon,Message,Notification,PageNotification,Pagination,Promised } = common;
 export const {DraggableItem,DropZone,Sortable} = dragging;
-export const {AutoComplete,CheckboxGroup,Checkbox,Date,Form,FullEditor,
+export const {AutoComplete,CheckboxGroup,Checkbox,Date,ComponentForm,FullEditor,
     Header,Hidden,Number,Paragraph,RadioGroup,Select,Switch,Text,
-    TextArea,Time} = form;
+    TextArea,Time,FormComponent} = form;
 export const {Banner,Box,BreadcrumbsItem,Breadcrumbs,Card,Column,ColumnContainer,
     List,ListItem,ModalCard,Panel,Table,Tabs,TabsTab,Tile} = layout;
 export const {AVAIABLE_SKINS,setSkin} = skin;

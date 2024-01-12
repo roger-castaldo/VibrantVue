@@ -17,13 +17,47 @@
             <Message type="dark" :hasDelete="true" size="large">
                 This is a test, this is only a test
             </Message>
+            <Component-Form :elements="elements" :translate="translate" @value_changed="(value)=>console.log(value)"/>
         </div>
         <script type="module">
-            import { createApp} from "vue";
-            import {Message} from 'components';
+            import { createApp,ref} from "vue";
+            import {Message,ComponentForm} from 'components';
 
             window.lst = createApp({
-                components: { Message:Message }
+                components: { 
+                    Message,
+                    ComponentForm
+                },
+                data:()=>{
+                    return {
+                        elements:[
+  {
+    "type": "text",
+    "subtype": "text",
+    "label": "LoginForm.Username",
+    "name": "uname",
+    "required": true
+  },
+  {
+    "type": "text",
+    "subtype": "password",
+    "label": "LoginForm.Password",
+    "name": "password",
+    "required": true
+  }
+]
+                    };
+                }     ,
+                methods:{
+                    translate :(value)=>{
+                        console.log(value);
+                        switch(value){
+                            case 'LoginForm.Username': return 'Username';
+                            case 'LoginForm.Password': return 'Password';
+                            default: return value;
+                        }
+                    }
+                }           
             }).mount('#main');
         </script>
     </body>

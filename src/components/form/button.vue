@@ -3,9 +3,10 @@
 </template>
 
 <script lang="ts">
-    import Button from '../common/button.vue';
+    import { inject } from 'vue';
+import Button from '../common/button.vue';
     import { ColorTypes } from '../enums';
-    import { commonFieldProps,useTranslator,useButtonClicked } from './common';
+    import { commonFieldProps,useTranslator } from './common';
 
     interface fieldProps extends commonFieldProps {
         label:string;
@@ -17,7 +18,9 @@
 <script lang="ts" setup>
     const props = defineProps<fieldProps>();
 
-    const emit = useButtonClicked();
+    const emit = defineEmits<{
+         button_clicked:[name:string]
+    }>();
 
-    const Translator = useTranslator(props);
+    const Translator = useTranslator(props,inject);
 </script>

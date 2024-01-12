@@ -1,55 +1,37 @@
-import { ComputedRef, computed, inject, ref } from "vue";
+import { ComputedRef, computed, ref } from "vue";
 import { FormInputType, TranslateMethod,ValueChangedEvent } from "./types";
+
+export const HIDDEN_FIELDS_PROPERTY = "HiddenFields";
+export const DISABLED_FIELDS_PROPERTY = "DisabledFields";
+
+export interface translateFieldProps{
+    translate?:TranslateMethod;
+}
 
 export interface coreFieldProps{
     name:string;
     disabled:boolean;
 };
 
-export interface commonFieldProps extends coreFieldProps{
-    Translate?:TranslateMethod;
-};
+export interface commonFieldProps extends coreFieldProps,translateFieldProps{};
 
-export const useTranslator= (props:any) : ComputedRef<TranslateMethod> => {
-    const Translate = inject<TranslateMethod>("Translate");
-    const Translator = computed<TranslateMethod>(()=>props.Translate??Translate??function(val:string){return val;});
+const defaultTranslate : TranslateMethod = (value:string)=>value;
+
+export const useTranslator= (props:translateFieldProps,inject: (<T>(string,T?)=> T | undefined)) : ComputedRef<TranslateMethod> => {
+    const Translate = inject<TranslateMethod>("Translate",defaultTranslate);
+    const Translator = computed<TranslateMethod>(()=>props.translate??Translate);
   
     return Translator;
 };
 
-export const useButtonClicked = () =>
-    defineEmits<{button_clicked:[name:string]}>();
-export const useValueChanged = () => 
-    defineEmits<{value_changed:[data:ValueChangedEvent]}>();
+export function useValuesList(name:string,inject: (<T>(string,T?)=> T | undefined)){
+    const iHiddenValues = inject<string[]>(HIDDEN_FIELDS_PROPERTY);
+    const iDisabledValues = inject<string[]>(DISABLED_FIELDS_PROPERTY);
 
-export const useButtonClickedAndValueChanged = () => 
-    defineEmits<{
-        button_clicked:[name:string],
-        value_changed:[data:ValueChangedEvent]
-    }>();
+    const hiddenValues = computed<string[]>(()=>iHiddenValues.filter(h=>h.indexOf(`${name}.`)===0).map(h=>h.split('.')[1]));
+    const disabledValues = computed<string[]>(()=>iDisabledValues.filter(h=>h.indexOf(`${name}.`)===0).map(h=>h.split('.')[1]));
 
-export function useValuesList(){
-    const hiddenValues = ref<any[]>([]);
-    const disabledValues = ref<any[]>([]);
-
-    const hideValue = (value:any):void => {
-        if (!hiddenValues.value.some(h=>h===value)) {
-            hiddenValues.value.push(value);
-        }
-    };
-    const showValue = (value:any):void => {
-        hiddenValues.value = hiddenValues.value.filter(h=>h!==value);
-    };
-    const disableValue = (value:any):void => {
-        if (!disabledValues.value.some(v=>value===v)) {
-            disabledValues.value.push(value);
-        }
-    };
-    const enableValue = (value:any):void => {
-        disabledValues.value = disabledValues.value.filter(v=>v!==value);
-    };
-
-    return {hiddenValues,disabledValues,hideValue,showValue,disableValue,enableValue};
+    return {hiddenValues,disabledValues};
 }
 
 export const buildFieldRows = (fields:FormInputType[]):FormInputType[][]=>{
@@ -73,6 +55,27 @@ export const buildFieldRows = (fields:FormInputType[]):FormInputType[][]=>{
     });
     if (row.length > 0) {
         result.push(row);
+    }
+    return result;
+}
+
+export async function resolveListItems<T>(values: (T[]|Promise<T[]>|(()=>T[])|(()=>Promise<T[]>))) : Promise<T[]> {
+    let p : Promise<any>|null = null;
+    let tmp:any = values;
+    if (values instanceof Function){
+        tmp = (values as Function)();
+    }
+    if (tmp instanceof Promise){
+        p=tmp;
+    }else{
+        p=Promise.resolve(tmp);
+    }
+    let tmpResult:any  = await p as any;
+    let result:T[] = [];
+    if (tmpResult.value!==undefined){
+        result = tmpResult.value as T[];
+    }else{
+        result = tmpResult as T[];
     }
     return result;
 }

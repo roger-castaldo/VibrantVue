@@ -6,7 +6,8 @@
 
 <script lang="ts">
     import { ref, watch, computed } from 'vue';
-    import { coreFieldProps, useValueChanged } from './common';
+    import { coreFieldProps } from './common';
+    import { ValueChangedEvent } from './types';
 
     const regTime = RegExp('^(\\d{2}):(\\d{2}) (AM|PM)$');
     const reg24Time = RegExp('^(\\d{2}):(\\d{2}):\\d{2}$');
@@ -14,7 +15,9 @@
 
 <script lang="ts" setup>
     const props = defineProps<coreFieldProps>();
-    const emit = useValueChanged();
+    const emit = defineEmits<{
+         value_changed:[data:ValueChangedEvent]
+    }>();
 
     const value = ref<string|null>(null);
 
