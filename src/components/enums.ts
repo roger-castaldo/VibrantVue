@@ -27,7 +27,7 @@ slideInDown='slideInDown',slideInLeft='slideInLeft',slideInRight='slideInRight',
 slideOutDown='slideOutDown',slideOutLeft='slideOutLeft',slideOutRight='slideOutRight',slideOutUp='slideOutUp'};
 export enum ChartTypes{area='area',bar='bar',bubble='bubble',doughnut='doughnut',pie='pie',line='line',polarArea='polarArea',radar='radar',scatter='scatter'};
 export enum ChartLegendPositions{top='top',left='left',bottom='bottom',right='right',chartArea='chartArea'};
-export enum IconSizes{xxsmall='xxsmall',xsmall='xsmall',small='small',normal='normal',large='large',xlarge='xlarge',xxlarge='xxlarge'};
+export enum IconSizes{xxsmall='2xs',xsmall='xs',small='sm',normal='',large='lg',xlarge='xl',xxlarge='2xl'};
 export enum DropZoneQuadrants{center='center',topLeft='topLeft',bottomLeft='bottomLeft',topRight='topRight',bottomRight='bottomRight',
 top='top',bottom='bottom'};
 export enum BreadCrumbAlignments{centered='centered',right='right',left='left'};

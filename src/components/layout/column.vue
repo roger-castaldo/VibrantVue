@@ -18,7 +18,8 @@ import { BorderTypes, ColumnOffsetSizes, ColumnSizes } from '../enums';
     }>();
     
     const Class = computed<string[]>(() => {
-        var ret = [`is-${props.size??'12'}`];
+        var ret = [];
+        if (props.size){ret.push(`is-${props.size}`);}
         if (props.offset){ret.push(`is-offset-${props.offset}`)};
         if (props.border){
             if (props.border.some(b=>b===BorderTypes.all)){

@@ -3,55 +3,68 @@
 </template>
 
 <script lang="ts">
-    import { css } from '../utilities.js';
-    import { computed,onMounted,inject,ref } from 'vue';
+    import { computed,watch,inject,ref } from 'vue';
     import {IconSizes} from '../enums';
     import { useFontAwesome, useIconSet } from '../shared';
 
     const brandsUrl:string = `brands.min.css`;
-    const brandsId:string = 'brands_style_sheet';
+    const allUrl:string = `all.min.css`;
+    const brandsId:string = 'icon_styles';
 
     const reg = /\.fa-([^: ]+):before/g;
-    const brands = ref<string[]>([]);
     const urlReg = /url\(([^)]+)\)/g;
-
+    const brands = ref<string[]>([]);
+    const loading = ref<boolean>(false);
+    
+    const loadStyles = async (urlBase:string,iconSet:string) : Promise<void> =>{
+        if (!loading.value){
+            loading.value=true;
+            let el:HTMLStyleElement;
+            if (brands.value.length===0){
+                el = document.createElement('style') as HTMLStyleElement;
+                el.setAttribute('id',brandsId);
+                document.head.appendChild(el);
+                el.setAttribute('type', 'text/css');
+            }else{
+                el = document.getElementById(brandsId) as HTMLStyleElement;
+            }
+            brands.value=[' '];
+            let results = await Promise.all([
+                fetch(`${urlBase}${brandsUrl}`),
+                fetch(`${urlBase}${allUrl}`),
+                fetch(`${urlBase}${iconSet}.min.css`)
+            ]);
+            let content:string = await results[0].text();
+            [...content.matchAll(reg)].forEach(match => {
+                brands.value.push(match[1]);
+            });
+            content = `${await results[1].text()}
+    ${await results[2].text()}
+    ${content}`;
+            [...content.matchAll(urlReg)].forEach(match=>{
+                content=content.replace(match[0],`url(${new URL(match[1],urlBase)})`);
+            });
+            el.innerText=content;
+            brands.value.splice(0,1);
+            loading.value=false;
+        }
+    };
 </script>
 
 <script lang="ts" setup>
     const urlBase = useFontAwesome(inject);
+    const iconSet = useIconSet(inject);
 
-    css([
-        `${urlBase}all.min.css`
-    ]);
-
-    if (!document.getElementById(brandsId)) {
-        let el = document.createElement('style');
-        el.setAttribute('id', brandsId);
-        document.head.appendChild(el);
-        el.setAttribute('type', 'text/css');
-        el.setAttribute('server_path', `${urlBase}${brandsUrl}`);
-        fetch(`${urlBase}${brandsUrl}`)
-            .then(result => {
-                if (result.ok) {
-                    result.text().then(content => {
-                        [...content.matchAll(reg)].forEach(match => {
-                            brands.value.push(match[1]);
-                        });
-                        [...content.matchAll(urlReg)].forEach(match=>{
-                            content=content.replace(match[0],`url(${new URL(match[1],urlBase)})`);
-                        });
-                        el.innerText=content;
-                    });
-                }
-            });
+    if(brands.value.length===0){
+        loadStyles(urlBase,iconSet.value);
+    }else{
+        watch(iconSet,()=>loadStyles(urlBase,iconSet.value));
     }
-
+    
     const props = defineProps<{
         icon:string,
         size?:IconSizes
     }>();
-
-    const IconSet = useIconSet(inject);
 
     const clazz = computed(() => {
         let results = [];
@@ -60,26 +73,15 @@
                 results.push('fa-brands');
             } else {
                 results.push('fa-ico');
-                results.push(`fa-${IconSet.value}`);
+                results.push(`fa-${iconSet.value}`);
             }
-        }
-        if (props.icon !== undefined && props.icon !== null) {
             results.push((props.icon.indexOf('fa-') == -1 ? ' fa-' : ' ') + props.icon);
         }
         if (props.size !== undefined && props.size !== null && props.size!==IconSizes.normal) {
-            switch(props.size){
-                case IconSizes.xxsmall:results.push('fa-2xs');break;
-                case IconSizes.xsmall:results.push('fa-xs');break;
-                case IconSizes.small:results.push('fa-sm');break;
-                case IconSizes.large:results.push('fa-lg');break;
-                case IconSizes.xlarge:results.push('fa-xl');break;
-                case IconSizes.xxlarge:results.push('fa-2xl');break;
-            }
+            results.push(`fa-${props.size}`);
         }
         return results;
     });
-
-    onMounted(()=>css(`${urlBase}${IconSet.value}.min.css`));
 </script>
 
 <style>

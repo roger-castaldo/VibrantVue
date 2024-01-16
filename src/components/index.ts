@@ -16,4 +16,6 @@ export const {AutoComplete,CheckboxGroup,Checkbox,Date,ComponentForm,FullEditor,
 export const {Banner,Box,BreadcrumbsItem,Breadcrumbs,Card,Column,ColumnContainer,
     List,ListItem,ModalCard,Panel,Table,Tabs,TabsTab,Tile,Modal} = layout;
 export const {AVAIABLE_SKINS,setSkin} = skin;
-export const {ColorTypes,Sizes,AnimationSpeeds,AnimationTypes,IconSizes,ChartLegendPositions,ChartTypes} = enums;
+export const {ColorTypes,NoticeTypes,Sizes,AnimationSpeeds,AnimationTypes,IconSizes,ChartLegendPositions,ChartTypes,DropZoneQuadrants,
+    BreadCrumbAlignments,BreadCrumbSeperators,ColumnContainerModifiers,ColumnSizes,
+    ColumnOffsetSizes,BorderTypes,TabAlignments,TabStyles,TileSizes,TileTypes} = enums;
