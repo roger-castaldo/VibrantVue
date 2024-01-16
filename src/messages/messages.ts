@@ -2,13 +2,15 @@ import * as button from './button/messages.json';
 import * as filter from './filter/messages.json';
 import * as pagination from './pagination/messages.json';
 import * as date from './date/messages.json';
+import * as form from './form/messages.json';
 import { ComputedRef } from 'vue';
 
 const messages = {
     Button:button,
     Filter:filter,
     Pagination:pagination,
-    Date:date
+    Date:date,
+    Form:form
 };
 
 export default (message:string,language:ComputedRef<string>):string=>{

@@ -13,3 +13,19 @@ export const useIconSet= (inject: (<T>(string,T?)=> T | undefined)) : ComputedRe
   
     return IconSet;
 };
+
+export const useSummerNote = (inject: (<T>(string,T?)=> T | undefined)) : string => 
+    inject<string>('SummerNoteCDN','https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/');
+
+export const useFontAwesome = (inject: (<T>(string,T?)=> T | undefined)) : string => 
+    inject<string>('FontAwesomeCDN','https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/');
+
+export const useAnimation = (inject: (<T>(string,T?)=> T | undefined)) : string => 
+    inject<string>('AnimateCDN','https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/');
+
+export const useChartJS = (inject: (<T>(string,T?)=> T | undefined)) : string => 
+    inject<string>('ChartJSCDN','https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/');
+
+
+
+

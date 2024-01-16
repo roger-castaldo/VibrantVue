@@ -7,6 +7,7 @@ import ColumnContainer from './column-container.vue';
 import Column from './column.vue';
 import ListItem from './list-item.vue';
 import List from './list.vue';
+import Modal from './modal.vue';
 import ModalCard from './modal-card.vue';
 import Panel from './panel.vue';
 import Table from './table.vue';
@@ -15,4 +16,4 @@ import Tabs from './tabs.vue';
 import Tile from './tile.vue';
 
 export {Banner,Box,BreadcrumbsItem,Breadcrumbs,Card,Column,ColumnContainer,
-List,ListItem,ModalCard,Panel,Table,Tabs,TabsTab,Tile};
+List,ListItem,Modal,ModalCard,Panel,Table,Tabs,TabsTab,Tile};

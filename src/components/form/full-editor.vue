@@ -3,16 +3,18 @@
 </template>
 
 <script lang="ts">
-    import { watch, onMounted, onUnmounted, ref } from 'vue';
+    import { watch, onMounted, onUnmounted, ref,inject } from 'vue';
     import { css } from '../utilities';
     import {coreFieldProps} from './common';
-import { ValueChangedEvent } from './types';
-
-    css(['https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.css']);
+    import { ValueChangedEvent } from './types';
+    import { useSummerNote } from '../shared';
 </script>
 
 <script lang="ts" setup>
-    await import('summernote');
+    const cdnBase = useSummerNote(inject);
+
+    css([`${cdnBase}summernote-lite.min.css`]);
+    await import(`${cdnBase}summernote`);
     const snote = ref(null);
 
     const props = defineProps<coreFieldProps>();

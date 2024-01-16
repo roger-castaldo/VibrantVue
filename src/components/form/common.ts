@@ -1,4 +1,4 @@
-import { ComputedRef, computed, ref } from "vue";
+import { ComputedRef, Ref, computed, ref } from "vue";
 import { FormInputType, TranslateMethod,ValueChangedEvent } from "./types";
 
 export const HIDDEN_FIELDS_PROPERTY = "HiddenFields";
@@ -25,11 +25,11 @@ export const useTranslator= (props:translateFieldProps,inject: (<T>(string,T?)=>
 };
 
 export function useValuesList(name:string,inject: (<T>(string,T?)=> T | undefined)){
-    const iHiddenValues = inject<string[]>(HIDDEN_FIELDS_PROPERTY);
-    const iDisabledValues = inject<string[]>(DISABLED_FIELDS_PROPERTY);
+    const iHiddenValues = inject<Readonly<Ref<readonly string[]>>>(HIDDEN_FIELDS_PROPERTY);
+    const iDisabledValues = inject<Readonly<Ref<readonly string[]>>>(DISABLED_FIELDS_PROPERTY);
 
-    const hiddenValues = computed<string[]>(()=>iHiddenValues.filter(h=>h.indexOf(`${name}.`)===0).map(h=>h.split('.')[1]));
-    const disabledValues = computed<string[]>(()=>iDisabledValues.filter(h=>h.indexOf(`${name}.`)===0).map(h=>h.split('.')[1]));
+    const hiddenValues = computed<string[]>(()=>iHiddenValues.value.filter(h=>h.indexOf(`${name}.`)===0).map(h=>h.split('.')[1]));
+    const disabledValues = computed<string[]>(()=>iDisabledValues.value.filter(h=>h.indexOf(`${name}.`)===0).map(h=>h.split('.')[1]));
 
     return {hiddenValues,disabledValues};
 }

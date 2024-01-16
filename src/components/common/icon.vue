@@ -4,42 +4,48 @@
 
 <script lang="ts">
     import { css } from '../utilities.js';
-    import { computed,onMounted,inject } from 'vue';
+    import { computed,onMounted,inject,ref } from 'vue';
     import {IconSizes} from '../enums';
-    import { useIconSet } from '../shared';
+    import { useFontAwesome, useIconSet } from '../shared';
 
-    const urlBase:string = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/';
-    const brandsUrl:string = `${urlBase}brands.min.css`;
+    const brandsUrl:string = `brands.min.css`;
     const brandsId:string = 'brands_style_sheet';
+
+    const reg = /\.fa-([^: ]+):before/g;
+    const brands = ref<string[]>([]);
+    const urlReg = /url\(([^)]+)\)/g;
+
+</script>
+
+<script lang="ts" setup>
+    const urlBase = useFontAwesome(inject);
 
     css([
         `${urlBase}all.min.css`
     ]);
 
-    const reg = /\.fa-([^: ]+):before/g;
-    const brands = [];
-
     if (!document.getElementById(brandsId)) {
         let el = document.createElement('style');
-        el.setAttribute('type', 'text/css');
-        el.setAttribute('server_path', brandsUrl);
         el.setAttribute('id', brandsId);
         document.head.appendChild(el);
-        fetch(brandsUrl)
+        el.setAttribute('type', 'text/css');
+        el.setAttribute('server_path', `${urlBase}${brandsUrl}`);
+        fetch(`${urlBase}${brandsUrl}`)
             .then(result => {
                 if (result.ok) {
                     result.text().then(content => {
                         [...content.matchAll(reg)].forEach(match => {
-                            brands.push(match[1]);
+                            brands.value.push(match[1]);
                         });
-                        el.innerText = content;
+                        [...content.matchAll(urlReg)].forEach(match=>{
+                            content=content.replace(match[0],`url(${new URL(match[1],urlBase)})`);
+                        });
+                        el.innerText=content;
                     });
                 }
             });
     }
-</script>
 
-<script lang="ts" setup>
     const props = defineProps<{
         icon:string,
         size?:IconSizes
@@ -50,7 +56,7 @@
     const clazz = computed(() => {
         let results = [];
         if (props.icon !== undefined && props.icon !== null) {
-            if (brands.indexOf(props.icon) >= 0) {
+            if (brands.value.indexOf(props.icon) >= 0) {
                 results.push('fa-brands');
             } else {
                 results.push('fa-ico');

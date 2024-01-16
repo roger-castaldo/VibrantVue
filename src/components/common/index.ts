@@ -21,7 +21,7 @@ import Message from './message.vue';
 import Notification from './notification.vue';
 import PageNotification from './page-notification.vue';
 import Pagination from './pagination.vue';
-import {Promised} from './Promised';
+import Promised from './Promised.vue';
 import Progress from './progress.vue';
 
 

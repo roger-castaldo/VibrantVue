@@ -9,10 +9,13 @@
 
 <script lang="ts" setup>
     import {css} from '../utilities.js';
-    import { computed } from 'vue';
+    import { computed,inject } from 'vue';
     import { AnimationSpeeds, AnimationTypes } from '../enums';
+    import { useAnimation } from '../shared';
 
-    css('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+    const baseURL = useAnimation(inject);
+
+    css(`${baseURL}animate.min.css`);
 
     const props = withDefaults(defineProps<{
         incoming?:AnimationTypes,

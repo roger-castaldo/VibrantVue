@@ -1,29 +1,40 @@
-export enum ColorTypes{ white, black, light, dark, primary, link, info, success, warning, danger };
-export enum NoticeTypes{ info, success, warning, danger };
-export enum Sizes{small,normal,medium,large};
-export enum AnimationSpeeds{slower,slow,fast,faster};
-export enum AnimationTypes{bounce,flash,pulse,rubberBand,shakeX,shakeY,headShake,swing,tada,wobble,jello,heartBeat,
-backOutDown,backOutLeft,backOutRight,backOutUp,
-bounceIn,bounceInDown,bounceInLeft,bounceInRight,bounceInUp,
-bounceOut,boundOutDown,bounceOutLeft,boundOutRight,bounceOutUp,
-fadeIn,fadeInDown,fadeInDownBig,fadeInLeft,fadeInLeftBig,fadeInRight,fadeInRightBig,fadeInUp,fadeInUpBig,fadeInTopLeft,fadeInTopRight,fadeInBottomLeft,fadeInBottomRight,
-fadeOut,fadeOutDown,fadeOutDownBig,fadeOutLeft,fadeOutLeftBig,fadeOutRight,fadeOutRightBig,fadeOutUp,fadeOutUpBig,fadeOutTopLeft,fadeOutTopRight,fadeOutBottomRight,fadeOutBottomLeft,
-flip,flipInX,flipInY,flipOutX,flipOutY,
-lightSpeedInRight,lightSpeedInLeft,lightSpeedOutRight,lightSpeedOutLeft,
-rotateIn,rotateInDownLeft,rotateInDownRight,rotateInUpLeft,rotateInUpRight,
-rotateOut,rotateOutDownLeft,rotateOutDownRight,rotateOutUpLeft,rotateOutUpRight,
-hinge,jackInTheBox,rollIn,rollOut,
-zoomIn,zoomInDown,zoomInLeft,zoomInRight,zoomInUp,
-zoomOut,zoomOutDown,zoomOutLeft,zoomOutRight,zoomOutUp,
-slideInDown,slideInLeft,slideInRight,slideInUp,
-slideOutDown,slideOutLeft,slideOutRight,slideOutUp};
-export enum ChartTypes{area,bar,bubble,doughnut,pie,line,polarArea,radar,scatter};
-export enum ChartLegendPositions{top,left,bottom,right,chartArea};
-export enum IconSizes{xxsmall,xsmall,small,normal,large,xlarge,xxlarge};
-export enum DropZoneQuadrants{center,topLeft,bottomLeft,topRight,bottomRight,top,bottom};
-export enum BreadCrumbAlignments{centered,right,left};
-export enum BreadCrumbSeperators{arrow,button,dot,succeeds};
-export enum ColumnContainerModifiers {mobile, desktop, gapless, multiline, centered, borderleft, borderright, borderbottom, bordertop, fullWidth, fullHeight};
+export enum ColorTypes{ white='white', black='black', light='light', dark='dark', 
+primary='primary', link='link', info='info', success='success', warning='warning', 
+danger='danger' };
+export enum NoticeTypes{ info='info', success='success', warning='warning', danger='danger' };
+export enum Sizes{small='small',normal='normal',medium='medium',large='large'};
+export enum AnimationSpeeds{slower='slower',slow='slow',fast='fast',faster='faster'};
+export enum AnimationTypes{bounce='bounce',flash='flash',pulse='pulse',rubberBand='rubberBand',shakeX='shakeX',
+shakeY='shakeY',headShake='headShake',swing='swing',tada='tada',wobble='wobble',jello='jello',heartBeat='heartBeat',
+backOutDown='backOutDown',backOutLeft='backOutLeft',backOutRight='backOutRight',backOutUp='backOutUp',
+bounceIn='bounceIn',bounceInDown='bounceInDown',bounceInLeft='bounceInLeft',bounceInRight='bounceInRight',bounceInUp='bounceInUp',
+bounceOut='bounceOut',boundOutDown='boundOutDown',bounceOutLeft='bounceOutLeft',boundOutRight='boundOutRight',bounceOutUp='bounceOutUp',
+fadeIn='fadeIn',fadeInDown='fadeInDown',fadeInDownBig='fadeInDownBig',fadeInLeft='fadeInLeft',fadeInLeftBig='fadeInLeftBig',
+fadeInRight='fadeInRight',fadeInRightBig='fadeInRightBig',fadeInUp='fadeInUp',fadeInUpBig='fadeInUpBig',fadeInTopLeft='fadeInTopLeft',
+fadeInTopRight='fadeInTopRight',fadeInBottomLeft='fadeInBottomLeft',fadeInBottomRight='fadeInBottomRight',
+fadeOut='fadeOut',fadeOutDown='fadeOutDown',fadeOutDownBig='fadeOutDownBig',fadeOutLeft='fadeOutLeft',fadeOutLeftBig='fadeOutLeftBig',
+fadeOutRight='fadeOutRight',fadeOutRightBig='fadeOutRightBig',fadeOutUp='fadeOutUp',fadeOutUpBig='fadeOutUpBig',fadeOutTopLeft='fadeOutTopLeft',
+fadeOutTopRight='fadeOutTopRight',fadeOutBottomRight='fadeOutBottomRight',fadeOutBottomLeft='fadeOutBottomLeft',
+flip='flip',flipInX='flipInX',flipInY='flipInY',flipOutX='flipOutX',flipOutY='flipOutY',
+lightSpeedInRight='lightSpeedInRight',lightSpeedInLeft='lightSpeedInLeft',lightSpeedOutRight='lightSpeedOutRight',
+lightSpeedOutLeft='lightSpeedOutLeft',rotateIn='rotateIn',rotateInDownLeft='rotateInDownLeft',rotateInDownRight='rotateInDownRight',
+rotateInUpLeft='rotateInUpLeft',rotateInUpRight='rotateInUpRight',rotateOut='rotateOut',rotateOutDownLeft='rotateOutDownLeft',
+rotateOutDownRight='rotateOutDownRight',rotateOutUpLeft='rotateOutUpLeft',rotateOutUpRight='rotateOutUpRight',
+hinge='hinge',jackInTheBox='jackInTheBox',rollIn='rollIn',rollOut='rollOut',
+zoomIn='zoomIn',zoomInDown='zoomInDown',zoomInLeft='zoomInLeft',zoomInRight='zoomInRight',zoomInUp='zoomInUp',
+zoomOut='zoomOut',zoomOutDown='zoomOutDown',zoomOutLeft='zoomOutLeft',zoomOutRight='zoomOutRight',zoomOutUp='zoomOutUp',
+slideInDown='slideInDown',slideInLeft='slideInLeft',slideInRight='slideInRight',slideInUp='slideInUp',
+slideOutDown='slideOutDown',slideOutLeft='slideOutLeft',slideOutRight='slideOutRight',slideOutUp='slideOutUp'};
+export enum ChartTypes{area='area',bar='bar',bubble='bubble',doughnut='doughnut',pie='pie',line='line',polarArea='polarArea',radar='radar',scatter='scatter'};
+export enum ChartLegendPositions{top='top',left='left',bottom='bottom',right='right',chartArea='chartArea'};
+export enum IconSizes{xxsmall='xxsmall',xsmall='xsmall',small='small',normal='normal',large='large',xlarge='xlarge',xxlarge='xxlarge'};
+export enum DropZoneQuadrants{center='center',topLeft='topLeft',bottomLeft='bottomLeft',topRight='topRight',bottomRight='bottomRight',
+top='top',bottom='bottom'};
+export enum BreadCrumbAlignments{centered='centered',right='right',left='left'};
+export enum BreadCrumbSeperators{arrow='arrow',button='button',dot='dot',succeeds='succeeds'};
+export enum ColumnContainerModifiers{mobile='mobile',desktop='desktop',gapless='gapless',multiline='multiline', 
+centered=' centered', borderleft=' borderleft',borderright='borderright',borderbottom='borderbottom',bordertop='bordertop',fullWidth='fullWidth',
+fullHeight='fullHeight'};
 export enum ColumnSizes {three_quarters="three-quarters",two_thirds="two-thirds",half="half",one_third="one-third",
 one_quarter="one-quarter",full="full",one_fifth="one-fifth",two_fifths="two-fifths",three_fifths="three-fifths",
 four_fifths="four-fifths",one="1",two="2",three="3",four="4",five="5",six="6",seven="7",eight="8",nine="9",
@@ -31,8 +42,8 @@ ten="10",eleven="11",twelve="12",narrow="narrow",wide="wide"};
 export enum ColumnOffsetSizes {three_quarters="three-quarters",two_thirds="two-thirds",half="half",one_third="one-third",
 one_quarter="one-quarter",one_fifth="one-fifth",two_fifths="two-fifths",three_fifths="three-fifths",four_fifths="four-fifths",
 one="1",two="2",three="3",four="4",five="5",six="6",seven="7",eight="8",nine="9",ten="10",eleven="11"}
-export enum BorderTypes {left,right,bottom,top,all};
-export enum TabAlignments{centered,right,left};
-export enum TabStyles{boxed,toggled,roundToggle};
+export enum BorderTypes{left='left',right='right',bottom='bottom',top='top',all='all'};
+export enum TabAlignments{centered='centered',right='right',left='left'};
+export enum TabStyles{boxed='boxed',toggled='toggled',roundToggle='roundToggle'};
 export enum TileSizes{one="1",two="2",three="3",four="4",five="5",six="6",seven="7",eight="8",nine="9",ten="10",eleven="11",twelve="12"};
-export enum TileTypes{parent,child,ancestor}
+export enum TileTypes{parent='parent',child='child',ancestor='ancestor'}

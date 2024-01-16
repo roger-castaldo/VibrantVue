@@ -13,14 +13,17 @@
 </template>
 
 <script lang="ts">
-    import { watch, computed, onMounted, ref } from 'vue';
+    import { watch, computed, onMounted, ref,inject } from 'vue';
     import Card from '../layout/card.vue';
     import ButtonRefresh from './button-refresh.vue';
     import 'jquery';
     import {ChartTypes,ChartLegendPositions} from '../enums';
+    import { useChartJS } from '../shared';
 </script>
 
 <script lang="ts" setup>
+    const chartURL = `${useChartJS(inject)}chart.umd.js`;
+
     const canvas = ref<any>(null);
 
     const props = withDefaults(defineProps<{
@@ -112,7 +115,7 @@
         if (props.tooltips != null && props.tooltips != undefined) {
             opts.tooltips = props.tooltips;
         }
-        const Chart = await import('chart');
+        const Chart = await import(chartURL);
         chart = new Chart(canvas.val.getContext('2d'), {
             type: (props.type == null ? 'line' : props.type),
             data: {

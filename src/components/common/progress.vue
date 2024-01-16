@@ -1,5 +1,5 @@
 <template>
-    <progress :class="`progress is-${props.size} is-${props.type}`" :value="props.value" :max="props.maximum">{percentage ? `${percentage}%` : null}</progress>
+    <progress :class="`progress is-${props.size} is-${props.type}`" :value="props.value" :max="props.maximum">{{percentage ? `${percentage}%` : null}}</progress>
 </template>
 
 <script lang="ts" setup>

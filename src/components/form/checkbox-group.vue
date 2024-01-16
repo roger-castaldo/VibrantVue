@@ -1,8 +1,8 @@
 ﻿<template>
     <div>
         <Promised v-bind:promise="Values">
-            <template v-slot="values:ListItemValue[]">
-                <template v-for="value in values">
+            <template v-slot="{response}">
+                <template v-for="value in (response as ListItemValue[])" v-if="response!==null">
                     <label class="checkbox is-block" v-show="!hiddenValues.some(v=>v===value.value.toString())">
                         <input type="checkbox" class="checkbox" v-bind:value="value.value" v-model="checks" v-bind:disabled="props.disabled||disabledValues.some(v=>v===value.value.toString())" />
                         {{Translator(value.label)}}
@@ -21,7 +21,7 @@
 
 <script lang="ts">
     import { ref, computed, watch, inject } from 'vue';
-    import {Promised} from '../common/Promised';
+    import Promised from '../common/Promised.vue';
     import {ListItemValue, ValueChangedEvent } from './types';
     import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
     import {Progress,Notification} from '../common/';

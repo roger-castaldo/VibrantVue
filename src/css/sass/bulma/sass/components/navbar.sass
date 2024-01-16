@@ -266,12 +266,10 @@ a.navbar-item,
         +overflow-touch
         max-height: calc(100vh - #{$navbar-height})
         overflow: auto
-  html,
-  body
-    &:has(.navbar.has-navbar-fixed-top-touch)
-      padding-top: $navbar-height
-    &:has(.navbar.has-navbar-fixed-bottom-touch)
-      padding-bottom: $navbar-height
+  &:has(.navbar.has-navbar-fixed-top-touch)
+    padding-top: $navbar-height
+  &:has(.navbar.has-navbar-fixed-bottom-touch)
+    padding-bottom: $navbar-height
 
 +from($navbar-breakpoint)
   .navbar,
@@ -411,16 +409,14 @@ a.navbar-item,
         box-shadow: 0 -2px 3px #{bulmaRgba($scheme-invert, 0.1)}
     &.is-fixed-top-desktop
       top: 0
-  html,
-  body
-    &.has-navbar-fixed-top-desktop
-      padding-top: $navbar-height
-    &.has-navbar-fixed-bottom-desktop
-      padding-bottom: $navbar-height
-    &.has-spaced-navbar-fixed-top
-      padding-top: calc(#{$navbar-height} + (#{$navbar-padding-vertical} * 2))
-    &.has-spaced-navbar-fixed-bottom
-      padding-bottom: calc(#{$navbar-height} + (#{$navbar-padding-vertical} * 2))
+  &.has-navbar-fixed-top-desktop
+    padding-top: $navbar-height
+  &.has-navbar-fixed-bottom-desktop
+    padding-bottom: $navbar-height
+  &.has-spaced-navbar-fixed-top
+    padding-top: calc(#{$navbar-height} + (#{$navbar-padding-vertical} * 2))
+  &.has-spaced-navbar-fixed-bottom
+    padding-bottom: calc(#{$navbar-height} + (#{$navbar-padding-vertical} * 2))
   // Hover/Active states
   a.navbar-item,
   .navbar-link

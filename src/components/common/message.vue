@@ -5,8 +5,9 @@
             <button class="delete" aria-label="delete" v-if="props.hasDelete"></button>
         </div>
         <div class="message-body">
-            {{props.message}}
-            <slot/>
+            <slot>
+                {{props.message}}
+            </slot>
         </div>
     </article>
 </template>

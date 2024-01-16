@@ -1,8 +1,8 @@
 ﻿<template>
     <div>
         <Promised v-bind:promise="Values">
-            <template v-slot="values:ListItemValue[]|null">
-                <template v-for="val in values" v-if="values!=null">
+            <template v-slot="{response}">
+                <template v-for="val in (response as ListItemValue[])" v-if="values!=null">
                     <label class="radio" v-show="!hiddenValues.some(v=>v===val.value.toString())">
                         <input type="radio" :name="props.name" :value="val.value" class="radio" :disabled="props.disabled||disabledValues.some(v=>v===val.value.toString())"/>
                         {{Translator(val.label)}}
@@ -22,7 +22,7 @@
 
 <script lang="ts">
     import { ref, computed, watch, inject } from 'vue';
-    import {Promised} from '../common/Promised';
+    import Promised from '../common/Promised.vue';
     import {ListItemValue, ValueChangedEvent } from './types';
     import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
     import {Progress,Notification} from '../common/';

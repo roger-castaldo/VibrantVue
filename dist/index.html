@@ -14,6 +14,16 @@
     </head>
     <body>
         <div id="main">
+            <Promised :promise="promise">
+                <template v-slot="{response}">
+                    {{response.toString()}}
+                </template>
+            </Promised>
+            <Promised :promise="promiseError">
+                <template v-slot="response">
+                    {{response}}
+                </template>
+            </Promised>
             <Message type="dark" :hasDelete="true" size="large">
                 This is a test, this is only a test
             </Message>
@@ -21,15 +31,24 @@
         </div>
         <script type="module">
             import { createApp,ref} from "vue";
-            import {Message,ComponentForm} from 'components';
+            import {Message,ComponentForm,Promised} from 'components';
 
             window.lst = createApp({
                 components: { 
                     Message,
-                    ComponentForm
+                    ComponentForm,
+                    Promised
                 },
                 data:()=>{
                     return {
+                        promise:new Promise((resolve)=>{
+                            console.log('promise invoked...');
+                            setTimeout(()=>resolve('testing'),15*1000)
+                        }),
+                        promiseError:new Promise((resolve,rejected)=>{
+                            console.log('rejected invoked...');
+                            setTimeout(()=>rejected('testing'),15*1000)
+                        }),
                         elements:[
   {
     "type": "text",
