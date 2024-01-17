@@ -1,0 +1,119 @@
+<template>
+    <nav :class="['navbar',props.fixedPosition]" role="navigation" :aria-label="props.ariaLabel">
+        <div class="navbar-brand">
+            <slot name="brand"/>
+            <a role="button" :class="['navbar-burger',(isActive?'is-active':'')]" aria-label="menu" :aria-expanded="(isActive?'true':'false')">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div :class="['navbar-menu',(isActive?'is-active':'')]">
+            <div class="navbar-start" v-if="props.startItems!==undefined">
+                <Promised :promise="props.startItems">
+                    <template v-slot="{response}">
+                        <NavBarMenuItem v-for="item in (response as tNavBarMenuItem[])"
+                            :active="item.active"
+                            :hasDropDown="item.childItems!==undefined && item.childItems.length>0"
+                            :title="item.title"
+                            :icon="item.icon"
+                            :href="item.href"
+                            @click="processClick(item.onClick)">
+                            <template v-if="item.childItems!==undefined && item.childItems.length>0">
+                                <NavBarMenuItem v-for="child in item.childItems"
+                                    :active="child.active"
+                                    :hasDropDown="false"
+                                    :title="child.title"
+                                    :icon="child.icon"
+                                    :href="child.href"
+                                    @click="processClick(child.onClick)"/>
+                            </template>
+                        </NavBarMenuItem>
+                    </template>
+                    <template #pending>
+                        <div style="width:100px;">
+                            <Progress :size="Sizes.small"/>
+                        </div>
+                    </template>
+                </Promised>
+            </div>
+            <div class="navbar-end" v-if="props.endItems!==undefined">
+                <Promised :promise="props.endItems">
+                    <template v-slot="{response}">
+                        <NavBarMenuItem v-for="item in (response as tNavBarMenuItem[])"
+                            :active="item.active"
+                            :hasDropDown="item.childItems!==undefined && item.childItems.length>0"
+                            :title="item.title"
+                            :icon="item.icon"
+                            :href="item.href"
+                            @click="processClick(item.onClick)">
+                            <template v-if="item.childItems!==undefined && item.childItems.length>0">
+                                <NavBarMenuItem v-for="child in item.childItems"
+                                    :active="child.active"
+                                    :hasDropDown="false"
+                                    :title="child.title"
+                                    :icon="child.icon"
+                                    :href="child.href"
+                                    @click="processClick(child.onClick)"/>
+                            </template>
+                        </NavBarMenuItem>
+                    </template>
+                    <template #pending>
+                        <div style="width:100px;">
+                            <Progress :size="Sizes.small"/>
+                        </div>
+                    </template>
+                </Promised>
+            </div>
+        </div>
+    </nav>
+</template>
+
+<script lang="ts">
+    import 'jquery';
+    import {onMounted, withDefaults,ref} from 'vue';
+    import { FixedNavBarPositions,Sizes } from '../enums';
+    import type { NavBarMenuItem as tNavBarMenuItem } from './typeDefinitions';
+    import Promised from './Promised.vue';
+    import NavBarMenuItem from './navbar-item.vue'
+    import Progress from './progress.vue';
+</script>
+
+<script lang="ts" setup>
+
+    const props = withDefaults(defineProps<{
+        startItems?:Promise<tNavBarMenuItem[]>|tNavBarMenuItem[],
+        endItems?:Promise<tNavBarMenuItem[]>|tNavBarMenuItem[],
+        fixedPosition?:FixedNavBarPositions|null,
+        ariaLabel?:string
+    }>(),{
+        fixedPosition:null,
+        ariaLabel:'navigation'
+    });
+
+    const isActive = ref<boolean>(false);
+
+    const processClick = (onClick?:()=>void) : void =>{
+        isActive.value=false;
+        if (onClick!==undefined){
+            onClick();
+        }
+    };
+
+    onMounted(()=>{
+        if (props.fixedPosition){
+            switch(props.fixedPosition){
+                case FixedNavBarPositions.top:
+                    if (!$(document.body).hasClass('has-navbar-fixed-top')){
+                        $(document.body).addClass('has-navbar-fixed-top')
+                    }
+                break;
+                case FixedNavBarPositions.bottom:
+                    if (!$(document.body).hasClass('has-navbar-fixed-bottom')){
+                        $(document.body).addClass('has-navbar-fixed-bottom')
+                    }
+                break;
+            }
+        }
+    });
+</script>

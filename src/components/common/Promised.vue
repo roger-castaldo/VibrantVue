@@ -17,7 +17,7 @@
   import translate from '../../messages/messages.js';
 
   const props = withDefaults(defineProps<{
-    promise:Promise<unknown|null>|null|undefined,
+    promise:Promise<unknown|null>|unknown|null|undefined,
     pendingDelay:number|string
   }>(),{
     pendingDelay:200

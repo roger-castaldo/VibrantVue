@@ -22,20 +22,30 @@ import {
    * @param pendingDelay - optional delay to wait before displaying pending
    */
   export function usePromise<T = unknown>(
-    promise: MaybeRef<Promise<T> | null | undefined>,
+    promise: MaybeRef<Promise<T> | T | null | undefined>,
     pendingDelay: MaybeRef<number | string> = 200
   ): UsePromiseResult<T> {
+
     const isRejected = ref(false)
     const isResolved = ref(false)
     const isPending = computed(() => !isRejected.value && !isResolved.value)
     const isDelayElapsed = ref(false)
     const error = ref<Error | undefined | null>()
     const data = ref<T | null | undefined>()
+    const wrappedPromise = computed<Promise<T>>(()=>{
+      if (promise!==undefined && promise!==null){
+        let tmp = toValue(promise);
+        return tmp instanceof Promise ? 
+          tmp : 
+          new Promise<T>((resolve)=>resolve(tmp));
+      }
+      return null;
+    });
   
     let timerId: ReturnType<typeof setTimeout> | undefined | null
   
     watch(
-      () => toValue(promise),
+      () => toValue(wrappedPromise),
       (newPromise) => {
         isRejected.value = false
         isResolved.value = false
@@ -61,14 +71,14 @@ import {
         newPromise
           .then((newData) => {
             // ensure we are dealing with the same promise
-            if (newPromise === toValue(promise)) {
-              data.value = newData
+            if (newPromise === toValue(wrappedPromise)) {
+              data.value = toValue(newData);
               isResolved.value = true
             }
           })
           .catch((err) => {
             // ensure we are dealing with the same promise
-            if (newPromise === toValue(promise)) {
+            if (newPromise === toValue(wrappedPromise)) {
               error.value = err
               isRejected.value = true
             }
