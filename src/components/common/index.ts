@@ -24,9 +24,12 @@ import Pagination from './pagination.vue';
 import Promised from './Promised.vue';
 import Progress from './progress.vue';
 import NavBar from './navbar.vue';
+import Menu from './menu.vue';
+import MenuLabel from './menu-label.vue';
+import MenuList from './menu-list.vue';
 
 
 export { Animation,Button,ButtonAdd,ButtonCancel,ButtonDelete,ButtonDisable,ButtonDownload,
 ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonUpload,
 Chart,CheckMark,DynamicSlot,Filter,Icon,Message,Notification,PageNotification,Pagination,Promised,Progress,
-NavBar};
+NavBar,Menu,MenuLabel,MenuList};

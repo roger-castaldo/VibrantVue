@@ -1,12 +1,13 @@
 import { MaybeRef } from "vue";
 
-type NavBarMenuItem = {
+export interface MenuItem {
     title:MaybeRef<string>|string,
     active?:boolean,
     icon?:string,
-    childItems?:NavBarMenuItem[],
     href?:string,
     onClick?:()=>void
-};
+}
 
-export type {NavBarMenuItem};
+export interface ParentMenuItem extends MenuItem {
+    childItems?:MenuItem[]
+};

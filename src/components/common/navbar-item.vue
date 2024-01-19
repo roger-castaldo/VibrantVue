@@ -1,33 +1,37 @@
 <template>
-    <a :class="['navbar-item',(props.active?'is-active':''),(props.hasDropDown?'has-dropdown is-hoverable':'')]" :href="props.href" @click="emit('click')">
-        <span class="icon is-small" v-if="props.icon!==undefined && props.icon!==null">
-            <Icon :icon="props.icon"/>
+    <a :class="['navbar-item',(props.active?'is-active':''),(props.childItems!==undefined?'has-dropdown is-hoverable':'')]" :href="props.href" @click="processClick">
+        <span v-if="props.icon!==undefined && props.icon!==null" class="icon-text">
+            <span class="icon">
+                <Icon :icon="props.icon"/>
+            </span>
+            <span>{{ props.title }}</span>
         </span>
-        <span>{{props.title}}</span>
-        <div class="navbar-dropdown" v-if="props.hasDropDown">
-            <slot/>
+        <span v-else>{{ props.title }}</span>
+        <div class="navbar-dropdown" v-if="props.childItems!==undefined">
+            <navbar-item v-for="child in props.childItems" v-bind="child" @itemClicked="emit('itemClicked')"/>
         </div>
     </a>
 </template>
 
 <script lang="ts">
-    import { MaybeRef } from 'vue';
+    import { ParentMenuItem } from './typeDefinitions';
     import Icon from './icon.vue';
+
 </script>
 
 <script lang="ts" setup>
-    const props = withDefaults(defineProps<{
-        title:MaybeRef<string>|string,
-        active?:boolean,
-        icon?:string,
-        hasDropDown?:boolean,
-        href?:string
-    }>(),{
-        active:false,
-        hasDropDown:false
+    const props = withDefaults(defineProps<ParentMenuItem>(),{
+        active:false
     });
 
+    const processClick = ():void=>{
+        emit('itemClicked');
+        if (props.onClick!==undefined){
+            props.onClick();
+        }
+    };
+
     const emit = defineEmits<{
-        click:[]
+        itemClicked:[]
     }>();
 </script>

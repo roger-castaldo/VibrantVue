@@ -12,23 +12,9 @@
             <div class="navbar-start" v-if="props.startItems!==undefined">
                 <Promised :promise="props.startItems">
                     <template v-slot="{response}">
-                        <NavBarMenuItem v-for="item in (response as tNavBarMenuItem[])"
-                            :active="item.active"
-                            :hasDropDown="item.childItems!==undefined && item.childItems.length>0"
-                            :title="item.title"
-                            :icon="item.icon"
-                            :href="item.href"
-                            @click="processClick(item.onClick)">
-                            <template v-if="item.childItems!==undefined && item.childItems.length>0">
-                                <NavBarMenuItem v-for="child in item.childItems"
-                                    :active="child.active"
-                                    :hasDropDown="false"
-                                    :title="child.title"
-                                    :icon="child.icon"
-                                    :href="child.href"
-                                    @click="processClick(child.onClick)"/>
-                            </template>
-                        </NavBarMenuItem>
+                        <NavBarMenuItem v-for="item in (response as ParentMenuItem[])"
+                            v-bind="item"
+                            @itemClicked="isActive=false"/>
                     </template>
                     <template #pending>
                         <div style="width:100px;">
@@ -40,23 +26,9 @@
             <div class="navbar-end" v-if="props.endItems!==undefined">
                 <Promised :promise="props.endItems">
                     <template v-slot="{response}">
-                        <NavBarMenuItem v-for="item in (response as tNavBarMenuItem[])"
-                            :active="item.active"
-                            :hasDropDown="item.childItems!==undefined && item.childItems.length>0"
-                            :title="item.title"
-                            :icon="item.icon"
-                            :href="item.href"
-                            @click="processClick(item.onClick)">
-                            <template v-if="item.childItems!==undefined && item.childItems.length>0">
-                                <NavBarMenuItem v-for="child in item.childItems"
-                                    :active="child.active"
-                                    :hasDropDown="false"
-                                    :title="child.title"
-                                    :icon="child.icon"
-                                    :href="child.href"
-                                    @click="processClick(child.onClick)"/>
-                            </template>
-                        </NavBarMenuItem>
+                        <NavBarMenuItem v-for="item in (response as ParentMenuItem[])"
+                            v-bind="item"
+                            @itemClicked="isActive=false"/>
                     </template>
                     <template #pending>
                         <div style="width:100px;">
@@ -73,7 +45,7 @@
     import 'jquery';
     import {onMounted, withDefaults,ref} from 'vue';
     import { FixedNavBarPositions,Sizes } from '../enums';
-    import type { NavBarMenuItem as tNavBarMenuItem } from './typeDefinitions';
+    import type { ParentMenuItem } from './typeDefinitions';
     import Promised from './Promised.vue';
     import NavBarMenuItem from './navbar-item.vue'
     import Progress from './progress.vue';
@@ -82,8 +54,8 @@
 <script lang="ts" setup>
 
     const props = withDefaults(defineProps<{
-        startItems?:Promise<tNavBarMenuItem[]>|tNavBarMenuItem[],
-        endItems?:Promise<tNavBarMenuItem[]>|tNavBarMenuItem[],
+        startItems?:Promise<ParentMenuItem[]>|ParentMenuItem[],
+        endItems?:Promise<ParentMenuItem[]>|ParentMenuItem[],
         fixedPosition?:FixedNavBarPositions|null,
         ariaLabel?:string
     }>(),{
