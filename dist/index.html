@@ -31,18 +31,38 @@
                 <Component-Form :elements="elements" :translate="translate" v-on:value_changed="valueChanged"/>
             </section>
 
+            <section>
+                <Card icon="user">
+                    <template #header>
+                        <p class="card-header-title">
+                            Card header
+                          </p>
+                    </template>
+                    <template #content>
+                        <div class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                            <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
+                            <br>
+                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                          </div>
+                    </template>
+                </Card>
+            </section>
             <Pagination :currentpage="10" :totalpages="20"/>
+
+            
         </div>
         <script type="module">
             import { createApp,ref} from "vue";
-            import {Message,ComponentForm,Promised,Pagination} from 'components';
+            import {Message,ComponentForm,Promised,Pagination,Card} from 'components';
 
             window.lst = createApp({
                 components: { 
                     Message,
                     ComponentForm,
                     Promised,
-                    Pagination
+                    Pagination,
+                    Card
                 },
                 data:()=>{
                     return {

@@ -1,0 +1,32 @@
+$icon-height:48px;
+
+.card, .modal-card {
+    .card-icon{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $card-header-color;
+        height: $icon-height;
+        margin-bottom: 0 - calc($icon-height / 2);
+        .card-icon-wrapper{
+            height: $icon-height;
+            padding-top: calc($icon-height / 2) - 4px;
+            width: $icon-height;
+            text-align: center;
+            background-color: $card-background-color;
+            border-radius: 50%;
+            box-shadow: $card-shadow;
+        }
+    }
+    &:has(.card-header-title.is-centered){
+        .card-icon{
+            margin-bottom: 0 - calc($icon-height / 2) + 8px;
+        }
+    }
+}
+
+.modal-card {
+    .card-icon{
+        z-index:99;
+    }
+}

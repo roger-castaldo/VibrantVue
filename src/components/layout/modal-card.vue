@@ -2,6 +2,11 @@
     <div class="modal" v-bind:class="{'is-active':props.show}">
         <div class="modal-background"></div>
         <div class="modal-card" v-bind:class="classes">
+            <div class="card-icon" v-if="props.icon!==null">
+                <div class="card-icon-wrapper">
+                    <Icon :icon="props.icon" :size="IconSizes.xxlarge"/>
+                </div>
+            </div>
             <div class="modal-card-head">
                 <slot name="header" v-bind="headerProps" />
                 <button v-if="hasClose" class="delete" aria-label="close" v-on:click="emit('close')"></button>
@@ -18,15 +23,20 @@
 
 <script lang="ts" setup>
     import {computed} from 'vue';
+    import Icon from '../common/icon.vue';
+    import { IconSizes } from '../enums';
     
-    const props = defineProps<{
+    const props = withDefaults(defineProps<{
         show?:boolean,
         hasClose?:boolean,
         fullWidth?:boolean,
         fullHeight?:boolean,
         maxWidth?:boolean,
         maxHeight?:boolean
-    }>();
+        icon?:string
+    }>(),{
+        icon:null
+    });
     
     const emit = defineEmits<{close}>();
 

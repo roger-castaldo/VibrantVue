@@ -1,5 +1,10 @@
 ﻿<template>
     <div class="card" v-bind:class="{'is-fullwidth':props.fullWidth,'is-fullheight':props.fullHeight}">
+        <div class="card-icon" v-if="props.icon!==null">
+            <div class="card-icon-wrapper">
+                <Icon :icon="props.icon" :size="IconSizes.xxlarge"/>
+            </div>
+        </div>
         <div class="card-header">
             <slot name="header" v-bind="headerProps"/>
         </div>
@@ -13,10 +18,19 @@
 </template>
 
 <script lang="ts" setup>
-    const props = defineProps<{
+    import Icon from '../common/icon.vue';
+    import { IconSizes } from '../enums';
+
+    const props = withDefaults(defineProps<{
         fullWidth?:boolean,
-        fullHeight?:boolean
-    }>();
+        fullHeight?:boolean,
+        icon?:string
+    }>(),
+    {
+        fullHeight:false,
+        fullWidth:false,
+        icon:null
+    });
 
     const footerProps = {
         addonclass: 'card-footer-item'

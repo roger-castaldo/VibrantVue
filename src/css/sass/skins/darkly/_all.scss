@@ -111,6 +111,9 @@
 
     $map:define-variable("panel-heading-background-color",$panel-heading-background-color,$map);
 
+    $map:define-variable("card-border-color",$card-border-color,$map);
+    $map:define-variable("card-background-color",$card-background-color,$map);
+
     @include output-skin-map($map);
 
     @import "../../bulma/sass/colors.scss";
