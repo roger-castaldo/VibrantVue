@@ -49,3 +49,6 @@ export enum TileSizes{one="1",two="2",three="3",four="4",five="5",six="6",seven=
 export enum TileTypes{parent='parent',child='child',ancestor='ancestor'};
 export enum FixedNavBarPositions{top='is-fixed-top',bottom='is-fixed-bottom'};
 export enum FixedMenuPositions{left='left',right='right'};
+export enum BadgePositiions{topLeft='top-left',top='top',topRight='top-right',right='right',bottomRight='bottom-right',bottom='bottom',bottomLeft='bottom-left',left='left'};
+export enum ToolTipPositions{left='left',right='right',bottom='bottom',top='top'};
+export enum ToolTipTextAlignments{left='left',centered='centered',right='right'};

@@ -48,13 +48,24 @@
                     </template>
                 </Card>
             </section>
+            <section>
             <Pagination :currentpage="10" :totalpages="20"/>
-
-            
+        </section>
+        <section>
+            <Menu>
+                <Menu-List>
+                    <Menu-Entry :active="true" title="Tasks" icon="list-check" href="#/pages/tasks">
+                        <Tag :light="true" type="primary" :rounded="true" class="is-pulled-right">
+                            {{ActiveTaskCount}}
+                        </Tag>
+                    </Menu-Entry>
+                </Menu-List>
+            </Menu>
+        </section>
         </div>
         <script type="module">
             import { createApp,ref} from "vue";
-            import {Message,ComponentForm,Promised,Pagination,Card} from 'components';
+            import {Message,ComponentForm,Promised,Pagination,Card,Menu,MenuList,MenuEntry,Tag} from 'components';
 
             window.lst = createApp({
                 components: { 
@@ -62,10 +73,15 @@
                     ComponentForm,
                     Promised,
                     Pagination,
-                    Card
+                    Card,
+                    Menu,
+                    MenuList,
+                    MenuEntry,
+                    Tag
                 },
                 data:()=>{
                     return {
+                        ActiveTaskCount:12,
                         promise:new Promise((resolve)=>{
                             console.log('promise invoked...');
                             setTimeout(()=>resolve('testing'),15*1000)

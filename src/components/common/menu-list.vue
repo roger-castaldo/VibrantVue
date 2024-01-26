@@ -1,17 +1,9 @@
 <template>
     <ul class="menu-list">
-        <Promised :promise="props.items">
+        <Promised :promise="props.items" v-if="props.items!==null">
             <template v-slot="{response}">
                 <li v-for="item in (response as ParentMenuItem[])">
-                    <a :href="item.href" @click="processClick(item)" :class="(item.active?'is-active':'')">
-                        <span v-if="item.icon!==undefined && item.icon!==null" class="icon-text">
-                            <span class="icon">
-                                <Icon :icon="item.icon"/>
-                            </span>
-                            <span>{{ item.title }}</span>
-                        </span>
-                        <span v-else>{{ item.title }}</span>
-                    </a>
+                    <MenuEntry v-bind="item"/>
                     <menu-list v-if="item.childItems!==undefined" :items="item.childItems"/>
                 </li>
             </template>
@@ -21,6 +13,7 @@
                 </li>
             </template>
         </Promised>
+        <slot/>
     </ul>
 </template>
 <script lang="ts" setup>
@@ -29,9 +22,10 @@
     import Icon from './icon.vue';
     import Progress from './progress.vue';
     import Promised from './Promised.vue';
+    import MenuEntry from './menu-entry.vue';
 
     const props = defineProps<{
-        items:Promise<ParentMenuItem[]>|ParentMenuItem[]
+        items:Promise<ParentMenuItem[]>|ParentMenuItem[]|null
     }>();
 
     const processClick = (item:ParentMenuItem):void=>{

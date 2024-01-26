@@ -27,9 +27,13 @@ import NavBar from './navbar.vue';
 import Menu from './menu.vue';
 import MenuLabel from './menu-label.vue';
 import MenuList from './menu-list.vue';
-
+import MenuEntry from './menu-entry.vue';
+import Badge from './badge.vue';
+import ToolTip from './tooltip.vue';
+import Tag from './tag.vue';
+import Tags from './tags.vue';
 
 export { Animation,Button,ButtonAdd,ButtonCancel,ButtonDelete,ButtonDisable,ButtonDownload,
 ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonUpload,
 Chart,CheckMark,DynamicSlot,Filter,Icon,Message,Notification,PageNotification,Pagination,Promised,Progress,
-NavBar,Menu,MenuLabel,MenuList};
+NavBar,Menu,MenuLabel,MenuList,MenuEntry,Badge,ToolTip,Tag,Tags};

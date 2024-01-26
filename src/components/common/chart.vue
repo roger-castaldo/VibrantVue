@@ -19,10 +19,11 @@
     import 'jquery';
     import {ChartTypes,ChartLegendPositions} from '../enums';
     import { useChartJS } from '../shared';
+import { loadNonEs6Module } from '../utilities';
 </script>
 
 <script lang="ts" setup>
-    const chartURL = `${useChartJS(inject)}chart.umd.js`;
+    const chartURL = `${useChartJS(inject)}chart.umd.min.js`;
 
     const canvas = ref<any>(null);
 
@@ -115,8 +116,8 @@
         if (props.tooltips != null && props.tooltips != undefined) {
             opts.tooltips = props.tooltips;
         }
-        const Chart = await import(chartURL);
-        chart = new Chart(canvas.val.getContext('2d'), {
+        const { Chart } = await loadNonEs6Module(chartURL,['Chart']);
+        chart = new Chart(canvas.value.getContext('2d'), {
             type: (props.type == null ? 'line' : props.type),
             data: {
                 datasets: props.datasets,

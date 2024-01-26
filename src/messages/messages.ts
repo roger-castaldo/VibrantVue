@@ -3,6 +3,7 @@ import * as filter from './filter/messages.json';
 import * as pagination from './pagination/messages.json';
 import * as date from './date/messages.json';
 import * as form from './form/messages.json';
+import * as wizard from './wizard/messages.json';
 import { ComputedRef } from 'vue';
 
 const messages = {
@@ -10,7 +11,8 @@ const messages = {
     Filter:filter,
     Pagination:pagination,
     Date:date,
-    Form:form
+    Form:form,
+    Wizard:wizard
 };
 
 export default (message:string,language:ComputedRef<string>):string=>{

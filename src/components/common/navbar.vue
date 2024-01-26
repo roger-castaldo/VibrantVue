@@ -2,7 +2,7 @@
     <nav :class="['navbar',props.fixedPosition]" role="navigation" :aria-label="props.ariaLabel">
         <div class="navbar-brand">
             <slot name="brand"/>
-            <a role="button" :class="['navbar-burger',(isActive?'is-active':'')]" aria-label="menu" :aria-expanded="(isActive?'true':'false')">
+            <a role="button" :class="['navbar-burger',(isActive?'is-active':'')]" aria-label="menu" :aria-expanded="(isActive?'true':'false')" @click="isActive=!isActive">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
