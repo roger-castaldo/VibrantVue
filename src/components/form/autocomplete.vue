@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div  v-if="!props.disabled">
-                <span ref="contentSpan" v-bind:placeholder="Translator(props.title)" contenteditable v-show="selected.length<props.limit || props.limit==null" v-bind:class="classes" v-on:focus="classes='is-focused';" v-on:blur="classes=null;" v-on:keydown="keyPress" v-on:paste="paste"/>
+                <span ref="contentSpan" v-bind:placeholder="Translator(props.title??'')" contenteditable v-show="selected.length<props.limit || props.limit==null" v-bind:class="classes" v-on:focus="classes='is-focused';" v-on:blur="classes=null;" v-on:keydown="keyPress" v-on:paste="paste"/>
             </div>
         </div>
         <div class="dropdown" v-bind:class="{'is-active':results!=null&&searchString!=null&&searchString!=''}">

@@ -25,7 +25,7 @@ import { useLanguage } from '../shared';
     const Language = useLanguage(inject);
     const Properties = computed(()=>{
         return {
-            Title:translate('Button.Add',Language),
+            title:translate('Button.Add',Language),
             icon:'plus',
             type:ColorTypes.primary,
             disabled:props.disabled,

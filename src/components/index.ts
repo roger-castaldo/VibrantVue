@@ -7,10 +7,12 @@ import * as skin from '../css/skins';
 import * as enums from './enums';
 import {ValueChangedEvent,ListItemValue,SelectListItemValue,FormInputType,TranslateMethod} from './form/typesDefinitions';
 import * as utilities from './utilities';
+import * as extended from './extended';
+import {AutoCompleteEntry} from './extended/typeDefinitions';
 
 export const {Animation,Button,ButtonAdd,ButtonCancel,ButtonDelete,ButtonDisable,ButtonDownload,
     ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonUpload,
-    Chart,CheckMark,DynamicSlot,Filter,Icon,Message,Notification,PageNotification,Pagination,Promised,
+    CheckMark,DynamicSlot,Filter,Icon,Message,Notification,PageNotification,Pagination,Promised,
     Progress,NavBar,Menu,MenuLabel,MenuList,MenuEntry,ToolTip,Badge,Tag,Tags} = common;
 export const {DraggableItem,DropZone,Sortable} = dragging;
 export const {AutoComplete,CheckboxGroup,Checkbox,DateField,ComponentForm,FullEditor,
@@ -24,4 +26,5 @@ export const {ColorTypes,NoticeTypes,Sizes,AnimationSpeeds,AnimationTypes,IconSi
     ColumnOffsetSizes,BorderTypes,TabAlignments,TabStyles,TileSizes,TileTypes,FixedNavBarPositions,FixedMenuPositions,
     BadgePositiions,ToolTipPositions,ToolTipTextAlignments} = enums;
 export const {loadNonEs6Module} = utilities;
-export type {ValueChangedEvent,ListItemValue,SelectListItemValue,FormInputType,TranslateMethod,MenuItem,ParentMenuItem};
+export const {Chart,CodeWriter} = extended;
+export type {ValueChangedEvent,ListItemValue,SelectListItemValue,FormInputType,TranslateMethod,MenuItem,ParentMenuItem,AutoCompleteEntry};

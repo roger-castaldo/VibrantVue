@@ -25,7 +25,7 @@
     const Language = useLanguage(inject);
     const Properties = computed(()=>{
         return {
-            Title:translate('Button.Delete',Language),
+            title:translate('Button.Delete',Language),
             icon:'trash-alt',
             type:ColorTypes.danger,
             disabled:props.disabled,

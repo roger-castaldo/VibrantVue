@@ -12,7 +12,6 @@ import ButtonPrint from './button-print.vue';
 import ButtonRefresh from './button-refresh.vue';
 import ButtonSave from './button-save.vue';
 import ButtonUpload from './button-upload.vue';
-import Chart from './chart.vue';
 import CheckMark from './check-mark.vue'
 import DynamicSlot from './dynamic-slot.vue';
 import Filter from './filter.vue';
@@ -35,5 +34,5 @@ import Tags from './tags.vue';
 
 export { Animation,Button,ButtonAdd,ButtonCancel,ButtonDelete,ButtonDisable,ButtonDownload,
 ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonUpload,
-Chart,CheckMark,DynamicSlot,Filter,Icon,Message,Notification,PageNotification,Pagination,Promised,Progress,
+CheckMark,DynamicSlot,Filter,Icon,Message,Notification,PageNotification,Pagination,Promised,Progress,
 NavBar,Menu,MenuLabel,MenuList,MenuEntry,Badge,ToolTip,Tag,Tags};

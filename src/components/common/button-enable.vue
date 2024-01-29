@@ -25,7 +25,7 @@
     const Language = useLanguage(inject);
     const Properties = computed(()=>{
         return {
-            Title:translate('Button.Enable',Language),
+            title:translate('Button.Enable',Language),
             icon:'check',
             type:ColorTypes.primary,
             disabled:props.disabled,

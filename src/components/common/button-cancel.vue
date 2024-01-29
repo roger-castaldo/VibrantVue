@@ -25,7 +25,7 @@
     const Language = useLanguage(inject);
     const Properties = computed(()=>{
         return {
-            Title:translate('Button.Cancel',Language),
+            title:translate('Button.Cancel',Language),
             icon:'window-close',
             type:ColorTypes.danger,
             disabled:props.disabled,

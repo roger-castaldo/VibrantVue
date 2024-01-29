@@ -26,6 +26,9 @@ export const useAnimation = (inject: (<T>(string,T?)=> T | undefined)) : string 
 export const useChartJS = (inject: (<T>(string,T?)=> T | undefined)) : string => 
     inject<string>('ChartJSCDN','https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/');
 
+export const useAceJS = (inject: (<T>(string,T?)=> T | undefined)) : string => 
+    inject<string>('AceJSCDN','https://cdn.jsdelivr.net/npm/ace-builds@1.32.3/');
+
 
 
 
