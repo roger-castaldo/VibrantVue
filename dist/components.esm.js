@@ -4977,7 +4977,7 @@ const So = /* @__PURE__ */ k({
         case "select":
           f = Oo;
           break;
-        case "Switch":
+        case "switch":
           f = Fo;
           break;
         case "text":
@@ -5123,12 +5123,11 @@ const Eu = {
         ref_for: !0,
         ref: (f) => S(r)[V] = f,
         inputs: w,
-        transte: t.translate,
         key: V,
         onValue_changed: v[0] || (v[0] = (f) => s("value_changed", f)),
         onButton_clicked: v[1] || (v[1] = (f) => s("button_clicked", f)),
         disabled: _.disabled
-      }, null, 8, ["inputs", "transte", "disabled"]))), 128)) : T("", !0)
+      }, null, 8, ["inputs", "disabled"]))), 128)) : T("", !0)
     ]));
   }
 }), Iu = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({

@@ -1,5 +1,6 @@
 ﻿<template>
-    <div class="field"><input type="checkbox" class="switch is-rounded" :id="props.name" :name="props.name" v-model="isChecked" :disabled="props.disabled"/>
+    <div class="field">
+        <input type="checkbox" class="switch is-rounded" :id="props.name" :name="props.name" v-model="isChecked" :disabled="props.disabled"/>
         <label v-bind:for="name">
             {{Translator(props.label)}}
             <span class="help is-danger" v-if="props.required">*</span>
@@ -10,7 +11,7 @@
 <script lang="ts">
     import { inject, ref, watch } from 'vue';
     import {commonFieldProps, useTranslator} from './common';
-import { ValueChangedEvent } from './types';
+    import { ValueChangedEvent } from './typesDefinitions';
 
     interface fieldProps extends commonFieldProps{
         label:string;

@@ -41,7 +41,7 @@
     import Textarea from './textarea.vue';
     import Time from './time.vue';
     import Subform from './subform.vue';
-    import { FormInputType, ValueChangedEvent } from './types';
+    import { FormInputType, ValueChangedEvent } from './typesDefinitions';
     import { translateFieldProps, useTranslator } from './common';
 
     const LABELLED_FIELDS = ['autocomplete', 'checkbox-group', 'date', 'number', 'radio-group', 'select', 'text', 'textarea', 'time', 'file_download', 'subform', 'textarea-code'];
@@ -86,7 +86,7 @@
             case 'paragraph': result = Paragraph; break;
             case 'radio-group': result = RadioGroup; break;
             case 'select': result = Select; break;
-            case 'Switch': result = Switch; break;
+            case 'switch': result = Switch; break;
             case 'text': result = Text; break;
             case 'textarea': result = Textarea; break;
             case 'time': result = Time; break;
