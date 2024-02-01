@@ -33,13 +33,13 @@
         editor.setValue((value == null ? '' : value));
     };
 
-    watch([props.readonly], (val) => {
+    watch(()=>props.readonly, (val) => {
         editor.setReadOnly((val == null || val == undefined ? false : val));
     });
-    watch([props.value], (val) => {
+    watch(()=>props.value, (val) => {
         setValue(val);
     });
-    watch([props.language], (val) => {
+    watch(()=>props.language, (val) => {
         editor.getSession().setMode(val);
     });
 

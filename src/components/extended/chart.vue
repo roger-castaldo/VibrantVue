@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-    import { watch, computed, onMounted, ref,inject } from 'vue';
+    import { watch, computed, onMounted, ref,inject,MaybeRef } from 'vue';
     import Card from '../layout/card.vue';
     import ButtonRefresh from '../common/button-refresh.vue';
     import 'jquery';
@@ -62,11 +62,11 @@ import { loadNonEs6Module } from '../utilities';
         return ret;
     });
 
-    watch([props.type], (val) => {
+    watch(()=>props.type, (val) => {
         if (chart != null)
             chart.type = (val == null ? 'line' : val);
     });
-    watch([props.labels],
+    watch(()=>props.labels,
         (value) => {
             if (chart != null) {
                 chart.data.labels = value;
@@ -77,7 +77,7 @@ import { loadNonEs6Module } from '../utilities';
         },
         { deep: true }
     );
-    watch([props.datasets],
+    watch(()=>props.datasets,
         (value) => {
             if (chart != null) {
                 chart.data.datasets = value;

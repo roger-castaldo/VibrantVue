@@ -6,7 +6,7 @@
     import { watch, onMounted, onUnmounted, ref,inject } from 'vue';
     import { css } from '../utilities';
     import {coreFieldProps} from './common';
-    import { ValueChangedEvent } from './types';
+    import { ValueChangedEvent } from './typesDefinitions';
     import { useSummerNote } from '../shared';
 </script>
 
@@ -22,7 +22,7 @@
          value_changed:[data:ValueChangedEvent]
     }>();
 
-    watch([props.disabled],(val)=>{
+    watch(()=>props.disabled,(val)=>{
         if (snote.value!=null)
             $(snote.value).summernote(val ? 'disable' : 'enable');
     });

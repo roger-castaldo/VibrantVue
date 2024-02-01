@@ -33,7 +33,7 @@
         return (props.filter == null || props.filter == undefined ? null : new RegExp('^' + props.filter.replaceAll('.', '\\.').replaceAll('*', '.+') + '$'));
     });
 
-    watch([props.url,props.filter], async () => {
+    watch(()=>[props.url,props.filter], async () => {
         components.value = await reload(props.url, props.sortMethod, FilterReg);
     });
 

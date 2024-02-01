@@ -1,29 +1,34 @@
-import * as button from './button/messages.json';
-import * as filter from './filter/messages.json';
-import * as pagination from './pagination/messages.json';
-import * as date from './date/messages.json';
-import * as form from './form/messages.json';
-import * as wizard from './wizard/messages.json';
+import button from './button/messages.json?raw';
+import filter from './filter/messages.json?raw';
+import pagination from './pagination/messages.json?raw';
+import date from './date/messages.json?raw';
+import form from './form/messages.json?raw';
+import wizard from './wizard/messages.json?raw';
 import { ComputedRef } from 'vue';
 
 const messages = {
-    Button:button,
-    Filter:filter,
-    Pagination:pagination,
-    Date:date,
-    Form:form,
-    Wizard:wizard
+    Button:JSON.parse(button),
+    Filter:JSON.parse(filter),
+    Pagination:JSON.parse(pagination),
+    Date:JSON.parse(date),
+    Form:JSON.parse(form),
+    Wizard:JSON.parse(wizard)
 };
 
 export default (message:string,language:ComputedRef<string>):string=>{
-    let obj = messages[message.substring(0,message.indexOf('.'))];
+    let split = message.split('.');
+    let obj = messages[split[0]];
     if (obj!==undefined){
         if (obj[language.value]===undefined){
             obj = obj['en'];
         }else{
             obj=obj[language.value];
         }
-        obj = obj[message.substring(message.indexOf('.')+1)];
+        let idx = 1;
+        while(obj!==undefined && idx<split.length){
+            obj = obj[split[idx]];
+            idx++;
+        }
     }
     if (obj===undefined){
         throw `unable to locate message ${message}`;
