@@ -6,34 +6,22 @@
     import translate from '../../messages/messages';
     import Button from './button.vue';
     import {computed,inject} from 'vue';
-    import {ColorTypes,Sizes} from '../enums';
+    import {ColorTypes} from '../enums';
     import { useLanguage } from '../shared';
+import { IButtonBasicProperties,IButtonProperties } from './typeDefinitions';
 </script>
 
 <script lang="ts" setup>
     const emit = defineEmits<{
         click: []
     }>();
-    const props = defineProps<{
-       disabled?:boolean,
-       size?:Sizes,
-       addonclass?:string|null,
-       hidemobile?:boolean,
-       hidetablet?:boolean,
-       hidedesktop?:boolean 
-    }>();
+    const props = defineProps<IButtonBasicProperties>();
     const Language = useLanguage(inject);
-    const Properties = computed(()=>{
-        return {
+    const Properties = computed<IButtonProperties>(()=>{
+        return props||{
             title:translate('Button.Print',Language),
             icon:'print',
-            type:ColorTypes.primary,
-            disabled:props.disabled,
-            addonclass:props.addonclass,
-            hidemobile:props.hidemobile,
-            hidetablet:props.hidetablet,
-            hidedesktop:props.hidedesktop,
-            size:props.size
-        }
+            type:ColorTypes.primary
+        };
     });
 </script>

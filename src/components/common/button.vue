@@ -11,20 +11,11 @@
     import Icon from './icon.vue';
     import {ColorTypes,Sizes} from '../enums';
     import {computed} from 'vue';
+import { IButtonProperties } from './typeDefinitions';
 </script>
 
 <script lang="ts" setup>
-    const props = withDefaults(defineProps<{
-       icon?:string|null,
-       disabled?:boolean,
-       type?:ColorTypes,
-       size?:Sizes,
-       title?:string|null,
-       addonclass?:string|null,
-       hidemobile?:boolean,
-       hidetablet?:boolean,
-       hidedesktop?:boolean 
-    }>(),{
+    const props = withDefaults(defineProps<IButtonProperties>(),{
         type:ColorTypes.primary,
         size:Sizes.small
     });
@@ -33,17 +24,14 @@
         click: []
     }>();
 
-    const Classes = computed(()=>{
+    const Classes = computed<string>(()=>{
         let result = ['button','is-rounded',`is-${props.size}`,`is-${props.type}`];
         if (props.disabled){
             result.push('disabled');
         }
-        if (props.addonclass){
-            result.push(props.addonclass);
-        }
         if (props.hidemobile){result.push('is-hidden-mobile');}
         if (props.hidetablet){result.push('is-hidden-tablet-only');}
         if (props.hidedesktop){result.push('is-hidden-desktop is-hidden-widescreen');}
-        return result;
+        return result.join(' ');
     });
 </script>

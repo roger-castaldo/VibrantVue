@@ -1,5 +1,5 @@
 import { MaybeRef } from "vue";
-import { NoticeTypes } from "../enums";
+import { ColorTypes, NoticeTypes, Sizes } from "../enums";
 
 export interface MenuItem {
     title:MaybeRef<string>|string,
@@ -7,7 +7,7 @@ export interface MenuItem {
     icon?:string,
     href?:string,
     onClick?:()=>void
-}
+};
 
 export interface ParentMenuItem extends MenuItem {
     childItems?:MenuItem[]
@@ -20,4 +20,18 @@ export interface IWizardStep {
     description?:string,
     type?:NoticeTypes,
     isValid?:boolean
-}
+};
+
+export interface IButtonBasicProperties{
+    disabled?:boolean,
+    size?:Sizes,
+    hidemobile?:boolean,
+    hidetablet?:boolean,
+    hidedesktop?:boolean 
+};
+
+export interface IButtonProperties extends IButtonBasicProperties{
+    icon?:string|null,
+    type?:ColorTypes,
+    title?:string|null
+};
