@@ -11,8 +11,11 @@ type GridColumn = {
     ID:string,
     PropertyName?:string,
     Title?:MaybeRef<string>,
-    Colspan?:number,
-    Rowspan?:number
+    HeaderColspan?:number,
+    HeaderRowspan?:number,
+    DataColspan?:number,
+    DataRowspan?:number,
+    HeaderOnly?:boolean
 };
 
 type CellData = {
@@ -25,7 +28,8 @@ interface IGridProperties
     extends ITableProperties,IPaginationProperties {
     Columns:GridColumn[][],
     Data:[]|null,
-    EmptyMessage?:string
+    EmptyMessage?:string,
+    ColumnRows?:string[][]
 };
 
 export type {AutoCompleteEntry, GridColumn,CellData};

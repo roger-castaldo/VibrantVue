@@ -14,7 +14,7 @@
             <ul class="pagination-list">
                 <li v-for="page in Pages">
                     <span v-if="page===-1" class="pagination-ellipsis">&hellip;</span>
-                    <a v-else :class="(page===-1 ? ['pagination-ellipsis'] : ['pagination-link',(page===props.currentpage ? 'is-current' : '')])"
+                    <a v-else :class="(page===-1 ? ['pagination-ellipsis'] : ['pagination-link',(page===props.currentpage+1 ? 'is-current' : '')])"
                         :aria-label="(page===-1 ? '' : `${GoToPage} ${page}`)"
                         @onclick="goToPage(page)">{{(page===-1?'':page)}}
                     </a>
@@ -62,7 +62,7 @@
         if (props.totalpages===undefined||props.currentpage===undefined){
             return [];
         }else if(props.totalpages>5){
-            let center:number = (props.currentpage===undefined ? Math.floor(props.totalpages/2) : props.currentpage);
+            let center:number = Math.max((props.currentpage===undefined ? Math.floor(props.totalpages/2) : props.currentpage),3);
             return [
                 1,
                 -1,
@@ -82,12 +82,22 @@
     });
 
     const moveBack = function () {
-        if (HasPrevious)
-            emit('moveBack');
+        if (HasPrevious){
+            if (props.currentpage!==null){
+                emit('goToPage',props.currentpage-1);
+            }else{
+                emit('moveBack');
+            }
+        }
     };
     const moveForward = function () {
-        if (HasNext)
-            emit('moveForward');
+        if (HasNext){
+            if (props.currentpage!==null){
+                emit('goToPage',props.currentpage+1);
+            }else{
+                emit('moveForward');
+            }
+        }
     };
     const goToPage = function(page:number){
         emit('goToPage',page);

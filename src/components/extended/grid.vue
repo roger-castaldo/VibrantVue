@@ -2,9 +2,9 @@
     <Table v-bind="tableProperties">
         <template #thead>
             <tr v-for="row in props.Columns">
-                <th v-for="col in row" :colspan="col.Colspan??1" :rowspan="col.Rowspan??1">
+                <th v-for="col in row" :colspan="col.HeaderColspan" :rowspan="col.HeaderRowspan">
                     <slot :name="`head-${col.ID}`"/>
-                    {{ col.Title }}
+                    {{col.Title}}
                 </th>
             </tr>
         </template>
@@ -19,20 +19,22 @@
             </template>
             <template v-else>
                 <template v-for="drow,index in props.Data">
-                    <tr :key="`row-${index}-${cindex}`" v-for="row,cindex in props.Columns">
+                    <tr :key="`row-${index}-${cindex}`" v-for="row,cindex in ColumnRows.filter(col=>col.some(c=>!(c.HeaderOnly??false)))">
                         <td :key="`data-${index}-${cindex}`" 
-                            v-for="col in row" 
-                            :colspan="col.Colspan??1" 
-                            :rowspan="col.Rowspan??1"
+                            v-for="col in row.filter(c=>!(c.HeaderOnly??false))" 
+                            :colspan="col.DataColspan" 
+                            :rowspan="col.DataRowspan"
                             @click="emit('cellClicked',{RowIndex:index,Data:(col.PropertyName?drow[col.PropertyName] : null),Row:drow})"
                         >
-                            <slot :name="`body-${col.ID}`" v-bind="{RowIndex:index,Data:(col.PropertyName?drow[col.PropertyName] : null),Row:drow}"/>
+                            <slot :name="`body-${col.ID}`" v-bind="{RowIndex:index,Data:(col.PropertyName?drow[col.PropertyName] : null),Row:drow}">
+                                {{(col.PropertyName?drow[col.PropertyName] : null)}}
+                            </slot>
                         </td>
                     </tr>
                 </template>
             </template>
         </template>
-        <template #tfoot>
+        <template #tfoot v-if="(props.hasprevious??false) || ((props.currentpage??0)>0)||(props.hasmore??false) || ((props.currentpage??0)<(props.totalpages??0-1))">
             <tr>
                 <td colspan="100%">
                     <Pagination 
@@ -89,5 +91,13 @@
             totalpages:props.totalpages,
             currentpage:props.currentpage
         };
+    });
+    const ColumnRows = computed(()=>{
+        if (props.ColumnRows===undefined || props.ColumnRows.length===0){
+            return props.Columns;
+        }
+        return props.ColumnRows.map(row=>{
+            return row.map(c=>props.Columns.filter(col=>col.some(i=>i.ID===c))[0].find(col=>col.ID===c));
+        });
     });
 </script>

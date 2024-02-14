@@ -18,10 +18,10 @@ import { IButtonBasicProperties,IButtonProperties } from './typeDefinitions';
     const props = defineProps<IButtonBasicProperties>();
     const Language = useLanguage(inject);
     const Properties = computed<IButtonProperties>(()=>{
-        return props||{
+        return {
             title:translate('Button.Refresh',Language),
             icon:'sync',
             type:ColorTypes.primary
-        };
+        }||props;
     });
 </script>

@@ -18,10 +18,10 @@ import { IButtonBasicProperties, IButtonProperties } from './typeDefinitions';
     const props = defineProps<IButtonBasicProperties>();
     const Language = useLanguage(inject);
     const Properties = computed<IButtonProperties>(()=>{
-        return props||{
+        return {
             title:translate('Button.Edit',Language),
             icon:'edit',
             type:ColorTypes.primary
-        };
+        }||props;
     });
 </script>

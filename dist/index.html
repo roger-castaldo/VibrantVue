@@ -76,14 +76,11 @@
                 <template #head-username>
                     User Name
                 </template>
-                <template #body-firstname="row">
-                    {{row.Data}}
-                </template>
-                <template #body-lastname="row">
-                    {{row.Data}}
-                </template>
                 <template #body-username="row">
                     {{row.Data}}{{row.Row.username}}
+                </template>
+                <template #body-firstname="row">
+                    {{row.Data}}{{row.Row.firstname}}
                 </template>
             </Grid>
         </section>
@@ -137,8 +134,9 @@ gridProperites:{
     totalpages:100,
     currentpage:50,
     Columns:[
+        [{ID:'title',Title:'People',HeaderColspan:2,HeaderOnly:true}],
         [{ID:'firstname',PropertyName:'firstname',Title:'First Name'},{ID:'lastname',PropertyName:'lastname',Title:'Last Name'}],
-        [{ID:'username',Colspan:2}]
+        [{ID:'username',HeaderColspan:2,DataColspan:2}]
     ],
     Data:[
         {firstname:'Bob',lastname:'Loblaw',username:'bob.loblaw'},
