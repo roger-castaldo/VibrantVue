@@ -1,14 +1,14 @@
 <template>
-    <nav :class="['pagination','is-centered',ButtonClass,`is-${props.size}`,(props.rounded?'is-rounded':'')]" role="navigation" aria-label="pagination" v-show="props.hasmore||props.hasprevious">
+    <nav :class="['pagination','is-centered',ButtonClass,`is-${props.size}`,(props.rounded?'is-rounded':'')]" role="navigation" aria-label="pagination" v-show="HasPrevious||HasNext">
         <a :class="['pagination-previous',ButtonClass]"
-           v-bind:title="Previous" v-on:click="moveBack" v-bind:disabled="DisablePrevious">
-           <Icon icon="backward" :size="IconSizes.small"/>
+           :title="Previous" @click="moveBack" :disabled="(HasPrevious?null:'disabled')">
+           <Icon icon="backward" class="mr-1" :size="IconSizes.small"/>
             {{Previous}}
         </a>
         <a :class="['pagination-next',ButtonClass]"
-           v-bind:title="Next" v-on:click="moveForward" v-bind:disabled="DisableNext">
+           :title="Next" @click="moveForward" :disabled="(HasNext?null:'disabled')">
             {{Next}}
-            <Icon icon="forward" :size="IconSizes.small"/>
+            <Icon icon="forward" class="ml-1" :size="IconSizes.small"/>
         </a>
         <template v-if="props.totalpages!==undefined">
             <ul class="pagination-list">
@@ -28,27 +28,18 @@
     import { computed, inject } from 'vue';
     import translate from '../../messages/messages.js';
     import Icon from './icon.vue';
-    import { Sizes,ColorTypes,IconSizes } from '../enums';
+    import { Sizes,IconSizes } from '../enums';
     import { useLanguage } from '../shared';
+    import { IPaginationProperties } from './typeDefinitions';
 </script>
 
 <script lang="ts" setup>
-    const props = withDefaults(defineProps<{
-        usenext?:boolean,
-        hasmore:boolean,
-        hasprevious:boolean
-        size?:Sizes,
-        rounded?:boolean,
-        buttontype?:ColorTypes,
-        totalpages?:number,
-        currentpage?:number
-    }>(),{
+    const props = withDefaults(defineProps<IPaginationProperties>(),{
         usenext:true,
-        hasmore:true,
-        hasprevious:true,
         size:Sizes.small,
-        rounded:false,
-        currentpage:1
+        rounded:false ,
+        hasprevious:undefined,
+        hasmore:undefined
     });
 
     const emit = defineEmits<{
@@ -64,11 +55,11 @@
     const ButtonClass = computed<string>(()=>props.buttontype ? `has-background-${props.buttontype}` : '');
     const GoToPage = computed<string>(()=>translate('Pagination.GoToPage',Language));
 
-    const DisablePrevious = computed<boolean>(() => props.hasprevious??true);
-    const DisableNext = computed<boolean>(() => props.hasmore??true);
+    const HasPrevious = computed<boolean>(() => ((props.hasprevious??false) || ((props.currentpage??0)>0)));
+    const HasNext = computed<boolean>(() => ((props.hasmore??false) || ((props.currentpage??0)<(props.totalpages??0-1))));
 
     const Pages = computed<number[]>(()=>{
-        if (props.totalpages===undefined){
+        if (props.totalpages===undefined||props.currentpage===undefined){
             return [];
         }else if(props.totalpages>5){
             let center:number = (props.currentpage===undefined ? Math.floor(props.totalpages/2) : props.currentpage);
@@ -91,11 +82,11 @@
     });
 
     const moveBack = function () {
-        if (!DisablePrevious)
+        if (HasPrevious)
             emit('moveBack');
     };
     const moveForward = function () {
-        if (!DisableNext)
+        if (HasNext)
             emit('moveForward');
     };
     const goToPage = function(page:number){

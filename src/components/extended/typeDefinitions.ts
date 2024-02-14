@@ -1,6 +1,32 @@
+import { MaybeRef } from "vue";
+import { ITableProperties } from "../layout/interfaces";
+import { IPaginationProperties } from "../common/typeDefinitions";
+
 type AutoCompleteEntry = {
     Method:string,
     Description:string
 };
 
-export type {AutoCompleteEntry};
+type GridColumn = {
+    ID:string,
+    PropertyName?:string,
+    Title?:MaybeRef<string>,
+    Colspan?:number,
+    Rowspan?:number
+};
+
+type CellData = {
+    RowIndex:number,
+    Data:any,
+    Row:any
+}
+
+interface IGridProperties 
+    extends ITableProperties,IPaginationProperties {
+    Columns:GridColumn[][],
+    Data:[]|null,
+    EmptyMessage?:string
+};
+
+export type {AutoCompleteEntry, GridColumn,CellData};
+export {IGridProperties};

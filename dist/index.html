@@ -71,10 +71,26 @@
                 </Menu-List>
             </Menu>
         </section>
+        <section>
+            <Grid v-bind="gridProperites">
+                <template #head-username>
+                    User Name
+                </template>
+                <template #body-firstname="row">
+                    {{row.Data}}
+                </template>
+                <template #body-lastname="row">
+                    {{row.Data}}
+                </template>
+                <template #body-username="row">
+                    {{row.Data}}{{row.Row.username}}
+                </template>
+            </Grid>
+        </section>
         </div>
         <script type="module">
             import { createApp,ref} from "vue";
-            import {Message,ComponentForm,Promised,Pagination,Card,Menu,MenuList,MenuEntry,Tag} from 'components';
+            import {Message,ComponentForm,Promised,Pagination,Card,Menu,MenuList,MenuEntry,Tag,Grid} from 'components';
 
             window.lst = createApp({
                 components: { 
@@ -86,7 +102,8 @@
                     Menu,
                     MenuList,
                     MenuEntry,
-                    Tag
+                    Tag,
+                    Grid
                 },
                 data:()=>{
                     return {
@@ -114,7 +131,20 @@
     "name": "password",
     "required": true
   }
-]
+],
+gridProperites:{
+    fullWidth:true,
+    totalpages:100,
+    currentpage:50,
+    Columns:[
+        [{ID:'firstname',PropertyName:'firstname',Title:'First Name'},{ID:'lastname',PropertyName:'lastname',Title:'Last Name'}],
+        [{ID:'username',Colspan:2}]
+    ],
+    Data:[
+        {firstname:'Bob',lastname:'Loblaw',username:'bob.loblaw'},
+        {firstname:'Fred',lastname:'Flintstone',username:'fred.flintstone'}
+    ]
+}
                     };
                 }     ,
                 methods:{

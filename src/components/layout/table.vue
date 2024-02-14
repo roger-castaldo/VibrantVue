@@ -16,13 +16,9 @@
 
 <script lang="ts" setup>
     import {computed} from 'vue';
+    import { ITableProperties } from './interfaces';
     
-    const props = defineProps<{
-        scrollable?:boolean,
-        fixedHeader?:boolean,
-        fullWidth?:boolean,
-        narrow?:boolean
-    }>();
+    const props = defineProps<ITableProperties>();
     
     const containerClasses = computed<string[]>(()=>{
         let ret:string[]=[];

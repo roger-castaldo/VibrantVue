@@ -1,6 +1,17 @@
 import { MaybeRef } from "vue";
 import { ColorTypes, NoticeTypes, Sizes } from "../enums";
 
+export interface IPaginationProperties {
+    usenext?:boolean,
+    hasmore?:boolean,
+    hasprevious?:boolean
+    size?:Sizes,
+    rounded?:boolean,
+    buttontype?:ColorTypes,
+    totalpages?:number,
+    currentpage?:number
+};
+
 export interface MenuItem {
     title:MaybeRef<string>|string,
     active?:boolean,
