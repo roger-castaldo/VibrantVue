@@ -3,8 +3,9 @@
         <template #thead>
             <tr v-for="row in props.Columns">
                 <th v-for="col in row" :colspan="col.HeaderColspan" :rowspan="col.HeaderRowspan">
-                    <slot :name="`head-${col.ID}`"/>
-                    {{col.Title}}
+                    <slot :name="`head-${col.ID}`">
+                        {{col.Title}}
+                    </slot>
                 </th>
             </tr>
         </template>
