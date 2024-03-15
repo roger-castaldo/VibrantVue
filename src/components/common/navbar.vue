@@ -1,5 +1,5 @@
 <template>
-    <nav :class="['navbar',props.fixedPosition]" role="navigation" :aria-label="props.ariaLabel">
+    <nav :class="['navbar',props.fixedPosition,(props.color!==undefined&&props.color!==null ? `is-${props.color}` : '')]" role="navigation" :aria-label="props.ariaLabel">
         <div class="navbar-brand">
             <slot name="brand"/>
             <a role="button" :class="['navbar-burger',(isActive?'is-active':'')]" aria-label="menu" :aria-expanded="(isActive?'true':'false')" @click="isActive=!isActive">
@@ -44,7 +44,7 @@
 <script lang="ts">
     import 'jquery';
     import {onMounted, withDefaults,ref} from 'vue';
-    import { FixedNavBarPositions,Sizes } from '../enums';
+    import { FixedNavBarPositions,Sizes,ColorTypes } from '../enums';
     import type { ParentMenuItem } from './typeDefinitions';
     import Promised from './Promised.vue';
     import NavBarMenuItem from './navbar-item.vue'
@@ -55,9 +55,10 @@
 
     const props = withDefaults(defineProps<{
         startItems?:Promise<ParentMenuItem[]>|ParentMenuItem[],
-        endItems?:Promise<ParentMenuItem[]>|ParentMenuItem[],
+        endItems?:Promise<ParentMenuItem[]>|ParentMenuItem[],yeah
         fixedPosition?:FixedNavBarPositions|null,
-        ariaLabel?:string
+        ariaLabel?:string,
+        color?:ColorTypes
     }>(),{
         fixedPosition:null,
         ariaLabel:'navigation'

@@ -37,7 +37,7 @@
     };
 
     const headerProps = {
-        headerClass: 'card-header-title is-centered',
+        headerclass: 'card-header-title is-centered',
         addonclass: 'card-header-icon'
     };
 </script>
