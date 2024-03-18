@@ -56,13 +56,16 @@
     const GoToPage = computed<string>(()=>translate('Pagination.GoToPage',Language));
 
     const HasPrevious = computed<boolean>(() => ((props.hasprevious??false) || ((props.currentpage??0)>0)));
-    const HasNext = computed<boolean>(() => ((props.hasmore??false) || ((props.currentpage??0)<(props.totalpages??0-1))));
+    const HasNext = computed<boolean>(() => ((props.hasmore??false) || ((props.currentpage??0)<((props.totalpages??0)-1))));
 
     const Pages = computed<number[]>(()=>{
         if (props.totalpages===undefined||props.currentpage===undefined){
             return [];
         }else if(props.totalpages>5){
             let center:number = Math.max((props.currentpage===undefined ? Math.floor(props.totalpages/2) : props.currentpage),3);
+            if (props.totalpages-props.currentpage<1){
+                center--;
+            }
             return [
                 1,
                 -1,

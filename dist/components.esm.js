@@ -663,34 +663,34 @@ const ia = ["disabled"], ua = {
   },
   emits: ["moveForward", "moveBack", "goToPage"],
   setup(e, { emit: n }) {
-    const t = e, a = n, l = K(E), s = y(() => W(t.usenext ? "Pagination.Previous" : "Pagination.Older", l)), o = y(() => W(t.usenext ? "Pagination.Next" : "Pagination.Newer", l)), r = y(() => t.buttontype ? `has-background-${t.buttontype}` : ""), p = y(() => W("Pagination.GoToPage", l)), u = y(() => (t.hasprevious ?? !1) || (t.currentpage ?? 0) > 0), h = y(() => (t.hasmore ?? !1) || (t.currentpage ?? 0) < (t.totalpages ?? 0 - 1)), d = y(() => {
+    const t = e, a = n, l = K(E), s = y(() => W(t.usenext ? "Pagination.Previous" : "Pagination.Older", l)), o = y(() => W(t.usenext ? "Pagination.Next" : "Pagination.Newer", l)), r = y(() => t.buttontype ? `has-background-${t.buttontype}` : ""), p = y(() => W("Pagination.GoToPage", l)), u = y(() => (t.hasprevious ?? !1) || (t.currentpage ?? 0) > 0), h = y(() => (t.hasmore ?? !1) || (t.currentpage ?? 0) < (t.totalpages ?? 0) - 1), d = y(() => {
       if (t.totalpages === void 0 || t.currentpage === void 0)
         return [];
       if (t.totalpages > 5) {
-        let b = Math.max(t.currentpage === void 0 ? Math.floor(t.totalpages / 2) : t.currentpage, 3);
-        return [
+        let m = Math.max(t.currentpage === void 0 ? Math.floor(t.totalpages / 2) : t.currentpage, 3);
+        return t.totalpages - t.currentpage < 1 && m--, [
           1,
           -1,
-          b - 1,
-          b,
-          b + 1,
+          m - 1,
+          m,
+          m + 1,
           -1,
           t.totalpages
         ];
       } else {
-        let b = [];
+        let m = [];
         for (let I = 1; I <= t.totalpages; I++)
-          b.push(I);
-        return b;
+          m.push(I);
+        return m;
       }
-    }), m = function() {
+    }), b = function() {
       u && (t.currentpage !== null ? a("goToPage", t.currentpage - 1) : a("moveBack"));
     }, _ = function() {
       h && (t.currentpage !== null ? a("goToPage", t.currentpage + 1) : a("moveForward"));
-    }, B = function(b) {
-      a("goToPage", b);
+    }, B = function(m) {
+      a("goToPage", m);
     };
-    return (b, I) => U((i(), c("nav", {
+    return (m, I) => U((i(), c("nav", {
       class: O(["pagination", "is-centered", r.value, `is-${t.size}`, t.rounded ? "is-rounded" : ""]),
       role: "navigation",
       "aria-label": "pagination"
@@ -698,7 +698,7 @@ const ia = ["disabled"], ua = {
       f("a", {
         class: O(["pagination-previous", r.value]),
         title: s.value,
-        onClick: m,
+        onClick: b,
         disabled: u.value ? null : "disabled"
       }, [
         N(H, {
@@ -758,10 +758,10 @@ function Ha(e, n = 200) {
       const d = Number(fe(n)) || 0;
       d > 0 ? (s.value = !1, u && clearTimeout(u), u = setTimeout(() => {
         s.value = !0;
-      }, d)) : s.value = !0, h.then((m) => {
-        h === fe(p) && (r.value = fe(m), a.value = !0);
-      }).catch((m) => {
-        h === fe(p) && (o.value = m, t.value = !0);
+      }, d)) : s.value = !0, h.then((b) => {
+        h === fe(p) && (r.value = fe(b), a.value = !0);
+      }).catch((b) => {
+        h === fe(p) && (o.value = b, t.value = !0);
       });
     },
     { immediate: !0 }
@@ -1199,7 +1199,7 @@ const be = /* @__PURE__ */ S({
         let d = $(o.value).find(a.handlesearch);
         d.length > 0 && (s.value = !0, d.on("mousedown", () => s.value = !1), d.on("mouseup", () => s.value = !0));
       }
-    }), (d, m) => (i(), T(pe(a.tag), {
+    }), (d, b) => (i(), T(pe(a.tag), {
       ref_key: "handle",
       ref: o,
       draggable: !0,
@@ -1223,25 +1223,25 @@ const be = /* @__PURE__ */ S({
   setup(e, { emit: n }) {
     const t = e, a = n, l = F(!1), s = F(null), o = F(null);
     y(() => t.tag ?? "div");
-    const r = (m) => {
+    const r = (b) => {
       const _ = o.value.getBoundingClientRect(), B = {
         x: _.x + _.width / 2,
         y: _.y + _.height / 2
       };
-      let b = ee.center;
-      return m.x < B.x ? m.y < B.y ? b = ee.topLeft : b = ee.bottomLeft : m.y < B.y ? b = ee.topRight : b = ee.bottomRight, s.value = b, s.value;
-    }, p = (m) => {
-      m.preventDefault(), l.value = !0, a("itemEntered", r(m));
-    }, u = (m) => {
-      l.value = !0, a("itemExited", r(m));
-    }, h = (m) => {
-      m.preventDefault(), a("itemMoved", r(m));
-    }, d = (m) => {
-      if (t.isValidChild && !t.isValidChild(JSON.parse(m.dataTransfer.getData("value"))))
+      let m = ee.center;
+      return b.x < B.x ? b.y < B.y ? m = ee.topLeft : m = ee.bottomLeft : b.y < B.y ? m = ee.topRight : m = ee.bottomRight, s.value = m, s.value;
+    }, p = (b) => {
+      b.preventDefault(), l.value = !0, a("itemEntered", r(b));
+    }, u = (b) => {
+      l.value = !0, a("itemExited", r(b));
+    }, h = (b) => {
+      b.preventDefault(), a("itemMoved", r(b));
+    }, d = (b) => {
+      if (t.isValidChild && !t.isValidChild(JSON.parse(b.dataTransfer.getData("value"))))
         return !1;
-      m.stopPropagation(), m.preventDefault(), a("itemAdded", JSON.parse(m.dataTransfer.getData("value")), s.value), l.value = !1;
+      b.stopPropagation(), b.preventDefault(), a("itemAdded", JSON.parse(b.dataTransfer.getData("value")), s.value), l.value = !1;
     };
-    return (m, _) => (i(), T(pe(t.tag), {
+    return (b, _) => (i(), T(pe(t.tag), {
       ref_key: "handle",
       ref: o,
       class: O({ "is-bordered": l.value }),
@@ -1251,7 +1251,7 @@ const be = /* @__PURE__ */ S({
       onDragover: h
     }, {
       default: L(() => [
-        A(m.$slots, "default")
+        A(b.$slots, "default")
       ]),
       _: 3
     }, 40, ["class"]));
@@ -1320,38 +1320,38 @@ const be = /* @__PURE__ */ S({
   emits: ["sorted"],
   setup(e, { emit: n }) {
     const t = e, a = n, l = F([]), s = F(-1), o = F(-1), r = F(null);
-    z(t.Items, (m, _) => {
+    z(t.Items, (b, _) => {
       l.value = [..._];
     }), ue(() => {
       t.Items !== null && (l.value = [...t.Items]);
     });
-    const p = (m) => {
-      var _ = m.target.getBoundingClientRect(), B = {
+    const p = (b) => {
+      var _ = b.target.getBoundingClientRect(), B = {
         x: _.x + _.width / 2,
         y: _.y + _.height / 2
       };
-      let b = ee.center;
-      return m.y < B.y ? b = ee.top : b = ee.bottom, b;
-    }, u = (m, _) => {
-      _.stopPropagation(), s.value = m, _.dataTransfer.setData("value", null);
-    }, h = (m, _) => {
-      s.value && (_.stopPropagation(), m != s.value ? (o.value = m, r.value = p(_)) : (o.value = -1, r.value = null));
-    }, d = (m) => {
+      let m = ee.center;
+      return b.y < B.y ? m = ee.top : m = ee.bottom, m;
+    }, u = (b, _) => {
+      _.stopPropagation(), s.value = b, _.dataTransfer.setData("value", null);
+    }, h = (b, _) => {
+      s.value && (_.stopPropagation(), b != s.value ? (o.value = b, r.value = p(_)) : (o.value = -1, r.value = null));
+    }, d = (b) => {
       if (s.value) {
-        m.stopPropagation();
+        b.stopPropagation();
         var _ = o.value + (r.value == ee.top ? 0 : 1), B = l.value.splice(_, 1)[0];
         _ >= s.value && _--, l.value.splice(_, 0, B), o.value = -1, r.value = null, s.value = -1, a("sorted", l.value);
       }
     };
-    return (m, _) => (i(), T(St, {
-      type: m.type,
-      compact: m.compact,
-      outlined: m.outlined,
-      highlighted: m.highlighted,
+    return (b, _) => (i(), T(St, {
+      type: b.type,
+      compact: b.compact,
+      outlined: b.outlined,
+      highlighted: b.highlighted,
       onDrop: d
     }, {
       default: L(() => [
-        (i(!0), c(V, null, R(l.value, (B, b) => (i(), c(V, null, [
+        (i(!0), c(V, null, R(l.value, (B, m) => (i(), c(V, null, [
           U(N(Me, null, {
             default: L(() => [
               N(ce, { light: !0 }, {
@@ -1363,19 +1363,19 @@ const be = /* @__PURE__ */ S({
             ]),
             _: 2
           }, 1536), [
-            [se, o.value === b && s.value !== b && r.value === D(ee).top]
+            [se, o.value === m && s.value !== m && r.value === D(ee).top]
           ]),
           N(Me, {
             draggable: "true",
-            onDragstart: (I) => u(b, I),
+            onDragstart: (I) => u(m, I),
             onDragend: _[0] || (_[0] = (I) => s.value = null),
-            onDragover: (I) => h(b, I),
-            class: O({ "has-cursor": !0, "is-move": o.value == b, "is-grab": o.value != b })
+            onDragover: (I) => h(m, I),
+            class: O({ "has-cursor": !0, "is-move": o.value == m, "is-grab": o.value != m })
           }, {
             default: L(() => [
-              A(m.$slots, "item", {
+              A(b.$slots, "item", {
                 item: B,
-                index: b
+                index: m
               })
             ]),
             _: 2
@@ -1391,7 +1391,7 @@ const be = /* @__PURE__ */ S({
             ]),
             _: 2
           }, 1536), [
-            [se, o.value === b && s.value !== b && r.value === D(ee).bottom]
+            [se, o.value === m && s.value !== m && r.value === D(ee).bottom]
           ])
         ], 64))), 256))
       ]),
@@ -1462,7 +1462,7 @@ const Al = { class: "tagsfield field input is-grouped is-grouped-multiline" }, T
         return null;
       const w = o.value.slice();
       return l.limit != null && l.limit == 1 ? w.length > 0 ? w[0] : null : w;
-    }, m = async (w) => {
+    }, b = async (w) => {
       if (w == null)
         o.value.length > 0 && o.value.splice(0, o.value.length), r.value = null;
       else {
@@ -1492,18 +1492,18 @@ const Al = { class: "tagsfield field input is-grouped is-grouped-multiline" }, T
           w.key.length == 1 && (r.value = (r.value == null ? "" : r.value) + w.key);
           break;
       }
-    }, b = () => {
+    }, m = () => {
       r.value = null;
     }, I = () => {
       h.value.focus();
     }, k = (w) => {
-      o.value.push(w), b(), a("value_changed", { name: l.name, value: d() });
+      o.value.push(w), m(), a("value_changed", { name: l.name, value: d() });
     }, v = (w) => {
       o.value.splice(w, 1), I(), a("value_changed", { name: l.name, value: d() });
     };
-    return n({ getValue: d, setValue: m }), (w, C) => (i(), c("div", {
+    return n({ getValue: d, setValue: b }), (w, C) => (i(), c("div", {
       class: "control autocomplete",
-      onBlur: b,
+      onBlur: m,
       onClick: I
     }, [
       f("div", Al, [
@@ -1586,21 +1586,21 @@ const Al = { class: "tagsfield field input is-grouped is-grouped-multiline" }, T
       if (a.values == null)
         return [];
       {
-        let b = await qe(a.values), I = b.filter((k) => k.selected).map((k) => k.value);
-        return p.value === null || p.value.length == 0 ? p.value = I.length > 0 ? [...I] : [] : (I = p.value, b = b.map((k) => ({
+        let m = await qe(a.values), I = m.filter((k) => k.selected).map((k) => k.value);
+        return p.value === null || p.value.length == 0 ? p.value = I.length > 0 ? [...I] : [] : (I = p.value, m = m.map((k) => ({
           label: k.label,
           value: k.value,
           selected: I.some((v) => v === k.value)
-        }))), b;
+        }))), m;
       }
     });
-    z(p, (b) => {
+    z(p, (m) => {
       o("value_changed", { name: a.name, value: d() });
     });
-    const d = () => p.value.length == 0 ? null : p.value, m = (b) => {
-      u.value = !0, p.value.splice(0), b !== null && (p.value = [...b]), u.value = !1, o("value_changed", { name: a.name, value: d() });
+    const d = () => p.value.length == 0 ? null : p.value, b = (m) => {
+      u.value = !0, p.value.splice(0), m !== null && (p.value = [...m]), u.value = !1, o("value_changed", { name: a.name, value: d() });
     }, { hiddenValues: _, disabledValues: B } = Ye(a.name, E);
-    return n({ getValue: d, setValue: m }), (b, I) => (i(), c("div", null, [
+    return n({ getValue: d, setValue: b }), (m, I) => (i(), c("div", null, [
       N(be, { promise: h.value }, {
         default: L(({ response: k }) => [
           k !== null ? (i(!0), c(V, { key: 0 }, R(k, (v) => U((i(), c("label", Ul, [
@@ -1654,7 +1654,7 @@ const Al = { class: "tagsfield field input is-grouped is-grouped-multiline" }, T
         class: "checkbox",
         name: a.name,
         disabled: a.disabled,
-        "onUpdate:modelValue": d[0] || (d[0] = (m) => r.value = m)
+        "onUpdate:modelValue": d[0] || (d[0] = (b) => r.value = b)
       }, null, 8, Gl), [
         [Ve, r.value]
       ]),
@@ -1910,7 +1910,7 @@ const Ql = { class: "control has-icons-left has-icons-right" }, Xl = ["name", "i
       Thu: y(() => W("Date.Weekdays.Thu", h)),
       Fri: y(() => W("Date.Weekdays.Fri", h)),
       Sat: y(() => W("Date.Weekdays.Sat", h))
-    }), m = y(() => r.value !== null && (l.includeTime ? Se : ke).test(r.value)), _ = () => {
+    }), b = y(() => r.value !== null && (l.includeTime ? Se : ke).test(r.value)), _ = () => {
       if (r.value == null || r.value == "")
         return null;
       {
@@ -1942,10 +1942,10 @@ const Ql = { class: "control has-icons-left has-icons-right" }, Xl = ["name", "i
         x.length > 0 && (/^([0-1]|(0[1-9])|(1[0-2]))$/.test(x[0]) || x.splice(0), x.length > 1 && (/^[0-3]/.test(x[1]) ? /^(01|03|05|07|08|10|12)$/.test(x[0]) ? /^([0-3]|(0[1-9])|([1-2][0-9])|(3[0-1]))$/.test(x[1]) || x.splice(1) : /^(02|04|06|09|11)$/.test(x[0]) ? /^([0-3]|(0[1-9])|([1-2][0-9])|(30))$/.test(x[1]) || x.splice(1) : /^([0-2]|(0[1-9])|([1-2][0-9]))$/.test(x[1]) || x.splice(1) : x.splice(1)), x.length > 3 && (/^([0-2]|([0-1][0-9])|(2[0-3]))$/.test(x[3]) || x.splice(3)), x.length > 4 && (/^[0-5][0-9]?$/.test(x[4]) || x.splice(4))), M = x.join(""), !l.includeTime && M.length > 8 && (M = M.substring(0, 8)), M.length >= 2 && (M = M.substring(0, 2) + "-" + (M.length > 2 ? M.substring(2) : "")), M.length >= 5 && (M = M.substring(0, 5) + "-" + (M.length > 5 ? M.substring(5) : "")), M.length >= 9 && l.includeTime && (M = M.substring(0, 9) + " " + (M.length > 9 ? M.substring(9) : "")), M.length >= 11 && (M = M.substring(0, 11) + ":" + (M.length > 11 ? M.substring(11) : "")), r.value = M;
       } else {
         var le = _();
-        m && s("value_changed", { name: l.name, value: le }), u.Month = le.getMonth(), u.Year = le.getFullYear();
+        b && s("value_changed", { name: l.name, value: le }), u.Month = le.getMonth(), u.Year = le.getFullYear();
       }
     });
-    const B = y(() => ge(new Date(u.Year, u.Month, 1), h, "MMMM")), b = y(() => {
+    const B = y(() => ge(new Date(u.Year, u.Month, 1), h, "MMMM")), m = y(() => {
       var M = [], x = new Date(u.Year, u.Month, 1);
       x = Pe(x, x.getDay() * -1);
       for (var j = _(), le = Pe(new Date(u.Year, u.Month, 1), 32).getMonth(); x.getMonth() != le; ) {
@@ -2045,7 +2045,7 @@ const Ql = { class: "control has-icons-left has-icons-right" }, Xl = ["name", "i
                   ])
                 ]),
                 f("tbody", null, [
-                  (i(!0), c(V, null, R(b.value, (j) => (i(), c("tr", null, [
+                  (i(!0), c(V, null, R(m.value, (j) => (i(), c("tr", null, [
                     (i(!0), c(V, null, R(j, (le) => (i(), c("td", {
                       class: O(["is-unselectable", le.Disabled ? "has-text-primary-dark has-background-primary-light" : "is-clickable", le.isToday ? "has-background-primary-dark" : "", le.isSelected ? "has-background-success-dark" : ""]),
                       onClick: (Ne) => v(le)
@@ -2069,7 +2069,7 @@ const Ql = { class: "control has-icons-left has-icons-right" }, Xl = ["name", "i
             f("div", hn, [
               N(D(yt), {
                 addonclass: "card-footer-item",
-                disabled: !m.value,
+                disabled: !b.value,
                 onClick: x[3] || (x[3] = (j) => o.value = !1)
               }, null, 8, ["disabled"]),
               N(D(vt), {
@@ -2110,7 +2110,7 @@ const Ot = /* @__PURE__ */ S({
       }), (r.disabled ?? !1) && $(o.value).summernote("disable");
     }), Ht(() => {
       $(o.value).summernote("destroy");
-    }), (d, m) => (i(), c("div", {
+    }), (d, b) => (i(), c("div", {
       class: "summernote",
       ref_key: "snote",
       ref: o
@@ -2217,16 +2217,16 @@ const Ot = /* @__PURE__ */ S({
         return [];
       {
         let B = await qe(a.values);
-        return p.value === null && B.some((b) => b.selected) && (p.value = B.find((b) => b.selected).value), B.map((b) => ({
-          label: b.label,
-          value: b.value,
-          selected: p.value === b.value
+        return p.value === null && B.some((m) => m.selected) && (p.value = B.find((m) => m.selected).value), B.map((m) => ({
+          label: m.label,
+          value: m.value,
+          selected: p.value === m.value
         }));
       }
     }), d = (B) => {
       p.value = B;
-    }, { hiddenValues: m, disabledValues: _ } = Ye(a.name, E);
-    return n({ getValue: u, setValue: d }), (B, b) => (i(), c("div", null, [
+    }, { hiddenValues: b, disabledValues: _ } = Ye(a.name, E);
+    return n({ getValue: u, setValue: d }), (B, m) => (i(), c("div", null, [
       N(be, { promise: h.value }, {
         default: L(({ response: I }) => [
           B.values != null ? (i(!0), c(V, { key: 0 }, R(I, (k) => (i(), c(V, null, [
@@ -2240,7 +2240,7 @@ const Ot = /* @__PURE__ */ S({
               }, null, 8, vn),
               Q(" " + J(D(r)(k.label)), 1)
             ], 512), [
-              [se, !D(m).some((v) => v === k.value.toString())]
+              [se, !D(b).some((v) => v === k.value.toString())]
             ]),
             yn
           ], 64))), 256)) : P("", !0)
@@ -2281,35 +2281,35 @@ const Ot = /* @__PURE__ */ S({
       if (a.values == null)
         return [];
       {
-        let b = await qe(a.values), I = b.filter((v) => v.selected).map((v) => v.value);
-        b.some((v) => v.values !== void 0) && b.filter((v) => v.values !== void 0).forEach((v) => {
+        let m = await qe(a.values), I = m.filter((v) => v.selected).map((v) => v.value);
+        m.some((v) => v.values !== void 0) && m.filter((v) => v.values !== void 0).forEach((v) => {
           I = I.concat(
             v.values.filter((w) => w.selected).map((w) => w.value)
           );
-        }), p.value === null || p.value.length === 0 ? p.value = null : (b = b.map((v) => {
+        }), p.value === null || p.value.length === 0 ? p.value = null : (m = m.map((v) => {
           let w = v;
           return w.values !== void 0 && (w.values = w.values.map((C) => (C.selected = p.value.some((g) => g === C.value), C))), w;
         }), p.value.forEach((v) => {
-          b.some((w) => w.value !== void 0 && w.value === v || w.values !== void 0 && w.values.some((C) => C.value === v)) || b.push({
+          m.some((w) => w.value !== void 0 && w.value === v || w.values !== void 0 && w.values.some((C) => C.value === v)) || m.push({
             label: v,
             value: v
           });
         }));
         let k = [];
-        return b.forEach((v) => {
+        return m.forEach((v) => {
           v.values === void 0 ? k.push(v) : k = At(v.label, v, k);
         }), k;
       }
     }), d = () => p.value == null || p.value.length == 0 ? null : a.multiple ? p.value.slice() : Array.isArray(p.value) ? p.value[0] : p.value;
     z(p, () => {
       u.value || o("value_changed", { name: a.name, value: d() });
-    }), z(u, (b) => {
-      b || o("value_changed", { name: a.name, value: d() });
+    }), z(u, (m) => {
+      m || o("value_changed", { name: a.name, value: d() });
     });
-    const m = (b) => {
-      u.value = !0, b != null ? a.multiple ? p.value = Array.isArray(b) ? b : [b] : p.value = b : a.multiple ? p.value = [] : p.value = null, u.value = !1;
+    const b = (m) => {
+      u.value = !0, m != null ? a.multiple ? p.value = Array.isArray(m) ? m : [m] : p.value = m : a.multiple ? p.value = [] : p.value = null, u.value = !1;
     }, { hiddenValues: _, disabledValues: B } = Ye(a.name, E);
-    return n({ getValue: d, setValue: m }), (b, I) => (i(), c("div", _n, [
+    return n({ getValue: d, setValue: b }), (m, I) => (i(), c("div", _n, [
       h.value != null ? (i(), T(be, {
         key: 0,
         promise: h.value
@@ -2445,18 +2445,18 @@ const Ot = /* @__PURE__ */ S({
         let h = o();
         switch (u.keyCode) {
           case It:
-            let d = u.target.selectionStart, m = u.target.selectionEnd, _ = h.substring(0, d), B = h.length > m ? h.substring(m) : "", b = d == m ? "" : h.substring(d, m);
-            if (b.indexOf(String.fromCharCode(10)) < 0)
-              u.shiftKey ? b.startsWith(ve) ? (b = b.substring(1), d--) : _.endsWith(ve) && (_ = _.substring(0, _.length - 1), d--) : b = ve + b;
+            let d = u.target.selectionStart, b = u.target.selectionEnd, _ = h.substring(0, d), B = h.length > b ? h.substring(b) : "", m = d == b ? "" : h.substring(d, b);
+            if (m.indexOf(String.fromCharCode(10)) < 0)
+              u.shiftKey ? m.startsWith(ve) ? (m = m.substring(1), d--) : _.endsWith(ve) && (_ = _.substring(0, _.length - 1), d--) : m = ve + m;
             else {
               let I = !1;
-              b.endsWith(De) && (I = !0, b = b.substring(0, b.length - 1));
-              let k = b.split(De);
-              b = "", u.shiftKey && _.endsWith(ve) && (_ = _.substring(0, _.length - 1), d--), k.forEach((v, w) => {
-                u.shiftKey && v.startsWith(ve) ? v = v.substring(1) : u.shiftKey || (v = ve + v), b += v + (w === k.length - 1 ? "" : De);
-              }), I && (b += De);
+              m.endsWith(De) && (I = !0, m = m.substring(0, m.length - 1));
+              let k = m.split(De);
+              m = "", u.shiftKey && _.endsWith(ve) && (_ = _.substring(0, _.length - 1), d--), k.forEach((v, w) => {
+                u.shiftKey && v.startsWith(ve) ? v = v.substring(1) : u.shiftKey || (v = ve + v), m += v + (w === k.length - 1 ? "" : De);
+              }), I && (m += De);
             }
-            return h = _ + b + B, d += b.length == 1 ? 1 : 0, m = d + (b.length == 1 ? 0 : b.length), r(h), u.target.selectionStart = d, u.target.selectionEnd = m, u.target.focus(), u.preventDefault != null && u.preventDefault(), !1;
+            return h = _ + m + B, d += m.length == 1 ? 1 : 0, b = d + (m.length == 1 ? 0 : m.length), r(h), u.target.selectionStart = d, u.target.selectionEnd = b, u.target.focus(), u.preventDefault != null && u.preventDefault(), !1;
           default:
             return !0;
         }
@@ -2486,40 +2486,40 @@ const Ot = /* @__PURE__ */ S({
   setup(e, { expose: n, emit: t }) {
     const a = e, l = t, s = E(He), o = E(Ge);
     n({ setValue: (d) => {
-      h.forEach((m) => {
-        switch (m.type) {
+      h.forEach((b) => {
+        switch (b.type) {
           case "subform":
-            m.setValue(d);
+            b.setValue(d);
             break;
           default:
-            m.setValue !== void 0 && (d === null ? m.setValue(null) : Object.keys(d).some((_) => _ === m.fieldName) ? m.setValue(d[m.fieldName]) : Object.keys(d).some((_) => _ === m.altFieldName) && m.setValue(d[m.altFieldName]));
+            b.setValue !== void 0 && (d === null ? b.setValue(null) : Object.keys(d).some((_) => _ === b.fieldName) ? b.setValue(d[b.fieldName]) : Object.keys(d).some((_) => _ === b.altFieldName) && b.setValue(d[b.altFieldName]));
             break;
         }
       });
     }, getValue: () => {
       var d = {};
-      return h.forEach((m) => {
-        if (m.getValue != null)
-          switch (m.type) {
+      return h.forEach((b) => {
+        if (b.getValue != null)
+          switch (b.type) {
             case "subform":
-              d = $.extend(d, m.getValue());
+              d = $.extend(d, b.getValue());
               break;
             default:
-              d[m.fieldName] = m.getValue();
+              d[b.fieldName] = b.getValue();
               break;
           }
       }), d;
     }, isValid: () => !h.some((d) => !(d.isValid === void 0 || d.isValid())) });
     const h = a.inputs.map((d) => F(null));
-    return (d, m) => (i(), c("div", Jn, [
+    return (d, b) => (i(), c("div", Jn, [
       (i(!0), c(V, null, R(a.inputs, (_, B) => (i(), T(Wt, {
         ref_for: !0,
-        ref: (b) => D(h)[B] = b,
+        ref: (m) => D(h)[B] = m,
         input: _,
-        onValue_changed: m[0] || (m[0] = (b) => l("value_changed", b)),
-        onButton_clicked: m[1] || (m[1] = (b) => l("button_clicked", b)),
-        disabled: a.disabled || D(o).some((b) => b === _.name),
-        hidden: D(s).some((b) => b === _.name)
+        onValue_changed: b[0] || (b[0] = (m) => l("value_changed", m)),
+        onButton_clicked: b[1] || (b[1] = (m) => l("button_clicked", m)),
+        disabled: a.disabled || D(o).some((m) => m === _.name),
+        hidden: D(s).some((m) => m === _.name)
       }, null, 8, ["input", "disabled", "hidden"]))), 256))
     ]));
   }
@@ -2550,10 +2550,10 @@ const Ot = /* @__PURE__ */ S({
       id: a.name,
       name: a.name
     }, [
-      (i(!0), c(V, null, R(o.value, (m, _) => (i(), T(Vt, {
+      (i(!0), c(V, null, R(o.value, (b, _) => (i(), T(Vt, {
         ref_for: !0,
         ref: (B) => D(s)[_] = B,
-        inputs: m,
+        inputs: b,
         disabled: a.disabled,
         onValue_changed: d[0] || (d[0] = (B) => l("value_changed", B)),
         onButton_clicked: d[1] || (d[1] = (B) => l("button_clicked", B))
@@ -2637,7 +2637,7 @@ const Ot = /* @__PURE__ */ S({
     ue(() => {
       a.value !== null && s.input.value !== void 0 && s.input.value !== null && u(s.input.value);
     });
-    const h = y(() => s.input.disabled ?? s.disabled ?? !1), d = y(() => `is-${s.input.form_columns ?? 12}`), m = y(() => s.input.name), _ = y(() => s.input.processVariable ?? s.input.name), B = y(() => In.some((g) => g === s.input.type) && s.input.label !== void 0 && s.input.label !== null), b = y(() => {
+    const h = y(() => s.input.disabled ?? s.disabled ?? !1), d = y(() => `is-${s.input.form_columns ?? 12}`), b = y(() => s.input.name), _ = y(() => s.input.processVariable ?? s.input.name), B = y(() => In.some((g) => g === s.input.type) && s.input.label !== void 0 && s.input.label !== null), m = y(() => {
       let g = $.extend({}, s.input);
       return delete g.type, g.className != null && delete g.className, g.form_columns != null && delete g.form_columns, Ln.some((ae) => ae === s.input.type) && (g.translate = s.translate), g.disabled = s.disabled, g;
     }), I = (g) => {
@@ -2655,7 +2655,7 @@ const Ot = /* @__PURE__ */ S({
       }
       return null;
     };
-    return n({ setValue: u, fieldName: m, type: r, altFieldName: _, getValue: v, isValid: () => {
+    return n({ setValue: u, fieldName: b, type: r, altFieldName: _, getValue: v, isValid: () => {
       if (s.input.type === "subform" && a.value !== null)
         return a.value.isValid();
       if (s.input.required ?? !1) {
@@ -2704,7 +2704,7 @@ const Ot = /* @__PURE__ */ S({
           s.input.required ? (i(), c("span", Pn, "*")) : P("", !0)
         ], 8, Tn)) : P("", !0),
         f("div", En, [
-          (i(), T(pe(p.value), Y(b.value, {
+          (i(), T(pe(p.value), Y(m.value, {
             onValue_changed: I,
             ref_key: "inp",
             ref: a
@@ -2746,12 +2746,12 @@ const Vn = {
       o.forEach((v) => v.setValue(k));
     }, h = () => !o.some((k) => !(k.isValid === void 0 || k.isValid())), d = F([]);
     Ae(He, we(d));
-    const m = (k) => {
+    const b = (k) => {
       Array.isArray(k) ? d.value = [...d.value, ...k] : d.value.push(k);
     }, _ = (k) => {
       Array.isArray(k) ? d.value = d.value.filter((v) => k.indexOf(v) >= 0) : d.value = d.value.filter((v) => v !== k);
     }, B = F([]);
-    return Ae(Ge, we(B)), n({ getValues: p, setValues: u, isValid: h, hideField: m, showField: _, disableField: (k) => {
+    return Ae(Ge, we(B)), n({ getValues: p, setValues: u, isValid: h, hideField: b, showField: _, disableField: (k) => {
       Array.isArray(k) ? B.value = [...B.value, ...k] : B.value.push(k);
     }, enableField: (k) => {
       Array.isArray(k) ? B.value = B.value.filter((v) => k.indexOf(v) >= 0) : B.value = B.value.filter((v) => v !== k);
@@ -3241,10 +3241,10 @@ const xs = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
           legend: {
             position: `${l.legendPosition}`,
             labels: {
-              filter: (d, m) => d.text != null
+              filter: (d, b) => d.text != null
             },
-            onClick: function(d, m) {
-              s("legendItemClick", o, m);
+            onClick: function(d, b) {
+              s("legendItemClick", o, b);
             }
           }
         }
@@ -3312,16 +3312,16 @@ const xs = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     const h = y(() => {
       let d = Number.MAX_SAFE_INTEGER;
       if (l.autocompletes != null && l.autocompletes != null) {
-        for (let m = 0; m < l.autocompletes.length; m++)
-          l.autocompletes[m].Method.indexOf(".") >= 0 ? d = Math.min(d, l.autocompletes[m].Method.indexOf(".")) : d = Math.min(d, l.autocompletes[m].Method.length);
+        for (let b = 0; b < l.autocompletes.length; b++)
+          l.autocompletes[b].Method.indexOf(".") >= 0 ? d = Math.min(d, l.autocompletes[b].Method.indexOf(".")) : d = Math.min(d, l.autocompletes[b].Method.length);
         if (d > 3 && l.autocompletes.length > 0) {
-          let m = !0, _ = l.autocompletes[0].Method.substring(0, 3);
+          let b = !0, _ = l.autocompletes[0].Method.substring(0, 3);
           for (let B = 0; B < l.autocompletes.length; B++)
             if (l.autocompletes[B].Method.substring(0, 3) != _) {
-              m = !1;
+              b = !1;
               break;
             }
-          m && (d = 3);
+          b && (d = 3);
         }
       }
       return d;
@@ -3339,9 +3339,9 @@ const xs = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
         enableLiveAutocompletion: !0
       }), r.value.completers = [{
         identifierRegexps: [/[a-zA-Z0-9_\.]+/],
-        getCompletions: function(m, _, B, b, I) {
+        getCompletions: function(b, _, B, m, I) {
           var k = [];
-          if (b = b.toUpperCase(), b.length >= h && (k = l.autocompletes.filter((v) => v.Method.toUpperCase().startsWith(b) && v.Method.length > b.legend).map((v) => ({
+          if (m = m.toUpperCase(), m.length >= h && (k = l.autocompletes.filter((v) => v.Method.toUpperCase().startsWith(m) && v.Method.length > m.legend).map((v) => ({
             caption: v.Method + (v.Description === null || v.Description === void 0 ? "" : "->" + v.Description),
             value: v.Method,
             meta: "autos"
@@ -3354,7 +3354,7 @@ const xs = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
           }));
         }
       }]);
-    }), (d, m) => (i(), c("div", {
+    }), (d, b) => (i(), c("div", {
       class: "editor",
       ref_key: "container",
       ref: o
@@ -3419,11 +3419,11 @@ const xs = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
             }, null, 8, ["message"]))
           ])
         ])) : (i(!0), c(V, { key: 1 }, R(t.Data, (u, h) => (i(), c(V, null, [
-          (i(!0), c(V, null, R(o.value.filter((d) => d.some((m) => !(m.HeaderOnly ?? !1))), (d, m) => (i(), c("tr", {
-            key: `row-${h}-${m}`
+          (i(!0), c(V, null, R(o.value.filter((d) => d.some((b) => !(b.HeaderOnly ?? !1))), (d, b) => (i(), c("tr", {
+            key: `row-${h}-${b}`
           }, [
             (i(!0), c(V, null, R(d.filter((_) => !(_.HeaderOnly ?? !1)), (_) => (i(), c("td", {
-              key: `data-${h}-${m}`,
+              key: `data-${h}-${b}`,
               colspan: _.DataColspan,
               rowspan: _.DataRowspan,
               onClick: (B) => a("cellClicked", { RowIndex: h, Data: _.PropertyName ? u[_.PropertyName] : null, Row: u })
