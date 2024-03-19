@@ -471,11 +471,15 @@ const ua = ["disabled"], da = {
   }
 }), Fa = /* @__PURE__ */ k({
   __name: "check-mark",
+  props: {
+    checked: { type: Boolean, default: !0 }
+  },
   setup(e) {
-    return (n, t) => (r(), P(U, {
-      icon: "check",
-      size: M(oe).small
-    }, null, 8, ["size"]));
+    const n = e;
+    return (t, a) => (r(), P(U, {
+      icon: `square-${n.checked ? "check" : "xmark"}`,
+      size: M(oe).normal
+    }, null, 8, ["icon", "size"]));
   }
 }), et = async (e, n, t) => {
   let a = await import(e);
