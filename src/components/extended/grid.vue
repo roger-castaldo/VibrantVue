@@ -1,34 +1,49 @@
 <template>
     <Table v-bind="tableProperties">
         <template #thead>
-            <tr v-for="row in props.Columns">
-                <th v-for="col in row" :colspan="col.HeaderColspan" :rowspan="col.HeaderRowspan">
-                    <slot :name="`head-${col.ID}`">
-                        {{col.Title}}
+            <tr v-if="props.hasFilter??false">
+                <th colspan="100%">
+                    <Filter v-on:filter="(value)=>emit('filter',value)"/>
+                </th>
+            </tr>
+            <tr v-for="row in props.columns">
+                <th v-for="col in row" :colspan="col.headerColspan" :rowspan="col.headerRowspan">
+                    <slot :name="`head-${col.id}`">
+                        <span v-if="props.currentSort!==undefined && props.currentSort!==null && (col.canSort??false) && col.id===props.currentSort.column" 
+                            class="icon-text is-clickable"
+                            @click="changeSort(col.id)">
+                            <span class="icon">
+                                <Icon icon="arrow-down"/>
+                            </span>
+                            <span>{{col.title}}</span>
+                        </span>
+                        <template v-else>
+                            {{col.title}}
+                        </template>
                     </slot>
                 </th>
             </tr>
         </template>
         <template #tbody>
-            <template v-if="props.Data===null || props.Data.length===0">
+            <template v-if="props.data===null || props.data.length===0">
                 <tr>
                     <td colspan="100%">
-                        <Progress v-if="props.Data===null"/>
-                        <Notification :message="props.EmptyMessage??'No data available'" v-else/>
+                        <Progress v-if="props.data===null"/>
+                        <Notification :message="props.emptyMessage??'No data available'" v-else/>
                     </td>
                 </tr>
             </template>
             <template v-else>
-                <template v-for="drow,index in props.Data">
-                    <tr :key="`row-${index}-${cindex}`" v-for="row,cindex in ColumnRows.filter(col=>col.some(c=>!(c.HeaderOnly??false)))">
+                <template v-for="drow,index in props.data">
+                    <tr :key="`row-${index}-${cindex}`" v-for="row,cindex in ColumnRows.filter(col=>col.some(c=>!(c.headerOnly??false)))">
                         <td :key="`data-${index}-${cindex}`" 
-                            v-for="col in row.filter(c=>!(c.HeaderOnly??false))" 
-                            :colspan="col.DataColspan" 
-                            :rowspan="col.DataRowspan"
-                            @click="emit('cellClicked',{RowIndex:index,Data:(col.PropertyName?drow[col.PropertyName] : null),Row:drow})"
+                            v-for="col in row.filter(c=>!(c.headerOnly??false))" 
+                            :colspan="col.dataColspan" 
+                            :rowspan="col.dataRowspan"
+                            @click="emit('cellClicked',{rowIndex:index,data:(col.propertyName?drow[col.propertyName] : null),row:drow})"
                         >
-                            <slot :name="`body-${col.ID}`" v-bind="{RowIndex:index,Data:(col.PropertyName?drow[col.PropertyName] : null),Row:drow}">
-                                {{(col.PropertyName?drow[col.PropertyName] : null)}}
+                            <slot :name="`body-${col.id}`" v-bind="{rowIndex:index,data:(col.propertyName?drow[col.propertyName] : null),row:drow}">
+                                {{(col.propertyName?drow[col.propertyName] : null)}}
                             </slot>
                         </td>
                     </tr>
@@ -50,11 +65,13 @@
 </template>
 
 <script lang="ts" setup>
-    import { CellData, IGridProperties } from './typeDefinitions';
+    import { CellData, GridSort, IGridProperties } from './typeDefinitions';
     import Table from '../layout/table.vue';
     import Pagination from '../common/pagination.vue';
     import Notification from '../common/notification.vue';
     import Progress from '../common/progress.vue';
+    import Filter from '../common/filter.vue';
+    import Icon from '../common/icon.vue';
     import { ITableProperties } from '../layout/interfaces';
     import { IPaginationProperties } from '../common/typeDefinitions';
     import {computed} from 'vue';
@@ -71,7 +88,9 @@
         moveForward:[],
         moveBack:[],
         goToPage:[page:number],
-        cellClicked:[cell:CellData]
+        cellClicked:[cell:CellData],
+        sort:[by:GridSort],
+        filter:[value:string|null]
     }>();
     const tableProperties = computed<ITableProperties>(()=>{
         return {
@@ -94,11 +113,25 @@
         };
     });
     const ColumnRows = computed(()=>{
-        if (props.ColumnRows===undefined || props.ColumnRows.length===0){
-            return props.Columns;
+        if (props.columnRows===undefined || props.columnRows.length===0){
+            return props.columns;
         }
-        return props.ColumnRows.map(row=>{
-            return row.map(c=>props.Columns.filter(col=>col.some(i=>i.ID===c))[0].find(col=>col.ID===c));
+        return props.columnRows.map(row=>{
+            return row.map(c=>props.columns.filter(col=>col.some(i=>i.id===c))[0].find(col=>col.id===c));
         });
     });
+    const changeSort = (column:string) => {
+        if (props.currentSort!==undefined && props.currentSort!==null 
+        && props.currentSort.column===column){
+            emit('sort',{
+                column:column,
+                ascending:!props.currentSort.ascending
+            });
+        }else{
+            emit('sort',{
+                column:column,
+                ascending:true
+            });
+        }
+    };
 </script>

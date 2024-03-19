@@ -3,34 +3,42 @@ import { ITableProperties } from "../layout/interfaces";
 import { IPaginationProperties } from "../common/typeDefinitions";
 
 type AutoCompleteEntry = {
-    Method:string,
-    Description:string
+    method:string,
+    description:string
 };
 
 type GridColumn = {
-    ID:string,
-    PropertyName?:string,
-    Title?:MaybeRef<string>,
-    HeaderColspan?:number,
-    HeaderRowspan?:number,
-    DataColspan?:number,
-    DataRowspan?:number,
-    HeaderOnly?:boolean
+    id:string,
+    propertyName?:string,
+    title?:MaybeRef<string>,
+    headerColspan?:number,
+    headerRowspan?:number,
+    dataColspan?:number,
+    dataRowspan?:number,
+    headerOnly?:boolean,
+    canSort?:boolean
 };
 
 type CellData = {
-    RowIndex:number,
-    Data:any,
-    Row:any
+    rowIndex:number,
+    data:any,
+    row:any
 }
+
+type GridSort = {
+    column:string,
+    ascending:boolean
+};
 
 interface IGridProperties 
     extends ITableProperties,IPaginationProperties {
-    Columns:GridColumn[][],
-    Data:[]|null,
-    EmptyMessage?:string,
-    ColumnRows?:string[][]
+    columns:GridColumn[][],
+    data:[]|null,
+    emptyMessage?:string,
+    columnRows?:string[][],
+    hasFilter?:boolean,
+    currentSort?:GridSort
 };
 
-export type {AutoCompleteEntry, GridColumn,CellData};
+export type {AutoCompleteEntry, GridColumn,CellData,GridSort};
 export {IGridProperties};
