@@ -1,0 +1,36 @@
+@use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../mixins" as mx;
+
+@include mx.bulma-theme($name: "cerulean") {
+
+    $orange: #dd5600;
+    $orange-invert:fn.bulmaFindColorInvert($orange);
+    $yellow: #dab424;
+    $green: #73a839;
+    $turquoise: #5bc0de;
+    $blue: #033c73;
+    $purple: #7e5ea3;
+    $red: #c71c22;
+    $grey:#dbdbdb;
+    $primary-dark:#317eac;
+    $primary:#2fa4e7;
+
+    $list:mx.define-baseColor("primary",$primary,());
+    $list:mx.define-baseColor("warning",$orange,$list);
+    $list:mx.define-baseColor("info",#d8dce0,$list,#333);
+    $list:mx.define-baseColor("link",$blue,$list);
+    $list:mx.define-baseColor("sucess",$green,$list);
+    $list:mx.define-baseColor("danger",$red,$list);
+
+    $list:mx.define-variable("family-primary",("Helvetica Neue", Helvetica, Arial, sans-serif),$list);
+    $list:mx.define-variable("box-shadow",0 0 0 1px $grey,$list);
+    $list:mx.define-variable("title-color",$primary-dark,$list);
+    $list:mx.define-variable("title-weight",500,$list);
+    $list:mx.define-variable("title-strong-weight",700,$list);
+    $list:mx.define-variable("subtitle-weight",300,$list);
+    $list:mx.define-variable("subtitle-strong-weight",500,$list);
+
+    @include mx.output-skin-content($list);
+
+    @import "./overrides.scss";
+}

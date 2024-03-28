@@ -790,7 +790,7 @@ const be = /* @__PURE__ */ k({
       ]) : T("", !0),
       s.isRejected ? A(o.$slots, "rejected", re(Y({ key: 1 }, s.error)), () => [
         N(M(ce), {
-          message: `${a.value}:${s.error.message ?? s.error.toString()}`,
+          message: `${a}:${s.error.message ?? s.error.toString()}`,
           type: M(te).danger
         }, null, 8, ["message", "type"])
       ]) : T("", !0),

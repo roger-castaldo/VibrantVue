@@ -1,0 +1,184 @@
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/mixins" as mx;
+@use "../mixins" as lmx;
+
+$box-shadow-color:hsla(#{cv.getVar('grey-darker', '', '-h')},#{cv.getVar('grey-darker', '', '-s')},#{cv.getVar('grey-darker', '', '-l')},0.3);
+
+.button,
+.control.has-icons-left .icon,
+.control.has-icons-right .icon,
+.input,
+.pagination-ellipsis,
+.pagination-link,
+.pagination-next,
+.pagination-previous,
+.select,
+.select select,
+.textarea {
+  height: 2.6667em;
+}
+
+.button {
+  &.is-active,
+  &.is-focused,
+  &:active,
+  &:focus {
+    box-shadow: inset 1px 1px 4px $box-shadow-color;
+  }
+  @each $name, $pair in dv.$colors {
+    &.is-#{$name} {
+      &.is-hovered,
+      &:hover {
+        background-color: #{lmx.darken-color($name,10)};
+      }
+      &.is-active,
+      &.is-focused,
+      &:active,
+      &:focus {
+        box-shadow: inset 1px 0 3px $box-shadow-color;
+        background-color: #{lmx.darken-color($name,10)};
+      }
+    }
+  }
+}
+
+.input,
+.textarea {
+  box-shadow: none;
+}
+
+.notification {
+  @each $name, $pair in dv.$colors {
+    &.is-#{$name} {
+      a:not(.button) {
+        color: #{cv.getVar($name,"","-invert")};
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.progress {
+  height: #{cv.getVar("size-small")};
+}
+
+.progress,
+.tag {
+  border-radius: #{cv.getVar("radius")};
+}
+
+.navbar:not(.is-transparent) {
+  background-color: #{cv.getVar("black-ter")};
+  .navbar-menu {
+    background-color: #{cv.getVar("black-ter")};
+  }
+  .navbar-item,
+  .navbar-link {
+    color: #{cv.getVar("white")};
+    &.has-dropdown:hover .navbar-link,
+    &:hover {
+      background-color: #{cv.buildHslaString("white","",0.05)};
+    }
+    &.is-active,
+    &:active {
+      background-color: #{cv.buildHslaString("black-ter","",0.05)};
+      color: #{cv.getVar("primary")};
+    }
+  }
+  .navbar-burger:hover {
+    background-color: #{cv.buildHslaString("black-ter","",0.05)};
+  }
+  .navbar-link::after {
+    border-color: #{cv.getVar("white")};
+  }
+  @include mx.desktop {
+    .navbar-dropdown .navbar-item {
+      color:  #{cv.getVar("grey-dark")};
+      &:hover {
+        background-color: #{cv.buildHslaString("black-ter","",0.05)};
+      }
+      &.is-active,
+      &:active {
+        color: #{cv.getVar("primary")};
+      }
+      strong {
+        color: #{cv.getVar("grey")};
+      }
+    }
+  }
+  .navbar-burger {
+    span {
+      background-color: #{cv.getVar("white")};
+    }
+  }
+  strong {
+    color: #{cv.getVar("white-ter")};
+  }
+  @each $name, $pair in dv.$colors {
+    &.is-#{$name} {
+      background-color: #{cv.getVar($name)};
+      .navbar-menu {
+        background-color: #{cv.getVar($name)};
+      }
+      .navbar-item,
+      .navbar-link {
+        @media (max-width: iv.$desktop) {
+          color: #{cv.getVar($name,"","-invert")};
+        }
+        &.is-active,
+        &:active {
+          color: #{cv.getVar($name,"","-invert")};
+        }
+      }
+      .navbar-burger {
+        &:hover {
+          background-color: #{lmx.darken-color($name,5)};
+        }
+        span {
+          background-color: #{cv.getVar($name,"","-invert")};
+        }
+      }
+    }
+  }
+}
+
+.hero {
+  // Colors
+  .navbar:not(.is-transparent) {
+    background-color: #{cv.getVar("black-ter")};
+  }
+  @each $name, $pair in dv.$colors {
+    &.is-#{$name} {
+      .navbar {
+        background: none;
+      }
+      .navbar-item,
+      .navbar-link {
+        color: #{cv.getVar($name,"","-invert")};
+        &.is-active,
+        &:hover {
+          background-color: #{lmx.darken-color($name,10)};
+          color: #{cv.getVar($name,"","-invert")};
+        }
+        &:after {
+          border-color: #{cv.getVar($name,"","-invert")};
+        }
+      }
+      .navbar-menu {
+        background-color: #{cv.getVar($name)};
+      }
+      .navbar-burger {
+        span {
+          background-color: #{cv.getVar($name,"","-invert")};
+        }
+      }
+      @include mx.desktop {
+        .navbar-dropdown a.navbar-item {
+          color: #{cv.getVar("grey-dark")};
+        }
+      }
+    }
+  }
+}

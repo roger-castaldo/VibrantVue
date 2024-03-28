@@ -1,0 +1,156 @@
+@use 'sass:list';
+@use "sass:map";
+@use "sass:string";
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../../../../node_modules/bulma/sass/themes/setup" as setup;
+
+$variableMaps:(
+  "radius":(
+    "control-radius","message-radius","message-header-radius","message-body-radius",
+    "tabs-boxed-link-radius", "tabs-toggle-link-radius","panel-heading-radius",
+    "dropdown-content-radius", "tag-radius","notification-radius",
+    "input-radius","file-radius"
+  ),
+  "radius-large":(
+    "panel-radius","navbar-dropdown-radius","navbar-dropdown-boxed-radius",
+    "modal-card-head-radius","modal-card-foot-radius","box-radius"
+  ),
+  "radius-rounded":("progress-border-radius"),
+  "radius-small":("control-radius-small","menu-item-radius")
+);
+
+$classMaps:(
+    "title-":".title",
+    "subtitle-":".subtitle",
+    "box-":".box",
+    "button-":".button",
+    "table-":".table",
+    "pagination-":".pagination",
+    "navbar-":".navbar",
+    "tabs-":".tabs",
+    "progress-":".progress",
+    "panel-":".panel",
+    "breadcrumb-":".breadcrumb",
+    "dropdown-":".dropdown"
+);
+
+@function define-baseColor($name,$base,$list,$base-invert:null,$base-light:null,$base-dark:null){
+    @if $base-invert==null {
+        $base-invert:fn.bulmaFindColorInvert($base);
+    }
+    $list:append($list,(
+        "name":$name,
+        "base":$base,
+        "base-invert":$base-invert,
+        "base-light":$base-light,
+        "base-dark":$base-dark,
+        "type":"base-color"
+    ));
+    @return $list;
+}
+
+@function get-className($name){
+    @each $key,$value in $classMaps{
+        @if string.slice($name,1,string.length($key)) == $key {
+            @return $value;
+        }
+    }
+    @return "";
+}
+
+@function define-variable($name,$value,$list,$className:""){
+    @if $className=="" {
+        $className:get-className($name);
+    }
+    $list:append($list,(
+        "name":$name,
+        "value":$value,
+        "class-name":$className,
+        "type":"variable"
+    ));
+    @if map-has-key($variableMaps, $name) {
+        @each $var in map-get($variableMaps,$name){
+          $list:define-variable($var,$value,$list,$className);
+        }
+      }
+    @return $list;
+}
+
+@function darken-color($name,$amount){
+    @return cv.buildHslaString($name,"calc(max(#{cv.getVar($name, '', '-l')} - #{$amount}%,0%))");
+}
+
+@function lighten-color($name,$amount){
+    @return cv.buildHslaString($name,"calc(min(#{cv.getVar($name, '', '-l')} + #{$amount}%,100%))");
+}
+
+@mixin output-skin-content($list){
+    @each $value in $list {
+        @if map.get($value,"type")=="base-color"{
+            @include cv.generate-color-palette(
+                map.get($value,"name"),
+                map.get($value,"base"),
+                100%,
+                map.get($value,"base-invert"),
+                map.get($value,"base-light"),
+                map.get($value,"base-dark"));
+        }
+    }    
+
+    @include setup.setup-theme;
+
+    @each $value in $list {
+        @if map.get($value,"type")=="variable"{
+            @if map.get($value,"class-name")!=""{
+                #{map.get($value,"class-name")}{
+                    @include cv.register-var(map.get($value,"name"),#{map.get($value,"value")});
+                }
+            }
+            @else{
+                @include cv.register-var(map.get($value,"name"),#{map.get($value,"value")});
+            }
+        }
+    }
+}
+
+@mixin bulma-theme($name) {
+    :root[data-#{iv.$class-prefix}theme="#{$name}"],
+    [data-#{iv.$class-prefix}theme="#{$name}"],
+    :root.#{iv.$class-prefix}theme-#{$name},
+    .#{iv.$class-prefix}theme-#{$name} {
+      @content;
+    }
+}
+
+@mixin override-color-variables($variableName,$overrideName,$backgroundName:"background"){
+    @include cv.register-vars(
+        (
+            "#{$variableName}-h": #{cv.getVar($overrideName, "", "-h")},
+            "#{$variableName}-s": #{cv.getVar($overrideName, "", "-s")},
+            "#{$variableName}-#{$backgroundName}-l": #{cv.getVar($overrideName, "", "-l")}
+        )
+    ); 
+    @each $name,$pair in dv.$colors{
+        &.#{iv.$class-prefix}is-#{$name} {
+          @include cv.register-vars(
+            (
+              "#{$variableName}-h": #{cv.getVar($name, "", "-h")},
+              "#{$variableName}-s": #{cv.getVar($name, "", "-s")},
+              "#{$variableName}-#{$backgroundName}-l": #{cv.getVar($name, "", "-l")}
+            )
+          );
+        }
+      }
+}
+
+@mixin override-color-variable($variableName,$overrideName){
+    @include cv.register-var($variableName,#{cv.getVar($overrideName)});
+    @each $name,$pair in dv.$colors{
+        &.#{iv.$class-prefix}is-#{$name} {
+            @include cv.register-var($variableName,#{cv.getVar($name)});
+        }
+      }
+}

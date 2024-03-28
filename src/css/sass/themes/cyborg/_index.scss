@@ -1,0 +1,130 @@
+@use 'sass:color';
+@use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../mixins" as mx;
+
+@include mx.bulma-theme($name: "cyborg") {
+
+    $grey-accent: hsl(0, 0%, 14%);
+    $grey-darker: hsl(0, 0%, 21%);
+    $grey-dark: hsl(0, 0%, 29%);
+    $grey: hsl(0, 0%, 48%);
+    $grey-light: hsl(0, 0%, 71%);
+    $grey-lighter: hsl(0, 0%, 86%);
+
+    $primary: #2a9fd6;
+    $primary-light: lighten($primary, 10);
+    $link: #3273e2;
+
+    $white: #fff;
+    $white-ter: #f5f5f5;
+
+    $background:$grey-darker;
+    $text:$white;
+
+    $list:mx.define-baseColor("primary",$primary,());
+    $list:mx.define-baseColor("link",$link,$list);
+    $list:mx.define-baseColor("success",#48c774,$list);
+    $list:mx.define-baseColor("text",$text,$list,null,lighten($white,10),darken($white,5));
+    $list:mx.define-baseColor("grey-dark",$grey-dark,$list);
+    $list:mx.define-baseColor("grey-darker",$grey-darker,$list);
+    $list:mx.define-baseColor("grey-accent",$grey-accent,$list);
+
+    $list:mx.define-variable("grey",$grey,$list);
+    $list:mx.define-variable("grey-light",$grey-light,$list);
+    $list:mx.define-variable("grey-lighter",$grey-lighter,$list);
+    $list:mx.define-variable("white",$white,$list);
+    $list:mx.define-variable("white-ter",$white-ter,$list);
+    $list:mx.define-variable("body-background-color",#000,$list);
+    $list:mx.define-variable("background",$background,$list);
+    $list:mx.define-variable("footer-background-color",$background,$list);
+    $list:mx.define-variable("border-color",$grey-dark,$list);
+
+    
+
+    $list:mx.define-variable("text-strong",$white,$list);
+    $list:mx.define-variable("strong-color",$white,$list);
+    
+    $list:mx.define-variable("title-color",$white,$list);
+    $list:mx.define-variable("subtitle-color",$white-ter,$list);
+    $list:mx.define-variable("subtitle-strong-color",$white-ter,$list);
+    
+    $list:mx.define-variable("box-background-color",$grey-accent,$list);
+    $list:mx.define-variable("box-shadow","none",$list);
+
+    $list:mx.define-variable("progress-bar-background-color",$grey-dark,$list);
+    
+    $list:mx.define-variable("table-background-color",$grey-dark,$list);
+    $list:mx.define-variable("table-head",$grey-lighter,$list);
+    $list:mx.define-variable("table-background-color",$grey-darker,$list);
+    $list:mx.define-variable("table-cell-border-size",1px,$list);
+    $list:mx.define-variable("table-cell-border-style",solid,$list);
+    $list:mx.define-variable("table-cell-border-color",$grey-dark,$list);
+    
+    $list:mx.define-variable("table-row-hover-background-color",$grey-dark,$list);
+    $list:mx.define-variable("table-striped-row-even-background-color",$grey-dark,$list);
+    $list:mx.define-variable("table-striped-row-even-hover-background-color",lighten($grey-dark, 4),$list);
+
+    $list:mx.define-variable("breadcrumb-item-active-color",$white,$list);
+
+    $list:mx.define-variable("dropdown-content-background-color",$background,$list);
+    $list:mx.define-variable("dropdown-item-h",color.hue($text),$list);
+    $list:mx.define-variable("dropdown-item-s",color.saturation($text),$list);
+    $list:mx.define-variable("dropdown-item-color-l",color.lightness($text),$list);
+    $list:mx.define-variable("dropdown-item-background-l-delta",-79%,$list);
+    $list:mx.define-variable("dropdown-item-hover-background-l-delta",-5%,$list);
+    
+    /*
+    $list:mx.define-variable("box-color",$text,$list);
+    
+    $list:mx.define-variable("link-hover",$primary-light,$list);
+    $list:mx.define-variable("link-focus",$primary-light,$list);
+    $list:mx.define-variable("link-active",$primary-light,$list);
+    $list:mx.define-variable("link-hover-border-color",$grey-dark,$list);
+    $list:mx.define-variable("link-active-border-color",$grey,$list);
+
+    $list:mx.define-variable("button-color",$text,$list);
+    $list:mx.define-variable("button-border-color",$grey-darker,$list);
+    $list:mx.define-variable("button-hover-color",$grey-lighter,$list);
+    $list:mx.define-variable("button-focus-color",$grey-light,$list);
+    $list:mx.define-variable("button-active-color",$grey-light,$list);
+    
+    $list:mx.define-variable("input-color",$grey-darker,$list);
+    $list:mx.define-variable("input-icon-color",$grey,$list);
+    $list:mx.define-variable("input-icon-active-color",$grey-darker,$list);
+    
+    $list:mx.define-variable("table-color",$text,$list);
+    
+
+    $list:mx.define-variable("pagination-border-color",$grey-darker,$list);
+    $list:mx.define-variable("pagination-disabled",$grey-light,$list);
+    $list:mx.define-variable("pagination-disabled-background-color",$grey-dark,$list);
+
+    $list:mx.define-variable("dropdown-content-background-color",$background,$list);
+    $list:mx.define-variable("dropdown-item-color",$text,$list);
+    
+    $list:mx.define-variable("navbar-background-color",$background,$list);
+    $list:mx.define-variable("navbar-item-color",$white,$list);
+    $list:mx.define-variable("navbar-item-hover-color",$white,$list);
+    $list:mx.define-variable("navbar-item-hover-background-color",rgba($white, 0.12),$list);
+    $list:mx.define-variable("navbar-item-active-color",$link,$list);
+    $list:mx.define-variable("navbar-item-active-background-color",rgba($white, 0.12),$list);
+
+    $list:mx.define-variable("navbar-dropdown-background-color",$background,$list);
+    $list:mx.define-variable("navbar-dropdown-item-hover-color",$white,$list);
+    $list:mx.define-variable("navbar-dropdown-item-hover-background-color", rgba($white, 0.12),$list);
+    $list:mx.define-variable("navbar-dropdown-item-active-background-color", rgba($white, 0.12),$list);
+    $list:mx.define-variable("navbar-dropdown-arrow",$white,$list);
+
+    $list:mx.define-variable("tabs-boxed-link-active-background-color",$background,$list);
+
+    $list:mx.define-variable("file-cta-background-color",$grey-darker,$list);
+
+    $list:mx.define-variable("progress-bar-background-color",$grey-dark,$list);
+
+    $list:mx.define-variable("panel-heading-background-color",$grey-dark,$list);*/
+    
+    @include mx.output-skin-content($list);
+
+    @import "./overrides.scss";
+}

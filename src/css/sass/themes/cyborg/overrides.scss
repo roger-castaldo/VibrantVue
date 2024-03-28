@@ -1,0 +1,200 @@
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/mixins" as mx;
+@use "../mixins" as lmx;
+
+// Overrides
+
+.delete {
+  background-color: rgba(255, 255, 255, 0.2);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.button{
+  @include cv.register-vars(
+        (
+          "button-h": 0,
+          "button-s": 0%,
+          "button-background-l": 17%
+        )
+      );
+  color:#{cv.getVar("text")};
+  
+  &.#{iv.$class-prefix}is-loading::after{
+    color:#{cv.getVar("text")} !important;
+    border-left-color:#{cv.getVar("text")};
+    border-bottom-color:#{cv.getVar("text")};
+  }
+
+  @each $name, $pair in dv.$colors {
+    &.#{iv.$class-prefix}is-#{$name} {
+      @include cv.register-vars(
+        (
+          "button-h": #{cv.getVar($name, "", "-h")},
+          "button-s": #{cv.getVar($name, "", "-s")},
+          "button-background-l": #{cv.getVar($name, "", "-l")}
+        )
+      );
+      color: hsl(#{cv.getVar("button-h")},#{cv.getVar("button-s")},#{cv.getVar("button-color-l")});
+
+      &.#{iv.$class-prefix}is-outlined,
+      &.#{iv.$class-prefix}is-inverted{
+        color: hsl(
+            #{cv.getVar("button-h")},
+            #{cv.getVar("button-s")},
+            calc(
+              #{cv.getVar("button-border-l")} + #{cv.getVar("button-border-l-delta")}
+            )
+          );
+      }
+    }
+  }
+}
+
+.label {
+  color: #{cv.getVar("grey-lighter")};
+}
+
+.#{iv.$class-prefix}control{
+  &.#{iv.$class-prefix}has-icons-left,
+  &.#{iv.$class-prefix}has-icons-right{
+    .#{iv.$class-prefix}icon{
+      color: #{cv.getVar("grey-dark")};
+    }
+  }
+}
+
+.#{iv.$class-prefix}file-cta,
+.#{iv.$class-prefix}file-name{
+  color:#{cv.getVar("white")};
+}
+
+.#{iv.$class-prefix}file{
+  @include lmx.override-color-variables("file","grey-darker");
+}
+
+.#{iv.$class-prefix}tag {
+  @include lmx.override-color-variables("tag","grey-dark");
+}
+
+.notification {
+  @include lmx.override-color-variables("notification","grey-dark");
+  color:#{cv.getVar("white")};
+
+  @each $name, $pair in dv.$colors {
+    &.is-#{$name} {
+      a:not(.button) {
+        color: #{cv.getVar($name,"","-invert")};
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.card {
+  $card-border-color: #{lmx.lighten-color("grey-darker", 5)};
+  box-shadow: none;
+  background-color: #{cv.getVar("grey-darker")};
+
+  .card-header {
+    box-shadow: none;
+    background-color: #{cv.buildHslaString("black-bis","",0.2)};
+  }
+
+  .card-footer {
+    background-color: #{cv.buildHslaString("black-bis","",0.2)};
+  }
+
+  .card-footer,
+  .card-footer-item {
+    border-color: #{cv.getVar("card-border-color")};
+  }
+}
+
+.message-header {
+  background-color: #{cv.getVar("black-ter")};
+  color: #{cv.getVar("white")};
+}
+
+.message-body {
+  border-color: #{cv.getVar("black-ter")};
+}
+
+.modal-card-body {
+  background-color: #{cv.getVar("black-ter")};
+}
+
+.modal-card-foot,
+.modal-card-head {
+  border-color: #{cv.getVar("black-ter")};
+}
+
+.navbar {
+  border: 1px solid #{cv.getVar("grey-dark")};
+
+  @include lmx.override-color-variable("navbar-background-color","body-background-color");
+
+  .navbar-dropdown {
+    border: 1px solid #{cv.getVar("grey-darker")};
+  }
+
+  @include mx.touch {
+    .navbar-menu {
+      background-color: #{cv.getVar("navbar-background-color")};
+    }
+  }
+}
+
+a,
+button{
+  &.#{iv.$class-prefix}dropdown-item{
+    &.#{iv.$class-prefix}is-active,
+    &.#{iv.$class-prefix}is-selected{
+      @include cv.register-var("dropdown-item-background-l-delta",0%);
+    }
+  }
+}
+
+.hero {
+  @include lmx.override-color-variables("hero","grey-dark");
+  background-color: hsl(
+    #{cv.getVar("hero-h")},
+    #{cv.getVar("hero-s")},
+    #{cv.getVar("hero-background-l")}
+  );
+  .navbar {
+    &,
+    .navbar-menu,
+    .navbar-dropdown {
+      border: none;
+    }
+  }
+
+  $color: hsl(
+    #{cv.getVar("hero-h")},
+    #{cv.getVar("hero-s")},
+    #{cv.getVar("hero-color-l")}
+  );
+
+  .#{iv.$class-prefix}subtitle {
+    @include cv.register-vars(
+      (
+        "subtitle-color": $color,
+        "subtitle-strong-color": $color,
+      )
+    );
+  }
+
+  .#{iv.$class-prefix}title {
+    @include cv.register-vars(
+      (
+        "title-color": $color,
+        "title-strong-color": $color,
+      )
+    );
+  }
+}

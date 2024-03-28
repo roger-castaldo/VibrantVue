@@ -1,0 +1,48 @@
+@use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../mixins" as mx;
+
+@include mx.bulma-theme($name: "cosmo") {
+
+    $grey-darker: #333;
+    $black-ter: #222;
+
+    $orange: #ff7518;
+    $yellow: #f4db00;
+    $green: #3fb618;
+    $turquoise: #00aba9;
+    $blue: #1faeff;
+    $purple: #aa40ff;
+    $red: #ff2e12;
+    $grey: #dbdbdb;
+
+    $primary: #2780e3;
+    $primary-dark: darken(#2780e3, 20);
+
+    $list:mx.define-baseColor("primary",$primary,());
+    $list:mx.define-baseColor("warning",$orange,$list,#fff);
+    $list:mx.define-baseColor("info",$purple,$list);
+    $list:mx.define-baseColor("link",$blue,$list);
+    $list:mx.define-baseColor("sucess",$green,$list);
+    $list:mx.define-baseColor("danger",$red,$list);
+    
+    $list:mx.define-variable("black-ter",$black-ter,$list);
+    $list:mx.define-variable("grey-darker",$black-ter,$list);
+    $list:mx.define-variable("family-primary",("Segoe UI", "Source Sans Pro", Calibri, Candara, Arial,sans-serif),$list);
+    $list:mx.define-variable("body-size",15px,$list);
+    $list:mx.define-variable("radius",0,$list);
+    $list:mx.define-variable("radius-small",0,$list);
+    $list:mx.define-variable("radius-large",0,$list);
+    $list:mx.define-variable("link-hover",$primary-dark,$list);
+    $list:mx.define-variable("link-focus",$primary-dark,$list);
+    $list:mx.define-variable("link-active",$primary-dark,$list);
+    $list:mx.define-variable("button-hover-color",$grey-darker,$list);
+    $list:mx.define-variable("button-focus",$black-ter,$list);
+    $list:mx.define-variable("button-active-color",$black-ter,$list);
+    $list:mx.define-variable("box-shadow",0 0 0 1px $grey,$list);
+    $list:mx.define-variable("card-shadow",0 0 0 1px $grey,$list);
+    
+
+    @include mx.output-skin-content($list);
+
+    @import "./overrides.scss";
+}

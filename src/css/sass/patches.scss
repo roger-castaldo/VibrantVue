@@ -1,0 +1,5 @@
+@use "../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+
+.tag.is-light.is-light {
+    --bulma-tag-color-l: #{cv.getVar("light","","-invert-l")};
+}
