@@ -81,7 +81,7 @@
   @include lmx.override-color-variables("tag","grey-dark");
 }
 
-.notification {
+.#{iv.$class-prefix}notification {
   @include lmx.override-color-variables("notification","grey-dark");
   color:#{cv.getVar("white")};
 
@@ -95,57 +95,153 @@
   }
 }
 
-.card {
-  $card-border-color: #{lmx.lighten-color("grey-darker", 5)};
-  box-shadow: none;
-  background-color: #{cv.getVar("grey-darker")};
+.#{iv.$class-prefix}message{
+  @include lmx.override-color-variables("message","grey-dark");
 
-  .card-header {
-    box-shadow: none;
-    background-color: #{cv.buildHslaString("black-bis","",0.2)};
-  }
-
-  .card-footer {
-    background-color: #{cv.buildHslaString("black-bis","",0.2)};
-  }
-
-  .card-footer,
-  .card-footer-item {
-    border-color: #{cv.getVar("card-border-color")};
+  &.#{iv.$class-prefix}is-link,
+  &.#{iv.$class-prefix}is-dark,
+  &.#{iv.$class-prefix}is-black{
+    .#{iv.$class-prefix}message-body{
+      color:#{cv.getVar("white")};
+    }
   }
 }
 
-.message-header {
-  background-color: #{cv.getVar("black-ter")};
-  color: #{cv.getVar("white")};
+.#{iv.$class-prefix}menu-list {
+  a,
+  button,
+  .#{iv.$class-prefix}menu-item{
+    @include cv.register-vars(
+      (
+        "menu-item-h":0deg,
+        "menu-item-s":0%,
+        "menu-item-background-l":0%
+      )
+    );
+
+    &.#{iv.$class-prefix}is-active,
+    &.#{iv.$class-prefix}is-selected{
+      @include cv.register-vars(
+        (
+          "menu-item-h":#{cv.getVar("menu-item-selected-h")},
+          "menu-item-s":#{cv.getVar("menu-item-selected-s")},
+          "menu-item-l":#{cv.getVar("menu-item-selected-l")},
+          "menu-item-background-l":#{cv.getVar("menu-item-selected-background-l")},
+          "menu-item-color-l":#{cv.getVar("menu-item-selected-color-l")}
+        )
+      );
+    }
+
+    &:hover {
+      @include cv.register-vars(
+        (
+          "menu-item-background-l-delta": 10%,
+        )
+      );
+    }
+
+    &:active {
+      @include cv.register-vars(
+        (
+          "menu-item-background-l-delta": 10%,
+        )
+      );
+    }
+  }
+} 
+
+.#{iv.$class-prefix}menu-label{
+  color:#{cv.getVar("white")};
 }
 
-.message-body {
-  border-color: #{cv.getVar("black-ter")};
+.#{iv.$class-prefix}modal{
+  @include cv.register-vars(
+    (
+      "modal-card-head-background-color":#{cv.getVar("grey-darker")},
+      "modal-card-foot-background-color":#{cv.getVar("grey-darker")},
+      "modal-card-body-background-color":#{cv.getVar("black-ter")}
+    )
+  );
 }
 
-.modal-card-body {
-  background-color: #{cv.getVar("black-ter")};
-}
-
-.modal-card-foot,
-.modal-card-head {
-  border-color: #{cv.getVar("black-ter")};
-}
-
-.navbar {
+.#{iv.$class-prefix}navbar {
   border: 1px solid #{cv.getVar("grey-dark")};
 
   @include lmx.override-color-variable("navbar-background-color","body-background-color");
 
-  .navbar-dropdown {
+  .#{iv.$class-prefix}navbar-dropdown {
     border: 1px solid #{cv.getVar("grey-darker")};
   }
 
   @include mx.touch {
-    .navbar-menu {
+    .#{iv.$class-prefix}navbar-menu {
       background-color: #{cv.getVar("navbar-background-color")};
     }
+  }
+}
+
+.#{iv.$class-prefix}pagination{
+  .#{iv.$class-prefix}pagination-previous, 
+  .#{iv.$class-prefix}pagination-next, 
+  .#{iv.$class-prefix}pagination-link {
+    color:#{cv.getVar("white")};
+
+    &:hover,
+    &:active{
+      color:#{cv.getVar("info")};
+      border-color: #{cv.getVar("info")};
+    }
+  }
+}
+
+.#{iv.$class-prefix}panel-heading{
+  @include cv.register-vars(
+    (
+      "panel-h":#{cv.getVar("grey-dark-h")},
+      "panel-s":#{cv.getVar("grey-dark-s")},
+      "panel-heading-background-l":#{cv.getVar("grey-dark-l")},
+      "panel-heading-color-l":100%
+    )
+  );
+}
+
+.#{iv.$class-prefix}panel-block{
+  &.#{iv.$class-prefix}is-active {
+    @include cv.register-var("panel-block-active-color", #{cv.getVar("link")});
+
+    .#{iv.$class-prefix}panel-icon{
+      color:#{cv.getVar("link")};
+    }
+  }
+}
+
+.#{iv.$class-prefix}tabs{
+  &.#{iv.$class-prefix}is-boxed {
+    li.#{iv.$class-prefix}is-active {
+      a{
+        @include cv.register-var("tabs-boxed-link-active-background-color",#{cv.getVar("body-background-color")});
+      }
+    }
+  }
+}
+
+.#{iv.$class-prefix}card {
+  $card-border-color: #{lmx.lighten-color("grey-darker", 5)};
+  box-shadow: none;
+  background-color: #{cv.getVar("grey-darker")};
+
+  .#{iv.$class-prefix}card-header {
+    box-shadow: none;
+    background-color: #{cv.buildHslaString("black-bis","",0.2)};
+  }
+
+  .#{iv.$class-prefix}card-footer {
+    background-color: #{cv.buildHslaString("black-bis","",0.2)};
+  }
+
+  .#{iv.$class-prefix}card-footer,
+  .#{iv.$class-prefix}card-footer-item {
+    border-color: #{cv.getVar("card-border-color")};
   }
 }
 

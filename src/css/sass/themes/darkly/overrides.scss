@@ -1,0 +1,350 @@
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/mixins" as mx;
+@use "../mixins" as lmx;
+
+hr {
+  height: #{cv.getVar("border-width")};
+}
+
+h6 {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.#{iv.$class-prefix}hero {
+  background-color: #{cv.getVar("grey-dark")};
+}
+
+a {
+  transition: all 200ms ease;
+}
+
+.#{iv.$class-prefix}button {
+  transition: all 200ms ease;
+  border-width: #{cv.getVar("border-width")};
+  @include cv.register-vars(
+        (
+          "button-h": 0,
+          "button-s": 0%,
+          "button-background-l": 17%
+        )
+      );
+  color:#{cv.getVar("text")};
+
+  &.#{iv.$class-prefix}is-active,
+  &.#{iv.$class-prefix}is-focused,
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 2px #{cv.buildHslaString("button-focus-border-color", null, 0.5)};
+  }
+
+  &.#{iv.$class-prefix}is-outlined{
+    &.#{iv.$class-prefix}is-inverted{
+      background:none;
+    }
+  }
+
+  &.#{iv.$class-prefix}is-loading::after{
+    color:#{cv.getVar("text")} !important;
+    border-left-color:#{cv.getVar("text")};
+    border-bottom-color:#{cv.getVar("text")};
+  }
+
+  @each $name, $pair in dv.$colors {
+    &.#{iv.$class-prefix}is-#{$name} {
+      @include cv.register-vars(
+        (
+          "button-h": #{cv.getVar($name, "", "-h")},
+          "button-s": #{cv.getVar($name, "", "-s")},
+          "button-background-l": #{cv.getVar($name, "", "-l")}
+        )
+      );
+      color: hsl(#{cv.getVar("button-h")},#{cv.getVar("button-s")},#{cv.getVar("button-color-l")});
+
+      &.#{iv.$class-prefix}is-hovered,
+      &:hover {
+        background-color: #{lmx.lighten-color($name, 7.5)};
+      }
+
+      &.#{iv.$class-prefix}is-active,
+      &.#{iv.$class-prefix}is-focused,
+      &:active,
+      &:focus {
+        border-color: #{cv.getVar($name)};
+        box-shadow: 0 0 0 2px #{cv.buildHslaString($name,null, 0.5)};
+      }
+
+      &.#{iv.$class-prefix}is-outlined,
+      &.#{iv.$class-prefix}is-inverted{
+        color: hsl(
+            #{cv.getVar("button-h")},
+            #{cv.getVar("button-s")},
+            calc(
+              #{cv.getVar("button-border-l")} + #{cv.getVar("button-border-l-delta")}
+            )
+          );
+      }
+
+      &.#{iv.$class-prefix}is-outlined{
+        &.#{iv.$class-prefix}is-inverted{
+          &.#{iv.$class-prefix}is-hovered,
+          &:hover {
+            background-color: #{lmx.lighten-color($name, 7.5)};
+          }
+        }
+      }
+    }
+  }
+}
+
+.#{iv.$class-prefix}label {
+  color: #{cv.getVar("grey-lighter")};
+}
+
+.#{iv.$class-prefix}button,
+.#{iv.$class-prefix}control.has-icons-left .icon,
+.#{iv.$class-prefix}control.has-icons-right .icon,
+.#{iv.$class-prefix}input,
+.#{iv.$class-prefix}pagination-ellipsis,
+.#{iv.$class-prefix}pagination-link,
+.#{iv.$class-prefix}pagination-next,
+.#{iv.$class-prefix}pagination-previous,
+.#{iv.$class-prefix}select,
+.#{iv.$class-prefix}select select,
+.#{iv.$class-prefix}textarea {
+  height: 2.5em;
+}
+
+.#{iv.$class-prefix}input,
+.#{iv.$class-prefix}textarea {
+  transition: all 200ms ease;
+  box-shadow: none;
+}
+
+.#{iv.$class-prefix}select {
+  &:after,
+  select {
+    border-width: #{cv.getVar("border-width")};
+  }
+}
+
+.#{iv.$class-prefix}control {
+  &.#{iv.$class-prefix}has-addons {
+    .#{iv.$class-prefix}button,
+    .#{iv.$class-prefix}input,
+    .#{iv.$class-prefix}select {
+      margin-right: calc(0 - #{cv.getVar("border-width")});
+    }
+  }
+}
+
+.#{iv.$class-prefix}notification {
+  @include lmx.override-color-variables("notification","grey-dark");
+  color:#{cv.getVar("white")};
+}
+
+.#{iv.$class-prefix}card {
+  box-shadow: none;
+  border: #{cv.getVar("border-width")} solid #{cv.getVar("card-border-color")};
+  border-radius: #{cv.getVar("radius")};
+
+  .#{iv.$class-prefix}card-image {
+    img {
+      border-radius: #{cv.getVar("radius")} #{cv.getVar("radius")} 0 0;
+    }
+  }
+
+  .#{iv.$class-prefix}card-header {
+    box-shadow: none;
+    background-color: #{cv.buildHslaString("black-bis",null, 0.2)};
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  .#{iv.$class-prefix}card-footer {
+    background-color: #{cv.buildHslaString("black-bis",null, 0.2)};
+  }
+
+  .#{iv.$class-prefix}card-footer,
+  .#{iv.$class-prefix}card-footer-item {
+    border-width: #{cv.getVar("border-width")};
+    border-color: #{cv.getVar("card-border-color")};
+  }
+}
+
+.#{iv.$class-prefix}notification {
+  @include lmx.override-color-variables("notification","grey-darker");
+
+  @each $name, $pair in dv.$colors {
+    &.#{iv.$class-prefix}is-#{$name} {
+      a:not(.button) {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.#{iv.$class-prefix}control{
+  &.#{iv.$class-prefix}has-icons-left,
+  &.#{iv.$class-prefix}has-icons-right{
+    .#{iv.$class-prefix}icon{
+      color: #{cv.getVar("grey-dark")};
+    }
+  }
+}
+
+.#{iv.$class-prefix}tag {
+  border-radius: #{cv.getVar("radius")};
+}
+
+.#{iv.$class-prefix}menu-list {
+  a {
+    transition: all 300ms ease;
+  }
+}
+
+.#{iv.$class-prefix}modal-card-body {
+  background-color: #{cv.getVar("grey-darker")};
+}
+
+.#{iv.$class-prefix}modal-card-foot,
+.#{iv.$class-prefix}modal-card-head {
+  border-color: #{cv.getVar("grey-dark")};
+}
+
+.#{iv.$class-prefix}message-header {
+  font-weight: #{cv.getVar("weight-bold")};
+  background-color: #{cv.getVar("grey-dark")};
+  color: #{cv.getVar("white")};
+}
+
+.#{iv.$class-prefix}message-body {
+  border-width: #{cv.getVar("border-width")};
+  border-color: #{cv.getVar("grey-dark")};
+}
+
+.#{iv.$class-prefix}navbar {
+  border-radius: #{cv.getVar("radius")};
+
+  &.#{iv.$class-prefix}is-transparent {
+    background: none;
+  }
+
+  &.#{iv.$class-prefix}is-primary {
+    .#{iv.$class-prefix}navbar-dropdown {
+      a.#{iv.$class-prefix}navbar-item.#{iv.$class-prefix}is-active {
+        background-color: #{cv.getVar("link")};
+      }
+    }
+  }
+
+  @include mx.touch {
+    .#{iv.$class-prefix}navbar-menu {
+      background-color: #{cv.getVar("navbar-background-color")};
+      border-radius: 0 0 #{cv.getVar("radius")} #{cv.getVar("radius")};
+    }
+  }
+}
+
+.#{iv.$class-prefix}hero .#{iv.$class-prefix}navbar,
+body > .#{iv.$class-prefix}navbar {
+  border-radius: 0;
+}
+
+.#{iv.$class-prefix}pagination-link,
+.#{iv.$class-prefix}pagination-next,
+.#{iv.$class-prefix}pagination-previous {
+  border-width: #{cv.getVar("border-width")};
+}
+
+.#{iv.$class-prefix}panel-block,
+.#{iv.$class-prefix}panel-heading,
+.#{iv.$class-prefix}panel-tabs {
+  border-width: #{cv.getVar("border-width")};
+
+  &:first-child {
+    border-top-width: #{cv.getVar("border-width")};
+  }
+}
+
+.#{iv.$class-prefix}panel-heading {
+  font-weight: #{cv.getVar("weight-bold")};
+}
+
+.#{iv.$class-prefix}panel-tabs {
+  a {
+    border-width: #{cv.getVar("border-width")};
+    margin-bottom: calc(0 - #{cv.getVar("border-width")});
+
+    &.#{iv.$class-prefix}is-active {
+      border-bottom-color: #{cv.getVar("link-active")};
+    }
+  }
+}
+
+.#{iv.$class-prefix}panel-block {
+  &:hover {
+    color: #{cv.getVar("link-hover")};
+
+    .#{iv.$class-prefix}panel-icon {
+      color: #{cv.getVar("link-hover")};
+    }
+  }
+
+  &.#{iv.$class-prefix}is-active {
+    .#{iv.$class-prefix}panel-icon {
+      color: #{cv.getVar("link-active")};
+    }
+  }
+}
+
+.#{iv.$class-prefix}tabs {
+  a {
+    border-bottom-width: #{cv.getVar("border-width")};
+    margin-bottom: calc(0 - #{cv.getVar("border-width")});
+  }
+
+  ul {
+    border-bottom-width: #{cv.getVar("border-width")};
+  }
+
+  &.#{iv.$class-prefix}is-boxed {
+    a {
+      border-width: #{cv.getVar("border-width")};
+    }
+
+    li.#{iv.$class-prefix}is-active a {
+      background-color: #{lmx.darken-color("grey-darker", 4)};
+    }
+  }
+
+  &.#{iv.$class-prefix}is-toggle {
+    li a {
+      border-width: #{cv.getVar("border-width")};
+      margin-bottom: 0;
+    }
+
+    li + li {
+      margin-left: calc(0 - #{cv.getVar("border-width")});
+    }
+  }
+}
+
+.#{iv.$class-prefix}hero {
+  // Colors
+  @each $name, $pair in dv.$colors {
+    //$color: nth($pair, 1);
+    //$color-invert: nth($pair, 2);
+
+    &.#{iv.$class-prefix}is-#{$name} {
+      .#{iv.$class-prefix}navbar {
+        .#{iv.$class-prefix}navbar-dropdown {
+          .#{iv.$class-prefix}navbar-item:hover {
+            background-color: #{cv.getVar("navbar-dropdown-item-hover-background-color")};
+          }
+        }
+      }
+    }
+  }
+}

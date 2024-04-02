@@ -34,7 +34,9 @@ $classMaps:(
     "progress-":".progress",
     "panel-":".panel",
     "breadcrumb-":".breadcrumb",
-    "dropdown-":".dropdown"
+    "dropdown-":".dropdown",
+    "content-":".content",
+    "input-":".input"
 );
 
 @function define-baseColor($name,$base,$list,$base-invert:null,$base-light:null,$base-dark:null){
