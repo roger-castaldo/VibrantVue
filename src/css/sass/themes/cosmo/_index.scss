@@ -3,46 +3,57 @@
 
 @include mx.bulma-theme($name: "cosmo") {
 
-    $grey-darker: #333;
-    $black-ter: #222;
+    $white:    #fff !default;
+    $gray-100: #f8f9fa !default;
+    $gray-200: #e9ecef !default;
+    $gray-300: #dee2e6 !default;
+    $gray-400: #ced4da !default;
+    $gray-500: #adb5bd !default;
+    $gray-600: #868e96 !default;
+    $gray-700: #495057 !default;
+    $gray-800: #373a3c !default;
+    $gray-900: #212529 !default;
+    $black:    #000 !default;
 
-    $orange: #ff7518;
-    $yellow: #f4db00;
-    $green: #3fb618;
-    $turquoise: #00aba9;
-    $blue: #1faeff;
-    $purple: #aa40ff;
-    $red: #ff2e12;
-    $grey: #dbdbdb;
+    $blue:    #2780e3 !default;
+    $indigo:  #6610f2 !default;
+    $purple:  #613d7c !default;
+    $pink:    #e83e8c !default;
+    $red:     #ff0039 !default;
+    $orange:  #f0ad4e !default;
+    $yellow:  #ff7518 !default;
+    $green:   #3fb618 !default;
+    $teal:    #20c997 !default;
+    $cyan:    #9954bb !default;
 
-    $primary: #2780e3;
-    $primary-dark: darken(#2780e3, 20);
+    @include mx.override-platform-colors((
+        "primary":$blue,
+        "success":$green,
+        "info":$cyan,
+        "warning":$yellow,
+        "danger":$red,
+        "light":(
+            $gray-100,
+            $gray-800
+        ),
+        "dark":(
+            $gray-800,
+            $gray-100
+        )
+    ));
 
-    $list:mx.define-baseColor("primary",$primary,());
-    $list:mx.define-baseColor("warning",$orange,$list,#fff);
-    $list:mx.define-baseColor("info",$purple,$list);
-    $list:mx.define-baseColor("link",$blue,$list);
-    $list:mx.define-baseColor("sucess",$green,$list);
-    $list:mx.define-baseColor("danger",$red,$list);
-    
-    $list:mx.define-variable("black-ter",$black-ter,$list);
-    $list:mx.define-variable("grey-darker",$black-ter,$list);
-    $list:mx.define-variable("family-primary",("Segoe UI", "Source Sans Pro", Calibri, Candara, Arial,sans-serif),$list);
-    $list:mx.define-variable("body-size",15px,$list);
+    $list:mx.define-variable("text",$gray-800,());
+    $list:mx.define-variable("family-primary",
+        "\"Source Sans Pro\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+        $list);
+    $list:mx.define-variable("title-weight",400,$list);
     $list:mx.define-variable("radius",0,$list);
     $list:mx.define-variable("radius-small",0,$list);
+    $list:mx.define-variable("radius-medium",0,$list);
     $list:mx.define-variable("radius-large",0,$list);
-    $list:mx.define-variable("link-hover",$primary-dark,$list);
-    $list:mx.define-variable("link-focus",$primary-dark,$list);
-    $list:mx.define-variable("link-active",$primary-dark,$list);
-    $list:mx.define-variable("button-hover-color",$grey-darker,$list);
-    $list:mx.define-variable("button-focus",$black-ter,$list);
-    $list:mx.define-variable("button-active-color",$black-ter,$list);
-    $list:mx.define-variable("box-shadow",0 0 0 1px $grey,$list);
-    $list:mx.define-variable("card-shadow",0 0 0 1px $grey,$list);
-    
+    $list:mx.define-variable("radius-rounded",0,$list);
 
     @include mx.output-skin-content($list);
 
-    @import "./overrides.scss";
+    @import "./_bootswatch.scss";
 }

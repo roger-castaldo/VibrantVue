@@ -3,34 +3,50 @@
 
 @include mx.bulma-theme($name: "cerulean") {
 
-    $orange: #dd5600;
-    $orange-invert:fn.bulmaFindColorInvert($orange);
-    $yellow: #dab424;
-    $green: #73a839;
-    $turquoise: #5bc0de;
-    $blue: #033c73;
-    $purple: #7e5ea3;
-    $red: #c71c22;
-    $grey:#dbdbdb;
-    $primary-dark:#317eac;
-    $primary:#2fa4e7;
+    $white:    #fff !default;
+    $gray-100: #f8f9fa !default;
+    $gray-200: #e9ecef !default;
+    $gray-300: #dee2e6 !default;
+    $gray-400: #ced4da !default;
+    $gray-500: #adb5bd !default;
+    $gray-600: #868e96 !default;
+    $gray-700: #495057 !default;
+    $gray-800: #343a40 !default;
+    $gray-900: #212529 !default;
+    $black:    #000 !default;
 
-    $list:mx.define-baseColor("primary",$primary,());
-    $list:mx.define-baseColor("warning",$orange,$list);
-    $list:mx.define-baseColor("info",#d8dce0,$list,#333);
-    $list:mx.define-baseColor("link",$blue,$list);
-    $list:mx.define-baseColor("sucess",$green,$list);
-    $list:mx.define-baseColor("danger",$red,$list);
+    $blue:    #033c73 !default;
+    $indigo:  #6610f2 !default;
+    $purple:  #6f42c1 !default;
+    $pink:    #e83e8c !default;
+    $red:     #c71c22 !default;
+    $orange:  #fd7e14 !default;
+    $yellow:  #dd5600 !default;
+    $green:   #73a839 !default;
+    $teal:    #20c997 !default;
+    $cyan:    #2fa4e7 !default;
 
-    $list:mx.define-variable("family-primary",("Helvetica Neue", Helvetica, Arial, sans-serif),$list);
-    $list:mx.define-variable("box-shadow",0 0 0 1px $grey,$list);
-    $list:mx.define-variable("title-color",$primary-dark,$list);
-    $list:mx.define-variable("title-weight",500,$list);
-    $list:mx.define-variable("title-strong-weight",700,$list);
-    $list:mx.define-variable("subtitle-weight",300,$list);
-    $list:mx.define-variable("subtitle-strong-weight",500,$list);
+    @include mx.override-platform-colors((
+        "primary":$cyan,
+        "success":$green,
+        "info":$blue,
+        "warning":$yellow,
+        "danger":$red,
+        "light":(
+            $gray-100,
+            $gray-800
+        ),
+        "dark":(
+            $gray-800,
+            $gray-100
+        )
+    ));
+
+    $list:mx.define-variable("text",$gray-700,());
+    $list:mx.define-variable("title-color",$cyan,$list);
+    $list:mx.define-variable("subtitle-color",$cyan,$list);
 
     @include mx.output-skin-content($list);
 
-    @import "./overrides.scss";
+    @import "./_bootswatch.scss";
 }

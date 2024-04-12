@@ -1,80 +1,73 @@
-@use 'sass:color';
 @use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
-@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
 @use "../mixins" as mx;
+@use 'sass:color';
+@use 'sass:math';
+
 
 @include mx.bulma-theme($name: "cyborg") {
 
-    $grey-accent: hsl(0, 0%, 14%);
-    $grey-darker: hsl(0, 0%, 21%);
-    $grey-dark: hsl(0, 0%, 29%);
-    $grey: hsl(0, 0%, 48%);
-    $grey-light: hsl(0, 0%, 71%);
-    $grey-lighter: hsl(0, 0%, 86%);
+    $white:    #fff !default;
+    $gray-100: #f8f9fa !default;
+    $gray-200: #e9ecef !default;
+    $gray-300: #dee2e6 !default;
+    $gray-400: #adafae !default;
+    $gray-500: #888 !default;
+    $gray-600: #555 !default;
+    $gray-700: #282828 !default;
+    $gray-800: #222 !default;
+    $gray-900: #212529 !default;
+    $black:    #000 !default;
 
-    $primary: #2a9fd6;
-    $primary-light: lighten($primary, 10);
-    $link: #3273e2;
+    $blue:    #2a9fd6 !default;
+    $indigo:  #6610f2 !default;
+    $purple:  #6f42c1 !default;
+    $pink:    #e83e8c !default;
+    $red:     #c00 !default;
+    $orange:  #fd7e14 !default;
+    $yellow:  #f80 !default;
+    $green:   #77b300 !default;
+    $teal:    #20c997 !default;
+    $cyan:    #93c !default;
+    $scheme-main: #060606;
 
-    $white: #fff;
-    $white-ter: #f5f5f5;
+    @include mx.override-dark-mode-basics((
+        "primary":$blue,
+        "success":$green,
+        "info":$cyan,
+        "warning":$yellow,
+        "danger":$red,
+        "light":(
+            $gray-800,
+            $gray-400
+        ),
+        "dark":(
+            $gray-400,
+            $gray-800
+        )
+    ),
+    $scheme-main);
 
-    $background:$grey-darker;
-    $text:$white;
+    $list:mx.define-variable("family-primary",
+        "Roboto, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Helvetica Neue\", Arial, sans-serif",
+        ());
 
-    $list:mx.define-baseColor("primary",$primary,());
-    $list:mx.define-baseColor("link",$link,$list);
-    $list:mx.define-baseColor("success",#48c774,$list);
-    $list:mx.define-baseColor("text",$text,$list,null,lighten($white,10),darken($white,5));
-    $list:mx.define-baseColor("grey-dark",$grey-dark,$list);
-    $list:mx.define-baseColor("grey-darker",$grey-darker,$list);
-    $list:mx.define-baseColor("grey-accent",$grey-accent,$list);
+    $list:mx.define-variable("scheme-main-l",floor(lightness($scheme-main)),$list);
+    $list:mx.define-variable("scheme-main-bis",$gray-700,$list);
+    $list:mx.define-variable("scheme-main-ter",$gray-600,$list);
 
-    $list:mx.define-variable("grey",$grey,$list);
-    $list:mx.define-variable("grey-light",$grey-light,$list);
-    $list:mx.define-variable("grey-lighter",$grey-lighter,$list);
-    $list:mx.define-variable("white",$white,$list);
-    $list:mx.define-variable("white-ter",$white-ter,$list);
-    $list:mx.define-variable("body-background-color",#000,$list);
-    $list:mx.define-variable("background",$background,$list);
-    $list:mx.define-variable("footer-background-color",$background,$list);
-    $list:mx.define-variable("border-color",$grey-dark,$list);
-
-    
-
-    $list:mx.define-variable("text-strong",$white,$list);
-    $list:mx.define-variable("strong-color",$white,$list);
-    
+    $list:mx.define-variable("text",$gray-400,$list);
     $list:mx.define-variable("title-color",$white,$list);
-    $list:mx.define-variable("subtitle-color",$white-ter,$list);
-    $list:mx.define-variable("subtitle-strong-color",$white-ter,$list);
-    
-    $list:mx.define-variable("box-background-color",$grey-accent,$list);
-    $list:mx.define-variable("box-shadow","none",$list);
+    $list:mx.define-variable("subtitle-color",$white,$list);
 
-    $list:mx.define-variable("progress-bar-background-color",$grey-dark,$list);
-    
-    $list:mx.define-variable("table-background-color",$grey-dark,$list);
-    $list:mx.define-variable("table-head",$grey-lighter,$list);
-    $list:mx.define-variable("table-background-color",$grey-darker,$list);
-    $list:mx.define-variable("table-cell-border-size",1px,$list);
-    $list:mx.define-variable("table-cell-border-style",solid,$list);
-    $list:mx.define-variable("table-cell-border-color",$grey-dark,$list);
-    
-    $list:mx.define-variable("table-row-hover-background-color",$grey-dark,$list);
-    $list:mx.define-variable("table-striped-row-even-background-color",$grey-dark,$list);
-    $list:mx.define-variable("table-striped-row-even-hover-background-color",lighten($grey-dark, 4),$list);
+    $list:mx.define-variable("input-background-l",lightness($white),$list);
+    $list:mx.define-variable("input-color-l",lightness($scheme-main),$list);
 
-    $list:mx.define-variable("breadcrumb-item-active-color",$white,$list);
-
-    $list:mx.define-variable("dropdown-content-background-color",$background,$list);
-    $list:mx.define-variable("dropdown-item-h",color.hue($text),$list);
-    $list:mx.define-variable("dropdown-item-s",color.saturation($text),$list);
-    $list:mx.define-variable("dropdown-item-color-l",color.lightness($text),$list);
-    $list:mx.define-variable("dropdown-item-background-l-delta",-79%,$list);
-    $list:mx.define-variable("dropdown-item-hover-background-l-delta",-5%,$list);
+    $list:mx.define-variable("table-color",$white,$list);
+    $list:mx.define-variable("table-cell-heading-color",$white,$list);
+    $list:mx.define-variable("table-foot-cell-color",$white,$list);
+    $list:mx.define-variable("table-head-cell-color",$white,$list);
 
     @include mx.output-skin-content($list);
 
-    @import "./overrides.scss";
+    @import "./_bootswatch.scss";
 }
