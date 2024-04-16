@@ -1,0 +1,95 @@
+@use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../mixins" as mx;
+@use 'sass:color';
+@use 'sass:math';
+
+
+@include mx.bulma-theme($name: "lux") {
+
+    $white:    #fff !default;
+    $gray-100: #f8f9fa !default;
+    $gray-200: #f7f7f9 !default;
+    $gray-300: #eceeef !default;
+    $gray-400: #ced4da !default;
+    $gray-500: #adb5bd !default;
+    $gray-600: #919aa1 !default;
+    $gray-700: #55595c !default;
+    $gray-800: #343a40 !default;
+    $gray-900: #1a1a1a !default;
+    $black:    #000 !default;
+
+    $blue:    #007bff !default;
+    $indigo:  #6610f2 !default;
+    $purple:  #6f42c1 !default;
+    $pink:    #e83e8c !default;
+    $red:     #d9534f !default;
+    $orange:  #fd7e14 !default;
+    $yellow:  #f0ad4e !default;
+    $green:   #4bbf73 !default;
+    $teal:    #20c997 !default;
+    $cyan:    #1f9bcf !default;
+
+    @include mx.override-platform-colors((
+        "primary":$gray-900,
+        "success":$green,
+        "info":$cyan,
+        "warning":$yellow,
+        "danger":$red,
+        "light":(
+            $white,
+            $gray-800
+        ),
+        "dark":(
+            $gray-800,
+            $white
+        )
+    ));
+
+    $list:mx.define-variable("text",$gray-700,());
+
+    $list:mx.define-variable("family-primary",
+        "\"Nunito Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+        $list);
+
+    $list:mx.define-variable("radius",0,$list);
+    $list:mx.define-variable("radius-small",0,$list);
+    $list:mx.define-variable("radius-medium",0,$list);
+    $list:mx.define-variable("radius-large",0,$list);
+    $list:mx.define-variable("progress-border-radius",0,$list);
+
+    $list:mx.define-variable("size-1",2rem,$list);
+    $list:mx.define-variable("size-2",1.75rem,$list);
+    $list:mx.define-variable("size-3",1.5rem,$list);
+    $list:mx.define-variable("size-4",1.25rem,$list);
+    $list:mx.define-variable("size-5",1rem,$list);
+    $list:mx.define-variable("size-6",0.75rem,$list);
+    $list:mx.define-variable("size-7",0.5rem,$list);
+
+    $list:mx.define-variable("weight-light",200,$list);
+    $list:mx.define-variable("weight-normal",300,$list);
+    $list:mx.define-variable("weight-medium",400,$list);
+    $list:mx.define-variable("weight-semibold",500,$list);
+    $list:mx.define-variable("weight-bold",600,$list);
+    $list:mx.define-variable("weight-bolder",bolder,$list);
+
+    $list:mx.define-variable("title-weight",600,$list);
+    $list:mx.define-variable("title-color",$gray-900,$list);
+    $list:mx.define-variable("subtitle-weight",600,$list);
+    $list:mx.define-variable("subtitle-color",$gray-900,$list);
+
+    $list:mx.define-variable("table-cell-border-color",rgba(0, 0, 0, .05),$list);
+
+    $list:mx.define-variable("control-border-width",0,$list);
+
+    $list:mx.define-variable("button-weight",600,$list);
+    $list:mx.define-variable("button-padding-vertical",0.75rem,$list);
+    $list:mx.define-variable("button-padding-horizontal",1.5rem,$list);
+
+    $list:mx.define-variable("input-disabled-background-color",$gray-200,$list);
+
+    $list:mx.define-variable("navbar-padding-vertical",1.5rem,$list);
+
+    @include mx.output-skin-content($list);
+
+    @import "./_bootswatch.scss";
+}

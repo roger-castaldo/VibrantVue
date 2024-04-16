@@ -1,0 +1,106 @@
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../mixins" as lmx;
+
+
+.#{iv.$class-prefix}pagination-previous,
+.#{iv.$class-prefix}pagination-next,
+.#{iv.$class-prefix}pagination-link,
+.#{iv.$class-prefix}pagination-ellipsis {
+  color:$white;
+  background-color:#{cv.getVar("primary")};
+  border-color:#{cv.getVar("primary")};
+}
+
+.#{iv.$class-prefix}pagination-previous,
+.#{iv.$class-prefix}pagination-next,
+.#{iv.$class-prefix}pagination-link{
+  &:hover,
+  &:active,
+  &.#{iv.$class-prefix}is-active{
+    background-color:#{cv.getVar("secondary")};
+    border-color:#{cv.getVar("secondary")};
+  }
+
+  &:hover{
+    color:$white;
+  }
+
+  &.#{iv.$class-prefix}is-disabled{
+    color:$white;
+    background-color:#cce8e0;
+    border-color:#cce8e0;
+  }
+}
+
+a.#{iv.$class-prefix}dropdown-item,
+button.#{iv.$class-prefix}dropdown-item {
+  &:hover{
+    color: $white;
+    background: #{cv.getVar("secondary")};
+  }
+}
+
+.#{iv.$class-prefix}breadcrumb {
+  background-color: #{cv.getVar("primary")};
+  border-radius: .25rem;
+}
+
+.#{iv.$class-prefix}navbar,
+.#{iv.$class-prefix}button,
+.#{iv.$class-prefix}dropdown{
+  font-family:#{cv.getVar("title-family")};
+}
+
+// Buttons
+
+.#{iv.$class-prefix}button{
+  &.#{iv.$class-prefix}is-light,
+  &.#{iv.$class-prefix}is-light:hover {
+    color: $gray-700;
+  }
+
+  &.#{iv.$class-prefix}is-link,
+  &.#{iv.$class-prefix}is-link:hover {
+    color: #{cv.getVar("primary")};
+  }
+
+  &.#{iv.$class-prefix}is-link.disabled:hover {
+    color: $gray-600;
+  }
+}
+
+.#{iv.$class-prefix}breadcrumb {
+  a {
+    color: #{cv.getVar("dark")};
+  }
+
+  a:hover {
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+// Indicators
+
+.#{iv.$class-prefix}notification {
+  a{
+    color: $white;
+  }
+
+  &.#{iv.$class-prefix}is-light {
+    &,
+    a:not(.#{iv.$class-prefix}button){
+      color: #{cv.getVar("text-color")};
+    }
+  }
+}
+
+.#{iv.$class-prefix}badge {
+  color: $white;
+
+  &.#{iv.$class-prefix}is-light {
+    color: $gray-700;
+  }
+}

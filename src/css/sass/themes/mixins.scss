@@ -38,7 +38,8 @@ $classMaps:(
     "breadcrumb-":("breadcrumb"),
     "dropdown-":("dropdown"),
     "content-":("content"),
-    "input-":("input","control","textarea","select select")
+    "input-":("input","control","textarea","select select"),
+    "control-":("input","control","textarea","select select","button")
 );
 
 @function get-className($name){
@@ -68,6 +69,24 @@ $classMaps:(
     @return $list;
 }
 
+@function define-color($name,$value,$list,$className:""){
+  @if $className=="" {
+      $className:get-className($name);
+  }
+  $list:append($list,(
+      "name":$name,
+      "value":$value,
+      "class-name":$className,
+      "type":"color"
+  ));
+  @if map-has-key($variableMaps, $name) {
+      @each $var in map-get($variableMaps,$name){
+        $list:define-variable($var,$value,$list,$className);
+      }
+    }
+  @return $list;
+}
+
 @function darken-color($name,$amount){
     @return cv.buildHslaString($name,"calc(max(#{cv.getVar($name, '', '-l')} - #{$amount}%,0%))");
 }
@@ -89,18 +108,26 @@ $classMaps:(
     @include setup.setup-theme;
 
     @each $value in $list {
-        @if map.get($value,"type")=="variable"{
-            @if map.get($value,"class-name")!=""{
-                @each $className in map.get($value,"class-name"){
-                  .#{iv.$class-prefix}#{$className}{
-                    @include cv.register-var(map.get($value,"name"),#{map.get($value,"value")});
-                  }
-                }
-            }
-            @else{
+      @if map.get($value,"class-name")!=""{
+          @each $className in map.get($value,"class-name"){
+            .#{iv.$class-prefix}#{$className}{
+              @if map.get($value,"type")=="variable"{
                 @include cv.register-var(map.get($value,"name"),#{map.get($value,"value")});
+              }
+              @if map.get($value,"type")=="color"{
+                @include cv.register-hsl(map.get($value,"name"),map.get($value,"value"));
+              }
             }
+          }
+      }
+      @else{
+        @if map.get($value,"type")=="variable"{
+          @include cv.register-var(map.get($value,"name"),#{map.get($value,"value")});
         }
+        @if map.get($value,"type")=="color"{
+          @include cv.register-hsl(map.get($value,"name"),map.get($value,"value"));
+        }
+      }
     }
 }
 
