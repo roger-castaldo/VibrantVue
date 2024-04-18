@@ -1,0 +1,93 @@
+@use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../mixins" as mx;
+@use 'sass:color';
+@use 'sass:math';
+
+
+@include mx.bulma-theme($name: "pulse") {
+
+    $white:    #fff !default;
+    $gray-100: #fafafa !default;
+    $gray-200: #f9f8fc !default;
+    $gray-300: #ededed !default;
+    $gray-400: #cbc8d0 !default;
+    $gray-500: #adb5bd !default;
+    $gray-600: #868e96 !default;
+    $gray-700: #444 !default;
+    $gray-800: #343a40 !default;
+    $gray-900: #17141f !default;
+    $black:    #000 !default;
+
+    $blue:    #007bff !default;
+    $indigo:  #6610f2 !default;
+    $purple:  #593196 !default;
+    $pink:    #e83e8c !default;
+    $red:     #fc3939 !default;
+    $orange:  #fd7e14 !default;
+    $yellow:  #efa31d !default;
+    $green:   #13b955 !default;
+    $teal:    #20c997 !default;
+    $cyan:    #009cdc !default;
+
+    @include mx.override-platform-colors((
+        "primary":$purple,
+        "secondary":#a991d4,
+        "success":$green,
+        "info":$cyan,
+        "warning":$yellow,
+        "danger":$red,
+        "light":(
+            $gray-200,
+            $gray-900
+        ),
+        "dark":(
+            $gray-900,
+            $gray-200
+        )
+    ));
+
+    $list:mx.define-variable("text",$gray-700,());
+
+    $list:mx.define-variable("radius",0,$list);
+    $list:mx.define-variable("radius-small",0,$list);
+    $list:mx.define-variable("radius-medium",0,$list);
+    $list:mx.define-variable("radius-large",0,$list);
+    $list:mx.define-variable("progress-border-radius",0,$list);
+
+    $list:mx.define-variable("table-cell-border-color",rgba(0, 0, 0, .05),$list);
+    
+    $list:mx.define-variable("tabs-border-bottom-color",$gray-300,$list);
+    $list:mx.define-variable("tabs-toggle-link-border-color",$gray-300,$list);
+
+    $list:mx.define-variable("tabs-link-hover-border-bottom-color",cv.getVar("primary"),$list);
+    $list:mx.define-variable("tabs-boxed-link-hover-border-bottom-color",cv.getVar("primary"),$list);
+    $list:mx.define-variable("tabs-toggle-link-hover-border-color",cv.getVar("primary"),$list);
+
+    $list:mx.define-variable("navbar-padding-vertical",1.2rem,$list);
+
+    $list:mx.define-variable("progress-bar-background-color",$gray-300,$list);
+    $list:mx.define-variable("bulma-progress-value-background-color",cv.getVar("primary"),$list);
+
+    $list:mx.define-variable("tabs-link-active-border-bottom-color",cv.getVar("primary"),$list);
+    $list:mx.define-variable("tabs-toggle-link-active-background-color",cv.getVar("primary"),$list);
+    $list:mx.define-variable("tabs-link-active-border-bottom-color",cv.getVar("primary"),$list);
+    $list:mx.define-variable("tabs-toggle-link-active-border-color",cv.getVar("primary"),$list);
+    $list:mx.define-variable("tabs-boxed-link-active-border-color",cv.getVar("primary"),$list);
+
+    $list:mx.define-variable("breadcrumb-item-active-color",$gray-700,$list);
+    /*
+// List group
+
+$list-group-bg:                     $gray-900 !default;
+$list-group-border-color:           transparent !default;
+$list-group-hover-bg:               lighten($list-group-bg, 10%) !default;
+$list-group-active-color:           $white !default;
+$list-group-active-bg:              $list-group-bg !default;
+$list-group-disabled-color:         lighten($list-group-bg, 30%) !default;
+*/
+
+    @include mx.output-skin-content($list);
+
+    @import "./_bootswatch.scss";
+}

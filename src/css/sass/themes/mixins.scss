@@ -87,12 +87,12 @@ $classMaps:(
   @return $list;
 }
 
-@function darken-color($name,$amount){
-    @return cv.buildHslaString($name,"calc(max(#{cv.getVar($name, '', '-l')} - #{$amount}%,0%))");
+@function darken-color($name,$amount,$a:1){
+    @return cv.buildHslaString($name,"calc(max(#{cv.getVar($name, '', '-l')} - #{$amount}%,0%))",$a);
 }
 
-@function lighten-color($name,$amount){
-    @return cv.buildHslaString($name,"calc(min(#{cv.getVar($name, '', '-l')} + #{$amount}%,100%))");
+@function lighten-color($name,$amount,$a:1){
+    @return cv.buildHslaString($name,"calc(min(#{cv.getVar($name, '', '-l')} + #{$amount}%,100%))",$a);
 }
 
 @mixin gradient-y-three-colors($start,$middle,$middleSet,$end){
@@ -105,30 +105,53 @@ $classMaps:(
 }
 
 @mixin output-skin-content($list){
-    @include setup.setup-theme;
+  //@include setup.setup-theme;
 
-    @each $value in $list {
-      @if map.get($value,"class-name")!=""{
-          @each $className in map.get($value,"class-name"){
-            .#{iv.$class-prefix}#{$className}{
-              @if map.get($value,"type")=="variable"{
-                @include cv.register-var(map.get($value,"name"),#{map.get($value,"value")});
-              }
-              @if map.get($value,"type")=="color"{
-                @include cv.register-hsl(map.get($value,"name"),map.get($value,"value"));
-              }
+  $classes:();
+
+  @each $value in $list {
+    @if map.get($value,"type")=="variable"{
+      @include cv.register-var(map.get($value,"name"),#{map.get($value,"value")});
+    }
+    @if map.get($value,"type")=="color"{
+      @include cv.register-hsl(map.get($value,"name"),map.get($value,"value"));
+    }
+    @if map.get($value,"class-name")!=""{
+      $names:build-classes(map.get($value,"class-name"));
+      @if index($classes,$names)==null {
+        $classes:append($classes,$names);
+      }
+    }
+  }
+
+  @each $name in $classes {
+    #{$name}{
+      @each $value in $list {
+        @if map.get($value,"class-name")!=""{
+          $names:build-classes(map.get($value,"class-name"));
+          @if $names==$name {
+            @if map.get($value,"type")=="variable"{
+              @include cv.register-var(map.get($value,"name"),#{map.get($value,"value")});
+            }
+            @if map.get($value,"type")=="color"{
+              @include cv.register-hsl(map.get($value,"name"),map.get($value,"value"));
             }
           }
-      }
-      @else{
-        @if map.get($value,"type")=="variable"{
-          @include cv.register-var(map.get($value,"name"),#{map.get($value,"value")});
-        }
-        @if map.get($value,"type")=="color"{
-          @include cv.register-hsl(map.get($value,"name"),map.get($value,"value"));
         }
       }
     }
+  }
+}
+
+@function build-classes($classNames){
+  $classes:'';
+  @each $class in $classNames {
+    @if $classes != ''{
+      $classes:"#{$classes},";
+    }
+    $classes:".#{iv.$class-prefix}#{$class}";
+  }
+  @return $classes;
 }
 
 @mixin bulma-theme($name) {

@@ -1,0 +1,80 @@
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../mixins" as lmx;
+
+a:hover{
+  color:#{cv.getVar("primary")};
+}
+
+.#{iv.$class-prefix}input,
+.#{iv.$class-prefix}textarea,
+.#{iv.$class-prefix}select select{
+  &:focus,
+  &:focus-within,
+  &.#{iv.$class-prefix}is-focused {
+    border-color: #{cv.getVar("primary")};
+    box-shadow: 0 0 5px rgba(100, 65, 164, .4);
+  }
+}
+
+a.#{iv.$class-prefix}dropdown-item,
+button.#{iv.$class-prefix}dropdown-item {
+  color: $gray-700;
+
+  &:hover{
+    color: $white;
+    background-color: #{cv.getVar("primary")};
+  }
+}
+
+.#{iv.$class-prefix}button {
+  &:focus,
+  &:active,
+  &:active:focus,
+  &.active:focus {
+    outline: none;
+  }
+
+  &.#{iv.$class-prefix}is-warning {
+    color: $white;
+  }
+
+  @each $color,$value in dv.$colors{
+    &.#{iv.$class-prefix}is-#{$color}:focus{
+      box-shadow: 0 0 5px #{lmx.lighten-color($color,10)};
+    }
+  }
+
+  &.#{iv.$class-prefix}is-disabled:focus {
+    box-shadow: none;
+  }
+}
+
+.#{iv.$class-prefix}progress {
+  height: 8px;
+}
+
+/*.list-group {
+  &-item {
+    color: rgba(255, 255, 255, .8);
+
+    &.active,
+    &:hover,
+    &:focus {
+      color: $white;
+    }
+
+    &.active {
+      font-weight: 700;
+
+      &:hover {
+//        background-color: $list-group-hover-bg;
+      }
+    }
+
+    &.disabled:hover {
+//      color: $list-group-disabled-color;
+    }
+  }
+}*/

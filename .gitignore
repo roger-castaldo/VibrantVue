@@ -130,3 +130,5 @@ dist/css
 .pnp.*
 package-lock.json
 dist/components.*
+dist/style.css
+dist/style.css.map
