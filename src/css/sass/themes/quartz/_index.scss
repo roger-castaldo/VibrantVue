@@ -1,0 +1,183 @@
+@use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../mixins" as mx;
+@use 'sass:color';
+@use 'sass:math';
+
+
+@include mx.bulma-theme($name: "quartz") {
+
+    $white:    #fff !default;
+    $gray-100: #f8f9fa !default;
+    $gray-200: #e9e9e8 !default;
+    $gray-300: #dee2e6 !default;
+    $gray-400: #ced4da !default;
+    $gray-500: #adb5bd !default;
+    $gray-600: #6c757d !default;
+    $gray-700: #495057 !default;
+    $gray-800: #343a40 !default;
+    $gray-900: #212529 !default;
+    $black:    #000 !default;
+
+    $blue:    #3a8fd9 !default;
+    $indigo:  #6610f2 !default;
+    $purple:  #686dc3 !default;
+    $pink:    #e83283 !default;
+    $red:     #fc346f !default;
+    $orange:  #fd7e14 !default;
+    $yellow:  #ffc107 !default;
+    $green:   #41d7a7 !default;
+    $teal:    #528fb3 !default;
+    $cyan:    #39cbfb !default;
+
+    @include mx.override-platform-colors((
+        "primary":$pink,
+        "secondary":rgba($white, .4),
+        "success":$green,
+        "info":$cyan,
+        "warning":$yellow,
+        "danger":$orange,
+        "light":(
+            $gray-200,
+            $gray-900
+        ),
+        "dark":(
+            $gray-900,
+            $gray-200
+        ),
+        "link":$white
+    ));
+
+    $list:mx.define-variable("text",$white,());
+    $list:mx.define-variable("text-strong",$white,$list);
+    $list:mx.define-variable("link-text",$gray-700,$list);
+    $list:mx.define-variable("body-background-color",$purple,$list);
+    
+    $list:mx.define-variable("border",rgba($white, .2),$list);
+
+    $list:mx.define-variable("radius",0.5rem,$list);
+    $list:mx.define-variable("radius-small",0.6rem,$list);
+    $list:mx.define-variable("radius-medium",0.5rem,$list);
+    $list:mx.define-variable("radius-large",0.7,$list);
+    $list:mx.define-variable("border-radius-pill",50rem,$list);
+
+    $list:mx.define-variable("box-shadow",1px 3px 24px -1px rgba($black, .15),$list);
+    $list:mx.define-variable("box-shadow-sm",0 1px 1px rgba($black, .1),$list);
+
+    $list:mx.define-variable("title-weight",700,$list);
+    $list:mx.define-variable("title-color",$white,$list);
+
+    $list:mx.define-variable("text-muted",rgba($white, .7),$list);
+
+    $list:mx.define-variable("button-padding-vertical",0.75rem,$list);
+    $list:mx.define-variable("button-padding-horizontal",1.5rem,$list);
+
+    $list:mx.define-variable("progress-bar-background-color",rgba($black, .2),$list);
+
+    $list:mx.define-variable("tabs-border-bottom-width",0,$list);
+    $list:mx.define-variable("tabs-boxed-link-radius",0,$list);
+    $list:mx.define-variable("tabs-toggle-link-radius",0,$list);
+
+    $list:mx.define-variable("tabs-link-active-color",$gray-800,$list);
+    $list:mx.define-variable("tabs-link-active-border-bottom-color",$white,$list);
+    $list:mx.define-variable("tabs-toggle-link-active-color",$white,$list);
+    $list:mx.define-variable("tabs-toggle-link-active-background-color",cv.getVar("primary"),$list);
+    $list:mx.define-variable("tabs-toggle-link-active-border-color",cv.getVar("primary"),$list);
+    $list:mx.define-variable("tabs-toggle-link-radius",cv.getVar("border-radius-pill"),$list);
+
+    $list:mx.define-variable("card-content-padding",1.75rem 2rem,$list);
+
+    $list:mx.define-variable("breadcrumb-item-separator-color",$white,$list);
+    $list:mx.define-variable("breadcrumb-item-active-color",$white,$list);
+
+    $list:mx.define-variable("box-background-color",transparent,$list);
+
+    $list:mx.define-variable("content-heading-color",$white,$list);
+
+    $list:mx.define-variable("content-blockquote-background-color",transparent,$list);
+
+    $list:mx.define-variable("table-background-color",transparent,$list);
+    $list:mx.define-variable("table-striped-row-even-background-color",rgba($white,0.3),$list);
+
+    $list:mx.define-variable("dropdown-content-background-color",transparent,$list);
+
+    $list:mx.define-variable("panel-block-hover-background-color",rgba($white,0.3),$list);
+    /*
+// Close
+
+$btn-close-color:            $white !default;
+
+// Spacing
+
+$spacer: 2rem !default;
+
+// Fonts
+
+$blockquote-footer-color:     $text-muted !default;
+
+// Tables
+
+$table-dark-bg:               $dark !default;
+$table-dark-border-color:     darken($dark, 5%) !default;
+
+$table-bg-scale:              0% !default;
+
+// Forms
+
+$form-switch-color:               $white !default;
+
+$form-switch-focus-color:         $form-switch-color !default;
+
+$input-group-addon-bg:                  transparent !default;
+
+$form-select-indicator-color:       $white !default;
+
+$form-range-track-bg:             rgba($black, .2) !default;
+
+// Accordion
+
+$accordion-button-bg:                     $secondary !default;
+$accordion-button-active-bg:              $primary !default;
+$accordion-button-active-color:           $white !default;
+
+// Tooltips
+
+$tooltip-opacity:                   .7 !default;
+
+// Popovers
+
+$popover-header-bg:                 $card-cap-bg !default;
+
+$popover-body-color:                $card-color !default;
+$popover-body-padding-y:            $spacer * .5 !default;
+
+$popover-arrow-color:               $border-color !default;
+
+$popover-arrow-outer-color:         transparent !default;
+
+// Toasts
+
+$toast-header-color:                $card-color !default;
+$toast-header-background-color:     $card-cap-bg !default;
+$toast-header-border-color:         $border-color !default;
+
+// List group
+
+$list-group-color:                  $white !default;
+$list-group-bg:                     transparent !default;
+$list-group-border-color:           $border-color !default;
+$list-group-border-width:           0 !default;
+
+$list-group-hover-bg:               $dropdown-link-hover-bg !default;
+
+$list-group-disabled-color:         $text-muted !default;
+
+$list-group-action-color:           $white !default;
+$list-group-action-hover-color:     $white !default;
+
+*/
+
+    @include mx.output-skin-content($list);
+
+    @import "./_bootswatch.scss";
+}

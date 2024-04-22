@@ -110,12 +110,8 @@ $classMaps:(
   $classes:();
 
   @each $value in $list {
-    @if map.get($value,"type")=="variable"{
-      @include cv.register-var(map.get($value,"name"),#{map.get($value,"value")});
-    }
-    @if map.get($value,"type")=="color"{
-      @include cv.register-hsl(map.get($value,"name"),map.get($value,"value"));
-    }
+    @include mixin-variable($value);
+    @include mixin-color($value);
     @if map.get($value,"class-name")!=""{
       $names:build-classes(map.get($value,"class-name"));
       @if index($classes,$names)==null {
@@ -130,16 +126,24 @@ $classMaps:(
         @if map.get($value,"class-name")!=""{
           $names:build-classes(map.get($value,"class-name"));
           @if $names==$name {
-            @if map.get($value,"type")=="variable"{
-              @include cv.register-var(map.get($value,"name"),#{map.get($value,"value")});
-            }
-            @if map.get($value,"type")=="color"{
-              @include cv.register-hsl(map.get($value,"name"),map.get($value,"value"));
-            }
+            @include mixin-variable($value);
+            @include mixin-color($value);
           }
         }
       }
     }
+  }
+}
+
+@mixin mixin-variable($value){
+  @if map.get($value,"type")=="variable"{
+    @include cv.register-var(map.get($value,"name"),#{map.get($value,"value")});
+  }
+}
+
+@mixin mixin-color($value){
+  @if map.get($value,"type")=="color"{
+    @include cv.register-hsl(map.get($value,"name"),map.get($value,"value"));
   }
 }
 
