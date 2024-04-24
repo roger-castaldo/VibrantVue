@@ -1,0 +1,78 @@
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../mixins" as lmx;
+
+.#{iv.$class-prefix}control{
+  &.#{iv.$class-prefix}has-icons-left,
+  &.#{iv.$class-prefix}has-icons-right{
+    .#{iv.$class-prefix}icon{
+      color:$gray-600;
+      background-color:$gray-800;
+    }
+  }
+}
+
+a.#{iv.$class-prefix}dropdown-item,
+button.#{iv.$class-prefix}dropdown-item {
+  &:hover{
+    color:rgba(255, 255, 255, .75);
+  }
+}
+
+.#{iv.$class-prefix}pagination-previous,
+.#{iv.$class-prefix}pagination-next,
+.#{iv.$class-prefix}pagination-link,
+.#{iv.$class-prefix}pagination-ellipsis {
+  background-color: transparent;
+  border-color: $gray-800;
+}
+
+.#{iv.$class-prefix}pagination-previous,
+.#{iv.$class-prefix}pagination-next,
+.#{iv.$class-prefix}pagination-link{
+  &:hover,
+  &:active {
+    background-color: $gray-800;
+    border-color: $gray-800;
+  }
+
+  &:active {
+    color: rgba(255, 255, 255, .75);
+  }
+
+  &[disabled],
+  &.#{iv.$class-prefix}is-disabled {
+    color: $gray-700;
+    background-color: transparent;
+    border-color: $gray-700;
+  }
+
+  &.#{iv.$class-prefix}is-current,
+  &.#{iv.$class-prefix}is-selected {
+    color:$gray-400;
+  }
+}
+
+.#{iv.$class-prefix}card {
+  border-color: rgba($gray-900, .95);
+}
+
+.#{iv.$class-prefix}modal-card {
+  border-color: $body-bg;
+}
+
+.#{iv.$class-prefix}progress{
+  @include lmx.override-color-variable("progress-value-background-color","primary");
+}
+
+.#{iv.$class-prefix}breadcrumb {
+  background-color:$component-active-bg;
+  border-radius: .25rem;
+}
+
+.#{iv.$class-prefix}input,
+.#{iv.$class-prefix}textarea,
+.#{iv.$class-prefix}select select {
+  background-color:$gray-500;
+}

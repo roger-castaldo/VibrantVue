@@ -1,0 +1,536 @@
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../mixins" as lmx;
+
+a{
+  text-decoration:underline;
+}
+
+.#{iv.$class-prefix}input,
+.#{iv.$class-prefix}textarea,
+.#{iv.$class-prefix}select select {
+  border-color: #{cv.getVar("border-color")};
+
+  &[disabled],
+  fieldset[disabled] & {
+    border-color: $gray-600;
+  }
+
+  &:focus,
+  &:focus-within,
+  &.#{iv.$class-prefix}is-focused {
+    border-color: #{cv.getVar("border-color")};
+  }
+}
+
+a.#{iv.$class-prefix}dropdown-item,
+button.#{iv.$class-prefix}dropdown-item {
+  &:hover {
+    color: $white;
+    background-color: #{cv.getVar("border-color")};
+  }
+}
+
+.#{iv.$class-prefix}dropdown-menu {
+  border-color: #{cv.getVar("border-color")};
+}
+
+.#{iv.$class-prefix}pagination-previous,
+.#{iv.$class-prefix}pagination-next,
+.#{iv.$class-prefix}pagination-link,
+.#{iv.$class-prefix}pagination-ellipsis {
+  border-color: #{cv.getVar("border-color")};
+}
+
+.#{iv.$class-prefix}pagination-previous,
+.#{iv.$class-prefix}pagination-next,
+.#{iv.$class-prefix}pagination-link{
+  &:hover{ 
+    color: $white;
+    background-color: #{cv.getVar("border-color")};
+    border-color: #{cv.getVar("border-color")};
+  }
+
+  &[disabled],
+  &.#{iv.$class-prefix}is-disabled {
+    color: $gray-400;
+    border-color: #{cv.getVar("border-color")};
+  }
+}
+
+.#{iv.$class-prefix}card{
+  border-width: #{cv.getVar("border-width")};
+  border-color: #{cv.getVar("border-color")};
+}
+
+.#{iv.$class-prefix}tag {
+  padding: 0.5em 1.2em;
+}
+
+.#{iv.$class-prefix}modal-content,
+.#{iv.$class-prefix}modal-card {
+  border-color: #{cv.getVar("border-color")};
+}
+
+.#{iv.$class-prefix}progress{
+  @include lmx.override-color-variable("progress-value-background-color","gray-400");
+}
+
+.#{iv.$class-prefix}breadcrumb {
+  border-radius: 0.25rem;
+}
+
+// stylelint-disable scss/dollar-variable-default
+$border-radius-sketchy:    255px 25px 225px 25px / 25px 225px 25px 255px;
+$border-radius-lg-sketchy: 55px 225px 15px 25px / 25px 25px 35px 355px;
+$border-radius-sm-sketchy: 255px 25px 225px 25px / 25px 225px 25px 255px;
+// style-enable scss/dollar-variable-default
+
+// Navbar
+
+.#{iv.$class-prefix}navbar {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 25px 25px 55px 5px/5px 55px 25px 25px;
+
+  &.#{iv.$class-prefix}is-light {
+    border-color: $gray-800;
+  }
+
+  &.#{iv.$class-prefix}is-fixed-top {
+    border-width: 0 0 2px;
+    border-radius: 0 25px 225px 0/25px 0 25px 255px;
+  }
+
+  &.#{iv.$class-prefix}is-fixed-bottom {
+    border-width: 2px 0 0;
+    border-radius: 255px 25px 0 25px/25px 225px 25px 0;
+  }
+
+  .#{iv.$class-prefix}navbar-brand {
+    font-family: #{cv.getVar("title-family")};
+    font-weight: 400;
+    text-decoration: none;
+  }
+}
+
+// Buttons
+
+.#{iv.$class-prefix}button {
+  text-decoration: none;
+
+  &:not(.#{iv.$class-prefix}is-rounded){
+    border-radius: $border-radius-sketchy;
+
+    &.#{iv.$class-prefix}is-large {
+      border-radius: $border-radius-lg-sketchy;
+    }
+
+    &.#{iv.$class-prefix}is-small {
+      border-radius: $border-radius-sm-sketchy;
+    }
+  }
+}
+
+/*.btn-check {
+  display: inline-block;
+  opacity: 0;
+}
+*/
+
+// Typography
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: #{cv.getVar("family-primary")};
+}
+
+b,
+strong {
+  font-family: #{cv.getVar("title-family")};
+}
+
+blockquote {
+  border-radius: 15px 27px 25px 25px/25px 25px 305px 635px;
+}
+
+// Tables
+
+.#{iv.$class-prefix}table {
+  &.#{iv.$class-prefix}is-bordered {
+    overflow: hidden;
+    border-spacing: 0;
+    border-collapse: separate;
+    border-radius: 5px 25px 5px 25px/25px 5px 25px 5px;
+
+    th,
+    td {
+      border-radius: 5px 5px 25px 4px/5px 4px 3px 5px;
+    }
+  }
+}
+
+// Forms
+
+.#{iv.$class-prefix}control,
+.#{iv.$class-prefix}input,
+.#{iv.$class-prefix}file,
+.#{iv.$class-prefix}file-cta,
+.#{iv.$class-prefix}file-name{
+  border-radius: $border-radius-sketchy;
+}
+
+.#{iv.$class-prefix}file {
+  &.#{iv.$class-prefix}is-boxed{
+    .#{iv.$class-prefix}file-label{
+      border-radius: $border-radius-lg-sketchy;
+    }
+  }
+}
+
+.#{iv.$class-prefix}textarea,
+.#{iv.$class-prefix}select select  {
+  border-radius: $border-radius-lg-sketchy !important;
+}
+
+[type="checkbox"] {
+  position: relative;
+  width: 0;
+  height: 0;
+  appearance: none;
+  cursor: pointer;
+  border: none;
+
+  &::before {
+    position: absolute;
+    top: -.1em;
+    left: 0;
+    display: inline-block;
+    width: 15px;
+    height: 16px;
+    content: "";
+    border: 2px solid $gray-800;
+    border-radius: 2px 8px 2px 4px / 5px 3px 5px 3px;
+  }
+
+  &:focus::before {
+    box-shadow: 0 0 0 .25rem rgba(51, 51, 51, .25);
+  }
+
+  &:checked::after,
+  &:indeterminate::after {
+    position: absolute;
+    top: 0;
+    left: .1em;
+    font-size: 1.5rem;
+    line-height: .5;
+    color: $gray-800;
+  }
+
+  &:checked::after {
+    content: "x";
+  }
+
+  &:indeterminate::after {
+    top: .1em;
+    content: "-";
+  }
+
+  &:disabled {
+    &::before {
+      border: 2px solid $gray-500;
+    }
+  }
+}
+
+[type="radio"] {
+  position: relative;
+  width: 0;
+  height: 0;
+  appearance: none;
+  cursor: pointer;
+  border: none;
+
+  &::before {
+    position: absolute;
+    top: -.1em;
+    left: 0;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    content: "";
+    border: 2px solid $gray-800;
+    border-radius: 50% 45% 40% 50% / 40% 50% 50% 45%;
+  }
+
+  &:focus::before {
+    box-shadow: 0 0 0 .25rem rgba(51, 51, 51, .25);
+  }
+
+  &:checked::before {
+    background-color: $gray-800;
+  }
+
+  &:disabled {
+    &::before {
+      border: 2px solid $gray-500;
+    }
+  }
+}
+
+/*
+.form-check-input {
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.form-switch {
+  padding-left: 0;
+
+  .form-check-input {
+    position: relative;
+    margin-left: 0;
+
+    &::before {
+      width: 32px;
+      border-radius: 30% 35% 30% 30% / 30% 50% 30% 45%;
+    }
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      content: "";
+      background-color: $white;
+      border: 2px solid #333;
+      border-radius: 50% 45% 40% 50% / 40% 50% 50% 45%;
+      transition: left .15s ease-in-out;
+    }
+
+    &:checked::after {
+      top: 0;
+      left: 18px;
+      background-color: $gray-800;
+    }
+  }
+
+  .form-check-label {
+    margin-left: .5em;
+  }
+}
+*/
+
+// Navs
+
+.#{iv.$class-prefix}dropdown-menu {
+  overflow: hidden;
+  border-radius: 555px 25px 25px 25px/25px 25px 25px 555px;
+}
+
+/*.dropdown-divider {
+  border-top-width: 2px;
+}
+
+.list-group {
+  overflow: hidden;
+  background-color: $gray-800;
+  border: 2px solid $gray-800;
+  border-radius: 45px 15px 35px 5px/15px 5px 15px 65px;
+
+  &-item {
+    border-top: 2px solid $gray-800;
+    border-right: none;
+    border-left: none;
+    border-radius: 255px 5px 225px 5px/25px 225px 25px 255px;
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+*/
+
+.#{iv.$class-prefix}tabs {
+  a {
+    border-radius: 45px 15px 225px 5px/25px 225px 25px 255px;
+  }
+  &.#{iv.$class-prefix}is-toggle {
+    a {
+      border-radius: $border-radius-sketchy;
+    }
+  }
+}
+
+/*.nav-link,
+.page-link,
+.list-group-item,
+.dropdown-item {
+  text-decoration: none;
+}
+*/
+
+.#{iv.$class-prefix}breadcrumb {
+  border: 2px solid $gray-800;
+  border-radius: $border-radius-sketchy;
+}
+
+.#{iv.$class-prefix}pagination-previous,
+.#{iv.$class-prefix}pagination-next,
+.#{iv.$class-prefix}pagination-link,
+.#{iv.$class-prefix}pagination-ellipsis {
+  border-radius: $border-radius-sketchy;
+}
+
+// Indicators
+
+.#{iv.$class-prefix}tag {
+  border-radius: $border-radius-sm-sketchy;
+
+  // &-pill {
+  //   border-radius: 7rem 8rem 8rem 8rem / 4rem 5rem 6rem 6rem;
+  // }
+
+  // &.bg-light {
+  //   color: $dark;
+  // }
+}
+
+.#{iv.$class-prefix}notification,
+.#{iv.$class-prefix}panel{
+  border-radius: $border-radius-sketchy;
+}
+
+.#{iv.$class-prefix}message{
+  .#{iv.$class-prefix}message-header{
+    border-radius: $border-radius-sketchy;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-start-start-radius: none;
+    border-start-end-radius: none;
+  }
+
+  .#{iv.$class-prefix}message-body {
+    border-radius: $border-radius-sketchy;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-inline-start-style: none;
+    border-inline-start-width: none;
+  }
+}
+
+// Progress bars
+
+.#{iv.$class-prefix}progress {
+  border: 2px solid $gray-800;
+  border-radius: $border-radius-sm-sketchy;
+}
+
+// Containers
+
+.#{iv.$class-prefix}card {
+  border-radius: 5px 5px 5px 5px/25px 25px 25px 5px;
+  border-width: 2px;
+  
+  .#{iv.$class-prefix}card-header {
+    border-color: inherit;
+    border-bottom-width: 2px;
+
+    &:first-child {
+      border-radius: 3px 3px 0 0/23px 23px 0 0;
+    }
+  }
+
+  .#{iv.$class-prefix}card-footer {
+    border-top-width: 2px;
+  }
+}
+
+// .toast {
+//   border-radius: 10px 10px 15px 5px/5px 15px 5px 15px;
+
+//   &-header {
+//     font-family: $headings-font-family;
+//   }
+// }
+
+.#{iv.$class-prefix}modal-content,
+.#{iv.$class-prefix}modal-card,
+.#{iv.$class-prefix}hero {
+  border-radius: 15px 5px 5px 25px/5px 25px 25px 5px;
+}
+
+// .popover {
+//   padding: 0;
+//   border-radius: 45px 85px 15px 25px/15px 10px 35px 555px;
+
+//   &-title {
+//     border-bottom: 2px solid $gray-800;
+//   }
+
+//   &.bs-popover-start::before,
+//   &.bs-tether-element-attached-right::before {
+//     right: -13px;
+//   }
+
+//   &.bs-popover-top::before,
+//   &.bs-tether-element-attached-bottom::before {
+//     bottom: -13px;
+//   }
+
+//   &.bs-popover-bottom::before,
+//   &.bs-tether-element-attached-top::before {
+//     top: -13px;
+//   }
+
+//   &.bs-popover-end::before,
+//   &.bs-tether-element-attached-left::before {
+//     left: -13px;
+//   }
+// }
+
+// .tooltip {
+//   &-inner {
+//     border-radius: $border-radius-sm-sketchy;
+//   }
+// }
+
+pre {
+  border: 2px solid $gray-800;
+  border-radius: 15px 5px 5px 25px/5px 25px 25px 5px;
+}
+
+.#{iv.$class-prefix}delete {
+  background-color: transparent;
+  font-family: #{cv.getVar("title-family")};
+
+  &::before {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    content: "X";
+    transform: none;
+  }
+  
+  &::after{
+    background-color: transparent;
+  }
+}
+
+img {
+  &.#{iv.$class-prefix}is-thumbnail {
+    border-radius: $border-radius-sketchy;
+  }
+}

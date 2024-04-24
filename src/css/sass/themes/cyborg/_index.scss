@@ -45,15 +45,11 @@
             $gray-800
         )
     ),
-    $scheme-main);
+    $scheme-main,$gray-700,$gray-600);
 
     $list:mx.define-variable("family-primary",
         "Roboto, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Helvetica Neue\", Arial, sans-serif",
         ());
-
-    $list:mx.define-variable("scheme-main-l",floor(lightness($scheme-main)),$list);
-    $list:mx.define-variable("scheme-main-bis",$gray-700,$list);
-    $list:mx.define-variable("scheme-main-ter",$gray-600,$list);
 
     $list:mx.define-variable("text",$gray-400,$list);
     $list:mx.define-variable("title-color",$white,$list);

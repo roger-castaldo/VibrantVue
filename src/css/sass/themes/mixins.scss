@@ -143,6 +143,7 @@ $classMaps:(
 
 @mixin mixin-color($value){
   @if map.get($value,"type")=="color"{
+    @include cv.register-var(map.get($value,"name"),map.get($value,"value"));
     @include cv.register-hsl(map.get($value,"name"),map.get($value,"value"));
   }
 }
@@ -153,7 +154,7 @@ $classMaps:(
     @if $classes != ''{
       $classes:"#{$classes},";
     }
-    $classes:".#{iv.$class-prefix}#{$class}";
+    $classes:"#{$classes}.#{iv.$class-prefix}#{$class}";
   }
   @return $classes;
 }
@@ -235,7 +236,7 @@ $classMaps:(
   }
 }
 
-@mixin override-dark-mode-basics($overrideColors,$scheme-main){
+@mixin override-dark-mode-basics($overrideColors,$scheme-main,$scheme-main-bis,$scheme-main-ter){
 
   @include cv.generate-color-palette(
                 "scheme",
@@ -275,6 +276,9 @@ $classMaps:(
   @include override-platform-colors($overrideColors,$scheme-main);
 
   @include cv.register-vars((
+    "scheme-main-l": floor(lightness($scheme-main)),
+    "scheme-main-bis":$scheme-main-bis,
+    "scheme-main-ter":$scheme-main-ter,
     "soft-l": iv.$dark-l,
     "bold-l": iv.$light-l,
     "soft-invert-l": iv.$light-l,
