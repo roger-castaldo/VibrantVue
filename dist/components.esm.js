@@ -3189,7 +3189,7 @@ const Kn = /* @__PURE__ */ Hn(Gn, [["render", qn]]), Qn = {
 }, Symbol.toStringTag, { value: "Module" }));
 const lt = document.currentScript === null || document.currentScript === void 0 ? import.meta.url : document.currentScript.src;
 Oe(`${lt.substring(0, lt.lastIndexOf("/"))}/style.css`);
-const Fs = ["cerulean", "cosmo", "cyborg", "darkly", "default", "flatly", "journal", "litera", "lumen", "lux", "materia", "minty", "nuclear", "pulse", "sandstone", "simplex", "slate", "solar", "spacelab", "superhero", "united", "yeti"];
+const Fs = ["cerulean", "cosmo", "cyborg", "dark", "darkly", "default", "flatly", "journal", "light", "litera", "lumen", "lux", "materia", "minty", "morph", "pulse", "quartz", "sandstone", "simplex", "sketchy", "slate", "solar", "spacelab", "superhero", "united", "vapor", "yeti", "zephyr"];
 function xs(e) {
   document.getElementsByTagName("body")[0].setAttribute("data-skin", e ?? "");
 }
