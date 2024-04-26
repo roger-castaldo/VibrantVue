@@ -1,17 +1,14 @@
-@charset "utf-8";
-@import "./fonts.scss";
-@import "./functions.sass";
-@import "./bulma/variables/_all.sass";
-@import "./skins/_all.scss";
-@import "./bulma/sass/utilities/_all.sass";
-@import "./bulma/sass/colors.scss";
-@import "./bulma/sass/base/_all.sass";
-body{ 
-    @import "./bulma/sass/elements/_all.sass";
-    @import "./bulma/sass/form/_all.sass";
-    @import "./bulma/sass/components/_all.sass";
-    @import "./bulma/sass/grid/_all.sass";
-    @import "./bulma/sass/helpers/_all.sass";
-    @import "./bulma/sass/layout/_all.sass";
-    @import "./extensions/_all.scss";
-}
+@forward "../../../node_modules/bulma/sass/utilities";
+@forward "../../../node_modules/bulma/sass/base";
+@forward "../../../node_modules/bulma/sass/elements";
+@forward "../../../node_modules/bulma/sass/form";
+@forward "../../../node_modules/bulma/sass/components";
+@forward "../../../node_modules/bulma/sass/grid";
+@forward "../../../node_modules/bulma/sass/layout";
+@forward "../../../node_modules/bulma/sass/base/skeleton";
+@forward "../../../node_modules/bulma/sass/helpers";
+@forward "./extensions/_all.scss";
+
+@forward "./themes";
+@forward "./patches";
+@import "./fonts";

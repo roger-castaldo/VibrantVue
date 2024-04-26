@@ -23,7 +23,7 @@
     "build": "vite build --config vite.config.js",
     "build:minify": "npm run build && uglifyjs ./dist/components.esm.js --compress --output ./dist/components.esm.min.js",
     "build:serve": "npm run build:minify && node index.js",
-    "build:bulma": "sass --load-path=node_modules src/css/sass/my-bulma.scss dist/style.css",
+    "build:bulma": "sass --load-path=node_modules src/css/sass/bulma-skins.scss dist/style.css",
     "serve":"node index.js"
   },
   "dependencies": {

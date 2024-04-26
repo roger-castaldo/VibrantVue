@@ -1,3 +1,5 @@
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv
 @import 'variables'
 @import 'position'
 @import 'animation'
@@ -7,13 +9,13 @@
 		content: ''
 		border-style: solid
 		border-width: $tooltip-arrow-size
-		border-color: #{bulmaRgba($tooltip-background-color, $tooltip-background-opacity)} transparent transparent transparent
+		border-color: $tooltip-border-color transparent transparent transparent
 		margin-bottom: $tooltip-arrow-size * -1 + 1
 	+tooltip-arrow-top
 
 =tooltip-box
 	&::before
-		background: #{bulmaRgba($tooltip-background-color, $tooltip-background-opacity)}
+		background: $tooltip-border-color
 		border-radius: $tooltip-radius
 		content: attr(data-tooltip)
 		padding: $tooltip-padding
@@ -68,27 +70,25 @@
 		&.has-tooltip-multiline
 			+tooltip-multiline
 
-		@each $name, $pair in $colors
-			$color: nth($pair, 1)
-			$color-invert: nth($pair, 2)
+		@each $name, $pair in dv.$colors
 			&.has-tooltip-#{$name}
 				&.has-tooltip-bottom
 					&::after
-						border-color: transparent transparent #{bulmaRgba($color, $tooltip-background-opacity)} transparent
+						border-color: transparent transparent #{cv.buildHslaString($name,false,$tooltip-background-opacity)} transparent
 				&.has-tooltip-left
 					&::after
-						border-color: transparent transparent transparent #{bulmaRgba($color, $tooltip-background-opacity)}
+						border-color: transparent transparent transparent #{cv.buildHslaString($name,false,$tooltip-background-opacity)}
 				&.has-tooltip-right
 					&::after
-						border-color: transparent #{bulmaRgba($color, $tooltip-background-opacity)} transparent transparent
+						border-color: transparent #{cv.buildHslaString($name,false,$tooltip-background-opacity)} transparent transparent
 				&:not(.has-tooltip-bottom),
 				&:not(.has-tooltip-left),
 				&:not(.has-tooltip-right)
 					&::after
-						border-color: #{bulmaRgba($color, $tooltip-background-opacity)} transparent transparent transparent
+						border-color: #{cv.buildHslaString($name,false,$tooltip-background-opacity)} transparent transparent transparent
 				&:before
-					background-color: #{bulmaRgba($color, $tooltip-background-opacity)}
-					color: $color-invert
+					background-color: #{cv.buildHslaString($name,false,$tooltip-background-opacity)}
+					color: #{cv.getVar($name,"","-invert")}
 
 		+tooltip-hover
 			opacity: 1

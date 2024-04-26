@@ -1,10 +1,13 @@
-$tooltip-arrow-size: 6px !default
-$tooltip-background-color: $grey-dark !default
-$tooltip-background-opacity: 0.9 !default
-$tooltip-color: $white !default
-$tooltip-font-family: $family-primary !default
-$tooltip-font-size: $size-7
-$tooltip-max-width: 15rem !default
-$tooltip-padding: .5rem 1rem !default
-$tooltip-radius: $radius-small !default
-$tooltip-z-index: 1020 !default
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv
+
+$tooltip-arrow-size: 6px
+$tooltip-background-color: calc(#{cv.getVar("scheme","","-invert-ter-l")} + #{cv.getVar("hover-background-l-delta")})
+$tooltip-background-opacity: 0.9
+$tooltip-color: #{cv.getVar("body-color")}
+$tooltip-font-family: #{cv.getVar("family-primary")}
+$tooltip-font-size: #{cv.getVar("size-7")}
+$tooltip-max-width: 15rem
+$tooltip-padding: .5rem 1rem
+$tooltip-radius: #{cv.getVar("radius-small")}
+$tooltip-z-index: 1020
+$tooltip-border-color: #{cv.buildHslaString("scheme",calc(#{cv.getVar("scheme","","-invert-ter-l")} + #{cv.getVar("hover-background-l-delta")}),$tooltip-background-opacity)}
