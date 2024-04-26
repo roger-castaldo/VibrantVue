@@ -1,0 +1,94 @@
+@use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../mixins" as mx;
+@use 'sass:color';
+@use 'sass:math';
+
+
+@include mx.bulma-theme($name: "yeti") {
+
+    $white:    #fff !default;
+    $gray-100: #f8f9fa !default;
+    $gray-200: #eee !default;
+    $gray-300: #dee2e6 !default;
+    $gray-400: #ccc !default;
+    $gray-500: #adb5bd !default;
+    $gray-600: #888 !default;
+    $gray-700: #495057 !default;
+    $gray-800: #333 !default;
+    $gray-900: #222 !default;
+    $black:    #000 !default;
+
+    $blue:    #008cba !default;
+    $indigo:  #6610f2 !default;
+    $purple:  #6f42c1 !default;
+    $pink:    #e83e8c !default;
+    $red:     #f04124 !default;
+    $orange:  #fd7e14 !default;
+    $yellow:  #e99002 !default;
+    $green:   #43ac6a !default;
+    $teal:    #20c997 !default;
+    $cyan:    #5bc0de !default;
+
+    @include mx.override-platform-colors((
+        "primary":$blue,
+        "secondary":$gray-200,
+        "success":$green,
+        "info":$cyan,
+        "warning":$yellow,
+        "danger":$red,
+        "light":(
+            $gray-200,
+            $gray-800
+        ),
+        "dark":(
+            $gray-800,
+            $gray-200
+        ),
+        "link":$blue
+    ));
+
+
+    $list:mx.define-variable("radius",0,());
+    $list:mx.define-variable("radius-small",0,$list);
+    $list:mx.define-variable("radius-medium",0,$list);
+    $list:mx.define-variable("radius-large",0,$list);
+    $list:mx.define-variable("progress-border-radius",0,$list);
+
+    $list:mx.define-variable("size-small",dv.$size-small,$list);
+    $list:mx.define-variable("size-normal",dv.$size-small,$list);
+    $list:mx.define-variable("size-medium",dv.$size-normal,$list);
+    $list:mx.define-variable("size-large",dv.$size-medium,$list);
+
+    $list:mx.define-variable("family-primary",
+        "\"Open Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+        $list);
+
+    $list:mx.define-variable("title-weight",300,$list);
+    $list:mx.define-variable("subtitle-weight",300,$list);
+
+    $list:mx.define-variable("button-padding-horizontal",0.5rem,$list);
+    $list:mx.define-variable("button-weight",300,$list);
+
+    $list:mx.define-variable("dropdown-divider-background-color",rgba($black, .1),$list);
+
+    $list:mx.define-variable("breadcrumb-item-padding-vertical",0.375rem,$list);
+    $list:mx.define-variable("breadcrumb-item-padding-horizontal",0.75rem,$list);
+    /*
+
+// Breadcrumbs
+
+$breadcrumb-border-radius:          3px !default;
+
+// Close
+
+$btn-close-color:            $gray-600 !default;
+$btn-close-opacity:          .6 !default;
+$btn-close-hover-opacity:    1 !default;
+    */
+    
+    @include mx.output-skin-content($list);
+
+    @import "./_bootswatch.scss";
+}

@@ -1,0 +1,55 @@
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../mixins" as lmx;
+
+// Mixins
+
+@mixin btn-shadow($name,$shade:0) {
+  @include lmx.gradient-y-three-colors(
+    lmx.lighten-color($name,24-$shade), 
+    lmx.darken-color($name,$shade), 
+    50%, 
+    lmx.darken-color($name,8-$shade)
+  );
+  filter: none;
+  border: 1px solid lmx.darken-color($name,20);
+}
+
+// Navbar
+
+.#{iv.$class-prefix}navbar {
+  .#{iv.$class-prefix}navbar-item,
+  .#{iv.$class-prefix}navbar-link,
+  .#{iv.$class-prefix}navbar-brand {
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, .05);
+    transition: color ease-in-out .2s;
+  }
+
+  @each $name, $value in dv.$colors {
+    &.#{iv.$class-prefix}is-#{$name} {
+      @include btn-shadow($name);
+    }
+  }
+}
+
+// Buttons
+
+.#{iv.$class-prefix}button {
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, .1);
+  
+  @each $name, $value in dv.$colors {
+    &.#{iv.$class-prefix}is-#{$name}:not(.#{iv.$class-prefix}is-outlined) {
+      background-color: none;
+      @include btn-shadow($name);
+
+      &:hover:not(.#{iv.$class-prefix}is-disabled){
+        @include btn-shadow($name,8);  
+      }
+
+      &.#{iv.$class-prefix}is-inverted{
+        color:$white;
+      }
+    }
+  }  
+}

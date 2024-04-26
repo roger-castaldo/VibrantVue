@@ -1,0 +1,207 @@
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../mixins" as lmx;
+
+.#{iv.$class-prefix}table {
+  th{
+    font-weight: 500;
+  }
+}
+
+.#{iv.$class-prefix}button {
+  box-shadow: $box-shadow;
+}
+
+.#{iv.$class-prefix}label {
+  font-weight: 500;
+}
+
+.#{iv.$class-prefix}control,
+.#{iv.$class-prefix}input,
+.#{iv.$class-prefix}textarea,
+.#{iv.$class-prefix}select select {
+  box-shadow: $box-shadow;
+}
+
+.#{iv.$class-prefix}dropdown-item,
+.#{iv.$class-prefix}dropdown-content {
+  font-size: #{cv.getVar("size-small")};
+}
+
+a.#{iv.$class-prefix}dropdown-item,
+button.#{iv.$class-prefix}dropdown-item {
+  padding: 0.5rem 1rem;
+
+  &:hover{
+    color:$white;
+    background-color: #{cv.getVar("primary")};
+  }
+}
+
+.#{iv.$class-prefix}pagination {
+  padding: .5rem 0;
+}
+
+.#{iv.$class-prefix}pagination-previous,
+.#{iv.$class-prefix}pagination-next,
+.#{iv.$class-prefix}pagination-link,
+.#{iv.$class-prefix}pagination-ellipsis {
+  color: #{cv.getVar("primary")};
+}
+
+.#{iv.$class-prefix}pagination-previous,
+.#{iv.$class-prefix}pagination-next,
+.#{iv.$class-prefix}pagination-link{
+  &:focus{
+    color: #{cv.getVar("primary")};
+  }
+
+  &:hover{
+    color: #{cv.getVar("primary")};
+    background-color: #{cv.getVar("secondary")};
+  }
+
+  &.#{iv.$class-prefix}is-current,
+  &.#{iv.$class-prefix}is-selected{
+    color: $white;
+  }
+}
+
+.#{iv.$class-prefix}breadcrumb {
+  li {
+    & + li::before {
+      content: ">";
+    }
+  }
+}
+
+
+// Navbar
+
+.#{iv.$class-prefix}navbar {
+  font-size: #{cv.getVar("size-small")};
+  font-weight: 500;
+
+  .#{iv.$class-prefix}navbar-item,
+  .#{iv.$class-prefix}navbar-link {
+    margin-right: .5rem;
+    margin-left: .5rem;
+  }
+}
+
+// Buttons
+
+.#{iv.$class-prefix}button{
+  &.#{iv.$class-prefix}is-light{
+    color:$gray-900;
+    &[disabled]{
+      border: 1px solid #{lmx.darken-color("secondary", 10)};  
+    }
+  }
+
+  @each $name,$value in dv.$colors{
+    &.#{iv.$class-prefix}is-#{$name}{
+      &,
+      &.#{iv.$class-prefix}is-outline{
+        border-color: #{lmx.darken-color($name,10)};
+
+        &:hover,
+        &:active {
+          background-color: #{lmx.darken-color($name,10)};
+          border-color: #{lmx.darken-color($name,10)};
+        }
+      }
+    }
+  }
+}
+
+// Tables
+
+table,
+.#{iv.$class-prefix}table {
+  font-size: #{cv.getVar("size-small")};
+  box-shadow: $box-shadow-lg;
+
+  thead th {
+    font-size: #{cv.getVar("size-small")};
+    text-transform: uppercase;
+  }
+}
+
+
+
+// Navs
+
+.#{iv.$class-prefix}tabs {
+  font-weight: 500;
+
+  li {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .#{iv.$class-prefix}is-toggle{
+    li {
+      &.#{iv.$class-prefix}is-active {
+        color:$white;
+        box-shadow: inset 0 -2px 0 #{cv.getVar("primary")};
+      }
+    }
+  }
+}
+
+.#{iv.$class-prefix}pagination-previous,
+.#{iv.$class-prefix}pagination-next,
+.#{iv.$class-prefix}pagination-link,
+.#{iv.$class-prefix}pagination-ellipsis {
+  font-size: #{cv.getVar("size-small")};
+  font-weight: 500;
+  box-shadow: $box-shadow;
+}
+
+
+.#{iv.$class-prefix}breadcrumb {
+  font-size: #{cv.getVar("size-small")};
+  font-weight: 500;
+  border: 1px solid #{cv.getVar("secondary")};
+  border-radius: #{cv.getVar("radius")};
+  box-shadow: $box-shadow;
+
+  li {
+    padding: 1rem .5rem 1rem 0;
+    & + li::before {
+      padding-right: 1rem;
+    }
+  }
+}
+
+// Containers
+
+// .list-group-item,
+// .card {
+//   h1,
+//   h2,
+//   h3,
+//   h4,
+//   h5,
+//   h6,
+//   .h1,
+//   .h2,
+//   .h3,
+//   .h4,
+//   .h5,
+//   .h6 {
+//     color: inherit;
+//   }
+// }
+
+// .list-group {
+//   box-shadow: $box-shadow-lg;
+// }
+
+.#{iv.$class-prefix}card,
+.#{iv.$class-prefix}modal-card,
+.#{iv.$class-prefix}modal-content {
+  box-shadow: $box-shadow-lg;
+}
