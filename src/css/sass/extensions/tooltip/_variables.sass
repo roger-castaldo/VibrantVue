@@ -1,7 +1,7 @@
 @use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv
 
 $tooltip-arrow-size: 6px
-$tooltip-background-color: calc(#{cv.getVar("scheme","","-invert-ter-l")} + #{cv.getVar("hover-background-l-delta")})
+$tooltip-background-color: #{cv.buildHslaString("scheme",calc(#{cv.getVar("scheme","","-invert-ter-l")} + #{cv.getVar("hover-background-l-delta")}))}
 $tooltip-background-opacity: 0.9
 $tooltip-color: #{cv.getVar("body-color")}
 $tooltip-font-family: #{cv.getVar("family-primary")}

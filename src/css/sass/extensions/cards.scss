@@ -1,56 +1,60 @@
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+
 $icon-height:48px;
 $icon-padding-height:calc($icon-height / 2) - 4px;
 $card-padding:calc($icon-height / 2);
 
-.card, .modal-card {
-    .card-icon{
+.#{iv.$class-prefix}card, .#{iv.$class-prefix}modal-card {
+    .#{iv.$class-prefix}card-icon{
         display: flex;
         align-items: center;
         justify-content: center;
-        color: $card-header-color;
+        color: #{cv.getVar("card-header-color")};
         height: $icon-height;
         margin-bottom: 0 - $icon-height;
-        .card-icon-wrapper{
+        .#{iv.$class-prefix}card-icon-wrapper{
             height: $icon-height;
             padding-top: $icon-padding-height;
             width: $icon-height;
             text-align: center;
             border-radius: 50%;
-            box-shadow: $card-shadow;
+            box-shadow: #{cv.getVar("card-shadow")};
             margin-top:0 - $icon-height;
         }
     }
 }
 
-.card {
-    &:has(.card-icon){
+.#{iv.$class-prefix}card {
+    &:has(.#{iv.$class-prefix}card-icon){
         margin-top:$card-padding;
-        .card-header{
-            &:has(.card-header-title.is-centered){
+        .#{iv.$class-prefix}card-header{
+            &:has(.#{iv.$class-prefix}card-header-title.#{iv.$class-prefix}is-centered){
                 padding-top:0.5em;
             }
         }
     }
-    .card-icon{
-        .card-icon-wrapper{
-            background-color:$card-background-color;
+    .#{iv.$class-prefix}card-icon{
+        .#{iv.$class-prefix}card-icon-wrapper{
+            background-color:#{cv.getVar("card-background-color")};
         }
     }
 }
 
-.modal-card {
-    &:has(.card-icon){
-        padding-top:$card-padding;
-        .modal-card-head{
-            &:has(.card-header-title.is-centered){
+.#{iv.$class-prefix}modal-card {
+    &:has(.#{iv.$class-prefix}card-icon){
+        padding-top:#{cv.getVar("card-header-padding")};
+        .#{iv.$class-prefix}modal-card-head{
+            &:has(.#{iv.$class-prefix}card-header-title.#{iv.$class-prefix}is-centered){
                 padding-top:0.5em;
             }
         }
     }
-    .card-icon{
-        z-index:calc($modal-z + 1);
-        .card-icon-wrapper{
-            background-color:$modal-card-head-background-color;
+    .#{iv.$class-prefix}card-icon{
+        z-index:calc(#{cv.getVar("modal-z")} + 1);
+        .#{iv.$class-prefix}card-icon-wrapper{
+            background-color:#{cv.getVar("modal-card-head-background-color")};
         }
     }
 }

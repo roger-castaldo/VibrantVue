@@ -1,45 +1,50 @@
-$steps-maker-default-color: $grey-light !default
-$steps-marker-default-border: .2em solid #fff !default
-$steps-default-color: $grey-lighter !default
-$steps-completed-color: $primary !default
-$steps-active-color: $primary !default
-$steps-divider-height: .2em !default
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv
+@use "../../../../../node_modules/bulma/sass/utilities/mixins" as mx
+  
+$steps-maker-default-color: #{cv.getVar("body-color")}
+$border-size: 0.2em
+$steps-marker-default-border: $border-size solid #{cv.getVar("border")}
+$steps-default-color: #{cv.getVar("body-color")}
+$steps-completed-color: #{cv.getVar("primary")}
+$steps-active-color: #{cv.getVar("primary")}
 
 =steps-size($size)
-  font-size: $size
-  min-height: 'calc($size * 2)'
+  font-size: #{cv.getVar($size)}
+  min-height: calc(#{cv.getVar($size)} * 2)
 
-  .step-item
+  .#{iv.$class-prefix}step-item
     &:not(:first-child)::before
-      height: $steps-divider-height
-      width: 100%
+      height: calc(#{cv.getVar($size)} * 0.2)
+      width: calc(100% - (#{cv.getVar($size)} * 2))
       bottom: 0
-      left: -50%
-      top: #{$size}
-    .step-marker
-      height: calc(#{$size} * 2)
-      width: calc(#{$size} * 2)
+      left: calc(-50% + #{cv.getVar($size)} + $border-size)
+      top: #{cv.getVar($size)}
+    .#{iv.$class-prefix}step-marker
+      height: calc(#{cv.getVar($size)} * 2)
+      width: calc(#{cv.getVar($size)} * 2)
       position: absolute
-      left: calc(50% - #{$size})
-      .icon
+      left: calc(50% - #{cv.getVar($size)})
+      .#{iv.$class-prefix}icon
         *
-          font-size: $size
-    .step-details
-      margin-top: calc(#{$size} * 2)
+          font-size: #{cv.getVar($size)}
+    .#{iv.$class-prefix}step-details
+      margin-top: calc(#{cv.getVar($size)} * 2)
       margin-left: .5em
       margin-right: .5em
       padding-top: .2em
-      .step-title
-        font-size: calc(#{$size} * 1.2)
-        font-weight: $weight-semibold
+      .#{iv.$class-prefix}step-title
+        font-size: calc(#{cv.getVar($size)} * 1.2)
+        font-weight: #{cv.getVar("weight-semibold")}
 
 
-.steps
-  +block
+.#{iv.$class-prefix}steps
+  +mx.block
   display: flex
   flex-wrap: wrap
 
-  .step-item
+  .#{iv.$class-prefix}step-item
     margin-top: 0
     position: relative
     flex-grow: 1
@@ -58,73 +63,71 @@ $steps-divider-height: .2em !default
       background: linear-gradient(to left, $steps-default-color 50%, $steps-active-color 50%)
       background-size: 200% 100%
       background-position: right bottom
-      .step-marker
-        color: $white
-    &.is-active
+      .#{iv.$class-prefix}step-marker
+        color: #{cv.getVar("scheme")}
+    &.#{iv.$class-prefix}is-active
       &::before
         background-position: left bottom
-      .step-marker
-        background-color: $white
+      .#{iv.$class-prefix}step-marker
+        background-color: #{cv.getVar("scheme")}
         border-color: $steps-active-color
         color: $steps-active-color
-    &.is-completed
+    &.#{iv.$class-prefix}is-completed
       &::before
         background-position: left bottom
-      .step-marker
-        color: $white
+      .#{iv.$class-prefix}step-marker
+        color: #{cv.getVar("scheme")}
         background-color: $steps-completed-color
 
-    .step-marker
+    .#{iv.$class-prefix}step-marker
       align-items: center
       display: flex
       border-radius: 50%
-      font-weight: $weight-bold
+      font-weight: #{cv.getVar("weight-bold")}
       justify-content: center
       background: $steps-maker-default-color
-      color: $white
+      color: #{cv.getVar("scheme")}
       border: $steps-marker-default-border
       z-index: 1
 
-    .step-details
+    .#{iv.$class-prefix}step-details
       text-align: center
 
     // Override marker color per step
-    @each $name, $pair in $colors
-      $color: nth($pair, 1)
-      $color-invert: nth($pair, 2)
-      &.is-#{$name}
+    @each $name, $pair in dv.$colors
+      &.#{iv.$class-prefix}is-#{$name}
         &::before
-          background: linear-gradient(to left, $steps-default-color 50%, $color 50%)
+          background: linear-gradient(to left, $steps-default-color 50%, #{cv.getVar($name)} 50%)
           background-size: 200% 100%
           background-position: right bottom
-        &.is-active
+        &.#{iv.$class-prefix}is-active
+          &::before
+            background-position: left bottom
+          .#{iv.$class-prefix}step-marker
+            background-color: #{cv.getVar("scheme")}
+            border-color: #{cv.getVar($name)}
+            color: #{cv.getVar($name)}
+        &.#{iv.$class-prefix}is-completed
           &::before
             background-position: left bottom
           .step-marker
-            background-color: $white
-            border-color: $color
-            color: $color
-        &.is-completed
-          &::before
-            background-position: left bottom
-          .step-marker
-            color: $color-invert
-            background-color: $color
+            color: #{cv.getVar($name,"","-invert")}
+            background-color: #{cv.getVar($name)}
 
-  .steps-content
+  .#{iv.$class-prefix}steps-content
     align-items: stretch
     flex-basis: 100%
     margin: 2rem 0
-    .step-content
+    .#{iv.$class-prefix}step-content
       display: none
-      &.is-active
+      &.#{iv.$class-prefix}is-active
         display: block
 
-  .steps-actions
+  .#{iv.$class-prefix}steps-actions
     display: flex
     align-items: stretch
     flex-basis: 100%
-    .steps-action
+    .#{iv.$class-prefix}steps-action
       display: flex
       flex-basis: 0
       flex-grow: 1
@@ -132,18 +135,18 @@ $steps-divider-height: .2em !default
       justify-content: center
       align-items: center
 
-  &.is-animated
-    .step-item
+  &.#{iv.$class-prefix}is-animated
+    .#{iv.$class-prefix}step-item
       &::before
         transition: all 2s ease
-      .step-marker
+      .#{iv.$class-prefix}step-marker
         transition: all 0s ease
         transition-delay: 1.5s
 
-  +steps-size($size-normal)
+  +steps-size("size-normal")
   &.is-small
-    +steps-size($size-small)
+    +steps-size("size-small")
   &.is-medium
-    +steps-size($size-medium)
+    +steps-size("size-medium")
   &.is-large
-    +steps-size($size-large)
+    +steps-size("size-large")
