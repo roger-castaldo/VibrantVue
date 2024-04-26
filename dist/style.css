@@ -21705,6 +21705,179 @@ has-background-danger.is-hoverable:active {
   margin-top: 0.375em;
 }
 
+.badge {
+  background-color: var(--bulma-primary);
+  border: 2px solid transparent;
+  border-radius: 14px;
+  box-shadow: 0 0 0 2px var(--bulma-scheme-main);
+  color: var(--bulma-scheme-main);
+  font-size: 0.65rem;
+  height: 14px;
+  line-height: calc(14px / 2 + 1px);
+  min-width: 14px;
+  overflow: hidden;
+  padding: 0.05rem 0.15rem;
+  position: absolute;
+  right: 0;
+  text-overflow: ellipsis;
+  top: 0;
+  transform: translate(50%, -50%);
+  white-space: nowrap;
+}
+.badge.is-outlined {
+  background-color: var(--bulma-background);
+  border-color: var(--bulma-primary);
+  color: var(--bulma-primary);
+}
+.badge.is-left {
+  bottom: 0;
+  left: 0;
+  right: auto;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.badge.is-right {
+  bottom: auto;
+  left: auto;
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+.badge.is-top {
+  bottom: auto;
+  left: 50%;
+  right: auto;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+.badge.is-top-left {
+  bottom: auto;
+  left: 0;
+  right: auto;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+.badge.is-top-right {
+  bottom: auto;
+  left: auto;
+  right: 0;
+  top: 0;
+  transform: translate(50%, -50%);
+}
+.badge.is-bottom {
+  bottom: 0;
+  left: 50%;
+  right: auto;
+  top: auto;
+  transform: translate(-50%, 50%);
+}
+.badge.is-bottom-left {
+  bottom: 0;
+  left: 0;
+  right: auto;
+  top: auto;
+  transform: translate(-50%, 50%);
+}
+.badge.is-bottom-right {
+  bottom: 0;
+  left: auto;
+  right: 0;
+  top: auto;
+  transform: translate(50%, 50%);
+}
+.badge.is-white:not(.is-outlined) {
+  background-color: var(--bulma-white);
+  color: var(--bulma-white-invert);
+}
+.badge.is-white.is-outlined {
+  border-color: var(--bulma-white);
+  color: var(--bulma-white);
+}
+.badge.is-black:not(.is-outlined) {
+  background-color: var(--bulma-black);
+  color: var(--bulma-black-invert);
+}
+.badge.is-black.is-outlined {
+  border-color: var(--bulma-black);
+  color: var(--bulma-black);
+}
+.badge.is-light:not(.is-outlined) {
+  background-color: var(--bulma-light);
+  color: var(--bulma-light-invert);
+}
+.badge.is-light.is-outlined {
+  border-color: var(--bulma-light);
+  color: var(--bulma-light);
+}
+.badge.is-dark:not(.is-outlined) {
+  background-color: var(--bulma-dark);
+  color: var(--bulma-dark-invert);
+}
+.badge.is-dark.is-outlined {
+  border-color: var(--bulma-dark);
+  color: var(--bulma-dark);
+}
+.badge.is-text:not(.is-outlined) {
+  background-color: var(--bulma-text);
+  color: var(--bulma-text-invert);
+}
+.badge.is-text.is-outlined {
+  border-color: var(--bulma-text);
+  color: var(--bulma-text);
+}
+.badge.is-primary:not(.is-outlined) {
+  background-color: var(--bulma-primary);
+  color: var(--bulma-primary-invert);
+}
+.badge.is-primary.is-outlined {
+  border-color: var(--bulma-primary);
+  color: var(--bulma-primary);
+}
+.badge.is-link:not(.is-outlined) {
+  background-color: var(--bulma-link);
+  color: var(--bulma-link-invert);
+}
+.badge.is-link.is-outlined {
+  border-color: var(--bulma-link);
+  color: var(--bulma-link);
+}
+.badge.is-info:not(.is-outlined) {
+  background-color: var(--bulma-info);
+  color: var(--bulma-info-invert);
+}
+.badge.is-info.is-outlined {
+  border-color: var(--bulma-info);
+  color: var(--bulma-info);
+}
+.badge.is-success:not(.is-outlined) {
+  background-color: var(--bulma-success);
+  color: var(--bulma-success-invert);
+}
+.badge.is-success.is-outlined {
+  border-color: var(--bulma-success);
+  color: var(--bulma-success);
+}
+.badge.is-warning:not(.is-outlined) {
+  background-color: var(--bulma-warning);
+  color: var(--bulma-warning-invert);
+}
+.badge.is-warning.is-outlined {
+  border-color: var(--bulma-warning);
+  color: var(--bulma-warning);
+}
+.badge.is-danger:not(.is-outlined) {
+  background-color: var(--bulma-danger);
+  color: var(--bulma-danger-invert);
+}
+.badge.is-danger.is-outlined {
+  border-color: var(--bulma-danger);
+  color: var(--bulma-danger);
+}
+
+.tabs li {
+  position: relative;
+}
+
 :root {
   --bulma-scheme-h: 221;
   --bulma-scheme-s: 14%;

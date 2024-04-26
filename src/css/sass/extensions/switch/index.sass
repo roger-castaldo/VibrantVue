@@ -1,5 +1,6 @@
 @use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
 
 $switch-background: #{cv.getVar("border-active")}
 $switch-border: .1rem solid transparent
@@ -60,18 +61,18 @@ $switch-width-factor: $switch-height-factor * 2
 			transition: $switch-paddle-transition
 			content: ''
 
-		.switch-active,	.switch-inactive
+		.#{iv.$class-prefix}switch-active,	.#{iv.$class-prefix}switch-inactive
 			font-size: calc(#{cv.getVar($size)} - 0.1)
 			z-index: 1
 			margin-top: -4px
-		&.has-text-inside
-			.switch-inactive
+		&.#{iv.$class-prefix}has-text-inside
+			.#{iv.$class-prefix}switch-inactive
 				margin-left: calc(0 - (((#{cv.getVar($size)} * $switch-width-factor) - ((#{cv.getVar($size)} * $switch-height-factor) - ($switch-paddle-offset * 2)) - ($switch-paddle-offset * 1.5)) + 0.3))
-			.switch-active
+			.#{iv.$class-prefix}switch-active
 				margin-left: calc(0 - (((#{cv.getVar($size)} * $switch-width-factor) - ((#{cv.getVar($size)} * $switch-height-factor) - ($switch-paddle-offset * 2)) - ($switch-paddle-offset * 1.5)) * 2))
 
 
-	&.is-rtl
+	&.#{iv.$class-prefix}is-rtl
 		+ label
 			padding-left: 0
 			padding-right: calc($switch-width + .5)
@@ -91,14 +92,14 @@ $switch-width-factor: $switch-height-factor * 2
 				background: $switch-background-active
 			&::after
 				left: $paddle-active-offest
-		&.is-rtl
+		&.#{iv.$class-prefix}is-rtl
 			+ label
 				&::after,
 				&:after
 					left: auto
 					right: $switch-paddle-offset
 
-	&.is-outlined
+	&.#{iv.$class-prefix}is-outlined
 		+ label
 			&::before,
 			&:before
@@ -117,7 +118,7 @@ $switch-width-factor: $switch-height-factor * 2
 				&:after
 					background: $switch-paddle-background-active
 
-	&.is-thin
+	&.#{iv.$class-prefix}is-thin
 		+ label
 			&::before,
 			&:before
@@ -128,7 +129,7 @@ $switch-width-factor: $switch-height-factor * 2
 				top: calc( 50% - ((#{cv.getVar($size)} * $switch-height-factor) + ($switch-paddle-offset * 2)) * 0.5 )
 				box-shadow: 0px 0px 3px #{cv.getVar("scheme-ter")}
 
-	&.is-rounded
+	&.#{iv.$class-prefix}is-rounded
 		+ label
 			&::before,
 			&:before
@@ -138,7 +139,7 @@ $switch-width-factor: $switch-height-factor * 2
 				border-radius: 50%
 
 
-.switch[type="checkbox"]
+.#{iv.$class-prefix}switch[type="checkbox"]
 	outline: 0
 	user-select: none
 	display: inline-block
@@ -167,15 +168,15 @@ $switch-width-factor: $switch-height-factor * 2
 				cursor: not-allowed
 
 	+switch-size("size-normal")
-	&.is-small
+	&.#{iv.$class-prefix}is-small
 		+switch-size("size-small")
-	&.is-medium
+	&.#{iv.$class-prefix}is-medium
 		+switch-size("size-medium")
-	&.is-large
+	&.#{iv.$class-prefix}is-large
 		+switch-size("size-large")
 
 	@each $name, $pair in dv.$colors
-		&.is-#{$name}
+		&.#{iv.$class-prefix}is-#{$name}
 			+ label
 				.switch-active
 					display: none
@@ -190,7 +191,7 @@ $switch-width-factor: $switch-height-factor * 2
 						display: inline-block
 					.switch-inactive
 						display: none
-			&.is-outlined
+			&.#{iv.$class-prefix}is-outlined
 				&:checked
 					+ label
 						&::before,
@@ -200,18 +201,18 @@ $switch-width-factor: $switch-height-factor * 2
 						&::after,
 						&:after
 							background: #{cv.getVar($name)}
-			&.is-thin
-				&.is-outlined
+			&.#{iv.$class-prefix}is-thin
+				&.#{iv.$class-prefix}is-outlined
 					+ label
 						&::after,
 						&:after
 							box-shadow: none
-		&.is-unchecked-#{$name}
+		&.#{iv.$class-prefix}is-unchecked-#{$name}
 			+ label
 				&::before,
 				&:before
 					background: #{cv.getVar($name)}
-			&.is-outlined
+			&.#{iv.$class-prefix}is-outlined
 				+ label
 					&::before,
 					&:before
@@ -221,7 +222,7 @@ $switch-width-factor: $switch-height-factor * 2
 					&:after
 						background: #{cv.getVar($name)}
 
-.field-body
-	.switch[type="checkbox"]
+.#{iv.$class-prefix}field-body
+	.#{iv.$class-prefix}switch[type="checkbox"]
 		+ label
 			margin-top: .375em

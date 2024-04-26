@@ -1,4 +1,5 @@
 @use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv
 @import 'variables'
 @import 'position'
@@ -33,8 +34,8 @@
 		word-break: keep-all
 
 [data-tooltip]
-	&:not(.is-loading),
-	&:not(.is-disabled),
+	&:not(.#{iv.$class-prefix}is-loading),
+	&:not(.#{iv.$class-prefix}is-disabled),
 	&:not([disabled])
 		cursor: pointer
 		overflow: visible
@@ -58,32 +59,32 @@
 		+tooltip-arrow
 		+tooltip-box
 
-		&.has-tooltip-bottom
+		&.#{iv.$class-prefix}has-tooltip-bottom
 			+tooltip-direction('bottom')
 
-		&.has-tooltip-left
+		&.#{iv.$class-prefix}has-tooltip-left
 			+tooltip-direction('left')
 
-		&.has-tooltip-right
+		&.#{iv.$class-prefix}has-tooltip-right
 			+tooltip-direction('right')
 
-		&.has-tooltip-multiline
+		&.#{iv.$class-prefix}has-tooltip-multiline
 			+tooltip-multiline
 
 		@each $name, $pair in dv.$colors
-			&.has-tooltip-#{$name}
-				&.has-tooltip-bottom
+			&.#{iv.$class-prefix}has-tooltip-#{$name}
+				&.#{iv.$class-prefix}has-tooltip-bottom
 					&::after
 						border-color: transparent transparent #{cv.buildHslaString($name,false,$tooltip-background-opacity)} transparent
-				&.has-tooltip-left
+				&.#{iv.$class-prefix}has-tooltip-left
 					&::after
 						border-color: transparent transparent transparent #{cv.buildHslaString($name,false,$tooltip-background-opacity)}
-				&.has-tooltip-right
+				&.#{iv.$class-prefix}has-tooltip-right
 					&::after
 						border-color: transparent #{cv.buildHslaString($name,false,$tooltip-background-opacity)} transparent transparent
-				&:not(.has-tooltip-bottom),
-				&:not(.has-tooltip-left),
-				&:not(.has-tooltip-right)
+				&:not(.#{iv.$class-prefix}has-tooltip-bottom),
+				&:not(.#{iv.$class-prefix}has-tooltip-left),
+				&:not(.#{iv.$class-prefix}has-tooltip-right)
 					&::after
 						border-color: #{cv.buildHslaString($name,false,$tooltip-background-opacity)} transparent transparent transparent
 				&:before
@@ -94,7 +95,7 @@
 			opacity: 1
 			visibility: visible
 
-		&.has-tooltip-fade
+		&.#{iv.$class-prefix}has-tooltip-fade
 			+tooltip-fade
 
 @import 'responsiveness'
