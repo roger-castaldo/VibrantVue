@@ -1,3 +1,9 @@
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../node_modules/bulma/sass/themes/light";
+@use "../../../../node_modules/bulma/sass/themes/setup";
+
 $page-widths: ("letter":8.5,"legal":8.5,"ledger":11,"tabloid":17,"executive":7.25);
 $page-heights: ("letter":11,"legal":14,"ledger":17,"tabloid":11,"executive":10.55);
 
@@ -8,13 +14,16 @@ $page-heights: ("letter":11,"legal":14,"ledger":17,"tabloid":11,"executive":10.5
 		size: auto;
 	}
 
-	:not(.is-page *):not(:has(.is-page)):not(.is-page),
-	.is-not-printable{
+	:not(.#{iv.$class-prefix}is-page *):not(:has(.#{iv.$class-prefix}is-page)):not(.#{iv.$class-prefix}is-page),
+	.#{iv.$class-prefix}is-not-printable{
 		display: none !important;
 	}
 	
-	.is-page {
-		@import "../skins/default/_all.scss";
+	.#{iv.$class-prefix}is-page {
+		@include light.light-theme;
+		@include setup.setup-theme;
+		@include cv.register-var("title-family",cv.getVar("body-family"));
+		@include cv.register-var("subtitle-family",cv.getVar("body-family"));
 
 		display:block !important;
 		margin: 0;
@@ -29,13 +38,13 @@ $page-heights: ("letter":11,"legal":14,"ledger":17,"tabloid":11,"executive":10.5
 		padding-bottom: 0.75in;
 		background-color: white !important;
 		color: back !important;
-		&.is-narrow-margin{
+		&.#{iv.$class-prefix}is-narrow-margin{
 			padding-top: 0.39in;
 			padding-left: 0.39in;
 			padding-right: 0.39in;
 			padding-bottom: 0.39in;
 		}
-		&.is-wide-margin{
+		&.#{iv.$class-prefix}is-wide-margin{
 			padding-top: 1.13in;
 			padding-left: 1.13in;
 			padding-right: 1.13in;
@@ -43,43 +52,47 @@ $page-heights: ("letter":11,"legal":14,"ledger":17,"tabloid":11,"executive":10.5
 		}
 
 		@each $name, $width in $page-widths{
-			&.is-#{$name} {
+			&.#{iv.$class-prefix}is-#{$name} {
 				width: #{$width}in !important;
 			}
-			&.is-#{$name}-landscape{
+			&.#{iv.$class-prefix}is-#{$name}-landscape{
 				height: #{$width}in !important;
 			}
 		}
 
 		@each $name, $height in $page-heights{
-			&.is-#{$name}{
+			&.#{iv.$class-prefix}is-#{$name}{
 				height: #{$height}in !important;
 			}
-			&.is-#{$name}-landscape{
+			&.#{iv.$class-prefix}is-#{$name}-landscape{
 				width: #{$height}in !important;
 			}
 		}
 
-		.footer{
+		.#{iv.$class-prefix}footer{
 			position: absolute;
 			left: 0;
 			right: 0;
 			bottom: 0.2in;
 		}
 
-		.header {
+		.#{iv.$class-prefix}header {
 			position: absolute;
 			left: 0;
 			right: 0;
 			top: 0.2in;
 		}
 
-		.progress, .modal, .menu, .is-animated-bounce-container, .is-page-notification-container {
+		.#{iv.$class-prefix}progress, 
+		.#{iv.$class-prefix}modal, 
+		.#{iv.$class-prefix}menu, 
+		.#{iv.$class-prefix}is-animated-bounce-container, 
+		.#{iv.$class-prefix}is-page-notification-container {
 			display: none !important;
 		}
 	}
 
-	.is-page:last-child{
+	.#{iv.$class-prefix}is-page:last-child{
 		page-break-after: avoid;
 	}
 }

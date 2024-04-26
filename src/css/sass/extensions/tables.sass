@@ -1,8 +1,11 @@
-div.table-container.is-fixed
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+	
+div.#{iv.$class-prefix}table-container.#{iv.$class-prefix}is-fixed
 	overflow: initial !important
 
-div.table-container.is-fixed table,
-table.is-fixed
+div.#{iv.$class-prefix}table-container.#{iv.$class-prefix}is-fixed table,
+table.#{iv.$class-prefix}is-fixed
 	thead
 		position: -webkit-sticky 
 		position: sticky
@@ -11,10 +14,10 @@ table.is-fixed
 		z-index: 1
 		tr 
 			th
-				background-color: $table-background-color
+				background-color: #{cv.getVar("table-background-color")}
 
-div.table-container.is-fixed table.is-striped,
-table.is-fixed.is-striped
+div.#{iv.$class-prefix}table-container.#{iv.$class-prefix}is-fixed table.#{iv.$class-prefix}is-striped,
+table.#{iv.$class-prefix}is-fixed.#{iv.$class-prefix}is-striped
 	thead
 		tr 
 			th

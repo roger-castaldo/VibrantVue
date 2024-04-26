@@ -1,44 +1,47 @@
-.card.is-fullwidth,
-.panel.is-fullwidth,
-.columns.is-fullwidth
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+	
+.#{iv.$class-prefix}card.#{iv.$class-prefix}is-fullwidth,
+.#{iv.$class-prefix}panel.#{iv.$class-prefix}is-fullwidth,
+.#{iv.$class-prefix}columns.#{iv.$class-prefix}is-fullwidth
 	width: 100%
 
-.card.is-fullheight,
-.panel.is-fullheight,
-.columns.is-fullheight
+.#{iv.$class-prefix}card.#{iv.$class-prefix}is-fullheight,
+.#{iv.$class-prefix}panel.#{iv.$class-prefix}is-fullheight,
+.#{iv.$class-prefix}columns.#{iv.$class-prefix}is-fullheight
 	height: 100%
 
-.modal-card.is-fullwidth,
-.modal-content.is-fullwidth
+.#{iv.$class-prefix}modal-card.#{iv.$class-prefix}is-fullwidth,
+.#{iv.$class-prefix}modal-content.#{iv.$class-prefix}is-fullwidth
 	width: -webkit-max-content
 	width: -moz-max-content
-	max-width: calc(100vw - #{$modal-card-spacing})
+	max-width: calc(100vw - #{cv.getVar("modal-card-spacing")})
 	min-width: 300px
 
-.modal-card.is-fullheight,
-.modal-content.is-fullheight
+.#{iv.$class-prefix}modal-card.#{iv.$class-prefix}is-fullheight,
+.#{iv.$class-prefix}modal-content.#{iv.$class-prefix}is-fullheight
 	height: -webkit-max-content
 	height: -moz-max-content
 	
-.modal-card.is-maxwidth,
-.modal-content.is-maxwidth
-	width: calc(100vw - #{$modal-card-spacing})
+.#{iv.$class-prefix}modal-card.#{iv.$class-prefix}is-maxwidth,
+.#{iv.$class-prefix}modal-content.#{iv.$class-prefix}is-maxwidth
+	width: calc(100vw - #{cv.getVar("modal-card-spacing")})
 
-.modal-card.is-maxheight,
-.modal-content.is-maxheight
-	height: calc(100vh - #{$modal-card-spacing})
+.#{iv.$class-prefix}modal-card.#{iv.$class-prefix}is-maxheight,
+.#{iv.$class-prefix}modal-content.#{iv.$class-prefix}is-maxheight
+	height: calc(100vh - #{cv.getVar("modal-card-spacing")})
 
-.modal-card.is-maxheight > .modal-card-body 
+.#{iv.$class-prefix}modal-card.#{iv.$class-prefix}is-maxheight > .#{iv.$class-prefix}modal-card-body 
 	padding-top: 0
 	padding-bottom: 0
 
-.modal-card.is-maxwidth > .modal-card-body 
+.#{iv.$class-prefix}modal-card.#{iv.$class-prefix}is-maxwidth > .#{iv.$class-prefix}modal-card-body 
 	padding-left: 0
 	padding-right: 0
 
-.tabs.is-centered,
-.tabs.is-right
+.#{iv.$class-prefix}tabs.#{iv.$class-prefix}is-centered,
+.#{iv.$class-prefix}tabs.#{iv.$class-prefix}is-right
 	width: 100%
 	
-.tabs.is-centered.is-fullwidth > ul > li 
+.#{iv.$class-prefix}tabs.#{iv.$class-prefix}is-centered.#{iv.$class-prefix}is-fullwidth > ul > li 
 	flex-grow: initial

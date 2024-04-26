@@ -1,6 +1,10 @@
-.is-page-notification-container 
-    background-color: $notification-background-color
-    border-radius: $notification-radius
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv
+@use "../../../../node_modules/bulma/sass/utilities/derived-variables" as dv
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+    
+.#{iv.$class-prefix}is-page-notification-container 
+    background-color: #{cv.getVar("notification-background-color")}
+    border-radius: #{cv.getVar("notification-radius")}
     padding-top: 1.25rem
     padding-bottom: 1.25rem
     padding-left: calc(1.25rem + 32px)
@@ -15,38 +19,33 @@
     text-align: left
     max-width: 33%
 
-    &.has-no-close 
+    &.#{iv.$class-prefix}has-no-close 
         padding-right: 1.25rem
 
-    .fa-ico:first-child 
+    .#{iv.$class-prefix}fa-ico:first-child 
         position: absolute
         position: absolute
         left: 5px
         top: 50%
 
-    .fa-ico:last-child 
+    .#{iv.$class-prefix}fa-ico:last-child 
         height: 32px
         position: absolute
         right: 0.25rem
         top: calc(50% - 1.25rem - 10px)
     
     // Colors
-    @each $name, $pair in $notification-colors 
-        $color: nth($pair, 1)
-        $color-invert: nth($pair, 2)
-
-        &.is-#{$name} 
-            background-color: $color
-            color: $color-invert
-            border-color: $color-invert
+    @each $name, $pair in dv.$colors
+        &.#{iv.$class-prefix}is-#{$name} 
+            background-color: #{cv.getVar($name)}
+            color: #{cv.getVar($name,"","-invert")}
+            border-color: #{cv.getVar($name,"","-invert")}
             @if length($pair) >= 4 
-                $color-light: nth($pair, 3)
-                $color-dark: nth($pair, 4)
                 &.is-light-mode 
-                    background-color: $color-light
-                    color: $color-dark
-                    border-color: $color-dark
+                    background-color: #{cv.getVar($name,"","-light")}
+                    color: #{cv.getVar($name,"","-dark")}
+                    border-color: #{cv.getVar($name,"","-dark")}
 
-&.has-navbar-fixed-top 
-    .is-page-notification-container
-        margin-top: $navbar-height
+.#{iv.$class-prefix}has-navbar-fixed-top 
+    .#{iv.$class-prefix}is-page-notification-container
+        margin-top: #{cv.getVar("navbar-height")}

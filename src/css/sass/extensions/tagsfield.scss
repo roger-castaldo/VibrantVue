@@ -1,5 +1,7 @@
-// Vertical padding depends on $control-padding-vertical from bulma/sass/utilities/controls.sass
-$tagsfield-spacing-vertical: calc((0.5em - #{$control-border-width}) / 2);
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+
+$tagsfield-spacing-vertical: calc((0.5em - #{cv.getVar("control-border-width")}) / 2);
 
 .tagsfield {
   height: auto !important;
@@ -9,7 +11,7 @@ $tagsfield-spacing-vertical: calc((0.5em - #{$control-border-width}) / 2);
 
   // Each tag
   > .control {
-    margin-right: $control-padding-vertical !important;
+    margin-right: #{cv.getVar("control-padding-vertical")} !important;
     margin-top: $tagsfield-spacing-vertical !important;
     margin-bottom: $tagsfield-spacing-vertical !important;
     max-width: 100%;
@@ -48,7 +50,7 @@ $tagsfield-spacing-vertical: calc((0.5em - #{$control-border-width}) / 2);
   > div:first-child:nth-last-child(1) span[contenteditable] {
     &:empty:after {
       content: attr(placeholder);
-      color: $input-placeholder-color;
+      color: #{cv.getVar("input-placeholder-color")};
     }
   }
 }
