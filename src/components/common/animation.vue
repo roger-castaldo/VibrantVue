@@ -78,7 +78,7 @@
             'animate__animated',
             'animate__infinite',
             getAnimationName(props.repeating),
-            getSpeedName(props.speed ?? '')
+            getSpeedName(props.speed)
         ].join(' ');
     });
 </script>

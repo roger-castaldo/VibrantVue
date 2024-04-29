@@ -29,9 +29,9 @@ import { IButtonProperties } from './typeDefinitions';
         if (props.disabled){
             result.push('disabled');
         }
-        if (props.hidemobile){result.push('is-hidden-mobile');}
-        if (props.hidetablet){result.push('is-hidden-tablet-only');}
-        if (props.hidedesktop){result.push('is-hidden-desktop is-hidden-widescreen');}
+        if (props.hide_mobile){result.push('is-hidden-mobile');}
+        if (props.hide_tablet){result.push('is-hidden-tablet-only');}
+        if (props.hide_desktop){result.push('is-hidden-desktop is-hidden-widescreen');}
         return result.join(' ');
     });
 </script>

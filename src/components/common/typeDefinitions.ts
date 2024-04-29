@@ -2,14 +2,14 @@ import { MaybeRef } from "vue";
 import { ColorTypes, NoticeTypes, Sizes } from "../enums";
 
 export interface IPaginationProperties {
-    usenext?:boolean,
-    hasmore?:boolean,
-    hasprevious?:boolean
+    use_next?:boolean,
+    has_more?:boolean,
+    has_previous?:boolean
     size?:Sizes,
     rounded?:boolean,
-    buttontype?:ColorTypes,
-    totalpages?:number,
-    currentpage?:number
+    button_type?:ColorTypes,
+    total_pages?:number,
+    current_page?:number
 };
 
 export interface MenuItem {
@@ -30,15 +30,15 @@ export interface IWizardStep {
     icon?:string,
     description?:string,
     type?:NoticeTypes,
-    isValid?:boolean
+    is_valid?:boolean
 };
 
 export interface IButtonBasicProperties{
     disabled?:boolean,
     size?:Sizes,
-    hidemobile?:boolean,
-    hidetablet?:boolean,
-    hidedesktop?:boolean 
+    hide_mobile?:boolean,
+    hide_tablet?:boolean,
+    hide_desktop?:boolean 
 };
 
 export interface IButtonProperties extends IButtonBasicProperties{

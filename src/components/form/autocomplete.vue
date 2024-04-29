@@ -30,7 +30,7 @@
     import { watch, ref, inject} from 'vue';
     import 'jquery';
     import { commonFieldProps,useTranslator } from './common';
-    import { ValueChangedEvent } from './types';
+    import { ValueChangedEvent } from './typesDefinitions';
 
     type AutoCompleteItem = {
         id:string,
@@ -49,7 +49,7 @@
 
 <script lang="ts" setup>
     const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent]
+         valueChanged:[data:ValueChangedEvent]
     }>();
 
     const props = defineProps<fieldProps>();
@@ -132,7 +132,7 @@
                 })
             );
             selected.value = vals.filter(v=>v!==null);
-            emit('value_changed',{name:props.name,value:getValue()});
+            emit('valueChanged',{name:props.name,value:getValue()});
         }
     };
     const paste = (event:any):void => {
@@ -165,12 +165,12 @@
     const addSelected = (val:AutoCompleteItem):void  => {
         selected.value.push(val);
         clear();
-        emit('value_changed', { name: props.name, value: getValue() });
+        emit('valueChanged', { name: props.name, value: getValue() });
     };
     const removeSelected = (index:number):void => {
         selected.value.splice(index, 1);
         focusInput();
-        emit('value_changed', { name: props.name, value: getValue() });
+        emit('valueChanged', { name: props.name, value: getValue() });
     };
 
     defineExpose({ getValue, setValue });

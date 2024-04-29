@@ -13,20 +13,20 @@
         light?:boolean,
         rounded?:boolean,
         size?:Sizes,
-        isDelete?:boolean
+        is_delete?:boolean
     }>(),{
         type:ColorTypes.primary,
         light:false,
         rounded:false,
         size:Sizes.normal,
-        isDelete:false
+        is_delete:false
     });
     
     const Classes = computed<string[]>(()=>{
         let result = ['tag',`is-${props.type}`,`is-${props.size}`];
         if (props.light){result.push('is-light');}
         if(props.rounded){result.push('is-rounded');}
-        if (props.isDelete){result.push('is-delete');}
+        if (props.is_delete){result.push('is-delete');}
         return result;
     });
 </script>

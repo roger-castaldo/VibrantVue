@@ -15,12 +15,12 @@
     }>();
 
     const props = withDefaults(defineProps<{
-        CopyData?:any|null,
+        copy_data?:any|null,
         disabled?:boolean,
         tag?:string,
-        handlesearch:string|null
+        handle_search:string|null
     }>(),{
-        CopyData:null,
+        copy_data:null,
         disabled:false,
         tag:'div'
     });
@@ -29,7 +29,7 @@
     const handleDisabled = ref<boolean>(false);
     const handle = ref<any|null>(null);
 
-    const Disabled = computed<boolean>(() => (props.disabled??false) || (handleDisabled.value && props.handlesearch!==null));
+    const Disabled = computed<boolean>(() => (props.disabled??false) || (handleDisabled.value && props.handle_search!==null));
     const Classes = computed<string[]>(()=>{
         let result = [];
         if (!Disabled){result.push('has-cursor');}
@@ -44,7 +44,7 @@
             return false;
         }
         event.stopPropagation();
-        event.dataTransfer.setData('value', JSON.stringify(props.CopyData));
+        event.dataTransfer.setData('value', JSON.stringify(props.copy_data));
         isDragging.value = true;
         emit('started');
         return true;
@@ -57,8 +57,8 @@
     };
 
     onMounted(() => {
-        if (props.handlesearch) {
-            let clickHandle = $(handle.value).find(props.handlesearch);
+        if (props.handle_search) {
+            let clickHandle = $(handle.value).find(props.handle_search);
             if (clickHandle.length > 0) {
                 handleDisabled.value = true;
                 clickHandle.on('mousedown',() => handleDisabled.value = false);

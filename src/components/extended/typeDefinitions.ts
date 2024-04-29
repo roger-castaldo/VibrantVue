@@ -34,10 +34,10 @@ interface IGridProperties
     extends ITableProperties,IPaginationProperties {
     columns:GridColumn[][],
     data:[]|null,
-    emptyMessage?:string,
-    columnRows?:string[][],
-    hasFilter?:boolean,
-    currentSort?:GridSort
+    empty_message?:string,
+    column_rows?:string[][],
+    has_filter?:boolean,
+    current_sort?:GridSort
 };
 
 export type {AutoCompleteEntry, GridColumn,CellData,GridSort};

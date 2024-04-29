@@ -23,7 +23,7 @@
 <script lang="ts">
     import { ref, computed, watch, inject } from 'vue';
     import Promised from '../common/Promised.vue';
-    import {ListItemValue, ValueChangedEvent } from './types';
+    import {ListItemValue, ValueChangedEvent } from './typesDefinitions';
     import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
     import {Progress,Notification} from '../common/';
     import {NoticeTypes} from '../enums';
@@ -42,7 +42,7 @@
     const Error = computed<string>(()=>translate('Form.Error',Language));
 
     const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent]
+         valueChanged:[data:ValueChangedEvent]
     }>();
 
     const Translator = useTranslator(props,inject);
@@ -52,7 +52,7 @@
     const getValue = function () { return val.value; }
 
     watch(val, (val) => {
-        emit('value_changed', { name: props.name, value: getValue() });
+        emit('valueChanged', { name: props.name, value: getValue() });
     });
 
     const Values = computed<Promise<ListItemValue[]>>(async () => {

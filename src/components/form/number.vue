@@ -5,7 +5,7 @@
 <script lang="ts">
     import { ref, watch } from 'vue';
     import { coreFieldProps } from './common';
-import { ValueChangedEvent } from './types';
+    import { ValueChangedEvent } from './typesDefinitions';
 
     interface fieldProps extends coreFieldProps {
         min?:number;
@@ -20,7 +20,7 @@ import { ValueChangedEvent } from './types';
     });
     
     const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent]
+         valueChanged:[data:ValueChangedEvent]
     }>();
 
     const value = ref<string|null>(null);
@@ -41,7 +41,7 @@ import { ValueChangedEvent } from './types';
     };
     const setValue = (val:number|string|null) => { value.value = (val===null?'':val.toString()); }
 
-    watch([value], (val) => emit('value_changed', { name: props.name, value: getValue() }));
+    watch([value], (val) => emit('valueChanged', { name: props.name, value: getValue() }));
 
     defineExpose({ getValue, setValue });
 </script>

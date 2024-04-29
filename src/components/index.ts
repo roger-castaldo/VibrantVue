@@ -19,7 +19,7 @@ export const {AutoComplete,CheckboxGroup,Checkbox,DateField,ComponentForm,FullEd
     Header,Hidden,NumberField,Paragraph,RadioGroup,Select,Switch,Text,
     TextArea,Time,FormComponent} = form;
 export const {Banner,Box,BreadcrumbsItem,Breadcrumbs,Card,Column,ColumnContainer,
-    List,ListItem,ModalCard,Panel,Table,Tabs,TabsTab,Tile,Modal} = layout;
+    List,ListItem,ModalCard,Panel,Table,Tabs,TabsTab,Modal} = layout;
 export const {AVAIABLE_SKINS,setSkin} = skin;
 export const {ColorTypes,NoticeTypes,Sizes,AnimationSpeeds,AnimationTypes,IconSizes,ChartLegendPositions,ChartTypes,DropZoneQuadrants,
     BreadCrumbAlignments,BreadCrumbSeperators,ColumnContainerModifiers,ColumnSizes,

@@ -24,7 +24,7 @@
 
 <script lang="ts" setup>
     const props = withDefaults(defineProps<{
-        Items:any[],
+        items:any[],
         type?:ColorTypes,
         compact?:boolean,
         outlined?:boolean,
@@ -44,13 +44,13 @@
     const currentIndex = ref<number>(-1);
     const currentQuadrant = ref<DropZoneQuadrants|null>(null);
 
-    watch(props.Items, (oldValue,newValue) => {
+    watch(props.items, (oldValue,newValue) => {
         sorted.value = [...newValue];
     });
 
     onMounted(() => {
-        if (props.Items !== null) {
-            sorted.value = [...props.Items];
+        if (props.items !== null) {
+            sorted.value = [...props.items];
         }
     });
 

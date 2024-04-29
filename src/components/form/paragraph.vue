@@ -3,17 +3,18 @@
 </template>
 
 <script lang="ts">
-    import { TranslateMethod } from './types';
-    import { useTranslator } from './common';
+    import { TranslateMethod, } from './typesDefinitions';
+    import { useTranslator,translateFieldProps } from './common';
     import { inject } from 'vue';
+
+    interface fieldProps extends translateFieldProps {
+        label:string,
+        name?:string
+    };
 </script>
 
 <script lang="ts" setup>
-    const props = defineProps<{
-        label:string,
-        name?:string,
-        Translate?:TranslateMethod
-    }>();
+    const props = defineProps<fieldProps>();
 
     const Translator = useTranslator(props,inject);
 </script>

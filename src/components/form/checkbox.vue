@@ -24,7 +24,7 @@
     });
 
     const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent]
+         valueChanged:[data:ValueChangedEvent]
     }>();
 
     const Translator = useTranslator(props,inject);
@@ -33,7 +33,7 @@
 
     const value = ref<boolean>(false);
 
-    watch(value, (val) => emit('value_changed', { name: props.name, value: val }));
+    watch(value, (val) => emit('valueChanged', { name: props.name, value: val }));
 
     const getValue = () => { return value.value; };
     const setValue = (val:boolean)=> { value.value = val; };

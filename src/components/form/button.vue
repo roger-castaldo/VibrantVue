@@ -1,5 +1,5 @@
 ﻿<template>
-    <Button :type="sstyle" :icon="(props.icon ? props.icon : null)" :title="Translator(props.label)" v-on:click="emit('button_clicked',props.name)" :disabled="props.disabled"/>
+    <Button :type="sstyle" :icon="(props.icon ? props.icon : null)" :title="Translator(props.label)" v-on:click="emit('buttonClicked',props.name)" :disabled="props.disabled"/>
 </template>
 
 <script lang="ts">
@@ -19,7 +19,7 @@ import Button from '../common/button.vue';
     const props = defineProps<fieldProps>();
 
     const emit = defineEmits<{
-         button_clicked:[name:string]
+         buttonClicked:[name:string]
     }>();
 
     const Translator = useTranslator(props,inject);

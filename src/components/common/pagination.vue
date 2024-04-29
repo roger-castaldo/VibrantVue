@@ -10,11 +10,11 @@
             {{Next}}
             <Icon icon="forward" class="ml-1" :size="IconSizes.small"/>
         </a>
-        <template v-if="props.totalpages!==undefined">
+        <template v-if="props.total_pages!==undefined">
             <ul class="pagination-list">
                 <li v-for="page in Pages">
                     <span v-if="page===-1" class="pagination-ellipsis">&hellip;</span>
-                    <a v-else :class="(page===-1 ? ['pagination-ellipsis'] : ['pagination-link',(page===props.currentpage+1 ? 'is-current' : '')])"
+                    <a v-else :class="(page===-1 ? ['pagination-ellipsis'] : ['pagination-link',(page===props.current_page+1 ? 'is-current' : '')])"
                         :aria-label="(page===-1 ? '' : `${GoToPage} ${page}`)"
                         @onclick="goToPage(page)">{{(page===-1?'':page)}}
                     </a>
@@ -38,8 +38,8 @@
         usenext:true,
         size:Sizes.small,
         rounded:false ,
-        hasprevious:undefined,
-        hasmore:undefined
+        has_previous:undefined,
+        has_more:undefined
     });
 
     const emit = defineEmits<{
@@ -52,18 +52,18 @@
 
     const Previous = computed<string>(()=>translate((props.usenext ? 'Pagination.Previous' : 'Pagination.Older'),Language));
     const Next = computed<string>(()=>translate((props.usenext ? 'Pagination.Next' : 'Pagination.Newer'),Language));
-    const ButtonClass = computed<string>(()=>props.buttontype ? `has-background-${props.buttontype}` : '');
+    const ButtonClass = computed<string>(()=>props.button_type ? `has-background-${props.button_type}` : '');
     const GoToPage = computed<string>(()=>translate('Pagination.GoToPage',Language));
 
-    const HasPrevious = computed<boolean>(() => ((props.hasprevious??false) || ((props.currentpage??0)>0)));
-    const HasNext = computed<boolean>(() => ((props.hasmore??false) || ((props.currentpage??0)<((props.totalpages??0)-1))));
+    const HasPrevious = computed<boolean>(() => ((props.has_previous??false) || ((props.current_page??0)>0)));
+    const HasNext = computed<boolean>(() => ((props.has_more??false) || ((props.current_page??0)<((props.total_pages??0)-1))));
 
     const Pages = computed<number[]>(()=>{
-        if (props.totalpages===undefined||props.currentpage===undefined){
+        if (props.total_pages===undefined||props.current_page===undefined){
             return [];
-        }else if(props.totalpages>5){
-            let center:number = Math.max((props.currentpage===undefined ? Math.floor(props.totalpages/2) : props.currentpage),3);
-            if (props.totalpages-props.currentpage<1){
+        }else if(props.total_pages>5){
+            let center:number = Math.max((props.current_page===undefined ? Math.floor(props.total_pages/2) : props.current_page),3);
+            if (props.total_pages-props.current_page<1){
                 center--;
             }
             return [
@@ -73,11 +73,11 @@
                 center,
                 center+1,
                 -1,
-                props.totalpages
+                props.total_pages
             ];
         }else{
             let result:number[] = [];
-            for(let x=1;x<=props.totalpages;x++){
+            for(let x=1;x<=props.total_pages;x++){
                 result.push(x);
             }
             return result;
@@ -86,8 +86,8 @@
 
     const moveBack = function () {
         if (HasPrevious){
-            if (props.currentpage!==null){
-                emit('goToPage',props.currentpage-1);
+            if (props.current_page!==null){
+                emit('goToPage',props.current_page-1);
             }else{
                 emit('moveBack');
             }
@@ -95,8 +95,8 @@
     };
     const moveForward = function () {
         if (HasNext){
-            if (props.currentpage!==null){
-                emit('goToPage',props.currentpage+1);
+            if (props.current_page!==null){
+                emit('goToPage',props.current_page+1);
             }else{
                 emit('moveForward');
             }

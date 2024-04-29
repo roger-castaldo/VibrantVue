@@ -2,7 +2,7 @@
     <article :class="['message',Size,Type]">
         <div class="message-header" v-if="props.title">
             <p>{{props.title}}</p>
-            <button class="delete" aria-label="delete" v-if="props.hasDelete"></button>
+            <button class="delete" aria-label="delete" v-if="props.has_delete" v-on:click="emit('close')"></button>
         </div>
         <div class="message-body">
             <slot>
@@ -19,16 +19,20 @@
     const props = withDefaults(defineProps<{
             type?: ColorTypes|null,
             message?:string|null,
-            hasDelete?:boolean,
+            has_delete?:boolean,
             title?:string|null,
             size?:Sizes|null
         }>(),{
             type:ColorTypes.primary,
             message:null,
-            hasDelete:false,
+            has_delete:false,
             title:null,
             size:Sizes.normal
         });
+
+    const emit = defineEmits<{
+        close: []
+    }>();
 
     const Size = computed(()=>{
         if (props.size===Sizes.normal){return null;}

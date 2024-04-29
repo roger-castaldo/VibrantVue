@@ -6,7 +6,7 @@
         <template #content>
             <canvas ref="canvas" :style="Style"/>
         </template>
-        <template #footer="exts" v-if="props.showRefresh!=null&&props.showRefresh!=undefined&&props.showRefresh">
+        <template #footer="exts" v-if="props.show_refresh!=null&&props.show_refresh!=undefined&&props.show_refresh">
             <ButtonRefresh v-bind="exts" v-on:click="Refresh"/>
         </template>
     </Card>
@@ -32,14 +32,14 @@ import { loadNonEs6Module } from '../utilities';
         datasets:unknown[], 
         type?:ChartTypes, 
         title?:string, 
-        showRefresh?:boolean, 
+        show_refresh?:boolean, 
         width?:number, 
         height?:number, 
-        legendPosition?:ChartLegendPositions, 
+        legend_position?:ChartLegendPositions, 
         scales?:unknown[], 
         tooltips?:unknown
     }>(),{
-        legendPosition:ChartLegendPositions.right
+        legend_position:ChartLegendPositions.right
     });
     const emit = defineEmits<{
         legendItemClick: [chart:unknown,legendItem:unknown]
@@ -70,7 +70,7 @@ import { loadNonEs6Module } from '../utilities';
         (value) => {
             if (chart != null) {
                 chart.data.labels = value;
-                if (props.showRefresh == null || !props.showRefresh) {
+                if (props.show_refresh == null || !props.show_refresh) {
                     Refresh();
                 }
             }
@@ -81,7 +81,7 @@ import { loadNonEs6Module } from '../utilities';
         (value) => {
             if (chart != null) {
                 chart.data.datasets = value;
-                if (props.showRefresh == null || !props.showRefresh) {
+                if (props.show_refresh == null || !props.show_refresh) {
                     Refresh();
                 }
             }
@@ -97,7 +97,7 @@ import { loadNonEs6Module } from '../utilities';
             },
             plugins: {
                 legend: {
-                    position: `${props.legendPosition}`,
+                    position: `${props.legend_position}`,
                     labels: {
                         filter: (item, chrt) => {
                             return item.text != undefined;

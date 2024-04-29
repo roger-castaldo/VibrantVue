@@ -6,7 +6,7 @@
 
 <script lang="ts">
     import { computed } from 'vue';
-import { ColorTypes } from '../enums';
+    import { ColorTypes } from '../enums';
 </script>
 
 <script lang="ts" setup>

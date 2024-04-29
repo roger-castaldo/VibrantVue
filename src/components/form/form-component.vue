@@ -7,7 +7,7 @@
             <Paragraph v-bind:name="props.input.name" v-bind:label="props.input.label" ref="inp"/>
         </template>
         <template v-else-if="props.input.type=='button'">
-            <Button v-bind:name="props.input.name" v-bind:sstyle="props.input.style" v-bind:className="props.input.className" v-bind:icon="props.input.icon" v-bind:label="props.input.label" v-bind:disabled="Disabled" v-on:button_clicked="button_clicked" ref="inp"/>
+            <Button v-bind:name="props.input.name" v-bind:sstyle="props.input.style" v-bind:className="props.input.className" v-bind:icon="props.input.icon" v-bind:label="props.input.label" v-bind:disabled="Disabled" v-on:buttonClicked="buttonClicked" ref="inp"/>
         </template>
         <template v-else>
             <label class="label" v-bind:for="props.input.name" v-if="hasLabel">
@@ -15,7 +15,7 @@
                 <span class="help is-danger" v-if="props.input.required">*</span>
             </label>
             <div class="control">
-                <component :is="inputType" v-bind="inputProps" v-on:value_changed="value_changed" ref="inp"/>
+                <component :is="inputType" v-bind="inputProps" v-on:valueChanged="valueChanged" ref="inp"/>
             </div>
         </template>
     </div>
@@ -58,8 +58,8 @@
     const inp = ref<any>(null);
 
     const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent],
-         button_clicked:[name:string]
+         valueChanged:[data:ValueChangedEvent],
+         buttonClicked:[name:string]
     }>();
 
     const props = withDefaults(defineProps<formComponentProps>(),{
@@ -128,15 +128,15 @@
         return result;
     });
 
-    const value_changed = (data:ValueChangedEvent) => {
+    const valueChanged = (data:ValueChangedEvent) => {
         if (data.value !== undefined && data.value !== null && Array.isArray(data.value)) {
             let tmp = [...data.value];
             data.value = tmp;
         }
-        emit('value_changed', data);
+        emit('valueChanged', data);
     };
-    const button_clicked = (data:string)=> {
-        emit('button_clicked', data);
+    const buttonClicked = (data:string)=> {
+        emit('buttonClicked', data);
     };
     const getValue = ():any|null=> {
         if (inp.value != null) {

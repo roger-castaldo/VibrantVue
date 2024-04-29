@@ -26,7 +26,7 @@
 <script lang="ts">
     import { ref, watch, inject,computed, toRaw } from 'vue';
     import Promised from '../common/Promised.vue';
-    import { SelectListItemValue, ValueChangedEvent} from './types';
+    import { SelectListItemValue, ValueChangedEvent} from './typesDefinitions';
     import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
     import {Progress,Notification} from '../common/';
     import {NoticeTypes} from '../enums';
@@ -69,7 +69,7 @@
     const Error = computed<string>(()=>translate('Form.Error',Language));
 
     const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent]
+         valueChanged:[data:ValueChangedEvent]
     }>();
 
     const Translator = useTranslator(props,inject);
@@ -132,11 +132,11 @@
 
     watch(vals, () => {
         if (!locked.value)
-            emit('value_changed', { name: props.name, value: getValue() });
+            emit('valueChanged', { name: props.name, value: getValue() });
     });
     watch(locked, (val) => {
         if (!val)
-            emit('value_changed', { name: props.name, value: getValue() });
+            emit('valueChanged', { name: props.name, value: getValue() });
     });
 
     const setValue = (val:any[]|any):void=> {

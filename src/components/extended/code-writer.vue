@@ -20,44 +20,44 @@
     });
 
     const emit = defineEmits<{
-        'value_changed':[value:string]
+        'valueChanged':[value:string]
     }>();
 
     const container = ref(null);
     const editor  = ref<any|null>(null);
 
     const getValue = function () {
-        return (editor.getValue() == '' ? null : editor.getValue());
+        return (editor.value.getValue() == '' ? null : editor.value.getValue());
     };
     const setValue = function (value) {
-        editor.setValue((value == null ? '' : value));
+        editor.value.setValue((value == null ? '' : value));
     };
 
     watch(()=>props.readonly, (val) => {
-        editor.setReadOnly((val == null || val == undefined ? false : val));
+        editor.value.setReadOnly((val == null || val == undefined ? false : val));
     });
     watch(()=>props.value, (val) => {
         setValue(val);
     });
     watch(()=>props.language, (val) => {
-        editor.getSession().setMode(val);
+        editor.value.getSession().setMode(val);
     });
 
     const MinAutoCompleteLength = computed(() => {
         let ret = Number.MAX_SAFE_INTEGER;
         if (props.autocompletes != undefined && props.autocompletes != null) {
             for (let x = 0; x < props.autocompletes.length; x++) {
-                if (props.autocompletes[x].Method.indexOf('.')>=0) {
-                    ret = Math.min(ret, props.autocompletes[x].Method.indexOf('.'));
+                if (props.autocompletes[x].method.indexOf('.')>=0) {
+                    ret = Math.min(ret, props.autocompletes[x].method.indexOf('.'));
                 } else {
-                    ret = Math.min(ret, props.autocompletes[x].Method.length);
+                    ret = Math.min(ret, props.autocompletes[x].method.length);
                 }
             }
             if (ret > 3 && props.autocompletes.length > 0) {
                 let allSame = true;
-                let start = props.autocompletes[0].Method.substring(0, 3);
+                let start = props.autocompletes[0].method.substring(0, 3);
                 for (let x = 0; x < props.autocompletes.length; x++) {
-                    if (props.autocompletes[x].Method.substring(0, 3) != start) {
+                    if (props.autocompletes[x].method.substring(0, 3) != start) {
                         allSame = false;
                         break;
                     }
@@ -87,7 +87,7 @@
             editor.value.setValue(props.value);
         }
 
-        editor.on('change', () => emit('value_changed', getValue()));
+        editor.value.on('change', () => emit('valueChanged', getValue()));
 
         if (props.autocompletes !== null && props.autocompletes !== undefined) {
             editor.value.setOptions({
@@ -102,12 +102,12 @@
                     prefix = prefix.toUpperCase();
                     if (prefix.length >= MinAutoCompleteLength) {
                         completes = props.autocompletes!
-                                .filter(ac=>ac.Method.toUpperCase().startsWith(prefix)
-                                && ac.Method.length>prefix.legend)
+                                .filter(ac=>ac.method.toUpperCase().startsWith(prefix)
+                                && ac.method.length>prefix.legend)
                                 .map(ac=>{
                                     return {
-                                        caption: ac.Method + (ac.Description === null || ac.Description === undefined ? '' : '->' + ac.Description),
-                                        value: ac.Method,
+                                        caption: ac.method + (ac.description === null || ac.description === undefined ? '' : '->' + ac.description),
+                                        value: ac.method,
                                         meta: 'autos'
                                     }
                                 });

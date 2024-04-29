@@ -9,7 +9,7 @@
             </div>
             <div class="modal-card-head">
                 <slot name="header" v-bind="headerProps" />
-                <button v-if="hasClose" class="delete" aria-label="close" v-on:click="emit('close')"></button>
+                <button v-if="has_close" class="delete" aria-label="close" v-on:click="emit('close')"></button>
             </div>
             <div class="modal-card-body">
                 <slot name="content" />
@@ -28,11 +28,11 @@
     
     const props = withDefaults(defineProps<{
         show?:boolean,
-        hasClose?:boolean,
-        fullWidth?:boolean,
-        fullHeight?:boolean,
-        maxWidth?:boolean,
-        maxHeight?:boolean
+        has_close?:boolean,
+        full_width?:boolean,
+        full_height?:boolean,
+        max_width?:boolean,
+        max_height?:boolean
         icon?:string
     }>(),{
         icon:null
@@ -41,20 +41,20 @@
     const emit = defineEmits<{close}>();
 
     const footerProps = {
-        addonclass: 'card-footer-item'
+        addon_class: 'card-footer-item'
     };
 
     const headerProps = {
-        headerClass: 'modal-card-title is-centered',
-        addonclass: 'card-footer-item'
+        header_class: 'modal-card-title is-centered',
+        addon_class: 'card-footer-item'
     };
 
     const classes = computed<string[]>(()=>{
         var result=[];
-        if (props.fullWidth){result.push('is-fullwidth');}
-        if (props.fullHeight){result.push('is-fullheight');}
-        if (props.maxWidth){result.push('is-maxwidth');}
-        if (props.maxHeight){result.push('is-maxheight');}
+        if (props.full_width){result.push('is-fullwidth');}
+        if (props.full_height){result.push('is-fullheight');}
+        if (props.max_width){result.push('is-maxwidth');}
+        if (props.max_height){result.push('is-maxheight');}
         return result;
     });
 </script>

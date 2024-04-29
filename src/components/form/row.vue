@@ -1,14 +1,14 @@
 ﻿<template>
     <div class="columns">
-        <FormComponent v-for="(input,index) in props.inputs" :ref="(el) => (refs[index] = el)"  :input="input" v-on:value_changed="emit('value_changed',$event)" v-on:button_clicked="emit('button_clicked',$event)" :disabled="props.disabled||disabledFields.some(f=>f===input.name)" :hidden="hiddenInputs.some(f=>f===input.name)"/>
+        <FormComponent v-for="(input,index) in props.inputs" :ref="(el) => (refs[index] = el)"  :input="input" v-on:valueChanged="emit('valueChanged',$event)" v-on:buttonClicked="emit('buttonClicked',$event)" :disabled="props.disabled||disabledFields.some(f=>f===input.name)" :hidden="hiddenInputs.some(f=>f===input.name)"/>
     </div>
 </template>
 
 <script lang="ts">
     import { inject, ref ,watch} from 'vue';
     import FormComponent from './form-component.vue';
-    import { FormInputType, ValueChangedEvent } from './types';
-import { DISABLED_FIELDS_PROPERTY, HIDDEN_FIELDS_PROPERTY } from './common';
+    import { FormInputType, ValueChangedEvent } from './typesDefinitions';
+    import { DISABLED_FIELDS_PROPERTY, HIDDEN_FIELDS_PROPERTY } from './common';
 </script>
 
 <script lang="ts" setup>
@@ -20,27 +20,29 @@ import { DISABLED_FIELDS_PROPERTY, HIDDEN_FIELDS_PROPERTY } from './common';
     });
 
     const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent],
-         button_clicked:[name:string]
+         valueChanged:[data:ValueChangedEvent],
+         buttonClicked:[name:string]
     }>();
+
+    const refs = props.inputs.map(i=>ref(null));
 
     const hiddenInputs = inject<string[]>(HIDDEN_FIELDS_PROPERTY);
     const disabledFields = inject<string[]>(DISABLED_FIELDS_PROPERTY);
 
     const setValue = (values:any):void=> {
-        refs.forEach(input => {
-            switch (input.type) {
+        refs.forEach((input,index) => {
+            switch (props.inputs[index].type) {
                 case 'subform':
-                    input.setValue(values);
+                    input.value.setValue(values);
                     break;
                 default:
-                    if (input.setValue !== undefined) {
+                    if (input.value.setValue !== undefined) {
                         if (values === null) {
-                            input.setValue(null);
-                        } else if (Object.keys(values).some(k=>k===input.fieldName)) {
-                            input.setValue(values[input.fieldName]);
-                        } else if (Object.keys(values).some(k=>k===input.altFieldName)) {
-                            input.setValue(values[input.altFieldName]);
+                            input.value.setValue(null);
+                        } else if (Object.keys(values).some(k=>k===input.value.fieldName)) {
+                            input.value.setValue(values[input.value.fieldName]);
+                        } else if (Object.keys(values).some(k=>k===input.value.altFieldName)) {
+                            input.value.setValue(values[input.value.altFieldName]);
                         }
                     }
                     break;
@@ -50,13 +52,13 @@ import { DISABLED_FIELDS_PROPERTY, HIDDEN_FIELDS_PROPERTY } from './common';
     const getValue = ():any=> {
         var result:any = {};
         refs.forEach(input => {
-            if (input.getValue != undefined) {
-                switch (input.type) {
+            if (input.value.getValue != undefined) {
+                switch (input.value.type) {
                     case 'subform':
-                        result = $.extend(result,input.getValue());
+                        result = $.extend(result,input.value.getValue());
                         break;
                     default:
-                        result[input.fieldName] = input.getValue();
+                        result[input.value.fieldName] = input.value.getValue();
                         break;
                 }
             }
@@ -64,10 +66,8 @@ import { DISABLED_FIELDS_PROPERTY, HIDDEN_FIELDS_PROPERTY } from './common';
         return result;
     };
     const isValid = ():boolean=> {
-        return !refs.some(input=>!(input.isValid===undefined?true:input.isValid()));
+        return !refs.some(input=>!(input.value.isValid===undefined?true:input.value.isValid()));
     };
     
     defineExpose({ setValue, getValue, isValid});
-
-    const refs = props.inputs.map(i=>ref(null));
 </script>

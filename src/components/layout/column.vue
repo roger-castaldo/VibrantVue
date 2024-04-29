@@ -13,8 +13,7 @@ import { BorderTypes, ColumnOffsetSizes, ColumnSizes } from '../enums';
     const props = defineProps<{
         size?:ColumnSizes,
         offset?:ColumnOffsetSizes,
-        border?:BorderTypes[],
-        addonclass?:string
+        border?:BorderTypes[]
     }>();
     
     const Class = computed<string[]>(() => {
@@ -27,9 +26,6 @@ import { BorderTypes, ColumnOffsetSizes, ColumnSizes } from '../enums';
             }else{
                 props.border.forEach(b=>ret.push(`is-bordered-${b}`));
             }
-        }
-        if (props.addonclass) {
-            ret.push(props.addonclass);
         }
         return ret;
     });

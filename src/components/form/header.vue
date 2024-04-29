@@ -2,16 +2,19 @@
     <component :is="props.subtype">{{Translator(props.label)}}</component>
 </template>
 
-<script lang="ts" setup>
-    import { TranslateMethod } from './types';
-    import { useTranslator } from './common';
+<script lang="ts">
+    import { TranslateMethod, } from './typesDefinitions';
+    import { useTranslator,translateFieldProps } from './common';
     import { inject } from 'vue';
 
-    const props = withDefaults(defineProps<{
+    interface fieldProps extends translateFieldProps {
         label:string,
         subtype?:string,
-        Translate?:TranslateMethod
-    }>(),{
+    };
+</script>
+
+<script lang="ts" setup>
+    const props = withDefaults(defineProps<fieldProps>(),{
         subtype:'h1'
     });
 

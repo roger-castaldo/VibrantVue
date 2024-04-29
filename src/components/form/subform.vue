@@ -1,13 +1,13 @@
 ﻿<template>
     <div class="box" :id="props.name" :name="props.name" v-show="!props.hidden">
-        <Row v-for="(row,index) in rows" :ref="(el) => (refs[index] = el)" :inputs="row" :disabled="props.disabled" v-on:value_changed="emit('value_changed',$event)" v-on:button_clicked="emit('button_clicked',$event)"/>
+        <Row v-for="(row,index) in rows" :ref="(el) => (refs[index] = el)" :inputs="row" :disabled="props.disabled" v-on:valueChanged="emit('valueChanged',$event)" v-on:buttonClicked="emit('buttonClicked',$event)"/>
     </div>
 </template>
 
 <script lang="ts">
     import Row from './row.vue';
     import { ref, watch, computed, Ref } from 'vue';
-    import { FormInputType, ValueChangedEvent } from './types';
+    import { FormInputType, ValueChangedEvent } from './typesDefinitions';
     import {buildFieldRows, coreFieldProps} from './common';
 
     interface fieldProps extends coreFieldProps {
@@ -23,8 +23,8 @@
     });
     
     const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent],
-         button_clicked:[name:string]
+         valueChanged:[data:ValueChangedEvent],
+         buttonClicked:[name:string]
     }>();
 
     let refs = [];

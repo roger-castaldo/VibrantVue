@@ -1,7 +1,7 @@
 ﻿<template>
     <form onsubmit="return false;" class="container is-fullhd">
         <template v-if="rows!=null">
-            <Row v-for="(row,index) in rows" :ref="(el) => (refs[index] = el)" v-bind:inputs="row" v-bind:key="index" v-on:value_changed="emit('value_changed',$event)" v-on:button_clicked="emit('button_clicked',$event)" :disabled="disabled"/>
+            <Row v-for="(row,index) in rows" :ref="(el) => (refs[index] = el)" v-bind:inputs="row" v-bind:key="index" v-on:valueChanged="emit('valueChanged',$event)" v-on:buttonClicked="emit('buttonClicked',$event)" :disabled="disabled"/>
         </template>
     </form>
 </template>
@@ -9,7 +9,7 @@
 <script lang="ts">
     import { computed, ref,provide, inject, readonly } from 'vue';
     import Row from './row.vue';
-    import { FormInputType, TranslateMethod, ValueChangedEvent } from './types';
+    import { FormInputType, TranslateMethod, ValueChangedEvent } from './typesDefinitions';
     import { DISABLED_FIELDS_PROPERTY, HIDDEN_FIELDS_PROPERTY, buildFieldRows, translateFieldProps, useTranslator } from './common';
 
     interface formProps extends translateFieldProps{
@@ -24,8 +24,8 @@
     });
 
     const emit = defineEmits<{
-        value_changed:[data:ValueChangedEvent],
-        button_clicked:[name:string]
+        valueChanged:[data:ValueChangedEvent],
+        buttonClicked:[name:string]
     }>();
 
     const Translator = useTranslator(props,inject);

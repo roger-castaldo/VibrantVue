@@ -1,6 +1,6 @@
 export interface ITableProperties {
     scrollable?:boolean,
-    fixedHeader?:boolean,
-    fullWidth?:boolean,
+    fixed_header?:boolean,
+    full_width?:boolean,
     narrow?:boolean
 };

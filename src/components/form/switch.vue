@@ -23,14 +23,14 @@
     const props = defineProps<fieldProps>();
     
     const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent]
+         valueChanged:[data:ValueChangedEvent]
     }>();
 
     const Translator = useTranslator(props,inject);
 
     const isChecked = ref(false);
 
-    watch(isChecked, (val) => emit('value_changed', { name: props.name, value: val }));
+    watch(isChecked, (val) => emit('valueChanged', { name: props.name, value: val }));
 
     const getValue =  ():boolean=> { return isChecked.value; };
     const setValue = (val:boolean):void=> { isChecked.value = val; };

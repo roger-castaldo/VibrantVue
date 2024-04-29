@@ -43,7 +43,7 @@
                             <tfoot v-if="props.includeTime">
                                 <tr>
                                     <td colspan="100%" class="has-text-centered">
-                                        <Time :ref="time" :name="`${props.name}-time`" :disabled="props.disabled" @value_changed="processTimeChange"/>
+                                        <Time :ref="time" :name="`${props.name}-time`" :disabled="props.disabled" @valueChanged="processTimeChange"/>
                                     </td>
                                 </tr>
                             </tfoot>
@@ -65,7 +65,7 @@
     import { Icon, ButtonOkay, ButtonCancel } from '../common/';
     import Time from './time.vue';
     import translate from '../../messages/messages.js';
-    import { ValueChangedEvent } from './types';
+    import { ValueChangedEvent } from './typesDefinitions';
     import { coreFieldProps } from './common';
 import { useLanguage } from '../shared';
 
@@ -93,7 +93,7 @@ import { useLanguage } from '../shared';
     });
 
     const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent]
+         valueChanged:[data:ValueChangedEvent]
     }>();
 
     const showInterface = ref<boolean>(false);
@@ -142,7 +142,7 @@ import { useLanguage } from '../shared';
 
     watch(value, (val) => {
         if (val == null) {
-            emit('value_changed', { name: props.name, value: null });
+            emit('valueChanged', { name: props.name, value: null });
             calendar.Month = new Date().getMonth();
             calendar.Year = new Date().getFullYear();
         } else {
@@ -208,7 +208,7 @@ import { useLanguage } from '../shared';
             } else {
                 var d = getValue();
                 if (isValid) {
-                    emit('value_changed', { name: props.name, value: d });
+                    emit('valueChanged', { name: props.name, value: d });
                 }
                 calendar.Month = d.getMonth();
                 calendar.Year = d.getFullYear();

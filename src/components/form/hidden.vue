@@ -4,7 +4,7 @@
 
 <script lang="ts">
     import { ref, watch } from 'vue';
-import { ValueChangedEvent } from './types';
+import { ValueChangedEvent } from './typesDefinitions';
 </script>
 
 <script lang="ts" setup>
@@ -12,12 +12,12 @@ import { ValueChangedEvent } from './types';
         name:string
     }>();
     const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent]
+         valueChanged:[data:ValueChangedEvent]
     }>();
 
     const value = ref<string|null>(null);
 
-    watch(value, (val) => emit('value_changed', { name: props.name, value: val }));
+    watch(value, (val) => emit('valueChanged', { name: props.name, value: val }));
 
     const getValue = ():string => { return value.value; };
     const setValue = (val:string):void=> { value.value = val; };

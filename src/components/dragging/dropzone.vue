@@ -11,11 +11,11 @@
 
 <script lang="ts" setup>
     const props = withDefaults(defineProps<{
-        isValidChild?:(data:any)=>boolean,
+        is_valid_child?:(data:any)=>boolean,
         tag?:string
     }>(),{
         tag:'div',
-        isValidChild:(data:any)=>true
+        is_valid_child:(data:any)=>true
     });
 
     const emit = defineEmits<{
@@ -70,8 +70,8 @@
     };
 
     const Drop = (event:any)=> {
-        if (props.isValidChild) {
-            if (!props.isValidChild(JSON.parse(event.dataTransfer.getData('value'))))
+        if (props.is_valid_child) {
+            if (!props.is_valid_child(JSON.parse(event.dataTransfer.getData('value'))))
                 return false;
         }
         event.stopPropagation();

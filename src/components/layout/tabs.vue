@@ -13,7 +13,7 @@
     const props = defineProps<{
         alignment?:TabAlignments,
         type?:TabStyles,
-        fullWidth?:boolean
+        full_width?:boolean
     }>();
 
     const classes = computed<string[]>(()=>{
@@ -21,7 +21,7 @@
         if (props.alignment){ret.push(`is-${props.alignment}`);}
         else{ret.push('is-left');}
         if(props.type){ret.push(`is-${props.type}`);}
-        if (props.fullWidth){ret.push('is-fullwidth');}
+        if (props.full_width){ret.push('is-fullwidth');}
         return ret;
     });
 </script>

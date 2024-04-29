@@ -19,7 +19,7 @@
 
     const props = defineProps<coreFieldProps>();
         const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent]
+         valueChanged:[data:ValueChangedEvent]
     }>();
 
     watch(()=>props.disabled,(val)=>{
@@ -41,7 +41,7 @@
             height:400,
             callbacks: {
                 onChange: function(contents) {
-                    emit('value_changed',{name:props.name,value:contents});
+                    emit('valueChanged',{name:props.name,value:contents});
                 }
             }
         });

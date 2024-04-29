@@ -7,7 +7,7 @@
 <script lang="ts">
     import { ref, watch, computed } from 'vue';
     import { coreFieldProps } from './common';
-    import { ValueChangedEvent } from './types';
+    import { ValueChangedEvent } from './typesDefinitions';
 
     const regTime = RegExp('^(\\d{2}):(\\d{2}) (AM|PM)$');
     const reg24Time = RegExp('^(\\d{2}):(\\d{2}):\\d{2}$');
@@ -16,7 +16,7 @@
 <script lang="ts" setup>
     const props = defineProps<coreFieldProps>();
     const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent]
+         valueChanged:[data:ValueChangedEvent]
     }>();
 
     const value = ref<string|null>(null);
@@ -33,7 +33,7 @@
         }
     });
 
-    watch(value, (val) => { emit('value_changed', { name: props.name, value: val }) });
+    watch(value, (val) => { emit('valueChanged', { name: props.name, value: val }) });
 
     const getValue = ():string|null=> { return value.value; };
     const setValue = (val:string|null):void=> {

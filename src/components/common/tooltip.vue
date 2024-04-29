@@ -1,12 +1,12 @@
 <template>
     <component :is="is" 
         :class="[
-            (props.hasArrow?'has-tooltop-arrow':''),
+            (props.has_arrow?'has-tooltop-arrow':''),
             (props.position?`has-tooltip-${props.position}`:''),
             (props.multiline?'has-tooltip-multiline':''),
             (props.type?`has-tooltip-${props.type}`:''),
-            (props.textAlign?`has-tooltip-text-${props.text}`:''),
-            (props.alwaysActive?'has-tooltip-active':'')
+            (props.text_align?`has-tooltip-text-${props.text}`:''),
+            (props.always_active?'has-tooltip-active':'')
         ]"
         :data-tooltip="text">
         <slot/>
@@ -19,17 +19,17 @@
     const props = withDefaults(defineProps<{
         text:string,
         is:any,
-        hasArrow?:boolean,
+        has_arrow?:boolean,
         position?:ToolTipPositions,
         multiline?:boolean,
         type?:NoticeTypes,
-        alwaysActive?:boolean,
-        textAlign?:ToolTipTextAlignments
+        always_active?:boolean,
+        text_align?:ToolTipTextAlignments
     }>(),{
-        hasArrow:false,
+        has_arrow:false,
         position:ToolTipPositions.left,
         multiline:false,
-        alwaysActive:false,
-        textAlign:ToolTipTextAlignments.left
+        always_active:false,
+        text_align:ToolTipTextAlignments.left
     });
 </script>

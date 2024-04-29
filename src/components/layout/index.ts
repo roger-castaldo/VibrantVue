@@ -13,7 +13,6 @@ import Panel from './panel.vue';
 import Table from './table.vue';
 import TabsTab from './tabs-tab.vue';
 import Tabs from './tabs.vue';
-import Tile from './tile.vue';
 
 export {Banner,Box,BreadcrumbsItem,Breadcrumbs,Card,Column,ColumnContainer,
-List,ListItem,Modal,ModalCard,Panel,Table,Tabs,TabsTab,Tile};
+List,ListItem,Modal,ModalCard,Panel,Table,Tabs,TabsTab};

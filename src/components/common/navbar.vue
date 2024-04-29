@@ -1,5 +1,5 @@
 <template>
-    <nav :class="['navbar',props.fixedPosition,(props.color!==undefined&&props.color!==null ? `is-${props.color}` : '')]" role="navigation" :aria-label="props.ariaLabel">
+    <nav :class="['navbar',props.fixed_position,(props.color!==undefined&&props.color!==null ? `is-${props.color}` : '')]" role="navigation" :aria-label="props.ariaLabel">
         <div class="navbar-brand">
             <slot name="brand"/>
             <a role="button" :class="['navbar-burger',(isActive?'is-active':'')]" aria-label="menu" :aria-expanded="(isActive?'true':'false')" @click="isActive=!isActive">
@@ -9,8 +9,8 @@
             </a>
         </div>
         <div :class="['navbar-menu',(isActive?'is-active':'')]">
-            <div class="navbar-start" v-if="props.startItems!==undefined">
-                <Promised :promise="props.startItems">
+            <div class="navbar-start" v-if="props.start_items!==undefined">
+                <Promised :promise="props.start_items">
                     <template v-slot="{response}">
                         <NavBarMenuItem v-for="item in (response as ParentMenuItem[])"
                             v-bind="item"
@@ -23,8 +23,8 @@
                     </template>
                 </Promised>
             </div>
-            <div class="navbar-end" v-if="props.endItems!==undefined">
-                <Promised :promise="props.endItems">
+            <div class="navbar-end" v-if="props.end_items!==undefined">
+                <Promised :promise="props.end_items">
                     <template v-slot="{response}">
                         <NavBarMenuItem v-for="item in (response as ParentMenuItem[])"
                             v-bind="item"
@@ -54,13 +54,13 @@
 <script lang="ts" setup>
 
     const props = withDefaults(defineProps<{
-        startItems?:Promise<ParentMenuItem[]>|ParentMenuItem[],
-        endItems?:Promise<ParentMenuItem[]>|ParentMenuItem[],yeah
-        fixedPosition?:FixedNavBarPositions|null,
+        start_items?:Promise<ParentMenuItem[]>|ParentMenuItem[],
+        end_items?:Promise<ParentMenuItem[]>|ParentMenuItem[],yeah
+        fixed_position?:FixedNavBarPositions|null,
         ariaLabel?:string,
         color?:ColorTypes
     }>(),{
-        fixedPosition:null,
+        fixed_position:null,
         ariaLabel:'navigation'
     });
 
@@ -74,8 +74,8 @@
     };
 
     onMounted(()=>{
-        if (props.fixedPosition){
-            switch(props.fixedPosition){
+        if (props.fixed_position){
+            switch(props.fixed_position){
                 case FixedNavBarPositions.top:
                     if (!$(document.body).hasClass('has-navbar-fixed-top')){
                         $(document.body).addClass('has-navbar-fixed-top')

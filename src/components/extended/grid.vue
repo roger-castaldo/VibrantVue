@@ -1,7 +1,7 @@
 <template>
     <Table v-bind="tableProperties">
         <template #thead>
-            <tr v-if="props.hasFilter??false">
+            <tr v-if="props.has_filter??false">
                 <th colspan="100%">
                     <Filter v-on:filter="(value)=>emit('filter',value)"/>
                 </th>
@@ -9,7 +9,7 @@
             <tr v-for="row in props.columns">
                 <th v-for="col in row" :colspan="col.headerColspan" :rowspan="col.headerRowspan">
                     <slot :name="`head-${col.id}`">
-                        <span v-if="props.currentSort!==undefined && props.currentSort!==null && (col.canSort??false) && col.id===props.currentSort.column" 
+                        <span v-if="props.current_sort!==undefined && props.current_sort!==null && (col.canSort??false) && col.id===props.current_sort.column" 
                             class="icon-text is-clickable"
                             @click="changeSort(col.id)">
                             <span class="icon">
@@ -29,7 +29,7 @@
                 <tr>
                     <td colspan="100%">
                         <Progress v-if="props.data===null"/>
-                        <Notification :message="props.emptyMessage??'No data available'" v-else/>
+                        <Notification :message="props.empty_message??'No data available'" v-else/>
                     </td>
                 </tr>
             </template>
@@ -50,7 +50,7 @@
                 </template>
             </template>
         </template>
-        <template #tfoot v-if="(props.hasprevious??false) || ((props.currentpage??0)>0)||(props.hasmore??false) || ((props.currentpage??0)<(props.totalpages??0-1))">
+        <template #tfoot v-if="(props.has_previous??false) || ((props.current_page??0)>0)||(props.has_more??false) || ((props.current_page??0)<(props.total_pages??0-1))">
             <tr>
                 <td colspan="100%">
                     <Pagination 
@@ -78,11 +78,11 @@
     import { Sizes } from '../enums';
 
     const props = withDefaults(defineProps<IGridProperties>(),{
-        usenext:true,
+        use_next:true,
         size:Sizes.small,
         rounded:false ,
-        hasprevious:undefined,
-        hasmore:undefined
+        has_previous:undefined,
+        has_more:undefined
     });
     const emit = defineEmits<{
         moveForward:[],
@@ -95,37 +95,37 @@
     const tableProperties = computed<ITableProperties>(()=>{
         return {
             scrollable:props.scrollable,
-            fixedHeader:props.fixedHeader,
-            fullWidth:props.fullWidth,
+            fixed_header:props.fixed_header,
+            full_width:props.full_width,
             narrow:props.narrow
         };
     });
     const paginationProperties = computed<IPaginationProperties>(()=>{
         return {
-            usenext:props.usenext,
-            hasmore:props.hasmore,
-            hasprevious:props.hasprevious,
+            use_next:props.use_next,
+            has_more:props.has_more,
+            has_previous:props.has_previous,
             size:props.size,
             rounded:props.rounded,
-            buttontype:props.buttontype,
-            totalpages:props.totalpages,
-            currentpage:props.currentpage
+            button_type:props.button_type,
+            total_pages:props.total_pages,
+            current_page:props.current_page
         };
     });
     const ColumnRows = computed(()=>{
-        if (props.columnRows===undefined || props.columnRows.length===0){
+        if (props.column_rows===undefined || props.column_rows.length===0){
             return props.columns;
         }
-        return props.columnRows.map(row=>{
+        return props.column_rows.map(row=>{
             return row.map(c=>props.columns.filter(col=>col.some(i=>i.id===c))[0].find(col=>col.id===c));
         });
     });
     const changeSort = (column:string) => {
-        if (props.currentSort!==undefined && props.currentSort!==null 
-        && props.currentSort.column===column){
+        if (props.current_sort!==undefined && props.current_sort!==null 
+        && props.current_sort.column===column){
             emit('sort',{
                 column:column,
-                ascending:!props.currentSort.ascending
+                ascending:!props.current_sort.ascending
             });
         }else{
             emit('sort',{

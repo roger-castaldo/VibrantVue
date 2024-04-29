@@ -18,9 +18,9 @@
 
   const props = withDefaults(defineProps<{
     promise:Promise<unknown|null>|unknown|null|undefined,
-    pendingDelay:number|string
+    pending_delay:number|string
   }>(),{
-    pendingDelay:200
+    pending_delay:200
   });
 
   const Language = useLanguage(inject);
@@ -28,5 +28,5 @@
 
   const rProps = toRefs(props);
 
-  const promiseState = reactive(usePromise(rProps.promise,rProps.pendingDelay));
+  const promiseState = reactive(usePromise(rProps.promise,rProps.pending_delay));
 </script>

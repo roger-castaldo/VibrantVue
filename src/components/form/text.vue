@@ -5,7 +5,7 @@
 <script lang="ts">
     import { ref, watch } from 'vue';
     import { coreFieldProps } from './common';
-import { ValueChangedEvent } from './types';
+import { ValueChangedEvent } from './typesDefinitions';
 
     interface fieldProps extends coreFieldProps{
         subtype:string,
@@ -16,11 +16,11 @@ import { ValueChangedEvent } from './types';
 <script lang="ts" setup>
     const props = defineProps<fieldProps>();
     const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent]
+         valueChanged:[data:ValueChangedEvent]
     }>();
     const value = ref(null);
 
-    watch(value, (val) => emit('value_changed', { name: props.name, value: val }));
+    watch(value, (val) => emit('valueChanged', { name: props.name, value: val }));
 
     const getValue = ():any=> { return value.value; }
     const setValue = (val:any):void=> { value.value = val; }

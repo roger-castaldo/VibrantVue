@@ -22,7 +22,7 @@
 <script lang="ts">
     import { ref, computed, watch, inject } from 'vue';
     import Promised from '../common/Promised.vue';
-    import {ListItemValue, ValueChangedEvent } from './types';
+    import {ListItemValue, ValueChangedEvent } from './typesDefinitions';
     import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
     import {Progress,Notification} from '../common/';
     import {NoticeTypes} from '../enums';
@@ -41,7 +41,7 @@
     const Error = computed<string>(()=>translate('Form.Error',Language));
 
     const emit = defineEmits<{
-         value_changed:[data:ValueChangedEvent]
+         valueChanged:[data:ValueChangedEvent]
     }>();
 
     const Translator = useTranslator(props,inject);
@@ -72,7 +72,7 @@
     });
 
     watch(checks, (val) => {
-        emit('value_changed', { name: props.name, value: getValue() });
+        emit('valueChanged', { name: props.name, value: getValue() });
     });
 
     const getValue = ():any[]|null => {
@@ -85,7 +85,7 @@
             checks.value = [...value];
         }
         locked.value = false;
-        emit('value_changed', { name: props.name, value: getValue() });
+        emit('valueChanged', { name: props.name, value: getValue() });
     };
     
     const {hiddenValues,disabledValues} = useValuesList(props.name,inject);
