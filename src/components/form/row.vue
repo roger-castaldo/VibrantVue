@@ -1,6 +1,6 @@
 ﻿<template>
     <div class="columns">
-        <FormComponent v-for="(input,index) in props.inputs" :ref="(el) => (refs[index] = el)"  :input="input" v-on:valueChanged="emit('valueChanged',$event)" v-on:buttonClicked="emit('buttonClicked',$event)" :disabled="props.disabled||disabledFields.some(f=>f===input.name)" :hidden="hiddenInputs.some(f=>f===input.name)"/>
+        <FormComponent v-for="(input,index) in props.inputs" :ref="(el) => (refs[index].value = el)"  :input="input" @valueChanged="emit('valueChanged',$event)" @buttonClicked="emit('buttonClicked',$event)" :disabled="props.disabled||disabledFields.some(f=>f===input.name)" :hidden="hiddenInputs.some(f=>f===input.name)"/>
     </div>
 </template>
 

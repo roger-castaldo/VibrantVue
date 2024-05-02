@@ -1,5 +1,5 @@
 ﻿<template>
-    <component v-bind:is="(numbered==null||numbered==undefined||!numbered ? 'ul' : 'ol')" v-bind:class="classes">
+    <component :is="(numbered==null||numbered==undefined||!numbered ? 'ul' : 'ol')" :class="classes">
         <slot/>
     </component>
 </template>

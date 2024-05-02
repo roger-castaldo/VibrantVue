@@ -1,5 +1,5 @@
 ﻿<template>
-    <div class="card" v-bind:class="{'is-fullwidth':props.full_width,'is-fullheight':props.full_height}">
+    <div class="card" :class="{'is-fullwidth':props.full_width,'is-fullheight':props.full_height}">
         <div class="card-icon" v-if="props.icon!==null">
             <div class="card-icon-wrapper">
                 <Icon :icon="props.icon" :size="IconSizes.xxlarge"/>

@@ -1,6 +1,6 @@
 ﻿<template>
     <li :class="{'is-active':props.active}">
-        <a v-on:click="emit('click')">
+        <a @click="emit('click')">
             <span class="icon is-clickable" v-if="props.icon">
                 <Icon :icon="props.icon" />
             </span>

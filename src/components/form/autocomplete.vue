@@ -1,21 +1,21 @@
 ﻿<template>
-    <div class="control autocomplete" v-on:blur="clear" v-on:click="focusInput">
+    <div class="control autocomplete" @blur="clear" @click="focusInput">
         <div class="tagsfield field input is-grouped is-grouped-multiline">
             <div class="control" v-for="(value,index) in selected">
                 <div class="tags has-addons">
                     <a class="tag is-link">{{Translator(value.name)}}</a>
-                    <a class="tag is-delete" v-if="!value.readonly" v-on:click="removeSelected(index)"></a>
+                    <a class="tag is-delete" v-if="!value.readonly" @click="removeSelected(index)"></a>
                 </div>
             </div>
             <div  v-if="!props.disabled">
-                <span ref="contentSpan" v-bind:placeholder="Translator(props.title??'')" contenteditable v-show="selected.length<props.limit || props.limit==null" v-bind:class="classes" v-on:focus="classes='is-focused';" v-on:blur="classes=null;" v-on:keydown="keyPress" v-on:paste="paste"/>
+                <span ref="contentSpan" :placeholder="Translator(props.title??'')" contenteditable v-show="selected.length<props.limit || props.limit==null" :class="classes" @focus="classes='is-focused';" @blur="classes=null;" @keydown="keyPress" @paste="paste"/>
             </div>
         </div>
-        <div class="dropdown" v-bind:class="{'is-active':results!=null&&searchString!=null&&searchString!=''}">
+        <div class="dropdown" :class="{'is-active':results!=null&&searchString!=null&&searchString!=''}">
             <div class="dropdown-menu">
                 <div class="dropdown-content">
                     <template v-if="results!=null && results.length>0">
-                        <a class="dropdown-item" v-for="value in results" v-on:click="addSelected(value)">{{Translator(value.name)}}</a>
+                        <a class="dropdown-item" v-for="value in results" @click="addSelected(value)">{{Translator(value.name)}}</a>
                     </template>
                     <template v-else>
                         <a class="dropdown-item">No Results</a>

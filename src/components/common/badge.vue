@@ -1,16 +1,17 @@
 <template>
-    <span :class="['badge',`is-${props.position}`]">
+    <span :class="['badge',`is-${props.position}`,(props.type===undefined?'':`is-${props.type}`)]">
         {{ props.text }}
         <slot/>
     </span>
 </template>
 
 <script lang="ts" setup>
-    import { BadgePositiions } from '../enums';
+    import { BadgePositiions,ColorTypes } from '../enums';
 
     const props = withDefaults(defineProps<{
         position?:BadgePositiions,
-        text?:string
+        text?:string,
+        type?:ColorTypes
     }>(),{
         position:BadgePositiions.topRight
     });

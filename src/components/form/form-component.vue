@@ -1,21 +1,21 @@
 ﻿<template>
-    <div class="field column" v-bind:class="[columns]" v-show="!props.hidden">
+    <div class="field column" :class="[columns]" v-show="!props.hidden">
         <template v-if="props.input.type=='header'">
-            <Header v-bind:subtype="props.input.subtype" v-bind:label="props.input.label" ref="inp"/>
+            <Header :subtype="props.input.subtype" :label="props.input.label" ref="inp"/>
         </template>
         <template v-else-if="props.input.type=='paragraph'">
-            <Paragraph v-bind:name="props.input.name" v-bind:label="props.input.label" ref="inp"/>
+            <Paragraph :name="props.input.name" :label="props.input.label" ref="inp"/>
         </template>
         <template v-else-if="props.input.type=='button'">
-            <Button v-bind:name="props.input.name" v-bind:sstyle="props.input.style" v-bind:className="props.input.className" v-bind:icon="props.input.icon" v-bind:label="props.input.label" v-bind:disabled="Disabled" v-on:buttonClicked="buttonClicked" ref="inp"/>
+            <Button :name="props.input.name" :sstyle="props.input.style" :className="props.input.className" :icon="props.input.icon" :label="props.input.label" :disabled="Disabled" @buttonClicked="buttonClicked" ref="inp"/>
         </template>
         <template v-else>
-            <label class="label" v-bind:for="props.input.name" v-if="hasLabel">
+            <label class="label" :for="props.input.name" v-if="hasLabel">
                 {{Translator(props.input.label)}}
                 <span class="help is-danger" v-if="props.input.required">*</span>
             </label>
             <div class="control">
-                <component :is="inputType" v-bind="inputProps" v-on:valueChanged="valueChanged" ref="inp"/>
+                <component :is="inputType" v-bind="inputProps" @valueChanged="valueChanged" ref="inp"/>
             </div>
         </template>
     </div>

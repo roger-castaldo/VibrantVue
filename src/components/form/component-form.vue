@@ -1,7 +1,7 @@
 ﻿<template>
     <form onsubmit="return false;" class="container is-fullhd">
         <template v-if="rows!=null">
-            <Row v-for="(row,index) in rows" :ref="(el) => (refs[index] = el)" v-bind:inputs="row" v-bind:key="index" v-on:valueChanged="emit('valueChanged',$event)" v-on:buttonClicked="emit('buttonClicked',$event)" :disabled="disabled"/>
+            <Row v-for="(row,index) in rows" :ref="(el) => (refs[index] = el)" :inputs="row" :key="index" @valueChanged="emit('valueChanged',$event)" @buttonClicked="emit('buttonClicked',$event)" :disabled="disabled"/>
         </template>
     </form>
 </template>

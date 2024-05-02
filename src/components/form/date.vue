@@ -2,22 +2,22 @@
     <div>
         <div class="control has-icons-left has-icons-right">
             <input class="input is-expanded" :name="props.name" :id="props.name" type="text" v-model="value" :placeholder="'DD-MM-YYYY'+(props.includeTime ? ' HH:mm' : '')" :disabled="props.disabled">
-            <span class="icon is-small is-left is-clickable" v-on:click="calendarClicked">
+            <span class="icon is-small is-left is-clickable" @click="calendarClicked">
                 <Icon icon="calendar-alt"/>
             </span>
-            <span class="icon is-small is-right is-clickable" v-on:click="cancelClicked">
+            <span class="icon is-small is-right is-clickable" @click="cancelClicked">
                 <Icon icon="window-close"/>
             </span>
         </div>
-        <div class="modal" v-bind:class="{'is-active':showInterface}">
+        <div class="modal" :class="{'is-active':showInterface}">
             <div class="modal-background"></div>
             <div class="modal-content">
                 <div class="panel is-primary is-dateselect">
                     <div class="panel-heading">
                         <div class="columns card-header-title">
-                            <div class="column"><icon icon="arrow-circle-left" v-on:click="MoveMonth(-1)"/></div>
+                            <div class="column"><icon icon="arrow-circle-left" @click="MoveMonth(-1)"/></div>
                             <div class="column has-text-centered">{{MonthName}} {{calendar.Year}}</div>
-                            <div class="column has-text-right"><icon icon="arrow-circle-right" v-on:click="MoveMonth(1)"/></div>
+                            <div class="column has-text-right"><icon icon="arrow-circle-right" @click="MoveMonth(1)"/></div>
                         </div>
                     </div>
                     <div class="panel-block">
@@ -35,7 +35,7 @@
                             </thead>
                             <tbody>
                                 <tr v-for="week in Weeks">
-                                    <td v-for="day in week" v-bind:class="['is-unselectable',(day.Disabled ? 'has-text-primary-dark has-background-primary-light' : 'is-clickable'),(day.isToday ? 'has-background-primary-dark' : ''),(day.isSelected ? 'has-background-success-dark' : '')]" v-on:click="selectDate(day)">
+                                    <td v-for="day in week" :class="['is-unselectable',(day.Disabled ? 'has-text-primary-dark has-background-primary-light' : 'is-clickable'),(day.isToday ? 'has-background-primary-dark' : ''),(day.isSelected ? 'has-background-success-dark' : '')]" @click="selectDate(day)">
                                         {{day.Number}}
                                     </td>
                                 </tr>
@@ -50,8 +50,8 @@
                         </table>
                     </div>
                     <div class="panel-block">
-                        <ButtonOkay addonclass="card-footer-item" v-bind:disabled="!isValid" v-on:click="showInterface=false"/>
-                        <ButtonCancel addonclass="card-footer-item" v-on:click="cancel"/>
+                        <ButtonOkay addonclass="card-footer-item" :disabled="!isValid" @click="showInterface=false"/>
+                        <ButtonCancel addonclass="card-footer-item" @click="cancel"/>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 ﻿<template>
-    <li v-bind:class="classes">
-        <span class="icon is-clickable" v-if="props.icon" v-on:click="emit('click')">
+    <li :class="classes">
+        <span class="icon is-clickable" v-if="props.icon" @click="emit('click')">
             <Icon :icon="props.icon"/>
         </span>
         <slot/>

@@ -1,12 +1,12 @@
 ﻿<template>
     <div class="select">
-        <Promised v-if="Values!=null" v-bind:promise="Values">
+        <Promised v-if="Values!=null" :promise="Values">
             <template v-slot="{response}">
-                <select :id="props.name" :name="props.name" :multiple="props.multiple" v-bind:class="[props.multiple ? 'is-multiple' : '']" v-model="vals" :disabled="props.disabled">
+                <select :id="props.name" :name="props.name" :multiple="props.multiple" :class="[props.multiple ? 'is-multiple' : '']" v-model="vals" :disabled="props.disabled">
                     <template  v-if="response!=null" v-for="val in (response as SelectListItemValue[])">
-                        <option v-if="val.values==undefined" :value="val.value" :selected="val.selected" v-show="!hiddenValues.some(h=>h===val.value.toString())" v-bind:disabled="disabledValues.some(d=>d===val.value.toString())">{{Translator(val.label)}}</option>
-                        <optgroup v-if="val.values!=undefined" v-bind:label="Translator(val.label)">
-                            <option v-for="v in val.values" :value="v.value" :selected="v.selected" v-show="!hiddenValues.some(h=>h===v.value.toString())" v-bind:disabled="disabledValues.some(d=>d===v.value.toString())">
+                        <option v-if="val.values==undefined" :value="val.value" :selected="val.selected" v-show="!hiddenValues.some(h=>h===val.value.toString())" :disabled="disabledValues.some(d=>d===val.value.toString())">{{Translator(val.label)}}</option>
+                        <optgroup v-if="val.values!=undefined" :label="Translator(val.label)">
+                            <option v-for="v in val.values" :value="v.value" :selected="v.selected" v-show="!hiddenValues.some(h=>h===v.value.toString())" :disabled="disabledValues.some(d=>d===v.value.toString())">
                                 {{Translator(v.label)}}
                             </option>
                         </optgroup>

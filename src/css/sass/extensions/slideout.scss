@@ -1,0 +1,106 @@
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../node_modules/bulma/sass/utilities/mixins" as mx;
+
+@mixin overlay(){
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left:0;
+    position:absolute;
+    margin:0;
+    padding:0;
+}
+
+$slideout-z: 40 !default;
+$slideout-background-background-color: hsla(
+  #{cv.getVar("scheme-h")},
+  #{cv.getVar("scheme-s")},
+  #{cv.getVar("scheme-invert-l")},
+  0.86
+) !default;
+$slideout-content-background-color: cv.getVar("scheme-main") !default;
+
+
+$slideout-radius: cv.getVar("radius-large") !default;
+$slideout-left-margin: 200px;
+$slideout-min-width: 15vw;
+
+.#{iv.$class-prefix}slideout {
+    @include cv.register-vars(
+    (
+      "slideout-z": cv.getVarWithBackup("modal-z",$slideout-z)
+      "slideout-background-background-color": cv.getVarWithBackup("modal-background-background-color",$slideout-background-background-color),
+      "slideout-content-background-color":cv.getVarWithBackup("modal-card-body-background-color",$slideout-content-background-color),
+      "slideout-radius": $slideout-radius,
+      "slideout-left-margin":$slideout-left-margin,
+      "slideout-min-width":$slideout-min-width
+    )
+  );
+}
+
+.#{iv.$class-prefix}slideout{
+    @include overlay();
+    left: 100vw;
+    align-items: flex-end;
+    flex-direction: column;
+    overflow: hidden;
+    position: fixed;
+    z-index: #{cv.getVar("slideout-z")};
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+
+    // Modifiers
+    &.#{iv.$class-prefix}is-active {
+        display: flex;
+        left: 0;
+    }
+
+    .#{iv.$class-prefix}slideout-background {
+        @include overlay();
+        background-color: #{cv.getVar("slideout-background-background-color")};
+    }
+
+    .#{iv.$class-prefix}slideout-content{
+        overflow: auto;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        background-color: #{cv.getVar("slideout-content-background-color")};
+        border-top-left-radius: #{cv.getVar("slideout-radius")};
+        border-bottom-left-radius: #{cv.getVar("slideout-radius")};
+        padding:#{cv.getVar("slideout-radius")} #{cv.getVar("size-normal")} #{cv.getVar("slideout-radius")} #{cv.getVar("slideout-radius")};
+        flex-grow: 1;
+        flex-shrink: 1;
+        max-width: calc(100vw - #{cv.getVar("slideout-left-margin")});
+        min-width: min(calc(100vw - #{cv.getVar("slideout-left-margin")}),#{cv.getVar("slideout-min-width")});
+        height: 100vw;
+        min-height:100vw;
+        max-height:100vw;
+
+        .#{iv.$class-prefix}delete{
+            position:absolute;
+            left: calc(0 - (#{cv.getVar("size-normal")} / 2));
+            top: calc(#{cv.getVar("size-normal")} / 2);
+        }
+    }
+}
+
+@include mx.mobile {
+    .#{iv.$class-prefix}slideout {
+        @include cv.register-vars(
+        (
+          "slideout-left-margin":0
+        )
+      );
+        .#{iv.$class-prefix}slideout-content{
+            .#{iv.$class-prefix}delete{
+                left: initial;
+                right: calc(0 - (#{cv.getVar("size-normal")} / 2));
+            }
+        }
+    }
+}

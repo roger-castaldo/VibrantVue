@@ -1,5 +1,5 @@
 ﻿<template>
-    <div class="column" v-bind:class="Class">
+    <div class="column" :class="Class">
         <slot/>
     </div>
 </template>

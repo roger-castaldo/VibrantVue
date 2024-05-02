@@ -38,7 +38,8 @@ export interface IButtonBasicProperties{
     size?:Sizes,
     hide_mobile?:boolean,
     hide_tablet?:boolean,
-    hide_desktop?:boolean 
+    hide_desktop?:boolean,
+    is_rounded?:boolean 
 };
 
 export interface IButtonProperties extends IButtonBasicProperties{

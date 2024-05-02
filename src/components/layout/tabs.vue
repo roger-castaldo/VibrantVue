@@ -1,16 +1,35 @@
 ﻿<template>
     <div :class="classes">
         <ul>
-            <slot />
+            <Promised :promise="props.tabs">
+                <template v-slot="{response}">
+                    <li v-for="tab in (response as Tab[])" :class="{'is-active':tab.active}">
+                        <a :href="tab.href" @click="tabClicked($event,tab)">
+                            <span v-if="tab.icon" class="icon is-small">
+                                <Icon :icon="tab.icon"/>
+                            </span>
+                            <span>{{tab.title}}</span>
+                        </a>
+                    </li>
+                </template>
+                <template #pending>
+                    <li style="width:100px;">
+                        <Progress :size="Sizes.small"/>
+                    </li>
+                </template>
+            </Promised>
         </ul>
     </div>
 </template>
 
 <script lang="ts" setup>
+    import {Icon,Promised} from '../common/';
     import {computed} from 'vue';
-    import { TabAlignments, TabStyles } from '../enums';
+    import { TabAlignments, TabStyles,Sizes } from '../enums';
+    import {Tab} from './interfaces';
 
     const props = defineProps<{
+        tabs:Tab[]|Promise<Tab[]>,
         alignment?:TabAlignments,
         type?:TabStyles,
         full_width?:boolean
@@ -24,4 +43,12 @@
         if (props.full_width){ret.push('is-fullwidth');}
         return ret;
     });
+
+    const tabClicked = (event:any,tab:Tab):void=> {
+        if ((tab.href === null || tab.href === undefined)
+            && tab.onClick!==undefined) {
+            event.preventDefault();
+            tab.onClick();
+        }
+    }
 </script>

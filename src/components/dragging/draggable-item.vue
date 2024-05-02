@@ -1,5 +1,5 @@
 ﻿<template>
-    <component ref="handle" :is="props.tag" :draggable="true" v-on:dragstart="Start" v-on:dragend="Stop" :class="Classes">
+    <component ref="handle" :is="props.tag" :draggable="true" @dragstart="Start" @dragend="Stop" :class="Classes">
         <slot/>
     </component>
 </template>

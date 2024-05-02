@@ -8,7 +8,7 @@
                 <div class="block">
                     {{ props.message }}
                 </div>
-                <Icon v-if="props.has_close" icon="circle-xmark" v-on:click="emit('close')" :size="IconSizes.large" />
+                <Icon v-if="props.has_close" icon="circle-xmark" @click="emit('close')" :size="IconSizes.large" />
             </div>
         </Animation>
     </div>

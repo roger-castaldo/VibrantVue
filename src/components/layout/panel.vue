@@ -1,5 +1,5 @@
 ﻿<template>
-    <div class="panel" v-bind:class="addons">
+    <div class="panel" :class="addons">
         <div class="panel-heading" v-if="props.has_header">
             <slot name="header"/>
         </div>
@@ -7,7 +7,7 @@
             <slot name="tabs"/>
         </div>
         <div class="panel-block" v-for="name in BlockNames">
-            <slot v-bind:name="name"/>
+            <slot :name="name"/>
         </div>
     </div>
 </template>

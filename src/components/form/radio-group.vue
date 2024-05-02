@@ -1,6 +1,6 @@
 ﻿<template>
     <div>
-        <Promised v-bind:promise="Values">
+        <Promised :promise="Values">
             <template v-slot="{response}">
                 <template v-for="val in (response as ListItemValue[])" v-if="values!=null">
                     <label class="radio" v-show="!hiddenValues.some(v=>v===val.value.toString())">

@@ -1,5 +1,5 @@
 ﻿<template>
-    <p v-bind:id="props.name">{{Translator(props.label)}}</p>
+    <p :id="props.name">{{Translator(props.label)}}</p>
 </template>
 
 <script lang="ts">

@@ -4,3 +4,11 @@ export interface ITableProperties {
     full_width?:boolean,
     narrow?:boolean
 };
+
+export type Tab = {
+    active?:boolean,
+    title?:string,
+    icon?:string,
+    href?:string,
+    onClick?:()=>void
+};

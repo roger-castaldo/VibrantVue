@@ -1,6 +1,6 @@
 <template>
     <div class="control has-icons-left">
-        <input type="text" class="input is-expanded is-rounded" :placeholder="Filter" v-model="filter" v-on:keypress="FilterKeyPress">
+        <input type="text" class="input is-expanded is-rounded" :placeholder="Filter" v-model="filter" @keypress="FilterKeyPress">
         <span class="icon is-small is-left">
             <Icon icon="filter"/>   
         </span>

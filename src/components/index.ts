@@ -9,6 +9,7 @@ import {ValueChangedEvent,ListItemValue,SelectListItemValue,FormInputType,Transl
 import * as utilities from './utilities';
 import * as extended from './extended';
 import {AutoCompleteEntry} from './extended/typeDefinitions';
+import {Tab} from './layout/interfaces';
 
 export const {Animation,Button,ButtonAdd,ButtonCancel,ButtonDelete,ButtonDisable,ButtonDownload,
     ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonUpload,
@@ -19,7 +20,7 @@ export const {AutoComplete,CheckboxGroup,Checkbox,DateField,ComponentForm,FullEd
     Header,Hidden,NumberField,Paragraph,RadioGroup,Select,Switch,Text,
     TextArea,Time,FormComponent} = form;
 export const {Banner,Box,BreadcrumbsItem,Breadcrumbs,Card,Column,ColumnContainer,
-    List,ListItem,ModalCard,Panel,Table,Tabs,TabsTab,Modal} = layout;
+    List,ListItem,ModalCard,Panel,Table,Tabs,Modal,SlideOut} = layout;
 export const {AVAIABLE_SKINS,setSkin} = skin;
 export const {ColorTypes,NoticeTypes,Sizes,AnimationSpeeds,AnimationTypes,IconSizes,ChartLegendPositions,ChartTypes,DropZoneQuadrants,
     BreadCrumbAlignments,BreadCrumbSeperators,ColumnContainerModifiers,ColumnSizes,
@@ -27,4 +28,4 @@ export const {ColorTypes,NoticeTypes,Sizes,AnimationSpeeds,AnimationTypes,IconSi
     BadgePositiions,ToolTipPositions,ToolTipTextAlignments} = enums;
 export const {loadNonEs6Module} = utilities;
 export const {Chart,CodeWriter,Grid} = extended;
-export type {ValueChangedEvent,ListItemValue,SelectListItemValue,FormInputType,TranslateMethod,MenuItem,ParentMenuItem,AutoCompleteEntry};
+export type {ValueChangedEvent,ListItemValue,SelectListItemValue,FormInputType,TranslateMethod,MenuItem,ParentMenuItem,AutoCompleteEntry,Tab};

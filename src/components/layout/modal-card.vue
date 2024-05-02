@@ -1,7 +1,7 @@
 ﻿<template>
-    <div class="modal" v-bind:class="{'is-active':props.show}">
+    <div class="modal" :class="{'is-active':props.show}">
         <div class="modal-background"></div>
-        <div class="modal-card" v-bind:class="classes">
+        <div class="modal-card" :class="classes">
             <div class="card-icon" v-if="props.icon!==null">
                 <div class="card-icon-wrapper">
                     <Icon :icon="props.icon" :size="IconSizes.xxlarge"/>
@@ -9,7 +9,7 @@
             </div>
             <div class="modal-card-head">
                 <slot name="header" v-bind="headerProps" />
-                <button v-if="has_close" class="delete" aria-label="close" v-on:click="emit('close')"></button>
+                <button v-if="has_close" class="delete" aria-label="close" @click="emit('close')"></button>
             </div>
             <div class="modal-card-body">
                 <slot name="content" />

@@ -14,15 +14,16 @@ $card-padding:calc($icon-height / 2);
         color: #{cv.getVar("card-header-color")};
         height: $icon-height;
         margin-bottom: 0 - $icon-height;
-        .#{iv.$class-prefix}card-icon-wrapper{
-            height: $icon-height;
-            padding-top: $icon-padding-height;
-            width: $icon-height;
-            text-align: center;
-            border-radius: 50%;
-            box-shadow: #{cv.getVar("card-shadow")};
-            margin-top:0 - $icon-height;
-        }
+    }
+
+    .#{iv.$class-prefix}card-icon-wrapper{
+        height: $icon-height;
+        padding-top: $icon-padding-height;
+        width: $icon-height;
+        text-align: center;
+        border-radius: 50%;
+        box-shadow: #{cv.getVar("card-shadow")};
+        margin-top:0 - $icon-height;
     }
 }
 
@@ -44,7 +45,7 @@ $card-padding:calc($icon-height / 2);
 
 .#{iv.$class-prefix}modal-card {
     &:has(.#{iv.$class-prefix}card-icon){
-        padding-top:#{cv.getVar("card-header-padding")};
+        padding-top:$card-padding;
         .#{iv.$class-prefix}modal-card-head{
             &:has(.#{iv.$class-prefix}card-header-title.#{iv.$class-prefix}is-centered){
                 padding-top:0.5em;
@@ -55,6 +56,37 @@ $card-padding:calc($icon-height / 2);
         z-index:calc(#{cv.getVar("modal-z")} + 1);
         .#{iv.$class-prefix}card-icon-wrapper{
             background-color:#{cv.getVar("modal-card-head-background-color")};
+        }
+    }
+}
+
+.#{iv.$class-prefix}card-footer-item{
+    &.#{iv.$class-prefix}button{
+        height: calc(#{cv.getVar("control-size")} + (2 * #{cv.getVar("button-padding-vertical")}));
+        padding-bottom: calc(
+            #{cv.getVar("button-padding-vertical")} - #{cv.getVar(
+                "button-border-width"
+            )}
+        );
+        padding-left: calc(
+            #{cv.getVar("button-padding-horizontal")} - #{cv.getVar(
+                "button-border-width"
+            )}
+        );
+        padding-right: calc(
+            #{cv.getVar("button-padding-horizontal")} - #{cv.getVar(
+                "button-border-width"
+            )}
+        );
+        padding-top: calc(
+            #{cv.getVar("button-padding-vertical")} - #{cv.getVar(
+                "button-border-width"
+            )}
+        );
+
+        &.#{iv.$class-prefix}is-rounded {
+            padding-left: calc(#{cv.getVar("button-padding-horizontal")} + 0.25em);
+            padding-right: calc(#{cv.getVar("button-padding-horizontal")} + 0.25em);
         }
     }
 }

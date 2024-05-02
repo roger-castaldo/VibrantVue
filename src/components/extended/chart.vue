@@ -7,7 +7,7 @@
             <canvas ref="canvas" :style="Style"/>
         </template>
         <template #footer="exts" v-if="props.show_refresh!=null&&props.show_refresh!=undefined&&props.show_refresh">
-            <ButtonRefresh v-bind="exts" v-on:click="Refresh"/>
+            <ButtonRefresh v-bind="exts" @click="Refresh"/>
         </template>
     </Card>
 </template>

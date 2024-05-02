@@ -1,10 +1,10 @@
 ﻿<template>
     <div>
-        <Promised v-bind:promise="Values">
+        <Promised :promise="Values">
             <template v-slot="{response}">
                 <template v-for="value in (response as ListItemValue[])" v-if="response!==null">
                     <label class="checkbox is-block" v-show="!hiddenValues.some(v=>v===value.value.toString())">
-                        <input type="checkbox" class="checkbox" v-bind:value="value.value" v-model="checks" v-bind:disabled="props.disabled||disabledValues.some(v=>v===value.value.toString())" />
+                        <input type="checkbox" class="checkbox" :value="value.value" v-model="checks" :disabled="props.disabled||disabledValues.some(v=>v===value.value.toString())" />
                         {{Translator(value.label)}}
                     </label>
                 </template>

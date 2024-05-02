@@ -1,6 +1,6 @@
 ﻿<template>
     <div class="box" :id="props.name" :name="props.name" v-show="!props.hidden">
-        <Row v-for="(row,index) in rows" :ref="(el) => (refs[index] = el)" :inputs="row" :disabled="props.disabled" v-on:valueChanged="emit('valueChanged',$event)" v-on:buttonClicked="emit('buttonClicked',$event)"/>
+        <Row v-for="(row,index) in rows" :ref="(el) => (refs[index] = el)" :inputs="row" :disabled="props.disabled" @valueChanged="emit('valueChanged',$event)" @buttonClicked="emit('buttonClicked',$event)"/>
     </div>
 </template>
 

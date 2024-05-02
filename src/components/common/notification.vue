@@ -1,5 +1,5 @@
 <template>
-    <div v-bind:class="['notification','is-'+props.type,(props.light ? 'is-light' : '')]">
+    <div :class="['notification','is-'+props.type,(props.light ? 'is-light' : '')]">
         <slot>
             {{props.message}}
         </slot>

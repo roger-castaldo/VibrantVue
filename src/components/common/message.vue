@@ -2,7 +2,7 @@
     <article :class="['message',Size,Type]">
         <div class="message-header" v-if="props.title">
             <p>{{props.title}}</p>
-            <button class="delete" aria-label="delete" v-if="props.has_delete" v-on:click="emit('close')"></button>
+            <button class="delete" aria-label="delete" v-if="props.has_delete" @click="emit('close')"></button>
         </div>
         <div class="message-body">
             <slot>

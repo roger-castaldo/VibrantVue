@@ -1,5 +1,5 @@
 ﻿<template>
-    <input :type="subtype" class="input" v-bind:name="name" v-bind:disabled="disabled" :maxlength="props.maxlength" v-model="value">
+    <input :type="subtype" class="input" :name="name" :disabled="disabled" :maxlength="props.maxlength" v-model="value">
 </template>
 
 <script lang="ts">
