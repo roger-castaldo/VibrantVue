@@ -1,17 +1,17 @@
 ﻿<template>
     <div class="control autocomplete" @blur="clear" @click="focusInput">
-        <div class="tagsfield field input is-grouped is-grouped-multiline">
+        <div :class="['tagsfield','field','input','is-grouped','is-grouped-multiline',(props.disabled ? 'is-disabled' : '')]">
             <div class="control" v-for="(value,index) in selected">
                 <div class="tags has-addons">
                     <a class="tag is-link">{{Translator(value.name)}}</a>
-                    <a class="tag is-delete" v-if="!value.readonly" @click="removeSelected(index)"></a>
+                    <a class="tag is-delete" v-if="!value.readonly && !props.disabled" @click="removeSelected(index)"></a>
                 </div>
             </div>
-            <div  v-if="!props.disabled">
+            <div v-if="!props.disabled">
                 <span ref="contentSpan" :placeholder="Translator(props.title??'')" contenteditable v-show="selected.length<props.limit || props.limit==null" :class="classes" @focus="classes='is-focused';" @blur="classes=null;" @keydown="keyPress" @paste="paste"/>
             </div>
         </div>
-        <div class="dropdown" :class="{'is-active':results!=null&&searchString!=null&&searchString!=''}">
+        <div class="dropdown" v-if="!props.disabled" :class="{'is-active':results!=null&&searchString!=null&&searchString!=''}">
             <div class="dropdown-menu">
                 <div class="dropdown-content">
                     <template v-if="results!=null && results.length>0">

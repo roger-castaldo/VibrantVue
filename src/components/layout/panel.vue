@@ -1,9 +1,9 @@
 ﻿<template>
     <div class="panel" :class="addons">
-        <div class="panel-heading" v-if="props.has_header">
+        <div class="panel-heading" v-if="slots.header">
             <slot name="header"/>
         </div>
-        <div class="panel-tabs" v-if="props.has_tabs">
+        <div class="panel-tabs" v-if="slots.tabs">
             <slot name="tabs"/>
         </div>
         <div class="panel-block" v-for="name in BlockNames">
@@ -13,18 +13,18 @@
 </template>
 
 <script lang="ts">
-    import { computed } from 'vue';
+    import { computed,useSlots } from 'vue';
     import { ColorTypes } from '../enums';
 </script>
 
 <script lang="ts" setup>
+    const slots = useSlots();
+
     const props = defineProps<{
         type?:ColorTypes,
         block_names?:string[],
-        has_tabs?:boolean,
         full_width?:boolean,
-        full_height?:boolean,
-        has_header?:boolean
+        full_height?:boolean
     }>();
 
     const BlockNames = computed<string[]>(() => props.block_names??['default']);

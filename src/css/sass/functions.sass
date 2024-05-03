@@ -1,4 +1,5 @@
 @use "sass:math"
+@use "../../../node_modules/bulma/sass/utilities/css-variables" as cv
 
 @function strip-units($number,$append:'%')
     @if type-of($number) == "string"
@@ -25,3 +26,6 @@
 
 @function set-rgba-color-alpha($color,$alpha)
     @return 'rgba(from '+$color+', '+$alpha+')'
+
+@function getVarWithBackup($varName,$backup)    
+    @return var(#{cv.buildVarName($varName)},#{$backup})

@@ -45,7 +45,7 @@
     };
 
     const headerProps = {
-        header_class: 'modal-card-title is-centered',
+        header_class: 'modal-card-title has-text-centered',
         addon_class: 'card-footer-item'
     };
 

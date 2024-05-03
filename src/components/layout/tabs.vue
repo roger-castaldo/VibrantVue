@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-    import {Icon,Promised} from '../common/';
+    import {Icon,Promised, Progress} from '../common/';
     import {computed} from 'vue';
     import { TabAlignments, TabStyles,Sizes } from '../enums';
     import {Tab} from './interfaces';
