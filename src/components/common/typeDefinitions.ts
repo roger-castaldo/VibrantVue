@@ -8,8 +8,9 @@ export interface IPaginationProperties {
     size?:Sizes,
     rounded?:boolean,
     button_type?:ColorTypes,
-    total_pages?:number,
-    current_page?:number
+    total_pages?:MaybeRef<number>,
+    current_page?:MaybeRef<number>,
+    zero_page_index?:boolean
 };
 
 export interface MenuItem {
@@ -47,3 +48,18 @@ export interface IButtonProperties extends IButtonBasicProperties{
     type?:ColorTypes,
     title?:string|null
 };
+
+export type DropDownItem = {
+    title:MaybeRef<string>|string,
+    active?:boolean,
+    icon?:string,
+    href?:string,
+    onClick?:()=>void
+}
+
+export type DropDownBlock = {
+    children:(
+        | string
+        | DropDownItem
+    )[][]
+}

@@ -7,14 +7,14 @@
                     <Icon :icon="props.icon" :size="IconSizes.xxlarge"/>
                 </div>
             </div>
-            <div class="modal-card-head">
+            <div class="modal-card-head" v-if="slots.header">
                 <slot name="header" v-bind="headerProps" />
                 <button v-if="has_close" class="delete" aria-label="close" @click="emit('close')"></button>
             </div>
-            <div class="modal-card-body">
+            <div class="modal-card-body" v-if="slots.content">
                 <slot name="content" />
             </div>
-            <div class="modal-card-foot">
+            <div class="modal-card-foot" v-if="slots.footer">
                 <slot name="footer" v-bind="footerProps" />
             </div>
         </div>
@@ -22,9 +22,11 @@
 </template>
 
 <script lang="ts" setup>
-    import {computed} from 'vue';
+    import {computed, useSlots} from 'vue';
     import Icon from '../common/icon.vue';
     import { IconSizes } from '../enums';
+
+    const slots = useSlots();
     
     const props = withDefaults(defineProps<{
         show?:boolean,

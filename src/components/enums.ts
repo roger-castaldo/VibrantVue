@@ -52,3 +52,4 @@ export enum FixedMenuPositions{left='left',right='right'};
 export enum BadgePositiions{topLeft='top-left',top='top',topRight='top-right',right='right',bottomRight='bottom-right',bottom='bottom',bottomLeft='bottom-left',left='left'};
 export enum ToolTipPositions{left='left',right='right',bottom='bottom',top='top'};
 export enum ToolTipTextAlignments{left='left',centered='centered',right='right'};
+export enum ButtonAlignments{centered='centered',right='right',left='left'};

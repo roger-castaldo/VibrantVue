@@ -1,13 +1,13 @@
 ﻿<template>
     <div :class="containerClasses">
         <table :class="tableClasses">
-            <thead>
+            <thead v-if="slots.thead">
                 <slot name="thead" />
             </thead>
-            <tbody>
+            <tbody v-if="slots.tbody">
                 <slot name="tbody"/>
             </tbody>
-            <tfoot>
+            <tfoot v-if="slots.tfoot">
                 <slot name="tfoot"/>
             </tfoot>
         </table>
@@ -15,8 +15,10 @@
 </template>
 
 <script lang="ts" setup>
-    import {computed} from 'vue';
+    import {computed, useSlots} from 'vue';
     import { ITableProperties } from './interfaces';
+
+    const slots = useSlots();
     
     const props = defineProps<ITableProperties>();
     

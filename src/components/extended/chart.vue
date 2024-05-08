@@ -1,13 +1,13 @@
 <template>
     <Card>
         <template #header="exts" v-if="props.title">
-            <h3 :class="exts.headerClass">{{props.title}}</h3>
+            <h3 :class="exts.header_class">{{props.title}}</h3>
         </template>
         <template #content>
             <canvas ref="canvas" :style="Style"/>
         </template>
         <template #footer="exts" v-if="props.show_refresh!=null&&props.show_refresh!=undefined&&props.show_refresh">
-            <ButtonRefresh v-bind="exts" @click="Refresh"/>
+            <ButtonRefresh :class="exts.addon_class" @click="Refresh"/>
         </template>
     </Card>
 </template>

@@ -13,7 +13,7 @@
        </script>
     </head>
     <body>
-        <a class="button is-warning"> Warning </a>
+        <a class="button is-warning has-cursor  is-url"> Warning </a>
         <section>
             <div class="field">
                 <input type="checkbox" class="switch is-rounded" name="switchExample" checked="checked"/>
@@ -131,15 +131,15 @@
   }
 ],
 gridProperites:{
-    fullWidth:true,
-    totalpages:100,
-    currentpage:50,
-    Columns:[
+    full_width:true,
+    total_pages:100,
+    current_page:50,
+    columns:[
         [{ID:'title',Title:'People',HeaderColspan:2,HeaderOnly:true}],
         [{ID:'firstname',PropertyName:'firstname',Title:'First Name'},{ID:'lastname',PropertyName:'lastname',Title:'Last Name'}],
         [{ID:'username',HeaderColspan:2,DataColspan:2}]
     ],
-    Data:[
+    data:[
         {firstname:'Bob',lastname:'Loblaw',username:'bob.loblaw'},
         {firstname:'Fred',lastname:'Flintstone',username:'fred.flintstone'}
     ]

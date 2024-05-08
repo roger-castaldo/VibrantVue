@@ -1,6 +1,8 @@
 <template>
     <span :class="Classes">
-        <slot />
+        <slot>
+            {{ props.text }}
+        </slot>
     </span>
 </template>
 
@@ -13,7 +15,8 @@
         light?:boolean,
         rounded?:boolean,
         size?:Sizes,
-        is_delete?:boolean
+        is_delete?:boolean,
+        text?:string
     }>(),{
         type:ColorTypes.primary,
         light:false,

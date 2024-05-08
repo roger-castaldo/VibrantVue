@@ -5,13 +5,13 @@
                 <Icon :icon="props.icon" :size="IconSizes.xxlarge"/>
             </div>
         </div>
-        <div class="card-header">
+        <div class="card-header" v-if="slots.header">
             <slot name="header" v-bind="headerProps"/>
         </div>
-        <div class="card-content">
+        <div class="card-content" v-if="slots.content">
             <slot name="content"/>
         </div>
-        <div class="card-footer">
+        <div class="card-footer" v-if="slots.footer">
             <slot name="footer" v-bind="footerProps"/>
         </div>
     </div>
@@ -20,6 +20,10 @@
 <script lang="ts" setup>
     import Icon from '../common/icon.vue';
     import { IconSizes } from '../enums';
+    import {useSlots} from 'vue';
+
+    const slots = useSlots();
+
 
     const props = withDefaults(defineProps<{
         full_width?:boolean,

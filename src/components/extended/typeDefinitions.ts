@@ -13,8 +13,10 @@ type GridColumn = {
     title?:MaybeRef<string>,
     headerColspan?:number,
     headerRowspan?:number,
+    headerClass?:MaybeRef<string>|MaybeRef<string[]>,
     dataColspan?:number,
     dataRowspan?:number,
+    cellClass?:MaybeRef<string>|MaybeRef<string[]>,
     headerOnly?:boolean,
     canSort?:boolean
 };

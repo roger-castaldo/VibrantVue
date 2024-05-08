@@ -12,3 +12,10 @@ export type Tab = {
     href?:string,
     onClick?:()=>void
 };
+
+export type BreadCrumb = {
+    active:boolean,
+    title:string,
+    icon?:string|null,
+    onClick?:()=>void
+}

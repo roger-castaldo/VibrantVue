@@ -1,7 +1,14 @@
 ﻿<template>
     <nav :class="Class" aria-label="breadcrumbs">
-        <ul>
-            <slot/>
+        <ul v-if="props.breadCrumbs!==null">
+            <li v-for="crumb in props.breadCrumbs" :class="{'is-active':crumb.active}">
+                <a @click="processClick(crumb.onClick)">
+                    <span :class="['icon',(crumb.onClick ? 'is-clickable' : '')]" v-if="crumb.icon">
+                        <Icon :icon="crumb.icon" />
+                    </span>
+                    {{crumb.title}}
+                </a>
+            </li>
         </ul>
     </nav>
 </template>
@@ -9,8 +16,11 @@
 <script lang="ts" setup>
     import {computed} from 'vue';
     import {BreadCrumbAlignments,Sizes,BreadCrumbSeperators} from '../enums';
+    import {BreadCrumb} from './interfaces';
+    import {Icon} from '../common/';
 
     const props = withDefaults(defineProps<{
+        breadCrumbs:BreadCrumb[]|null
         alignment?:BreadCrumbAlignments,
         size?:Sizes,
         seperator?:BreadCrumbSeperators
@@ -32,4 +42,10 @@
         }
         return result;
     });
+
+    const processClick = (onClick?:()=>void) : void =>{
+        if (onClick!==undefined){
+            onClick();
+        }
+    };
 </script>

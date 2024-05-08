@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
     import { MaybeRef } from 'vue';
-import {NoticeTypes} from '../enums';
+    import {NoticeTypes} from '../enums';
 
     const props = withDefaults(defineProps<{
             type?: NoticeTypes|null,

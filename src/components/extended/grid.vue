@@ -7,7 +7,7 @@
                 </th>
             </tr>
             <tr v-for="row in props.columns">
-                <th v-for="col in row" :colspan="col.headerColspan" :rowspan="col.headerRowspan">
+                <th v-for="col in row" :colspan="col.headerColspan" :rowspan="col.headerRowspan" :class="col.headerClass">
                     <slot :name="`head-${col.id}`">
                         <span v-if="props.current_sort!==undefined && props.current_sort!==null && (col.canSort??false) && col.id===props.current_sort.column" 
                             class="icon-text is-clickable"
@@ -40,6 +40,7 @@
                             v-for="col in row.filter(c=>!(c.headerOnly??false))" 
                             :colspan="col.dataColspan" 
                             :rowspan="col.dataRowspan"
+                            :class="col.cellClass"
                             @click="emit('cellClicked',{rowIndex:index,data:(col.propertyName?drow[col.propertyName] : null),row:drow})"
                         >
                             <slot :name="`body-${col.id}`" v-bind="{rowIndex:index,data:(col.propertyName?drow[col.propertyName] : null),row:drow}">
@@ -50,8 +51,9 @@
                 </template>
             </template>
         </template>
-        <template #tfoot v-if="(props.has_previous??false) || ((props.current_page??0)>0)||(props.has_more??false) || ((props.current_page??0)<(props.total_pages??0-1))">
-            <tr>
+        <template #tfoot v-if="supportsPagination||slots.tfoot_head||slots.tfoot_bottom">
+            <slot name="tfoot_head"/>
+            <tr v-if="supportsPagination">
                 <td colspan="100%">
                     <Pagination 
                         v-bind="paginationProperties" 
@@ -60,6 +62,7 @@
                         @goToPage="(page:number)=>emit('goToPage',page)"/>
                 </td>
             </tr>
+            <slot name="tfoot_bottom"/>
         </template>
     </Table>
 </template>
@@ -74,8 +77,10 @@
     import Icon from '../common/icon.vue';
     import { ITableProperties } from '../layout/interfaces';
     import { IPaginationProperties } from '../common/typeDefinitions';
-    import {computed} from 'vue';
+    import {computed, toValue, useSlots} from 'vue';
     import { Sizes } from '../enums';
+
+    const slots = useSlots();
 
     const props = withDefaults(defineProps<IGridProperties>(),{
         use_next:true,
@@ -92,25 +97,27 @@
         sort:[by:GridSort],
         filter:[value:string|null]
     }>();
-    const tableProperties = computed<ITableProperties>(()=>{
-        return {
-            scrollable:props.scrollable,
-            fixed_header:props.fixed_header,
-            full_width:props.full_width,
-            narrow:props.narrow
-        };
-    });
-    const paginationProperties = computed<IPaginationProperties>(()=>{
-        return {
-            use_next:props.use_next,
-            has_more:props.has_more,
-            has_previous:props.has_previous,
-            size:props.size,
-            rounded:props.rounded,
-            button_type:props.button_type,
-            total_pages:props.total_pages,
-            current_page:props.current_page
-        };
+    const tableProperties:ITableProperties = {
+        scrollable:props.scrollable,
+        fixed_header:props.fixed_header,
+        full_width:props.full_width,
+        narrow:props.narrow
+    };
+    const paginationProperties:IPaginationProperties = {
+        use_next:props.use_next,
+        has_more:props.has_more,
+        has_previous:props.has_previous,
+        size:props.size,
+        rounded:props.rounded,
+        button_type:props.button_type,
+        total_pages:props.total_pages,
+        current_page:props.current_page
+    };
+    const supportsPagination = computed<boolean>(()=>{
+        if (props.has_previous){return true;}
+        if (props.has_more){return true;}
+        if (props.current_page!==undefined && props.total_pages!==undefined && toValue<number>(props.total_pages)>1){return true;}
+        return false;
     });
     const ColumnRows = computed(()=>{
         if (props.column_rows===undefined || props.column_rows.length===0){

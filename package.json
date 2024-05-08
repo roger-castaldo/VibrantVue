@@ -24,9 +24,10 @@
     "build:minify": "npm run build && uglifyjs ./dist/components.esm.js --compress --output ./dist/components.esm.min.js",
     "build:serve": "npm run build:minify && node index.js",
     "build:bulma": "sass --load-path=node_modules src/css/sass/bulma-skins.scss dist/style.css",
-    "serve":"node index.js"
+    "serve": "node index.js"
   },
   "dependencies": {
+    "uuid": "^9.0.1",
     "vue": "^3.4.21"
   },
   "devDependencies": {

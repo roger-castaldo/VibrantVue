@@ -79,3 +79,15 @@ export const loadNonEs6Module = (path:string,windowProperties?:string[]) : Promi
         }
     });
 }
+
+export const generateUUID = () : string => {
+  let cryptoRef: Crypto;
+  let r: string | undefined = "";
+
+  if (typeof self.crypto !== "undefined") {
+    cryptoRef = self.crypto;
+    r = cryptoRef.randomUUID?.();
+  }
+
+  return r ? r : "";
+}

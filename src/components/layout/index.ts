@@ -1,6 +1,5 @@
 import Banner from './banner.vue';
 import Box from './box.vue';
-import BreadcrumbsItem from './breadcrumbs-item.vue';
 import Breadcrumbs from './breadcrumbs.vue';
 import Card from './card.vue';
 import ColumnContainer from './column-container.vue';
@@ -14,5 +13,5 @@ import Table from './table.vue';
 import Tabs from './tabs.vue';
 import SlideOut from './slideout.vue';
 
-export {Banner,Box,BreadcrumbsItem,Breadcrumbs,Card,Column,ColumnContainer,
+export {Banner,Box,Breadcrumbs,Card,Column,ColumnContainer,
 List,ListItem,Modal,ModalCard,Panel,Table,Tabs,SlideOut};
