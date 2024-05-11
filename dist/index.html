@@ -38,6 +38,9 @@
                 This is a test, this is only a test
             </Message>
             <section>
+                <Drop-Down title="test" :items="MyItems"/>
+            </section>
+            <section>
                 <Component-Form :elements="elements" :translate="translate" v-on:valueChanged="valueChanged"/>
             </section>
 
@@ -78,20 +81,21 @@
                     User Name
                 </template>
                 <template #body-username="row">
-                    {{row.Data}}{{row.Row.username}}
+                    {{row.data}}{{row.row.username}}
                 </template>
                 <template #body-firstname="row">
-                    {{row.Data}}{{row.Row.firstname}}
+                    {{row.data}}{{row.row.firstname}}
                 </template>
             </Grid>
         </section>
         </div>
         <script type="module">
             import { createApp,ref} from "vue";
-            import {Message,ComponentForm,Promised,Pagination,Card,Menu,MenuList,MenuEntry,Tag,Grid} from 'components';
+            import {Message,ComponentForm,Promised,Pagination,Card,Menu,MenuList,MenuEntry,Tag,Grid,DropDown} from 'components';
 
             window.lst = createApp({
                 components: { 
+                    DropDown,
                     Message,
                     ComponentForm,
                     Promised,
@@ -135,15 +139,29 @@ gridProperites:{
     total_pages:100,
     current_page:50,
     columns:[
-        [{ID:'title',Title:'People',HeaderColspan:2,HeaderOnly:true}],
-        [{ID:'firstname',PropertyName:'firstname',Title:'First Name'},{ID:'lastname',PropertyName:'lastname',Title:'Last Name'}],
-        [{ID:'username',HeaderColspan:2,DataColspan:2}]
+        [{id:'title',title:'People',headerColspan:2,headerOnly:true}],
+        [{id:'firstname',propertyName:'firstname',title:'First Name'},{id:'lastname',propertyName:'lastname',title:'Last Name'}],
+        [{id:'username',headerColspan:2,dataColspan:2}]
     ],
     data:[
         {firstname:'Bob',lastname:'Loblaw',username:'bob.loblaw'},
         {firstname:'Fred',lastname:'Flintstone',username:'fred.flintstone'}
     ]
-}
+},
+MyItems:[
+    {
+        children:[
+            {title:'test',active:false},
+            {title:'test_Active',active:true}
+        ]
+    },
+    {
+        children:[
+            {title:'test_sub',active:false},
+            {title:'test_sub_Active',active:true}
+        ]
+    }
+]
                     };
                 }     ,
                 methods:{

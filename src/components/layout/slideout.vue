@@ -36,7 +36,8 @@
         show?:boolean,
         has_close?:boolean,
         full_width?:boolean,
-        type?:ColorTypes
+        type?:ColorTypes,
+        not_animated?:boolean
     }>();
     
     const emit = defineEmits<{close}>();
@@ -46,6 +47,7 @@
         if (props.show){result.push('is-active');}
         if (props.type!==undefined && props.type!==null){result.push(`is-${props.type}`);}
         if (props.full_width){result.push('is-fullwidth');}
+        if (props.not_animated){result.push('no-animation');}
         return result;
     });
 </script>

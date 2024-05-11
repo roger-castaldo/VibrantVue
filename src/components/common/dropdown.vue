@@ -1,7 +1,7 @@
 <template>
     <div :class="Classes">
         <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true" :aria-controls="menuID" @click="isActive=true">
+            <button class="button" aria-haspopup="true" :aria-controls="menuID" @click="isActive=!isActive">
                 <span>{{props.title}}</span>
                 <span class="icon is-small">
                     <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -9,10 +9,10 @@
             </button>
         </div>
         <div class="dropdown-menu" :id="menuID" role="menu">
-            <div class="dropdown-content" v-for="block in Blocks">
-                <template v-for="content,index in block.children">
-                    <hr class="dropdown-divider" v-if="index>0"/>
-                    <component v-for="entry in content" 
+            <div class="dropdown-content" v-for="block,index in Blocks">
+                <hr class="dropdown-divider" v-if="index>0"/>
+                <template v-for="entry in block.children">
+                    <component 
                         :is="(entry instanceof String ? 'div' : 'a')"
                         :class="GetItemClasses(entry)"
                         :href="GetItemURL(entry)"
@@ -35,7 +35,7 @@
 
     const props = defineProps<{
         title:MaybeRef<string>,
-        items:MaybeRef<DropDownBlock[]|DropDownBlock>,
+        items:MaybeRef<DropDownBlock[]|DropDownBlock|(| string| DropDownItem)[]>,
         is_hoverable?:boolean,
         is_right_align?:boolean,
         drops_up?:boolean
@@ -52,8 +52,14 @@
         return results;
     });
     const Blocks = computed<DropDownBlock[]>(()=>{
-        let result = toValue(props.items);
-        return (Array.isArray(result) ? result : [result]);
+        let result = toValue<DropDownBlock[]|DropDownBlock|(string| DropDownItem)[]>(props.items);
+        if (Array.isArray(result) && result.length>0 && (result as any[])[0].children===undefined){
+            let block:DropDownBlock = {
+                children:result as (string| DropDownItem)[]
+            }
+            return [block];
+        }
+        return (Array.isArray(result) ? result : [result]) as DropDownBlock[];
     });
 
     const GetItemClasses = (entry:string|DropDownItem):string[]=>{

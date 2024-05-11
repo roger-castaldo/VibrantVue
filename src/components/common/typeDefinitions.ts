@@ -58,8 +58,5 @@ export type DropDownItem = {
 }
 
 export type DropDownBlock = {
-    children:(
-        | string
-        | DropDownItem
-    )[][]
+    children:(string|DropDownItem)[]
 }
