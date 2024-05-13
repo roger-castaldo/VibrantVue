@@ -91,7 +91,7 @@
         </div>
         <script type="module">
             import { createApp,ref} from "vue";
-            import {Message,ComponentForm,Promised,Pagination,Card,Menu,MenuList,MenuEntry,Tag,Grid,DropDown} from 'components';
+            import {Message,ComponentForm,Promised,Pagination,Card,Menu,MenuList,MenuEntry,Tag,Grid,DropDown,ColorTypes} from 'components';
 
             window.lst = createApp({
                 components: { 
@@ -140,13 +140,22 @@ gridProperites:{
     current_page:50,
     columns:[
         [{id:'title',title:'People',headerColspan:2,headerOnly:true}],
-        [{id:'firstname',propertyName:'firstname',title:'First Name'},{id:'lastname',propertyName:'lastname',title:'Last Name'}],
+        [{id:'firstname',propertyName:'firstname',title:'First Name',getCellColor:(rowIndex,row,data)=>{
+            if (rowIndex%2===1){return ColorTypes.warning;}
+            return null;
+        }},{id:'lastname',propertyName:'lastname',title:'Last Name'}],
         [{id:'username',headerColspan:2,dataColspan:2}]
     ],
     data:[
         {firstname:'Bob',lastname:'Loblaw',username:'bob.loblaw'},
         {firstname:'Fred',lastname:'Flintstone',username:'fred.flintstone'}
-    ]
+    ],
+    getRowColor:(rowIndex,row)=>{
+        if (rowIndex===0){
+            return ColorTypes.danger;
+        }
+        return null;
+    }
 },
 MyItems:[
     {

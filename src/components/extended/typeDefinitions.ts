@@ -1,6 +1,7 @@
 import { MaybeRef } from "vue";
 import { ITableProperties } from "../layout/interfaces";
 import { IPaginationProperties } from "../common/typeDefinitions";
+import { ColorTypes } from "../enums";
 
 type AutoCompleteEntry = {
     method:string,
@@ -18,7 +19,8 @@ type GridColumn = {
     dataRowspan?:number,
     cellClass?:MaybeRef<string>|MaybeRef<string[]>,
     headerOnly?:boolean,
-    canSort?:boolean
+    canSort?:boolean,
+    getCellColor?:(rowIndex:number,row:any,data:any|undefined)=>ColorTypes|null|undefined
 };
 
 type CellData = {
@@ -39,7 +41,8 @@ interface IGridProperties
     empty_message?:string,
     column_rows?:string[][],
     has_filter?:boolean,
-    current_sort?:GridSort
+    current_sort?:GridSort,
+    getRowColor?:(rowIndex:number,row:any)=>ColorTypes|null|undefined
 };
 
 export type {AutoCompleteEntry, GridColumn,CellData,GridSort};

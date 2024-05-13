@@ -35,12 +35,14 @@
             </template>
             <template v-else>
                 <template v-for="drow,index in props.data">
-                    <tr :key="`row-${index}-${cindex}`" v-for="row,cindex in ColumnRows.filter(col=>col.some(c=>!(c.headerOnly??false)))">
+                    <tr :key="`row-${index}-${cindex}`" 
+                        v-for="row,cindex in ColumnRows.filter(col=>col.some(c=>!(c.headerOnly??false)))"
+                        :class="extractRowClass(index,drow)">
                         <td :key="`data-${index}-${cindex}`" 
                             v-for="col in row.filter(c=>!(c.headerOnly??false))" 
                             :colspan="col.dataColspan" 
                             :rowspan="col.dataRowspan"
-                            :class="col.cellClass"
+                            :class="getCellClass(index,col,drow,(col.propertyName?drow[col.propertyName] : undefined))"
                             @click="emit('cellClicked',{rowIndex:index,data:(col.propertyName?drow[col.propertyName] : null),row:drow})"
                         >
                             <slot :name="`body-${col.id}`" v-bind="{rowIndex:index,data:(col.propertyName?drow[col.propertyName] : null),row:drow}">
@@ -68,7 +70,7 @@
 </template>
 
 <script lang="ts" setup>
-    import { CellData, GridSort, IGridProperties } from './typeDefinitions';
+    import { CellData, GridSort, IGridProperties,GridColumn } from './typeDefinitions';
     import Table from '../layout/table.vue';
     import Pagination from '../common/pagination.vue';
     import Notification from '../common/notification.vue';
@@ -78,7 +80,7 @@
     import { ITableProperties } from '../layout/interfaces';
     import { IPaginationProperties } from '../common/typeDefinitions';
     import {computed, toValue, useSlots} from 'vue';
-    import { Sizes } from '../enums';
+    import { ColorTypes, Sizes } from '../enums';
 
     const slots = useSlots();
 
@@ -141,4 +143,28 @@
             });
         }
     };
+    const extractRowClass = (rowIndex:number,row:any): string|null=>{
+        if (props.getRowColor){
+            let color = props.getRowColor(rowIndex,row);
+            if (color){
+                return `is-${color}`;
+            }
+        }
+        return null;
+    }
+    const getCellClass = (rowIndex:number,col:GridColumn,row:any,data:any|undefined) : string|null =>{
+        let result:string|null = '';
+        if (col.cellClass || col.getCellColor){
+            if(col.cellClass){
+                result += `${col.cellClass}`;
+            }
+            if (col.getCellColor){
+                let cellColor = col.getCellColor(rowIndex,row,data);
+                if (cellColor){
+                    result+= ` is-${cellColor}`;
+                }
+            }
+        }
+        return (result===''?null:result);
+    }
 </script>
