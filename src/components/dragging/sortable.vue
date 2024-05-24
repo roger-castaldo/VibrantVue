@@ -1,25 +1,24 @@
 ﻿<template>
     <List :type="type" :compact="compact" :outlined="outlined" :highlighted="highlighted" @drop="itemDropped">
         <template v-for="item,index in sorted">
-            <ListItem v-show="currentIndex===index&&selectedIndex!==index&&currentQuadrant===DropZoneQuadrants.top">
+            <li v-show="currentIndex===index&&selectedIndex!==index&&currentQuadrant===DropZoneQuadrants.top">
                 <Notification :light="true">&nbsp;</Notification>
-            </ListItem>
-            <ListItem draggable="true" @dragstart="dragStart(index,$event)" @dragend="selectedIndex=null" @dragover="itemEntered(index,$event)" :class="{'has-cursor':true,'is-move':(currentIndex==index),'is-grab':(currentIndex!=index)}">
+            </li>
+            <li draggable="true" @dragstart="dragStart(index,$event)" @dragend="selectedIndex=null" @dragover="itemEntered(index,$event)" :class="{'has-cursor':true,'is-move':(currentIndex==index),'is-grab':(currentIndex!=index)}">
                 <!--
                     @slot Used to render a given item in the sort list
                 -->
                 <slot name="item" :item="item" :index="index" />
-            </ListItem>
-            <ListItem v-show="currentIndex===index&&selectedIndex!==index&&currentQuadrant===DropZoneQuadrants.bottom">
+            </li>
+            <li v-show="currentIndex===index&&selectedIndex!==index&&currentQuadrant===DropZoneQuadrants.bottom">
                 <Notification :light="true">&nbsp;</Notification>
-            </ListItem>
+            </li>
         </template>
     </List>
 </template>
 
 <script lang="ts">
     import List from '../layout/list.vue';
-    import ListItem from '../layout/list-item.vue';
     import Notification from '../common/notification.vue';
     import { ref, watch,onMounted } from 'vue';
     import { ColorTypes, DropZoneQuadrants } from '../../enums';
