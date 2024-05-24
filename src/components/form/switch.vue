@@ -64,4 +64,4 @@
          */
         setValue 
     });
-</script>
+</script>./typeDefinitions

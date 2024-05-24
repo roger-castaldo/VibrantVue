@@ -31,7 +31,7 @@
  */
     import { ref, watch, inject,computed, toRaw } from 'vue';
     import Promised from '../common/Promised.vue';
-    import { SelectListItemValue, ValueChangedEvent} from './typesDefinitions';
+    import { SelectListItemValue, ValueChangedEvent} from './typeDefinitions';
     import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
     import {Progress,Notification} from '../common/';
     import {NoticeTypes} from '../../enums';

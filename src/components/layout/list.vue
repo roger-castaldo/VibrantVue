@@ -76,4 +76,4 @@
     const invokeClick = (item:definedListItem):void => {
         if (item.onClick){item.onClick();}
     };
-</script>
+</script>./typeDefinitions

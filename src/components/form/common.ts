@@ -1,5 +1,5 @@
 import { ComputedRef, Ref, computed, ref } from "vue";
-import { FormInputType, TranslateMethod } from "./typesDefinitions.ts";
+import { FormInputType, TranslateMethod } from "./typeDefinitions.ts";
 
 export const HIDDEN_FIELDS_PROPERTY = "HiddenFields";
 export const DISABLED_FIELDS_PROPERTY = "DisabledFields";

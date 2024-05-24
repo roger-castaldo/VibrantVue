@@ -120,4 +120,4 @@ import { ValueChangedEvent } from './typesDefinitions';
         return true;
     };
 
-</script>
+</script>./typeDefinitions

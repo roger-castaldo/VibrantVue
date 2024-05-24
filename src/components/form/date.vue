@@ -65,7 +65,7 @@
     import { Icon, ButtonOkay, ButtonCancel } from '../common/';
     import Time from './time.vue';
     import translate from '../../messages/messages.js';
-    import { ValueChangedEvent } from './typesDefinitions';
+    import { ValueChangedEvent } from './typeDefinitions';
     import { coreFieldProps } from './common';
 import { useLanguage } from '../shared';
 

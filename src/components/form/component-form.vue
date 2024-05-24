@@ -153,4 +153,4 @@
          */
         enableField
     });
-</script>
+</script>./typeDefinitions

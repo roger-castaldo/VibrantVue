@@ -85,4 +85,4 @@
         isValid
     });
     
-</script>
+</script>./typeDefinitions

@@ -22,7 +22,7 @@
 <script lang="ts">
     import { ref, computed, watch, inject } from 'vue';
     import Promised from '../common/Promised.vue';
-    import {ListItemValue, ValueChangedEvent } from './typesDefinitions';
+    import {ListItemValue, ValueChangedEvent } from './typeDefinitions';
     import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
     import {Progress,Notification} from '../common/';
     import {NoticeTypes} from '../../enums';

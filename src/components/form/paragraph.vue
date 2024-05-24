@@ -28,4 +28,4 @@
     const props = defineProps<fieldProps>();
 
     const Translator = useTranslator(props,inject);
-</script>
+</script>./typeDefinitions

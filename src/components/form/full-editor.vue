@@ -75,4 +75,4 @@
     onUnmounted(()=>{
         $(snote.value).summernote('destroy');
     });
-</script>
+</script>./typeDefinitions

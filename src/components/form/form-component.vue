@@ -236,4 +236,4 @@
     label.label > span.help.is-danger{
         display:inline-block;
     }
-</style>
+</style>./typeDefinitions

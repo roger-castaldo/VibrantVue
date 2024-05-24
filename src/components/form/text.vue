@@ -54,4 +54,4 @@ import { ValueChangedEvent } from './typesDefinitions';
          */
         setValue 
     });
-</script>
+</script>./typeDefinitions

@@ -66,4 +66,4 @@ type definedColumn = {
             };
         });
     });
-</script>
+</script>./typeDefinitions

@@ -120,34 +120,40 @@ function writeJsonDocFile(path,data){
     });
 }
 
-function extractPropType(type,tags){
+function extractPropType(type,tags,enumData,typeDefinitions){
   if(type===undefined || type===null){return '';}
   let result='';
   switch(type.name){
     case 'union':
-      result = type.elements.map(t=>extractPropType(t,tags)).join('\\|');
+      result = type.elements.map(t=>extractPropType(t,tags,enumData,typeDefinitions)).join('\\|');
       break;
     case 'Array':
-      result = `${extractPropType(type.elements[0],tags)}\\[\\]`;
+      result = `${extractPropType(type.elements[0],tags,enumData,typeDefinitions)}\\[\\]`;
       break;
     case 'MaybeRef':
     case 'Promise':
       result = `${type.name}`;
       if (type.elements){
-        result+=`\\<${extractPropType(type.elements[0],tags)}\\>`;
+        result+=`\\<${extractPropType(type.elements[0],tags,enumData,typeDefinitions)}\\>`;
       }
       break;
     case 'TSFunctionType':
       result = `()=>${tags!==undefined && tags.returns!==undefined ? tags.returns[0].description : 'unknown'}`;
       break;
     default:
-      result = `${type.name}`;
+      let url=null;
+      if (enumData[type.name]){
+        url=`../enums.md#${type.name}`;
+      }else if (typeDefinitions[type.name]){
+        url=`../types.md#${type.name}`;
+      }
+      result = (url? `[${type.name}](${url})` : `${type.name}`);
       break;
   }
   return result;
 }
 
-function generateMarkdownFromJSON(jsonData, outputFilePath,enumData) {
+function generateMarkdownFromJSON(jsonData, outputFilePath,enumData,typeDefinitions) {
   let markdownContent = '';
 
   // Iterate over each component in the JSON data
@@ -164,22 +170,26 @@ function generateMarkdownFromJSON(jsonData, outputFilePath,enumData) {
           markdownContent+=`| Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |\n`;
           component.props.forEach(prop => {
-              markdownContent += `| ${prop.name} | ${extractPropType(prop.type,prop.tags)} |`;
+              markdownContent += `| ${prop.name} | ${extractPropType(prop.type,prop.tags,enumData,typeDefinitions)} |`;
               if (prop.type?.name && (enumData[prop.type?.name]||(prop.type?.name==='union' && Object.keys(enumData).some(k=>prop.type?.elements.some(e=>e.name===k))))){
                 let values = [];
-                if (enumData[prop.type?.name])
-                   values = enumData[prop.type?.name];
-                else 
+                let hash='';
+                if (enumData[prop.type?.name]){
+                  values = enumData[prop.type?.name];
+                  hash=prop.type?.name;
+                }else{
                   values = enumData[Object.keys(enumData).find(k=>prop.type?.elements.some(e=>e.name===k))];
+                  hash = Object.keys(enumData).find(k=>prop.type?.elements.some(e=>e.name===k));
+                }
                 values = values.map(p=>p.name).join(', ');
                 if (values.length>250){
-                  values = values.substring(0,247)+`[...](../enums.md)`;
+                  values = values.substring(0,247)+`[...](../enums.md#${hash})`;
                 }
                 markdownContent+=`${values}`;
               }
               markdownContent+=`| ${prop.defaultValue ? prop.defaultValue.value : ''} | `
               if (prop.description){
-                markdownContent += `${prop.description.replace('\n','<br/>')}`;
+                markdownContent += `${prop.description.replaceAll('\n','<br/>')}`;
               }
               markdownContent+='|\n';
           });
@@ -193,7 +203,7 @@ function generateMarkdownFromJSON(jsonData, outputFilePath,enumData) {
           component.methods.forEach(method => {
               markdownContent += `| ${method.name}|`;
               if (method.description){
-                markdownContent+=`${method.description.replace('\n','<br/>')}`;
+                markdownContent+=`${method.description.replaceAll('\n','<br/>')}`;
               }
               markdownContent+='|\n';
           });
@@ -211,11 +221,11 @@ function generateMarkdownFromJSON(jsonData, outputFilePath,enumData) {
                 .filter(t=>t.title==='param').map(t=>`${t.name}:${t.description.replaceAll('|','\\|')}`)
                 .join(',');
             }else if (event.type){
-              markdownContent+=extractPropType({name:event.type.names[0],elements:event.type.elements});
+              markdownContent+=extractPropType({name:event.type.names[0],elements:event.type.elements},null,enumData,typeDefinitions);
             }
             markdownContent+='|';
             if (event.description){
-              markdownContent+=`${event.description.replace('\n','<br/>')}`;
+              markdownContent+=`${event.description.replaceAll('\n','<br/>')}`;
             }
             markdownContent+='|\n';
           });
@@ -229,7 +239,7 @@ function generateMarkdownFromJSON(jsonData, outputFilePath,enumData) {
           component.slots.forEach(slot => {
             markdownContent += `| ${slot.name}|`;
             if (slot.description){
-              markdownContent+=`${slot.description.replace('\n','<br/>')}`;
+              markdownContent+=`${slot.description.replaceAll('\n','<br/>')}`;
             }
             markdownContent+='|\n';
           });
@@ -243,7 +253,7 @@ function generateMarkdownFromJSON(jsonData, outputFilePath,enumData) {
         component.expose.forEach(expose => {
           markdownContent += `| ${expose.name}|`;
           if (expose.type){
-            markdownContent+=extractPropType({name:expose.type.names[0],elements:expose.type.elements});
+            markdownContent+=extractPropType({name:expose.type.names[0],elements:expose.type.elements},null,enumData,typeDefinitions);
           }else if (expose.tags && expose.tags.some(t=>t.title==='param')){
             markdownContent+=expose.tags
               .filter(t=>t.title==='param').map(t=>`${t.name}:${t.description.replaceAll('|','\\|')}`)
@@ -281,7 +291,7 @@ function writeEnumMDFile(enumData, outputFilePath) {
   let markdownContent = '# Enums\n\n';
 
   Object.keys(enumData).forEach(key=>{
-    markdownContent+=`## ${key}\n\n`;
+    markdownContent+=`## [${key}](#${key})\n\n`;
     markdownContent+=`| Name    | Value |
 | ------- | ------- |\n`;
     enumData[key].forEach(evalue=>{
@@ -301,7 +311,7 @@ function writeInjectionsMDFile(inputFilePath,outputFilePath){
   const sourcestring = fs.readFileSync(inputFilePath, 'utf8');
   let match;
   while ((match = re.exec(sourcestring)) !== null) {
-    markdownContent+=`|${match[1]}|${match[2]}|\n`;
+    markdownContent+=`|[${match[1]}](#${match[1]})|${match[2]}|\n`;
   }
   // Write markdown content to file
   fs.writeFileSync(outputFilePath, markdownContent, 'utf8');
@@ -334,9 +344,111 @@ function writeMDIndexes(docsFolder){
   fs.writeFileSync(path.join(docsFolder,'index.md'), markdownContent, 'utf8');
 }
 
+function extractTypeDefinitions(filePath) {
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const typeDefinitions = {};
+  const typeRegex = /export type (\w+) =([^{]+){([^}]*)}/g;
+  const propertyRegex = /\s*(\/\*\*(.*?)\*\/)\s*([^:]+):([^\n]+)\n/gs;
+  const inheritanceRegex = /((\w+)\s*&?)+/g;
+  
+  let typeMatch;
+  while ((typeMatch = typeRegex.exec(fileContent)) !== null) {
+      const typeName = typeMatch[1];
+      const inheritance = typeMatch[2];
+      const typeBody = typeMatch[3];
+      typeDefinitions[typeName] = {};
+
+      let inheritanceMatch;
+      let inheritanceList = [];
+      while ((inheritanceMatch = inheritanceRegex.exec(inheritance)) !== null){
+        inheritanceList.push(inheritanceMatch[2]);
+      }
+      if (inheritanceList.length>0){
+        typeDefinitions[typeName].inherits = inheritanceList;
+      }
+
+      let propertyMatch;
+      while ((propertyMatch = propertyRegex.exec(typeBody)) !== null) {
+          const headerItems = extractCommentHeaderItems([propertyMatch[1].trim()]);
+          const propertyOverrides = headerItems
+            .filter(line=>line.indexOf('@')===0)
+            .map(line=>{
+              const match = /^@([^\s]+)\s(.+)$/.exec(line);
+              return {
+                name:match[1],
+                value:match[2].trim()
+              };
+            });
+          const description = headerItems
+            .filter(line=>line.indexOf('@')!==0)
+            .join('\n');
+          let propertyName = propertyMatch[3];
+          let propertyType = propertyMatch[4].trim();
+          propertyType = (propertyType.endsWith(',') ? propertyType.substring(0,propertyType.length-1) : propertyType);
+          
+          typeDefinitions[typeName][propertyName] = {
+              description:description,
+              propertyOverrides,
+              type: propertyType
+          };
+      }
+  }
+  
+  return typeDefinitions;
+}
+
+function fixTableCellChars(input){
+  const resChars = '\\|<>[]';
+  for(let x=0;x<resChars.length;x++){
+    input = input.replaceAll(resChars[x],`\\${resChars[x]}`);
+  }
+  return input;
+}
+
+function writeTypesMDFile(outputFilePath,typeDefinitions){
+  let markdownContent = '# Types\n\n';
+  
+  Object.keys(typeDefinitions).forEach(key=>{
+    let type = typeDefinitions[key];
+
+    markdownContent+=`## [${key}](#${key})\n\n`;
+    if (type.inherits){
+      markdownContent+='### Inherits\n\n';
+      type.inherits.forEach(t=>markdownContent+=`- [${t}](#${t})\n`);
+      markdownContent+='\n';
+    }
+    markdownContent+=`### Properties\n
+| Name | Type | Description |
+| ------- | ------- | ------- |\n`;
+
+    Object.keys(type).forEach(prop=>{
+      if (prop!=='inherits'){
+        markdownContent+=`|${prop}|${fixTableCellChars(type[prop].type)}|${type[prop].description.replaceAll('\n','<br/>')}|\n`;
+      }
+    });
+    markdownContent+='\n\n';
+  });
+
+
+  // Write markdown content to file
+  fs.writeFileSync(outputFilePath, markdownContent, 'utf8');
+}
+
+const typeDefinitionPaths = [
+  'src/components/common/typeDefinitions.ts',
+  'src/components/extended/typeDefinitions.ts',
+  'src/components/form/typeDefinitions.ts',
+  'src/components/layout/typeDefinitions.ts'
+];
+
 async function main(){
   const enumData = extractEnums(fs.readFileSync('src/enums.ts', 'utf8'));
   const paths = findVueFiles('src/components/');
+
+  let typeDefinitions = {};
+  for(let x=0;x<typeDefinitionPaths.length;x++){
+    typeDefinitions = { ...typeDefinitions, ...extractTypeDefinitions(typeDefinitionPaths[x]) };
+  }
 
   const results = [];
   for(let x=0;x<paths.length;x++){
@@ -347,14 +459,20 @@ async function main(){
       ci.displayName=ci.exportName;
     }
     results.push(ci);
-    generateMarkdownFromJSON(ci,vueFile.path.replace('src\\components\\','docs\\').replace('.vue','.md'),enumData.values);
+    generateMarkdownFromJSON(ci,vueFile.path.replace('src\\components\\','docs\\').replace('.vue','.md'),enumData.values,typeDefinitions);
   }
   writeJsonDocFile('docs/components.json', results);
 
   //generate enums doc
   writeJsonDocFile('docs/enums.json',enumData.values);
   writeEnumMDFile(enumData.values,'docs/enums.md');
+
+  //generate injections
   writeInjectionsMDFile('src/components/shared.ts','docs/injections.md');
+
+  //generate types
+  writeJsonDocFile('docs/types.json',typeDefinitions);
+  writeTypesMDFile('docs/types.md',typeDefinitions);
 
   writeMDIndexes('docs');
 }

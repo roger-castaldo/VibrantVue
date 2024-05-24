@@ -67,4 +67,4 @@
          */
         setValue 
     });
-</script>
+</script>./typeDefinitions.ts

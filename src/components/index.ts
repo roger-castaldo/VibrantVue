@@ -5,7 +5,7 @@ import * as form from './form/index.ts';
 import * as layout from './layout/index.ts';
 import * as skin from '../css/skins.ts';
 import * as enums from '../enums.ts';
-import {ValueChangedEvent,ListItemValue,SelectListItemValue,FormInputType,TranslateMethod} from './form/typesDefinitions.ts';
+import {ValueChangedEvent,ListItemValue,SelectListItemValue,FormInputType,TranslateMethod} from './form/typeDefinitions.ts';
 import * as utilities from './utilities.ts';
 import * as extended from './extended/index.ts';
 import {AutoCompleteEntry} from './extended/typeDefinitions.ts';

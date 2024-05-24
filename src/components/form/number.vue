@@ -75,4 +75,4 @@
          */
         setValue 
     });
-</script>
+</script>./typeDefinitions

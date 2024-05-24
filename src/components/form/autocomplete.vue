@@ -224,4 +224,4 @@
          */
         setValue 
     });
-</script>
+</script>./typeDefinitions

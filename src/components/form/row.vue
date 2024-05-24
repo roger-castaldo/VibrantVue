@@ -107,4 +107,4 @@
          */
         isValid
     });
-</script>
+</script>./typeDefinitions
