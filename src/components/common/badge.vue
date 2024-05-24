@@ -1,18 +1,33 @@
 <template>
     <span :class="['badge',`is-${props.position}`,(props.type===undefined?'':`is-${props.type}`)]">
         {{ props.text }}
+        <!--
+            @slot Content of the badge if something beyond a text string is desired
+        -->
         <slot/>
     </span>
 </template>
 
 <script lang="ts" setup>
-    import { BadgePositiions,ColorTypes } from '../enums';
+/**
+ * @displayName Badge
+ */
+    import { BadgePositions,ColorTypes } from '../../enums';
 
     const props = withDefaults(defineProps<{
-        position?:BadgePositiions,
+        /**
+       * The position of the badge relative to it's parent.
+       */
+        position?:BadgePositions,
+        /**
+       * The text contained within the bade
+       */
         text?:string,
+        /**
+       * The ColorType the badge should be
+       */
         type?:ColorTypes
     }>(),{
-        position:BadgePositiions.topRight
+        position:BadgePositions.topRight
     });
 </script>

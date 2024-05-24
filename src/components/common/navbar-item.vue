@@ -33,6 +33,11 @@
 </script>
 
 <script lang="ts" setup>
+/**
+ * Internal class used to handle Nav Bar Entries for the NavBar component
+ * 
+ * @displayName NavBarItem
+ */
     const props = withDefaults(defineProps<ParentMenuItem>(),{
         active:false
     });
@@ -45,6 +50,9 @@
     };
 
     const emit = defineEmits<{
+        /**
+         * emitted when a particular NavBarItem is clicked
+         */
         itemClicked:[]
     }>();
 </script>

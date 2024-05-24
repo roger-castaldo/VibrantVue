@@ -80,12 +80,23 @@ import { useLanguage } from '../shared';
     };
 
     interface fieldProps extends coreFieldProps {
+        /**
+         * Label to use
+         */
         label:string;
+        /**
+         * Indicates if this is for a date and time or just a date
+         */
         includeTime?:boolean;
     }
 </script>
 
 <script lang="ts" setup>
+/**
+ * A date input used in a form
+ * 
+ * @displayName Date
+ */
     const time = ref(null);
 
     const props = withDefaults(defineProps<fieldProps>(),{
@@ -93,6 +104,11 @@ import { useLanguage } from '../shared';
     });
 
     const emit = defineEmits<{
+        /**
+         * Emitted when the value has changed
+         * 
+         * @param data ValueChangedEvent
+         */
          valueChanged:[data:ValueChangedEvent]
     }>();
 
@@ -239,7 +255,7 @@ import { useLanguage } from '../shared';
         return ret;
     });
 
-    const setValue = function (val:Date) {
+    const setValue = function (val:Date|null) {
         if (val == null) {
             value.value = null;
         } else {
@@ -247,7 +263,19 @@ import { useLanguage } from '../shared';
         }
     };
 
-    defineExpose({getValue,setValue});
+    defineExpose({ 
+        /**
+         * Gets the current value 
+         */
+        getValue, 
+        /**
+         * Sets the current value
+         * 
+         * @param value Date|null
+         * @returns void
+         */
+        setValue 
+    });
 
     const processTimeChange = (event:ValueChangedEvent):void=> {
         if (event.value == null) {

@@ -5,6 +5,10 @@
           "DOM"
         ],
         "downlevelIteration": true,
-        "resolveJsonModule": true
+        "moduleResolution":"NodeNext",
+        "resolveJsonModule": true,
+        "module": "NodeNext",
+        "allowImportingTsExtensions":true,
+        "noEmit": true
     }
 }

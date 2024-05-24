@@ -8,12 +8,23 @@
     import { inject } from 'vue';
 
     interface fieldProps extends translateFieldProps {
+        /**
+         * The content of the paragraph
+         */
         label:string,
+        /**
+         * The name of the field
+         */
         name?:string
     };
 </script>
 
 <script lang="ts" setup>
+/**
+ * A paragraph
+ * 
+ * @displayName Paragraph
+ */
     const props = defineProps<fieldProps>();
 
     const Translator = useTranslator(props,inject);

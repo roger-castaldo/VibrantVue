@@ -23,15 +23,32 @@
 </template>
 
 <script lang="ts" setup>
+/**
+ * A Tabs component to use (Tab Navigation)
+ * 
+ * @displayName Tabs
+ */
     import {Icon,Promised, Progress} from '../common/';
     import {computed} from 'vue';
-    import { TabAlignments, TabStyles,Sizes } from '../enums';
+    import { TabAlignments, TabStyles,Sizes } from '../../enums';
     import {Tab} from './interfaces';
 
     const props = defineProps<{
+        /**
+         * The tabs to be defined 
+         */
         tabs:Tab[]|Promise<Tab[]>,
+        /**
+         * The alignment of the tabs
+         */
         alignment?:TabAlignments,
+        /**
+         * The color styling for the tabs
+         */
         type?:TabStyles,
+        /**
+         * Indicates if the width should just be max and not based on the content
+         */
         full_width?:boolean
     }>();
 

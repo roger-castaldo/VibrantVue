@@ -48,18 +48,42 @@
     const TRANSLATE_FIELDS = ['subform','switch','select','radio-group','paragraph','header','checkbox-group','checkbox','button','autocomplete'];
 
     interface formComponentProps extends translateFieldProps{
+        /**
+         * The type of input this form component represents
+         */
         input:FormInputType,
+        /**
+         * Indicates if this is disabled
+         */
         disabled?:boolean,
+        /**
+         * Indicates if this is hidden
+         */
         hidden?:boolean
     };
 </script>
 
 <script lang="ts" setup>
+/**
+ * A date input used in a form
+ * 
+ * @displayName FormComponent
+ */
     const inp = ref<any>(null);
 
     const emit = defineEmits<{
-         valueChanged:[data:ValueChangedEvent],
-         buttonClicked:[name:string]
+        /**
+         * Emitted when the value of this form component changes
+         * 
+         * @param data ValueChangedEvent
+         */
+        valueChanged:[data:ValueChangedEvent],
+        /**
+         * Emitted when a button within this form component is clicked
+         * 
+         * @param name string
+         */
+        buttonClicked:[name:string]
     }>();
 
     const props = withDefaults(defineProps<formComponentProps>(),{
@@ -95,7 +119,7 @@
         return result;
     });
 
-    const setValue = function (value) {
+    const setValue = function (value:any) {
         if (inp.value !== null && inp.value.setValue !== undefined) {
             inp.value.setValue(value);
         }
@@ -168,7 +192,44 @@
             throw 'unable to call set values on any form element except a subform';
     };
     
-    defineExpose({ setValue, fieldName, type,altFieldName, getValue, isValid, setValues});
+    defineExpose({ 
+        /**
+         * Called to set the value for this given form component
+         * 
+         * @param value any
+         */
+        setValue, 
+        /**
+         * Property that returns the name of this given component
+         */
+        fieldName, 
+        /**
+         * Property that returns the type of form component this is
+         */
+        type,
+        /**
+         * Property that returns the alternative field name for this component
+         */
+        altFieldName, 
+        /**
+         * Called to get the value of this component.
+         * If this is a basic component, it returns that value.
+         * If this is a subform it will return an object where the propertyName are the names of the fields in the subform.
+         */
+        getValue, 
+        /**
+         * Called to see if this component is valid.
+         * If this is a basic component, it ensures it has a value if required.
+         * If this is a subform it returns the result from the subform isValid call.
+         */
+        isValid, 
+        /**
+         * Called to set the values of a subform component, this will throw an error if this component is not a subform.
+         * 
+         * @param values any|null
+         */
+        setValues
+    });
 </script>
 
 <style>

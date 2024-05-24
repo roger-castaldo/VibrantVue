@@ -1,17 +1,33 @@
 ﻿<template>
     <component ref="handle" :is="props.tag" :class="{'is-bordered':isOver}" @dragenter="Enter" @dragleave="Leave" @drop="Drop" @dragover="Moved">
+        <!--
+            @slot The area contained within the drop zone to be used however is seen fit
+        -->
         <slot />
     </component>
 </template>
 
 <script lang="ts">
     import { ref,computed } from 'vue';
-    import {DropZoneQuadrants} from '../enums';
+    import {DropZoneQuadrants} from '../../enums';
 </script>
 
 <script lang="ts" setup>
+/**
+ * Used to supply a Drop Zone for a draggable item to be dropped within
+ * 
+ * @displayName Dropzone
+ */
     const props = withDefaults(defineProps<{
+        /**
+         * A callback designed to indicate of a particular item being dragged into this drop zone can be dropped here
+         * 
+         * @param data the data supplied as copy_data from the DraggableItem
+         */
         is_valid_child?:(data:any)=>boolean,
+        /**
+         * The html tag to render this drop zone as
+         */
         tag?:string
     }>(),{
         tag:'div',
@@ -19,9 +35,25 @@
     });
 
     const emit = defineEmits<{
+        /**
+         * Emitted when a valid item is dropped into this zone.  
+         * Supplies both the copy_data as well as a position to indicate the quadrant it was dropped in.
+         */
         itemAdded:[data:any,position:DropZoneQuadrants],
+        /**
+         * Emitted when a valid item enters into this zone.  
+         * Supplies a position to indicate the quadrant it entered in.
+         */
         itemEntered:[quadrant:DropZoneQuadrants],
+        /**
+         * Emitted when a valid item exits from this zone.  
+         * Supplies a position to indicate the quadrant it exited from.
+         */
         itemExited:[quadrant:DropZoneQuadrants],
+        /**
+         * Emitted when a valid item moves within the zone
+         * Supplies a position to indicate the quadrant it moved into.
+         */
         itemMoved:[quadrant:DropZoneQuadrants]
     }>();
 

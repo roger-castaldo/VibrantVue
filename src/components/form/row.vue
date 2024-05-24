@@ -12,16 +12,37 @@
 </script>
 
 <script lang="ts" setup>
+/**
+ * An internal component for defining a row in a form
+ * 
+ * @displayName Row
+ */
     const props = withDefaults(defineProps<{
+        /**
+         * The inputs contained within the row
+         */
         inputs:FormInputType[],
+        /**
+         * Indicates if the row is disabled
+         */
         disabled?:boolean
     }>(),{
         disabled:false
     });
 
     const emit = defineEmits<{
-         valueChanged:[data:ValueChangedEvent],
-         buttonClicked:[name:string]
+        /**
+         * Emitted when the value of a component in this row changes
+         * 
+         * @param data ValueChangedEvent
+         */
+        valueChanged:[data:ValueChangedEvent],
+        /**
+         * Emitted when a button within this row is clicked
+         * 
+         * @param name string
+         */
+        buttonClicked:[name:string]
     }>();
 
     const refs = props.inputs.map(i=>ref(null));
@@ -29,7 +50,7 @@
     const hiddenInputs = inject<string[]>(HIDDEN_FIELDS_PROPERTY);
     const disabledFields = inject<string[]>(DISABLED_FIELDS_PROPERTY);
 
-    const setValue = (values:any):void=> {
+    const setValue = (values:any|null):void=> {
         refs.forEach((input,index) => {
             switch (props.inputs[index].type) {
                 case 'subform':
@@ -69,5 +90,21 @@
         return !refs.some(input=>!(input.value.isValid===undefined?true:input.value.isValid()));
     };
     
-    defineExpose({ setValue, getValue, isValid});
+    defineExpose({ 
+        /**
+         * Called to set the value for a component in the row
+         * 
+         * @param value any
+         */
+         setValue,  
+        /**
+         * Called to get the value of the components in this row.
+         * Returns an object where the propertyName are the names of the fields in the subform.
+         */
+         getValue, 
+        /**
+         * Called to see if all the copmonents in this row are valid.
+         */
+        isValid
+    });
 </script>

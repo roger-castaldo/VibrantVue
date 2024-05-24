@@ -2,12 +2,21 @@
     <div :class="containerClasses">
         <table :class="tableClasses">
             <thead v-if="slots.thead">
+                <!--
+                    @slot The thead portion of the table
+                -->
                 <slot name="thead" />
             </thead>
             <tbody v-if="slots.tbody">
+                <!--
+                    @slot The tbody portion of the table
+                -->
                 <slot name="tbody"/>
             </tbody>
             <tfoot v-if="slots.tfoot">
+                <!--
+                    @slot The tfoot portion of the table
+                -->
                 <slot name="tfoot"/>
             </tfoot>
         </table>
@@ -15,6 +24,11 @@
 </template>
 
 <script lang="ts" setup>
+/**
+ * A Table component to use
+ * 
+ * @displayName Table
+ */
     import {computed, useSlots} from 'vue';
     import { ITableProperties } from './interfaces';
 

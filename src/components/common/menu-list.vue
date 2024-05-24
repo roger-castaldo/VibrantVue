@@ -13,18 +13,29 @@
                 </li>
             </template>
         </Promised>
+        <!--
+            @slot Used to add custom content to a MenuList
+        -->
         <slot/>
     </ul>
 </template>
 <script lang="ts" setup>
+/**
+ * This is used to supply a list of Menu Items to a Menu
+ * 
+ * @displayName MenuList
+ */
     import { ParentMenuItem } from './typeDefinitions';
-    import { Sizes } from '../enums';
+    import { Sizes } from '../../enums';
     import Icon from './icon.vue';
     import Progress from './progress.vue';
     import Promised from './Promised.vue';
     import MenuEntry from './menu-entry.vue';
 
     const props = defineProps<{
+        /**
+         * The Menu items for this list of menu entries
+         */
         items:Promise<ParentMenuItem[]>|ParentMenuItem[]|null
     }>();
 

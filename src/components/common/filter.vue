@@ -11,15 +11,25 @@
     import { onMounted, ref, watch, computed,inject } from 'vue';
     import Icon from './icon.vue';
     import translate from '../../messages/messages.js';
-import { useLanguage } from '../shared';
+    import { useLanguage } from '../shared';
 </script>
 
 <script lang="ts" setup>
+/**
+ * This is a built form style component used to create a basic filter input
+ * @displayName Filter
+ */
     const props = defineProps<{
+        /**
+         * The default value to set the filter to when it is cleared
+         */
         default_value?:string
     }>();
 
     const emit = defineEmits<{
+        /**
+         * When a filter is triggered this event will emit supplying the value or null
+         */
         filter:[value:string|null]
     }>();
 

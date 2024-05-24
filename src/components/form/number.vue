@@ -8,18 +8,37 @@
     import { ValueChangedEvent } from './typesDefinitions';
 
     interface fieldProps extends coreFieldProps {
+        /**
+         * The minimum value
+         */
         min?:number;
+        /**
+         * The maximum value
+         */
         max?:number;
+        /**
+         * The step value
+         */
         step?:number;
     };
 </script>
 
 <script lang="ts" setup>
+/**
+ * A number input
+ * 
+ * @displayName Number
+ */
     const props = withDefaults(defineProps<fieldProps>(),{
         disabled:false
     });
     
     const emit = defineEmits<{
+        /**
+         * Emitted when the value has changed
+         * 
+         * @param data ValueChangedEvent
+         */
          valueChanged:[data:ValueChangedEvent]
     }>();
 
@@ -43,5 +62,17 @@
 
     watch([value], (val) => emit('valueChanged', { name: props.name, value: getValue() }));
 
-    defineExpose({ getValue, setValue });
+    defineExpose({ 
+        /**
+         * Gets the current value 
+         */
+        getValue, 
+        /**
+         * Sets the current value
+         * 
+         * @param value number|string|null
+         * @returns void
+         */
+        setValue 
+    });
 </script>

@@ -12,9 +12,14 @@
             </div>
         </div>
         <div class="steps-content">
-            <div v-for="step,index in steps" :class="['step-content',(index===currentIndex?'is-active':'')]">
-                <slot :name="step.name"/>
-            </div>
+            <template v-for="step,index in steps">
+                <div :class="['step-content',(index===currentIndex?'is-active':'')]" v-if="slots[step.name]">
+                    <!--
+                        @slot a slot created for each step named with the step's name
+                    -->
+                    <slot :name="step.name"/>
+                </div>
+            </template>
         </div>
         <div class="steps-actions">
             <template v-if="props.use_previous_next">
@@ -29,21 +34,37 @@
                 </div>
             </template>
             <template v-else>
-                <slot v-for="name in actionSlots" :name="name"/>
+                <!--
+                    @slot a slot created for the actions (as a default) when use_previous_next is false
+                -->
+                <slot name="actions" v-if="slots['actions']"/>
+                <template v-for="step,index in steps">
+                    <!--
+                        @slot a slot created for each of the actions of each step when use_previous_next is false
+                    -->
+                    <slot :name="`actions-${step.name}`" v-if="slots[`actions-${step.name}`] && index===currentIndex"/>
+                </template>
             </template>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-    import { Sizes } from '../enums';
-    import { IWizardStep } from './typeDefinitions';
+/**
+ * Used to supply Step Wizard control
+ * All steps are 0 based index
+ * 
+ * @displayName StepWizard
+ */
+    import { Sizes } from '../../enums';
+    import { WizardStep } from './typeDefinitions';
     import Icon from './icon.vue';
     import Button from './button.vue';
-    import {ref,computed, inject,watch } from 'vue';
+    import {ref,computed, inject,watch,useSlots } from 'vue';
     import translate from '../../messages/messages.js';
     import { useLanguage } from '../shared';
 
+    const slots = useSlots();
     const Language = useLanguage(inject);
 
     const Previous = computed<string>(()=>translate('Pagination.Previous',Language));
@@ -51,36 +72,50 @@
     const Done = computed<string>(()=>translate('Wizard.Done',Language));
 
     const props = withDefaults(defineProps<{
-        steps:IWizardStep[],
+        /**
+         * The steps for the wizard
+         */
+        steps:WizardStep[],
+        /**
+         * Inidicates if the actions should be defaulted to Previous/Next/Done
+         */
         use_previous_next?:boolean,
-        action_slots?:number,
+        /**
+         * The size of the steps indicators to use
+         */
         size?:Sizes,
+        /**
+         * The starting step index
+         */
         starting_index?:number
     }>(),
     {
         size:Sizes.normal,
-        use_previous_next:true,
-        action_slots:0
+        use_previous_next:true
     });
     const emit = defineEmits<{
+        /**
+         * Emitted when the wizard is completed (last step succeeded and done clicked)
+         */
         done: [],
+        /**
+         * Emitted when the step is changed to a given index
+         */
         changedStep:[index:number]
     }>();
 
     const currentIndex = ref(props.starting_index??0);
-    const actionSlots = computed(()=>{
-        let result=[];
-        for(let x=0;x<props.action_slots;x++){
-            result.push(`action-${x}`);
-        }
-        return result;
-    });
 
     watch(currentIndex,(value:number,oldValue:number)=>{
         emit('changedStep',value);
     });
 
     defineExpose({
+        /**
+         * Used to move to a given step in the wizard
+         * 
+         * @param index the step index to move to
+         */
         moveToStep:(index:number)=>{
             currentIndex.value=index;
         }

@@ -18,17 +18,43 @@
     import { computed } from 'vue';
     import Icon from './icon.vue';
     import Animation from './animation.vue';
-    import {NoticeTypes,AnimationTypes,AnimationSpeeds,IconSizes} from '../enums';
+    import {NoticeTypes,AnimationTypes,AnimationSpeeds,IconSizes} from '../../enums';
 </script>
 
 <script lang="ts" setup>
+/**
+ * Used to supply a page level notification that will appear on top of everything
+ * 
+ * @displayName PageNotification
+ */
     const props = withDefaults(defineProps<{
+        /**
+         * Inidicates whether or not to show
+         */
         visible?:boolean,
+        /**
+         * Set the color of the notification
+         */
         type?:NoticeTypes,
+        /**
+         * The message content of the notification
+         */
         message?:string,
+        /**
+         * The title for the notification
+         */
         header?:string,
+        /**
+         * Indicates if the user needs to be blocked from doing anything while fvisible
+         */
         block_user?:boolean,
+        /**
+         * Inidicates if there is a close button
+         */
         has_close?:boolean,
+        /**
+         * Indicates the use of the light version of the color specified
+         */
         is_light?:boolean
     }>(),{
         visible:false,
@@ -36,6 +62,9 @@
     });
 
     const emit = defineEmits<{
+        /**
+         * Emitted when the close button is clicked
+         */
         close:[]
     }>();
     const iconType = computed<string>(()=>{

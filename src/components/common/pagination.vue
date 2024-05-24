@@ -28,12 +28,17 @@
     import { computed, inject,toValue } from 'vue';
     import translate from '../../messages/messages.js';
     import Icon from './icon.vue';
-    import { Sizes,IconSizes } from '../enums';
+    import { Sizes,IconSizes } from '../../enums';
     import { useLanguage } from '../shared';
     import { IPaginationProperties } from './typeDefinitions';
 </script>
 
 <script lang="ts" setup>
+/**
+ * Used to supply a pagination control
+ * 
+ * @displayName Pagination
+ */
     const props = withDefaults(defineProps<IPaginationProperties>(),{
         usenext:true,
         size:Sizes.small,
@@ -44,8 +49,17 @@
     });
 
     const emit = defineEmits<{
+        /**
+         * Emitted when the Move Forward button is clicked
+         */
         moveForward:[],
+        /**
+         * Emitted when the Move Back button is clicked
+         */
         moveBack:[],
+        /**
+         * Emitted when a given page number is clicked
+         */
         goToPage:[page:number]
     }>();
 

@@ -26,22 +26,35 @@
     import {ListItemValue, ValueChangedEvent } from './typesDefinitions';
     import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
     import {Progress,Notification} from '../common/';
-    import {NoticeTypes} from '../enums';
+    import {NoticeTypes} from '../../enums';
     import { useLanguage } from '../shared';
     import translate from '../../messages/messages.js';
 
     interface fieldProps extends commonFieldProps {
+        /**
+         * The values to build the radio group from
+         */
         values:ListItemValue[]|Promise<ListItemValue[]>|(()=>ListItemValue[])|(()=>Promise<ListItemValue[]>);
     };
 </script>
 
 <script lang="ts" setup>
+/**
+ * A radio group
+ * 
+ * @displayName RadioGroup
+ */
     const props = defineProps<fieldProps>();
 
     const Language = useLanguage(inject);
     const Error = computed<string>(()=>translate('Form.Error',Language));
 
     const emit = defineEmits<{
+        /**
+         * Emitted when the value has changed
+         * 
+         * @param data ValueChangedEvent
+         */
          valueChanged:[data:ValueChangedEvent]
     }>();
 
@@ -72,11 +85,23 @@
             });
         }
     });
-    const setValue = (value:any):void => {
+    const setValue = (value:any|null):void => {
         val.value = value;
     };
     
     const {hiddenValues,disabledValues} = useValuesList(props.name,inject);
 
-    defineExpose({ getValue, setValue});
+    defineExpose({ 
+        /**
+         * Gets the current value 
+         */
+        getValue, 
+        /**
+         * Sets the current value
+         * 
+         * @param value any|null
+         * @returns void
+         */
+        setValue 
+    });
 </script>

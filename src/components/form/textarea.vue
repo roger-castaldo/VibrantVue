@@ -20,8 +20,18 @@ import { ValueChangedEvent } from './typesDefinitions';
 </script>
 
 <script lang="ts" setup>
+/**
+ * A text area input for the form
+ * 
+ * @displayName Textarea
+ */
     const props = defineProps<fieldProps>();
     const emit = defineEmits<{
+        /**
+         * Emitted when the value of the textarea changes
+         * 
+         * @param data ValueChangedEvent
+         */
          valueChanged:[data:ValueChangedEvent]
     }>();
 
@@ -32,7 +42,19 @@ import { ValueChangedEvent } from './typesDefinitions';
     const getValue = ():string=> { return value.value; };
     const setValue = (val:string|null):void=> { value.value = val; };
 
-    defineExpose({ getValue, setValue });
+    defineExpose({ 
+        /**
+         * Gets the current value 
+         */
+        getValue, 
+        /**
+         * Sets the current value
+         * 
+         * @param value string|null
+         * @returns void
+         */
+        setValue 
+    });
 
     const keyPressed = (event:any):boolean=> {
         if (props.supportsTab) {

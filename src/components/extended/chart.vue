@@ -17,31 +17,69 @@
     import Card from '../layout/card.vue';
     import ButtonRefresh from '../common/button-refresh.vue';
     import 'jquery';
-    import {ChartTypes,ChartLegendPositions} from '../enums';
+    import {ChartTypes,ChartLegendPositions} from '../../enums';
     import { useChartJS } from '../shared';
 import { loadNonEs6Module } from '../utilities';
 </script>
 
 <script lang="ts" setup>
+/**
+ * Used to create a ChartJS chart
+ * 
+ * @displayName Chart
+ */
     const chartURL = `${useChartJS(inject)}chart.umd.min.js`;
 
     const canvas = ref<any>(null);
 
     const props = withDefaults(defineProps<{
+        /**
+         * The labels to use
+         */
         labels?:string[], 
+        /**
+         * The data sets to supply
+         */
         datasets:unknown[], 
+        /**
+         * The type of chart to render
+         */
         type?:ChartTypes, 
+        /**
+         * The title for the chart
+         */
         title?:string, 
+        /**
+         * Inidicates if a Refresh button should be supplied
+         */
         show_refresh?:boolean, 
+        /**
+         * The width for the chart
+         */
         width?:number, 
+        /**
+         * The height for the chart
+         */
         height?:number, 
+        /**
+         * The position of the chart legend
+         */
         legend_position?:ChartLegendPositions, 
+        /**
+         * The scales to supply to the chart
+         */
         scales?:unknown[], 
+        /**
+         * The tooltips to supply to the chart
+         */
         tooltips?:unknown
     }>(),{
         legend_position:ChartLegendPositions.right
     });
     const emit = defineEmits<{
+        /**
+         * Emitted when a legend item is clicked.  Supplies both the chart object and the legend item clicked
+         */
         legendItemClick: [chart:unknown,legendItem:unknown]
     }>();
 

@@ -1,15 +1,24 @@
 import { ComputedRef, Ref, computed, ref } from "vue";
-import { FormInputType, TranslateMethod,ValueChangedEvent } from "./typesDefinitions";
+import { FormInputType, TranslateMethod } from "./typesDefinitions.ts";
 
 export const HIDDEN_FIELDS_PROPERTY = "HiddenFields";
 export const DISABLED_FIELDS_PROPERTY = "DisabledFields";
 
 export interface translateFieldProps{
+    /**
+     * The translate call method used to translate a given value (field title, element name, etc) into a desired language
+     */
     translate?:TranslateMethod;
 }
 
 export interface coreFieldProps{
+    /**
+     * The name of the form element
+     */
     name:string;
+    /**
+     * Indicates if it is currently disabled
+     */
     disabled:boolean;
 };
 

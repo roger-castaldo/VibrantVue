@@ -24,12 +24,17 @@
 </template>
 
 <script lang="ts">
+/**
+ * A select input
+ * 
+ * @displayName Select
+ */
     import { ref, watch, inject,computed, toRaw } from 'vue';
     import Promised from '../common/Promised.vue';
     import { SelectListItemValue, ValueChangedEvent} from './typesDefinitions';
     import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
     import {Progress,Notification} from '../common/';
-    import {NoticeTypes} from '../enums';
+    import {NoticeTypes} from '../../enums';
     import translate from '../../messages/messages.js';
     import { useLanguage } from '../shared';
 
@@ -54,7 +59,13 @@
     };
 
     interface fieldProps extends commonFieldProps{
+        /**
+         * The values to supply for the select box
+         */
         values:SelectListItemValue[]|Promise<SelectListItemValue[]>|(()=>SelectListItemValue[])|(()=>Promise<SelectListItemValue[]>);
+        /**
+         * Indicates if this is multiple select
+         */
         multiple?:boolean;
     };
 </script>
@@ -69,6 +80,11 @@
     const Error = computed<string>(()=>translate('Form.Error',Language));
 
     const emit = defineEmits<{
+        /**
+         * Emitted when the value has changed
+         * 
+         * @param data ValueChangedEvent
+         */
          valueChanged:[data:ValueChangedEvent]
     }>();
 
@@ -139,7 +155,7 @@
             emit('valueChanged', { name: props.name, value: getValue() });
     });
 
-    const setValue = (val:any[]|any):void=> {
+    const setValue = (val:any[]|any|null):void=> {
         locked.value = true;
         if (val !== null && val !== undefined) {
             if (props.multiple) {
@@ -159,6 +175,18 @@
     
     const {hiddenValues,disabledValues} = useValuesList(props.name,inject);
 
-    defineExpose({ getValue, setValue });
+    defineExpose({ 
+        /**
+         * Gets the current value 
+         */
+        getValue, 
+        /**
+         * Sets the current value
+         * 
+         * @param value any|any[]|null
+         * @returns void
+         */
+        setValue 
+    });
 
 </script>

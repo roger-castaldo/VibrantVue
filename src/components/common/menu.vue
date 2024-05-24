@@ -4,9 +4,17 @@
     </aside>
 </template>
 <script lang="ts" setup>
-import { FixedMenuPositions } from '../enums';
+/**
+ * This is used to supply a side menu to your screen
+ * 
+ * @displayName Menu
+ */
+import { FixedMenuPositions } from '../../enums';
 
     const props = defineProps<{
+        /**
+         * Defines both if the menu is fixed and what position it is fixed in
+         */
         fixedPosition?:FixedMenuPositions
     }>();
 </script>

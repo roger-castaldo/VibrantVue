@@ -8,10 +8,23 @@ import { ValueChangedEvent } from './typesDefinitions';
 </script>
 
 <script lang="ts" setup>
+/**
+ * A hidden input
+ * 
+ * @displayName Hidden
+ */
     const props = defineProps<{
+        /**
+         * The name of the input
+         */
         name:string
     }>();
     const emit = defineEmits<{
+        /**
+         * Emitted when the value has changed
+         * 
+         * @param data ValueChangedEvent
+         */
          valueChanged:[data:ValueChangedEvent]
     }>();
 
@@ -20,7 +33,19 @@ import { ValueChangedEvent } from './typesDefinitions';
     watch(value, (val) => emit('valueChanged', { name: props.name, value: val }));
 
     const getValue = ():string => { return value.value; };
-    const setValue = (val:string):void=> { value.value = val; };
+    const setValue = (val:string|null):void=> { value.value = val; };
 
-    defineExpose({ getValue, setValue });
+    defineExpose({ 
+        /**
+         * Gets the current value 
+         */
+        getValue, 
+        /**
+         * Sets the current value
+         * 
+         * @param value string|null
+         * @returns void
+         */
+        setValue 
+    });
 </script>

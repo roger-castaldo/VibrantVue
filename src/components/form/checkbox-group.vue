@@ -25,23 +25,36 @@
     import {ListItemValue, ValueChangedEvent } from './typesDefinitions';
     import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
     import {Progress,Notification} from '../common/';
-    import {NoticeTypes} from '../enums';
+    import {NoticeTypes} from '../../enums';
     import { useLanguage } from '../shared';
     import translate from '../../messages/messages.js';
 
     interface fieldProps extends commonFieldProps {
+        /**
+         * The available values to create the list of checkboxes from
+         */
         values:ListItemValue[]|Promise<ListItemValue[]>|(()=>ListItemValue[])|(()=>Promise<ListItemValue[]>);
     };
 </script>
 
 <script lang="ts" setup>
+/**
+ * A list of checkboxes that are related in some way and therefore grouped together
+ * 
+ * @displayName CheckboxGroup
+ */
     const props = defineProps<fieldProps>();
 
     const Language = useLanguage(inject);
     const Error = computed<string>(()=>translate('Form.Error',Language));
 
     const emit = defineEmits<{
-         valueChanged:[data:ValueChangedEvent]
+        /**
+         * Emitted when a checkbox is either checked or unchecked
+         * 
+         * @param data ValueChangedEvent
+         */
+        valueChanged:[data:ValueChangedEvent]
     }>();
 
     const Translator = useTranslator(props,inject);
@@ -90,5 +103,17 @@
     
     const {hiddenValues,disabledValues} = useValuesList(props.name,inject);
 
-    defineExpose({ getValue, setValue});
+    defineExpose({ 
+        /**
+         * Gets the current value 
+         */
+        getValue, 
+        /**
+         * Sets the current value
+         * 
+         * @param value any[]|null
+         * @returns void
+         */
+        setValue 
+    });
 </script>

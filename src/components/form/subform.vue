@@ -11,20 +11,41 @@
     import {buildFieldRows, coreFieldProps} from './common';
 
     interface fieldProps extends coreFieldProps {
+        /**
+         * The form components for this subform
+         */
         fields:FormInputType[];
+        /**
+         * Indicates if the subform is hidden
+         */
         hidden?:boolean;
     };
 </script>
 
 <script lang="ts" setup>
+/**
+ * Used to create form within a form (a way of collecting child inputs that maybe have a specific use)
+ * 
+ * @displayName Subform
+ */
     const props = withDefaults(defineProps<fieldProps>(),{
         hidden:false,
         disabled:false
     });
     
     const emit = defineEmits<{
+        /**
+         * Emitted when the value of a form element changes
+         * 
+         * @param data ValueChangedEvent
+         */
          valueChanged:[data:ValueChangedEvent],
-         buttonClicked:[name:string]
+        /**
+         * Emitted when a button within the sub form is clicked
+         * 
+         * @param name string
+         */
+        buttonClicked:[name:string]
     }>();
 
     let refs = [];
@@ -46,6 +67,22 @@
         return ret;
     };
     
-    defineExpose({ isValid, setValue, getValue});
+    defineExpose({ 
+        /**
+         * Called to set the value of 1 or more copmonents inside this sub form
+         * 
+         * @param value any
+         */
+        setValue, 
+        /**
+         * Called to get the value of this of all the components inside this subform.  
+         * Returns an object where each propertyName is the name of the field and it's value is the value.
+         */
+        getValue, 
+        /**
+         * Called to see if this sub form is valid.  It returns the result of true if all the components return true from their isValid calls
+         */
+        isValid
+    });
     
 </script>

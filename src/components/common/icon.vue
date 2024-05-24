@@ -4,7 +4,7 @@
 
 <script lang="ts">
     import { computed,watch,inject,ref } from 'vue';
-    import {IconSizes} from '../enums';
+    import {IconSizes} from '../../enums';
     import { useFontAwesome, useIconSet } from '../shared';
 
     const brandsUrl:string = `brands.min.css`;
@@ -52,6 +52,13 @@
 </script>
 
 <script lang="ts" setup>
+/**
+ * This is used to add an icon on the screen from the font-awesome icon set
+ * If you desire to change the font awesome cdn version, inject FontAwesomeCDN
+ * If you desire to change the font awesome iconset to use, default is solid, inject IconSet
+ * 
+ * @displayName Icon
+ */
     const urlBase = useFontAwesome(inject);
     const iconSet = useIconSet(inject);
 
@@ -62,7 +69,13 @@
     }
     
     const props = defineProps<{
+        /**
+         * The icon name to use from font awesome
+         */
         icon:string,
+        /**
+         * The size of the icon
+         */
         size?:IconSizes
     }>();
 
@@ -88,4 +101,4 @@
     .fa-ico.fa-md {
         font-size: 15px !important;
     }
-</style>
+</style>../../enums

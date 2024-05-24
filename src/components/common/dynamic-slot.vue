@@ -20,12 +20,30 @@
 </script>
 
 <script lang="ts" setup>
+/**
+ * This is used to dynamically load multiple components as a set of dynamic items
+ * @displayName DynamicSlot
+ */
     const components = ref<any[]|null>(null);
 
     const props = defineProps<{
+        /**
+         * The props to pass to all the loaded child components
+         */
         props?:any,
+        /**
+         * The url to load the components from
+         */
         url:string,
+        /**
+         * Used to filter out some of the loaded components by name
+         */
         filter?:string,
+        /**
+         * The method used to sort the components
+         * @param a the name of the first component
+         * @param b the name of the next component
+         */
         sortMethod:(a:string,b:string)=>number
     }>();
 

@@ -13,18 +13,39 @@
     import { DISABLED_FIELDS_PROPERTY, HIDDEN_FIELDS_PROPERTY, buildFieldRows, translateFieldProps, useTranslator } from './common';
 
     interface formProps extends translateFieldProps{
+        /**
+         * The elements of the form
+         */
         elements:FormInputType[];
+        /**
+         * Indicates if the form is disabled
+         */
         disabled?:boolean;
     };
 </script>
 
 <script lang="ts" setup>
+/**
+ * Used to create a form with a given set of elements 
+ * 
+ * @displayName ComponentForm
+ */
     const props = withDefaults(defineProps<formProps>(),{
         disabled:false
     });
 
     const emit = defineEmits<{
+        /**
+         * Emitted when the value of a form element changes
+         * 
+         * @param data ValueChangedEvent
+         */
         valueChanged:[data:ValueChangedEvent],
+        /**
+         * Emitted when a button within the form is clicked
+         * 
+         * @param name string
+         */
         buttonClicked:[name:string]
     }>();
 
@@ -91,5 +112,45 @@
         }
     };
 
-    defineExpose({getValues,setValues,isValid,hideField,showField,disableField,enableField});
+    defineExpose({
+        /**
+         * Returns the values of the given form elements as an object where the property name is the name of the form element and the property value is 
+         * that elements value
+         */
+        getValues,
+        /**
+         * Called to set the values on the form elements using an object where the property name is the name of the form element
+         * 
+         * @param values any
+         */
+        setValues,
+        /**
+         * Called to see if the form is valid.  Returns a boolean value that is true if all required fields have a value.
+         */
+        isValid,
+        /**
+         * Called to hide 1 or more fields in the form
+         * 
+         * @param name string|string[]
+         */
+        hideField,
+        /**
+         * Called to show 1 or more hidden fields in the form
+         * 
+         * @param name string|string[]
+         */
+        showField,
+        /**
+         * Called to disable 1 or more fields in the form
+         * 
+         * @param name string|string[]
+         */
+        disableField,
+        /**
+         * Called to enable 1 or more disabled fields in the form
+         * 
+         * @param name string|string[]
+         */
+        enableField
+    });
 </script>

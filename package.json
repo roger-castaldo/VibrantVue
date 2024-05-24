@@ -19,8 +19,9 @@
   },
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build:translations": "node ./src/messages/runTranslations.js",
     "build": "vite build --config vite.config.js",
+    "build:docs": "node generateDocs.cjs",
+    "build:translations": "node ./src/messages/runTranslations.js",
     "build:minify": "npm run build && uglifyjs ./dist/components.esm.js --compress --output ./dist/components.esm.min.js",
     "build:serve": "npm run build:minify && node index.js",
     "build:bulma": "sass --load-path=node_modules src/css/sass/bulma-skins.scss dist/style.css",
@@ -42,6 +43,7 @@
     "typescript": "^5.4.3",
     "uglify-js": "^3.17.4",
     "vite": "^4.5.3",
+    "vue-docgen-api": "^4.78.0",
     "vue-tsc": "^1.8.27"
   }
 }

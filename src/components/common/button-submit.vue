@@ -6,13 +6,20 @@
     import translate from '../../messages/messages';
     import Button from './button.vue';
     import {computed,inject} from 'vue';
-    import {ColorTypes} from '../enums';
+    import {ColorTypes} from '../../enums';
     import { useLanguage } from '../shared';
 import { IButtonBasicProperties,IButtonProperties } from './typeDefinitions';
 </script>
 
 <script lang="ts" setup>
-    const emit = defineEmits<{
+    /**
+     * This is a specifically built version of the default button that is designed around a submit call
+     * Uses envelope-open-text icon, success color and Submit for text
+     */
+     const emit = defineEmits<{
+        /**
+         * Emit a click even when the button is clicked
+         */
         click: []
     }>();
     const props = defineProps<IButtonBasicProperties>();
@@ -21,7 +28,7 @@ import { IButtonBasicProperties,IButtonProperties } from './typeDefinitions';
         return {
             title:translate('Button.Submit',Language),
             icon:'envelope-open-text',
-            type:ColorTypes.primary
+            type:ColorTypes.success
         }||props;
     });
 </script>

@@ -1,24 +1,24 @@
-import { ColorTypes } from "../enums";
+import { ColorTypes } from "../../enums";
 
-type ValueChangedEvent = {
+export type ValueChangedEvent = {
     name:string,
     value:any
 };
 
-type ListItemValue = {
+export type ListItemValue = {
     value:any,
     label:string,
     selected?:boolean
 };
 
- type SelectListItemValue = {
+export type SelectListItemValue = {
     value?:any,
     label:string,
     selected?:boolean,
     values?:SelectListItemValue[]
 };
 
-type FormInputType = {
+export type FormInputType = {
     type:string,
     name?:string,
     subtype?:string,
@@ -34,6 +34,4 @@ type FormInputType = {
     Translate?:(value:string)=>string
 };
 
-type TranslateMethod = (value:string)=>string;
-
-export type {ValueChangedEvent,ListItemValue,SelectListItemValue,FormInputType,TranslateMethod};
+export type TranslateMethod = (value:string)=>string;

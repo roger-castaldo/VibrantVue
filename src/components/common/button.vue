@@ -9,18 +9,25 @@
 
 <script lang="ts">
     import Icon from './icon.vue';
-    import {ColorTypes,Sizes} from '../enums';
+    import {ColorTypes,Sizes} from '../../enums';
     import {computed} from 'vue';
 import { IButtonProperties } from './typeDefinitions';
 </script>
 
 <script lang="ts" setup>
+/**
+ * This is a stylized and customizable button
+ * @displayName Button
+ */
     const props = withDefaults(defineProps<IButtonProperties>(),{
         type:ColorTypes.primary,
         size:Sizes.normal
     });
 
     const emit = defineEmits<{
+        /**
+         * Emit a click even when the button is clicked
+         */
         click: []
     }>();
 

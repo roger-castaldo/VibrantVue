@@ -3,6 +3,11 @@
 </template>
 
 <script lang="ts" setup>
+/**
+ * Used to create a Code Writer interface based on acejs
+ * 
+ * @displayName CodeWriter
+ */
     import { watch, computed, onMounted, markRaw, ref,inject } from 'vue';
     import { useAceJS } from '../shared';
     import { AutoCompleteEntry } from './typeDefinitions';
@@ -11,15 +16,31 @@
     const aceJS = `${useAceJS(inject)}src-noconflict/ace.js`;
 
     const props = withDefaults(defineProps<{
+        /**
+         * What code language to use
+         */
         language?:string,
+        /**
+         * Provided auto complete entries to supply
+         */
         autocompletes?:AutoCompleteEntry[],
+        /**
+         * Inidicates if the code writer is readonly
+         */
         readonly?:boolean,
-        value:string
+        /**
+         * The value of the code writer content
+         */
+        value?:string
     }>(),{
-        readonly:false
+        readonly:false,
+        value:''
     });
 
     const emit = defineEmits<{
+        /**
+         * Emitted when the content of the code has changed.  Provides the new content value.
+         */
         'valueChanged':[value:string]
     }>();
 
@@ -69,7 +90,18 @@
         return ret;
     });
 
-    defineExpose({ getValue, setValue });
+    defineExpose({ 
+        /**
+         * Gets the current value 
+         */
+        getValue, 
+        /**
+         * Sets the current value
+         * 
+         * @param value string|null
+         */
+        setValue 
+    });
 
     onMounted(async () => {
         const {ace} =  await loadNonEs6Module(aceJS,['ace']);

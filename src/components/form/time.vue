@@ -14,8 +14,18 @@
 </script>
 
 <script lang="ts" setup>
+/**
+ * A time input for the form
+ * 
+ * @displayName Time
+ */
     const props = defineProps<coreFieldProps>();
-    const emit = defineEmits<{
+        const emit = defineEmits<{
+        /**
+         * Emitted when the value changes
+         * 
+         * @param data ValueChangedEvent
+         */
          valueChanged:[data:ValueChangedEvent]
     }>();
 
@@ -46,7 +56,19 @@
         value.value = val;
     };
 
-    defineExpose({ getValue, setValue });
+    defineExpose({ 
+        /**
+         * Gets the current value 
+         */
+        getValue, 
+        /**
+         * Sets the current value
+         * 
+         * @param value string|null
+         * @returns void
+         */
+        setValue 
+    });
 </script>
 
 <style>

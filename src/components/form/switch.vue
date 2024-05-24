@@ -14,15 +14,31 @@
     import { ValueChangedEvent } from './typesDefinitions';
 
     interface fieldProps extends commonFieldProps{
+        /**
+         * The label for the switch
+         */
         label:string;
+        /**
+         * Indicates if this is required
+         */
         required?:boolean;
     };
 </script>
 
 <script lang="ts" setup>
+/**
+ * A checkbox used in a form but styled as a switch
+ * 
+ * @displayName Switch
+ */
     const props = defineProps<fieldProps>();
     
     const emit = defineEmits<{
+        /**
+         * Emitted when the switch is either checked or unchecked
+         * 
+         * @param data ValueChangedEvent
+         */
          valueChanged:[data:ValueChangedEvent]
     }>();
 
@@ -35,5 +51,17 @@
     const getValue =  ():boolean=> { return isChecked.value; };
     const setValue = (val:boolean):void=> { isChecked.value = val; };
 
-    defineExpose({ getValue, setValue });
+    defineExpose({ 
+        /**
+         * Gets the current value 
+         */
+        getValue, 
+        /**
+         * Sets the current value
+         * 
+         * @param value boolean
+         * @returns void
+         */
+        setValue 
+    });
 </script>

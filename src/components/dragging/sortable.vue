@@ -5,6 +5,9 @@
                 <Notification :light="true">&nbsp;</Notification>
             </ListItem>
             <ListItem draggable="true" @dragstart="dragStart(index,$event)" @dragend="selectedIndex=null" @dragover="itemEntered(index,$event)" :class="{'has-cursor':true,'is-move':(currentIndex==index),'is-grab':(currentIndex!=index)}">
+                <!--
+                    @slot Used to render a given item in the sort list
+                -->
                 <slot name="item" :item="item" :index="index" />
             </ListItem>
             <ListItem v-show="currentIndex===index&&selectedIndex!==index&&currentQuadrant===DropZoneQuadrants.bottom">
@@ -19,23 +22,33 @@
     import ListItem from '../layout/list-item.vue';
     import Notification from '../common/notification.vue';
     import { ref, watch,onMounted } from 'vue';
-    import { ColorTypes, DropZoneQuadrants } from '../enums';
+    import { ColorTypes, DropZoneQuadrants } from '../../enums';
+import { IListProperties } from '../layout/interfaces';
+
+    interface ISortableProperties extends IListProperties{
+        /**
+         * The items that are contained within the sortable list
+         */
+        items:any[]
+    };
 </script>
 
 <script lang="ts" setup>
-    const props = withDefaults(defineProps<{
-        items:any[],
-        type?:ColorTypes,
-        compact?:boolean,
-        outlined?:boolean,
-        highlighted?:boolean
-    }>(),{
+/**
+ * Used to supply a Sortable list that can be dragged and dropped to change the order
+ * 
+ * @displayName Sortable
+ */
+    const props = withDefaults(defineProps<ISortableProperties>(),{
         type:ColorTypes.primary,
         compact:false,
         outlined:false,
         highlighted:false
     });
     const emit = defineEmits<{
+        /**
+         * Emitted when the sorting changes.  Supplies the items based on their current sort.
+         */
         sorted:[items:any[]]
     }>();
 

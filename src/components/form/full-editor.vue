@@ -11,6 +11,11 @@
 </script>
 
 <script lang="ts" setup>
+/**
+ * A full editor style of form input (uses SummerNote)
+ * 
+ * @displayName FullEditor
+ */
     const cdnBase = useSummerNote(inject);
 
     css([`${cdnBase}summernote-lite.min.css`]);
@@ -18,8 +23,13 @@
     const snote = ref(null);
 
     const props = defineProps<coreFieldProps>();
-        const emit = defineEmits<{
-         valueChanged:[data:ValueChangedEvent]
+    const emit = defineEmits<{
+        /**
+         * Emitted when the value has changed
+         * 
+         * @param data ValueChangedEvent
+         */
+        valueChanged:[data:ValueChangedEvent]
     }>();
 
     watch(()=>props.disabled,(val)=>{
@@ -30,11 +40,23 @@
     const getValue = ():string=>{
         return $(snote.value).summernote('code');
     };
-    const setValue = (value:string):void=>{
+    const setValue = (value:string|null):void=>{
         $(snote.value).summernote('code',value);
     }
 
-    defineExpose({getValue,setValue});
+    defineExpose({ 
+        /**
+         * Gets the current value 
+         */
+        getValue, 
+        /**
+         * Sets the current value
+         * 
+         * @param value string|null
+         * @returns void
+         */
+        setValue 
+    });
 
     onMounted(()=>{
         $(snote.value).summernote({

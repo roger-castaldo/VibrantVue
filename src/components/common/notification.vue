@@ -1,5 +1,8 @@
 <template>
     <div :class="['notification','is-'+props.type,(props.light ? 'is-light' : '')]">
+        <!--
+            @slot Content of the notification if the message property is not enough
+        -->
         <slot>
             {{props.message}}
         </slot>
@@ -7,16 +10,30 @@
 </template>
 
 <script lang="ts" setup>
-    import { MaybeRef } from 'vue';
-    import {NoticeTypes} from '../enums';
+/**
+ * Used to supply a notification component
+ * 
+ * @displayName Notification
+ */
+import { MaybeRef } from 'vue';
+import {NoticeTypes} from '../../enums';
 
-    const props = withDefaults(defineProps<{
-            type?: NoticeTypes|null,
-            message?:MaybeRef<string>|string|null,
-            light?:boolean
-        }>(),{
-            type:NoticeTypes.info,
-            message:null,
-            light:false
-        });
+const props = withDefaults(defineProps<{
+    /**
+     * The color type to use
+     */
+    type?: NoticeTypes|null,
+    /**
+     * The content of the notifcation
+     */
+    message?:MaybeRef<string>|string|null,
+    /**
+     * Inidicates to use the light version of the given color
+     */
+    light?:boolean
+    }>(),{
+        type:NoticeTypes.info,
+        message:null,
+        light:false
+    });
 </script>

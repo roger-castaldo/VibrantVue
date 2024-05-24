@@ -14,15 +14,32 @@
 </template>
 
 <script lang="ts" setup>
+/**
+ * Use to define a breadcrumbs component
+ * 
+ * @displayName Breadcrumbs
+ */
     import {computed} from 'vue';
-    import {BreadCrumbAlignments,Sizes,BreadCrumbSeperators} from '../enums';
+    import {BreadCrumbAlignments,Sizes,BreadCrumbSeperators} from '../../enums';
     import {BreadCrumb} from './interfaces';
     import {Icon} from '../common/';
 
     const props = withDefaults(defineProps<{
+        /**
+         * The breadcrumb entries to display
+         */
         breadCrumbs:BreadCrumb[]|null
+        /**
+         * The alignment to use
+         */
         alignment?:BreadCrumbAlignments,
+        /**
+         * The size to use
+         */
         size?:Sizes,
+        /**
+         * The seperator to use between each entry
+         */
         seperator?:BreadCrumbSeperators
     }>(),{
         alignment:BreadCrumbAlignments.left,

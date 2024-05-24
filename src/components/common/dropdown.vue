@@ -12,8 +12,7 @@
             <div class="dropdown-content" v-for="block,index in Blocks">
                 <hr class="dropdown-divider" v-if="index>0"/>
                 <template v-for="entry in block.children">
-                    <component 
-                        :is="(entry instanceof String ? 'div' : 'a')"
+                    <component :is="entry instanceof String ? 'div' : 'a'"
                         :class="GetItemClasses(entry)"
                         :href="GetItemURL(entry)"
                         @click="ProcessItemClick(entry)">
@@ -26,7 +25,11 @@
     </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+/**
+ * This is used to create a drop down element
+ * @displayName DropDown
+ */
     import { MaybeRef,computed,toValue,ref} from 'vue';
     import { DropDownBlock, DropDownItem } from './typeDefinitions';
     import { generateUUID } from '../utilities';
@@ -34,10 +37,25 @@
     const menuID:string = generateUUID();
 
     const props = defineProps<{
+        /**
+         * The title of the drop down
+         */
         title:MaybeRef<string>,
+        /**
+         * The dropdown menu items to use
+         */
         items:MaybeRef<DropDownBlock[]|DropDownBlock|(| string| DropDownItem)[]>,
+        /**
+         * Indicates if it should display from hovering
+         */
         is_hoverable?:boolean,
+        /**
+         * Inidicates if the menu should display right aligned
+         */
         is_right_align?:boolean,
+        /**
+         * Indicates if the menu should display up instead of down
+         */
         drops_up?:boolean
     }>();
 

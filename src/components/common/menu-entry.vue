@@ -12,13 +12,24 @@
             <span v-else>
                 {{ props.title }}
             </span>
+            <!--
+                @slot Content of the menu entry if something beyond a title and icon is desired
+            -->
             <slot/>
         </a>
+        <!--
+            @slot Used to contain all child menu entries, if desired
+        -->
         <slot name="children"/>
     </li>
 </template>
 
 <script lang="ts" setup>
+/**
+ * This is used to supply menu entries into the Menu component
+ * 
+ * @displayName MenuEntry
+ */
     import Icon from './icon.vue';
     import { MenuItem } from './typeDefinitions';
 

@@ -9,21 +9,37 @@
 <script lang="ts">
     import { ref, watch,computed, inject} from 'vue';
     import { commonFieldProps,useTranslator} from './common';
-    import { ValueChangedEvent } from './types';
+    import { ValueChangedEvent } from './typesDefinitions.ts';
 
     interface fieldProps extends commonFieldProps {
+        /**
+         * The label for the checkbox
+         */
         label:string;
+        /**
+         * Indicates if the checkbox is required
+         */
         required?:boolean;
     };
 </script>
 
 <script lang="ts" setup>
+/**
+ * A checkbox used in a form
+ * 
+ * @displayName Checkbox
+ */
     const props = withDefaults(defineProps<fieldProps>(),{
         required:false,
         disabled:false
     });
 
     const emit = defineEmits<{
+        /**
+         * Emitted when the checkbox is either checked or unchecked
+         * 
+         * @param data ValueChangedEvent
+         */
          valueChanged:[data:ValueChangedEvent]
     }>();
 
@@ -38,5 +54,17 @@
     const getValue = () => { return value.value; };
     const setValue = (val:boolean)=> { value.value = val; };
 
-    defineExpose({ getValue, setValue });
+    defineExpose({ 
+        /**
+         * Gets the current value 
+         */
+        getValue, 
+        /**
+         * Sets the current value
+         * 
+         * @param value boolean
+         * @returns void
+         */
+        setValue 
+    });
 </script>

@@ -1,6 +1,9 @@
 <template>
     <nav :class="['navbar',props.fixed_position,(props.color!==undefined&&props.color!==null ? `is-${props.color}` : '')]" role="navigation" :aria-label="props.ariaLabel">
         <div class="navbar-brand">
+            <!--
+                @slot houses a brand identifier if desired
+            -->
             <slot name="brand"/>
             <a role="button" :class="['navbar-burger',(isActive?'is-active':'')]" aria-label="menu" :aria-expanded="(isActive?'true':'false')" @click="isActive=!isActive">
                 <span aria-hidden="true"></span>
@@ -44,7 +47,7 @@
 <script lang="ts">
     import 'jquery';
     import {onMounted, withDefaults,ref} from 'vue';
-    import { FixedNavBarPositions,Sizes,ColorTypes } from '../enums';
+    import { FixedNavBarPositions,Sizes,ColorTypes } from '../../enums';
     import type { ParentMenuItem } from './typeDefinitions';
     import Promised from './Promised.vue';
     import NavBarMenuItem from './navbar-item.vue'
@@ -52,12 +55,31 @@
 </script>
 
 <script lang="ts" setup>
-
+/**
+ * Used to supply a Nav Bar component ment for menu navigation
+ * 
+ * @displayName NavBar
+ */
     const props = withDefaults(defineProps<{
+        /**
+         * The menu items to appear at the start of the nav bar (left)
+         */
         start_items?:Promise<ParentMenuItem[]>|ParentMenuItem[],
-        end_items?:Promise<ParentMenuItem[]>|ParentMenuItem[],yeah
+        /**
+         * The menu items to appear at the end of the nav bar (right)
+         */
+        end_items?:Promise<ParentMenuItem[]>|ParentMenuItem[],
+        /**
+         * If desired to affix the menu to a given position on the screen
+         */
         fixed_position?:FixedNavBarPositions|null,
+        /**
+         * The aria label to use for the nav bar
+         */
         ariaLabel?:string,
+        /**
+         * The color to use for the nav bar
+         */
         color?:ColorTypes
     }>(),{
         fixed_position:null,

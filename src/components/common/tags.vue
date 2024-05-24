@@ -1,14 +1,28 @@
 <template>
     <span :class="['tags',(props.size===null?'':'are-'+props.size),(props.addons?'has-addons':'')]">
+        <!--
+            @slot Houses the tags to contain within the tags collection
+        -->
         <slot />
     </span>
 </template>
 
 <script lang="ts" setup>
-    import { Sizes } from '../enums';
+/**
+ * Used to supply a Tags control to house multiple tags
+ * 
+ * @displayName Tags
+ */
+    import { Sizes } from '../../enums';
 
     const props = defineProps<{
+        /**
+         * The size to override for all the tags
+         */
         size?:Sizes,
+        /**
+         * Used to set the has-addons class
+         */
         addons?:boolean
     }>();
 </script>

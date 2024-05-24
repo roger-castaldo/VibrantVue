@@ -8,11 +8,25 @@
 </template>
 
 <script lang="ts" setup>
-    import { ColorTypes } from '../enums';
+/**
+ * A banner component to use
+ * 
+ * @displayName Banner
+ */
+    import { ColorTypes } from '../../enums';
 
     const props = defineProps<{
+        /**
+         * The color of the banner
+         */
         type:ColorTypes,
+        /**
+         * The title of the banner
+         */
         title:string,
+        /**
+         * The sub title of the banner
+         */
         subtitle?:string|null
     }>();
 </script>

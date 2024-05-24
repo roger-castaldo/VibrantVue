@@ -8,6 +8,9 @@
             </tr>
             <tr v-for="row in props.columns">
                 <th v-for="col in row" :colspan="col.headerColspan" :rowspan="col.headerRowspan" :class="col.headerClass">
+                    <!--
+                        @slot A slot automatically created for each column.  Available to make custom header content for a given column
+                    -->
                     <slot :name="`head-${col.id}`">
                         <span v-if="props.current_sort!==undefined && props.current_sort!==null && (col.canSort??false) && col.id===props.current_sort.column" 
                             class="icon-text is-clickable"
@@ -45,6 +48,9 @@
                             :class="getCellClass(index,col,drow,(col.propertyName?drow[col.propertyName] : undefined))"
                             @click="emit('cellClicked',{rowIndex:index,data:(col.propertyName?drow[col.propertyName] : null),row:drow})"
                         >
+                        <!--
+                            @slot A slot automatically created for each column.  Available to make custom table cell content for a given column.  Supplied with rowIndex,data,row.
+                        -->
                             <slot :name="`body-${col.id}`" v-bind="{rowIndex:index,data:(col.propertyName?drow[col.propertyName] : null),row:drow}">
                                 {{(col.propertyName?drow[col.propertyName] : null)}}
                             </slot>
@@ -54,7 +60,10 @@
             </template>
         </template>
         <template #tfoot v-if="supportsPagination||slots.tfoot_head||slots.tfoot_bottom">
-            <slot name="tfoot_head"/>
+            <!--
+                @slot appears prior to where the pagination footer would appear in the tfoot
+            -->
+            <slot name="tfoot_head"  v-if="slots.tfoot_head"/>
             <tr v-if="supportsPagination">
                 <td colspan="100%">
                     <Pagination 
@@ -64,12 +73,22 @@
                         @goToPage="(page:number)=>emit('goToPage',page)"/>
                 </td>
             </tr>
-            <slot name="tfoot_bottom"/>
+            <!--
+                @slot appears after where the pagination footer would appear in the tfoot
+            -->
+            <slot name="tfoot_bottom" v-if="slots.tfoot_bottom"/>
         </template>
     </Table>
 </template>
 
 <script lang="ts" setup>
+/**
+ * Used to create a Grid on the screen.
+ * The grid can support pagination, filtering, etc all layed out in a table that can be defined 
+ * and implemented with minimal parts such as defining the tbody or a loop for the elements
+ * 
+ * @displayName Grid
+ */
     import { CellData, GridSort, IGridProperties,GridColumn } from './typeDefinitions';
     import Table from '../layout/table.vue';
     import Pagination from '../common/pagination.vue';
@@ -80,7 +99,7 @@
     import { ITableProperties } from '../layout/interfaces';
     import { IPaginationProperties } from '../common/typeDefinitions';
     import {computed, toValue, useSlots} from 'vue';
-    import { ColorTypes, Sizes } from '../enums';
+    import { Sizes } from '../../enums';
 
     const slots = useSlots();
 
@@ -92,11 +111,29 @@
         has_more:undefined
     });
     const emit = defineEmits<{
+        /**
+         * Emitted when the Forward button is clicked on the Pagination
+         */
         moveForward:[],
+        /**
+         * Emitted when the Back button is clicked on the Pagination
+         */
         moveBack:[],
+        /**
+         * Emitted when a Specific Page button is clicked on the Pagiation
+         */
         goToPage:[page:number],
+        /**
+         * Emitted when a table cell is clicked on
+         */
         cellClicked:[cell:CellData],
+        /**
+         * Emitted when a header that is sortable is clicked on to invoke a sort
+         */
         sort:[by:GridSort],
+        /**
+         * Emitted when the Filter item emits a request to filter
+         */
         filter:[value:string|null]
     }>();
     const tableProperties:ITableProperties = {

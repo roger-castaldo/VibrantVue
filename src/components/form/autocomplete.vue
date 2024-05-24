@@ -33,23 +33,61 @@
     import { ValueChangedEvent } from './typesDefinitions';
 
     type AutoCompleteItem = {
+        /**
+         * A unique id for the entry
+         */
         id:string,
+        /**
+         * The display name
+         */
         name:string,
+        /**
+         * Indicates if it is readonly or not (can be removed)
+         */
         readonly?:boolean
     };
 
     interface fieldProps extends commonFieldProps {
+        /**
+         * The title for the autocomplete box
+         */
         title:string,
+        /**
+         * Indicates the maximum number of items that can be selected
+         */
         limit?:number|null,
+        /**
+         * A url for making a query callback to when a character is entered to obtain a list of possible answers
+         */
         callbackurl?:string,
+        /**
+         * A list of values that can be selected from 
+         */
         values?:AutoCompleteItem[],
+        /**
+         * If a custom fetch method is used, supply it here to be called instead of the standard fetch
+         * 
+         * @param url the url to fetch
+         * @param init the fetch request
+         */
         fetch?:(url:string,init?: RequestInit) => Promise<Response>
     };
 </script>
 
 <script lang="ts" setup>
+/**
+ * This is an autocomplete style form input that can allow for 1 or more items using either a callback or a list of data to filter through.
+ * Only supply a callbackurl or values do not supply both
+ * 
+ * @displayName Autocomplete
+ */
     const emit = defineEmits<{
-         valueChanged:[data:ValueChangedEvent]
+        /**
+         * Emitted when a new item is selected or an item is removed
+         * 
+         * @param data ValueChangedEvent
+         */
+        valueChanged:[data:ValueChangedEvent]
     }>();
 
     const props = defineProps<fieldProps>();
@@ -173,5 +211,17 @@
         emit('valueChanged', { name: props.name, value: getValue() });
     };
 
-    defineExpose({ getValue, setValue });
+    defineExpose({ 
+        /**
+         * Gets the current value 
+         */
+        getValue, 
+        /**
+         * Sets the current value
+         * 
+         * @param value AutoCompleteItem|AutoCompleteItem[]|string[]|null
+         * @returns Promise<void>
+         */
+        setValue 
+    });
 </script>

@@ -1,5 +1,8 @@
 ﻿<template>
     <component ref="handle" :is="props.tag" :draggable="true" @dragstart="Start" @dragend="Stop" :class="Classes">
+        <!--
+            @slot The content of the draggable item
+        -->
         <slot/>
     </component>
 </template>
@@ -9,15 +12,38 @@
 </script>
 
 <script lang="ts" setup>
+/**
+ * Used to create a draggable item that can be used with a drop zone for drag and drop interfaces
+ * 
+ * @displayName DraggableItem
+ */
     const emit = defineEmits<{
+        /**
+         * Emitted when the dragging of this item has started
+         */
         started:[],
+        /**
+         * Emitted when the dragging of this item has stopped
+         */
         stopped:[]
     }>();
 
     const props = withDefaults(defineProps<{
+        /**
+         * The data transfer when this item is dragged
+         */
         copy_data?:any|null,
+        /**
+         * Indicates if dragging is currently disabled
+         */
         disabled?:boolean,
+        /**
+         * The tag to use for wrapping this dragging item
+         */
         tag?:string,
+        /**
+         * A jquery based search specify the dragging handle
+         */
         handle_search:string|null
     }>(),{
         copy_data:null,
