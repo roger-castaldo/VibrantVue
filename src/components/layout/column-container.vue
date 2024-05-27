@@ -25,7 +25,7 @@ type definedColumn = {
  * @displayName ColumnContainer
  */
     import { ColumnContainerModifiers,BorderTypes } from '../../enums';
-    import { Column } from './typesDefinitions';
+    import { Column } from './typeDefinitions';
     import {computed,useSlots} from 'vue';
 
     const slots = useSlots();
@@ -66,4 +66,4 @@ type definedColumn = {
             };
         });
     });
-</script>./typeDefinitions
+</script>

@@ -1,24 +1,26 @@
 ﻿<template>
-    <div class="box" :id="props.name" :name="props.name" v-show="!props.hidden">
-        <Row v-for="(row,index) in rows" :ref="(el) => (refs[index] = el)" :inputs="row" :disabled="props.disabled" @valueChanged="emit('valueChanged',$event)" @buttonClicked="emit('buttonClicked',$event)"/>
-    </div>
+    <Box :id="props.name" :name="props.name" v-show="isHidden">
+        <InputsCollection :fields="props.fields" 
+            ref="inputs" 
+            :disabled="props.disabled"
+            @valueChanged="emit('valueChanged',$event)" 
+            @buttonClicked="emit('buttonClicked',$event)"
+            />
+    </Box>
 </template>
 
 <script lang="ts">
-    import Row from './row.vue';
-    import { ref, watch, computed, Ref } from 'vue';
-    import { FormInputType, ValueChangedEvent } from './typesDefinitions';
-    import {buildFieldRows, coreFieldProps} from './common';
+    import { ref, computed,inject } from 'vue';
+    import { FormInputType, ValueChangedEvent } from './typeDefinitions';
+    import { HIDDEN_FIELDS_PROPERTY, coreFieldProps} from './common';
+    import InputsCollection from './inputs-collection.vue';
+    import Box from '../layout/box.vue';
 
     interface fieldProps extends coreFieldProps {
         /**
          * The form components for this subform
          */
         fields:FormInputType[];
-        /**
-         * Indicates if the subform is hidden
-         */
-        hidden?:boolean;
     };
 </script>
 
@@ -29,7 +31,6 @@
  * @displayName Subform
  */
     const props = withDefaults(defineProps<fieldProps>(),{
-        hidden:false,
         disabled:false
     });
     
@@ -48,24 +49,21 @@
         buttonClicked:[name:string]
     }>();
 
-    let refs = [];
-    const hidden = ref(false);
+    const inputs = ref(null);
+    
+    const hiddenInputs = inject<string[]>(HIDDEN_FIELDS_PROPERTY);
 
-    const rows = computed<FormInputType[][]>(() => {
-        let result = buildFieldRows(props.fields);
-        refs = result.map(r=>ref(null));
-        return result;
+    const isHidden = computed<boolean>(()=>{
+        return (hiddenInputs ? hiddenInputs.some(h=>h===props.name) : false);
     });
 
-    const isValid = ():boolean=> !refs.some(row=>!(row.isValid===undefined?true:row.isValid()));
-    const setValue = (values:any):void=>refs.forEach(row => row.setValue(values));
-    const getValue = ():any=> {
-        var ret = {};
-        refs.forEach(row => {
-            ret = $.extend(ret, row.getValue());
-        });
-        return ret;
-    };
+    const isValid = ():boolean=> (inputs.value===null ? false : inputs.value.isValid());
+    const setValue = (values:any):void=>{
+        if (inputs.value!==null){
+            inputs.value.setValue(values);
+        }
+    }
+    const getValue = ():any|null=> (inputs.value===null ? null : inputs.value.getValue());
     
     defineExpose({ 
         /**
@@ -85,4 +83,4 @@
         isValid
     });
     
-</script>./typeDefinitions
+</script>

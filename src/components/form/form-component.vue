@@ -1,24 +1,30 @@
 ﻿<template>
-    <div class="field column" :class="[columns]" v-show="!props.hidden">
-        <template v-if="props.input.type=='header'">
-            <Header :subtype="props.input.subtype" :label="props.input.label" ref="inp"/>
-        </template>
-        <template v-else-if="props.input.type=='paragraph'">
-            <Paragraph :name="props.input.name" :label="props.input.label" ref="inp"/>
-        </template>
-        <template v-else-if="props.input.type=='button'">
-            <Button :name="props.input.name" :sstyle="props.input.style" :className="props.input.className" :icon="props.input.icon" :label="props.input.label" :disabled="Disabled" @buttonClicked="buttonClicked" ref="inp"/>
-        </template>
-        <template v-else>
-            <label class="label" :for="props.input.name" v-if="hasLabel">
-                {{Translator(props.input.label)}}
-                <span class="help is-danger" v-if="props.input.required">*</span>
-            </label>
-            <div class="control">
-                <component :is="inputType" v-bind="inputProps" @valueChanged="valueChanged" ref="inp"/>
-            </div>
-        </template>
-    </div>
+    <Header v-if="props.input.type==='header'" 
+        :subtype="props.input.subtype" 
+        :label="props.input.label" 
+        ref="inp"/>
+    <Paragraph v-else-if="props.input.type=='paragraph'" 
+        :name="props.input.name" 
+        :label="props.input.label" 
+        ref="inp"/>
+    <Button v-else-if="props.input.type=='button'"
+        :name="props.input.name" 
+        :sstyle="props.input.style" 
+        :className="props.input.className" 
+        :icon="props.input.icon" 
+        :label="props.input.label" 
+        :disabled="Disabled" 
+        @buttonClicked="buttonClicked" 
+        ref="inp"/>
+    <template v-else>
+        <label class="label" :for="props.input.name" v-if="hasLabel">
+            {{Translator(props.input.label)}}
+            <span class="help is-danger" v-if="props.input.required">*</span>
+        </label>
+        <div class="control">
+            <component :is="inputType" v-bind="inputProps" @valueChanged="valueChanged" ref="inp"/>
+        </div>
+    </template>
 </template>
 
 <script lang="ts">
@@ -41,7 +47,7 @@
     import Textarea from './textarea.vue';
     import Time from './time.vue';
     import Subform from './subform.vue';
-    import { FormInputType, ValueChangedEvent } from './typesDefinitions';
+    import { FormInputType, ValueChangedEvent } from './typeDefinitions';
     import { translateFieldProps, useTranslator } from './common';
 
     const LABELLED_FIELDS = ['autocomplete', 'checkbox-group', 'date', 'number', 'radio-group', 'select', 'text', 'textarea', 'time', 'file_download', 'subform', 'textarea-code'];
@@ -56,10 +62,6 @@
          * Indicates if this is disabled
          */
         disabled?:boolean,
-        /**
-         * Indicates if this is hidden
-         */
-        hidden?:boolean
     };
 </script>
 
@@ -134,7 +136,7 @@
     const Disabled = computed<boolean>(() => props.input.disabled??props.disabled??false);
     const columns = computed<string>(() => `is-${props.input.form_columns??12}`);
     const fieldName = computed(() => props.input.name);
-    const altFieldName = computed(() => props.input.processVariable??props.input.name);
+    const altFieldName = computed(() => props.input.name);
     const hasLabel = computed(() =>(LABELLED_FIELDS.some(l=>l===props.input.type) && props.input.label !== undefined && props.input.label !== null));
     const inputProps = computed(() => {
         let result:any = $.extend({}, props.input);

@@ -43,31 +43,6 @@ export function useValuesList(name:string,inject: (<T>(string,T?)=> T | undefine
     return {hiddenValues,disabledValues};
 }
 
-export const buildFieldRows = (fields:FormInputType[]):FormInputType[][]=>{
-    let result:FormInputType[][] = [];
-    let row:FormInputType[] = [];
-    let curLen = 0;
-    fields.forEach(field=>{
-        let len = (field.form_columns??12);
-        if (curLen+len>12){
-            result.push(row);
-            row=[];
-            curLen=0;
-        }
-        row.push(field);
-        curLen+=len;
-        if (curLen===12){
-            result.push(row);
-            row=[];
-            curLen=0;
-        }
-    });
-    if (row.length > 0) {
-        result.push(row);
-    }
-    return result;
-}
-
 export async function resolveListItems<T>(values: (T[]|Promise<T[]>|(()=>T[])|(()=>Promise<T[]>))) : Promise<T[]> {
     let p : Promise<any>|null = null;
     let tmp:any = values;

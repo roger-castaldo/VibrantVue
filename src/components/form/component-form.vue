@@ -1,16 +1,19 @@
 ﻿<template>
     <form onsubmit="return false;" class="container is-fullhd">
-        <template v-if="rows!=null">
-            <Row v-for="(row,index) in rows" :ref="(el) => (refs[index] = el)" :inputs="row" :key="index" @valueChanged="emit('valueChanged',$event)" @buttonClicked="emit('buttonClicked',$event)" :disabled="disabled"/>
-        </template>
+        <InputsCollection :fields="props.elements" 
+            ref="inputs" 
+            :disabled="props.disabled"
+            @valueChanged="emit('valueChanged',$event)" 
+            @buttonClicked="emit('buttonClicked',$event)"
+            />
     </form>
 </template>
 
 <script lang="ts">
-    import { computed, ref,provide, inject, readonly } from 'vue';
-    import Row from './row.vue';
-    import { FormInputType, TranslateMethod, ValueChangedEvent } from './typesDefinitions';
-    import { DISABLED_FIELDS_PROPERTY, HIDDEN_FIELDS_PROPERTY, buildFieldRows, translateFieldProps, useTranslator } from './common';
+    import { ref,provide, inject, readonly } from 'vue';
+    import { FormInputType, TranslateMethod, ValueChangedEvent } from './typeDefinitions';
+    import { DISABLED_FIELDS_PROPERTY, HIDDEN_FIELDS_PROPERTY, translateFieldProps, useTranslator } from './common';
+    import InputsCollection from './inputs-collection.vue';
 
     interface formProps extends translateFieldProps{
         /**
@@ -55,28 +58,15 @@
         return Translator.value(value);
     });
 
-    let refs = [];
+    const inputs = ref(null);
 
-    const rows = computed<FormInputType[][]>(()=>{
-        if (props.elements != null) {
-            let result = buildFieldRows(props.elements);
-            refs = result.map(r=>ref(null));
-            return result;
-        } else {
-            return null;
-        }
-    });
-    const getValues=():any=>{
-        let ret:any = {};
-        refs.forEach(row => { ret = $.extend(ret, row.getValue()); });
-        return ret;
-    };
+    const getValues=():any|null=>(inputs.value!==null ? inputs.value.getValue() : null);
     const setValues = (values:any):void=> {
-        refs.forEach(row => row.setValue(values));
+        if (inputs.value!==null){
+            inputs.value.setValue(values);
+        }
     };
-    const isValid = ():boolean=> {
-        return !refs.some(row=>!(row.isValid===undefined?true:row.isValid()));
-    };
+    const isValid = ():boolean=> (inputs.value!==null ? inputs.value.isValid() : false);
 
     const hiddenFields = ref<string[]>([]);
     provide(HIDDEN_FIELDS_PROPERTY,readonly(hiddenFields));
@@ -153,4 +143,4 @@
          */
         enableField
     });
-</script>./typeDefinitions
+</script>

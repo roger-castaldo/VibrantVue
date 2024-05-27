@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-    import { TranslateMethod, } from './typesDefinitions';
+    import { TranslateMethod, } from './typeDefinitions';
     import { useTranslator,translateFieldProps } from './common';
     import { inject } from 'vue';
 
@@ -28,4 +28,4 @@
     const props = defineProps<fieldProps>();
 
     const Translator = useTranslator(props,inject);
-</script>./typeDefinitions
+</script>

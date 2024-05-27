@@ -30,7 +30,7 @@
     import { watch, ref, inject} from 'vue';
     import 'jquery';
     import { commonFieldProps,useTranslator } from './common';
-    import { ValueChangedEvent } from './typesDefinitions';
+    import { ValueChangedEvent } from './typeDefinitions';
 
     type AutoCompleteItem = {
         /**
@@ -224,4 +224,4 @@
          */
         setValue 
     });
-</script>./typeDefinitions
+</script>

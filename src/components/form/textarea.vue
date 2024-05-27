@@ -5,7 +5,7 @@
 <script lang="ts">
     import { watch,ref } from 'vue';
     import { coreFieldProps } from './common';
-import { ValueChangedEvent } from './typesDefinitions';
+import { ValueChangedEvent } from './typeDefinitions';
 
     const tabKeyCode = 9;
     const tab = String.fromCharCode(tabKeyCode);
@@ -120,4 +120,4 @@ import { ValueChangedEvent } from './typesDefinitions';
         return true;
     };
 
-</script>./typeDefinitions
+</script>

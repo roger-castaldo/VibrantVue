@@ -5,7 +5,7 @@
 <script lang="ts">
     import { ref, watch } from 'vue';
     import { coreFieldProps } from './common';
-import { ValueChangedEvent } from './typesDefinitions';
+    import { ValueChangedEvent } from './typeDefinitions';
 
     interface fieldProps extends coreFieldProps{
         /**
@@ -54,4 +54,4 @@ import { ValueChangedEvent } from './typesDefinitions';
          */
         setValue 
     });
-</script>./typeDefinitions
+</script>

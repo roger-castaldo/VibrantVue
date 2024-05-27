@@ -61,10 +61,19 @@ async function  extractVueDocs(filePath) {
     .filter(line=>line.indexOf('@')===0)
     .map(line=>{
       const match = /^@([^\s]+)\s(.+)$/.exec(line);
-      return {
-        name:match[1],
-        value:match[2].trim()
-      };
+      if (match!==null){
+        return {
+          name:match[1],
+          value:match[2].trim()
+        };
+      } else if (line.trim()==='@ignore'){
+        return {
+          name:'ignore',
+          value:true
+        };
+      }else{
+        throw 'Unknown tag';
+      }
     });
   const description = headerItems
     .filter(line=>line.indexOf('@')!==0)
@@ -154,6 +163,9 @@ function extractPropType(type,tags,enumData,typeDefinitions){
 }
 
 function generateMarkdownFromJSON(jsonData, outputFilePath,enumData,typeDefinitions) {
+  if (jsonData.ignore){
+    return;
+  }
   let markdownContent = '';
 
   // Iterate over each component in the JSON data

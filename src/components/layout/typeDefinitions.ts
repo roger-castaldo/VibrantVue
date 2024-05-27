@@ -14,7 +14,7 @@ export type Column = {
      */
     border?:BorderTypes[],
     /**
-     * The name of the column, if not supplied, the slot will be names #col-{index}
+     * The name of the column, if not supplied, the slot will be names #col-$index
      */
     name?:string,
     /**

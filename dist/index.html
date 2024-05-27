@@ -41,7 +41,7 @@
                 <Drop-Down title="test" :items="MyItems"/>
             </section>
             <section>
-                <Component-Form :elements="elements" :translate="translate" v-on:valueChanged="valueChanged"/>
+                <Component-Form :elements="elements" :translate="translate" @value-changed="valueChanged"/>
             </section>
 
             <section>

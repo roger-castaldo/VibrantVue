@@ -4,7 +4,7 @@
 
 <script lang="ts">
     import { ref, watch } from 'vue';
-import { ValueChangedEvent } from './typesDefinitions';
+import { ValueChangedEvent } from './typeDefinitions';
 </script>
 
 <script lang="ts" setup>
@@ -48,4 +48,4 @@ import { ValueChangedEvent } from './typesDefinitions';
          */
         setValue 
     });
-</script>./typeDefinitions
+</script>

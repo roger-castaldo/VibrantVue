@@ -11,7 +11,7 @@
 <script lang="ts">
     import { inject, ref, watch } from 'vue';
     import {commonFieldProps, useTranslator} from './common';
-    import { ValueChangedEvent } from './typesDefinitions';
+    import { ValueChangedEvent } from './typeDefinitions';
 
     interface fieldProps extends commonFieldProps{
         /**
@@ -64,4 +64,4 @@
          */
         setValue 
     });
-</script>./typeDefinitions
+</script>

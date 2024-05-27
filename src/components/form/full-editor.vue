@@ -6,7 +6,7 @@
     import { watch, onMounted, onUnmounted, ref,inject } from 'vue';
     import { css } from '../utilities';
     import {coreFieldProps} from './common';
-    import { ValueChangedEvent } from './typesDefinitions';
+    import { ValueChangedEvent } from './typeDefinitions';
     import { useSummerNote } from '../shared';
 </script>
 
@@ -75,4 +75,4 @@
     onUnmounted(()=>{
         $(snote.value).summernote('destroy');
     });
-</script>./typeDefinitions
+</script>

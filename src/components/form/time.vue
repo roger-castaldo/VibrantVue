@@ -7,7 +7,7 @@
 <script lang="ts">
     import { ref, watch, computed } from 'vue';
     import { coreFieldProps } from './common';
-    import { ValueChangedEvent } from './typesDefinitions';
+    import { ValueChangedEvent } from './typeDefinitions';
 
     const regTime = RegExp('^(\\d{2}):(\\d{2}) (AM|PM)$');
     const reg24Time = RegExp('^(\\d{2}):(\\d{2}):\\d{2}$');
