@@ -12,6 +12,7 @@
  * Used to supply a Tags control to house multiple tags
  * 
  * @displayName Tags
+ * @link https://bulma.io/documentation/elements/tag/
  */
     import { Sizes } from '../../enums';
 

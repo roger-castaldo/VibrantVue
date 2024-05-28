@@ -18,6 +18,8 @@
 /**
  * This is a built form style component used to create a basic filter input
  * @displayName Filter
+ * @link https://bulma.io/documentation/form/input/
+ * @link_title Based Off Bulma Component
  */
     const props = defineProps<{
         /**

@@ -15,6 +15,7 @@ import { IButtonBasicProperties, IButtonProperties } from './typeDefinitions';
     /**
      * This is a specifically built version of the default button that is designed around a disable call
      * Uses times-circle icon, danger color and Disable for text
+     * @displayName ButtonDisable
      */
      const emit = defineEmits<{
         /**

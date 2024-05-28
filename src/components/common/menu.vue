@@ -8,6 +8,7 @@
  * This is used to supply a side menu to your screen
  * 
  * @displayName Menu
+ * @link https://bulma.io/documentation/components/menu/
  */
 import { FixedMenuPositions } from '../../enums';
 

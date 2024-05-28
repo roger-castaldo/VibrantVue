@@ -58,6 +58,7 @@
  * If you desire to change the font awesome iconset to use, default is solid, inject IconSet
  * 
  * @displayName Icon
+ * @link https://bulma.io/documentation/elements/icon/
  */
     const urlBase = useFontAwesome(inject);
     const iconSet = useIconSet(inject);

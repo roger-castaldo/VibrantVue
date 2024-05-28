@@ -57,3 +57,4 @@ export enum SkinTypes{cerulean='cerulean',cosmo='cosmo',cyborg='cyborg',dark='da
     light='light',litera='litera',lumen='lumen',lux='lux',materia='materia',minty='minty',morph='morph',pulse='pulse',quartz='quartz',sandstone='sandstone',
     simplex='simplex',sketchy='sketchy',slate='slate',solar='solar',spacelab='spacelab',superhero='superhero',united='united',vapor='vapor',yeti='yeti',
     zephyr='zephyr'};
+export enum SectionSizes{medium='medium',large='large'};

@@ -59,6 +59,7 @@
  * Used to supply a Nav Bar component ment for menu navigation
  * 
  * @displayName NavBar
+ * @link https://bulma.io/documentation/components/navbar/
  */
     const props = withDefaults(defineProps<{
         /**

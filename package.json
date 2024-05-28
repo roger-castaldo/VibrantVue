@@ -25,6 +25,8 @@
     "build:minify": "npm run build && uglifyjs ./dist/components.esm.js --compress --output ./dist/components.esm.min.js",
     "build:serve": "npm run build:minify && node index.js",
     "build:bulma": "sass --load-path=node_modules src/css/sass/bulma-skins.scss dist/style.css",
+    "build:full_code": "npm run build:docs && npm run build:minify",
+    "build:full": "npm run build:translations && npm run build:full_code",
     "serve": "node index.js"
   },
   "dependencies": {

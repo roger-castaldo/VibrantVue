@@ -26,6 +26,8 @@
  * Used to supply a page level notification that will appear on top of everything
  * 
  * @displayName PageNotification
+ * @link https://bulma.io/documentation/elements/notification/
+ * @link_title Based On This Bulma Component
  */
     const props = withDefaults(defineProps<{
         /**

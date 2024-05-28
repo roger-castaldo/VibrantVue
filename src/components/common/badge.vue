@@ -11,6 +11,7 @@
 <script lang="ts" setup>
 /**
  * @displayName Badge
+ * @link https://github.com/CreativeBulma/bulma-badge
  */
     import { BadgePositions,ColorTypes } from '../../enums';
 

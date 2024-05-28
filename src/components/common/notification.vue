@@ -14,6 +14,7 @@
  * Used to supply a notification component
  * 
  * @displayName Notification
+ * @link https://bulma.io/documentation/elements/notification/
  */
 import { MaybeRef } from 'vue';
 import {NoticeTypes} from '../../enums';

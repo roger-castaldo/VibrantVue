@@ -42,6 +42,7 @@
  * A list of checkboxes that are related in some way and therefore grouped together
  * 
  * @displayName CheckboxGroup
+ * @link https://bulma.io/documentation/form/checkbox/
  */
     const props = defineProps<fieldProps>();
 

@@ -28,6 +28,7 @@
  * A Table component to use
  * 
  * @displayName Table
+ * @link https://bulma.io/documentation/elements/table/
  */
     import {computed, useSlots} from 'vue';
     import { ITableProperties } from './interfaces';

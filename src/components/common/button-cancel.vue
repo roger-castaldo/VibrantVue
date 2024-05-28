@@ -15,6 +15,7 @@
     /**
      * This is a specifically built version of the default button that is designed around a cancel call
      * Uses window-close icon, danger color and Cancel for text
+     * @displayName ButtonCancel
      */
      const emit = defineEmits<{
         /**

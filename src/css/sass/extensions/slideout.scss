@@ -192,8 +192,8 @@ $slideout-min-width: 15vw;
         }
 
         .#{iv.$class-prefix}delete{
-            position:fixed;
-            right: calc(#{cv.getVar("size-normal")} / 2);
+            position:relative;
+            right: calc(-100% + (2 * #{cv.getVar("size-normal")}));
             top: calc(#{cv.getVar("size-normal")} / 2);
             z-index: calc(#{cv.getVar("slideout-z")} + 1);
         }

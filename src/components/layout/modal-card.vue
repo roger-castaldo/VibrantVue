@@ -35,6 +35,7 @@
  * A Modal Card component to use
  * 
  * @displayName ModalCard
+ * @link https://bulma.io/documentation/components/modal/
  */
     import {computed, useSlots} from 'vue';
     import Icon from '../common/icon.vue';

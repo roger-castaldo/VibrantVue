@@ -7,6 +7,8 @@
  * Used to create a Code Writer interface based on acejs
  * 
  * @displayName CodeWriter
+ * @link https://ace.c9.io/
+ * @link_title Ace Editor
  */
     import { watch, computed, onMounted, markRaw, ref,inject } from 'vue';
     import { useAceJS } from '../shared';

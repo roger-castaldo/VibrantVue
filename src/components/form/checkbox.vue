@@ -9,7 +9,7 @@
 <script lang="ts">
     import { ref, watch,computed, inject} from 'vue';
     import { commonFieldProps,useTranslator} from './common';
-    import { ValueChangedEvent } from './typesDefinitions.ts';
+    import { ValueChangedEvent } from './typeDefinitions';
 
     interface fieldProps extends commonFieldProps {
         /**
@@ -28,6 +28,7 @@
  * A checkbox used in a form
  * 
  * @displayName Checkbox
+ * @link https://bulma.io/documentation/form/checkbox/
  */
     const props = withDefaults(defineProps<fieldProps>(),{
         required:false,

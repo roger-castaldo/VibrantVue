@@ -7,6 +7,7 @@
  * Used to supply a progress bar control
  * 
  * @displayName Progress
+ * @link https://bulma.io/documentation/elements/progress/
  */
 import { computed } from 'vue';
 import { ColorTypes, Sizes } from '../../enums';

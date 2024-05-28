@@ -28,6 +28,7 @@
  * A number input
  * 
  * @displayName Number
+ * @link https://bulma.io/documentation/form/input/
  */
     const props = withDefaults(defineProps<fieldProps>(),{
         disabled:false

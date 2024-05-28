@@ -16,6 +16,7 @@
  * A Mocal component to use
  * 
  * @displayName Modal
+ * @link https://bulma.io/documentation/components/modal/
  */
     const props = withDefaults(defineProps<{
         /**

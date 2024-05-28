@@ -15,6 +15,7 @@ import { IButtonBasicProperties,IButtonProperties } from './typeDefinitions';
     /**
      * This is a specifically built version of the default button that is designed around a refresh call
      * Uses sync icon, primary color and Refresh for text
+     * @displayName ButtonRefresh
      */
      const emit = defineEmits<{
         /**

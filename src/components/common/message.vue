@@ -20,6 +20,7 @@
  * Used to display a Message component on the screen
  * 
  * @displayName Message
+ * @link https://bulma.io/documentation/components/message/
  */
     import { ColorTypes,Sizes } from '../../enums';
     import {computed} from 'vue';

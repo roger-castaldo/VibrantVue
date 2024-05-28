@@ -24,6 +24,7 @@
  * This is used to supply a list of Menu Items to a Menu
  * 
  * @displayName MenuList
+ * @link https://bulma.io/documentation/components/menu/
  */
     import { ParentMenuItem } from './typeDefinitions';
     import { Sizes } from '../../enums';

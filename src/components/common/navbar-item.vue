@@ -34,9 +34,11 @@
 
 <script lang="ts" setup>
 /**
+ * @ignore
  * Internal class used to handle Nav Bar Entries for the NavBar component
  * 
  * @displayName NavBarItem
+ *
  */
     const props = withDefaults(defineProps<ParentMenuItem>(),{
         active:false

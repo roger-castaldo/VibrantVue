@@ -18,6 +18,7 @@ import { IButtonProperties } from './typeDefinitions';
 /**
  * This is a stylized and customizable button
  * @displayName Button
+ * @link https://bulma.io/documentation/elements/button/
  */
     const props = withDefaults(defineProps<IButtonProperties>(),{
         type:ColorTypes.primary,

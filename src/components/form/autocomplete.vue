@@ -80,6 +80,8 @@
  * Only supply a callbackurl or values do not supply both
  * 
  * @displayName Autocomplete
+ * @link https://github.com/crabvk/bulma-tagsfield
+ * @link_title Tags Field 
  */
     const emit = defineEmits<{
         /**

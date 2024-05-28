@@ -15,6 +15,7 @@ import { IButtonBasicProperties, IButtonProperties } from './typeDefinitions';
     /**
      * This is a specifically built version of the default button that is designed around a download call
      * Uses download icon, primary color and Download for text
+     * @displayName ButtonDownload
      */
      const emit = defineEmits<{
         /**

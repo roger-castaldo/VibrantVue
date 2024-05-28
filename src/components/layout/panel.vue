@@ -33,6 +33,7 @@
  * A Panel component to use
  * 
  * @displayName Panel
+ * @link https://bulma.io/documentation/components/panel/
  */
     const slots = useSlots();
 

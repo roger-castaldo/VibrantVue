@@ -27,6 +27,8 @@ import { loadNonEs6Module } from '../utilities';
  * Used to create a ChartJS chart
  * 
  * @displayName Chart
+ * @link https://www.chartjs.org/
+ * @link_title Chart JS
  */
     const chartURL = `${useChartJS(inject)}chart.umd.min.js`;
 

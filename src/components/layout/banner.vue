@@ -12,6 +12,7 @@
  * A banner component to use
  * 
  * @displayName Banner
+ * @link https://bulma.io/documentation/layout/hero/
  */
     import { ColorTypes } from '../../enums';
 

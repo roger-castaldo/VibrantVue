@@ -15,6 +15,7 @@ import { IButtonBasicProperties,IButtonProperties } from './typeDefinitions';
     /**
      * This is a specifically built version of the default button that is designed around an okay call
      * Uses check icon, primary color and Okay for text
+     * @displayName ButtonOkay
      */
      const emit = defineEmits<{
         /**

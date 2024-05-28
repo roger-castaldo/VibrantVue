@@ -24,6 +24,7 @@
  * A text input for the form
  * 
  * @displayName Text
+ * @link https://bulma.io/documentation/form/input/
  */
     const props = defineProps<fieldProps>();
         const emit = defineEmits<{

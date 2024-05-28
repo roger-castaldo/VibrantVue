@@ -30,6 +30,7 @@
  * A checkbox used in a form but styled as a switch
  * 
  * @displayName Switch
+ * @link https://wikiki.github.io/form/switch/
  */
     const props = defineProps<fieldProps>();
     

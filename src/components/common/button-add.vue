@@ -15,6 +15,7 @@ import { IButtonBasicProperties,IButtonProperties } from './typeDefinitions';
     /**
      * This is a specifically built version of the default button that is designed around an add call
      * Uses plus icon, primary color and Add for text
+     * @displayName ButtonAdd
      */
     const emit = defineEmits<{
         /**

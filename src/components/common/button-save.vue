@@ -15,6 +15,8 @@ import { IButtonBasicProperties,IButtonProperties } from './typeDefinitions';
     /**
      * This is a specifically built version of the default button that is designed around a save call
      * Uses save icon, primary color and Save for text
+     * 
+     * @displayName ButtonSave
      */
      const emit = defineEmits<{
         /**

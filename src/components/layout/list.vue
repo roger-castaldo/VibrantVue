@@ -45,6 +45,7 @@
  * A stylized list
  * 
  * @displayName List
+ * @link https://github.com/chrisrhymes/bulma-block-list
  */
     const props = defineProps<IFullListProperties>();
 

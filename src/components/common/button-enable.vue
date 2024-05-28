@@ -15,6 +15,7 @@ import { IButtonBasicProperties,IButtonProperties } from './typeDefinitions';
     /**
      * This is a specifically built version of the default button that is designed around an enable call
      * Uses check icon, primary color and Enable for text
+     * @displayName ButtonEnable
      */
      const emit = defineEmits<{
         /**

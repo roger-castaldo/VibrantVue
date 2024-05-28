@@ -23,6 +23,7 @@ type definedColumn = {
  * A Column Container component to use to build a set of columns
  * 
  * @displayName ColumnContainer
+ * @link https://bulma.io/documentation/columns/
  */
     import { ColumnContainerModifiers,BorderTypes } from '../../enums';
     import { Column } from './typeDefinitions';

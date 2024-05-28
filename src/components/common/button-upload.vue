@@ -15,6 +15,8 @@ import { IButtonBasicProperties,IButtonProperties } from './typeDefinitions';
     /**
      * This is a specifically built version of the default button that is designed around a upload call
      * Uses upload icon, primary color and Upload for text
+     * 
+     * @displayName ButtonUpload
      */
      const emit = defineEmits<{
         /**

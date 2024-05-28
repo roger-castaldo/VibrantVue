@@ -55,6 +55,7 @@
  * All steps are 0 based index
  * 
  * @displayName StepWizard
+ * @link https://aramvisser.github.io/bulma-steps/
  */
     import { Sizes } from '../../enums';
     import { WizardStep } from './typeDefinitions';

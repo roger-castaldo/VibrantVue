@@ -15,6 +15,7 @@ import { IButtonBasicProperties, IButtonProperties } from './typeDefinitions';
     /**
      * This is a specifically built version of the default button that is designed around an edit call
      * Uses edit icon, primary color and Edit for text
+     * @displayName ButtonEdit
      */
      const emit = defineEmits<{
         /**

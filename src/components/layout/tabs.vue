@@ -27,6 +27,7 @@
  * A Tabs component to use (Tab Navigation)
  * 
  * @displayName Tabs
+ * @link https://bulma.io/documentation/components/tabs/
  */
     import {Icon,Promised, Progress} from '../common/';
     import {computed} from 'vue';

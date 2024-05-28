@@ -15,6 +15,8 @@ import { IButtonBasicProperties,IButtonProperties } from './typeDefinitions';
     /**
      * This is a specifically built version of the default button that is designed around a submit call
      * Uses envelope-open-text icon, success color and Submit for text
+     * 
+     * @displayName ButtonSubmit
      */
      const emit = defineEmits<{
         /**

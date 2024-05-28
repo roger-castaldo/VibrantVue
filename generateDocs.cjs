@@ -175,6 +175,9 @@ function generateMarkdownFromJSON(jsonData, outputFilePath,enumData,typeDefiniti
       if (component.description!==''){
         markdownContent += `${component.description.replaceAll('\n','\\\n')}\n`;
       }
+      if (component.link){
+        markdownContent += `[${component.link_title??'Bulma Docs'}](${component.link})\n`;
+      }
 
       // Add props section if props exist
       if (component.props && component.props.length > 0) {
@@ -336,7 +339,7 @@ function writeMDIndexes(docsFolder){
     let splt = docsFolder.split(path.delimiter);
     markdownContent = `# ${splt[splt.length-1]}\n\n`;
   }else{
-    markdownContent = '# Bulma Skins\n\n';
+    markdownContent = '# Components\n\n';
   }
 
   files.filter(file=>file!=='index.md').forEach(file => {

@@ -18,6 +18,7 @@
  * Use to define a breadcrumbs component
  * 
  * @displayName Breadcrumbs
+ * @link https://bulma.io/documentation/components/breadcrumb/
  */
     import {computed} from 'vue';
     import {BreadCrumbAlignments,Sizes,BreadCrumbSeperators} from '../../enums';

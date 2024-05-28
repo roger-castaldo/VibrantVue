@@ -68,6 +68,10 @@ button.#{iv.$class-prefix}dropdown-item {
   padding: 0.5em 1.2em;
 }
 
+.#{iv.$class-prefix}modal-content{
+  color: #{cv.getVar("scheme-main")};
+}
+
 .#{iv.$class-prefix}modal-content,
 .#{iv.$class-prefix}modal-card {
   border-color: #{cv.getVar("border-color")};

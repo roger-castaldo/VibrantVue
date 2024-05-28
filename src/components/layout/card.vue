@@ -31,6 +31,7 @@
  * A Card component to use
  * 
  * @displayName Card
+ * @link https://bulma.io/documentation/components/card/
  */
     import Icon from '../common/icon.vue';
     import { IconSizes } from '../../enums';

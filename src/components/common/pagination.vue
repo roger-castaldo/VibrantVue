@@ -38,6 +38,7 @@
  * Used to supply a pagination control
  * 
  * @displayName Pagination
+ * @link https://bulma.io/documentation/components/pagination/
  */
     const props = withDefaults(defineProps<IPaginationProperties>(),{
         usenext:true,

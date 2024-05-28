@@ -15,6 +15,7 @@ import { IButtonBasicProperties, IButtonProperties } from './typeDefinitions';
     /**
      * This is a specifically built version of the default button that is designed around a delete call
      * Uses trash-alt icon, danger color and Cancel for text
+     * @displayName ButtonDelete
      */
      const emit = defineEmits<{
         /**

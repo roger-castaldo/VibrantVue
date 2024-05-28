@@ -8,4 +8,8 @@
 </template>
 
 <script lang="ts" setup>
+/**
+ * @displayName Box
+ * @link https://bulma.io/documentation/elements/box/
+ */
 </script>

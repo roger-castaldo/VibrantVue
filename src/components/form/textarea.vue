@@ -24,6 +24,7 @@ import { ValueChangedEvent } from './typeDefinitions';
  * A text area input for the form
  * 
  * @displayName Textarea
+ * @link https://bulma.io/documentation/form/textarea/
  */
     const props = defineProps<fieldProps>();
     const emit = defineEmits<{

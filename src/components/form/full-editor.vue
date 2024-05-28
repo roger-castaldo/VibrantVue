@@ -15,6 +15,8 @@
  * A full editor style of form input (uses SummerNote)
  * 
  * @displayName FullEditor
+ * @link https://summernote.org/
+ * @link_title SummerNote
  */
     const cdnBase = useSummerNote(inject);
 

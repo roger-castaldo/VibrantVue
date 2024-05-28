@@ -14,6 +14,7 @@
  * Used to supply a tag component
  * 
  * @displayName Tag
+ * @link https://bulma.io/documentation/elements/tag/
  */
     import { ColorTypes,Sizes } from '../../enums';
     import {computed} from 'vue';

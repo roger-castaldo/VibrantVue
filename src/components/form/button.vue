@@ -29,6 +29,7 @@ import Button from '../common/button.vue';
  * A generic form button
  * 
  * @displayName Button
+ * @link https://bulma.io/documentation/elements/button/
  */
     const props = defineProps<fieldProps>();
 

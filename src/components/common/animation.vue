@@ -22,6 +22,8 @@
      * Otherwise specify speedin or speedout or both.  These will not apply to repeating, speed will apply to repeating.
      * 
      * @displayName Animation
+     * @link https://animate.style/
+     * @link_title Animate.css library
      */
     import {css} from '../utilities.js';
     import { computed,inject } from 'vue';

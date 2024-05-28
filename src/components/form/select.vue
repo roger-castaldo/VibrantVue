@@ -28,6 +28,7 @@
  * A select input
  * 
  * @displayName Select
+ * @link https://bulma.io/documentation/form/select/
  */
     import { ref, watch, inject,computed, toRaw } from 'vue';
     import Promised from '../common/Promised.vue';

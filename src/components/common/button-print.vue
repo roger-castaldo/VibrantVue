@@ -15,6 +15,7 @@ import { IButtonBasicProperties,IButtonProperties } from './typeDefinitions';
     /**
      * This is a specifically built version of the default button that is designed around a print call
      * Uses print icon, primary color and Print for text
+     * @displayName ButtonPrint
      */
      const emit = defineEmits<{
         /**

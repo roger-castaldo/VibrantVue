@@ -12,6 +12,7 @@
  * This is used to supply a menu label entry into the Menu component
  * 
  * @displayName MenuLabel
+ * @link https://bulma.io/documentation/components/menu/
  */
     const props = withDefaults(defineProps<{
         /**

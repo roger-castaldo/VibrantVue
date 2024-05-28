@@ -12,7 +12,7 @@
             <div class="dropdown-content" v-for="block,index in Blocks">
                 <hr class="dropdown-divider" v-if="index>0"/>
                 <template v-for="entry in block.children">
-                    <component :is="entry instanceof String ? 'div' : 'a'"
+                    <component :is="(entry instanceof String ? 'div' : 'a')"
                         :class="GetItemClasses(entry)"
                         :href="GetItemURL(entry)"
                         @click="ProcessItemClick(entry)">
@@ -29,6 +29,7 @@
 /**
  * This is used to create a drop down element
  * @displayName DropDown
+ * @link https://bulma.io/documentation/components/dropdown/
  */
     import { MaybeRef,computed,toValue,ref} from 'vue';
     import { DropDownBlock, DropDownItem } from './typeDefinitions';

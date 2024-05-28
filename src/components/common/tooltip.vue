@@ -21,6 +21,7 @@
  * Used to allow for a mouse over tooltip to appear on a given object
  * 
  * @displayName Tooltip
+ * @link https://github.com/CreativeBulma/bulma-tooltip/
  */
     import { NoticeTypes, ToolTipPositions, ToolTipTextAlignments } from '../../enums';
 
