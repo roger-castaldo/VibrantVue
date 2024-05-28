@@ -133,4 +133,4 @@ dist/components.*
 dist/style.css
 dist/style.css.map
 
-docs
+docs/*.json
