@@ -1,16 +1,18 @@
 <template>
-    <div :class="['steps',(props.size===Sizes.normal ? '' : `is-${props.size}`)]">
-        <div v-for="step,index in props.steps" 
-            :class="['step-item', (index<currentIndex ? 'is-completed' : ''),(index===currentIndex?'is-active':''),(step.type?`is-${step.type}` : '')]">
-            <div class="step-marker">
-                <Icon v-if="step.icon" :icon="step.icon"/>
-                <span v-else>{{ index+1 }}</span>
-            </div>
-            <div class="step-details">
-                <p class="step-title">{{ step.title }}</p>
-                <p v-if="step.description">{{step.description}}</p>
-            </div>
-        </div>
+    <div :class="['steps-container',(props.orientation===StepWizardOrientations.default?'' : `${props.orientation}`)]">
+        <ul :class="['steps',(props.size===Sizes.normal ? '' : `is-${props.size}`)]">
+            <li v-for="step,index in props.steps" 
+                :class="['step-item', (index<currentIndex ? 'is-completed' : ''),(index===currentIndex?'is-active':''),(step.type?`is-${step.type}` : '')]">
+                <div class="step-marker is-clickable" @click="emit('changedStep',index)">
+                    <Icon v-if="step.icon" :icon="step.icon"/>
+                    <span v-else>{{ index+1 }}</span>
+                </div>
+                <div class="step-details">
+                    <p class="step-title">{{ step.title }}</p>
+                    <p v-if="step.description">{{step.description}}</p>
+                </div>
+            </li>
+        </ul>
         <div class="steps-content">
             <template v-for="step,index in steps">
                 <div :class="['step-content',(index===currentIndex?'is-active':'')]" v-if="slots[step.name]">
@@ -57,7 +59,7 @@
  * @displayName StepWizard
  * @link https://aramvisser.github.io/bulma-steps/
  */
-    import { Sizes } from '../../enums';
+    import { Sizes, StepWizardOrientations } from '../../enums';
     import { WizardStep } from './typeDefinitions';
     import Icon from './icon.vue';
     import Button from './button.vue';
@@ -88,11 +90,16 @@
         /**
          * The starting step index
          */
-        starting_index?:number
+        starting_index?:number,
+        /**
+         * The orientation style for the wizard
+         */
+        orientation?:StepWizardOrientations
     }>(),
     {
         size:Sizes.normal,
-        use_previous_next:true
+        use_previous_next:true,
+        orientation:StepWizardOrientations.default
     });
     const emit = defineEmits<{
         /**

@@ -334,3 +334,10 @@
 | ------- | ------- |
 |medium|medium|
 |large|large|
+## [StepWizardOrientations](#StepWizardOrientations)
+
+| Name    | Value |
+| ------- | ------- |
+|default|default|
+|verticalRight|is-vertical-right|
+|verticalLeft|is-vertical-left|

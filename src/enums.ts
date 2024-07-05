@@ -58,3 +58,4 @@ export enum SkinTypes{cerulean='cerulean',cosmo='cosmo',cyborg='cyborg',dark='da
     simplex='simplex',sketchy='sketchy',slate='slate',solar='solar',spacelab='spacelab',superhero='superhero',united='united',vapor='vapor',yeti='yeti',
     zephyr='zephyr'};
 export enum SectionSizes{medium='medium',large='large'};
+export enum StepWizardOrientations{default='default',verticalRight='is-vertical-right',verticalLeft='is-vertical-left'}

@@ -11,6 +11,7 @@ All steps are 0 based index
 | use_previous_next | boolean || true | Inidicates if the actions should be defaulted to Previous/Next/Done|
 | size | [Sizes](../enums.md#Sizes) |small, normal, medium, large| Sizes.normal | The size of the steps indicators to use|
 | starting_index | number ||  | The starting step index|
+| orientation | [StepWizardOrientations](../enums.md#StepWizardOrientations) |default, verticalRight, verticalLeft| StepWizardOrientations.default | The orientation style for the wizard|
 ## Events
 
 | Name    | Params | Description |
