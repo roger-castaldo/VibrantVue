@@ -141,6 +141,9 @@
     const inputProps = computed(() => {
         let result:any = $.extend({}, props.input);
         delete result.type;
+        if (hasLabel.value){
+            delete result.label;
+        }
         if (result.className != undefined) {
             delete result.className;
         }

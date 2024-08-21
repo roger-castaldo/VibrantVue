@@ -5,7 +5,7 @@
             (props.position?`has-tooltip-${props.position}`:''),
             (props.multiline?'has-tooltip-multiline':''),
             (props.type?`has-tooltip-${props.type}`:''),
-            (props.text_align?`has-tooltip-text-${props.text}`:''),
+            (props.text_align?`has-tooltip-text-${props.text_align}`:''),
             (props.always_active?'has-tooltip-active':'')
         ]"
         :data-tooltip="text">
@@ -23,13 +23,14 @@
  * @displayName Tooltip
  * @link https://github.com/CreativeBulma/bulma-tooltip/
  */
+    import {MaybeRef} from 'vue';
     import { NoticeTypes, ToolTipPositions, ToolTipTextAlignments } from '../../enums';
 
     const props = withDefaults(defineProps<{
         /**
          * The content of the tool tip
          */
-        text:string,
+        text:MaybeRef<string>,
         /**
          * The element that this component is (div,a...etc)
          */

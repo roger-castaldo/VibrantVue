@@ -14,6 +14,25 @@ export type AutoCompleteEntry = {
     description:string
 };
 
+export type ProgressEntry = {
+    /**
+     * The color to use for this progress entry
+     */
+    type:ColorTypes,
+    /**
+     * The value for this progress entry, this will be used to determine size
+     */
+    value:number,
+    /**
+     * An optional caption for the progress bar that will display when moused over
+     */
+    caption?:MaybeRef<string>,
+    /**
+     * An optional call back event for when that entry is clicked
+     */
+    onClick?:()=>void
+};
+
 export type GridColumn = {
     /**
      * The unique ID to use for the column

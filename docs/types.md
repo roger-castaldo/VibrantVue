@@ -72,6 +72,18 @@
 |description|string|The description to display when suggesting it|
 
 
+## [ProgressEntry](#ProgressEntry)
+
+### Properties
+
+| Name | Type | Description |
+| ------- | ------- | ------- |
+|type|ColorTypes|The color to use for this progress entry|
+|value|number|The value for this progress entry, this will be used to determine size|
+|caption?|MaybeRef\<string\>|An optional caption for the progress bar that will display when moused over|
+|onClick?|()=\>void|An optional call back event for when that entry is clicked|
+
+
 ## [GridColumn](#GridColumn)
 
 ### Properties

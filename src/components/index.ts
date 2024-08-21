@@ -27,5 +27,5 @@ export const {ColorTypes,NoticeTypes,Sizes,AnimationSpeeds,AnimationTypes,IconSi
     ColumnOffsetSizes,BorderTypes,TabAlignments,TabStyles,TileSizes,TileTypes,FixedNavBarPositions,FixedMenuPositions,
     BadgePositions, ToolTipPositions,ToolTipTextAlignments,ButtonAlignments,SectionSizes} = enums;
 export const {loadNonEs6Module} = utilities;
-export const {Chart,CodeWriter,Grid} = extended;
+export const {Chart,CodeWriter,Grid,ProgressGroup} = extended;
 export type {ValueChangedEvent,ListItemValue,WizardStep,DropDownItem,DropDownBlock,SelectListItemValue,FormInputType,TranslateMethod,MenuItem,ParentMenuItem,AutoCompleteEntry,Tab};

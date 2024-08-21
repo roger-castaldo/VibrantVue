@@ -88,10 +88,13 @@
                 </template>
             </Grid>
         </section>
+        <section>
+            <Progress-Group v-bind="progressGroupProperties"/>
+        </section>
         </div>
         <script type="module">
             import { createApp,ref} from "vue";
-            import {Message,ComponentForm,Promised,Pagination,Card,Menu,MenuList,MenuEntry,Tag,Grid,DropDown,ColorTypes} from 'components';
+            import {Message,ComponentForm,Promised,Pagination,Card,Menu,MenuList,MenuEntry,Tag,Grid,DropDown,ColorTypes,ProgressGroup,Sizes} from 'components';
 
             window.lst = createApp({
                 components: { 
@@ -105,7 +108,8 @@
                     MenuList,
                     MenuEntry,
                     Tag,
-                    Grid
+                    Grid,
+                    ProgressGroup
                 },
                 data:()=>{
                     return {
@@ -131,6 +135,12 @@
     "subtype": "password",
     "label": "LoginForm.Password",
     "name": "password",
+    "required": true
+  },
+  {
+    "type": "checkbox",
+    "label": "LoginForm.Password",
+    "name": "check_me",
     "required": true
   }
 ],
@@ -170,7 +180,23 @@ MyItems:[
             {title:'test_sub_Active',active:true}
         ]
     }
-]
+],
+progressGroupProperties:{
+    size:Sizes.normal,
+    values:[
+        {
+            type:ColorTypes.success,
+            value:20,
+            caption:'Completed'
+        },
+        {
+            type:ColorTypes.danger,
+            value:15,
+            caption:'Failed'
+        }
+    ],
+    max:100
+}
                     };
                 }     ,
                 methods:{

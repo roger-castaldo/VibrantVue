@@ -6,7 +6,7 @@ Used to allow for a mouse over tooltip to appear on a given object
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
-| text | string ||  | The content of the tool tip|
+| text | MaybeRef\<string\> ||  | The content of the tool tip|
 | is | any ||  | The element that this component is (div,a...etc)|
 | has_arrow | boolean || false | Indicates if the tool tip will have an arrow|
 | position | [ToolTipPositions](../enums.md#ToolTipPositions) |left, right, bottom, top| ToolTipPositions.left | Specifies the position that the tool tip will appear|
