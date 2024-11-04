@@ -1,6 +1,7 @@
 @use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv
 @use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+@use "sass:list"
     
 $badge-font-size: .65rem
 $badge-height: 14px
@@ -101,7 +102,7 @@ $badge-shadow: 0 0 0 2px #{cv.getVar("scheme-main")}
                 color: #{cv.getVar($name)}
 
             // If light and dark colors are provided
-            @if length($pair) >= 4
+            @if list.length($pair) >= 4
                 &.#{iv.$class-prefix}is-light
                     color: #{cv.getVar($name,"","-dark")}
                     &:not(.#{iv.$class-prefix}is-outlined)

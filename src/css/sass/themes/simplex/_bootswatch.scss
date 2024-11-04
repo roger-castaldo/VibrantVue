@@ -2,55 +2,7 @@
 @use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
 @use "../mixins" as lmx;
-
-a.#{iv.$class-prefix}dropdown-item,
-button.#{iv.$class-prefix}dropdown-item {
-  &:hover{
-    color: $white;
-    background-color: #{cv.getVar("primary")};
-  }
-}
-
-.#{iv.$class-prefix}navbar-item,
-.#{iv.$class-prefix}navbar-link {
-  &.#{iv.$class-prefix}is-disabled{
-    color:$gray-400;
-  }
-}
-
-.#{iv.$class-prefix}pagination-previous,
-.#{iv.$class-prefix}pagination-next,
-.#{iv.$class-prefix}pagination-link,
-.#{iv.$class-prefix}pagination-ellipsis {
-  border-color: $nav-tabs-border-color;
-}
-
-.#{iv.$class-prefix}pagination-previous,
-.#{iv.$class-prefix}pagination-next,
-.#{iv.$class-prefix}pagination-link{
-  &:hover,
-  &.#{iv.$class-prefix}is-current{
-    color: $white;
-    background-color: #{cv.getVar("primary")};
-    border-color: #{cv.getVar("primary")};
-  }
-
-  &:disabled,
-  &.#{iv.$class-prefix}is-disabled{
-    color: $gray-400;
-    border-color: $nav-tabs-border-color;
-  }
-}
-
-.#{iv.$class-prefix}card {
-  border-color: $nav-tabs-border-color;
-}
-
-.#{iv.$class-prefix}progress{
-  @include lmx.override-color-variable("progress-value-background-color","primary");
-}
-
-// Mixins
+@use "sass:color";
 
 @mixin btn-shadow($name){
   @include lmx.gradient-y-three-colors(
@@ -63,61 +15,114 @@ button.#{iv.$class-prefix}dropdown-item {
   border: 1px solid #{lmx.darken-color($name,13)};
 }
 
-// Navbar
+@mixin boot-swatch-content($white, $gray-400, $nav-tabs-border-color){
 
-.#{iv.$class-prefix}navbar {
-  border-style: solid;
-  border-width: 1px;
-
-  &.#{iv.$class-prefix}is-fixed-top {
-    border-width: 0 0 1px;
-  }
-
-  &.#{iv.$class-prefix}is-fixed-bottom {
-    border-style: solid;
-    border-top-width: 1px 0 0 0;
-  }
-
-  @each $name,$value in dv.$colors{
-    &.#{iv.$class-prefix}is-#{$name} {
-      border-color: #{lmx.darken-color($name,13)};
-    }  
-  }
-}
-
-.#{iv.$class-prefix}button:not(.#{iv.$class-prefix}is-outlined) {
-  @each $name,$value in dv.$colors{
-    &.#{iv.$class-prefix}is-#{$name} {
-      &,
-      &:hover{
-        @include btn-shadow($name);
-      }
+  a.#{iv.$class-prefix}dropdown-item,
+  button.#{iv.$class-prefix}dropdown-item {
+    &:hover{
+      color: $white;
+      background-color: #{cv.getVar("primary")};
     }
   }
 
-  &.#{iv.$class-prefix}is-inverted,
-  &.#{iv.$class-prefix}is-link{
-    color: $white;
+  .#{iv.$class-prefix}navbar-item,
+  .#{iv.$class-prefix}navbar-link {
+    &.#{iv.$class-prefix}is-disabled{
+      color:$gray-400;
+    }
   }
-}
 
-// Forms
-
-// legend,
-// label {
-//   color: $headings-color;
-// }
-
-// Navs
-
-.#{iv.$class-prefix}breadcrumb {
-  border: 1px solid darken($white, 13%);
-}
-
-.#{iv.$class-prefix}pagination-previous,
-.#{iv.$class-prefix}pagination-next,
-.#{iv.$class-prefix}pagination-link {
-  &:hover{
-    text-decoration: none;
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link,
+  .#{iv.$class-prefix}pagination-ellipsis {
+    border-color: $nav-tabs-border-color;
   }
+
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link{
+    &:hover,
+    &.#{iv.$class-prefix}is-current{
+      color: $white;
+      background-color: #{cv.getVar("primary")};
+      border-color: #{cv.getVar("primary")};
+    }
+
+    &:disabled,
+    &.#{iv.$class-prefix}is-disabled{
+      color: $gray-400;
+      border-color: $nav-tabs-border-color;
+    }
+  }
+
+  .#{iv.$class-prefix}card {
+    border-color: $nav-tabs-border-color;
+  }
+
+  .#{iv.$class-prefix}progress{
+    @include lmx.override-color-variable("progress-value-background-color","primary");
+  }
+
+  // Mixins
+
+  // Navbar
+
+  .#{iv.$class-prefix}navbar {
+    border-style: solid;
+    border-width: 1px;
+
+    &.#{iv.$class-prefix}is-fixed-top {
+      border-width: 0 0 1px;
+    }
+
+    &.#{iv.$class-prefix}is-fixed-bottom {
+      border-style: solid;
+      border-top-width: 1px 0 0 0;
+    }
+
+    @each $name,$value in dv.$colors{
+      &.#{iv.$class-prefix}is-#{$name} {
+        border-color: #{lmx.darken-color($name,13)};
+      }  
+    }
+  }
+
+  .#{iv.$class-prefix}button:not(.#{iv.$class-prefix}is-outlined) {
+    @each $name,$value in dv.$colors{
+      &.#{iv.$class-prefix}is-#{$name} {
+        &,
+        &:hover{
+          @include btn-shadow($name);
+        }
+      }
+    }
+
+    &.#{iv.$class-prefix}is-inverted,
+    &.#{iv.$class-prefix}is-link{
+      color: $white;
+    }
+  }
+
+  // Forms
+
+  // legend,
+  // label {
+  //   color: $headings-color;
+  // }
+
+  // Navs
+
+  .#{iv.$class-prefix}breadcrumb {
+    border: 1px solid color.adjust($white,$lightness: -13%);
+  }
+
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link {
+    &:hover{
+      text-decoration: none;
+    }
+  }
+
 }

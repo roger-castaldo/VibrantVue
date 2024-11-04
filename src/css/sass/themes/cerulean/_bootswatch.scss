@@ -49,38 +49,41 @@ $text-shadow: 0 1px 0 rgba(0, 0, 0, .05) !default;
   );
 }
 
-// Navbar
+@mixin boot-swatch-content(){
 
-.#{iv.$class-prefix}navbar {
-  @each $name, $value in dv.$colors {
-    &.#{iv.$class-prefix}is-#{$name} {
-      @include btn-shadow($name);
+  // Navbar
+
+  .#{iv.$class-prefix}navbar {
+    @each $name, $value in dv.$colors {
+      &.#{iv.$class-prefix}is-#{$name} {
+        @include btn-shadow($name);
+      }
     }
   }
-}
 
-.#{iv.$class-prefix}navbar-brand,
-.#{iv.$class-prefix}nav-item,
-.#{iv.$class-prefix}nav-link {
-  text-shadow: $text-shadow;
-}
+  .#{iv.$class-prefix}navbar-brand,
+  .#{iv.$class-prefix}nav-item,
+  .#{iv.$class-prefix}nav-link {
+    text-shadow: $text-shadow;
+  }
 
-// Buttons
+  // Buttons
 
-.#{iv.$class-prefix}button {
-  text-shadow: $text-shadow;
+  .#{iv.$class-prefix}button {
+    text-shadow: $text-shadow;
 
-  &:not(.#{iv.$class-prefix}is-outlined){
-    @include btn-shadow("button");
+    &:not(.#{iv.$class-prefix}is-outlined){
+      @include btn-shadow("button");
 
-    &:hover,
-    .#{iv.$class-prefix}is-hovered{
-      @include btn-shadow-hover("button");  
-    }
+      &:hover,
+      .#{iv.$class-prefix}is-hovered{
+        @include btn-shadow-hover("button");  
+      }
 
-    &:active,
-    .#{iv.$class-prefix}is-active{
-      @include btn-shadow-active("button");
+      &:active,
+      .#{iv.$class-prefix}is-active{
+        @include btn-shadow-active("button");
+      }
     }
   }
 }

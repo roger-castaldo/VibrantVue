@@ -1,3 +1,6 @@
+@use "./_variables" as vars
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+	
 =tooltip-hover
 	&:focus::before,
 	&:focus::after,
@@ -13,11 +16,11 @@
 		right: auto
 		bottom: auto
 		left: 50%
-		margin-top: $tooltip-arrow-size * -1 + 1
+		margin-top: vars.$tooltip-arrow-size * -1 + 1
 		margin-right: auto
 		margin-bottom: auto
-		margin-left: $tooltip-arrow-size * -1 + 1
-		border-color: $tooltip-border-color transparent transparent transparent
+		margin-left: vars.$tooltip-arrow-size * -1 + 1
+		border-color: vars.$tooltip-border-color transparent transparent transparent
 
 =tooltip-box-top
 	&::before
@@ -26,7 +29,7 @@
 		bottom: auto
 		left: 50%
 		top: 0
-		margin-top: $tooltip-arrow-size * -1 + 1
+		margin-top: vars.$tooltip-arrow-size * -1 + 1
 		margin-bottom: auto
 		transform: translate(-50%, -100%)
 
@@ -42,9 +45,9 @@
 		left: 50%
 		margin-top: auto
 		margin-right: auto
-		margin-bottom: $tooltip-arrow-size * -1 + 1
-		margin-left: $tooltip-arrow-size * -1 + 1
-		border-color: transparent transparent $tooltip-border-color transparent
+		margin-bottom: vars.$tooltip-arrow-size * -1 + 1
+		margin-left: vars.$tooltip-arrow-size * -1 + 1
+		border-color: transparent transparent vars.$tooltip-border-color transparent
 
 =tooltip-box-bottom
 	&::before
@@ -53,7 +56,7 @@
 		bottom: 0
 		left: 50%
 		margin-top: auto
-		margin-bottom: $tooltip-arrow-size * -1 + 1
+		margin-bottom: vars.$tooltip-arrow-size * -1 + 1
 		transform: translate(-50%, 100%)
 
 =tooltip-bottom
@@ -69,16 +72,16 @@
 		left: 0
 		margin-top: auto
 		margin-right: auto
-		margin-bottom: $tooltip-arrow-size * -1
-		margin-left: $tooltip-arrow-size * -2 + 1
-		border-color: transparent transparent transparent $tooltip-border-color
+		margin-bottom: vars.$tooltip-arrow-size * -1
+		margin-left: vars.$tooltip-arrow-size * -2 + 1
+		border-color: transparent transparent transparent vars.$tooltip-border-color
 
 =tooltip-box-left
 	&::before
 		top: auto
 		right: auto
 		bottom: 50%
-		left: $tooltip-arrow-size * -2 + 1
+		left: vars.$tooltip-arrow-size * -2 + 1
 		transform: translate(-100%, 50%)
 
 =tooltip-left
@@ -93,15 +96,15 @@
 		bottom: 50%
 		left: auto
 		margin-top: auto
-		margin-right: $tooltip-arrow-size * -2 + 1
-		margin-bottom: $tooltip-arrow-size * -1
+		margin-right: vars.$tooltip-arrow-size * -2 + 1
+		margin-bottom: vars.$tooltip-arrow-size * -1
 		margin-left: auto
-		border-color: transparent $tooltip-border-color transparent transparent
+		border-color: transparent vars.$tooltip-border-color transparent transparent
 
 =tooltip-box-right
 	&::before
 		top: auto
-		right: $tooltip-arrow-size * -2 + 1
+		right: vars.$tooltip-arrow-size * -2 + 1
 		bottom: 50%
 		left: auto
 		margin-top: auto

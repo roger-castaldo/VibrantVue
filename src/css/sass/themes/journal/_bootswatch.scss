@@ -3,40 +3,44 @@
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
 @use "../mixins" as lmx;
 
-.#{iv.$class-prefix}pagination-previous,
-.#{iv.$class-prefix}pagination-next,
-.#{iv.$class-prefix}pagination-link {
-  &:hover {
-    background-color: #{cv.getVar("primary")};
-    border-color: #{cv.getVar("primary")};
-    color:$white;
-    text-decoration: none;
+@mixin boot-swatch-content($white){
+
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link {
+    &:hover {
+      background-color: #{cv.getVar("primary")};
+      border-color: #{cv.getVar("primary")};
+      color:$white;
+      text-decoration: none;
+    }
   }
-}
 
-.#{iv.$class-prefix}navbar,
-.#{iv.$class-prefix}button {
-  font-family: #{cv.getVar("title-family")};
-}
-
-.#{iv.$class-prefix}navbar {
-  font-size: 18px;
-}
-
-.#{iv.$class-prefix}navbar-brand,
-.#{iv.$class-prefix}navbar,
-.#{iv.$class-prefix}button {
-  font-weight: #{cv.getVar("title-weight")};
-}
-
-.#{iv.$class-prefix}navbar-brand {
-  padding-top: .5rem;
-  font-size: inherit;
-  text-transform: uppercase;
-}
-
-.#{iv.$class-prefix}button {
-  &.#{iv.$class-prefix}is-warning {
-    color: $white;
+  .#{iv.$class-prefix}navbar,
+  .#{iv.$class-prefix}button {
+    font-family: #{cv.getVar("title-family")};
   }
+
+  .#{iv.$class-prefix}navbar {
+    font-size: 18px;
+  }
+
+  .#{iv.$class-prefix}navbar-brand,
+  .#{iv.$class-prefix}navbar,
+  .#{iv.$class-prefix}button {
+    font-weight: #{cv.getVar("title-weight")};
+  }
+
+  .#{iv.$class-prefix}navbar-brand {
+    padding-top: .5rem;
+    font-size: inherit;
+    text-transform: uppercase;
+  }
+
+  .#{iv.$class-prefix}button {
+    &.#{iv.$class-prefix}is-warning {
+      color: $white;
+    }
+  }
+
 }

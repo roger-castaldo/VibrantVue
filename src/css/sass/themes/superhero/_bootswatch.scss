@@ -3,66 +3,69 @@
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
 @use "../mixins" as lmx;
 
-.#{iv.$class-prefix}control{
-  &.#{iv.$class-prefix}has-icons-left,
-  &.#{iv.$class-prefix}has-icons-right{
-    .#{iv.$class-prefix}icon{
-      color:#{cv.getVar("text")};
-      background-color:$gray-600;
+@mixin boot-swatch-content($gray-600, $white, $nav-link-disabled-color){
+
+  .#{iv.$class-prefix}control{
+    &.#{iv.$class-prefix}has-icons-left,
+    &.#{iv.$class-prefix}has-icons-right{
+      .#{iv.$class-prefix}icon{
+        color:#{cv.getVar("text")};
+        background-color:$gray-600;
+      }
     }
   }
-}
 
-a.#{iv.$class-prefix}dropdown-item,
-button.#{iv.$class-prefix}dropdown-item {
-  &:hover{
-    background-color: #{cv.getVar("table-row-hover-background-color")};
-    color: #{cv.getVar("text")};
+  a.#{iv.$class-prefix}dropdown-item,
+  button.#{iv.$class-prefix}dropdown-item {
+    &:hover{
+      background-color: #{cv.getVar("table-row-hover-background-color")};
+      color: #{cv.getVar("text")};
+    }
   }
-}
 
-.#{iv.$class-prefix}pagination-previous,
-.#{iv.$class-prefix}pagination-next,
-.#{iv.$class-prefix}pagination-link,
-.#{iv.$class-prefix}pagination-ellipsis {
-  color: $white;
-  background-color: $gray-600;
-  border-color: transparent;
-}
-
-.#{iv.$class-prefix}pagination-previous,
-.#{iv.$class-prefix}pagination-next,
-.#{iv.$class-prefix}pagination-link {
-  &:hover {
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link,
+  .#{iv.$class-prefix}pagination-ellipsis {
     color: $white;
-    background-color: $nav-link-disabled-color;
+    background-color: $gray-600;
     border-color: transparent;
   }
 
-  &[disabled],
-  &.#{iv.$class-prefix}is-disabled {
-    color: $nav-link-disabled-color;
-    background-color: $gray-600;
-    border-color:transparent;
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link {
+    &:hover {
+      color: $white;
+      background-color: $nav-link-disabled-color;
+      border-color: transparent;
+    }
+
+    &[disabled],
+    &.#{iv.$class-prefix}is-disabled {
+      color: $nav-link-disabled-color;
+      background-color: $gray-600;
+      border-color:transparent;
+    }
   }
+
+  .#{iv.$class-prefix}breadcrumb {
+    background-color: $gray-600;
+  }
+
+  // // Typography
+
+  // .dropdown-menu {
+  //   font-size: $font-size-sm;
+  // }
+
+  // .dropdown-header {
+  //   font-size: $font-size-sm;
+  // }
+
+  // .blockquote-footer {
+  //   color: $body-color;
+  // }
+
+  // Tables
 }
-
-.#{iv.$class-prefix}breadcrumb {
-  background-color: $gray-600;
-}
-
-// // Typography
-
-// .dropdown-menu {
-//   font-size: $font-size-sm;
-// }
-
-// .dropdown-header {
-//   font-size: $font-size-sm;
-// }
-
-// .blockquote-footer {
-//   color: $body-color;
-// }
-
-// Tables

@@ -1,6 +1,7 @@
 @use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
 @use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
 @use "../mixins" as mx;
+@use "./_bootswatch" as bs;
 @use 'sass:color';
 @use 'sass:math';
 
@@ -75,10 +76,10 @@
     
     $list:mx.define-variable("table-color",$white,$list);
 
-    $list:mx.define-variable("input-background-l",lightness(lighten($body-bg, 10%)),$list);
-    $list:mx.define-variable("input-color-l",lightness($white),$list);
+    $list:mx.define-variable("input-background-l",color.channel(color.adjust($body-bg, $lightness: 10%), "lightness", $space: hsl),$list);
+    $list:mx.define-variable("input-color-l",color.channel($white, "lightness", $space: hsl),$list);
     $list:mx.define-variable("input-disabled-color",$gray-500,$list);
-    $list:mx.define-variable("input-disabled-background-color",lighten($body-bg, 5%),$list);
+    $list:mx.define-variable("input-disabled-background-color",color.adjust($body-bg, $lightness: 5%),$list);
     $list:mx.define-variable("input-placeholder-color",rgba($white, .4),$list);
 
     $list:mx.define-variable("tabs-link-active-color",$white,$list);
@@ -140,5 +141,5 @@ $list-group-action-active-bg:       $list-group-hover-bg !default;
 
     @include mx.output-skin-content($list);
 
-    @import "./_bootswatch.scss";
+    @include bs.boot-swatch-content($white, $text-muted, $body-bg);
 }

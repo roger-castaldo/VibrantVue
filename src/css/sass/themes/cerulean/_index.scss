@@ -1,5 +1,6 @@
 @use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
 @use "../mixins" as mx;
+@use "./_bootswatch" as bs;
 
 @include mx.bulma-theme($name: "cerulean") {
 
@@ -48,5 +49,5 @@
 
     @include mx.output-skin-content($list);
 
-    @import "./_bootswatch.scss";
+    @include bs.boot-swatch-content();
 }

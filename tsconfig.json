@@ -1,14 +1,14 @@
 {
-    "compilerOptions": {
-        "lib": [
-          "ES2021.String",
-          "DOM"
-        ],
-        "downlevelIteration": true,
-        "moduleResolution":"NodeNext",
-        "resolveJsonModule": true,
-        "module": "NodeNext",
-        "allowImportingTsExtensions":true,
-        "noEmit": true
-    }
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["esnext", "dom"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "types": ["@vitest/browser/providers/playwright"],
+    "strict": true,
+    "declaration": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  }
 }

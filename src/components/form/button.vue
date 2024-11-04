@@ -1,5 +1,5 @@
 ﻿<template>
-    <Button :type="sstyle" :icon="(props.icon ? props.icon : null)" :title="Translator(props.label)" @click="emit('buttonClicked',props.name)" :disabled="props.disabled"/>
+    <Button class="button" :type="props.sstyle" :icon="(props.icon ? props.icon : null)" :title="Translator(props.label)" @click="emit('buttonClicked',props.name)" :disabled="props.disabled"/>
 </template>
 
 <script lang="ts">

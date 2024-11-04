@@ -32,7 +32,7 @@ import { IButtonProperties } from './typeDefinitions';
         click: []
     }>();
 
-    const Classes = computed<string>(()=>{
+    const Classes = computed<string[]>(()=>{
         let result = ['button',`is-${props.size}`,`is-${props.type}`];
         if (props.disabled){
             result.push('disabled');
@@ -41,6 +41,6 @@ import { IButtonProperties } from './typeDefinitions';
         if (props.hide_mobile){result.push('is-hidden-mobile');}
         if (props.hide_tablet){result.push('is-hidden-tablet-only');}
         if (props.hide_desktop){result.push('is-hidden-desktop is-hidden-widescreen');}
-        return result.join(' ');
+        return result;
     });
 </script>

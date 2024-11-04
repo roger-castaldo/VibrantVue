@@ -4,7 +4,7 @@
             <button class="button" aria-haspopup="true" :aria-controls="menuID" @click="isActive=!isActive">
                 <span>{{props.title}}</span>
                 <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    <Icon icon="angle-down" aria-hidden="true"/>
                 </span>
             </button>
         </div>
@@ -34,6 +34,7 @@
     import { MaybeRef,computed,toValue,ref} from 'vue';
     import { DropDownBlock, DropDownItem } from './typeDefinitions';
     import { generateUUID } from '../utilities';
+    import Icon from './icon.vue';
 
     const menuID:string = generateUUID();
 

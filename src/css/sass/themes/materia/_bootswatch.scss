@@ -3,65 +3,10 @@
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
 @use "../mixins" as lmx;
 
-
-
-.#{iv.$class-prefix}control,
-.#{iv.$class-prefix}input,
-.#{iv.$class-prefix}textarea,
-.#{iv.$class-prefix}select select {
-  .#{iv.$class-prefix}is-small{
-    @include cv.register-vars((
-      "control-padding-vertical":0,
-      "control-padding-horizontal":0
-    ));
-  }
-
-  .#{iv.$class-prefix}is-large{
-    @include cv.register-vars((
-      "control-padding-vertical":1.25rem,
-      "control-padding-horizontal":0
-    ));
-  }
-}
-
-.#{iv.$class-prefix}navbar {
-  border: none;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
-
-  .#{iv.$class-prefix}navbar-brand {
-    font-size: 24px;
-  }
-
-  .#{iv.$class-prefix}navbar-link {
-    padding-top: .9rem;
-    padding-bottom: .9rem;
-  }
-
-  &.#{iv.$class-prefix}is-dark,
-  &.#{iv.$class-prefix}is-primary {
-    input[type="search"],
-    input[type="text"],
-    input[type="password"],
-    input[type="email"],
-    input[type="number"],
-    input[type="tel"] {
-      color: $white;
-      box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .5);
-
-      &:focus {
-        box-shadow: inset 0 -2px 0 $white;
-      }
-
-      &::placeholder {
-        color: rgba(255, 255, 255, .5);
-      }
-    }
-  }
-}
-
-
 @mixin ripple($color) {
-  position: relative;
+  & {
+    position: relative;
+  }
 
   &::before {
     position: absolute;
@@ -119,220 +64,278 @@
   }
 }
 
-.#{iv.$class-prefix}button{
-  text-transform: uppercase;
-  border: none;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .4);
-  transition: color .4s, background-color .4s, border-color .4s, box-shadow .4s;
+@mixin boot-swatch-content($white, $gray-600, $gray-900, $gray-400, $blue){
 
-  @include btn("primary", $white);
-  @include btn("success", $white);
-  @include btn("info", $white);
-  @include btn("warning", $white);
-  @include btn("danger", $white);
-  @include btn("dark", $white);
-  @include btn("light", $white);
-
-  &.#{iv.$class-prefix}is-link {
-    box-shadow: none;
-
-    &:hover,
-    &:focus {
-      box-shadow: none;
+  .#{iv.$class-prefix}control,
+  .#{iv.$class-prefix}input,
+  .#{iv.$class-prefix}textarea,
+  .#{iv.$class-prefix}select select {
+    .#{iv.$class-prefix}is-small{
+      @include cv.register-vars((
+        "control-padding-vertical":0,
+        "control-padding-horizontal":0
+      ));
     }
 
-    &.#{iv.$class-prefix}is-disabled, // Although btn-link is intended for buttons, which want to look like link, I include here a.disable for the sake of consistency
-    &[disabled],
-    fieldset[disabled] & {
-      &:hover,
-      &:active:hover {
-        text-decoration: none;
+    .#{iv.$class-prefix}is-large{
+      @include cv.register-vars((
+        "control-padding-vertical":1.25rem,
+        "control-padding-horizontal":0
+      ));
+    }
+  }
+
+  .#{iv.$class-prefix}navbar {
+    border: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+
+    .#{iv.$class-prefix}navbar-brand {
+      font-size: 24px;
+    }
+
+    .#{iv.$class-prefix}navbar-link {
+      padding-top: .9rem;
+      padding-bottom: .9rem;
+    }
+
+    &.#{iv.$class-prefix}is-dark,
+    &.#{iv.$class-prefix}is-primary {
+      input[type="search"],
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      input[type="number"],
+      input[type="tel"] {
+        color: $white;
+        box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .5);
+
+        &:focus {
+          box-shadow: inset 0 -2px 0 $white;
+        }
+
+        &::placeholder {
+          color: rgba(255, 255, 255, .5);
+        }
       }
     }
   }
 
-  &.#{iv.$class-prefix}is-warning {
-    color:$white;
-  }
-}
+  .#{iv.$class-prefix}button{
+    text-transform: uppercase;
+    border: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .4);
+    transition: color .4s, background-color .4s, border-color .4s, box-shadow .4s;
 
-body,
-input,
-button {
-  letter-spacing: .1px;
-}
+    @include btn("primary", $white);
+    @include btn("success", $white);
+    @include btn("info", $white);
+    @include btn("warning", $white);
+    @include btn("danger", $white);
+    @include btn("dark", $white);
+    @include btn("light", $white);
 
-p {
-  margin: 0 0 1em;
-}
+    &.#{iv.$class-prefix}is-link {
+      box-shadow: none;
 
-.#{iv.$class-prefix}input,
-.#{iv.$class-prefix}textarea {
-  box-shadow: inset 0 -1px 0 #ddd;
-  transition: box-shadow .2s;
+      &:hover,
+      &:focus {
+        box-shadow: none;
+      }
 
-  &:focus {
-    box-shadow: inset 0 -2px 0 #{cv.getVar("primary")};
-  }
+      &.#{iv.$class-prefix}is-disabled, // Although btn-link is intended for buttons, which want to look like link, I include here a.disable for the sake of consistency
+      &[disabled],
+      fieldset[disabled] & {
+        &:hover,
+        &:active:hover {
+          text-decoration: none;
+        }
+      }
+    }
 
-  &[disabled],
-  &[readonly] {
-    border-bottom: 1px dotted #ddd;
-    box-shadow: none;
-  }
-
-  &[disabled],
-  &[disabled]::placeholder {
-    color: #ddd;
-  }
-}
-
-.#{iv.$class-prefix}select{
-  @include cv.register-vars((
-    "select-padding-right":cv.getVar("size-normal"),
-    "select-padding-vertical":0.5rem
-  ));
-
-  &.#{iv.$class-prefix}is-small {
-    @include cv.register-vars((
-      "select-padding-right":cv.getVar("size-normal"),
-      "select-padding-vertical":0.4rem
-    ));
+    &.#{iv.$class-prefix}is-warning {
+      color:$white;
+    }
   }
 
-  &.#{iv.$class-prefix}is-normal {
-    @include cv.register-var("select-padding-right",cv.getVar("size-normal"));
+  body,
+  input,
+  button {
+    letter-spacing: .1px;
   }
 
-  &.#{iv.$class-prefix}is-medium{
-    @include cv.register-var("select-padding-right",cv.getVar("size-medium"));
+  p {
+    margin: 0 0 1em;
   }
 
-  &.#{iv.$class-prefix}is-large{
-    @include cv.register-var("select-padding-right",cv.getVar("size-large"));
-  }
-
-  select{
-    padding-top: #{cv.getVar("select-padding-vertical")};
-    padding-bottom: #{cv.getVar("select-padding-vertical")};
-    padding-right: calc(2 * #{cv.getVar("select-padding-right")}); 
-    padding-left: 5px;
-    appearance: none;
-    background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 4'><path fill='#{$gray-600}' d='M8 0 4 4 0 0z'/></svg>"));
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: 8px 4px;
+  .#{iv.$class-prefix}input,
+  .#{iv.$class-prefix}textarea {
     box-shadow: inset 0 -1px 0 #ddd;
+    transition: box-shadow .2s;
 
     &:focus {
-      background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 4'><path fill='#{$gray-900}' d='M8 0 4 4 0 0z'/></svg>"));
       box-shadow: inset 0 -2px 0 #{cv.getVar("primary")};
     }
 
-    &[multiple] {
-      background: none;
+    &[disabled],
+    &[readonly] {
+      border-bottom: 1px dotted #ddd;
+      box-shadow: none;
+    }
+
+    &[disabled],
+    &[disabled]::placeholder {
+      color: #ddd;
     }
   }
-}
 
-.#{iv.$class-prefix}checkbox {
-  width: 1.25em;
-  height: 1.25em;
-  margin-top: 1px;
-  border: 2px solid $gray-400;
+  .#{iv.$class-prefix}select{
+    @include cv.register-vars((
+      "select-padding-right":cv.getVar("size-normal"),
+      "select-padding-vertical":0.5rem
+    ));
 
-  &:checked[type="radio"] {
-    background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$blue}' stroke='#{$white}'/></svg>")), var(--bs-gradient);
-    background-size: 1.8em;
+    &.#{iv.$class-prefix}is-small {
+      @include cv.register-vars((
+        "select-padding-right":cv.getVar("size-normal"),
+        "select-padding-vertical":0.4rem
+      ));
+    }
+
+    &.#{iv.$class-prefix}is-normal {
+      @include cv.register-var("select-padding-right",cv.getVar("size-normal"));
+    }
+
+    &.#{iv.$class-prefix}is-medium{
+      @include cv.register-var("select-padding-right",cv.getVar("size-medium"));
+    }
+
+    &.#{iv.$class-prefix}is-large{
+      @include cv.register-var("select-padding-right",cv.getVar("size-large"));
+    }
+
+    select{
+      padding-top: #{cv.getVar("select-padding-vertical")};
+      padding-bottom: #{cv.getVar("select-padding-vertical")};
+      padding-right: calc(2 * #{cv.getVar("select-padding-right")}); 
+      padding-left: 5px;
+      appearance: none;
+      background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 4'><path fill='#{$gray-600}' d='M8 0 4 4 0 0z'/></svg>"));
+      background-repeat: no-repeat;
+      background-position: right center;
+      background-size: 8px 4px;
+      box-shadow: inset 0 -1px 0 #ddd;
+
+      &:focus {
+        background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 4'><path fill='#{$gray-900}' d='M8 0 4 4 0 0z'/></svg>"));
+        box-shadow: inset 0 -2px 0 #{cv.getVar("primary")};
+      }
+
+      &[multiple] {
+        background: none;
+      }
+    }
   }
 
-  &:checked[type="checkbox"] {
-    background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$white}' stroke-width='2' d='m6 10 3 3 6-6'/></svg>")), var(--bs-gradient);
-    background-size: 1.6em;
+  .#{iv.$class-prefix}checkbox {
+    width: 1.25em;
+    height: 1.25em;
+    margin-top: 1px;
+    border: 2px solid $gray-400;
+
+    &:checked[type="radio"] {
+      background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$blue}' stroke='#{$white}'/></svg>")), var(--bs-gradient);
+      background-size: 1.8em;
+    }
+
+    &:checked[type="checkbox"] {
+      background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$white}' stroke-width='2' d='m6 10 3 3 6-6'/></svg>")), var(--bs-gradient);
+      background-size: 1.6em;
+    }
   }
-}
 
-.#{iv.$class-prefix}navbar-item {
-  + .#{iv.$class-prefix}navbar-item {
-    margin-left:0;
+  .#{iv.$class-prefix}navbar-item {
+    + .#{iv.$class-prefix}navbar-item {
+      margin-left:0;
+    }
   }
-}
 
-.#{iv.$class-prefix}navbar-link,
-.#{iv.$class-prefix}navbar-link:focus{
-  margin-right: 0;
-  color: #{cv.getVar("text-color")};
-  background-color: transparent;
-  border: none;
-  box-shadow: inset 0 -1px 0 #ddd;
-  transition: color .2s, box-shadow .2s;
-
-  &:hover {
-    color: #{cv.getVar("primary")};
+  .#{iv.$class-prefix}navbar-link,
+  .#{iv.$class-prefix}navbar-link:focus{
+    margin-right: 0;
+    color: #{cv.getVar("text-color")};
     background-color: transparent;
-    box-shadow: inset 0 -2px 0 #{cv.getVar("primary")};
-  }
-
-  &.#{iv.$class-prefix}is-active{
-    color: #{cv.getVar("primary")};
     border: none;
-    box-shadow: inset 0 -2px 0 #{cv.getVar("primary")};
+    box-shadow: inset 0 -1px 0 #ddd;
+    transition: color .2s, box-shadow .2s;
 
     &:hover {
       color: #{cv.getVar("primary")};
+      background-color: transparent;
+      box-shadow: inset 0 -2px 0 #{cv.getVar("primary")};
+    }
+
+    &.#{iv.$class-prefix}is-active{
+      color: #{cv.getVar("primary")};
       border: none;
+      box-shadow: inset 0 -2px 0 #{cv.getVar("primary")};
+
+      &:hover {
+        color: #{cv.getVar("primary")};
+        border: none;
+      }
+    }
+
+    &.#{iv.$class-prefix}is-disabled{
+      box-shadow: inset 0 -1px 0 #ddd;
     }
   }
 
-  &.#{iv.$class-prefix}is-disabled{
-    box-shadow: inset 0 -1px 0 #ddd;
+  .#{iv.$class-prefix}dropdown {
+    margin-top: 0;
+    border: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
   }
-}
 
-.#{iv.$class-prefix}dropdown {
-  margin-top: 0;
-  border: none;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
-}
-
-.#{iv.$class-prefix}notification {
-  padding-right: 2.5rem;
-  border: none;
-}
-
-.#{iv.$class-prefix}badge {
-  &.#{iv.$class-prefix}is-light {
-    color: #{cv.getVar("dark")};
+  .#{iv.$class-prefix}notification {
+    padding-right: 2.5rem;
+    border: none;
   }
-}
 
-// Containers
-
-.#{iv.$class-prefix}card {
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .4);
-  border-width: 1px;
-}
-
-.list-group {
-  &-item-action.active {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      color: $white;
+  .#{iv.$class-prefix}badge {
+    &.#{iv.$class-prefix}is-light {
+      color: #{cv.getVar("dark")};
     }
   }
-}
 
-.#{iv.$class-prefix}modal-content,
-.#{iv.$class-prefix}modal-card {
-  border-radius: .2rem;
-  box-shadow: 0 6px 36px rgba(0, 0, 0, .3);
-}
+  // Containers
 
-.popover {
-  border: none;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+  .#{iv.$class-prefix}card {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .4);
+    border-width: 1px;
+  }
+
+  .list-group {
+    &-item-action.active {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: $white;
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}modal-content,
+  .#{iv.$class-prefix}modal-card {
+    border-radius: .2rem;
+    box-shadow: 0 6px 36px rgba(0, 0, 0, .3);
+  }
+
+  .popover {
+    border: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+  }
+
 }

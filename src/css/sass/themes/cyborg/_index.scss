@@ -1,5 +1,6 @@
 @use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
 @use "../mixins" as mx;
+@use "./_bootswatch" as bs;
 @use 'sass:color';
 @use 'sass:math';
 
@@ -55,8 +56,8 @@
     $list:mx.define-variable("title-color",$white,$list);
     $list:mx.define-variable("subtitle-color",$white,$list);
 
-    $list:mx.define-variable("input-background-l",lightness($white),$list);
-    $list:mx.define-variable("input-color-l",lightness($scheme-main),$list);
+    $list:mx.define-variable("input-background-l",color.channel($white, "lightness", $space: hsl),$list);
+    $list:mx.define-variable("input-color-l",color.channel($scheme-main, "lightness", $space: hsl),$list);
 
     $list:mx.define-variable("table-color",$white,$list);
     $list:mx.define-variable("table-cell-heading-color",$white,$list);
@@ -65,5 +66,5 @@
 
     @include mx.output-skin-content($list);
 
-    @import "./_bootswatch.scss";
+    @include bs.boot-swatch-content();
 }

@@ -1,0 +1,44 @@
+import { expect, test,describe } from 'vitest'
+import { render } from 'vitest-browser-vue'
+import axe from 'axe-core';
+import buttonsContainer from '../../../components/common/buttons-container.vue';
+import { ButtonAlignments, Sizes } from '../../../enums';
+import { stripCommentNodes } from '../../common';
+
+describe('ButtonsContainer', () => {
+    test('check accessibility',async() => {
+        const {container} = render(buttonsContainer, {});
+    
+        const accessibilityScanResults =  await axe.run(container);
+    
+        expect(accessibilityScanResults.violations).toEqual([]);
+    }),
+    test('Check container sizes', async () => {
+        for (const key in Sizes) {
+            const { container } = render(buttonsContainer, {
+                props: {
+                    size:Sizes[key]
+                },
+            });
+            const buttonContainer = container.childNodes[0] as HTMLElement;
+
+            expect(stripCommentNodes(buttonContainer).length).toBe(0);
+            expect(buttonContainer.classList).toContain('buttons');
+            expect(buttonContainer.classList).toContain(`are-${Sizes[key]}`);
+        }
+    }),
+    test('Check container alignments', async () => {
+        for (const key in ButtonAlignments) {
+            const { container } = render(buttonsContainer, {
+                props: {
+                    alignment:ButtonAlignments[key]
+                },
+            });
+            const buttonContainer = container.childNodes[0] as HTMLElement;
+
+            expect(stripCommentNodes(buttonContainer).length).toBe(0);
+            expect(buttonContainer.classList).toContain('buttons');
+            expect(buttonContainer.classList).toContain(`is-${ButtonAlignments[key]}`);
+        }
+    })
+});

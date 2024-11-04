@@ -1,0 +1,2 @@
+Repository Description
+VibrantVue: A versatile Vue component library built with Bulma CSS, featuring customizable themes and a full suite of form components.

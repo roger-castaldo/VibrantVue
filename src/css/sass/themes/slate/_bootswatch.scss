@@ -3,82 +3,6 @@
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
 @use "../mixins" as lmx;
 
-
-.#{iv.$class-prefix}control,
-.#{iv.$class-prefix}input,
-.#{iv.$class-prefix}textarea,
-.#{iv.$class-prefix}select select {
-  border-color: rgba($black, .6);
-}
-
-.#{iv.$class-prefix}control{
-  &.#{iv.$class-prefix}has-icons-left,
-  &.#{iv.$class-prefix}has-icons-right{
-    .#{iv.$class-prefix}icon{
-      color:$gray-500;
-      background-color:$gray-700;
-    }
-  }
-}
-
-a.#{iv.$class-prefix}dropdown-item,
-button.#{iv.$class-prefix}dropdown-item {
-  color: #{cv.getVar("text")};
-
-  &:hover,
-  &:active,
-  &.#{iv.$class-prefix}is-active,
-  &.#{iv.$class-prefix}is-selected {
-    color: $white;
-    background-color: #{cv.getVar("scheme-main")};
-  }
-}
-
-.#{iv.$class-prefix}pagination-previous,
-.#{iv.$class-prefix}pagination-next,
-.#{iv.$class-prefix}pagination-link,
-.#{iv.$class-prefix}pagination-ellipsis {
-  padding: #{cv.getVar("button-padding-vertical")} #{cv.getVar("button-padding-horizontal")};
-  color: $white;
-  background-color: transparent;
-  border-color: rgba($black, .6);
-}
-
-.#{iv.$class-prefix}pagination-previous,
-.#{iv.$class-prefix}pagination-next,
-.#{iv.$class-prefix}pagination-link {
-  &:hover {
-    color: $white;
-    background-color:transparent;
-    border-color: rgba($black, .6);
-  }
-
-  &:active {
-    background-color:transparent;
-    border-color: rgba($black, .6);
-  }
-
-  &[disabled],
-  &.#{iv.$class-prefix}is-disabled {
-    background-color:transparent;
-    border-color: rgba($black, .6);
-  }
-}
-
-.#{iv.$class-prefix}card {
-  border-color: rgba($black, .6);
-}
-
-.#{iv.$class-prefix}modal-content,
-.#{iv.$class-prefix}modal-card {
-  background-color: #{lmx.lighten-color("scheme-main", 5)};
-  border-color: rgba(0, 0, 0, .2);
-}
-
-.#{iv.$class-prefix}progress{
-  @include lmx.override-color-variable("progress-value-background-color","gray-600");
-}
-
 @mixin btn-shadow($name){
   @include lmx.gradient-y-three-colors(
     lmx.lighten-color($name,5), 
@@ -109,273 +33,353 @@ button.#{iv.$class-prefix}dropdown-item {
   filter: none;
 }
 
-// Navbar
+@mixin boot-swatch-content($black, $gray-500, $gray-600, $gray-700, $white){
 
-.#{iv.$class-prefix}navbar {
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-  border: 1px solid rgba(0, 0, 0, .6);
-
-  // .container {
-  //   padding: 0;
-  // }
-
-  // .navbar-toggler {
-  //   border-color: rgba(0, 0, 0, .6);
-  // }
-
-  &.#{iv.$class-prefix}is-fixed-top {
-    border-width: 0 0 1px;
+  .#{iv.$class-prefix}control,
+  .#{iv.$class-prefix}input,
+  .#{iv.$class-prefix}textarea,
+  .#{iv.$class-prefix}select select {
+    border-color: rgba($black, .6);
   }
 
-  &.#{iv.$class-prefix}is-fixed-bottom {
-    border-width: 1px 0 0;
+  .#{iv.$class-prefix}control{
+    &.#{iv.$class-prefix}has-icons-left,
+    &.#{iv.$class-prefix}has-icons-right{
+      .#{iv.$class-prefix}icon{
+        color:$gray-500;
+        background-color:$gray-700;
+      }
+    }
   }
 
-  a.#{iv.$class-prefix}navbar-item,
-  .#{iv.$class-prefix}navbar-link {
-    padding: 1rem;
-    border-right: 1px solid rgba(0, 0, 0, .2);
-    border-left: 1px solid rgba(255, 255, 255, .1);
-    
+  a.#{iv.$class-prefix}dropdown-item,
+  button.#{iv.$class-prefix}dropdown-item {
+    color: #{cv.getVar("text")};
+
+    &:hover,
+    &:active,
     &.#{iv.$class-prefix}is-active,
     &.#{iv.$class-prefix}is-selected {
-      background-color: rgba(0, 0, 0, .3);
-      border-left: 1px solid rgba(0, 0, 0, .2);
+      color: $white;
+      background-color: #{cv.getVar("scheme-main")};
     }
   }
 
-  .#{iv.$class-prefix}navbar-brand {
-    padding: .75rem 1rem subtract(24px, .75rem);
-    margin-right: 0;
-    border-right: 1px solid rgba(0, 0, 0, .2);
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link,
+  .#{iv.$class-prefix}pagination-ellipsis {
+    padding: #{cv.getVar("button-padding-vertical")} #{cv.getVar("button-padding-horizontal")};
+    color: $white;
+    background-color: transparent;
+    border-color: rgba($black, .6);
   }
 
-  @each $name, $value in dv.$colors {
-    &.#{iv.$class-prefix}is-#{$name} {
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link {
+    &:hover {
+      color: $white;
+      background-color:transparent;
+      border-color: rgba($black, .6);
+    }
 
-      a.#{iv.$class-prefix}navbar-item,
-      .#{iv.$class-prefix}navbar-link {
-        &:hover {
-          @include btn-shadow-inverse($name);
-          border-left: 1px solid rgba(0, 0, 0, .2);
-        }
+    &:active {
+      background-color:transparent;
+      border-color: rgba($black, .6);
+    }
 
-        &:active,
-        &.active {
-          @include btn-shadow-inverse-dark($name);
-          border-left: 1px solid rgba(0, 0, 0, .2);
-        }
-      }
+    &[disabled],
+    &.#{iv.$class-prefix}is-disabled {
+      background-color:transparent;
+      border-color: rgba($black, .6);
     }
   }
-}
 
-// Buttons
-
-.#{iv.$class-prefix}button {
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
-  border-color: rgba(0, 0, 0, .6);
-
-  &:not([disabled]):not(.#{iv.$class-prefix}is-disabled).active,
-  &.#{iv.$class-prefix}is-disabled {
-    border-color: rgba(0, 0, 0, .6);
-    box-shadow: none;
+  .#{iv.$class-prefix}card {
+    border-color: rgba($black, .6);
   }
 
-  &:hover,
-  &:focus,
-  &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):active,
-  &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):active:hover,
-  &:not([disabled]):not(.#{iv.$class-prefix}is-disabled).active:hover {
-    border-color: rgba(0, 0, 0, .6);
+  .#{iv.$class-prefix}modal-content,
+  .#{iv.$class-prefix}modal-card {
+    background-color: #{lmx.lighten-color("scheme-main", 5)};
+    border-color: rgba(0, 0, 0, .2);
   }
 
-  @each $name, $value in dv.$colors {
-    &.#{iv.$class-prefix}is-#{$name}:not(.#{iv.$class-prefix}is-outlined) {
-      @include btn-shadow($name);
-
-      &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):hover {
-        @include btn-shadow-inverse($name);
-      }
-
-      &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):active:hover,
-      &:not([disabled]):not(.#{iv.$class-prefix}is-disabled).active:hover {
-        @include btn-shadow-inverse-dark($name);
-      }
-    }
+  .#{iv.$class-prefix}progress{
+    @include lmx.override-color-variable("progress-value-background-color","gray-600");
   }
-}
 
-// .btn-outline {
-//   &-primary {
-//     color: $white;
-//   }
-// }
+  
 
-// .btn-link,
-// .btn-link:hover {
-//   border-color: transparent;
-// }
+  // Navbar
 
-// .btn-group,
-// .btn-group-vertical {
-//   .btn.active {
-//     border-color: rgba(0, 0, 0, .6);
-//   }
-// }
-
-// .btn-check:checked + .btn,
-// .btn-check + .btn:hover {
-//   color: $white;
-//   border-color: rgba(0, 0, 0, .6);
-// }
-
-// Typography
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-shadow: -1px -1px 0 rgba(0, 0, 0, .3);
-}
-
-// Forms
-
-// legend {
-//   color: $white;
-// }
-
-// .input-group-addon {
-//   @include btn-shadow($secondary);
-//   color: $white;
-//   text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
-// }
-
-// Navs
-
-.#{iv.$class-prefix}tabs {
-  a{
-    @include btn-shadow-inverse("gray-800");
+  .#{iv.$class-prefix}navbar {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
     border: 1px solid rgba(0, 0, 0, .6);
 
-    &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):hover,
-    &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):focus,
-    &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):active,
-    &:not([disabled]):not(.#{iv.$class-prefix}is-disabled).active {
-      @include btn-shadow("gray-800");
+    // .container {
+    //   padding: 0;
+    // }
+
+    // .navbar-toggler {
+    //   border-color: rgba(0, 0, 0, .6);
+    // }
+
+    &.#{iv.$class-prefix}is-fixed-top {
+      border-width: 0 0 1px;
     }
 
-    &.#{iv.$class-prefix}is-disabled {
-      border: 1px solid rgba(0, 0, 0, .6);
+    &.#{iv.$class-prefix}is-fixed-bottom {
+      border-width: 1px 0 0;
     }
 
-    &:hover{
-      @include cv.register-var("tabs-link-color",$white);
-    }
-  }
-}
-
-.#{iv.$class-prefix}tabs {
-  .#{iv.$class-prefix}is-toggle,
-  .#{iv.$class-prefix}is-boxed{
-    a{
-      @include btn-shadow("gray-800");
-      @include cv.register-var("tabs-link-color",$white);
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
-      border: 1px solid rgba(0, 0, 0, .6);
-
-      &:hover{
-        @include btn-shadow-inverse("gray-800");
-        border: 1px solid rgba(0, 0, 0, .6);
-      }
-
-      &.#{iv.$class-prefix}is-disabled,
-      &.#{iv.$class-prefix}is-disabled:hover{
-        @include btn-shadow("gray-800");
-        @include cv.register-var("tabs-link-color",$white);
+    a.#{iv.$class-prefix}navbar-item,
+    .#{iv.$class-prefix}navbar-link {
+      padding: 1rem;
+      border-right: 1px solid rgba(0, 0, 0, .2);
+      border-left: 1px solid rgba(255, 255, 255, .1);
+      
+      &.#{iv.$class-prefix}is-active,
+      &.#{iv.$class-prefix}is-selected {
+        background-color: rgba(0, 0, 0, .3);
+        border-left: 1px solid rgba(0, 0, 0, .2);
       }
     }
-  }
-}
 
-.#{iv.$class-prefix}hero {
-  @each $name, $pair in dv.$colors {
-    &.#{iv.$class-prefix}is-#{$name} {
-      .#{iv.$class-prefix}tabs {
-        a{
-          @include btn-shadow($name);
-          &:hover{
+    .#{iv.$class-prefix}navbar-brand {
+      padding: .75rem 1rem subtract(24px, .75rem);
+      margin-right: 0;
+      border-right: 1px solid rgba(0, 0, 0, .2);
+    }
+
+    @each $name, $value in dv.$colors {
+      &.#{iv.$class-prefix}is-#{$name} {
+
+        a.#{iv.$class-prefix}navbar-item,
+        .#{iv.$class-prefix}navbar-link {
+          &:hover {
             @include btn-shadow-inverse($name);
+            border-left: 1px solid rgba(0, 0, 0, .2);
+          }
+
+          &:active,
+          &.active {
+            @include btn-shadow-inverse-dark($name);
+            border-left: 1px solid rgba(0, 0, 0, .2);
           }
         }
       }
     }
   }
-}
 
-.#{iv.$class-prefix}pagination-previous,
-.#{iv.$class-prefix}pagination-next,
-.#{iv.$class-prefix}pagination-link,
-.#{iv.$class-prefix}pagination-ellipsis {
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
-  @include btn-shadow("gray-800");
-}
+  // Buttons
 
-.#{iv.$class-prefix}pagination-previous,
-.#{iv.$class-prefix}pagination-next,
-.#{iv.$class-prefix}pagination-link{
-  &:hover{
-    @include btn-shadow-inverse("gray-800");
-    text-decoration: none;
+  .#{iv.$class-prefix}button {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+    border-color: rgba(0, 0, 0, .6);
+
+    &:not([disabled]):not(.#{iv.$class-prefix}is-disabled).active,
+    &.#{iv.$class-prefix}is-disabled {
+      border-color: rgba(0, 0, 0, .6);
+      box-shadow: none;
+    }
+
+    &:hover,
+    &:focus,
+    &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):active,
+    &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):active:hover,
+    &:not([disabled]):not(.#{iv.$class-prefix}is-disabled).active:hover {
+      border-color: rgba(0, 0, 0, .6);
+    }
+
+    @each $name, $value in dv.$colors {
+      &.#{iv.$class-prefix}is-#{$name}:not(.#{iv.$class-prefix}is-outlined) {
+        @include btn-shadow($name);
+
+        &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):hover {
+          @include btn-shadow-inverse($name);
+        }
+
+        &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):active:hover,
+        &:not([disabled]):not(.#{iv.$class-prefix}is-disabled).active:hover {
+          @include btn-shadow-inverse-dark($name);
+        }
+      }
+    }
   }
 
-  &.#{iv.$class-prefix}is-current{
-    @include btn-shadow-inverse("gray-800");
+  // .btn-outline {
+  //   &-primary {
+  //     color: $white;
+  //   }
+  // }
+
+  // .btn-link,
+  // .btn-link:hover {
+  //   border-color: transparent;
+  // }
+
+  // .btn-group,
+  // .btn-group-vertical {
+  //   .btn.active {
+  //     border-color: rgba(0, 0, 0, .6);
+  //   }
+  // }
+
+  // .btn-check:checked + .btn,
+  // .btn-check + .btn:hover {
+  //   color: $white;
+  //   border-color: rgba(0, 0, 0, .6);
+  // }
+
+  // Typography
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, .3);
   }
 
-  &.#{iv.$class-prefix}is-disabled{
+  // Forms
+
+  // legend {
+  //   color: $white;
+  // }
+
+  // .input-group-addon {
+  //   @include btn-shadow($secondary);
+  //   color: $white;
+  //   text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+  // }
+
+  // Navs
+
+  .#{iv.$class-prefix}tabs {
+    a{
+      @include btn-shadow-inverse("gray-800");
+      border: 1px solid rgba(0, 0, 0, .6);
+
+      &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):hover,
+      &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):focus,
+      &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):active,
+      &:not([disabled]):not(.#{iv.$class-prefix}is-disabled).active {
+        @include btn-shadow("gray-800");
+      }
+
+      &.#{iv.$class-prefix}is-disabled {
+        border: 1px solid rgba(0, 0, 0, .6);
+      }
+
+      &:hover{
+        @include cv.register-var("tabs-link-color",$white);
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}tabs {
+    .#{iv.$class-prefix}is-toggle,
+    .#{iv.$class-prefix}is-boxed{
+      a{
+        @include btn-shadow("gray-800");
+        @include cv.register-var("tabs-link-color",$white);
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+        border: 1px solid rgba(0, 0, 0, .6);
+
+        &:hover{
+          @include btn-shadow-inverse("gray-800");
+          border: 1px solid rgba(0, 0, 0, .6);
+        }
+
+        &.#{iv.$class-prefix}is-disabled,
+        &.#{iv.$class-prefix}is-disabled:hover{
+          @include btn-shadow("gray-800");
+          @include cv.register-var("tabs-link-color",$white);
+        }
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}hero {
+    @each $name, $pair in dv.$colors {
+      &.#{iv.$class-prefix}is-#{$name} {
+        .#{iv.$class-prefix}tabs {
+          a{
+            @include btn-shadow($name);
+            &:hover{
+              @include btn-shadow-inverse($name);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link,
+  .#{iv.$class-prefix}pagination-ellipsis {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
     @include btn-shadow("gray-800");
   }
-}
 
-.#{iv.$class-prefix}breadcrumb {
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
-  background-color: transparent;
-  border: 1px solid rgba(0, 0, 0, .6);
-  @include btn-shadow("gray-800");
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link{
+    &:hover{
+      @include btn-shadow-inverse("gray-800");
+      text-decoration: none;
+    }
 
-  a,
-  a:hover {
-    color: $white;
+    &.#{iv.$class-prefix}is-current{
+      @include btn-shadow-inverse("gray-800");
+    }
+
+    &.#{iv.$class-prefix}is-disabled{
+      @include btn-shadow("gray-800");
+    }
   }
+
+  .#{iv.$class-prefix}breadcrumb {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, .6);
+    @include btn-shadow("gray-800");
+
+    a,
+    a:hover {
+      color: $white;
+    }
+  }
+
+  // .tooltip {
+  //   --bs-tooltip-bg: var(--bs-tertiary-bg);
+  //   --bs-tooltip-color: var(--bs-emphasis-color);
+  // }
+
+  // // Containers
+
+  // .list-group {
+  //   &-item {
+  //     color: $white;
+
+  //     &-light {
+  //       color: $dark;
+  //     }
+  //   }
+
+  //   &-item-action:hover {
+  //     background-color: shade-color($gray-900, 10%);
+  //   }
+
+  //   @each $color, $value in $theme-colors {
+  //     &-item-#{$color} {
+  //       background-color: $value;
+  //       border-color: $list-group-border-color;
+  //     }
+  //   }
+  // }
 }
-
-// .tooltip {
-//   --bs-tooltip-bg: var(--bs-tertiary-bg);
-//   --bs-tooltip-color: var(--bs-emphasis-color);
-// }
-
-// // Containers
-
-// .list-group {
-//   &-item {
-//     color: $white;
-
-//     &-light {
-//       color: $dark;
-//     }
-//   }
-
-//   &-item-action:hover {
-//     background-color: shade-color($gray-900, 10%);
-//   }
-
-//   @each $color, $value in $theme-colors {
-//     &-item-#{$color} {
-//       background-color: $value;
-//       border-color: $list-group-border-color;
-//     }
-//   }
-// }

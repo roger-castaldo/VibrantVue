@@ -1,15 +1,15 @@
 <template>
     <section>
         <ColumnContainer v-for="row in Rows" :columns="row.map(r=>convertInputToColumn(r))">
-            <template v-for="inp,index in row"
-                v-show="!hiddenInputs!.some(f=>f===inp.name)" 
-                #[`col-${index}`]>
+            <template v-for="inp in row.map<FilteredRowItem>((value,index)=>{return {input:value,index:index};})
+        .filter(val=>!hiddenInputs!.some(f=>f===val.input.name))" 
+                #[`col-${inp.index}`]>
                 <FormComponent 
-                    :ref="(el) => (refs[inp.refIndex].value = el)" 
-                    :input="inp" 
+                    :ref="(el) => (refs[inp.input.refIndex].value = el)" 
+                    :input="inp.input" 
                     @valueChanged="emit('valueChanged',$event)" 
                     @buttonClicked="emit('buttonClicked',$event)" 
-                    :disabled="(props.disabled??false) || disabledFields!.some(f=>f===inp.name)"/>
+                    :disabled="(props.disabled??false) || disabledFields!.some(f=>f===inp.input.name)"/>
             </template>
         </ColumnContainer>
     </section>
@@ -48,6 +48,11 @@
     type MappedFormInputType = FormInputType & {
         refIndex:number
     }
+
+    type FilteredRowItem = {
+        input:MappedFormInputType,
+        index:number
+    };
 </script>
 
 <script lang="ts" setup>
@@ -117,7 +122,7 @@
 
     const hiddenInputs = inject<string[]>(HIDDEN_FIELDS_PROPERTY);
     const disabledFields = inject<string[]>(DISABLED_FIELDS_PROPERTY);
-
+    
     const setValue = (values:any|null):void=> {
         refs.forEach((input,index) => {
             switch (props.fields[index].type) {

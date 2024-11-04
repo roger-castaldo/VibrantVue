@@ -1,6 +1,9 @@
 @use 'sass:list';
 @use "sass:map";
 @use "sass:string";
+@use "sass:color";
+@use "sass:math";
+@use "sass:meta";
 @use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
 @use "../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
 @use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
@@ -55,14 +58,14 @@ $classMaps:(
     @if $className=="" {
         $className:get-className($name);
     }
-    $list:append($list,(
+    $list:list.append($list,(
         "name":$name,
         "value":$value,
         "class-name":$className,
         "type":"variable"
     ));
-    @if map-has-key($variableMaps, $name) {
-        @each $var in map-get($variableMaps,$name){
+    @if map.has-key($variableMaps, $name) {
+        @each $var in map.get($variableMaps,$name){
           $list:define-variable($var,$value,$list,$className);
         }
       }
@@ -73,13 +76,13 @@ $classMaps:(
   @if $className=="" {
       $className:get-className($name);
   }
-  $list:append($list,(
+  $list:list.append($list,(
       "name":$name,
       "value":$value,
       "class-name":$className,
       "type":"color"
   ));
-  @if map-has-key($variableMaps, $name) {
+  @if map.has-key($variableMaps, $name) {
       @each $var in map-get($variableMaps,$name){
         $list:define-variable($var,$value,$list,$className);
       }
@@ -114,8 +117,8 @@ $classMaps:(
     @include mixin-color($value);
     @if map.get($value,"class-name")!=""{
       $names:build-classes(map.get($value,"class-name"));
-      @if index($classes,$names)==null {
-        $classes:append($classes,$names);
+      @if list.index($classes,$names)==null {
+        $classes:list.append($classes,$names);
       }
     }
   }
@@ -200,7 +203,7 @@ $classMaps:(
 
 @mixin override-platform-colors($overrideColors,$scheme-main:dv.$scheme-main){
 
-  $scheme-main-l:floor(lightness($scheme-main));
+  $scheme-main-l:math.floor(color.channel($scheme-main, "lightness", $space: hsl));
 
   @each $name, $color in $overrideColors {
     $base: $color;
@@ -208,7 +211,7 @@ $classMaps:(
     $light: null;
     $dark: null;
 
-    @if type-of($color == "list") {
+    @if meta.type-of($color == "list") {
       $base: list.nth($color, 1);
 
       @if list.length($color) > 3 {
@@ -276,7 +279,7 @@ $classMaps:(
   @include override-platform-colors($overrideColors,$scheme-main);
 
   @include cv.register-vars((
-    "scheme-main-l": floor(lightness($scheme-main)),
+    "scheme-main-l": math.floor(color.channel($scheme-main,"lightness", $space: hsl)),
     "scheme-main-bis":$scheme-main-bis,
     "scheme-main-ter":$scheme-main-ter,
     "soft-l": iv.$dark-l,

@@ -1,5 +1,6 @@
 @use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
 @use "../mixins" as mx;
+@use "./_bootswatch" as bs;
 @use 'sass:color';
 @use 'sass:math';
 
@@ -29,7 +30,7 @@
     $teal:    #20c997 !default;
     $cyan:    #5bc0de !default;
 
-    $primary-bg-subtle:       lighten($gray-800, 10%) !default;
+    $primary-bg-subtle:       color.adjust($gray-800, $lightness: 10%) !default;
 
     $scheme-main: $gray-900;
     $body-color:#aaa;
@@ -66,13 +67,13 @@
     $list:mx.define-variable("button-padding-vertical",0.75rem,$list);
     $list:mx.define-variable("button-padding-horizontal",1rem,$list);
 
-    $list:mx.define-variable("input-background-l",lightness($white),$list);
-    $list:mx.define-variable("input-color-l",lightness($gray-900),$list);
+    $list:mx.define-variable("input-background-l",color.channel($white, "lightness", $space: hsl),$list);
+    $list:mx.define-variable("input-color-l",color.channel($gray-900, "lightness", $space: hsl),$list);
     $list:mx.define-variable("input-disabled-color",$gray-600,$list);
     $list:mx.define-variable("input-disabled-background-color",#ccc,$list);
 
     $list:mx.define-variable("dropdown-content-background-color",$gray-800,$list);
-    $list:mx.define-variable("dropdown-item-background-l",lightness($gray-800),$list);
+    $list:mx.define-variable("dropdown-item-background-l",color.channel($gray-800, "lightness", $space: hsl),$list);
     $list:mx.define-variable("dropdown-divider-background-color",rgba($black, .15),$list);
 
     $list:mx.define-variable("tabs-border-bottom-color",rgba($black, .6),$list);
@@ -88,10 +89,10 @@
     
     $list:mx.define-variable("navbar-padding-horizontal",0,$list);
 
-    $list:mx.define-variable("card-header-background-color",lighten($gray-800, 10%),$list);
-    $list:mx.define-variable("card-background-color",lighten($gray-900, 5%),$list);
+    $list:mx.define-variable("card-header-background-color",color.adjust($gray-800, $lightness: 10%),$list);
+    $list:mx.define-variable("card-background-color",color.adjust($gray-900, $lightness: 5%),$list);
 
-    $list:mx.define-variable("progress-bar-background-color",darken($gray-900, 5%),$list);
+    $list:mx.define-variable("progress-bar-background-color",color.adjust($gray-900, $lightness: -5%),$list);
 
     $list:mx.define-variable("breadcrumb-item-padding-vertical",0.375rem,$list);
     $list:mx.define-variable("breadcrumb-item-padding-horizontal",0.75rem,$list);
@@ -111,7 +112,7 @@ $form-check-input-bg:                     $white !default;
 
 $form-file-button-color:          $input-group-addon-color !default;
 $form-file-button-bg:             $input-group-addon-bg !default;
-$form-file-button-hover-bg:       darken($form-file-button-bg, 5%) !default;
+$form-file-button-hover-bg:       color.adjust($form-file-button-bg, $lightness: -5%) !default;
 
 // Dropdowns
 
@@ -119,17 +120,17 @@ $dropdown-border-color:             rgba($black, .6) !default;
 
 // Accordions
 
-$accordion-bg:                      lighten($body-bg, 5%) !default;
+$accordion-bg:                      color.adjust($body-bg, $lightness: 5%) !default;
 $accordion-border-color:            $table-border-color !default;
 $accordion-button-active-color:     $white !default;
 
 // Popovers
 
-$popover-bg:                        lighten($body-bg, 5%) !default;
+$popover-bg:                        color.adjust($body-bg, $lightness: 5%) !default;
 
 // Toasts
 
-$toast-background-color:            lighten($body-bg, 5%) !default;
+$toast-background-color:            color.adjust($body-bg, $lightness: 5%) !default;
 $toast-border-color:                rgba(0, 0, 0, .2) !default;
 $toast-header-color:                $body-color !default;
 $toast-header-background-color:     $toast-background-color !default;
@@ -138,10 +139,10 @@ $toast-header-border-color:         $toast-border-color !default;
 // List group
 
 $list-group-color:                  $white !default;
-$list-group-bg:                     lighten($body-bg, 5%) !default;
+$list-group-bg:                     color.adjust($body-bg, $lightness: 5%) !default;
 $list-group-border-color:           rgba($black, .6) !default;
 $list-group-item-bg-scale:          0% !default;
-$list-group-hover-bg:               lighten($body-bg, 10%) !default;
+$list-group-hover-bg:               color.adjust($body-bg, $lightness: 10%) !default;
 $list-group-active-color:           $white !default;
 $list-group-active-bg:              $list-group-hover-bg !default;
 $list-group-active-border-color:    $list-group-border-color !default;
@@ -153,5 +154,5 @@ $list-group-action-color:           $white !default;
 
     @include mx.output-skin-content($list);
 
-    @import "./_bootswatch.scss";
+    @include bs.boot-swatch-content($black, $gray-500, $gray-600, $gray-700, $white);
 }

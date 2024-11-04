@@ -1,5 +1,6 @@
 @use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
 @use "../mixins" as mx;
+@use "./_bootswatch" as bs;
 @use 'sass:color';
 @use 'sass:math';
 
@@ -75,13 +76,13 @@
 
     $list:mx.define-variable("input-disabled-color",$gray-100,$list);
     $list:mx.define-variable("input-disabled-background-color",$gray-600,$list);
-    $list:mx.define-variable("input-color-l",lightness($gray-800),$list);
-    $list:mx.define-variable("input-border-l",lightness(rgba($black, .15)),$list);
+    $list:mx.define-variable("input-color-l",color.channel($gray-800, "lightness", $space: hsl),$list);
+    $list:mx.define-variable("input-border-l",color.channel(rgba($black, .15), "lightness", $space: hsl),$list);
     $list:mx.define-variable("input-placeholder-color",#657b83,$list);
 
     $list:mx.define-variable("dropdown-content-background-color",$gray-800,$list);
     $list:mx.define-variable("dropdown-divider-background-color",$body-bg,$list);
-    $list:mx.define-variable("dropdown-item-hover-background-l-delta",lightness($gray-800)-lightness($gray-900),$list);
+    $list:mx.define-variable("dropdown-item-hover-background-l-delta",color.channel($gray-800, "lightness", $space: hsl) - color.channel($gray-900, "lightness", $space: hsl),$list);
     $list:mx.define-variable("dropdown-item-color-l",$gray-600,$list);
 
     $list:mx.define-variable("tabs-border-bottom-color",$gray-800,$list);
@@ -162,5 +163,5 @@ $list-group-action-hover-color:     $white !default;
 
     @include mx.output-skin-content($list);
 
-    @import "./_bootswatch.scss";
+    @include bs.boot-swatch-content($gray-600, $gray-800, $gray-700, $gray-400, $gray-900, $body-bg, $component-active-bg, $gray-500);
 }

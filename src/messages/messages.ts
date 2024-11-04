@@ -15,14 +15,15 @@ const messages = {
     Wizard:JSON.parse(wizard)
 };
 
-export default (message:string,language:ComputedRef<string>):string=>{
+export default (message:string,language?:ComputedRef<string>|null):string=>{
     let split = message.split('.');
     let obj = messages[split[0]];
+    const lang:any = (language==undefined || language==null ? null : language.value)??'en';
     if (obj!==undefined){
-        if (obj[language.value]===undefined){
+        if (obj[lang]===undefined){
             obj = obj['en'];
         }else{
-            obj=obj[language.value];
+            obj=obj[lang];
         }
         let idx = 1;
         while(obj!==undefined && idx<split.length){

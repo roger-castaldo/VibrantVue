@@ -8,10 +8,10 @@ $frosted-opacity: .3 !default;
 
 // Mixins
 
-@mixin glass($opacity: $frosted-opacity, $bg: $white) {
+@mixin glass($white, $opacity: $frosted-opacity, $bg: $white) {
   border: none;
   box-shadow: inset 1px 1px #{cv.getVar("border")}, inset -1px -1px rgba($white, .1), #{cv.getVar("box-shadow")};
-  @include frost($opacity, $bg);
+  @include frost($white, $opacity, $bg);
 
   a {
     color: $white;
@@ -22,351 +22,365 @@ $frosted-opacity: .3 !default;
   }
 }
 
-@mixin frost($opacity: $frosted-opacity, $bg: $white) {
+@mixin frost($white, $opacity: $frosted-opacity, $bg: $white) {
   background-color: transparent;
   background-image: linear-gradient(125deg, rgba($bg, ($opacity)), rgba($bg, ($opacity - .1)) 70%);
   backdrop-filter: blur(5px);
 }
 
-.#{iv.$class-prefix}button {
-  box-shadow: #{cv.getVar("box-shadow")};
+@mixin boot-swatch-content($white, $gray-300, $black, $cyan, $purple, $pink, $gray-600, $gray-800){
 
-  &.#{iv.$class-prefix}is-small{
-    box-shadow: #{cv.getVar("box-shadow-sm")};
+  .#{iv.$class-prefix}button {
+    box-shadow: #{cv.getVar("box-shadow")};
+
+    &.#{iv.$class-prefix}is-small{
+      box-shadow: #{cv.getVar("box-shadow-sm")};
+    }
   }
-}
 
-.#{iv.$class-prefix}control,
-.#{iv.$class-prefix}input,
-.#{iv.$class-prefix}textarea,
-.#{iv.$class-prefix}select select {
-  background-color: transparent;
+  .#{iv.$class-prefix}control,
+  .#{iv.$class-prefix}input,
+  .#{iv.$class-prefix}textarea,
+  .#{iv.$class-prefix}select select {
+    background-color: transparent;
 
-  &[disabled],
-  fieldset[disabled] & {
-    background-color: rgba($white, .1);
+    &[disabled],
+    fieldset[disabled] & {
+      background-color: rgba($white, .1);
+    }
   }
-}
 
-.#{iv.$class-prefix}input,
-.#{iv.$class-prefix}textarea,
-.#{iv.$class-prefix}select select {
-  color:$white;
-  border-color: rgba($white, .4);
-  border-width: 1px;
-
-  &:focus{
+  .#{iv.$class-prefix}input,
+  .#{iv.$class-prefix}textarea,
+  .#{iv.$class-prefix}select select {
+    color:$white;
     border-color: rgba($white, .4);
-    box-shadow: none;
-  }
+    border-width: 1px;
 
-  &::placeholder{
-    color: #{cv.getVar("text-muted")};
-  }
-
-  @each $name,$value in dv.$colors{
-    &.#{iv.$class-prefix}is-#{$name}{
-      border-color:#{cv.buildHslaString($name, null, $a: 0.75)};
-
-      &:focus{
-        border-color:#{cv.getVar($name)};
-      }
-    }
-  }
-}
-
-.#{iv.$class-prefix}select select {
-  &:disabled{
-    color:#{cv.getVar("text-muted")};
-  }
-}
-
-.#{iv.$class-prefix}input[type="checkbox"]{
-  background-color: ($white, .3);
-  border:1px solid #{cv.getVar("border")};
-}
-
-.#{iv.$class-prefix}tabs {
-  li {
-    &.#{iv.$class-prefix}is-active {
-      a {
-        border-color:$gray-300 $gray-300 #{cv.getVar("tabs-link-active-border-bottom-color")};
-      }
-    }
-  }
-}
-
-.#{iv.$class-prefix}dropdown-menu  {
-  @include glass(.3);
-  border-color: #{cv.getVar("border")};
-  border-radius: #{cv.getVar("radius")};
-
-  a.#{iv.$class-prefix}dropdown-item,
-  button.#{iv.$class-prefix}dropdown-item {
-    background-color:transparent;
-
-    &:hover {
-      color:$white;
-      background-color: rgba($white, .4);
-    }
-  }
-}
-
-.#{iv.$class-prefix}menu {
-  @include glass(.3);
-  border-color: #{cv.getVar("border")};
-  border-radius: #{cv.getVar("radius")};
-
-  .#{iv.$class-prefix}menu-label{
-    color:$white;
-  }
-
-  .#{iv.$class-prefix}menu-list { 
-    a,
-    button,
-    .#{iv.$class-prefix}menu-item {
-      border-radius:0;
-      background-color:transparent;
-
-      &:hover{
-        background-color:rgba($white, .3);
-      }
-
-      &.#{iv.$class-prefix}is-active,
-      &.#{iv.$class-prefix}is-selected {
-        background-color:rgba($white, .5);
-        color:$black;
-      }
-    }
-  }
-}
-
-.#{iv.$class-prefix}pagination-previous,
-.#{iv.$class-prefix}pagination-next,
-.#{iv.$class-prefix}pagination-link,
-.#{iv.$class-prefix}pagination-ellipsis {
-  background-color: rgba($white, .3);
-}
-
-.#{iv.$class-prefix}pagination-previous,
-.#{iv.$class-prefix}pagination-next,
-.#{iv.$class-prefix}pagination-link {
-  &:hover,
-  &:focus {
-    color:$white;
-    background-color: rgba($white, .4);
-  }
-
-  &:focus {
-    box-shadow:none;
-  }
-
-  &[disabled],
-  &.#{iv.$class-prefix}is-disabled {
-    background-color: rgba($white, .3);
-    color: #{cv.getVar("text-muted")};
-  }
-
-  &:active,
-  &.#{iv.$class-prefix}is-current {
-    background-color:#{cv.getVar("primary")};
-  }
-}
-
-.#{iv.$class-prefix}card {
-  border-color: #{cv.getVar("border")};
-  background:transparent;
-  color:$white;
-}
-
-// Body
-
-body {
-  background-image: linear-gradient(
-    90deg,
-    darken($cyan,10%) 0%,
-    darken($purple,10%) 50%,
-    darken($pink,5%) 100%
-  );
-}
-
-// Forms
-.#{iv.$class-prefix}file{
-  @include cv.register-var("file-icon-color",$white);
-
-  @each $name,$value in dv.$colors{
-    &.#{iv.$class-prefix}is-#{$name}{
-      @include cv.register-var("file-icon-color",cv.buildHslaString($name, null, 0.75));
-    }
-  }
-
-  &.#{iv.$class-prefix}is-info{
-    @include cv.register-var("file-icon-color",$white);
-  }
-
-  .#{iv.$class-prefix}file-label{
-    .#{iv.$class-prefix}file-cta {
-      color:$white;
-      background-color: transparent;
-      background-image: linear-gradient(125deg, rgba($white, .3), rgba($white, .2) 70%);
-      backdrop-filter: blur(5px);
-      border: none;
-    
-      .#{iv.$class-prefix}file-icon{
-        color:#{cv.getVar("file-icon-color")};
-      }
-    }
-  }
-}
-
-.#{iv.$class-prefix}field{
-  &.#{iv.$class-prefix}has-addons{
-    .#{iv.$class-prefix}control{
-      .#{iv.$class-prefix}button{
-        @include cv.register-vars((
-          "button-padding-vertical":0.5em,
-           "button-padding-horizontal":1em
-        ));
-      }
-    }
-  }
-} 
-
-/*.input-group-text {
-  box-shadow: inset 1px 1px $border-color, inset -1px -1px rgba($white, .1);
-}
-
-.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
-  margin-left: 0;
-  border-left: none;
-}
-
-.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
-.input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n + 3) {
-  border-right: none;
-}*/
-
-.#{iv.$class-prefix}select select:not([multiple]) {
-  transition: border-color .15s ease-in-out;
-
-  option {
-    color: $black;
-  }
-}
-
-// Navs
-
-.#{iv.$class-prefix}tabs {
-  li {
-    a{
-      background-color: rgba($black,0.2);
+    &:focus{
+      border-color: rgba($white, .4);
+      box-shadow: none;
     }
 
-    &.#{iv.$class-prefix}is-active {
-      a {
-        @include glass(1, $white);
-        color:$gray-600;
+    &::placeholder{
+      color: #{cv.getVar("text-muted")};
+    }
 
-        &:hover,
-        &:focus {
-          color: $gray-800;
+    @each $name,$value in dv.$colors{
+      &.#{iv.$class-prefix}is-#{$name}{
+        border-color:#{cv.buildHslaString($name, null, $a: 0.75)};
+
+        &:focus{
+          border-color:#{cv.getVar($name)};
         }
       }
     }
   }
-}
 
-.#{iv.$class-prefix}notification {
-  @include glass();
-  position: relative;
-  overflow: hidden;
-  color: $white;
-  left:0.5rem;
-
-  @each $color, $value in dv.$colors {
-    $opacity: .7;
-    &.#{iv.$class-prefix}is-#{$color}::after {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: .5rem;
-      height: 100%;
-      content: "";
-      background-color: #{cv.getVar($color)};
-    }
-  }
-}
-
-.#{iv.$class-prefix}progress{
-  @include cv.register-var("progress-value-background-color",cv.getVar("primary"));
-  @each $color, $value in dv.$colors {
-    &.#{iv.$class-prefix}is-#{$color}{
-      @include cv.register-var("progress-value-background-color",cv.getVar("primary"));
-    }
-  }
-}
-
-// Containers
-
-.#{iv.$class-prefix}card {
-  @include glass();
-
-  @each $color, $value in dv.$colors {
-    &.#{iv.$class-prefix}is-#{$color} {
-      background-image: none;
+  .#{iv.$class-prefix}select select {
+    &:disabled{
+      color:#{cv.getVar("text-muted")};
     }
   }
 
-  &.#{iv.$class-prefix}card-header {
-    font-weight: #{cv.getVar("title-weight")};
+  .#{iv.$class-prefix}input[type="checkbox"]{
+    background-color: ($white, .3);
+    border:1px solid #{cv.getVar("border")};
   }
-}
 
-/*
-.accordion-item {
-  @include glass();
-  box-shadow: none;
-}
-
-.toast {
-  @include glass();
-}
-
-.popover {
-  @include glass();
-
-  &-header {
-    border-bottom-color: $border-color;
-  }
-}
-
-.tooltip {
-  backdrop-filter: blur(5px);
-}
-
-.offcanvas {
-  @include glass();
-}
-*/
-
-.#{iv.$class-prefix}modal-content,
-.#{iv.$class-prefix}modal-card{
-  @include glass();
-}
-
-.#{iv.$class-prefix}tag{
-  @include glass();
-
-  @each $color, $value in dv.$colors {
-    &.#{iv.$class-prefix}is-#{$color} {
-      background-color: #{cv.getVar($color)};
+  .#{iv.$class-prefix}tabs {
+    li {
+      &.#{iv.$class-prefix}is-active {
+        a {
+          border-color:$gray-300 $gray-300 #{cv.getVar("tabs-link-active-border-bottom-color")};
+        }
+      }
     }
   }
-}
 
-.#{iv.$class-prefix}message {
-  .#{iv.$class-prefix}message-body{
+  .#{iv.$class-prefix}dropdown-menu  {
+    @include glass($white, .3);
+    & {
+      border-color: #{cv.getVar("border")};
+      border-radius: #{cv.getVar("radius")};
+    }
+
+    a.#{iv.$class-prefix}dropdown-item,
+    button.#{iv.$class-prefix}dropdown-item {
+      background-color:transparent;
+
+      &:hover {
+        color:$white;
+        background-color: rgba($white, .4);
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}menu {
+    @include glass($white, .3);
+    &{
+      border-color: #{cv.getVar("border")};
+      border-radius: #{cv.getVar("radius")};
+    }
+
+    .#{iv.$class-prefix}menu-label{
+      color:$white;
+    }
+
+    .#{iv.$class-prefix}menu-list { 
+      a,
+      button,
+      .#{iv.$class-prefix}menu-item {
+        border-radius:0;
+        background-color:transparent;
+
+        &:hover{
+          background-color:rgba($white, .3);
+        }
+
+        &.#{iv.$class-prefix}is-active,
+        &.#{iv.$class-prefix}is-selected {
+          background-color:rgba($white, .5);
+          color:$black;
+        }
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link,
+  .#{iv.$class-prefix}pagination-ellipsis {
+    background-color: rgba($white, .3);
+  }
+
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link {
+    &:hover,
+    &:focus {
+      color:$white;
+      background-color: rgba($white, .4);
+    }
+
+    &:focus {
+      box-shadow:none;
+    }
+
+    &[disabled],
+    &.#{iv.$class-prefix}is-disabled {
+      background-color: rgba($white, .3);
+      color: #{cv.getVar("text-muted")};
+    }
+
+    &:active,
+    &.#{iv.$class-prefix}is-current {
+      background-color:#{cv.getVar("primary")};
+    }
+  }
+
+  .#{iv.$class-prefix}card {
+    border-color: #{cv.getVar("border")};
+    background:transparent;
+    color:$white;
+  }
+
+  // Body
+
+  body {
+    background-image: linear-gradient(
+      90deg,
+      color.adjust($cyan,$lightness: -10%) 0%,
+      color.adjust($purple,$lightness: -10%) 50%,
+      color.adjust($pink,$lightness: -5%) 100%
+    );
+  }
+
+  // Forms
+  .#{iv.$class-prefix}file{
+    @include cv.register-var("file-icon-color",$white);
+
+    @each $name,$value in dv.$colors{
+      &.#{iv.$class-prefix}is-#{$name}{
+        @include cv.register-var("file-icon-color",cv.buildHslaString($name, null, 0.75));
+      }
+    }
+
+    &.#{iv.$class-prefix}is-info{
+      @include cv.register-var("file-icon-color",$white);
+    }
+
+    .#{iv.$class-prefix}file-label{
+      .#{iv.$class-prefix}file-cta {
+        color:$white;
+        background-color: transparent;
+        background-image: linear-gradient(125deg, rgba($white, .3), rgba($white, .2) 70%);
+        backdrop-filter: blur(5px);
+        border: none;
+      
+        .#{iv.$class-prefix}file-icon{
+          color:#{cv.getVar("file-icon-color")};
+        }
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}field{
+    &.#{iv.$class-prefix}has-addons{
+      .#{iv.$class-prefix}control{
+        .#{iv.$class-prefix}button{
+          @include cv.register-vars((
+            "button-padding-vertical":0.5em,
+            "button-padding-horizontal":1em
+          ));
+        }
+      }
+    }
+  } 
+
+  /*.input-group-text {
+    box-shadow: inset 1px 1px $border-color, inset -1px -1px rgba($white, .1);
+  }
+
+  .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: 0;
+    border-left: none;
+  }
+
+  .input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
+  .input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n + 3) {
+    border-right: none;
+  }*/
+
+  .#{iv.$class-prefix}select select:not([multiple]) {
+    transition: border-color .15s ease-in-out;
+
+    option {
+      color: $black;
+    }
+  }
+
+  // Navs
+
+  .#{iv.$class-prefix}tabs {
+    li {
+      a{
+        background-color: rgba($black,0.2);
+      }
+
+      &.#{iv.$class-prefix}is-active {
+        a {
+          @include glass($white, 1, $white);
+          & {
+            color:$gray-600;
+          }
+
+          &:hover,
+          &:focus {
+            color: $gray-800;
+          }
+        }
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}notification {
+    @include glass($white);
+    & {
+      position: relative;
+      overflow: hidden;
+      color: $white;
+      left:0.5rem;
+    }
+
+    @each $color, $value in dv.$colors {
+      $opacity: .7;
+      &.#{iv.$class-prefix}is-#{$color}::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: .5rem;
+        height: 100%;
+        content: "";
+        background-color: #{cv.getVar($color)};
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}progress{
+    @include cv.register-var("progress-value-background-color",cv.getVar("primary"));
+    @each $color, $value in dv.$colors {
+      &.#{iv.$class-prefix}is-#{$color}{
+        @include cv.register-var("progress-value-background-color",cv.getVar("primary"));
+      }
+    }
+  }
+
+  // Containers
+
+  .#{iv.$class-prefix}card {
+    @include glass($white);
+
+    @each $color, $value in dv.$colors {
+      &.#{iv.$class-prefix}is-#{$color} {
+        background-image: none;
+      }
+    }
+
+    &.#{iv.$class-prefix}card-header {
+      font-weight: #{cv.getVar("title-weight")};
+    }
+  }
+
+  /*
+  .accordion-item {
     @include glass();
-    background-color:rgba($white,.4);
+    box-shadow: none;
   }
+
+  .toast {
+    @include glass();
+  }
+
+  .popover {
+    @include glass();
+
+    &-header {
+      border-bottom-color: $border-color;
+    }
+  }
+
+  .tooltip {
+    backdrop-filter: blur(5px);
+  }
+
+  .offcanvas {
+    @include glass();
+  }
+  */
+
+  .#{iv.$class-prefix}modal-content,
+  .#{iv.$class-prefix}modal-card{
+    @include glass($white);
+  }
+
+  .#{iv.$class-prefix}tag{
+    @include glass($white);
+
+    @each $color, $value in dv.$colors {
+      &.#{iv.$class-prefix}is-#{$color} {
+        background-color: #{cv.getVar($color)};
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}message {
+    .#{iv.$class-prefix}message-body{
+      @include glass($white);
+      & {
+        background-color:rgba($white,.4);
+      }
+    }
+  }
+
 }

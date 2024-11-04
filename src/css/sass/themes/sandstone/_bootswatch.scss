@@ -3,218 +3,221 @@
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
 @use "../mixins" as lmx;
 
+@mixin boot-swatch-content($gray-600, $gray-200, $gray-300, $white){
 
-a.#{iv.$class-prefix}dropdown-item,
-button.#{iv.$class-prefix}dropdown-item {
-  color: $gray-600;
-  &:hover {
+  a.#{iv.$class-prefix}dropdown-item,
+  button.#{iv.$class-prefix}dropdown-item {
     color: $gray-600;
-    background-color: $gray-200;
-  }
-
-  &:active {
-    color: $gray-600;
-    background-color: $gray-200;
-  }
-}
-
-.#{iv.$class-prefix}pagination-previous,
-.#{iv.$class-prefix}pagination-next,
-.#{iv.$class-prefix}pagination-link,
-.#{iv.$class-prefix}pagination-ellipsis {
-  color: $gray-600;
-  background-color: $gray-200;
-  border-color: $gray-300;
-}
-
-.#{iv.$class-prefix}pagination-previous,
-.#{iv.$class-prefix}pagination-next,
-.#{iv.$class-prefix}pagination-link {
-  &:hover{
-    color: $gray-600;
-  }
-
-  &:active{
-    color: $gray-600;
-    background-color: $gray-300;
-    border-color: $gray-300;
-  }
-
-  &[disabled],
-  &.#{iv.$class-prefix}is-disabled {
-    color: $gray-300;
-    background-color: $gray-200;
-    border-color: $gray-300;
-  }
-}
-
-.#{iv.$class-prefix}card {
-  border-color: rgba($gray-300, .75);
-}
-
-.#{iv.$class-prefix}modal-content,
-.#{iv.$class-prefix}modal-card {
-  border-color: $gray-300;
-}
-
-.#{iv.$class-prefix}breadcrumb {
-  background-color: $gray-200;
-  border-radius: .25rem;
-}
-
-.#{iv.$class-prefix}progress{
-  @include lmx.override-color-variable("progress-value-background-color","primary");
-}
-
-// Navbar
-
-.sandstone {
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 22px;
-  text-transform: uppercase;
-}
-
-.#{iv.$class-prefix}navbar {
-  .#{iv.$class-prefix}navbar-item,
-  .#{iv.$class-prefix}navbar-link {
-    @extend .sandstone;
-  }
-}
-
-// Buttons
-
-.#{iv.$class-prefix}button {
-  @extend .sandstone;
-
-  &:hover {
-    border-color: transparent;
-  }
-
-  &.#{iv.$class-prefix}is-success:not(.#{iv.$class-prefix}is-outlined),
-  &.#{iv.$class-prefix}is-warning:not(.#{iv.$class-prefix}is-outlined) {
-    color: $white;
-  }
-
-  &.#{iv.$class-prefix}is-outlined{
-    color:#{cv.getVar("text")};
-    @each $name,$value in dv.$colors{
-      &#{iv.$class-prefix}is-#{$name}{
-        color: #{cv.getVar($name)};
-      }
-    }
-  }
-}
-
-// Forms
-
-// input,
-// .form-control {
-//   @include box-shadow(none);
-
-//   &:focus {
-//     @include box-shadow(none);
-//   }
-// }
-
-.#{iv.$class-prefix}tabs {
-  li {
-    @extend .sandstone;
-    background-color: $gray-200;
-    border-color: $gray-300;
-
-    &.#{iv.$class-prefix}is-disabled{
+    &:hover {
+      color: $gray-600;
       background-color: $gray-200;
-      border-color: $gray-300;
-      a,
-      a:hover,
-      a:focus {
-        color: $gray-600;
-      }
+    }
+
+    &:active {
+      color: $gray-600;
+      background-color: $gray-200;
     }
   }
-
-  a,
-  a:hover,
-  a:focus {
-    color: $gray-600;
-  }
-}
-
-// .nav-pills {
-//   .nav-link {
-//     @extend .sandstone;
-//     color: $gray-600;
-//     border: 1px solid transparent;
-//   }
-
-//   .nav-link.active,
-//   .nav-link:hover,
-//   .nav-link:focus {
-//     background-color: $gray-200;
-//     border-color: $gray-300;
-//   }
-
-//   .nav-link.disabled,
-//   .nav-link.disabled:hover {
-//     color: $gray-300;
-//     background-color: transparent;
-//     border-color: transparent;
-//   }
-// }
-
-
-.#{iv.$class-prefix}breadcrumb {
-  @extend .sandstone;
-  border: 1px solid $gray-300;
-}
-
-.#{iv.$class-prefix}pagination {
-  @extend .sandstone;
 
   .#{iv.$class-prefix}pagination-previous,
   .#{iv.$class-prefix}pagination-next,
-  .#{iv.$class-prefix}pagination-link{
+  .#{iv.$class-prefix}pagination-link,
+  .#{iv.$class-prefix}pagination-ellipsis {
+    color: $gray-600;
+    background-color: $gray-200;
+    border-color: $gray-300;
+  }
+
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link {
     &:hover{
-      text-decoration: none;  
+      color: $gray-600;
+    }
+
+    &:active{
+      color: $gray-600;
+      background-color: $gray-300;
+      border-color: $gray-300;
+    }
+
+    &[disabled],
+    &.#{iv.$class-prefix}is-disabled {
+      color: $gray-300;
+      background-color: $gray-200;
+      border-color: $gray-300;
     }
   }
-}
 
-.#{iv.$class-prefix}dropdown-menu {
-  .#{iv.$class-prefix}dropdown-item {
+  .#{iv.$class-prefix}card {
+    border-color: rgba($gray-300, .75);
+  }
+
+  .#{iv.$class-prefix}modal-content,
+  .#{iv.$class-prefix}modal-card {
+    border-color: $gray-300;
+  }
+
+  .#{iv.$class-prefix}breadcrumb {
+    background-color: $gray-200;
+    border-radius: .25rem;
+  }
+
+  .#{iv.$class-prefix}progress{
+    @include lmx.override-color-variable("progress-value-background-color","primary");
+  }
+
+  // Navbar
+
+  .sandstone {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 22px;
+    text-transform: uppercase;
+  }
+
+  .#{iv.$class-prefix}navbar {
+    .#{iv.$class-prefix}navbar-item,
+    .#{iv.$class-prefix}navbar-link {
+      @extend .sandstone;
+    }
+  }
+
+  // Buttons
+
+  .#{iv.$class-prefix}button {
     @extend .sandstone;
-  }
-}
 
-// Indicators
+    &:hover {
+      border-color: transparent;
+    }
 
-.#{iv.$class-prefix}notification {
-  color: $white;
+    &.#{iv.$class-prefix}is-success:not(.#{iv.$class-prefix}is-outlined),
+    &.#{iv.$class-prefix}is-warning:not(.#{iv.$class-prefix}is-outlined) {
+      color: $white;
+    }
 
-  a{
-    color: $white;
-    text-decoration: underline;
-  }
-
-  &.#{iv.$class-prefix}is-light {
-    &,
-    a:not(.button){
-      color: #{cv.getVar("text")};
+    &.#{iv.$class-prefix}is-outlined{
+      color:#{cv.getVar("text")};
+      @each $name,$value in dv.$colors{
+        &#{iv.$class-prefix}is-#{$name}{
+          color: #{cv.getVar($name)};
+        }
+      }
     }
   }
+
+  // Forms
+
+  // input,
+  // .form-control {
+  //   @include box-shadow(none);
+
+  //   &:focus {
+  //     @include box-shadow(none);
+  //   }
+  // }
+
+  .#{iv.$class-prefix}tabs {
+    li {
+      @extend .sandstone;
+      background-color: $gray-200;
+      border-color: $gray-300;
+
+      &.#{iv.$class-prefix}is-disabled{
+        background-color: $gray-200;
+        border-color: $gray-300;
+        a,
+        a:hover,
+        a:focus {
+          color: $gray-600;
+        }
+      }
+    }
+
+    a,
+    a:hover,
+    a:focus {
+      color: $gray-600;
+    }
+  }
+
+  // .nav-pills {
+  //   .nav-link {
+  //     @extend .sandstone;
+  //     color: $gray-600;
+  //     border: 1px solid transparent;
+  //   }
+
+  //   .nav-link.active,
+  //   .nav-link:hover,
+  //   .nav-link:focus {
+  //     background-color: $gray-200;
+  //     border-color: $gray-300;
+  //   }
+
+  //   .nav-link.disabled,
+  //   .nav-link.disabled:hover {
+  //     color: $gray-300;
+  //     background-color: transparent;
+  //     border-color: transparent;
+  //   }
+  // }
+
+
+  .#{iv.$class-prefix}breadcrumb {
+    @extend .sandstone;
+    border: 1px solid $gray-300;
+  }
+
+  .#{iv.$class-prefix}pagination {
+    @extend .sandstone;
+
+    .#{iv.$class-prefix}pagination-previous,
+    .#{iv.$class-prefix}pagination-next,
+    .#{iv.$class-prefix}pagination-link{
+      &:hover{
+        text-decoration: none;  
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}dropdown-menu {
+    .#{iv.$class-prefix}dropdown-item {
+      @extend .sandstone;
+    }
+  }
+
+  // Indicators
+
+  .#{iv.$class-prefix}notification {
+    color: $white;
+
+    a{
+      color: $white;
+      text-decoration: underline;
+    }
+
+    &.#{iv.$class-prefix}is-light {
+      &,
+      a:not(.button){
+        color: #{cv.getVar("text")};
+      }
+    }
+  }
+
+  // .tooltip {
+  //   @extend .sandstone;
+  // }
+
+  // // Containers
+
+  // .modal,
+  // .toast,
+  // .offcanvas {
+  //   .btn-close {
+  //     background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$gray-300}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/></svg>"));
+  //   }
+  // }
+
 }
-
-// .tooltip {
-//   @extend .sandstone;
-// }
-
-// // Containers
-
-// .modal,
-// .toast,
-// .offcanvas {
-//   .btn-close {
-//     background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$gray-300}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/></svg>"));
-//   }
-// }

@@ -1,6 +1,7 @@
 @use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
 @use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
 @use "../mixins" as mx;
+@use "./_bootswatch" as bs;
 @use 'sass:color';
 @use 'sass:math';
 
@@ -57,7 +58,7 @@
         "link":$green
     ));
 
-    $nav-tabs-border-color: darken(#fff, 6.5%);
+    $nav-tabs-border-color: color.adjust(#fff,$lightness: -6.5%);
 
     $list:mx.define-variable("body-background-color",#fcfcfc,());
 
@@ -102,5 +103,5 @@ $breadcrumb-border-radius:          .25rem !default;
     
     @include mx.output-skin-content($list);
 
-    @import "./_bootswatch.scss";
+    @include bs.boot-swatch-content($white, $gray-400, $nav-tabs-border-color);
 }

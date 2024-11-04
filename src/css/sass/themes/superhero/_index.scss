@@ -1,6 +1,7 @@
 @use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
 @use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
 @use "../mixins" as mx;
+@use "./_bootswatch" as bs;
 @use 'sass:color';
 @use 'sass:math';
 
@@ -40,12 +41,12 @@
         "warning":$yellow,
         "danger":$red,
         "light":(
-            lighten($gray-600, 35%),
+            color.adjust($gray-600, $lightness: 35%),
             #20374c
         ),
         "dark":(
             #20374c,
-            lighten($gray-600, 35%)
+            color.adjust($gray-600, $lightness: 35%)
         )
     ),
     $body-bg,$black,$gray-700);
@@ -79,17 +80,17 @@
     $list:mx.define-variable("table-cell-border-color",rgba($black, .15),$list);
     $list:mx.define-variable("table-head-background-color",cv.getVar("light"),$list);
 
-    $list:mx.define-variable("input-background-l",lightness($white),$list);
-    $list:mx.define-variable("input-color-l",lightness($gray-900),$list);
+    $list:mx.define-variable("input-background-l",color.channel($white, "lightness", $space: hsl),$list);
+    $list:mx.define-variable("input-color-l",color.channel($gray-900, "lightness", $space: hsl),$list);
     $list:mx.define-variable("input-disabled-color",$gray-600,$list);
     $list:mx.define-variable("input-disabled-background-color",$gray-100,$list);
     $list:mx.define-variable("input-placeholder-color",$gray-500,$list);
 
     $list:mx.define-variable("dropdown-content-background-color",$gray-600,$list);
-    $list:mx.define-variable("dropdown-item-background-l",lightness($gray-600),$list);
+    $list:mx.define-variable("dropdown-item-background-l",color.channel($gray-600, "lightness", $space: hsl),$list);
     $list:mx.define-variable("dropdown-divider-background-color",rgba($black, .15),$list);
 
-    $list:mx.define-variable("dropdown-item-color-l",lightness($body-color),$list);
+    $list:mx.define-variable("dropdown-item-color-l",color.channel($body-color, "lightness", $space: hsl),$list);
 
     $list:mx.define-variable("tabs-border-bottom-color",$gray-600,$list);
     $list:mx.define-variable("tabs-toggle-link-border-color",$gray-600,$list);
@@ -150,7 +151,7 @@ $form-check-input-border:                 none !default;
 
 $form-file-button-color:          $input-group-addon-color !default;
 $form-file-button-bg:             $input-group-addon-bg !default;
-$form-file-button-hover-bg:       darken($form-file-button-bg, 5%) !default;
+$form-file-button-hover-bg:       color.adjust($form-file-button-bg, $lightness: -5%) !default;
 
 $form-floating-label-opacity:     1 !default;
 
@@ -211,5 +212,5 @@ $list-group-action-hover-color:     $white !default;
 
     @include mx.output-skin-content($list);
 
-    @import "./_bootswatch.scss";
+    @include bs.boot-swatch-content($gray-600, $white, $nav-link-disabled-color);
 }

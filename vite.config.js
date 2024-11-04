@@ -4,14 +4,14 @@ import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
   plugins: [vue()],
-  resolve:{
-    alias:{
-      'vue':'https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.8/vue.esm-browser.min.js',
-      'jquery':'https://code.jquery.com/jquery-3.6.0.slim.min.js',
-      'chart':'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js',
-      'summernote':'https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.js'
-    }
-  },
+  // resolve:{
+  //   alias:{
+  //     'vue':'https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.8/vue.esm-browser.min.js',
+  //     'jquery':'https://code.jquery.com/jquery-3.6.0.slim.min.js',
+  //     'chart':'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js',
+  //     'summernote':'https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.js'
+  //   }
+  // },
   build: {
     sourcemap: true,
     outDir: "./dist",
@@ -41,5 +41,22 @@ export default defineConfig({
         },
       },
     },
+  },
+  test: {
+    reporters: ['default', 'html'],
+    coverage: {
+        reportsDirectory: "html/ui",
+        include: ["**/*.{ts,vue}"],
+        exclude: ["src/**/*spec.ts"],
+        reporter: ['text', ['html', { subdir: 'coverage'}]],
+        provider: "v8",
+    },
+    browser: {
+      enabled: true,
+      name: 'chromium',
+      provider: 'playwright',
+    },
+    css:true,
+    setupFiles: "./src/setup-tests.ts"
   },
 });

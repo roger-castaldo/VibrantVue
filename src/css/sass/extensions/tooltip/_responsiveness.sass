@@ -1,36 +1,38 @@
-@import "../../../../../node_modules/bulma/sass/utilities/mixins"
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+@use "../../../../../node_modules/bulma/sass/utilities/mixins" as mx
+@use "./_position" as po
 
 @each $direction in top, right, bottom, left
-	+mobile
+	+mx.mobile
 		.#{iv.$class-prefix}has-tooltip-#{$direction}-mobile
-			@include tooltip-direction(#{$direction})
-	+tablet
+			@include po.tooltip-direction(#{$direction})
+	+mx.tablet
 		.#{iv.$class-prefix}has-tooltip-#{$direction}-tablet
-			@include tooltip-direction(#{$direction})
-	+tablet-only
+			@include po.tooltip-direction(#{$direction})
+	+mx.tablet-only
 		.#{iv.$class-prefix}has-tooltip-#{$direction}-tablet-only
-			@include tooltip-direction(#{$direction})
-	+touch
+			@include po.tooltip-direction(#{$direction})
+	+mx.touch
 		.#{iv.$class-prefix}has-tooltip-#{$direction}-touch
-			@include tooltip-direction(#{$direction})
-	+desktop
+			@include po.tooltip-direction(#{$direction})
+	+mx.desktop
 		.#{iv.$class-prefix}has-tooltip-#{$direction}-desktop
-			@include tooltip-direction(#{$direction})
-	+desktop-only
+			@include po.tooltip-direction(#{$direction})
+	+mx.desktop-only
 		.#{iv.$class-prefix}has-tooltip-#{$direction}-desktop-only
-			@include tooltip-direction(#{$direction})
-	+until-widescreen
+			@include po.tooltip-direction(#{$direction})
+	+mx.until-widescreen
 		.#{iv.$class-prefix}has-tooltip-#{$direction}-until-widescreen
-			@include tooltip-direction(#{$direction})
-	+widescreen
+			@include po.tooltip-direction(#{$direction})
+	+mx.widescreen
 		.#{iv.$class-prefix}has-tooltip-#{$direction}-widescreen
-			@include tooltip-direction(#{$direction})
-	+widescreen-only
+			@include po.tooltip-direction(#{$direction})
+	+mx.widescreen-only
 		.#{iv.$class-prefix}has-tooltip-#{$direction}-widescreen-only
-			@include tooltip-direction(#{$direction})
-	+until-fullhd
+			@include po.tooltip-direction(#{$direction})
+	+mx.until-fullhd
 		.#{iv.$class-prefix}has-tooltip-#{$direction}-until-fullhd
-			@include tooltip-direction(#{$direction})
-	+fullhd
+			@include po.tooltip-direction(#{$direction})
+	+mx.fullhd
 		.#{iv.$class-prefix}has-tooltip-#{$direction}-fullhd
-			@include tooltip-direction(#{$direction})
+			@include po.tooltip-direction(#{$direction})

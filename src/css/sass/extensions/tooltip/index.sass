@@ -1,34 +1,35 @@
 @use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv
 @use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv
-@import 'variables'
-@import 'position'
-@import 'animation'
+@use './_variables' as vars
+@use './_position' as pos
+@use './_animation' as anim
+@forward './_responsiveness'
 
 =tooltip-arrow
 	&::after
 		content: ''
 		border-style: solid
-		border-width: $tooltip-arrow-size
-		border-color: $tooltip-border-color transparent transparent transparent
-		margin-bottom: $tooltip-arrow-size * -1 + 1
-	+tooltip-arrow-top
+		border-width: vars.$tooltip-arrow-size
+		border-color: vars.$tooltip-border-color transparent transparent transparent
+		margin-bottom: vars.$tooltip-arrow-size * -1 + 1
+	+pos.tooltip-arrow-top
 
 =tooltip-box
 	&::before
-		background: $tooltip-border-color
-		border-radius: $tooltip-radius
+		background: vars.$tooltip-border-color
+		border-radius: vars.$tooltip-radius
 		content: attr(data-tooltip)
-		padding: $tooltip-padding
+		padding: vars.$tooltip-padding
 		text-overflow: ellipsis
 		white-space: pre
-	+tooltip-box-top
+	+pos.tooltip-box-top
 
 =tooltip-multiline
 	&::before
 		height: auto
-		width: $tooltip-max-width
-		max-width: $tooltip-max-width
+		width: vars.$tooltip-max-width
+		max-width: vars.$tooltip-max-width
 		text-overflow: clip
 		white-space: normal
 		word-break: keep-all
@@ -44,29 +45,29 @@
 		&::before,
 		&::after
 			box-sizing: border-box
-			color: $tooltip-color
+			color: vars.$tooltip-color
 			display: inline-block
-			font-family: $tooltip-font-family
-			font-size: $tooltip-font-size
+			font-family: vars.$tooltip-font-family
+			font-size: vars.$tooltip-font-size
 			hyphens: auto
 			opacity: 0
 			overflow: hidden
 			pointer-events: none
 			position: absolute
 			visibility: hidden
-			z-index: $tooltip-z-index
+			z-index: vars.$tooltip-z-index
 	
 		+tooltip-arrow
 		+tooltip-box
 
 		&.#{iv.$class-prefix}has-tooltip-bottom
-			+tooltip-direction('bottom')
+			+pos.tooltip-direction('bottom')
 
 		&.#{iv.$class-prefix}has-tooltip-left
-			+tooltip-direction('left')
+			+pos.tooltip-direction('left')
 
 		&.#{iv.$class-prefix}has-tooltip-right
-			+tooltip-direction('right')
+			+pos.tooltip-direction('right')
 
 		&.#{iv.$class-prefix}has-tooltip-multiline
 			+tooltip-multiline
@@ -75,27 +76,25 @@
 			&.#{iv.$class-prefix}has-tooltip-#{$name}
 				&.#{iv.$class-prefix}has-tooltip-bottom
 					&::after
-						border-color: transparent transparent #{cv.buildHslaString($name,false,$tooltip-background-opacity)} transparent
+						border-color: transparent transparent #{cv.buildHslaString($name,false,vars.$tooltip-background-opacity)} transparent
 				&.#{iv.$class-prefix}has-tooltip-left
 					&::after
-						border-color: transparent transparent transparent #{cv.buildHslaString($name,false,$tooltip-background-opacity)}
+						border-color: transparent transparent transparent #{cv.buildHslaString($name,false,vars.$tooltip-background-opacity)}
 				&.#{iv.$class-prefix}has-tooltip-right
 					&::after
-						border-color: transparent #{cv.buildHslaString($name,false,$tooltip-background-opacity)} transparent transparent
+						border-color: transparent #{cv.buildHslaString($name,false,vars.$tooltip-background-opacity)} transparent transparent
 				&:not(.#{iv.$class-prefix}has-tooltip-bottom),
 				&:not(.#{iv.$class-prefix}has-tooltip-left),
 				&:not(.#{iv.$class-prefix}has-tooltip-right)
 					&::after
-						border-color: #{cv.buildHslaString($name,false,$tooltip-background-opacity)} transparent transparent transparent
+						border-color: #{cv.buildHslaString($name,false,vars.$tooltip-background-opacity)} transparent transparent transparent
 				&:before
-					background-color: #{cv.buildHslaString($name,false,$tooltip-background-opacity)}
+					background-color: #{cv.buildHslaString($name,false,vars.$tooltip-background-opacity)}
 					color: #{cv.getVar($name,"","-invert")}
 
-		+tooltip-hover
+		+pos.tooltip-hover
 			opacity: 1
 			visibility: visible
 
 		&.#{iv.$class-prefix}has-tooltip-fade
-			+tooltip-fade
-
-@import 'responsiveness'
+			+anim.tooltip-fade

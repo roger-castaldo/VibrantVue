@@ -1,5 +1,6 @@
 @use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
 @use "../mixins" as mx;
+@use "./_bootswatch" as bs;
 @use 'sass:color';
 @use 'sass:math';
 
@@ -91,5 +92,5 @@
 
     @include mx.output-skin-content($list);
 
-    @import "./_bootswatch.scss";
+    @include bs.boot-swatch-content($white, $gray-300, $gray-600, $black, $gray-900);
 }

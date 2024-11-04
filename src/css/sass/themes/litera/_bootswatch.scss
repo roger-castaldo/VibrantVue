@@ -3,59 +3,63 @@
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
 @use "../mixins" as lmx;
 
-.#{iv.$class-prefix}button {
-  font-size:.875rem;
-  @include cv.register-var("control-radius",1.078em);
+@mixin boot-swatch-content(){
 
-  &.#{iv.$class-prefix}is-small{
-    font-size:.688rem;
-    @include cv.register-var("control-radius",.844em);
+  .#{iv.$class-prefix}button {
+    font-size:.875rem;
+    @include cv.register-var("control-radius",1.078em);
+
+    &.#{iv.$class-prefix}is-small{
+      font-size:.688rem;
+      @include cv.register-var("control-radius",.844em);
+    }
+
+    &.#{iv.$class-prefix}is-large{
+      @include cv.register-var("control-radius",2.688em);
+    }
   }
 
-  &.#{iv.$class-prefix}is-large{
-    @include cv.register-var("control-radius",2.688em);
+  .#{iv.$class-prefix}tag {
+    font-weight:400;
+    padding-left:1.2em;
+    padding-right:1.2em;
+    padding-top:0.6em;
+    padding-bottom:0.6em;
   }
-}
 
-.#{iv.$class-prefix}tag {
-  font-weight:400;
-  padding-left:1.2em;
-  padding-right:1.2em;
-  padding-top:0.6em;
-  padding-bottom:0.6em;
-}
+  .#{iv.$class-prefix}navbar,
+  footer,
+  table,
+  .#{iv.$class-prefix}table,
+  .#{iv.$class-prefix}pagination,
+  .#{iv.$class-prefix}breadcrumb,
+  .#{iv.$class-prefix}dropdown,
+  .#{iv.$class-prefix}message{
+    font-size: #{cv.getVar("size-small")};
+  }
 
-.#{iv.$class-prefix}navbar,
-footer,
-table,
-.#{iv.$class-prefix}table,
-.#{iv.$class-prefix}pagination,
-.#{iv.$class-prefix}breadcrumb,
-.#{iv.$class-prefix}dropdown,
-.#{iv.$class-prefix}message{
-  font-size: #{cv.getVar("size-small")};
-}
+  // Typography
 
-// Typography
-
-p {
-  font-family: #{cv.getVar("family-secondary")};
-}
-
-blockquote {
-  font-style: italic;
-}
-
-// Indicators
-
-.#{iv.$class-prefix}notification {
-  &,
   p {
-    font-family: #{cv.getVar("family-primary")};
+    font-family: #{cv.getVar("family-secondary")};
   }
 
-  a {
-    font-weight: 400;
-    text-decoration: underline;
+  blockquote {
+    font-style: italic;
   }
+
+  // Indicators
+
+  .#{iv.$class-prefix}notification {
+    &,
+    p {
+      font-family: #{cv.getVar("family-primary")};
+    }
+
+    a {
+      font-weight: 400;
+      text-decoration: underline;
+    }
+  }
+
 }

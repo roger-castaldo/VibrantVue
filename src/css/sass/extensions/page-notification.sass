@@ -1,6 +1,7 @@
 @use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv
 @use "../../../../node_modules/bulma/sass/utilities/derived-variables" as dv
 @use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+@use "sass:list"
     
 .#{iv.$class-prefix}is-page-notification-container 
     background-color: #{cv.getVar("notification-background-color")}
@@ -40,7 +41,7 @@
             background-color: #{cv.getVar($name)}
             color: #{cv.getVar($name,"","-invert")}
             border-color: #{cv.getVar($name,"","-invert")}
-            @if length($pair) >= 4 
+            @if list.length($pair) >= 4 
                 &.is-light-mode 
                     background-color: #{cv.getVar($name,"","-light")}
                     color: #{cv.getVar($name,"","-dark")}

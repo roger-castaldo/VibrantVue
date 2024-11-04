@@ -3,10 +3,14 @@
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
 @use "../mixins" as lmx;
 
-.#{iv.$class-prefix}progress {
-  @include cv.register-var("size-normal",0.5rem);
-}
+@mixin boot-swatch-content(){
 
-body {
-  -webkit-font-smoothing: antialiased;
+  .#{iv.$class-prefix}progress {
+    @include cv.register-var("size-normal",0.5rem);
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+
 }

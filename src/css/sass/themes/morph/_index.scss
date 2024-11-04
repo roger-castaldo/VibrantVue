@@ -1,6 +1,7 @@
 @use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
 @use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
 @use "../mixins" as mx;
+@use "./_bootswatch" as bs;
 @use 'sass:color';
 @use 'sass:math';
 
@@ -31,10 +32,10 @@
     $cyan:    #0dcaf0 !default;
 
     $body-bg: $gray-200 !default;
-    $link-color: darken($body-bg,20%) !default;
+    $link-color: color.adjust($body-bg,$lightness: -20%) !default;
     $border-radius-pill:50rem;
     $dark: $gray-900;
-    $box-shadow: 5px 5px 10px rgba(darken($body-bg, 50%), .2), -5px -5px 10px rgba($white, .4) !default;
+    $box-shadow: 5px 5px 10px rgba(color.adjust($body-bg,$lightness: -50%), .2), -5px -5px 10px rgba($white, .4) !default;
 
     @include mx.override-platform-colors((
         "primary":$blue,
@@ -55,10 +56,10 @@
     ));
 
     $list:mx.define-variable("text",$gray-700,());
-    $list:mx.define-variable("text-muted",lighten($gray-700, 15%),$list);
+    $list:mx.define-variable("text-muted",color.adjust($gray-700,$lightness: 15%),$list);
     $list:mx.define-variable("body-background-color",$body-bg,$list);
     
-    $list:mx.define-variable("border",rgba(darken($body-bg, 50%), .1),$list);
+    $list:mx.define-variable("border",rgba(color.adjust($body-bg,$lightness: -50%), .1),$list);
 
     $list:mx.define-variable("family-primary",
         "Nunito, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
@@ -159,5 +160,5 @@ $btn-close-color:            $headings-color !default;
 
     @include mx.output-skin-content($list);
 
-    @import "./_bootswatch.scss";
+    @include bs.boot-swatch-content($white, $black, $gray-100, $gray-700, $gray-800, $dark, $gray-200);
 }

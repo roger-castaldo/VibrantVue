@@ -1,6 +1,7 @@
 @use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
 @use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
 @use "../mixins" as mx;
+@use "./_bootswatch" as bs;
 @use 'sass:color';
 @use 'sass:math';
 
@@ -88,5 +89,5 @@ $tooltip-font-size:                 11px !default;*/
 
     @include mx.output-skin-content($list);
 
-    @import "./_bootswatch.scss";
+    @include bs.boot-swatch-content();
 }

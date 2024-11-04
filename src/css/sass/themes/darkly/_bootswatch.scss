@@ -3,35 +3,39 @@
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
 @use "../mixins" as lmx;
 
-.#{iv.$class-prefix}title{
-  &.#{iv.$class-prefix}is-1{
-    font-size:4rem;
-  }
-  &.#{iv.$class-prefix}is-2{
-    font-size:3rem;
-  }
-  &.#{iv.$class-prefix}is-3{
-    font-size:2.5rem;
-  }
-  &.#{iv.$class-prefix}is-4{
-    font-size:2rem;
-  }
-  &.#{iv.$class-prefix}is-5{
-    font-size:1.5rem;
-  }
-  &.#{iv.$class-prefix}is-6{
-    font-size:1rem;
-  }
-}
+@mixin boot-swatch-content(){
 
-.#{iv.$class-prefix}hero{
-  &.#{iv.$class-prefix}is-white{
-    .#{iv.$class-prefix}title,
-    .#{iv.$class-prefix}subtitle{
-      @include cv.register-vars((
-        "title-color":#{cv.getVar("scheme")},
-        "subtitle-color":#{cv.getVar("scheme")}
-      ));
+  .#{iv.$class-prefix}title{
+    &.#{iv.$class-prefix}is-1{
+      font-size:4rem;
+    }
+    &.#{iv.$class-prefix}is-2{
+      font-size:3rem;
+    }
+    &.#{iv.$class-prefix}is-3{
+      font-size:2.5rem;
+    }
+    &.#{iv.$class-prefix}is-4{
+      font-size:2rem;
+    }
+    &.#{iv.$class-prefix}is-5{
+      font-size:1.5rem;
+    }
+    &.#{iv.$class-prefix}is-6{
+      font-size:1rem;
     }
   }
+
+  .#{iv.$class-prefix}hero{
+    &.#{iv.$class-prefix}is-white{
+      .#{iv.$class-prefix}title,
+      .#{iv.$class-prefix}subtitle{
+        @include cv.register-vars((
+          "title-color":#{cv.getVar("scheme")},
+          "subtitle-color":#{cv.getVar("scheme")}
+        ));
+      }
+    }
+  }
+
 }
