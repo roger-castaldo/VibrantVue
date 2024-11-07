@@ -12,12 +12,12 @@
             <div class="dropdown-content" v-for="block,index in Blocks">
                 <hr class="dropdown-divider" v-if="index>0"/>
                 <template v-for="entry in block.children">
-                    <component :is="(entry instanceof String ? 'div' : 'a')"
+                    <component :is="(typeof entry === 'string' ? 'div' : 'a')"
                         :class="GetItemClasses(entry)"
                         :href="GetItemURL(entry)"
                         @click="ProcessItemClick(entry)">
-                        <p v-if="entry instanceof String">{{entry}}</p>
-                        {{(entry instanceof String ? null : (entry as DropDownItem).title)}}
+                        <p v-if="typeof entry === 'string'">{{entry}}</p>
+                        {{(typeof entry === 'string' ? null : (entry as DropDownItem).title)}}
                     </component>
                 </template>
             </div>
@@ -46,7 +46,7 @@
         /**
          * The dropdown menu items to use
          */
-        items:MaybeRef<DropDownBlock[]|DropDownBlock|(| string| DropDownItem)[]>,
+        items:MaybeRef<DropDownBlock[]|DropDownBlock|(| string| DropDownItem)[]|(| string| DropDownItem)[][]>,
         /**
          * Indicates if it should display from hovering
          */
@@ -72,33 +72,30 @@
         return results;
     });
     const Blocks = computed<DropDownBlock[]>(()=>{
-        let result = toValue<DropDownBlock[]|DropDownBlock|(string| DropDownItem)[]>(props.items);
-        if (Array.isArray(result) && result.length>0 && (result as any[])[0].children===undefined){
-            let block:DropDownBlock = {
-                children:result as (string| DropDownItem)[]
-            }
-            return [block];
+        let result = toValue<DropDownBlock[]|DropDownBlock|(| string| DropDownItem)[]|(| string| DropDownItem)[][]>(props.items);
+        if (Array.isArray(result)){
+            result = result.map<DropDownBlock>(item=>(Array.isArray(item) ? {children:item} : {children:[item]}) as DropDownBlock);
         }
         return (Array.isArray(result) ? result : [result]) as DropDownBlock[];
     });
 
     const GetItemClasses = (entry:string|DropDownItem):string[]=>{
         let result:string[] = ['dropdown-item'];
-        if (!(entry instanceof String)){
+        if (typeof entry !== 'string'){
             let item = entry as DropDownItem;
             if (item.active){result.push('is-active');}
         }
         return result;
     }
     const GetItemURL = (entry:string|DropDownItem):string|undefined=>{
-        if (!(entry instanceof String)){
+        if (typeof entry !== 'string'){
             let item = entry as DropDownItem;
             return item.href;
         }
         return undefined;
     }
     const ProcessItemClick = (entry:string|DropDownItem):void=>{
-        if (!(entry instanceof String)){
+        if (typeof entry !=='string'){
             isActive.value=false;
             let item = entry as DropDownItem;
             if (item.onClick){item.onClick();}
