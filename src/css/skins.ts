@@ -4,7 +4,7 @@ import { SkinTypes } from '../enums';
 
 const url = (document.currentScript===null||document.currentScript===undefined ? import.meta.url : document.currentScript['src']);
 
-css(`${url.substring(0,url.lastIndexOf("/"))}/style.css`);
+css(`${url.substring(0,url.lastIndexOf("/"))}/vibrantvue.css`);
 
 export const AVAIABLE_SKINS:string[] = Object.values(SkinTypes)
     .filter((value,index,array) => array.indexOf(value)===index);

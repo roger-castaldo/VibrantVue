@@ -1,16 +1,16 @@
 {
-  "name": "bulma-skins-components",
+  "name": "vibrant-vue",
   "version": "1.0.0",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/bulma-skins-components.umd.cjs",
-  "module": "./dist/bulma-skins-components.js",
+  "main": "./dist/vibrant-vue.umd.cjs",
+  "module": "./dist/vibrant-vue.js",
   "exports": {
     ".": {
-      "import": "./dist/bulma-skins-components.js",
-      "require": "./dist/bulma-skins-components.cjs"
+      "import": "./dist/vibrant-vue.js",
+      "require": "./dist/vibrant-vue.cjs"
     }
   },
   "types": "./dist/index.d.ts",
@@ -18,10 +18,10 @@
     "build": "vite build --config vite.config.js",
     "build:docs": "node generateDocs.cjs",
     "build:translations": "node ./src/messages/runTranslations.js",
-    "build:minify": "npm run build && uglifyjs ./dist/components.esm.js --compress --output ./dist/components.esm.min.js",
+    "build:minify": "npm run build && uglifyjs ./dist/vibrantvue.esm.js --compress --output ./dist/vibrantvue.esm.min.js",
     "build:serve": "npm run build:minify && node index.js",
-    "build:bulma": "sass --load-path=node_modules src/css/sass/bulma-skins.scss dist/style.css",
-    "build:full_code": "npm run build:docs && npm run build:minify",
+    "build:bulma": "sass --load-path=node_modules src/css/sass/bulma-skins.scss dist/vibrantvue.css",
+    "build:full_code": "npm run build:docs && npm run build:bulma && npm run build:minify",
     "build:full": "npm run build:translations && npm run build:full_code",
     "serve": "node index.js",
     "test": "vitest"

@@ -17,8 +17,8 @@ export default defineConfig({
     outDir: "./dist",
     lib: {
       entry:resolve(__dirname, "./src/components/index.ts"),
-      fileName:'components',
-      name:`bulma-components`,
+      fileName:'vibrantvue',
+      name:`vibrant-vue`,
       formats: ["umd", "esm","cjs"],
     },
     minify:'esbuild',
