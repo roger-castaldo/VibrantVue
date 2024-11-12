@@ -22,10 +22,10 @@
     @return 'hsl(var('+$name+'-h),var('+$name+'-s),calc(var('+$name+'-l) + '+strip-units($percentage)+'))'
 
 @function set-rgba-alpha($name,$alpha)
-    @return 'rgba(from var(--'+$name+'), '+$alpha+')'
+    @return 'rgb(from var(--'+$name+') r g b / '+$alpha+')'
 
 @function set-rgba-color-alpha($color,$alpha)
-    @return 'rgba(from '+$color+', '+$alpha+')'
+    @return 'rgb(from '+$color+' r g b / '+$alpha+')'
 
 @function getVarWithBackup($varName,$backup)    
     @return var(#{cv.buildVarName($varName)},#{$backup})
