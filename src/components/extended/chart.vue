@@ -15,7 +15,7 @@
 <script lang="ts">
     import { watch, computed, onMounted, ref,inject,MaybeRef } from 'vue';
     import Card from '../layout/card.vue';
-    import ButtonRefresh from '../common/button-refresh.vue';
+    import ButtonRefresh from '../common/buttons/button-refresh.vue';
     import 'jquery';
     import {ChartTypes,ChartLegendPositions} from '../../enums';
     import { useChartJS } from '../shared';

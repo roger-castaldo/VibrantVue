@@ -94,7 +94,6 @@
             else if ((toValue<number>(props.total_pages)-currentPage.value)===1){
                 center--;
             }
-            console.log(center);
             return [
                 1,
                 -1,

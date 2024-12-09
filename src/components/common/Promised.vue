@@ -38,7 +38,7 @@
     /**
      * The Pending delay to use prior to displaying pending
      */
-    pending_delay:number|string
+    pending_delay?:number|string
   }>(),{
     pending_delay:200
   });

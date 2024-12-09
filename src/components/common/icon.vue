@@ -102,4 +102,4 @@
     .fa-ico.fa-md {
         font-size: 15px !important;
     }
-</style>../../enums
+</style>

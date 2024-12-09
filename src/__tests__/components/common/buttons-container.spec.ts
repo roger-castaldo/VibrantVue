@@ -13,6 +13,19 @@ describe('ButtonsContainer', () => {
     
         expect(accessibilityScanResults.violations).toEqual([]);
     }),
+    test('check slot content',async() => {
+        const slotContent = 'This is test content';
+
+        const {container, getByText} = render(buttonsContainer, {
+            slots:{
+                default: () => slotContent
+              }
+        });
+    
+        const buttonContainer = container.childNodes[0] as HTMLElement;
+
+        expect(buttonContainer.innerText).toBe(slotContent);
+    }),
     test('Check container sizes', async () => {
         for (const key in Sizes) {
             const { container } = render(buttonsContainer, {

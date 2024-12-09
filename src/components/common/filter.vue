@@ -1,8 +1,8 @@
 <template>
     <div class="control has-icons-left">
-        <input type="text" class="input is-expanded is-rounded" :placeholder="Filter" v-model="filter" @keypress="FilterKeyPress">
-        <span class="icon is-small is-left">
-            <Icon icon="filter"/>   
+        <input role="searchbox" type="text" class="input is-expanded is-rounded" :placeholder="Filter" v-model="filter" @keypress="FilterKeyPress">
+        <span class="is-left">
+            <Icon icon="filter" :size="IconSizes.small"/>   
         </span>
     </div>
 </template>
@@ -12,6 +12,7 @@
     import Icon from './icon.vue';
     import translate from '../../messages/messages.js';
     import { useLanguage } from '../shared';
+    import { IconSizes } from '../../enums';
 </script>
 
 <script lang="ts" setup>

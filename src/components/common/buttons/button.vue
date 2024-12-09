@@ -8,10 +8,10 @@
 </template>
 
 <script lang="ts">
-    import Icon from './icon.vue';
-    import {ColorTypes,Sizes} from '../../enums';
+    import Icon from '../icon.vue';
+    import {ColorTypes,Sizes} from '../../../enums';
     import {computed} from 'vue';
-import { IButtonProperties } from './typeDefinitions';
+import { IButtonProperties } from '../typeDefinitions';
 </script>
 
 <script lang="ts" setup>

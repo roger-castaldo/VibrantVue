@@ -272,8 +272,6 @@ describe('DropDown', () => {
     const dropDownTitle = dropDown.childNodes[0] as HTMLElement;
     const dropDownMenu = dropDown.childNodes[1] as HTMLElement;
 
-    console.log(dropDownMenu.outerHTML);
-
     expect(dropDownTitle.classList).toContain('dropdown-trigger');
     expect(dropDownTitle.innerText).toContain(testTitle);
     expect(dropDownMenu.classList).toContain('dropdown-menu');

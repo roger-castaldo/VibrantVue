@@ -46,7 +46,7 @@
         /**
        * The animation to use for an item entering and exiting
        */
-        inout?:AnimationTypes
+        inout?:AnimationTypes,
         /**
        * The speed of the animation
        */

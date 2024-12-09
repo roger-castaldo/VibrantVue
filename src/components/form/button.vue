@@ -4,7 +4,7 @@
 
 <script lang="ts">
     import { inject } from 'vue';
-import Button from '../common/button.vue';
+import Button from '../common/buttons/button.vue';
     import { ColorTypes } from '../../enums';
     import { commonFieldProps,useTranslator } from './common';
 

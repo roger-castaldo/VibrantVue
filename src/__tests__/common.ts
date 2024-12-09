@@ -4,3 +4,7 @@ export const stripCommentNodes = function(element: HTMLElement): ChildNode[] {
     .filter(n=>n.nodeType!==Node.TEXT_NODE || 
         (n.nodeType===Node.TEXT_NODE && n.nodeValue?.trim()!==''));
 }
+
+export const sleep = async function(ms:number) {
+    await new Promise((resolve) => setTimeout(resolve, ms));
+}

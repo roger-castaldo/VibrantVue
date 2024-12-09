@@ -62,7 +62,7 @@
     import { Sizes, StepWizardOrientations } from '../../enums';
     import { WizardStep } from './typeDefinitions';
     import Icon from './icon.vue';
-    import Button from './button.vue';
+    import Button from './buttons/button.vue';
     import {ref,computed, inject,watch,useSlots } from 'vue';
     import translate from '../../messages/messages.js';
     import { useLanguage } from '../shared';

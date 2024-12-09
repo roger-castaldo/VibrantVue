@@ -31,8 +31,8 @@
  * @displayName MenuEntry
  * @link https://bulma.io/documentation/components/menu/
  */
-    import Icon from './icon.vue';
-    import { MenuItem } from './typeDefinitions';
+    import Icon from '../icon.vue';
+    import { MenuItem } from '../typeDefinitions';
 
     const props = defineProps<MenuItem>();
     

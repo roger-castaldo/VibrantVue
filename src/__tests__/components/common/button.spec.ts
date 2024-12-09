@@ -1,20 +1,20 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
 import axe from 'axe-core';
-import Button from '../../../components/common/button.vue';
-import ButtonAdd from '../../../components/common/button-add.vue';
-import ButtonCancel from '../../../components/common/button-cancel.vue';
-import ButtonDelete from '../../../components/common/button-delete.vue';
-import buttonDisable from '../../../components/common/button-disable.vue';
-import buttonDownload from '../../../components/common/button-download.vue';
-import buttonEdit from '../../../components/common/button-edit.vue';
-import buttonEnable from '../../../components/common/button-enable.vue';
-import buttonOkay from '../../../components/common/button-okay.vue';
-import buttonPrint from '../../../components/common/button-print.vue';
-import buttonRefresh from '../../../components/common/button-refresh.vue';
-import buttonSave from '../../../components/common/button-save.vue';
-import buttonSubmit from '../../../components/common/button-submit.vue';
-import buttonUpload from '../../../components/common/button-upload.vue';
+import Button from '../../../components/common/buttons/button.vue';
+import ButtonAdd from '../../../components/common/buttons/button-add.vue';
+import ButtonCancel from '../../../components/common/buttons/button-cancel.vue';
+import ButtonDelete from '../../../components/common/buttons/button-delete.vue';
+import buttonDisable from '../../../components/common/buttons/button-disable.vue';
+import buttonDownload from '../../../components/common/buttons/button-download.vue';
+import buttonEdit from '../../../components/common/buttons/button-edit.vue';
+import buttonEnable from '../../../components/common/buttons/button-enable.vue';
+import buttonOkay from '../../../components/common/buttons/button-okay.vue';
+import buttonPrint from '../../../components/common/buttons/button-print.vue';
+import buttonRefresh from '../../../components/common/buttons/button-refresh.vue';
+import buttonSave from '../../../components/common/buttons/button-save.vue';
+import buttonSubmit from '../../../components/common/buttons/button-submit.vue';
+import buttonUpload from '../../../components/common/buttons/button-upload.vue';
 import { stripCommentNodes } from '../../common';
 import { ColorTypes, Sizes } from '../../../enums';
 import translate from '../../../messages/messages';
