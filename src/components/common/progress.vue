@@ -1,5 +1,5 @@
 <template>
-    <progress :class="`progress is-${props.size} is-${props.type}`" :value="props.value" :max="props.maximum">{{percentage ? `${percentage}%` : null}}</progress>
+    <progress :class="`progress is-${props.size} is-${props.type}`" :value="props.value" :max="props.maximum">{{percentage ? `${percentage.toFixed(2)}%` : null}}</progress>
 </template>
 
 <script lang="ts" setup>
@@ -35,6 +35,6 @@ import { ColorTypes, Sizes } from '../../enums';
     });
 
     const percentage = computed<number|null>(()=>{
-        return props.maximum===undefined ? null : (props.value??0)/props.maximum;
+        return props.maximum===undefined ? null : ((props.value??0)/props.maximum)*100;
     });
 </script>

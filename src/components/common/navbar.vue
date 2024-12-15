@@ -45,7 +45,6 @@
 </template>
 
 <script lang="ts">
-    import 'jquery';
     import {onMounted, withDefaults,ref} from 'vue';
     import { FixedNavBarPositions,Sizes,ColorTypes } from '../../enums';
     import type { ParentMenuItem } from './typeDefinitions';
@@ -98,17 +97,19 @@
 
     onMounted(()=>{
         if (props.fixed_position){
+            let classCheck = '';
             switch(props.fixed_position){
                 case FixedNavBarPositions.top:
-                    if (!$(document.body).hasClass('has-navbar-fixed-top')){
-                        $(document.body).addClass('has-navbar-fixed-top')
-                    }
-                break;
+                    classCheck='has-navbar-fixed-top';
+                    break;
                 case FixedNavBarPositions.bottom:
-                    if (!$(document.body).hasClass('has-navbar-fixed-bottom')){
-                        $(document.body).addClass('has-navbar-fixed-bottom')
-                    }
-                break;
+                    classCheck = 'has-navbar-fixed-bottom';
+                    break;
+            }
+            if (classCheck!==''){
+                if (!document.body.classList.contains(classCheck)) {
+                    document.body.classList.add(classCheck);
+                }
             }
         }
     });

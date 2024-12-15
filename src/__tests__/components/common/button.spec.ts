@@ -18,6 +18,7 @@ import buttonUpload from '../../../components/common/buttons/button-upload.vue';
 import { stripCommentNodes } from '../../common';
 import { ColorTypes, Sizes } from '../../../enums';
 import translate from '../../../messages/messages';
+import { userEvent } from '@vitest/browser/context';
 
 const extractIcon = function(button:HTMLElement):HTMLElement {
     const strippedChildren = stripCommentNodes(button);
@@ -181,6 +182,21 @@ describe('Button', () => {
             expect(button.classList).toContain(`is-${Sizes[key]}`);
 
         }
+    }),
+    test('click a button', async () => {
+        let clicked = false;
+
+        const { container } = render(Button, {
+            props: {
+                onClick:()=>{clicked=true;}
+            },
+        });
+
+        const button = container.childNodes[0] as HTMLElement;
+
+        await userEvent.click(button);
+
+        expect(clicked).toBe(true);
     }),
     test('renders a Add button', async () => {
         const { container,getByText } = render(ButtonAdd, {

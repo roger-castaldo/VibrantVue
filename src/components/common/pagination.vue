@@ -14,9 +14,9 @@
             <ul class="pagination-list">
                 <li v-for="page in Pages">
                     <span v-if="page===-1" class="pagination-ellipsis">&hellip;</span>
-                    <a v-else :class="(page===-1 ? ['pagination-ellipsis'] : ['pagination-link',(page===currentPage ? 'is-current' : '')])"
-                        :aria-label="(page===-1 ? '' : `${GoToPage} ${page}`)"
-                        @onclick="goToPage(page)">{{(page===-1?'':page)}}
+                    <a v-else :class="['pagination-link',(page===currentPage ? 'is-current' : '')]"
+                        :aria-label="`${GoToPage} ${page}`"
+                        @onclick="goToPage(page)">{{page}}
                     </a>
                 </li>
             </ul>
@@ -41,7 +41,7 @@
  * @link https://bulma.io/documentation/components/pagination/
  */
     const props = withDefaults(defineProps<IPaginationProperties>(),{
-        usenext:true,
+        use_next:true,
         size:Sizes.small,
         rounded:false ,
         has_previous:undefined,
@@ -66,8 +66,8 @@
 
     const Language = useLanguage(inject);
 
-    const Previous = computed<string>(()=>translate((props.usenext ? 'Pagination.Previous' : 'Pagination.Older'),Language));
-    const Next = computed<string>(()=>translate((props.usenext ? 'Pagination.Next' : 'Pagination.Newer'),Language));
+    const Previous = computed<string>(()=>translate((props.use_next ? 'Pagination.Previous' : 'Pagination.Older'),Language));
+    const Next = computed<string>(()=>translate((props.use_next ? 'Pagination.Next' : 'Pagination.Newer'),Language));
     const ButtonClass = computed<string>(()=>props.button_type ? `has-background-${props.button_type}` : '');
     const GoToPage = computed<string>(()=>translate('Pagination.GoToPage',Language));
 
@@ -114,7 +114,7 @@
 
     const moveBack = function () {
         if (HasPrevious){
-            if (props.current_page!==null){
+            if (props.current_page!==undefined && props.current_page!==null){
                 emit('goToPage',toValue<number>(props.current_page)-1);
             }else{
                 emit('moveBack');
@@ -123,7 +123,7 @@
     };
     const moveForward = function () {
         if (HasNext){
-            if (props.current_page!==null){
+            if (props.current_page!==undefined && props.current_page!==null){
                 emit('goToPage',toValue<number>(props.current_page)+1);
             }else{
                 emit('moveForward');

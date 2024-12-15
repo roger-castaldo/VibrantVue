@@ -71,16 +71,12 @@
         switch (speed) {
             case AnimationSpeeds.slower:
                 return 3000;
-                break;
             case AnimationSpeeds.fast:
                 return 800;
-                break;
             case AnimationSpeeds.faster:
                 return 500;
-                break;
             default:
                 return 2000;
-                break;
         }
     };
 

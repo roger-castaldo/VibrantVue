@@ -2,13 +2,13 @@
     <div :class="{'modal':props.block_user&&props.visible,'is-active':props.block_user&&props.visible}">
         <div v-if="props.block_user&&props.visible" class="modal-background"></div>
         <Animation :incoming="AnimationTypes.fadeIn" :outgoing="AnimationTypes.fadeOut" :speed="AnimationSpeeds.slower">
-            <div v-if="props.visible" :class="clazz">
+            <div v-if="props.visible" :class="clazz" role="dialog" :aria-label="props.header??'Page Notification'">
                 <Icon :icon="iconType" :size="IconSizes.xxlarge" />
                 <h1 v-if="props.header!==null && props.header!==undefined" class="title">{{ props.header }}</h1>
                 <div class="block">
                     {{ props.message }}
                 </div>
-                <Icon v-if="props.has_close" icon="circle-xmark" @click="emit('close')" :size="IconSizes.large" />
+                <Icon v-if="props.has_close" icon="circle-xmark" @click="emit('close')" :size="IconSizes.large" role="button" aria-label="close" />
             </div>
         </Animation>
     </div>
