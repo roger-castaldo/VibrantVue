@@ -1,4 +1,4 @@
-import { ColorTypes } from "../../enums.ts";
+import { ColorTypes } from "../../enums";
 
 export interface ITableProperties {
     /**

@@ -60,9 +60,9 @@
  * @link https://aramvisser.github.io/bulma-steps/
  */
     import { Sizes, StepWizardOrientations } from '../../enums';
-    import { WizardStep } from './typeDefinitions';
-    import Icon from './icon.vue';
-    import Button from './buttons/button.vue';
+    import { WizardStep } from '../common/typeDefinitions';
+    import Icon from '../common/icon.vue';
+    import Button from '../common/buttons/button.vue';
     import {ref,computed, inject,watch,useSlots } from 'vue';
     import translate from '../../messages/messages.js';
     import { useLanguage } from '../shared';

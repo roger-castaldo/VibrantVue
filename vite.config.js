@@ -39,6 +39,10 @@ export default defineConfig({
         globals: {
           vue: "Vue",
         },
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') return 'vibrantvue.css';
+          return assetInfo.name;
+        },
       },
     },
   },

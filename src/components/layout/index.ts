@@ -14,6 +14,7 @@ import Section from './section.vue';
 import Table from './table.vue';
 import Tabs from './tabs.vue';
 import Slideout from './slideout.vue';
+import StepWizard from './step-wizard.vue';
 
 export {Banner,Box,Breadcrumbs,Card,ColumnContainer,Footer,
-    Level,List,Media,Modal,ModalCard,Panel,Section,Table,Tabs,Slideout};
+    Level,List,Media,Modal,ModalCard,Panel,Section,Table,Tabs,Slideout,StepWizard};
