@@ -33,7 +33,7 @@ top='top',bottom='bottom'};
 export enum BreadCrumbAlignments{centered='centered',right='right',left='left'};
 export enum BreadCrumbSeperators{arrow='arrow',button='button',dot='dot',succeeds='succeeds'};
 export enum ColumnContainerModifiers{mobile='mobile',desktop='desktop',gapless='gapless',multiline='multiline', 
-centered=' centered', borderleft=' borderleft',borderright='borderright',borderbottom='borderbottom',bordertop='bordertop',fullWidth='fullwidth',
+centered='centered', borderleft='borderleft',borderright='borderright',borderbottom='borderbottom',bordertop='bordertop',fullWidth='fullwidth',
 fullHeight='fullheight'};
 export enum ColumnSizes {three_quarters="three-quarters",two_thirds="two-thirds",half="half",one_third="one-third",
 one_quarter="one-quarter",full="full",one_fifth="one-fifth",two_fifths="two-fifths",three_fifths="three-fifths",

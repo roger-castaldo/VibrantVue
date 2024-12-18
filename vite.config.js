@@ -52,7 +52,7 @@ export default defineConfig({
         reportsDirectory: "html/ui",
         include: ["**/*.{ts,vue}"],
         exclude: ["src/__tests__/**","**/index.ts","src/css/**","src/messages/**",
-          "**/typeDefinitions.ts","**/enums.ts","src/components/shared.ts","src/components/utilities.ts",
+          "**/typeDefinitions.ts","**/interfaces.ts","**/enums.ts","src/components/shared.ts","src/components/utilities.ts",
           "src/components/common/dynamic-slot.vue"],
         reporter: ['text', ['html', { subdir: 'coverage'}]],
         provider: "v8",

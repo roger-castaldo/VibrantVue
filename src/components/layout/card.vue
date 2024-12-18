@@ -1,6 +1,6 @@
 ﻿<template>
     <div class="card" :class="{'is-fullwidth':props.full_width,'is-fullheight':props.full_height}">
-        <div class="card-icon" v-if="props.icon!==null">
+        <div class="card-icon" v-if="props.icon">
             <div class="card-icon-wrapper">
                 <Icon :icon="props.icon" :size="IconSizes.xxlarge"/>
             </div>
@@ -56,8 +56,7 @@
     }>(),
     {
         full_height:false,
-        full_width:false,
-        icon:null
+        full_width:false
     });
 
     const footerProps = {

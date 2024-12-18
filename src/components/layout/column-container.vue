@@ -1,11 +1,11 @@
 ﻿<template>
-    <div :class="classes">
-        <template v-for="col,index in Columns">
-            <div :class="col.class">
+    <div :class="Classes">
+        <template v-for="col in Columns">
+            <div :class="col.class" v-if="slots[col.name]">
                 <!--
                     @slot the slot for the content of the given column whose name is either the name property or col-{index}
                 -->
-                <slot :name="col.name" v-if="slots[col.name]"/>
+                <slot :name="col.name"/>
             </div>
         </template>
     </div>
@@ -42,7 +42,7 @@ type definedColumn = {
         columns:Column[]
     }>();
 
-    const classes = computed<string[]>(()=>{
+    const Classes = computed<string[]>(()=>{
         let result = ['columns'];
         if (props.modifiers!==undefined && props.modifiers!==null){
             result = result.concat(props.modifiers.map(mod=>`is-${mod}`));
@@ -51,9 +51,12 @@ type definedColumn = {
     });
     const Columns = computed<definedColumn[]>(()=>{
         return props.columns.map((c,index)=>{
-            let classData:string[] = ['column'];
-            if (c.size){classData.push(`is-${c.size}`);}
-            if (c.offset){classData.push(`is-offset-${c.offset}`)};
+            let classData:string[] = [
+                'column',
+                c.class??'',
+                (c.size ? `is-${c.size}` : ''),
+                (c.offset ? `is-offset-${c.offset}` : '')
+            ];
             if (c.border){
                 if (c.border.some(b=>b===BorderTypes.all)){
                     classData.push('is-bordered');
