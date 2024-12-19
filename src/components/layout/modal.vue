@@ -7,7 +7,7 @@
             -->
             <slot/>
         </div>
-        <button class="modal-close is-large" aria-label="close" v-if="props.has_close"></button>
+        <button class="modal-close is-large" aria-label="close" v-if="props.has_close" @click="emit('close')"></button>
     </div>
 </template>
 

@@ -2,7 +2,7 @@
     <div class="modal" :class="{'is-active':props.show}">
         <div class="modal-background"></div>
         <div class="modal-card" :class="classes">
-            <div class="card-icon" v-if="props.icon!==null">
+            <div class="card-icon" v-if="props.icon">
                 <div class="card-icon-wrapper">
                     <Icon :icon="props.icon" :size="IconSizes.xxlarge"/>
                 </div>
@@ -12,7 +12,7 @@
                     @slot The header of the modal card
                 -->
                 <slot name="header" v-bind="headerProps" />
-                <button v-if="has_close" class="delete" aria-label="close" @click="emit('close')"></button>
+                <button v-if="props.has_close" class="delete" aria-label="close" @click="emit('close')"></button>
             </div>
             <div class="modal-card-body" v-if="slots.content">
                 <!--
@@ -43,7 +43,7 @@
 
     const slots = useSlots();
     
-    const props = withDefaults(defineProps<{
+    const props = defineProps<{
         /**
          * Indicates if the modal card should be shown
          */
@@ -72,9 +72,7 @@
          * Set an icon to overlay within the header
          */
         icon?:string
-    }>(),{
-        icon:null
-    });
+    }>();
     
     const emit = defineEmits<{
         /**
@@ -89,7 +87,7 @@
 
     const headerProps = {
         header_class: 'modal-card-title has-text-centered',
-        addon_class: 'card-footer-item'
+        addon_class: 'card-header-icon'
     };
 
     const classes = computed<string[]>(()=>{

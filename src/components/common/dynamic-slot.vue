@@ -5,14 +5,14 @@
 <script lang="ts">
     import { ref,watch,computed,onMounted,ComputedRef } from 'vue';
 
-    const reload = async (url:string,sortMethod?:(a:string,b:string)=>number,filterReg?:ComputedRef<RegExp>) : Promise<any[]> => {
+    const reload = async (url:string,sortMethod?:(a:string,b:string)=>number,filterReg?:ComputedRef<RegExp|null>) : Promise<any[]> => {
         let imps = await import(url);
         const names = Object.keys(imps);
         if (sortMethod) {
             names.sort(sortMethod);
         }
         return names
-            .filter(n=>filterReg===undefined||filterReg.value.test(n))
+            .filter(n=>filterReg===undefined||filterReg.value===null||filterReg.value.test(n))
             .map(n=>{
                 return imps[n];
             });
@@ -47,7 +47,7 @@
         sortMethod:(a:string,b:string)=>number
     }>();
 
-    const FilterReg = computed<RegExp>(() => {
+    const FilterReg = computed<RegExp|null>(() => {
         return (props.filter == null || props.filter == undefined ? null : new RegExp('^' + props.filter.replaceAll('.', '\\.').replaceAll('*', '.+') + '$'));
     });
 

@@ -1,6 +1,9 @@
 <template>
     <section :class="['section',(props.size ? `is-${props.size}` : '')]">
-
+        <!--
+            @slot The content to place inside the section
+        -->
+        <slot/>
     </section>
 </template>
 

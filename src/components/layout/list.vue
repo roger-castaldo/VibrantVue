@@ -1,22 +1,24 @@
 ﻿<template>
-    <component :is="(numbered==null||numbered==undefined||!numbered ? 'ul' : 'ol')" :class="classes">
+    <component :is="(numbered==null||numbered==undefined||!numbered ? 'ul' : 'ol')" :class="Classes">
         <slot v-if="Items===null"/>
         <template v-else>
-            <li v-for="item in Items" :class="item.classes">
-                <span class="icon is-clickable" v-if="item.icon" @click="invokeClick(item)">
-                    <Icon :icon="item.icon"/>
-                </span>
-                <!--
-                    @slot A slot for each list item defined.  The name is either the name supplied of item-{index}
-                -->
-                <slot :name="item.name"/>
-            </li>
+            <template v-for="item in Items">
+                <li :class="item.classes" v-if="slots[item.name]!==undefined||slots[item.name]!==null||item.icon!==undefined" @click="invokeClick(item)">
+                    <span class="icon" v-if="item.icon">
+                        <Icon :icon="item.icon"/>
+                    </span>
+                    <!--
+                        @slot A slot for each list item defined.  The name is either the name supplied of item-{index}
+                    -->
+                    <slot :name="item.name"/>
+                </li>
+            </template>
         </template>
     </component>
 </template>
 
 <script lang="ts">
-    import { computed } from 'vue';
+    import { computed, useSlots } from 'vue';
     import { IListProperties } from './interfaces';
     import {ListItem} from './typeDefinitions';
     import Icon from '../common/icon.vue';
@@ -49,7 +51,9 @@
  */
     const props = defineProps<IFullListProperties>();
 
-    const classes = computed<string[]>(() => {
+    const slots = useSlots();
+
+    const Classes = computed<string[]>(() => {
         var ret = ['block-list', 'has-radius', `is-${props.type??'primary'}`];
         if (props.compact) {
             ret.push('is-small');
@@ -65,14 +69,15 @@
     const Items = computed<definedListItem[]|null>(()=>{
         if (props.items){
             return props.items.map((li,index)=>{
-                let itemClasses:string[] = [];
-                if (li.type){itemClasses.push(`is-${li.type}`);}
-                if (li.outlined){itemClasses.push('is-outlined');}
-                if (li.highlighted){itemClasses.push('has-icon');}
-                if (li.icon){itemClasses.push('has-icon');}
                 return {
                     name:li.name??`item-${index}`,
-                    classes:itemClasses,
+                    classes:[
+                        (li.type?`is-${li.type}`:''),
+                        (li.outlined?'is-outlined':''),
+                        (li.highlighted?'is-highlighted':''),
+                        (li.icon?'has-icon':''),
+                        (li.onClick?'is-clickable':'')
+                    ],
                     onClick:li.onClick,
                     icon:li.icon
                 };
