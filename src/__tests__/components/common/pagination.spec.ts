@@ -62,11 +62,15 @@ describe('Pagination', () => {
         expect(nextIcon.classList).toContain('ml-1');
     }),
     test('check using Newer/Older',async() => {
+      let movedBack = false;
+      let movedForward=false;
         const {container,getByText} = render(pagination, {
           props:{
               use_next:false,
               has_more:true,
-              has_previous:true
+              has_previous:true,
+              onMoveBack:()=>movedBack=true,
+              onMoveForward:()=>movedForward=true
           }
         });
     
@@ -87,6 +91,10 @@ describe('Pagination', () => {
         expect(prev.getAttribute('title')).toBe(translate('Pagination.Older'));
         expect(prev.childNodes).toHaveLength(2);
 
+        prev.click();
+
+        expect(movedBack).toBe(true);
+
         const prevIcon = prev.childNodes[0] as HTMLElement;
 
         expect(prevIcon.classList).toContain('fa-backward');
@@ -98,6 +106,10 @@ describe('Pagination', () => {
         expect(next.innerText).toBe(translate('Pagination.Newer'));
         expect(next.getAttribute('title')).toBe(translate('Pagination.Newer'));
         expect(next.childNodes).toHaveLength(2);
+
+        next.click();
+
+        expect(movedForward).toBe(true);
 
         const nextIcon = next.childNodes[1] as HTMLElement;
 

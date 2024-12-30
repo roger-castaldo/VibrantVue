@@ -53,24 +53,28 @@
 
   const isRejected = ref(false);
   const isResolved = ref(false);
-  const isPending = computed(()=>!isRejected.value && !isResolved.value);
-  const data = ref<unknown | null>(null);
 
   const wrappedPromise = computed<Promise<unknown>|null>(()=>{
     if (props.promise!==undefined && props.promise!==null){
       let tmp = toValue(props.promise);
-      return tmp instanceof Promise ? 
-        tmp :
-        Promise.resolve(tmp);
+      if (Object.prototype.toString.call(tmp) === "[object Promise]"){
+        return tmp as Promise<unknown>;
+      }else{
+        isResolved.value=true;
+        return Promise.resolve(tmp);
+      }
     }
     return null;
   });
+
+  const isPending = computed(()=>!isRejected.value && !isResolved.value);
+  const data = ref<unknown | null>(null);
 
   async function watchPromise(promise : Promise<unknown|null>|null) : Promise<void> {
     isRejected.value = false
     isResolved.value = false
     error.value = null
-    if (!promise){
+    if (promise===null){
       data.value = null;
     }else{
       try{

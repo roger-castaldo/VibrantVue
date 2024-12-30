@@ -22,7 +22,8 @@ $slideout-foot-background-l: cv.getVar("dark-l");
 $slideout-border-l: cv.getVar("border-l") !default;
 $slideout-content-background-l: cv.getVar("background-l");
 $slideout-color-l: cv.getVar("text-l");
-$slideout-head-color-l: cv.getVar("text-dark-invert-l");
+$slideout-head-color-l: cv.getVar("dark-invert-l");
+$slideout-foot-color-l: cv.getVar("dark-invert-l");
 $slideout-border-l-delta: -20% !default;
 
 $slideout-background-background-color: hsla(
@@ -53,6 +54,7 @@ $slideout-min-width: 15vw;
       "slideout-content-background-l": fn.getVarWithBackup("message-background-l",$slideout-content-background-l),
       "slideout-color-l": fn.getVarWithBackup("message-color-l",$slideout-color-l),
       "slideout-head-color-l": fn.getVarWithBackup("message-header-color-l",$slideout-head-color-l),
+      "slideout-foot-color-l": fn.getVarWithBackup("message-header-color-l",$slideout-foot-color-l),
       "slideout-border-l-delta": fn.getVarWithBackup("message-border-l-delta",$slideout-border-l-delta),
       "slideout-body-padding":$slideout-body-padding,
       "slideout-radius": $slideout-radius,
@@ -164,9 +166,9 @@ $slideout-min-width: 15vw;
         .#{iv.$class-prefix}slideout-head{
             background-color: cv.getVar("slideout-head-background-color");
             border-top-left-radius: cv.getVar("slideout-radius");
+            color: cv.getVar("slideout-title-color");
 
             .#{iv.$class-prefix}slideout-title {
-                color: cv.getVar("slideout-title-color");
                 flex-grow: 1;
                 flex-shrink: 0;
                 font-size: cv.getVar("slideout-title-size");

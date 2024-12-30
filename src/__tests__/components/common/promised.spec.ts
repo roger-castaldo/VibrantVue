@@ -111,5 +111,45 @@ describe('Promised', () => {
         expect(notice.classList).toContain('notification');
         expect(notice.innerText).toBe(`Error: ${errorMessage}`);
 
-    })
+    }),
+    test('check non-promise',async() => {
+      const resolveMessage = 'This is a test';
+      
+      const {container} = render(promised, {
+        props:{
+          promise: resolveMessage
+        },
+        slots:{
+          default:({response})=>{
+              return response;
+          }
+        }
+      });
+  
+      await sleep(200);
+
+      expect(container.innerText).toBe(resolveMessage);
+  }),
+  test('check null promise value',async() => {
+    const {container} = render(promised, {
+      props:{
+        promise: null
+      },
+      slots:{
+        default:({response})=>{
+            return response;
+        }
+      }
+    });
+
+    await sleep(200);
+
+    const content = stripCommentNodes(container);
+
+    expect(content).toHaveLength(1);
+
+    const pending = content[0] as HTMLElement;
+
+    expect(pending.nodeName).toBe('PROGRESS');
+})
 });

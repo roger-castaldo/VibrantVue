@@ -35,20 +35,26 @@
 
     const slots = useSlots();
     
-    const props = defineProps<ITableProperties>();
+    const props = withDefaults(defineProps<ITableProperties>(),{
+        fixed_header:false,
+        scrollable:false
+    });
     
     const containerClasses = computed<string[]>(()=>{
-        let ret:string[]=[];
-        if (props.scrollable){ret.push('table-container');}
-        if (props.fixed_header&&props.scrollable){ret.push('is-fixed');}
-        return ret;
+        return [
+            (props.scrollable?'table-container':''),
+            (props.fixed_header&&!props.scrollable?'is-fixed':'')
+        ];
     });
 
     const tableClasses = computed<string[]>(()=>{
-        let ret:string[]=['table','is-striped','is-hoverable'];
-        if (props.fixed_header&&!props.scrollable){ret.push('is-fixed');}
-        if(props.full_width){ret.push('is-fullwidth');}
-        if (props.narrow){ret.push('is-narrow');}
-        return ret;
+        return [
+            'table',
+            'is-striped',
+            'is-hoverable',
+            (props.fixed_header&&!props.scrollable?'is-fixed':''),
+            (props.full_width?'is-fullwidth':''),
+            (props.narrow?'is-narrow':'')
+        ];
     });
 </script>

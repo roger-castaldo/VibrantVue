@@ -1,5 +1,5 @@
 ﻿<template>
-    <div :class="classes">
+    <div :class="Classes">
         <ul>
             <Promised :promise="props.tabs">
                 <template v-slot="{response}">
@@ -34,7 +34,7 @@
     import { TabAlignments, TabStyles,Sizes } from '../../enums';
     import {Tab} from './interfaces';
 
-    const props = defineProps<{
+    const props = withDefaults(defineProps<{
         /**
          * The tabs to be defined 
          */
@@ -51,15 +51,17 @@
          * Indicates if the width should just be max and not based on the content
          */
         full_width?:boolean
-    }>();
+    }>(),{
+        alignment:TabAlignments.left
+    });
 
-    const classes = computed<string[]>(()=>{
-        let ret:string[] = ['tabs'];
-        if (props.alignment){ret.push(`is-${props.alignment}`);}
-        else{ret.push('is-left');}
-        if(props.type){ret.push(`is-${props.type}`);}
-        if (props.full_width){ret.push('is-fullwidth');}
-        return ret;
+    const Classes = computed<string[]>(()=>{
+        return [
+            'tabs',
+            `is-${props.alignment}`,
+            (props.type?`is-${props.type}`:''),
+            (props.full_width?'is-fullwidth':'')
+        ];
     });
 
     const tabClicked = (event:any,tab:Tab):void=> {

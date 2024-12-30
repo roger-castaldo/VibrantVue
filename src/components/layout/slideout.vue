@@ -2,7 +2,7 @@
     <div :class="Classes">
         <div class="slideout-background" @click="emit('close')"></div>
         <div class="slideout-content">
-            <button v-if="has_close" class="delete" aria-label="close" @click="emit('close')"></button>
+            <button v-if="props.has_close" class="delete" aria-label="close" @click="emit('close')"></button>
             <div class="slideout-head" v-if="slots.header">
                 <!--
                     @slot The header of the slideout
@@ -80,11 +80,12 @@
     }>();
 
     const Classes = computed<string[]>(()=>{
-        let result=['slideout'];
-        if (props.show){result.push('is-active');}
-        if (props.type!==undefined && props.type!==null){result.push(`is-${props.type}`);}
-        if (props.full_width){result.push('is-fullwidth');}
-        if (props.not_animated){result.push('no-animation');}
-        return result;
+        return [
+            'slideout',
+            (props.show?'is-active':''),
+            (props.type!==undefined && props.type!==null?`is-${props.type}`:''),
+            (props.full_width?'is-fullwidth':''),
+            (props.not_animated?'no-animation':'')
+        ];
     });
 </script>

@@ -63,10 +63,10 @@
     const BlockNames = computed<string[]>(() => props.block_names??['default']);
 
     const addons = computed<string[]>(() => {
-        let ret = [];
-        if (props.type){ret.push(`is-${props.type}`);}
-        if (props.full_width) { ret.push('is-fullwidth'); }
-        if (props.full_height) { ret.push('is-fullheight'); }
-        return ret;
+        return [
+            (props.type ? `is-${props.type}` : ''),
+            (props.full_width ? 'is-fullwidth' : ''),
+            (props.full_height ? 'is-fullheight' : '')
+        ];
     });
 </script>

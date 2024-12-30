@@ -73,16 +73,12 @@
         switch(props.type){
             case NoticeTypes.info:
                 return 'circle-info';
-                break;
             case NoticeTypes.success:
                 return 'circle-check';
-                break;
             case NoticeTypes.danger:
                 return 'bug';
-                break;
             case NoticeTypes.warning:
                 return 'circle-exclamation';
-                break;
         }            
     });
     const clazz = computed<string[]>(() => {
