@@ -4,10 +4,10 @@
             :class="`progress is-${entry.size} is-${entry.type} ${entry.onClick!==undefined ? 'is-clickable' : ''}`" 
             :key="index"
             :text="entry.caption??''"
-            :position="ToolTipPositions.top"
+            :position="ToolTipPositions.bottom"
             :style="{width:`${entry.percentage}%`}"
             value="100" 
-            maximum="100"
+            max="100"
             @click="()=>{if(entry.onClick!==undefined) entry.onClick();}">
             {{ `${entry.percentage}%` }}
         </ToolTip>
@@ -15,8 +15,8 @@
             :class="`progress is-${Filler.size} is-${Filler.type}`" 
             :style="{width:`${Filler.percentage}%`}"
             value="100" 
-            maximum="100">
-            {{ `${Filler.percentage}%` }}>
+            max="100">
+            {{ `${Filler.percentage}%` }}
         </progress>
     </div>
 </template>
