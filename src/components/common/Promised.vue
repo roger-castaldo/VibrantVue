@@ -18,14 +18,7 @@
 </template>
 
 <script lang="ts">
-  import {computed,inject,ref,watch,Ref, onMounted,unref} from 'vue';
-
-  type MaybeRef<T = unknown> = T | Ref<T>
-  type MaybeRefOrGetter<T = unknown> = MaybeRef<T> | (() => T)
-  function toValue<T>(source: MaybeRefOrGetter<T>): T {
-    // @ts-expect-error: source not callable
-    return typeof source === 'function' ? source() : unref(source)
-  }
+  import {computed,inject,ref,watch,onMounted,MaybeRef,unref} from 'vue';
 </script>
 
 <script lang="ts" setup>
@@ -43,7 +36,7 @@
     /**
      * The Promise that this component is build around
      */
-    promise:Promise<unknown|null>|unknown|null|undefined
+    promise?:MaybeRef<Promise<unknown|null>|unknown|null>
   }>();
 
   const error = ref<Error | null | unknown>(null);
@@ -54,31 +47,22 @@
   const isRejected = ref(false);
   const isResolved = ref(false);
 
-  const wrappedPromise = computed<Promise<unknown>|null>(()=>{
-    if (props.promise!==undefined && props.promise!==null){
-      let tmp = toValue(props.promise);
-      if (Object.prototype.toString.call(tmp) === "[object Promise]"){
-        return tmp as Promise<unknown>;
-      }else{
-        isResolved.value=true;
-        return Promise.resolve(tmp);
-      }
-    }
-    return null;
-  });
-
   const isPending = computed(()=>!isRejected.value && !isResolved.value);
   const data = ref<unknown | null>(null);
 
-  async function watchPromise(promise : Promise<unknown|null>|null) : Promise<void> {
+  async function watchPromise(promise : MaybeRef<Promise<unknown|null>|unknown|null>|undefined) : Promise<void> {
     isRejected.value = false
     isResolved.value = false
     error.value = null
-    if (promise===null){
+    if (promise===null || promise===undefined){
       data.value = null;
     }else{
+      let tmp : Promise<unknown|null>|unknown = unref(promise);
+      if (Object.prototype.toString.call(tmp) !== "[object Promise]"){
+        tmp = Promise.resolve(tmp);
+      }
       try{
-        data.value = await promise;
+        data.value = await tmp;
         isResolved.value = true;
       }catch(err){
         error.value = err;
@@ -88,13 +72,9 @@
   }
 
   watch(
-    () => wrappedPromise,
-    async (newPromise)=>{
-      await watchPromise(newPromise.value);
-    }
+    () => props.promise,
+    ()=>{watchPromise(props.promise);}
   );
 
-  onMounted(async()=>{
-    await watchPromise(wrappedPromise.value);
-  });
+  onMounted(()=>{watchPromise(props.promise);});
 </script>

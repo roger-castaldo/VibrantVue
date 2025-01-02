@@ -35,7 +35,7 @@
  * @displayName Panel
  * @link https://bulma.io/documentation/components/panel/
  */
-    const slots = useSlots();
+    const slots : any = useSlots();
 
     const props = defineProps<{
         /**

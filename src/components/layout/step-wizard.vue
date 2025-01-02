@@ -7,14 +7,14 @@
                     <Icon v-if="step.icon" :icon="step.icon"/>
                     <span v-else>{{ index+1 }}</span>
                 </div>
-                <div class="step-details">
+                <div class="step-details" v-if="step.title!==''">
                     <p class="step-title">{{ step.title }}</p>
                     <p v-if="step.description">{{step.description}}</p>
                 </div>
             </li>
         </ul>
         <div class="steps-content">
-            <template v-for="step,index in steps">
+            <template v-for="step,index in props.steps">
                 <div :class="['step-content',(index===currentIndex?'is-active':'')]" v-if="slots[step.name]">
                     <!--
                         @slot a slot created for each step named with the step's name
@@ -28,11 +28,11 @@
                 <div class="steps-action">
                     <Button :title="Previous" :disabled="currentIndex===0" @click="()=>{currentIndex--;}"/>
                 </div>
-                <div class="steps-action">
-                    <Button :title="Next" :disabled="props.steps[currentIndex].is_valid??true" @click="()=>{currentIndex++;}"/>
-                </div>
                 <div class="steps-action" v-if="currentIndex+1<props.steps.length">
-                    <Button :title="Done" :disabled="props.steps[currentIndex].is_valid??true" @click="()=>{emit('done');}"/>
+                    <Button :title="Next" :disabled="!(props.steps[currentIndex].is_valid===undefined ? true : props.steps[currentIndex].is_valid)" @click="()=>{currentIndex++;}"/>
+                </div>
+                <div class="steps-action" v-if="currentIndex+1===props.steps.length">
+                    <Button :title="Done" :disabled="!(props.steps[currentIndex].is_valid===undefined ? true : props.steps[currentIndex].is_valid)" @click="()=>{emit('done');}"/>
                 </div>
             </template>
             <template v-else>
@@ -40,7 +40,7 @@
                     @slot a slot created for the actions (as a default) when use_previous_next is false
                 -->
                 <slot name="actions" v-if="slots['actions']"/>
-                <template v-for="step,index in steps">
+                <template v-for="step,index in props.steps">
                     <!--
                         @slot a slot created for each of the actions of each step when use_previous_next is false
                     -->
@@ -63,7 +63,7 @@
     import { WizardStep } from '../common/typeDefinitions';
     import Icon from '../common/icon.vue';
     import Button from '../common/buttons/button.vue';
-    import {ref,computed, inject,watch,useSlots } from 'vue';
+    import {ref,computed, inject,watch,useSlots, MaybeRef } from 'vue';
     import translate from '../../messages/messages.js';
     import { useLanguage } from '../shared';
 
@@ -90,7 +90,7 @@
         /**
          * The starting step index
          */
-        starting_index?:number,
+        starting_index?:MaybeRef<number>,
         /**
          * The orientation style for the wizard
          */

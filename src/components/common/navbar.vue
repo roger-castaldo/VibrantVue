@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts">
-    import {onMounted, withDefaults,ref} from 'vue';
+    import {onMounted, ref} from 'vue';
     import { FixedNavBarPositions,Sizes,ColorTypes } from '../../enums';
     import type { ParentMenuItem } from './typeDefinitions';
     import Promised from './Promised.vue';

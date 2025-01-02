@@ -9,7 +9,6 @@
  */
     import Icon from "./icon.vue";
     import { IconSizes } from "../../enums";
-    import { withDefaults } from "vue";
 
     const props = withDefaults(defineProps<{
         /**

@@ -4,14 +4,14 @@ import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
   plugins: [vue()],
-  // resolve:{
-  //   alias:{
-  //     'vue':'https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.8/vue.esm-browser.min.js',
-  //     'jquery':'https://code.jquery.com/jquery-3.6.0.slim.min.js',
-  //     'chart':'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js',
-  //     'summernote':'https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.js'
-  //   }
-  // },
+  /*resolve:{
+    alias:{
+      'vue':'https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.8/vue.esm-browser.min.js',
+       'jquery':'https://code.jquery.com/jquery-3.6.0.slim.min.js',
+       'chart':'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js',
+       'summernote':'https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.js'
+     }
+  },*/
   build: {
     sourcemap: true,
     outDir: "./dist",
