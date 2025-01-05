@@ -5,7 +5,7 @@ import StepWizard from '../../../components/layout/step-wizard.vue';
 import { sleep, stripCommentNodes } from '../../common';
 import translate from '../../../messages/messages.js';
 import { NoticeTypes, Sizes, StepWizardOrientations } from '../../../enums';
-import { getCurrentInstance,h } from 'vue';
+import { h } from 'vue';
 import {mount} from '@vue/test-utils';
 
 

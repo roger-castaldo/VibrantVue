@@ -1,6 +1,6 @@
 <template>
     <section>
-        <ColumnContainer v-for="row in Rows" :columns="row.map(r=>convertInputToColumn(r))">
+        <ColumnContainer :modifiers="[ColumnContainerModifiers.gapless]" v-for="row in Rows" :columns="row.map(r=>convertInputToColumn(r))">
             <template v-for="inp in row.map<FilteredRowItem>((value,index)=>{return {input:value,index:index};})
         .filter(val=>!hiddenInputs!.some(f=>f===val.input.name))" 
                 #[`col-${inp.index}`]>
@@ -22,7 +22,7 @@
     import { FormInputType, ValueChangedEvent } from './typeDefinitions';
     import {Column} from '../layout/typeDefinitions';
     import { DISABLED_FIELDS_PROPERTY, HIDDEN_FIELDS_PROPERTY } from './common';
-    import {ColumnSizes} from '../../enums';
+    import {ColumnSizes,ColumnContainerModifiers} from '../../enums';
 
     const getColumnSize = (form_columns?:number) : ColumnSizes =>{
         let size:ColumnSizes = ColumnSizes.twelve;

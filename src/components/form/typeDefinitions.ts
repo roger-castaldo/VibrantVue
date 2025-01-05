@@ -1,4 +1,5 @@
-import { ColorTypes } from "../../enums.ts";
+import { ColorTypes } from "../../enums";
+import { FormInputTypes } from "./enums";
 
 export type ValueChangedEvent = {
     /**
@@ -49,7 +50,7 @@ export type FormInputType = {
     /**
      * The type of input in the form
      */
-    type:string,
+    type:FormInputTypes,
     /**
      * The name of the input (used in getting/setting values, etc)
      */
@@ -96,7 +97,11 @@ export type FormInputType = {
      * @param value the string to translate
      * @returns a translated string based on current language
      */
-    Translate?:(value:string)=>string
+    Translate?:(value:string)=>string,
+    /**
+     * Houses the additional properties that might be necessary for the input type that are not standard
+     */
+    additional?:unknown
 };
 
 export type TranslateMethod = (value:string)=>string;

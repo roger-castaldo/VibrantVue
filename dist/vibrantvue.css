@@ -23646,6 +23646,10 @@ table.is-fixed.is-striped thead tr th {
   overflow-x: auto;
 }
 
+form.container.is-fullhd section .columns {
+  margin-bottom: 0;
+}
+
 .tagsfield {
   height: auto !important;
   cursor: text;

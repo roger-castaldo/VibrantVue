@@ -1,5 +1,5 @@
 ﻿<template>
-    <input type="number" class="input" :name="name" v-model="value" :disabled="disabled" :min="props.min" :max="props.max" :step="props.step"/>
+    <input type="number" class="input" :id="props.name" :name="props.name" v-model="value" :disabled="props.disabled" :min="props.min" :max="props.max" :step="props.step"/>
 </template>
 
 <script lang="ts">

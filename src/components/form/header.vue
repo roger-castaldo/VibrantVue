@@ -1,9 +1,8 @@
 ﻿<template>
-    <component :is="props.subtype">{{Translator(props.label)}}</component>
+    <component :is="props.subtype">{{Translator(props.label??'')}}</component>
 </template>
 
 <script lang="ts">
-    import { TranslateMethod, } from './typeDefinitions';
     import { useTranslator,translateFieldProps } from './common';
     import { inject } from 'vue';
 
@@ -11,7 +10,7 @@
         /**
          * Content of the header
          */
-        label:string,
+        label?:string,
         /**
          * The subtype to use, ie h1,h2...
          */

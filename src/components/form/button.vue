@@ -1,10 +1,10 @@
 ﻿<template>
-    <Button class="button" :type="props.sstyle" :icon="(props.icon ? props.icon : null)" :title="Translator(props.label)" @click="emit('buttonClicked',props.name)" :disabled="props.disabled"/>
+    <Button :type="props.sstyle" :icon="props.icon" :title="Translator(props.label??'')" @click="emit('buttonClicked',props.name)" :disabled="props.disabled"/>
 </template>
 
 <script lang="ts">
     import { inject } from 'vue';
-import Button from '../common/buttons/button.vue';
+    import Button from '../common/buttons/button.vue';
     import { ColorTypes } from '../../enums';
     import { commonFieldProps,useTranslator } from './common';
 
@@ -12,11 +12,11 @@ import Button from '../common/buttons/button.vue';
         /**
          * The label for the button
          */
-        label:string;
+        label?:string;
         /**
          * The color style to use
          */
-        sstyle:ColorTypes;
+        sstyle?:ColorTypes;
         /**
          * An icon if one is desired
          */

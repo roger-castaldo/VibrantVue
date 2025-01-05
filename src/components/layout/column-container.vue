@@ -29,7 +29,7 @@ type definedColumn = {
     import { Column } from './typeDefinitions';
     import {computed,useSlots} from 'vue';
 
-    const slots = useSlots();
+    const slots : any = useSlots();
 
     const props = defineProps<{
         /**

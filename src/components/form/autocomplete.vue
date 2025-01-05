@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div v-if="!props.disabled">
-                <span ref="contentSpan" :placeholder="Translator(props.title??'')" contenteditable v-show="selected.length<props.limit || props.limit==null" :class="classes" @focus="classes='is-focused';" @blur="classes=null;" @keydown="keyPress" @paste="paste"/>
+                <span ref="contentSpan" :placeholder="Translator(props.title??'')" contenteditable v-show="props.limit===undefined || props.limit===null || selected.length<props.limit" :class="classes" @focus="classes='is-focused';" @blur="classes=null;" @keydown="keyPress" @paste="paste"/>
             </div>
         </div>
         <div class="dropdown" v-if="!props.disabled" :class="{'is-active':results!=null&&searchString!=null&&searchString!=''}">
@@ -28,7 +28,6 @@
 
 <script lang="ts">
     import { watch, ref, inject} from 'vue';
-    import 'jquery';
     import { commonFieldProps,useTranslator } from './common';
     import { ValueChangedEvent } from './typeDefinitions';
 
@@ -129,7 +128,7 @@
             }
         } else {
             results.value = null;
-            $(contentSpan.value).empty();
+            contentSpan.value.innerHTML = '';
         }
     });
 
@@ -146,7 +145,7 @@
         }
         return result;
     };
-    const setValue = async (value: AutoCompleteItem|AutoCompleteItem[]|string[]|null) : Promise<void> => {
+    const setValue = async (value: AutoCompleteItem|AutoCompleteItem[]|string[]|null|string) : Promise<void> => {
         if (value == null) {
             if (selected.value.length > 0) {
                 selected.value.splice(0, selected.value.length);
@@ -158,20 +157,30 @@
                     if (val.id!==undefined && val.name!==undefined){
                         return val as AutoCompleteItem;
                     }else{
-                        const response = await (props.fetch??fetch)(`${props.callbackurl}?${(val.id === undefined ? 'q='+encodeURIComponent(val) : 'id='+encodeURIComponent(val.id))}`);
-                        let data = await response.json();
-                        if (data.length > 0) {
-                            if (props.disabled) {
-                                data[0].readonly = true;
-                            }
-                            return data[0] as AutoCompleteItem;
+                        if (props.values != undefined && props.values != null) {
+                            if (val.id!==undefined)
+                                return props.values.find(v=>v.id===val.id);
+                            else
+                                return props.values.find(v=>v.name.toUpperCase()===val.toUpperCase()||v.id.toUpperCase()===val);
                         }else{
-                            return null;
+                            const response = await (props.fetch??fetch)(`${props.callbackurl}?${(val.id === undefined ? 'q='+encodeURIComponent(val) : 'id='+encodeURIComponent(val.id))}`);
+                            let data = await response.json();
+                            if (data.length > 0) {
+                                if (props.disabled) {
+                                    data[0].readonly = true;
+                                }
+                                return data[0] as AutoCompleteItem;
+                            }else{
+                                return null;
+                            }
                         }
                     }
                 })
             );
             selected.value = vals.filter(v=>v!==null);
+            if (props.limit!==undefined && props.limit!==null && selected.value.length>props.limit){
+                selected.value.splice(props.limit);
+            }
             emit('valueChanged',{name:props.name,value:getValue()});
         }
     };

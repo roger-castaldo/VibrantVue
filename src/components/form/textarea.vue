@@ -1,5 +1,5 @@
 ﻿<template>
-    <textarea class="textarea" :name="props.name" :rows="props.rows" :cols="props.cols" :maxlength="props.maxlength" :disabled="props.disabled" @keydown="keyPressed" v-model="value"/>
+    <textarea class="textarea" :id="props.name" :name="props.name" :rows="props.rows" :cols="props.cols" :maxlength="props.maxlength" :disabled="props.disabled" @keydown="keyPressed" v-model="value"/>
 </template>
 
 <script lang="ts">

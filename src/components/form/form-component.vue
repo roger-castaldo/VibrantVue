@@ -1,24 +1,20 @@
 ﻿<template>
-    <Header v-if="props.input.type==='header'" 
+    <Header v-if="props.input.type===FormInputTypes.header" 
         :subtype="props.input.subtype" 
         :label="props.input.label" 
         ref="inp"/>
-    <Paragraph v-else-if="props.input.type=='paragraph'" 
+    <Paragraph v-else-if="props.input.type===FormInputTypes.paragraph" 
         :name="props.input.name" 
         :label="props.input.label" 
         ref="inp"/>
-    <Button v-else-if="props.input.type=='button'"
-        :name="props.input.name" 
-        :sstyle="props.input.style" 
-        :className="props.input.className" 
-        :icon="props.input.icon" 
-        :label="props.input.label" 
+    <Button v-else-if="props.input.type===FormInputTypes.button"
+        v-bind="inputProps" 
         :disabled="Disabled" 
         @buttonClicked="buttonClicked" 
         ref="inp"/>
     <template v-else>
         <label class="label" :for="props.input.name" v-if="hasLabel">
-            {{Translator(props.input.label)}}
+            {{Translator(props.input.label??'')}}
             <span class="help is-danger" v-if="props.input.required">*</span>
         </label>
         <div class="control">
@@ -28,7 +24,6 @@
 </template>
 
 <script lang="ts">
-    import 'jquery';
     import { onMounted, computed, ref,readonly,inject } from 'vue';
     import Autocomplete from './autocomplete.vue';
     import Button from './button.vue';
@@ -48,10 +43,11 @@
     import Time from './time.vue';
     import Subform from './subform.vue';
     import { FormInputType, ValueChangedEvent } from './typeDefinitions';
+    import {FormInputTypes} from './enums';
     import { translateFieldProps, useTranslator } from './common';
 
-    const LABELLED_FIELDS = ['autocomplete', 'checkbox-group', 'date', 'number', 'radio-group', 'select', 'text', 'textarea', 'time', 'file_download', 'subform', 'textarea-code'];
-    const TRANSLATE_FIELDS = ['subform','switch','select','radio-group','paragraph','header','checkbox-group','checkbox','button','autocomplete'];
+    const LABELLED_FIELDS : FormInputTypes[] = [FormInputTypes.autocomplete, FormInputTypes.checkbox_group, FormInputTypes.date, FormInputTypes.number, FormInputTypes.radio_group, FormInputTypes.select, FormInputTypes.text, FormInputTypes.textarea, FormInputTypes.time, FormInputTypes.subform];
+    const TRANSLATE_FIELDS : FormInputTypes[] = [FormInputTypes.subform,FormInputTypes.switch,FormInputTypes.select,FormInputTypes.radio_group,FormInputTypes.paragraph,FormInputTypes.header,FormInputTypes.checkbox_group,FormInputTypes.checkbox,FormInputTypes.button,FormInputTypes.autocomplete];
 
     interface formComponentProps extends translateFieldProps{
         /**
@@ -100,23 +96,23 @@
     const inputType = computed(() => {
         let result = null;
         switch (props.input.type) {
-            case 'autocomplete': result = Autocomplete; break;
-            case 'button': result = Button; break;
-            case 'checkbox-group': result = CheckboxGroup; break;
-            case 'checkbox': result = Checkbox; break;
-            case 'date': result = Date; break;
-            case 'full-editor': result = FullEditor; break;
-            case 'header': result = Header; break;
-            case 'hidden': result = Hidden; break;
-            case 'number': result = Number; break;
-            case 'paragraph': result = Paragraph; break;
-            case 'radio-group': result = RadioGroup; break;
-            case 'select': result = Select; break;
-            case 'switch': result = Switch; break;
-            case 'text': result = Text; break;
-            case 'textarea': result = Textarea; break;
-            case 'time': result = Time; break;
-            case 'subform': result = Subform; break;
+            case FormInputTypes.autocomplete: result = Autocomplete; break;
+            case FormInputTypes.button: result = Button; break;
+            case FormInputTypes.checkbox_group: result = CheckboxGroup; break;
+            case FormInputTypes.checkbox: result = Checkbox; break;
+            case FormInputTypes.date: result = Date; break;
+            case FormInputTypes.full_editor: result = FullEditor; break;
+            case FormInputTypes.header: result = Header; break;
+            case FormInputTypes.hidden: result = Hidden; break;
+            case FormInputTypes.number: result = Number; break;
+            case FormInputTypes.paragraph: result = Paragraph; break;
+            case FormInputTypes.radio_group: result = RadioGroup; break;
+            case FormInputTypes.select: result = Select; break;
+            case FormInputTypes.switch: result = Switch; break;
+            case FormInputTypes.text: result = Text; break;
+            case FormInputTypes.textarea: result = Textarea; break;
+            case FormInputTypes.time: result = Time; break;
+            case FormInputTypes.subform: result = Subform; break;
         }
         return result;
     });
@@ -134,12 +130,11 @@
     });
 
     const Disabled = computed<boolean>(() => props.input.disabled??props.disabled??false);
-    const columns = computed<string>(() => `is-${props.input.form_columns??12}`);
     const fieldName = computed(() => props.input.name);
     const altFieldName = computed(() => props.input.name);
     const hasLabel = computed(() =>(LABELLED_FIELDS.some(l=>l===props.input.type) && props.input.label !== undefined && props.input.label !== null));
     const inputProps = computed(() => {
-        let result:any = $.extend({}, props.input);
+        let result:any = Object.assign({},props.input??{});
         delete result.type;
         if (hasLabel.value){
             delete result.label;
@@ -154,6 +149,13 @@
             result.translate = props.translate;
         }
         result.disabled = props.disabled;
+        if (result.additional!==undefined){
+            for(const key in result.additional)
+            {
+               result[key] = result.additional[key]; 
+            }
+            delete result.additional;
+        }
         return result;
     });
 

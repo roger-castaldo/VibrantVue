@@ -1,9 +1,8 @@
 ﻿<template>
-    <p :id="props.name">{{Translator(props.label)}}</p>
+    <p :id="props.name">{{Translator(props.label??'')}}</p>
 </template>
 
 <script lang="ts">
-    import { TranslateMethod, } from './typeDefinitions';
     import { useTranslator,translateFieldProps } from './common';
     import { inject } from 'vue';
 
@@ -11,7 +10,7 @@
         /**
          * The content of the paragraph
          */
-        label:string,
+        label?:string,
         /**
          * The name of the field
          */

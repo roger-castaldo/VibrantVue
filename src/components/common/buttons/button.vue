@@ -1,9 +1,9 @@
 <template>
     <button :class="Classes" :disabled="props.disabled" @click="emit('click')">
-        <span class="icon is-small" v-if="props.icon!=null">
+        <span class="icon is-small" v-if="props.icon">
             <Icon :icon="props.icon"/>
         </span>
-        <span v-if="props.title!=null">{{props.title}}</span>
+        <span v-if="props.title">{{props.title}}</span>
     </button>
 </template>
 
@@ -33,14 +33,15 @@ import { IButtonProperties } from '../typeDefinitions';
     }>();
 
     const Classes = computed<string[]>(()=>{
-        let result = ['button',`is-${props.size}`,`is-${props.type}`];
-        if (props.disabled){
-            result.push('disabled');
-        }
-        if (props.is_rounded){result.push("is-rounded");}
-        if (props.hide_mobile){result.push('is-hidden-mobile');}
-        if (props.hide_tablet){result.push('is-hidden-tablet-only');}
-        if (props.hide_desktop){result.push('is-hidden-desktop is-hidden-widescreen');}
-        return result;
+        return [
+            'button',
+            `is-${props.size??Sizes.normal}`,
+            `is-${props.type??ColorTypes.primary}`,
+            (props.disabled ? 'disabled' : ''),
+            (props.is_rounded ? 'is-rounded' : ''),
+            (props.hide_mobile ? 'is-hidden-mobile' : ''),
+            (props.hide_tablet ? 'is-hidden-tablet-only' : ''),
+            (props.hide_desktop ? 'is-hidden-desktop is-hidden-widescreen' : '' )
+        ];
     });
 </script>

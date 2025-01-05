@@ -1,5 +1,5 @@
 ﻿<template>
-    <Box :id="props.name" :name="props.name" v-show="isHidden">
+    <Box :id="props.name" :name="props.name" v-show="!isHidden">
         <InputsCollection :fields="props.fields" 
             ref="inputs" 
             :disabled="props.disabled"

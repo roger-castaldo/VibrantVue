@@ -101,7 +101,7 @@
     import {computed, toValue, useSlots} from 'vue';
     import { Sizes } from '../../enums';
 
-    const slots = useSlots();
+    const slots : any = useSlots();
 
     const props = withDefaults(defineProps<IGridProperties>(),{
         use_next:true,
