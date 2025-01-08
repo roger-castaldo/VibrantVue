@@ -201,8 +201,8 @@
 |desktop|desktop|
 |gapless|gapless|
 |multiline|multiline|
-|centered| centered|
-|borderleft| borderleft|
+|centered|centered|
+|borderleft|borderleft|
 |borderright|borderright|
 |borderbottom|borderbottom|
 |bordertop|bordertop|

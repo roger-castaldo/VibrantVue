@@ -1,7 +1,7 @@
 ﻿<template>
     <div class="control autocomplete" @blur="clear" @click="focusInput">
         <div :class="['tagsfield','field','input','is-grouped','is-grouped-multiline',(props.disabled ? 'is-disabled' : '')]">
-            <div class="control" v-for="(value,index) in selected">
+            <div class="control" v-for="(value,index) in selected" :key="index">
                 <div class="tags has-addons">
                     <a class="tag is-link">{{Translator(value.name)}}</a>
                     <a class="tag is-delete" v-if="!value.readonly && !props.disabled" @click="removeSelected(index)"></a>
@@ -18,7 +18,7 @@
                         <a class="dropdown-item" v-for="value in results" @click="addSelected(value)">{{Translator(value.name)}}</a>
                     </template>
                     <template v-else>
-                        <a class="dropdown-item">No Results</a>
+                        <a class="dropdown-item">{{NoResults}}</a>
                     </template>
                 </div>
             </div>
@@ -27,9 +27,11 @@
 </template>
 
 <script lang="ts">
-    import { watch, ref, inject} from 'vue';
+    import { watch, ref, inject, computed} from 'vue';
     import { commonFieldProps,useTranslator } from './common';
     import { ValueChangedEvent } from './typeDefinitions';
+    import { useLanguage } from '../shared';
+    import translate from '../../messages/messages.js';
 
     type AutoCompleteItem = {
         /**
@@ -82,6 +84,10 @@
  * @link https://github.com/crabvk/bulma-tagsfield
  * @link_title Tags Field 
  */
+    const Language = useLanguage(inject);
+
+    const NoResults = computed<string>(()=>translate('Form.AutoComplete.NoResults',Language));
+
     const emit = defineEmits<{
         /**
          * Emitted when a new item is selected or an item is removed

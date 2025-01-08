@@ -6,8 +6,8 @@ A Table component to use
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
-| scrollable | boolean ||  | Indicates of the table is scrollable|
-| fixed_header | boolean ||  | Indicates if the table header should be fixed|
+| scrollable | boolean || false | Indicates of the table is scrollable|
+| fixed_header | boolean || false | Indicates if the table header should be fixed|
 | full_width | boolean ||  | Indicates if the width of the table should be the max allowed and not based on the content|
 | narrow | boolean ||  | Indicates if the table should be made narrow (minimal padding)|
 ## Slots

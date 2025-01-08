@@ -67,7 +67,7 @@
     import translate from '../../messages/messages.js';
     import { ValueChangedEvent } from './typeDefinitions';
     import { coreFieldProps } from './common';
-import { useLanguage } from '../shared';
+    import { useLanguage } from '../shared';
 
     const regDate = RegExp('^(\\d{2})-(\\d{2})-(\\d{4})$');
     const regDateTime = RegExp('^(\\d{2})-(\\d{2})-(\\d{4}) (\\d{2}):(\\d{2})$');

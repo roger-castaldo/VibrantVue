@@ -9,9 +9,6 @@
                     </label>
                 </template>
             </template>
-            <template #pending>
-                <Progress/> 
-            </template>
             <template #rejected>
                 <Notification :type="NoticeTypes.danger" :message="Error"/>
             </template>
@@ -24,7 +21,7 @@
     import Promised from '../common/Promised.vue';
     import {ListItemValue, ValueChangedEvent } from './typeDefinitions';
     import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
-    import {Progress,Notification} from '../common/';
+    import { Notification} from '../common/';
     import {NoticeTypes} from '../../enums';
     import { useLanguage } from '../shared';
     import translate from '../../messages/messages.js';
@@ -33,7 +30,7 @@
         /**
          * The available values to create the list of checkboxes from
          */
-        values:ListItemValue[]|Promise<ListItemValue[]>|(()=>ListItemValue[])|(()=>Promise<ListItemValue[]>);
+        values:ListItemValue[]|Promise<ListItemValue[]>|(()=>ListItemValue[])|(()=>Promise<ListItemValue[]>)|null;
     };
 </script>
 
@@ -64,7 +61,7 @@
     const locked = ref<boolean>(false);
     
     const Values = computed<Promise<ListItemValue[]>>(async () => {
-        if (props.values == null) {
+        if (props.values === null) {
             return [];
         } else {
             let result:ListItemValue[] = await resolveListItems<ListItemValue>(props.values);

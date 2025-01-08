@@ -5,8 +5,7 @@ Used to supply a Promise component that expects a Promise to be supplied and wil
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
-| promise | Promise\<unknown\|null\>\|unknown\|null\|undefined ||  | The Promise that this component is build around|
-| pending_delay | number\|string || 200 | The Pending delay to use prior to displaying pending|
+| promise | MaybeRef\<Promise\<unknown\|null\>\|unknown\|null\> ||  | The Promise that this component is build around|
 ## Slots
 
 | Name    | Description |

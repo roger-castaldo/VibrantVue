@@ -14,5 +14,6 @@
 - [panel](panel.md)
 - [section](section.md)
 - [slideout](slideout.md)
+- [step-wizard](step-wizard.md)
 - [table](table.md)
 - [tabs](tabs.md)

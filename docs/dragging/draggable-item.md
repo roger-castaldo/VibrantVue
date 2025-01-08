@@ -8,7 +8,7 @@ Used to create a draggable item that can be used with a drop zone for drag and d
 | copy_data | any\|null || null | The data transfer when this item is dragged|
 | disabled | boolean || false | Indicates if dragging is currently disabled|
 | tag | string || 'div' | The tag to use for wrapping this dragging item|
-| handle_search | string\|null ||  | A jquery based search specify the dragging handle|
+| handle_search | string\|null ||  | A querySelector search specify the dragging handle|
 ## Events
 
 | Name    | Params | Description |

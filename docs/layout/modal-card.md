@@ -12,7 +12,7 @@ A Modal Card component to use
 | max_height | boolean ||  | Indicates if the modal card should be set to the maximum allowed height|
 | full_width | boolean ||  | Indicates if the width of the card should be based on the content or a built in maximum|
 | full_height | boolean ||  | Indicates if the height of the card should be based on the content or a build in maximum|
-| icon | string || null | Set an icon to overlay within the header|
+| icon | string ||  | Set an icon to overlay within the header|
 ## Events
 
 | Name    | Params | Description |

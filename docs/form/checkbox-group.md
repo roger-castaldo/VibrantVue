@@ -9,7 +9,7 @@ A list of checkboxes that are related in some way and therefore grouped together
 | name | string ||  | The name of the form element|
 | disabled | boolean ||  | Indicates if it is currently disabled|
 | translate | TranslateMethod ||  | The translate call method used to translate a given value (field title, element name, etc) into a desired language|
-| values | [ListItemValue](../types.md#ListItemValue)\[\]\|Promise\<[ListItemValue](../types.md#ListItemValue)\[\]\>\|TSParenthesizedType\|TSParenthesizedType ||  | The available values to create the list of checkboxes from|
+| values | [ListItemValue](../types.md#ListItemValue)\[\]\|Promise\<[ListItemValue](../types.md#ListItemValue)\[\]\>\|TSParenthesizedType\|TSParenthesizedType\|null ||  | The available values to create the list of checkboxes from|
 ## Events
 
 | Name    | Params | Description |

@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-    import { ref, computed,inject } from 'vue';
+    import { ref, computed,inject, readonly, Ref } from 'vue';
     import { FormInputType, ValueChangedEvent } from './typeDefinitions';
     import { HIDDEN_FIELDS_PROPERTY, coreFieldProps} from './common';
     import InputsCollection from './inputs-collection.vue';
@@ -49,12 +49,12 @@
         buttonClicked:[name:string]
     }>();
 
-    const inputs = ref(null);
+    const inputs = ref<any>(null);
     
-    const hiddenInputs = inject<string[]>(HIDDEN_FIELDS_PROPERTY);
+    const hiddenInputs = inject<Readonly<Ref<readonly string[]>>>(HIDDEN_FIELDS_PROPERTY,readonly(ref([])));
 
     const isHidden = computed<boolean>(()=>{
-        return (hiddenInputs ? hiddenInputs.some(h=>h===props.name) : false);
+        return (hiddenInputs ? hiddenInputs.value.some(h=>h===props.name) : false);
     });
 
     const isValid = ():boolean=> (inputs.value===null ? false : inputs.value.isValid());

@@ -42,7 +42,7 @@
          */
         tag?:string,
         /**
-         * A jquery based search specify the dragging handle
+         * A querySelector search specify the dragging handle
          */
         handle_search:string|null
     }>(),{
@@ -84,11 +84,11 @@
 
     onMounted(() => {
         if (props.handle_search) {
-            let clickHandle = $(handle.value).find(props.handle_search);
-            if (clickHandle.length > 0) {
+            let clickHandle = (handle.value as HTMLElement).querySelector(props.handle_search);
+            if (clickHandle!==null) {
                 handleDisabled.value = true;
-                clickHandle.on('mousedown',() => handleDisabled.value = false);
-                clickHandle.on('mouseup',() => handleDisabled.value = true);
+                (clickHandle as HTMLElement).addEventListener('mousedown',() => handleDisabled.value = false);
+                (clickHandle as HTMLElement).addEventListener('mouseup',() => handleDisabled.value = true);
             }
         }
     });

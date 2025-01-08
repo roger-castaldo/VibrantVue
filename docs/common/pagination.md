@@ -6,7 +6,7 @@ Used to supply a pagination control
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
-| use_next | boolean ||  | Indicates if it should use Next/Previous instead of Newer/Older|
+| use_next | boolean || true | Indicates if it should use Next/Previous instead of Newer/Older|
 | has_more | boolean || undefined | Indicates if there are more items in the paging so Next/Newer should be enabled|
 | has_previous | boolean || undefined | Indicates if there are previous items in the paging so Previous/Older should be enabled|
 | size | [Sizes](../enums.md#Sizes) |small, normal, medium, large| Sizes.small | The size of the pagination buttons|
@@ -15,7 +15,6 @@ Used to supply a pagination control
 | total_pages | MaybeRef\<number\> ||  | The total number of pages available|
 | current_page | MaybeRef\<number\> ||  | The current page number|
 | zero_page_index | boolean || true | Set to true if the first page is 0|
-| usenext |  || true | |
 ## Events
 
 | Name    | Params | Description |

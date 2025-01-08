@@ -16,6 +16,7 @@ describe('Component Form', () => {
             name:'autocomplete',
             type:FormInputTypes.autocomplete,
             label:'autocomplete',
+            form_columns:12,
             additional:{
               values:[],
               title:'autocomplete title'
@@ -25,7 +26,7 @@ describe('Component Form', () => {
             name:'button',
             type:FormInputTypes.button,
             label:'test button',
-            form_columns:3,
+            form_columns:11,
             additional:{
               icon:'person'
             }
@@ -34,7 +35,7 @@ describe('Component Form', () => {
             name:'checkbox-group',
             type:FormInputTypes.checkbox_group,
             label:'checkbox group',
-            form_columns:3,
+            form_columns:10,
             additional:{
               values:[
                 {value:1,label:'one'},
@@ -48,13 +49,13 @@ describe('Component Form', () => {
             name:'checkbox',
             type:FormInputTypes.checkbox,
             label:'checkbox label',
-            form_columns:3
+            form_columns:9
           },
           {
             name:'date',
             type:FormInputTypes.date,
             label:'Date label',
-            form_columns:3,
+            form_columns:8,
             additional:{
               includeTime:true
             }
@@ -63,13 +64,13 @@ describe('Component Form', () => {
             name:'header',
             type:FormInputTypes.header,
             label:'Header Label',
-            form_columns:3
+            form_columns:7
           },
           {
             name:'number',
             type:FormInputTypes.number,
             label:'Number Label',
-            form_columns:3,
+            form_columns:6,
             additional:{
               min:0,
               max:100,
@@ -79,12 +80,14 @@ describe('Component Form', () => {
           {
             name:'paragraph',
             type:FormInputTypes.paragraph,
-            label:'Paragraph content'
+            label:'Paragraph content',
+            form_columns:5
           },
           {
             name:'radio-group',
             type:FormInputTypes.radio_group,
             label:'Radio Group Label',
+            form_columns:4,
             additional:{
               values:[
                 {value:1,label:'one'},
@@ -98,6 +101,7 @@ describe('Component Form', () => {
             name:'select',
             type:FormInputTypes.select,
             label:'Select Label',
+            form_columns:3,
             additional:{
               values:[
                 {value:1,label:'one'},
@@ -111,13 +115,13 @@ describe('Component Form', () => {
             name:'switch',
             type:FormInputTypes.switch,
             label:'switch label',
-            form_columns:3
+            form_columns:2
           },
           {
             name:'textarea',
             type:FormInputTypes.textarea,
             label:'TextArea Label',
-            form_columns:3,
+            form_columns:1,
             additional:{
               rows:5,
               cols:50
@@ -126,8 +130,20 @@ describe('Component Form', () => {
           {
             name:'time',
             type:FormInputTypes.time,
-            label:'Time Label',
-            form_columns:3
+            label:'Time Label'
+          },
+          {
+            name:'subform',
+            type:FormInputTypes.subform,
+            additional:{
+              fields:[
+                {
+                  name:'time',
+                  type:FormInputTypes.time,
+                  label:'Time Label'
+                }
+              ]
+            }
           }
         ]
       },

@@ -1,7 +1,5 @@
 # Level
 
-A multi-purpose horizontal level, which can contain almost any other element
-[Bulma Docs](https://bulma.io/documentation/layout/level/)
 ## Props
 
 | Name    | Type | Values | Default | Description |

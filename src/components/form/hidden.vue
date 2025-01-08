@@ -1,10 +1,10 @@
 ﻿<template>
-    <input type="hidden" class="input" :name="props.name" v-model="value">
+    <input type="hidden" :name="props.name" v-model="value">
 </template>
 
 <script lang="ts">
     import { ref, watch } from 'vue';
-import { ValueChangedEvent } from './typeDefinitions';
+    import { ValueChangedEvent } from './typeDefinitions';
 </script>
 
 <script lang="ts" setup>

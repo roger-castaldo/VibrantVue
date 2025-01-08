@@ -46,7 +46,7 @@
     const value = ref<string|null>(null);
 
     const getValue = ():number|null => {
-        if (value.value === '')
+        if (value.value === '' ||  value.value === null)
             return null;
         let result:number = parseInt(value.value);
         if (props.min !== undefined) {

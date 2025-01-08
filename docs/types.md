@@ -164,7 +164,7 @@
 
 | Name | Type | Description |
 | ------- | ------- | ------- |
-|type|string|The type of input in the form|
+|type|FormInputTypes|The type of input in the form|
 |name?|string|The name of the input (used in getting/setting values, etc)|
 |subtype?|string|The subtype (sometimes required in the case of something like text)|
 |label?|string|The label for the item if needed|
@@ -176,6 +176,7 @@
 |disabled?|boolean|Indicates if it is disabled|
 |form_columns?|number|Number of columns that are taken up from 1 - 12|
 |Translate?|(value:string)=\>string|Custom translate function if desired from defaults|
+|additional?|unknown|Houses the additional properties that might be necessary for the input type that are not standard|
 
 
 ## [Column](#Column)

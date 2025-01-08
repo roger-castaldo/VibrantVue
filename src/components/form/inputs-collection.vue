@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-    import { inject, ref,computed} from 'vue';
+    import { inject, ref,computed, Ref} from 'vue';
     import ColumnContainer from '../layout/column-container.vue';
     import FormComponent from './form-component.vue';
     import { FormInputType, ValueChangedEvent } from './typeDefinitions';
@@ -92,7 +92,7 @@
         buttonClicked:[name:string]
     }>();
 
-    let refs = [];
+    let refs : Ref<any>[] = [];
 
     const Rows = computed<MappedFormInputType[][]>(()=>{
         let result:MappedFormInputType[][] = [];
@@ -149,7 +149,7 @@
             if (input.value!.getValue != undefined) {
                 switch (input.value!.type) {
                     case 'subform':
-                        result = $.extend(result,input!.value.getValue());
+                        result = Object.assign(result,input!.value.getValue());
                         break;
                     default:
                         result[input.value!.fieldName] = input.value!.getValue();

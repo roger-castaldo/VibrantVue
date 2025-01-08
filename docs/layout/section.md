@@ -7,3 +7,8 @@ A generic section container used in laying out
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
 | size | [SectionSizes](../enums.md#SectionSizes) |medium, large|  | |
+## Slots
+
+| Name    | Description |
+| ------- | ------- |
+| default|The content to place inside the section|
