@@ -3,15 +3,11 @@
         <Promised :promise="Values">
             <template v-slot="{response}">
                 <template v-for="val in (response as ListItemValue[])" v-if="values!=null">
-                    <label class="radio" v-show="!hiddenValues.some(v=>v===val.value.toString())">
+                    <label class="radio is-block" v-show="!hiddenValues.some(v=>v===val.value.toString())">
                         <input type="radio" :name="props.name" :value="val.value" class="radio" :disabled="props.disabled||disabledValues.some(v=>v===val.value.toString())"/>
                         {{Translator(val.label)}}
                     </label>
-                    <br />
                 </template>
-            </template>
-            <template #pending>
-                <Progress/> 
             </template>
             <template #rejected>
                 <Notification :type="NoticeTypes.danger" :message="Error"/>
@@ -34,7 +30,7 @@
         /**
          * The values to build the radio group from
          */
-        values:ListItemValue[]|Promise<ListItemValue[]>|(()=>ListItemValue[])|(()=>Promise<ListItemValue[]>);
+        values:ListItemValue[]|Promise<ListItemValue[]>|(()=>ListItemValue[])|(()=>Promise<ListItemValue[]>)|null;
     };
 </script>
 
@@ -63,7 +59,7 @@
 
     const val = ref<any|null>(null);
 
-    const getValue = function () { return val.value; }
+    const getValue = ():any|null => { return val.value; }
 
     watch(val, (val) => {
         emit('valueChanged', { name: props.name, value: getValue() });
@@ -75,7 +71,7 @@
         } else {
             let result:ListItemValue[] = await resolveListItems<ListItemValue>(props.values);
             if (val.value===null && result.some(r=>r.selected)){
-                val.value = result.find(r=>r.selected).value;
+                val.value = result.find(r=>r.selected)?.value;
             }
             return result.map((item:ListItemValue):ListItemValue=>{
                 return {

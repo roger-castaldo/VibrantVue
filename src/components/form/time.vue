@@ -10,7 +10,6 @@
     import { ValueChangedEvent } from './typeDefinitions';
 
     const regTime = RegExp('^(\\d{2}):(\\d{2}) (AM|PM)$');
-    const reg24Time = RegExp('^(\\d{2}):(\\d{2}):\\d{2}$');
 </script>
 
 <script lang="ts" setup>
@@ -32,7 +31,7 @@
     const value = ref<string|null>(null);
 
     const styles = computed(() => {
-        if (value.value == null || value.value == '') {
+        if (value.value === null || value.value === '') {
             return null;
         } else {
             var minute = Number(value.value.substring(3, 5));
@@ -47,11 +46,11 @@
 
     const getValue = ():string|null=> { return value.value; };
     const setValue = (val:string|null):void=> {
-        if (val != null) {
-            if (regTime.test(val)) {
-                var tmp = regTime.exec(val);
-                val = (tmp[3] == "AM" ? tmp[1] : (parseInt(tmp[1]) + 12).toFixed(0)) + ':' + tmp[2] + ':00';
-            }
+        if (val===''){
+            val=null;
+        }else if (val !== null && regTime.test(val)) {
+            var tmp = regTime.exec(val)!;
+            val = `${(tmp[3] === "AM" ? tmp[1] : (parseInt(tmp[1]) + 12).toFixed(0))}:${tmp[2]}:00`;
         }
         value.value = val;
     };

@@ -259,7 +259,7 @@
         if (val == null) {
             value.value = null;
         } else {
-            value.value = format(val,Language,'dd-MM-yyyy' + (props.includeTime ? ' HH:mm' : ''));
+            value.value = format(val,Language,`dd-MM-yyyy${(props.includeTime ? ' HH:mm' : '')}`);
         }
     };
 

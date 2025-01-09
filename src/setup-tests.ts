@@ -1,1 +1,1 @@
-import "../dist/vibrantvue.css"
+import "../dist/vibrantvue.min.css"

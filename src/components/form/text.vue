@@ -11,7 +11,7 @@
         /**
          * The subtype to use for a text input, such as password, text, etc.
          */
-        subtype:string,
+        subtype?:string,
         /**
          * The maxLength to apply to the text box
          */
@@ -26,8 +26,11 @@
  * @displayName Text
  * @link https://bulma.io/documentation/form/input/
  */
-    const props = defineProps<fieldProps>();
-        const emit = defineEmits<{
+    const props = withDefaults(defineProps<fieldProps>(),
+    {
+        subtype:'text'
+    });
+    const emit = defineEmits<{
         /**
          * Emitted when the value of the text box changes
          * 
@@ -35,12 +38,12 @@
          */
          valueChanged:[data:ValueChangedEvent]
     }>();
-    const value = ref(null);
+    const value = ref<string|null>(null);
 
     watch(value, (val) => emit('valueChanged', { name: props.name, value: val }));
 
-    const getValue = ():any=> { return value.value; }
-    const setValue = (val:any|null):void=> { value.value = val; }
+    const getValue = ():string|null=> { return value.value; }
+    const setValue = (val:string|null):void=> { value.value = val; }
 
     defineExpose({ 
         /**

@@ -112,6 +112,21 @@ describe('Component Form', () => {
             }
           },
           {
+            name:'select-multi',
+            type:FormInputTypes.select,
+            label:'Select Multi Label',
+            form_columns:3,
+            additional:{
+              multiple:true,
+              values:[
+                {value:1,label:'one'},
+                {value:2,label:'two'},
+                {value:3,label:'three'},
+                {value:4,label:'four'}
+              ]
+            }
+          },
+          {
             name:'switch',
             type:FormInputTypes.switch,
             label:'switch label',
