@@ -158,12 +158,12 @@
         if (props.current_page!==undefined && props.total_pages!==undefined && toValue<number>(props.total_pages)>1){return true;}
         return false;
     });
-    const ColumnRows = computed(()=>{
+    const ColumnRows = computed<GridColumn[][]>(()=>{
         if (props.column_rows===undefined || props.column_rows.length===0){
             return props.columns;
         }
         return props.column_rows.map(row=>{
-            return row.map(c=>props.columns.filter(col=>col.some(i=>i.id===c))[0].find(col=>col.id===c));
+            return row.map(c=>props.columns.filter(col=>col.some(i=>i.id===c))[0].find(col=>col.id===c)!);
         });
     });
     const changeSort = (column:string) => {

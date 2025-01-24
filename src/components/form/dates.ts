@@ -1,4 +1,4 @@
-import { ComputedRef } from 'vue';
+import { computed, ComputedRef } from 'vue';
 import translate from '../../messages/messages.js';
 
 export const addDays = (date:Date,days:number) : Date => {
@@ -194,8 +194,9 @@ const processFormat = (curCode:string,language:ComputedRef<string>,date:Date):st
     return result;
 };
 
-export const format = (date:Date,language:ComputedRef<string>,format?:string):string=> {
+export const format = (date:Date,language?:ComputedRef<string>,format?:string):string=> {
     format = format??'ddd MMM dd yyyy HH:mm:ss G\\MTzz00';
+    language = language??computed<string>(()=>'en');
     let result:string = '';
     let curCode:string = '';
     for (var x = 0; x < format.length; x++) {

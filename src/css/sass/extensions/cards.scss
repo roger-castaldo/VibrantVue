@@ -13,7 +13,7 @@ $card-padding:calc($icon-height / 2);
         justify-content: center;
         color: #{cv.getVar("card-header-color")};
         height: $icon-height;
-        margin-bottom: 0 - $icon-height;
+        margin-bottom: calc($icon-height / -2);
     }
 
     .#{iv.$class-prefix}card-icon-wrapper{
@@ -23,7 +23,6 @@ $card-padding:calc($icon-height / 2);
         text-align: center;
         border-radius: 50%;
         box-shadow: #{cv.getVar("card-shadow")};
-        margin-top:0 - $icon-height;
     }
 }
 

@@ -3,59 +3,60 @@
         <div class="control has-icons-left has-icons-right">
             <input class="input is-expanded" :name="props.name" :id="props.name" type="text" v-model="value" :placeholder="'DD-MM-YYYY'+(props.includeTime ? ' HH:mm' : '')" :disabled="props.disabled">
             <span class="icon is-small is-left is-clickable" @click="calendarClicked">
-                <Icon icon="calendar-alt"/>
+                <Icon icon="calendar-alt" :size="IconSizes.xlarge"/>
             </span>
             <span class="icon is-small is-right is-clickable" @click="cancelClicked">
-                <Icon icon="window-close"/>
+                <Icon icon="window-close" :size="IconSizes.xlarge"/>
             </span>
         </div>
-        <div class="modal" :class="{'is-active':showInterface}">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <div class="panel is-primary is-dateselect">
-                    <div class="panel-heading">
-                        <div class="columns card-header-title">
-                            <div class="column"><icon icon="arrow-circle-left" @click="MoveMonth(-1)"/></div>
-                            <div class="column has-text-centered">{{MonthName}} {{calendar.Year}}</div>
-                            <div class="column has-text-right"><icon icon="arrow-circle-right" @click="MoveMonth(1)"/></div>
-                        </div>
-                    </div>
-                    <div class="panel-block">
-                        <table class="table is-striped has-text-centered">
-                            <thead>
-                                <tr>
-                                    <th>{{Messages.Sun}}</th>
-                                    <th>{{Messages.Mon}}</th>
-                                    <th>{{Messages.Tue}}</th>
-                                    <th>{{Messages.Wed}}</th>
-                                    <th>{{Messages.Thu}}</th>
-                                    <th>{{Messages.Fri}}</th>
-                                    <th>{{Messages.Sat}}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="week in Weeks">
-                                    <td v-for="day in week" :class="['is-unselectable',(day.Disabled ? 'has-text-primary-dark has-background-primary-light' : 'is-clickable'),(day.isToday ? 'has-background-primary-dark' : ''),(day.isSelected ? 'has-background-success-dark' : '')]" @click="selectDate(day)">
-                                        {{day.Number}}
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tfoot v-if="props.includeTime">
-                                <tr>
-                                    <td colspan="100%" class="has-text-centered">
-                                        <Time :ref="time" :name="`${props.name}-time`" :disabled="props.disabled" @valueChanged="processTimeChange"/>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                    <div class="panel-block">
-                        <ButtonOkay addonclass="card-footer-item" :disabled="!isValid" @click="showInterface=false"/>
-                        <ButtonCancel addonclass="card-footer-item" @click="cancel"/>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <ModalCard :show="showInterface" icon="calendar-alt">
+            <template #header>
+                <ColumnContainer class="card-header-title" :columns="[{name:'left'},{name:'title',class:'has-text-centered'},{name:'right',class:'has-text-right'}]">
+                    <template #left>
+                        <Icon class="is-clickable" icon="arrow-circle-left" @click="MoveMonth(-1)"/>
+                    </template>
+                    <template #title>
+                        {{MonthName}} {{calendar.Year}}
+                    </template>
+                    <template #right>
+                        <Icon class="is-clickable" icon="arrow-circle-right" @click="MoveMonth(1)"/>
+                    </template>
+                </ColumnContainer>
+            </template>
+            <template #content>
+                <Table :full_width="true">
+                    <template #thead>
+                        <tr>
+                            <th>{{Messages.Sun}}</th>
+                            <th>{{Messages.Mon}}</th>
+                            <th>{{Messages.Tue}}</th>
+                            <th>{{Messages.Wed}}</th>
+                            <th>{{Messages.Thu}}</th>
+                            <th>{{Messages.Fri}}</th>
+                            <th>{{Messages.Sat}}</th>
+                        </tr>
+                    </template>
+                    <template #tbody>
+                        <tr v-for="week in Weeks">
+                            <td v-for="day in week" :class="['is-unselectable has-text-centered',(day.Disabled ? 'has-text-primary-dark has-background-primary-light' : 'is-clickable'),(day.isToday ? 'has-background-primary-dark has-text-primary-light' : ''),(day.isSelected ? 'has-background-success-dark has-text-success-light' : '')]" @click="selectDate(day)">
+                                {{day.Number}}
+                            </td>
+                        </tr>
+                    </template>
+                    <template #tfoot v-if="props.includeTime">
+                        <tr>
+                            <td colspan="100%" class="has-text-centered">
+                                <Time :ref="time" :name="`${props.name}-time`" :disabled="props.disabled" @valueChanged="processTimeChange"/>
+                            </td>
+                        </tr>
+                    </template>
+                </Table>
+            </template>
+            <template #footer="{addon_class}">
+                <ButtonOkay :class="addon_class" :disabled="!isValid" @click="showInterface=false"/>
+                <ButtonCancel :class="addon_class" @click="cancel"/>
+            </template>
+        </ModalCard>
     </div>
 </template>
 
@@ -68,6 +69,8 @@
     import { ValueChangedEvent } from './typeDefinitions';
     import { coreFieldProps } from './common';
     import { useLanguage } from '../shared';
+    import { ModalCard, ColumnContainer, Table } from '../layout/';
+    import { IconSizes } from '../../enums';
 
     const regDate = RegExp('^(\\d{2})-(\\d{2})-(\\d{4})$');
     const regDateTime = RegExp('^(\\d{2})-(\\d{2})-(\\d{4}) (\\d{2}):(\\d{2})$');
@@ -97,7 +100,7 @@
  * 
  * @displayName Date
  */
-    const time = ref(null);
+    const time = ref<any|undefined>();
 
     const props = withDefaults(defineProps<fieldProps>(),{
         disabled:false
@@ -118,7 +121,7 @@
     const calendar = reactive({
         Month: new Date().getMonth(),
         Year: new Date().getFullYear(),
-        Today: new Date().getDay()
+        Today: new Date().getDate()
     });
 
     const Language = useLanguage(inject);
@@ -139,7 +142,7 @@
     });
 
     const getValue= ():Date|null=> {
-        if (value.value == null || value.value == '') {
+        if (value.value === null || value.value === '') {
             return null;
         } else {
             if (!regDateTime.test(value.value) && props.includeTime) {
@@ -150,14 +153,14 @@
                 return null;
             }
             let tmp = (props.includeTime ? regDateTime.exec(value.value) : regDate.exec(value.value));
-            return new Date(parseInt(tmp[3]), parseInt(tmp[2]) - 1, parseInt(tmp[1]),
-                (props.includeTime ? parseInt(tmp[4]) : 0),
-                (props.includeTime ? parseInt(tmp[5]) : 0), 0, 0);
+            return new Date(parseInt(tmp![3]), parseInt(tmp![2]) - 1, parseInt(tmp![1]),
+                (props.includeTime ? parseInt(tmp![4]) : 0),
+                (props.includeTime ? parseInt(tmp![5]) : 0), 0, 0);
         }
     };
 
     watch(value, (val) => {
-        if (val == null) {
+        if (val === null) {
             emit('valueChanged', { name: props.name, value: null });
             calendar.Month = new Date().getMonth();
             calendar.Year = new Date().getFullYear();
@@ -226,8 +229,8 @@
                 if (isValid) {
                     emit('valueChanged', { name: props.name, value: d });
                 }
-                calendar.Month = d.getMonth();
-                calendar.Year = d.getFullYear();
+                calendar.Month = d?.getMonth()??new Date().getMonth();
+                calendar.Year = d?.getFullYear()??new Date().getFullYear();
             }
         }
     });
@@ -256,7 +259,7 @@
     });
 
     const setValue = function (val:Date|null) {
-        if (val == null) {
+        if (val === null) {
             value.value = null;
         } else {
             value.value = format(val,Language,`dd-MM-yyyy${(props.includeTime ? ' HH:mm' : '')}`);
@@ -295,7 +298,7 @@
         if (!day.Disabled && !day.isSelected) {
             if (value.value === null) {
                 value.value = `${padLeft(day.Number.toString(),'0',2)}-${padLeft((calendar.Month+1).toString(),'0',2)}-${calendar.Year}`
-                    + (props.includeTime ? (time.value.getValue() == null ? '' : ' ' + time.value.getValue()) : '');
+                    + (props.includeTime ? (time.value?.getValue() == null ? '' : ' ' + time.value.getValue()) : '');
             } else {
                 var tmp = value.value.split(' ');
                 tmp[0] = `${padLeft(day.Number.toString(),'0',2)}-${padLeft((calendar.Month+1).toString(),'0',2)}-${calendar.Year}`

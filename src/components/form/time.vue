@@ -79,6 +79,6 @@
     color: #222;
     transition: backgroundImage 0.25s;
     padding-left: 40px;
-    width: 140px;
+    width: 160px;
 }
 </style>./typeDefinitions
