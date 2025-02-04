@@ -1,9 +1,11 @@
 <template>
-    <div class="control has-icons-left">
-        <input role="searchbox" type="text" class="input is-expanded is-rounded" :placeholder="Filter" v-model="filter" @keypress="FilterKeyPress">
-        <span class="is-left">
-            <Icon icon="filter" :size="IconSizes.small"/>   
-        </span>
+    <div class="field">
+        <p class="control has-icons-left">
+            <input role="searchbox" type="text" class="input is-expanded is-rounded" :placeholder="Filter" v-model="filter" @keypress="FilterKeyPress">
+            <span class="icon is-left">
+                <Icon icon="filter" :size="IconSizes.small"/>   
+            </span>
+        </p>
     </div>
 </template>
 

@@ -25,12 +25,19 @@ describe('Filter', () => {
       });
   
       const filterContainer = container.childNodes[0] as HTMLElement;
-  
-      expect(filterContainer.classList).toContain('control');
-      expect(filterContainer.classList).toContain('has-icons-left');
-      expect(stripCommentNodes(filterContainer).length).toBe(2);
 
-      const filterInput = stripCommentNodes(filterContainer)[0] as HTMLElement;
+      expect(filterContainer.className).toBe('field');
+
+      const controlContainer = stripCommentNodes(filterContainer).map(x=>x as HTMLElement)[0];
+  
+      expect(controlContainer.classList).toContain('control');
+      expect(controlContainer.classList).toContain('has-icons-left');
+
+      const controlContainerChildren = stripCommentNodes(controlContainer);
+      
+      expect(controlContainerChildren).toHaveLength(2);
+
+      const filterInput = controlContainerChildren[0] as HTMLElement;
 
       expect(filterInput.getAttribute('type')).toBe('text');
       expect(filterInput.classList).toContain('input');
@@ -38,7 +45,7 @@ describe('Filter', () => {
       expect(filterInput.classList).toContain('is-rounded');
       expect(filterInput.getAttribute('placeholder')).toBe(translate('Filter.Filter'));
 
-      const filterIconContainer = stripCommentNodes(filterContainer)[1] as HTMLElement;
+      const filterIconContainer = controlContainerChildren[1] as HTMLElement;
 
       expect(filterIconContainer.classList).toContain('is-left');
       expect(stripCommentNodes(filterIconContainer).length).toBe(1);
@@ -51,14 +58,13 @@ describe('Filter', () => {
     test('renders a filter with default value', async () => {
         const defaultValue:string = 'Test Filter Value';
         let currentFilterValue:string|null = null;
-        const { container,getByRole } = render(filter, {
+        const { getByRole } = render(filter, {
           props: {
             default_value:defaultValue,
             onFilter:(val)=>currentFilterValue=val
           },
         });
     
-        const filterContainer = container.childNodes[0] as HTMLElement;
         const filterInput = getByRole('searchbox');
         
         expect(currentFilterValue).toBeNull();
@@ -77,13 +83,12 @@ describe('Filter', () => {
       test('renders a filter and interacts with it to filter', async () => {
         const searchValue:string = 'Find me';
         let currentFilterValue:string|null = null;
-        const { container,getByRole } = render(filter, {
+        const { getByRole } = render(filter, {
           props: {
             onFilter:(val)=>currentFilterValue=val
           },
         });
     
-        const filterContainer = container.childNodes[0] as HTMLElement;
         const filterInput = getByRole('searchbox');
         
         expect(currentFilterValue).toBeNull();

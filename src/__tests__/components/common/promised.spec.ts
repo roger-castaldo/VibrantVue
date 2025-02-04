@@ -77,7 +77,7 @@ describe('Promised', () => {
     test('check error',async() => {
         let resolveFunc: (value: string) => void;
         let rejectFunc: (reason?: any) => void;
-        const errorMessage = 'This is a test';
+        const errorMessage = 'This is a test error message';
         
         const {container} = render(promised, {
           props:{

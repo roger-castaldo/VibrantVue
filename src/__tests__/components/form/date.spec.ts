@@ -425,11 +425,14 @@ describe('Date',()=>{
         headerColumn3Children[0].click();
         await sleep(100);
         
-        if (currentDate.getMonth()==11){
+        if (currentDate.getMonth()==10){
+            currentDate.setMonth(0);
+            currentDate.setFullYear(currentDate.getFullYear()+1);
+        }else if (currentDate.getMonth()==11){
             currentDate.setMonth(1);
             currentDate.setFullYear(currentDate.getFullYear()+1);
         }else {
-            currentDate.setMonth(currentDate.getMonth()+1);
+            currentDate.setMonth(currentDate.getMonth()+2);
         }
 
         expect(headerColumns[1].innerText).toBe(`${format(currentDate,undefined,'MMMM')} ${currentDate.getFullYear()}`);

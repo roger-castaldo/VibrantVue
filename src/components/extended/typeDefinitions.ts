@@ -124,7 +124,7 @@ export interface IGridProperties
     /**
      * The data belonging to the grid
      */
-    data:[]|null,
+    data:any[]|null,
     /**
      * A custom empty data message if desired
      */
@@ -142,6 +142,10 @@ export interface IGridProperties
      * Defines how the data is currently sorted
      */
     current_sort?:GridSort,
+    /**
+     * Defines if the data is currently loading
+     */
+    is_loading?:MaybeRef<boolean>,
     /**
      * Called to get a color for a given table body row
      * 

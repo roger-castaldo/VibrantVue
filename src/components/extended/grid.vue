@@ -16,7 +16,7 @@
                             class="icon-text is-clickable"
                             @click="changeSort(col.id)">
                             <span class="icon">
-                                <Icon icon="arrow-down"/>
+                                <Icon :icon="(props.current_sort.ascending ? 'arrow-up' : 'arrow-down')"/>
                             </span>
                             <span>{{col.title}}</span>
                         </span>
@@ -28,10 +28,10 @@
             </tr>
         </template>
         <template #tbody>
-            <template v-if="props.data===null || props.data.length===0">
+            <template v-if="props.data===null || props.is_loading || props.data.length===0">
                 <tr>
                     <td colspan="100%">
-                        <Progress v-if="props.data===null"/>
+                        <Progress v-if="props.data===null || props.is_loading"/>
                         <Notification :message="props.empty_message??'No data available'" v-else/>
                     </td>
                 </tr>
@@ -39,7 +39,7 @@
             <template v-else>
                 <template v-for="drow,index in props.data">
                     <tr :key="`row-${index}-${cindex}`" 
-                        v-for="row,cindex in ColumnRows.filter(col=>col.some(c=>!(c.headerOnly??false)))"
+                        v-for="row,cindex in BodyRows"
                         :class="extractRowClass(index,drow)">
                         <td :key="`data-${index}-${cindex}`" 
                             v-for="col in row.filter(c=>!(c.headerOnly??false))" 
@@ -166,6 +166,9 @@
             return row.map(c=>props.columns.filter(col=>col.some(i=>i.id===c))[0].find(col=>col.id===c)!);
         });
     });
+    const BodyRows = computed<GridColumn[][]>(()=>
+        ColumnRows.value.filter(row=>row.some(c=>!(c.headerOnly??false)))
+    );
     const changeSort = (column:string) => {
         if (props.current_sort!==undefined && props.current_sort!==null 
         && props.current_sort.column===column){
@@ -189,19 +192,19 @@
         }
         return null;
     }
-    const getCellClass = (rowIndex:number,col:GridColumn,row:any,data:any|undefined) : string|null =>{
-        let result:string|null = '';
+    const getCellClass = (rowIndex:number,col:GridColumn,row:any,data:any|undefined) : string[] =>{
+        let result:string[] = [];
         if (col.cellClass || col.getCellColor){
             if(col.cellClass){
-                result += `${col.cellClass}`;
+                result.push(`${col.cellClass}`);
             }
             if (col.getCellColor){
                 let cellColor = col.getCellColor(rowIndex,row,data);
                 if (cellColor){
-                    result+= ` is-${cellColor}`;
+                    result.push(`is-${cellColor}`);
                 }
             }
         }
-        return (result===''?null:result);
+        return result;
     }
 </script>
