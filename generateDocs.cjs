@@ -276,7 +276,7 @@ function generateMarkdownFromJSON(jsonData, outputFilePath,enumData,typeDefiniti
           }
           markdownContent+='|';
           if (expose.description){
-            markdownContent+=`${expose.description.replace('\n','<br/>')}`;
+            markdownContent+=`${expose.description.replace(/\n/g,'<br/>')}`;
           }
           markdownContent+='|\n';
         });
