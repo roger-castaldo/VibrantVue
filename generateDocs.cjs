@@ -289,7 +289,7 @@ function generateMarkdownFromJSON(jsonData, outputFilePath,enumData,typeDefiniti
               markdownContent += '```vue\n';
               markdownContent += example.code + '\n';
               markdownContent += '```\n\n';
-              markdownContent += `${example.description.replace('\n','\\\n')}\n\n`;
+              markdownContent += `${example.description.replace(/\n/g,'\\\n')}\n\n`;
           });
       }
   });
