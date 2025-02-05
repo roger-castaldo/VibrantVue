@@ -1,0 +1,89 @@
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../mixins" as lmx;
+
+// Cerulean 5.3.3
+// Bootswatch
+
+
+// Variables
+
+$text-shadow: 0 1px 0 rgba(0, 0, 0, .05) !default;
+
+// Mixins
+
+@mixin btn-gradient($name,) {
+  background-image: linear-gradient(
+    180deg,
+    #{lmx.lighten-color($name,8)} 0%,
+    #{cv.getVar($name)} 60%,
+    #{lmx.darken-color($name,4)} 100%
+  );
+}
+
+@mixin btn-shadow($name){
+  @include lmx.gradient-y-three-colors(
+    lmx.lighten-color($name,16), 
+    cv.getVar($name), 
+    60%, 
+    lmx.darken-color($name,6)
+  );
+}
+
+@mixin btn-shadow-hover($name){
+  @include lmx.gradient-y-three-colors(
+    cv.getVar($name),
+    lmx.darken-color($name,5), 
+    60%, 
+    lmx.darken-color($name,15)
+  );
+}
+
+@mixin btn-shadow-active($name){
+  @include lmx.gradient-y-three-colors(
+    lmx.darken-color($name,20), 
+    lmx.darken-color($name,20),
+    60%, 
+    lmx.darken-color($name,30)
+  );
+}
+
+@mixin boot-swatch-content(){
+
+  // Navbar
+
+  .#{iv.$class-prefix}navbar {
+    @each $name, $value in dv.$colors {
+      &.#{iv.$class-prefix}is-#{$name} {
+        @include btn-shadow($name);
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}navbar-brand,
+  .#{iv.$class-prefix}nav-item,
+  .#{iv.$class-prefix}nav-link {
+    text-shadow: $text-shadow;
+  }
+
+  // Buttons
+
+  .#{iv.$class-prefix}button {
+    text-shadow: $text-shadow;
+
+    &:not(.#{iv.$class-prefix}is-outlined){
+      @include btn-shadow("button");
+
+      &:hover,
+      .#{iv.$class-prefix}is-hovered{
+        @include btn-shadow-hover("button");  
+      }
+
+      &:active,
+      .#{iv.$class-prefix}is-active{
+        @include btn-shadow-active("button");
+      }
+    }
+  }
+}

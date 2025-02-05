@@ -1,0 +1,65 @@
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+
+$tagsfield-spacing-vertical: calc((0.5em - #{cv.getVar("control-border-width")}) / 2);
+
+.#{iv.$class-prefix}tagsfield {
+  height: auto !important;
+  cursor: text;
+  padding-top: $tagsfield-spacing-vertical !important;
+  padding-bottom: $tagsfield-spacing-vertical !important;
+
+  &:disabled,
+  &.#{iv.$class-prefix}is-disabled{
+    cursor: not-allowed;
+    
+    .#{iv.$class-prefix}tag{
+      cursor: not-allowed;
+    }
+  }
+
+  // Each tag
+  > .#{iv.$class-prefix}control {
+    margin-right: #{cv.getVar("control-padding-vertical")} !important;
+    margin-top: $tagsfield-spacing-vertical !important;
+    margin-bottom: $tagsfield-spacing-vertical !important;
+    max-width: 100%;
+
+    .#{iv.$class-prefix}tags {
+      flex-wrap: nowrap;
+
+      .#{iv.$class-prefix}tag:first-child {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 2em;
+      }
+
+      .#{iv.$class-prefix}tag:nth-child(2) {
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  // The div with input and span[contenteditable]
+  > div:last-child {
+    flex-grow: 1;
+    max-width: 100%;
+    overflow: hidden;
+    margin: $tagsfield-spacing-vertical 0;
+
+    span[contenteditable] {
+      display: block;
+      width: 100%;
+      min-width:100px;
+    }
+  }
+
+  // Only child
+  > div:first-child:nth-last-child(1) span[contenteditable] {
+    &:empty:after {
+      content: attr(placeholder);
+      color: #{cv.getVar("input-placeholder-color")};
+    }
+  }
+}

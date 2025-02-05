@@ -1,0 +1,164 @@
+@use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../mixins" as mx;
+@use "./_bootswatch" as bs;
+@use 'sass:color';
+@use 'sass:math';
+
+
+@include mx.bulma-theme($name: "morph") {
+
+    $white:    #fff !default;
+    $gray-100: #f0f5fa !default;
+    $gray-200: #d9e3f1 !default;
+    $gray-300: #dee2e6 !default;
+    $gray-400: #bed1e6 !default;
+    $gray-500: #adb5bd !default;
+    $gray-600: #7f8a99 !default;
+    $gray-700: #7b8ab8 !default;
+    $gray-800: #444b40 !default;
+    $gray-900: #212529 !default;
+    $black:    #000 !default;
+
+    $blue:    #378dfc !default;
+    $indigo:  #6610f2 !default;
+    $purple:  #5b62f4 !default;
+    $pink:    #d63384 !default;
+    $red:     #e52527 !default;
+    $orange:  #fd7e14 !default;
+    $yellow:  #ffc107 !default;
+    $green:   #43cc29 !default;
+    $teal:    #20c997 !default;
+    $cyan:    #0dcaf0 !default;
+
+    $body-bg: $gray-200 !default;
+    $link-color: color.adjust($body-bg,$lightness: -20%) !default;
+    $border-radius-pill:50rem;
+    $dark: $gray-900;
+    $box-shadow: 5px 5px 10px rgba(color.adjust($body-bg,$lightness: -50%), .2), -5px -5px 10px rgba($white, .4) !default;
+
+    @include mx.override-platform-colors((
+        "primary":$blue,
+        "secondary":$gray-200,
+        "success":$green,
+        "info":$purple,
+        "warning":$yellow,
+        "danger":$red,
+        "light":(
+            $gray-100,
+            $gray-900
+        ),
+        "dark":(
+            $gray-900,
+            $gray-100
+        ),
+        "link":$link-color
+    ));
+
+    $list:mx.define-variable("text",$gray-700,());
+    $list:mx.define-variable("text-muted",color.adjust($gray-700,$lightness: 15%),$list);
+    $list:mx.define-variable("body-background-color",$body-bg,$list);
+    
+    $list:mx.define-variable("border",rgba(color.adjust($body-bg,$lightness: -50%), .1),$list);
+
+    $list:mx.define-variable("family-primary",
+        "Nunito, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+        $list);
+
+    $list:mx.define-variable("title-color",$link-color,$list);
+    $list:mx.define-variable("subtitle-color",$link-color,$list);
+    $list:mx.define-variable("content-heading-color",$link-color,$list);
+
+    $list:mx.define-variable("button-padding-vertical",1rem,$list);
+    $list:mx.define-variable("button-padding-horizontal",1.5rem,$list);
+
+    $list:mx.define-variable("border-radius-pill",$border-radius-pill,$list);
+    
+    $list:mx.define-variable("box-shadow",$box-shadow,$list);
+    $list:mx.define-variable("box-shadow-sm",$box-shadow,$list);
+    $list:mx.define-variable("box-shadow-lg",$box-shadow,$list);
+    $list:mx.define-variable("box-shadow-inset",$box-shadow,$list);
+
+    $list:mx.define-variable("tabs-link-active-color",$white,$list);
+    $list:mx.define-variable("tabs-link-active-border-bottom-color",cv.getVar("primary"),$list);
+    $list:mx.define-variable("tabs-toggle-link-active-background-color",cv.getVar("primary"),$list);
+    $list:mx.define-variable("tabs-link-active-border-bottom-color",cv.getVar("primary"),$list);
+    $list:mx.define-variable("tabs-toggle-link-active-border-color",cv.getVar("primary"),$list);
+    $list:mx.define-variable("tabs-boxed-link-active-border-color",cv.getVar("primary"),$list);
+
+    $list:mx.define-variable("progress-border-radius",$border-radius-pill,$list);
+
+    $list:mx.define-variable("breadcrumb-item-padding-vertical",1rem,$list);
+    $list:mx.define-variable("breadcrumb-item-padding-horizontal",0.57rem,$list);
+    $list:mx.define-variable("breadcrumb-item-separator-color",cv.getVar("text-muted"),$list);
+    $list:mx.define-variable("breadcrumb-item-active-color",cv.getVar("link"),$list);
+
+    $list:mx.define-variable("table-background-color",cv.getVar("body-background-color"),$list);
+    $list:mx.define-variable("table-row-active-background-color",$gray-600,$list);
+    $list:mx.define-variable("table-striped-row-even-background-color",$gray-400,$list);
+    $list:mx.define-variable("table-striped-row-even-hover-background-color",$gray-500,$list);
+
+    /*
+
+// Components
+
+$border-width:                0 !default;
+
+// Forms
+
+$form-switch-color:               $white !default;
+$form-switch-focus-color:         $form-switch-color !default;
+
+$form-range-track-bg:             rgba(darken($body-bg, 50%), .15) !default;
+$form-range-thumb-bg:                      $gray-100 !default;
+$form-range-thumb-active-bg:               $form-range-thumb-bg !default;
+$form-range-thumb-disabled-bg:             $gray-200 !default;
+
+// Navs
+
+$nav-tabs-border-radius:            0 !default;
+
+
+// Cards
+
+$card-cap-bg:                       transparent !default;
+
+// Tooltips
+
+$tooltip-color:                     $body-color !default;
+
+// Popovers
+
+$popover-header-bg:                 transparent !default;
+
+$popover-arrow-width:               0 !default;
+
+// Toasts
+
+$toast-border-width:                0 !default;
+
+$toast-header-color:                $body-color !default;
+$toast-header-background-color:     transparent !default;
+
+// List groups
+
+$list-group-hover-bg:               transparent !default;
+$list-group-active-color:           $link-color !default;
+$list-group-active-bg:              transparent !default;
+
+$list-group-disabled-color:         $text-muted !default;
+$list-group-disabled-bg:            transparent !default;
+
+$list-group-action-active-color:    $link-color !default;
+$list-group-action-active-bg:       transparent !default;
+
+// Close
+
+$btn-close-color:            $headings-color !default;
+    */
+    
+
+    @include mx.output-skin-content($list);
+
+    @include bs.boot-swatch-content($white, $black, $gray-100, $gray-700, $gray-800, $dark, $gray-200);
+}

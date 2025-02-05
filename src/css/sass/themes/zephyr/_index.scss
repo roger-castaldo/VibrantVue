@@ -1,0 +1,111 @@
+@use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../mixins" as mx;
+@use "./_bootswatch" as bs;
+@use 'sass:color';
+@use 'sass:math';
+
+
+@include mx.bulma-theme($name: "zephyr") {
+
+    $white:    #fff !default;
+    $gray-100: #f8f9fa !default;
+    $gray-200: #e9ecef !default;
+    $gray-300: #dee2e6 !default;
+    $gray-400: #ced4da !default;
+    $gray-500: #adb5bd !default;
+    $gray-600: #6c757d !default;
+    $gray-700: #495057 !default;
+    $gray-800: #343a40 !default;
+    $gray-900: #212529 !default;
+    $black:    #000 !default;
+
+    $blue:    #3459e6 !default;
+    $indigo:  #6610f2 !default;
+    $purple:  #6f42c1 !default;
+    $pink:    #d63384 !default;
+    $red:     #da292e !default;
+    $orange:  #f8765f !default;
+    $yellow:  #f4bd61 !default;
+    $green:   #2fb380 !default;
+    $teal:    #20c997 !default;
+    $cyan:    #287bb5 !default;
+
+    @include mx.override-platform-colors((
+        "primary":$blue,
+        "secondary":$white,
+        "success":$green,
+        "info":$cyan,
+        "warning":$yellow,
+        "danger":$red,
+        "light":(
+            $gray-100,
+            $gray-900
+        ),
+        "dark":(
+            $gray-900,
+            $gray-100
+        )
+    ));
+
+    $box-shadow: 0 1px 2px rgba($black, .05);
+    $box-shadow-lg: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+
+    $list:mx.define-variable("body-color",$gray-700,());
+    
+    $list:mx.define-variable("family-primary",
+        "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+        $list);
+
+    $list:mx.define-variable("size-normal",1rem,$list);
+    $list:mx.define-variable("size-small",cv.getVar("size-small"),$list);
+    
+    $list:mx.define-variable("table-cell-padding",1rem,$list);
+
+    $list:mx.define-variable("button-padding-vertical",0.5rem,$list);
+    $list:mx.define-variable("button-padding-horizontal",1rem,$list);
+    $list:mx.define-variable("button-weight",500,$list);
+
+    $list:mx.define-variable("tabs-link-active-color",cv.getVar("primary"),$list); 
+    $list:mx.define-variable("tabs-toggle-link-active-background-color",cv.getVar("primary"),$list);    
+    $list:mx.define-variable("tabs-toggle-link-active-color",$white,$list);
+
+    $list:mx.define-variable("navbar-padding-vertical",0.85rem,$list);
+    
+    $list:mx.define-variable("dropdown-divider-background-color",$gray-300,$list);
+
+    $list:mx.define-variable("pagination-nav-padding-right",1rem,$list);
+    $list:mx.define-variable("pagination-nav-padding-left",1rem,$list);
+
+    $list:mx.define-variable("card-header-padding",1rem 1.5rem,$list);
+    $list:mx.define-variable("card-content-padding",1.5rem,$list);
+
+    $list:mx.define-variable("breadcrumb-item-padding-horizontal",1rem,$list);
+    $list:mx.define-variable("breadcrumb-item-active-color",$gray-600,$list);
+    /*
+// Toasts
+
+$toast-header-color:                $headings-color !default;
+
+// Modals
+
+$modal-header-border-width:         0 !default;
+
+// List group
+
+$list-group-item-padding-y:         1rem !default;
+$list-group-item-padding-x:         1.5rem !default;
+
+
+/// Navbar
+
+$navbar-nav-link-padding-x:         .75rem !default;
+
+
+    */
+    
+    @include mx.output-skin-content($list);
+
+    @include bs.boot-swatch-content($box-shadow, $white, $gray-900, $box-shadow-lg);
+}

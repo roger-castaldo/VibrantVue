@@ -1,0 +1,98 @@
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../node_modules/bulma/sass/themes/light";
+@use "../../../../node_modules/bulma/sass/themes/setup";
+
+$page-widths: ("letter":8.5,"legal":8.5,"ledger":11,"tabloid":17,"executive":7.25);
+$page-heights: ("letter":11,"legal":14,"ledger":17,"tabloid":11,"executive":10.55);
+
+@media print {
+
+	@page {
+		margin: 0;
+		size: auto;
+	}
+
+	:not(.#{iv.$class-prefix}is-page *):not(:has(.#{iv.$class-prefix}is-page)):not(.#{iv.$class-prefix}is-page),
+	.#{iv.$class-prefix}is-not-printable{
+		display: none !important;
+	}
+	
+	.#{iv.$class-prefix}is-page {
+		@include light.light-theme;
+		@include setup.setup-theme;
+		@include cv.register-var("title-family",cv.getVar("body-family"));
+		@include cv.register-var("subtitle-family",cv.getVar("body-family"));
+
+		display:block !important;
+		margin: 0;
+		overflow: hidden;
+		page-break-after: auto;
+		position: relative;
+		line-height: normal !important;
+		font-size: 12pt;
+		padding-top: 0.75in;
+		padding-left: 0.75in;
+		padding-right: 0.75in;
+		padding-bottom: 0.75in;
+		background-color: white !important;
+		color: back !important;
+		&.#{iv.$class-prefix}is-narrow-margin{
+			padding-top: 0.39in;
+			padding-left: 0.39in;
+			padding-right: 0.39in;
+			padding-bottom: 0.39in;
+		}
+		&.#{iv.$class-prefix}is-wide-margin{
+			padding-top: 1.13in;
+			padding-left: 1.13in;
+			padding-right: 1.13in;
+			padding-bottom: 1.13in;
+		}
+
+		@each $name, $width in $page-widths{
+			&.#{iv.$class-prefix}is-#{$name} {
+				width: #{$width}in !important;
+			}
+			&.#{iv.$class-prefix}is-#{$name}-landscape{
+				height: #{$width}in !important;
+			}
+		}
+
+		@each $name, $height in $page-heights{
+			&.#{iv.$class-prefix}is-#{$name}{
+				height: #{$height}in !important;
+			}
+			&.#{iv.$class-prefix}is-#{$name}-landscape{
+				width: #{$height}in !important;
+			}
+		}
+
+		.#{iv.$class-prefix}footer{
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0.2in;
+		}
+
+		.#{iv.$class-prefix}header {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0.2in;
+		}
+
+		.#{iv.$class-prefix}progress, 
+		.#{iv.$class-prefix}modal, 
+		.#{iv.$class-prefix}menu, 
+		.#{iv.$class-prefix}is-animated-bounce-container, 
+		.#{iv.$class-prefix}is-page-notification-container {
+			display: none !important;
+		}
+	}
+
+	.#{iv.$class-prefix}is-page:last-child{
+		page-break-after: avoid;
+	}
+}

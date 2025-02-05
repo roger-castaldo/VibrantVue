@@ -1,0 +1,31 @@
+@use "sass:math"
+@use "../../../node_modules/bulma/sass/utilities/css-variables" as cv
+
+@function strip-units($number,$append:'%')
+    @if type-of($number) == "string"
+        @return $number
+    @return '#{math.div($number, ($number * 0 + 1))}#{$append}'
+
+
+@function darken-variable($name,$percentage)
+    @return 'hsl(var(--'+$name+'-h),var(--'+$name+'-s),calc(var(--'+$name+'-l) - '+strip-units($percentage)+'))'
+
+@function darken-color($color,$percentage)
+    $name: #{str-slice('#{$color}', 5, -2)}
+    @return 'hsl(var('+$name+'-h),var('+$name+'-s),calc(var('+$name+'-l) - '+strip-units($percentage)+'))'
+
+@function lighten-variable($name,$percentage)
+    @return 'hsl(var(--'+$name+'-h),var(--'+$name+'-s),calc(var(--'+$name+'-l) + '+strip-units($percentage)+'))'
+
+@function lighten-color($color,$percentage)
+    $name: #{str-slice('#{$color}', 5, -2)}
+    @return 'hsl(var('+$name+'-h),var('+$name+'-s),calc(var('+$name+'-l) + '+strip-units($percentage)+'))'
+
+@function set-rgba-alpha($name,$alpha)
+    @return 'rgb(from var(--'+$name+') r g b / '+$alpha+')'
+
+@function set-rgba-color-alpha($color,$alpha)
+    @return 'rgb(from '+$color+' r g b / '+$alpha+')'
+
+@function getVarWithBackup($varName,$backup)    
+    @return var(#{cv.buildVarName($varName)},#{$backup})

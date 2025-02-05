@@ -1,0 +1,228 @@
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+
+$switch-background: #{cv.getVar("border-active")}
+$switch-border: .1rem solid transparent
+$switch-background-active: #{cv.getVar("primary")}
+$switch-radius: #{cv.getVar("radius")}
+$switch-paddle-background: #{cv.getVar("body-color")}
+$switch-paddle-background-active: #{cv.getVar("primary")}
+$switch-paddle-offset: 0.25rem
+$switch-paddle-transition: all 0.25s ease-out
+$switch-focus: 1px dotted #{cv.getVar("border-active")}
+
+$switch-height-factor: 1.5
+$switch-width-factor: $switch-height-factor * 2
+
+
+=switch-size($size)
+	$switch-width: calc(#{cv.getVar($size)} * $switch-width-factor)
+	$paddle-height: calc((#{cv.getVar($size)} * $switch-height-factor) - ($switch-paddle-offset * 2))
+	$paddle-width: calc((#{cv.getVar($size)} * $switch-height-factor) - ($switch-paddle-offset * 2))
+	$paddle-active-offest: calc((#{cv.getVar($size)} * $switch-width-factor) - ((#{cv.getVar($size)} * $switch-height-factor) - ($switch-paddle-offset * 2)) - ($switch-paddle-offset * 1.5))
+
+	+ label
+		position: relative
+		display: inline-flex
+		align-items: center
+		justify-content: flex-start
+		font-size: #{cv.getVar($size)}
+		height: #{cv.getVar("control-height")}
+		line-height: #{cv.getVar("control-line-height")}
+		padding-left: calc((#{cv.getVar($size)} * $switch-width-factor) + (0.5 * #{cv.getVar($size)}))
+		padding-top: .2rem
+		cursor: pointer
+
+		&::before,
+		&:before
+			position: absolute
+			display: block
+			top: calc( 50% - (#{cv.getVar($size)} * $switch-height-factor) * 0.5 )
+			left: 0
+			width: $switch-width
+			height: calc(#{cv.getVar($size)} * $switch-height-factor)
+			border: $switch-border
+			border-radius: $switch-radius
+			background: $switch-background
+			content: ''
+
+		&::after,
+		&:after
+			display: block
+			position: absolute
+			top: calc( 50% - ((#{cv.getVar($size)} * $switch-height-factor) - ($switch-paddle-offset * 2)) * 0.5 )
+			left: $switch-paddle-offset
+			width: $paddle-width
+			height: $paddle-height
+			transform: translate3d(0, 0, 0)
+			border-radius: $switch-radius
+			background: $switch-paddle-background
+			transition: $switch-paddle-transition
+			content: ''
+
+		.#{iv.$class-prefix}switch-active,	.#{iv.$class-prefix}switch-inactive
+			font-size: calc(#{cv.getVar($size)} - 0.1)
+			z-index: 1
+			margin-top: -4px
+		&.#{iv.$class-prefix}has-text-inside
+			.#{iv.$class-prefix}switch-inactive
+				margin-left: calc(0 - (((#{cv.getVar($size)} * $switch-width-factor) - ((#{cv.getVar($size)} * $switch-height-factor) - ($switch-paddle-offset * 2)) - ($switch-paddle-offset * 1.5)) + 0.3))
+			.#{iv.$class-prefix}switch-active
+				margin-left: calc(0 - (((#{cv.getVar($size)} * $switch-width-factor) - ((#{cv.getVar($size)} * $switch-height-factor) - ($switch-paddle-offset * 2)) - ($switch-paddle-offset * 1.5)) * 2))
+
+
+	&.#{iv.$class-prefix}is-rtl
+		+ label
+			padding-left: 0
+			padding-right: calc($switch-width + .5)
+			&::before,
+			&:before
+				left: auto
+				right: 0
+			&::after,
+			&:after
+				left: auto
+				right: $paddle-active-offest
+
+	&:checked
+		+ label
+			&::before,
+			&:before
+				background: $switch-background-active
+			&::after
+				left: $paddle-active-offest
+		&.#{iv.$class-prefix}is-rtl
+			+ label
+				&::after,
+				&:after
+					left: auto
+					right: $switch-paddle-offset
+
+	&.#{iv.$class-prefix}is-outlined
+		+ label
+			&::before,
+			&:before
+				background-color: transparent
+				border-color: $switch-background
+			&::after,
+			&:after
+				background: $switch-background
+		&:checked
+			+ label
+				&::before,
+				&:before
+					background-color: transparent
+					border-color: $switch-background-active
+				&::after,
+				&:after
+					background: $switch-paddle-background-active
+
+	&.#{iv.$class-prefix}is-thin
+		+ label
+			&::before,
+			&:before
+				top: calc((#{cv.getVar($size)} * $switch-height-factor) / 2.75)
+				height: calc((#{cv.getVar($size)} * $switch-height-factor) / 4)
+			&::after,
+			&:after
+				top: calc( 50% - ((#{cv.getVar($size)} * $switch-height-factor) + ($switch-paddle-offset * 2)) * 0.5 )
+				box-shadow: 0px 0px 3px #{cv.getVar("scheme-ter")}
+
+	&.#{iv.$class-prefix}is-rounded
+		+ label
+			&::before,
+			&:before
+				border-radius: calc(#{cv.getVar("radius-large")} * 4)
+			&::after,
+			&:after
+				border-radius: 50%
+
+
+.#{iv.$class-prefix}switch[type="checkbox"]
+	outline: 0
+	user-select: none
+	display: inline-block
+	position: absolute
+	opacity: 0
+
+	&:focus
+		+ label
+			&::before,
+			&:before,
+			&::after,
+			&:after
+				outline: $switch-focus
+
+	&[disabled]
+		cursor: not-allowed
+		+ label
+			opacity: 0.5
+			&::before,
+			&:before
+				opacity: 0.5
+			&::after,
+			&:after
+				opacity: 0.5
+			&:hover
+				cursor: not-allowed
+
+	+switch-size("size-normal")
+	&.#{iv.$class-prefix}is-small
+		+switch-size("size-small")
+	&.#{iv.$class-prefix}is-medium
+		+switch-size("size-medium")
+	&.#{iv.$class-prefix}is-large
+		+switch-size("size-large")
+
+	@each $name, $pair in dv.$colors
+		&.#{iv.$class-prefix}is-#{$name}
+			+ label
+				.switch-active
+					display: none
+				.switch-inactive
+					display: inline-block
+			&:checked
+				+ label
+					&::before,
+					&:before
+						background: #{cv.getVar($name)}
+					.switch-active
+						display: inline-block
+					.switch-inactive
+						display: none
+			&.#{iv.$class-prefix}is-outlined
+				&:checked
+					+ label
+						&::before,
+						&:before
+							background-color: transparent
+							border-color: #{cv.getVar($name)} !important
+						&::after,
+						&:after
+							background: #{cv.getVar($name)}
+			&.#{iv.$class-prefix}is-thin
+				&.#{iv.$class-prefix}is-outlined
+					+ label
+						&::after,
+						&:after
+							box-shadow: none
+		&.#{iv.$class-prefix}is-unchecked-#{$name}
+			+ label
+				&::before,
+				&:before
+					background: #{cv.getVar($name)}
+			&.#{iv.$class-prefix}is-outlined
+				+ label
+					&::before,
+					&:before
+						background-color: transparent
+						border-color: #{cv.getVar($name)} !important
+					&::after,
+					&:after
+						background: #{cv.getVar($name)}
+
+.#{iv.$class-prefix}field-body
+	.#{iv.$class-prefix}switch[type="checkbox"]
+		+ label
+			margin-top: .375em

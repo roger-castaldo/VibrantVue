@@ -1,0 +1,120 @@
+@use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../mixins" as mx;
+@use "./_bootswatch" as bs;
+@use 'sass:color';
+@use 'sass:math';
+
+
+@include mx.bulma-theme($name: "sandstone") {
+
+    $white:    #fff !default;
+    $gray-100: #f8f9fa !default;
+    $gray-200: #f8f5f0 !default;
+    $gray-300: #dfd7ca !default;
+    $gray-400: #ced4da !default;
+    $gray-500: #98978b !default;
+    $gray-600: #8e8c84 !default;
+    $gray-700: #495057 !default;
+    $gray-800: #3e3f3a !default;
+    $gray-900: #212529 !default;
+    $black:    #000 !default;
+
+    $blue:    #325d88 !default;
+    $indigo:  #6610f2 !default;
+    $purple:  #6f42c1 !default;
+    $pink:    #e83e8c !default;
+    $red:     #d9534f !default;
+    $orange:  #f47c3c !default;
+    $yellow:  #ffc107 !default;
+    $green:   #93c54b !default;
+    $teal:    #20c997 !default;
+    $cyan:    #29abe0 !default;
+
+    @include mx.override-platform-colors((
+        "primary":$blue,
+        "secondary":$gray-600,
+        "success":$green,
+        "info":$cyan,
+        "warning":$orange,
+        "danger":$red,
+        "light":(
+            $gray-200,
+            $gray-800
+        ),
+        "dark":(
+            $gray-800,
+            $gray-200
+        ),
+        "link":$green
+    ));
+
+    $list:mx.define-variable("text",$gray-800,());
+
+    $list:mx.define-variable("family-primary",
+        "Roboto, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+        $list);
+
+    $list:mx.define-variable("title-weight",400,$list);
+    
+    $list:mx.define-variable("tabs-border-bottom-color",$gray-300,$list);
+    $list:mx.define-variable("tabs-toggle-link-border-color",$gray-300,$list);
+    $list:mx.define-variable("tabs-link-hover-border-bottom-color",$gray-300,$list);
+    $list:mx.define-variable("tabs-boxed-link-hover-border-bottom-color",$gray-300,$list);
+    $list:mx.define-variable("tabs-toggle-link-hover-border-color",$gray-300,$list);
+    $list:mx.define-variable("tabs-boxed-link-active-background-color",$white,$list);
+    $list:mx.define-variable("tabs-toggle-link-active-background-color",$white,$list);
+    $list:mx.define-variable("tabs-link-active-color",$gray-600,$list);
+    $list:mx.define-variable("tabs-toggle-link-active-color",$gray-600,$list);
+
+    $list:mx.define-variable("progress-bar-background-color",$gray-300,$list);
+    $list:mx.define-variable("progress-border-radius",10px,$list);
+
+    $list:mx.define-variable("breadcrumb-item-padding-vertical",0.375rem,$list);
+    $list:mx.define-variable("breadcrumb-item-padding-horizontal",0.75rem,$list);
+    
+    /*
+
+// Close
+
+$btn-close-color:            $white !default;
+$btn-close-opacity:          .8 !default;
+$btn-close-hover-opacity:    1 !default;
+
+// Navs
+
+$nav-link-padding-x:                .9rem !default;
+$nav-link-disabled-color:           $gray-300 !default;
+
+// Cards
+
+$card-cap-bg:                       rgba($gray-200, .25) !default;
+
+// Popovers
+
+$popover-header-bg:                 $gray-200 !default;
+
+// Modals
+
+$modal-header-border-color:         $modal-content-border-color !default;
+
+// List group
+
+$list-group-border-color:           $gray-300 !default;
+$list-group-hover-bg:               $gray-200 !default;
+$list-group-active-color:           $body-color !default;
+$list-group-active-bg:              $gray-200 !default;
+$list-group-active-border-color:    $gray-300 !default;
+$list-group-disabled-color:         $gray-500 !default;
+$list-group-disabled-bg:            $white !default;
+$list-group-action-color:           $list-group-active-color !default;
+$list-group-action-active-color:    $list-group-active-color !default;
+$list-group-action-active-bg:       $gray-300 !default;
+
+
+    */
+    
+    @include mx.output-skin-content($list);
+
+    @include bs.boot-swatch-content($gray-600, $gray-200, $gray-300, $white);
+}

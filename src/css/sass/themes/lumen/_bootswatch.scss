@@ -1,0 +1,165 @@
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../mixins" as lmx;
+
+// Mixins
+
+@mixin shadow($width: 4px){
+  border-style: solid;
+  border-width: 0 1px $width 1px;
+}
+
+@mixin boot-swatch-content(){
+
+  .#{iv.$class-prefix}navbar,
+  .#{iv.$class-prefix}button,
+  .#{iv.$class-prefix}dropdown,
+  .#{iv.$class-prefix}breadcrumb,
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link,
+  .#{iv.$class-prefix}notification{
+    @include shadow();
+  }
+
+
+  .#{iv.$class-prefix}navbar {
+    @each $name, $value in dv.$colors {
+      &.is-#{$name} {
+        border-color: #{lmx.darken-color($name, 10)};
+      }
+    }
+  }
+
+  // Buttons
+
+  .#{iv.$class-prefix}button {
+    text-transform: uppercase;
+
+    &:not(.#{iv.$class-prefix}is-disabled):hover {
+      margin-top: 1px;
+      border-bottom-width: 3px;
+    }
+
+    &:not(.#{iv.$class-prefix}is-disabled):active {
+      margin-top: 2px;
+      border-bottom-width: 2px;
+      box-shadow:none;
+    }
+
+    @each $name, $value in dv.$colors {
+      &.is-#{$name} {
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: #{cv.getVar($name)};
+        }
+
+        &,
+        &:not(.#{iv.$class-prefix}is-disabled):hover,
+        &:not(.#{iv.$class-prefix}is-disabled):active,
+        &:focus {
+          border-color: #{lmx.darken-color($name, 10)};
+        }
+      }
+    }
+
+    &.#{iv.$class-prefix}is-outline{
+      border-top-width: 1px;
+    }
+  }
+
+  .#{iv.$class-prefix}notification{
+    @each $name, $value in dv.$colors {
+      &.is-#{$name} {
+        border-color: #{lmx.darken-color($name, 10)};
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}fieldset {
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .075);
+  }
+
+  .#{iv.$class-prefix}tabs {
+    @include cv.register-var("tabs-link-color",#{cv.getVar("body-color")});
+    
+    .nav-link {
+      &,
+      &.#{iv.$class-prefix}is-disabled,
+      &.#{iv.$class-prefix}is-disabled:hover,
+      &.#{iv.$class-prefix}is-disabled:focus {
+        margin-top: 6px;
+        border-color: #{cv.getVar("tabs-border-bottom-color")};
+        transition: padding-bottom .2s ease-in-out, margin-top .2s ease-in-out, border-bottom .2s ease-in-out;
+      }
+
+      &:not(.#{iv.$class-prefix}is-disabled):hover,
+      &:not(.#{iv.$class-prefix}is-disabled):focus,
+      &.#{iv.$class-prefix}is-active {
+        padding-bottom: add(.5rem, 6px);
+        margin-top: 0;
+        color: #{cv.getVar("tabs-link-color")};
+        border-bottom-color: transparent;
+      }
+    }
+
+    &.#{iv.$class-prefix}is-fullwidth > li {
+      vertical-align: bottom;
+    }
+  }
+
+  .#{iv.$class-prefix}buttondropdown {
+    margin-top: 0;
+    border-top-width: 1px;
+    box-shadow:none;
+  }
+
+  .#{iv.$class-prefix}breadcrumb {
+    border-color: hsl(
+      #{cv.getVar("pagination-item-h")},
+      #{cv.getVar("pagination-item-s")},
+      calc(
+        #{cv.getVar("pagination-item-border-l")} + #{cv.getVar(
+            "pagination-item-border-l-delta"
+          )}
+      )
+    );
+    background-color:#{cv.getVar("white-ter")};
+  }
+
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link {
+    position: relative;
+    top: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &:hover,
+    &:focus {
+      top: 1px;
+      text-decoration: none;
+      border-bottom-width: 3px;
+    }
+
+    &:active {
+      top: 2px;
+      border-bottom-width: 2px;
+    }
+
+    &.#{iv.$class-prefix}is-disabled {
+      &:hover {
+        top: 0;
+        @include shadow();
+      }
+
+      &:active {
+        top: 0;
+        @include shadow();
+      }
+    }
+  }
+
+}

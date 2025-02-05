@@ -1,0 +1,20 @@
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv
+@use "../../../../node_modules/bulma/sass/utilities/derived-variables" as dv
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+
+.#{iv.$class-prefix}menu
+	&.#{iv.$class-prefix}is-fixed-menu
+		position: sticky
+		top: 0px
+		&.#{iv.$class-prefix}is-fixed-menu-left
+			left: 0px
+		&.#{iv.$class-prefix}is-fixed-menu-right
+			right: 0px
+
+.#{iv.$class-prefix}has-navbar-fixed-top .#{iv.$class-prefix}menu
+	&.#{iv.$class-prefix}is-fixed-menu
+		top: #{cv.getVar("navbar-height")}
+
+.#{iv.$class-prefix}has-navbar-fixed-bottom .#{iv.$class-prefix}menu
+	&.#{iv.$class-prefix}is-fixed-menu
+		margin-bottom: #{cv.getVar("navbar-height")}

@@ -1,0 +1,175 @@
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../mixins" as lmx;
+
+@mixin boot-swatch-content($white,$gray-300,$gray-600, $black,$gray-900){
+
+  .#{iv.$class-prefix}button {
+
+    line-height:1.5rem;
+    font-size: #{cv.getVar("size-small")};
+    text-transform: uppercase;
+
+    &.#{iv.$class-prefix}is-outline{
+      @include cv.register-var("button-border-width",2px);
+    }
+
+    &.#{iv.$class-prefix}is-warning {
+      &,
+      &:hover,
+      &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):active,
+      &:focus {
+        color: $white;
+      }
+    }
+
+    &.#{iv.$class-prefix}is-small{
+      @include cv.register-vars((
+        "button-padding-vertical":0.5rem,
+        "button-padding-horizontal":1rem
+      ));
+      font-size:10px;
+    }
+
+    &.#{iv.$class-prefix}is-large{
+      @include cv.register-vars((
+        "button-padding-vertical":2rem,
+        "button-padding-horizontal":2rem
+      ));
+    }
+  }
+
+  .#{iv.$class-prefix}control,
+  .#{iv.$class-prefix}input,
+  .#{iv.$class-prefix}textarea,
+  .#{iv.$class-prefix}select select {
+    line-height: 1.5;   
+  }
+
+  .#{iv.$class-prefix}control {
+    &.#{iv.$class-prefix}has-icons-left,
+    &.#{iv.$class-prefix}has-icons-right {
+      .#{iv.$class-prefix}icon {
+        background-color:$gray-300;
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}select select {
+    &[disabled],
+    fieldset[disabled] {
+      color:$gray-600;
+    }
+  }
+
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link {
+    border-color:transparent;
+    &:hover,
+    &:active,
+    &[disabled],
+    &.#{iv.$class-prefix}is-disabled {
+      border-color:transparent;
+    }
+  }
+
+  .#{iv.$class-prefix}navbar {
+    &.#{iv.$class-prefix}is-dark{
+      .#{iv.$class-prefix}navbar-item,
+      .#{iv.$class-prefix}navbar-link {
+        &:hover{
+          color:$white;
+        }
+      }
+    }
+
+    &.#{iv.$class-prefix}is-light{
+      .#{iv.$class-prefix}navbar-item,
+      .#{iv.$class-prefix}navbar-link {
+        color:rgba($black, .3);
+        &:hover,
+        &:active,
+        &.#{iv.$class-prefix}is-active{
+          color:$gray-900;
+        }
+      }
+    }
+  }
+
+  .navbar {
+    font-size: #{cv.getVar("size-small")};
+    font-weight: 600;
+    text-transform: uppercase;
+
+    .#{iv.$class-prefix}navbar-item,
+    .#{iv.$class-prefix}navbar-link {
+      padding-top: .715rem;
+      padding-bottom: .715rem;
+      margin-right: 2rem;
+    }
+
+    .#{iv.$class-prefix}navbar-brand {
+      margin-right: 2rem;
+    }
+
+    &.#{iv.$class-prefix}is-light{
+      border: 1px solid rgba(0, 0, 0, .1);
+
+      &.#{iv.$class-prefix}is-fixed-top{
+        border-width: 0 0 1px;
+      }
+
+      &.#{iv.$class-prefix}is-fixed-bottom{
+        border-width: 1px 0 0;
+      }
+    }
+  }
+
+  body {
+    letter-spacing: 1px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  th {
+    font-size: #{cv.getVar("size-small")};
+    text-transform: uppercase;
+  }
+
+  .#{iv.$class-prefix}table {
+    th,
+    td {
+      padding: 1.5rem;
+    }
+
+    &.#{iv.$class-prefix}is-small {
+      th,
+      td {
+        padding: .75rem;
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}tag{
+    padding-top: .28rem;
+    &.#{iv.$class-prefix}is-light{
+      color:#{cv.getVar("dark")};
+    }
+  }
+
+  .#{iv.$class-prefix}dropdown {
+    font-size: #{cv.getVar("size-small")};
+    text-transform: none;
+  }
+
+}

@@ -1,0 +1,158 @@
+@use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../mixins" as mx;
+@use "./_bootswatch" as bs;
+@use 'sass:color';
+@use 'sass:math';
+
+
+@include mx.bulma-theme($name: "slate") {
+
+    $white:    #fff !default;
+    $gray-100: #f8f9fa !default;
+    $gray-200: #e9ecef !default;
+    $gray-300: #dee2e6 !default;
+    $gray-400: #ced4da !default;
+    $gray-500: #999 !default;
+    $gray-600: #7a8288 !default;
+    $gray-700: #52575c !default;
+    $gray-800: #3a3f44 !default;
+    $gray-900: #272b30 !default;
+    $black:    #000 !default;
+
+    $blue:    #007bff !default;
+    $indigo:  #6610f2 !default;
+    $purple:  #6f42c1 !default;
+    $pink:    #e83e8c !default;
+    $red:     #ee5f5b !default;
+    $orange:  #fd7e14 !default;
+    $yellow:  #f89406 !default;
+    $green:   #62c462 !default;
+    $teal:    #20c997 !default;
+    $cyan:    #5bc0de !default;
+
+    $primary-bg-subtle:       color.adjust($gray-800, $lightness: 10%) !default;
+
+    $scheme-main: $gray-900;
+    $body-color:#aaa;
+
+    @include mx.override-dark-mode-basics((
+        "primary":$gray-800,
+        "secondary":$gray-600,
+        "success":$green,
+        "info":$cyan,
+        "warning":$yellow,
+        "danger":$red,
+        "light":(
+            $gray-200,
+            $gray-900
+        ),
+        "dark":(
+            $gray-900,
+            $gray-200
+        ),
+        "link":$white
+    ),
+    $scheme-main,$gray-700,$gray-600);
+
+    $list:mx.define-variable("text",$body-color,());
+
+    $list:mx.define-color("gray-600",$gray-600,$list);
+    $list:mx.define-color("gray-800",$gray-800,$list);
+
+    $list:mx.define-variable("table-color",$white,$list);
+    $list:mx.define-variable("table-striped-row-even-background-color",rgba($white, .05),$list);
+    $list:mx.define-variable("table-row-hover-background-color",rgba($white, .075),$list);
+    $list:mx.define-variable("table-cell-border-color",rgba($black, .6),$list);
+
+    $list:mx.define-variable("button-padding-vertical",0.75rem,$list);
+    $list:mx.define-variable("button-padding-horizontal",1rem,$list);
+
+    $list:mx.define-variable("input-background-l",color.channel($white, "lightness", $space: hsl),$list);
+    $list:mx.define-variable("input-color-l",color.channel($gray-900, "lightness", $space: hsl),$list);
+    $list:mx.define-variable("input-disabled-color",$gray-600,$list);
+    $list:mx.define-variable("input-disabled-background-color",#ccc,$list);
+
+    $list:mx.define-variable("dropdown-content-background-color",$gray-800,$list);
+    $list:mx.define-variable("dropdown-item-background-l",color.channel($gray-800, "lightness", $space: hsl),$list);
+    $list:mx.define-variable("dropdown-divider-background-color",rgba($black, .15),$list);
+
+    $list:mx.define-variable("tabs-border-bottom-color",rgba($black, .6),$list);
+    $list:mx.define-variable("tabs-toggle-link-border-color",rgba($black, .6),$list);
+    $list:mx.define-variable("tabs-link-hover-border-bottom-color",rgba($black, .6),$list);
+    $list:mx.define-variable("tabs-boxed-link-hover-border-bottom-color",rgba($black, .6),$list);
+    $list:mx.define-variable("tabs-toggle-link-hover-border-color",rgba($black, .6),$list);
+    $list:mx.define-variable("tabs-link-active-border-bottom-color",rgba($black, .6),$list);
+    $list:mx.define-variable("tabs-boxed-link-active-border-bottom-color",rgba($black, .6),$list);
+    $list:mx.define-variable("tabs-toggle-link-active-border-color",rgba($black, .6),$list);
+    $list:mx.define-variable("tabs-link-active-color",$white,$list);
+    $list:mx.define-variable("tabs-toggle-link-active-color",$white,$list);
+    
+    $list:mx.define-variable("navbar-padding-horizontal",0,$list);
+
+    $list:mx.define-variable("card-header-background-color",color.adjust($gray-800, $lightness: 10%),$list);
+    $list:mx.define-variable("card-background-color",color.adjust($gray-900, $lightness: 5%),$list);
+
+    $list:mx.define-variable("progress-bar-background-color",color.adjust($gray-900, $lightness: -5%),$list);
+
+    $list:mx.define-variable("breadcrumb-item-padding-vertical",0.375rem,$list);
+    $list:mx.define-variable("breadcrumb-item-padding-horizontal",0.75rem,$list);
+    $list:mx.define-variable("breadcrumb-item-active-color",$gray-500,$list);
+    /*
+// Breadcrumbs
+
+$breadcrumb-border-radius:          .25rem !default;
+
+// Code
+
+$pre-color:                         inherit !default;
+
+// Forms
+
+$form-check-input-bg:                     $white !default;
+
+$form-file-button-color:          $input-group-addon-color !default;
+$form-file-button-bg:             $input-group-addon-bg !default;
+$form-file-button-hover-bg:       color.adjust($form-file-button-bg, $lightness: -5%) !default;
+
+// Dropdowns
+
+$dropdown-border-color:             rgba($black, .6) !default;
+
+// Accordions
+
+$accordion-bg:                      color.adjust($body-bg, $lightness: 5%) !default;
+$accordion-border-color:            $table-border-color !default;
+$accordion-button-active-color:     $white !default;
+
+// Popovers
+
+$popover-bg:                        color.adjust($body-bg, $lightness: 5%) !default;
+
+// Toasts
+
+$toast-background-color:            color.adjust($body-bg, $lightness: 5%) !default;
+$toast-border-color:                rgba(0, 0, 0, .2) !default;
+$toast-header-color:                $body-color !default;
+$toast-header-background-color:     $toast-background-color !default;
+$toast-header-border-color:         $toast-border-color !default;
+
+// List group
+
+$list-group-color:                  $white !default;
+$list-group-bg:                     color.adjust($body-bg, $lightness: 5%) !default;
+$list-group-border-color:           rgba($black, .6) !default;
+$list-group-item-bg-scale:          0% !default;
+$list-group-hover-bg:               color.adjust($body-bg, $lightness: 10%) !default;
+$list-group-active-color:           $white !default;
+$list-group-active-bg:              $list-group-hover-bg !default;
+$list-group-active-border-color:    $list-group-border-color !default;
+$list-group-disabled-color:         $gray-700 !default;
+$list-group-action-color:           $white !default;
+
+
+    */
+
+    @include mx.output-skin-content($list);
+
+    @include bs.boot-swatch-content($black, $gray-500, $gray-600, $gray-700, $white);
+}

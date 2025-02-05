@@ -1,0 +1,328 @@
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../mixins" as lmx;
+
+@mixin text-shadow($name) {
+  text-shadow: 0 0 1px #{cv.buildHslaString($name, false, 0.6)}, 0 0 3px #{cv.buildHslaString($name, false, 0.5)}, 0 0 .5rem #{cv.buildHslaString($name, false, 0.3)}, 0 0 2rem #{cv.buildHslaString($name, false, 0.2)};
+}
+
+@mixin text-shadow-sm($name) {
+  text-shadow: 0 0 1px #{cv.buildHslaString($name, false, 0.3)}, 0 0 2px #{cv.buildHslaString($name, false, 0.3)}, 0 0 5px #{cv.buildHslaString($name, false, 0.2)};
+}
+
+@mixin box-shadow($name) {
+  box-shadow: 0 0 2px #{cv.buildHslaString($name, false, 0.9)}, 0 0 4px #{cv.buildHslaString($name, false, 0.4)}, 0 0 1rem #{cv.buildHslaString($name, false, 0.3)}, 0 0 4rem #{cv.buildHslaString($name, false, 0.1)};
+}
+
+@mixin box-shadow-lg($name) {
+  box-shadow: 0 0 2rem #{lmx.lighten-color($name,10,0.4)}, 0 0 8rem #{lmx.lighten-color($name,10,0.3)};
+}
+
+@mixin header-shadow($name) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+  {
+    &,
+    &.#{iv.$class-prefix}title,
+    &.#{iv.$class-prefix}subtitle{
+      @include text-shadow($name);
+    }
+  }
+}
+
+@mixin boot-swatch-content($white, $text-muted, $body-bg){
+
+  .#{iv.$class-prefix}control{
+    &.#{iv.$class-prefix}has-icons-left,
+    &.#{iv.$class-prefix}has-icons-right{   
+      .#{iv.$class-prefix}icon{
+        background-color: #{cv.getVar("input-disabled-background-color")};
+        margin-top: #{cv.getVar("control-border-width")};
+        //margin-bottom: #{cv.getVar("control-border-width")};
+        height: calc(#{cv.getVar("input-height")} - (2 * #{cv.getVar("control-border-width")}));
+        
+        &.#{iv.$class-prefix}is-left{
+          margin-left:#{cv.getVar("control-border-width")};
+          border-top-left-radius: #{cv.getVar("input-radius")};
+          border-bottom-left-radius: #{cv.getVar("input-radius")};
+        }
+
+        &.#{iv.$class-prefix}is-right{
+          margin-right:#{cv.getVar("control-border-width")};
+          border-top-right-radius: #{cv.getVar("input-radius")};
+          border-bottom-right-radius: #{cv.getVar("input-radius")};
+        }
+      }
+    }
+  }
+
+  a.#{iv.$class-prefix}dropdown-item,
+  button.#{iv.$class-prefix}dropdown-item {
+    &:hover{
+      background-color:rgba($white, .15);
+    }
+  }
+
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link,
+  .#{iv.$class-prefix}pagination-ellipsis {
+    background-color: transparent;
+    border:none;
+    color: #{cv.getVar("body-color")};
+  }
+
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link {
+    &.#{iv.$class-prefix}is-current{
+      background-color: #{cv.getVar("primary")};
+      color: $white;
+    }
+    &:hover,
+    &:focus{
+      background-color: #{cv.buildHslaString("primary",false,0.5)};
+    }
+
+    &[disabled],
+    &.#{iv.$class-prefix}is-disabled {
+      color:$text-muted;
+      background:transparent;
+    }
+  }
+
+  .#{iv.$class-prefix}card {
+    border-width: 2px;
+  }
+
+  .#{iv.$class-prefix}modal-content,
+  .#{iv.$class-prefix}modal-card {
+    color: $white;
+    background-color: #{cv.getVar("primary")};
+  }
+
+  .select select, 
+  .input, 
+  .textarea {
+    background-color: #{cv.buildHslaString("scheme","input-background-l")};
+  }
+
+  .#{iv.$class-prefix}menu-list{
+    a{
+      color: #{cv.getVar("body-color")};
+      &.#{iv.$class-prefix}is-active{
+        color: #{cv.getVar("scheme")};
+      }
+    }
+  }
+
+  // Body
+
+  body {
+    min-height: 100vh;
+    background-image: linear-gradient(shade-color($body-bg, 10%) 0%, $body-bg 7%, $body-bg 80%, shade-color(#173e98, 50%) 100%);
+    @include text-shadow-sm("scheme");
+  }
+
+  // Typography
+
+  @include header-shadow("cyan");
+
+  a {
+    @include text-shadow-sm("link");
+  }
+
+  hr {
+    border-top: 1px solid #{cv.getVar("primary")};
+    @include box-shadow("primary");
+    opacity: 1;
+  }
+
+  // Tables
+
+  table,
+  .#{iv.$class-prefix}table {
+    @include text-shadow-sm("white");
+  }
+
+  // Buttons
+
+  .#{iv.$class-prefix}button {
+    @each $name, $value in dv.$colors {
+      @if (($name != dark) or ($name != link)) {
+        .#{iv.$class-prefix}is-#{$name}{
+          @include box-shadow($name);
+        }
+      }
+
+      &.#{iv.$class-prefix}is-#{$name} {
+        @include text-shadow-sm("white");
+      }
+    }
+
+    &.#{iv.$class-prefix}is-dark {
+      @include box-shadow("primary");
+    }
+
+    &.#{iv.$class-prefix}is-link {
+      box-shadow: none;
+      @include text-shadow("body-color");
+    }
+
+    &.#{iv.$class-prefix}is-outline {
+      color: $white;
+      border-width: 2px;
+    }
+  }
+
+  // Navbars
+
+  .#{iv.$class-prefix}navbar {
+    @each $name, $value in dv.$colors {
+      &.#{iv.$class-prefix}is-#{$name} {
+        @include box-shadow($name);
+      }
+    }
+  }
+
+  // // Navs
+
+  // .nav-link {
+  //   &.disabled {
+  //     @include text-shadow-sm($nav-link-disabled-color);
+  //   }
+  // }
+
+  .#{iv.$class-prefix}tabs {
+    li.#{iv.$class-prefix}is-active {
+      @include text-shadow-sm("component-active-bg");
+    }
+
+    .#{iv.$class-prefix}is-toggle{
+      li.#{iv.$class-prefix}is-active {
+        @include box-shadow("component-active-bg");
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}breadcrumb {
+    &.#{iv.$class-prefix}is-active {
+      @include text-shadow-sm("component-active-bg");
+    }
+
+    & + li::before {
+      @include text-shadow-sm("text-muted");
+    }
+  }
+
+  // .page-link {
+  //   border-radius: $border-radius;
+  // }
+
+  // .page-item.active {
+  //   .page-link {
+  //     @include box-shadow($component-active-bg);
+  //   }
+  // }
+
+  // Forms
+
+  // legend {
+  //   @include text-shadow($body-color);
+  // }
+
+  // .valid-feedback {
+  //   @include text-shadow-sm($success);
+  // }
+
+  // .invalid-feedback {
+  //   @include text-shadow-sm($danger);
+  // }
+
+  // Indicators
+
+  .#{iv.$class-prefix}notification {
+    @each $name, $value in dv.$colors {
+      &.#{iv.$class-prefix}is-#{$name} {
+        @include text-shadow-sm("white");
+        @include box-shadow-lg($name);
+      }
+    }
+
+    @include header-shadow("white");
+  }
+
+  .#{iv.$class-prefix}progress {
+    overflow: visible;
+
+    &::-webkit-progress-value,
+    &::-moz-progress-bar,
+    &::-ms-fill {
+      @include box-shadow("primary");
+    }
+
+    @each $name, $value in dv.$colors {
+      &.#{iv.$class-prefix}is-#{$name} {
+        &::-webkit-progress-value,
+        &::-moz-progress-bar,
+        &::-ms-fill {
+          @include box-shadow($name);
+        }
+      }
+    }
+  }
+
+  // .tooltip {
+  //   --bs-tooltip-bg: var(--bs-body-bg);
+  //   --bs-tooltip-color: var(--bs-body-color);
+
+  //   &-inner,
+  //   .arrow {
+  //     @include box-shadow-lg($primary);
+  //   }
+  // }
+
+  // .modal,
+  // .popover,
+  // .toast {
+  //   @include text-shadow-sm($white);
+  //   @include header-shadow($white);
+  // }
+
+  // .popover,
+  // .toast {
+  //   @include box-shadow-lg($primary);
+  // }
+
+  .#{iv.$class-prefix}modal-content,
+  .#{iv.$class-prefix}modal-card {
+    @include box-shadow-lg("primary");
+  }
+
+  // Containers
+
+  // .list-group {
+
+  //   &-item.active {
+  //     @include header-shadow($white);
+  //   }
+  // }
+
+  .#{iv.$class-prefix}card {
+    background-color: transparent;
+    @include text-shadow-sm("white");
+
+    @each $name, $value in dv.$colors {
+      &.#{iv.$class-prefix}is-#{$name}{
+        @include box-shadow($name);
+      }
+    }
+    @include header-shadow("white");
+  }
+
+}

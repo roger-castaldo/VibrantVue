@@ -1,0 +1,52 @@
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv
+@use "../../../../node_modules/bulma/sass/utilities/derived-variables" as dv
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+@use "sass:list"
+    
+.#{iv.$class-prefix}is-page-notification-container 
+    background-color: #{cv.getVar("notification-background-color")}
+    border-radius: #{cv.getVar("notification-radius")}
+    padding-top: 1.25rem
+    padding-bottom: 1.25rem
+    padding-left: calc(1.25rem + 32px)
+    padding-right: calc(1.25rem + 32px)
+    white-space: pre-wrap
+    position: fixed
+    top: 10px
+    right: 10px
+    z-index: 9999
+    border-width: 3px
+    border-style: solid
+    text-align: left
+    max-width: 33%
+
+    &.#{iv.$class-prefix}has-no-close 
+        padding-right: 1.25rem
+
+    .#{iv.$class-prefix}fa-ico:first-child 
+        position: absolute
+        position: absolute
+        left: 5px
+        top: 50%
+
+    .#{iv.$class-prefix}fa-ico:last-child 
+        height: 32px
+        position: absolute
+        right: 0.25rem
+        top: calc(50% - 1.25rem - 10px)
+    
+    // Colors
+    @each $name, $pair in dv.$colors
+        &.#{iv.$class-prefix}is-#{$name} 
+            background-color: #{cv.getVar($name)}
+            color: #{cv.getVar($name,"","-invert")}
+            border-color: #{cv.getVar($name,"","-invert")}
+            @if list.length($pair) >= 4 
+                &.is-light-mode 
+                    background-color: #{cv.getVar($name,"","-light")}
+                    color: #{cv.getVar($name,"","-dark")}
+                    border-color: #{cv.getVar($name,"","-dark")}
+
+.#{iv.$class-prefix}has-navbar-fixed-top 
+    .#{iv.$class-prefix}is-page-notification-container
+        margin-top: #{cv.getVar("navbar-height")}

@@ -1,0 +1,47 @@
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+	
+.#{iv.$class-prefix}card.#{iv.$class-prefix}is-fullwidth,
+.#{iv.$class-prefix}panel.#{iv.$class-prefix}is-fullwidth,
+.#{iv.$class-prefix}columns.#{iv.$class-prefix}is-fullwidth
+	width: 100%
+
+.#{iv.$class-prefix}card.#{iv.$class-prefix}is-fullheight,
+.#{iv.$class-prefix}panel.#{iv.$class-prefix}is-fullheight,
+.#{iv.$class-prefix}columns.#{iv.$class-prefix}is-fullheight
+	height: 100%
+
+.#{iv.$class-prefix}modal-card.#{iv.$class-prefix}is-fullwidth,
+.#{iv.$class-prefix}modal-content.#{iv.$class-prefix}is-fullwidth
+	width: -webkit-max-content
+	width: -moz-max-content
+	max-width: calc(100vw - #{cv.getVar("modal-card-spacing")})
+	min-width: 300px
+
+.#{iv.$class-prefix}modal-card.#{iv.$class-prefix}is-fullheight,
+.#{iv.$class-prefix}modal-content.#{iv.$class-prefix}is-fullheight
+	height: -webkit-max-content
+	height: -moz-max-content
+	
+.#{iv.$class-prefix}modal-card.#{iv.$class-prefix}is-maxwidth,
+.#{iv.$class-prefix}modal-content.#{iv.$class-prefix}is-maxwidth
+	width: calc(100vw - #{cv.getVar("modal-card-spacing")})
+
+.#{iv.$class-prefix}modal-card.#{iv.$class-prefix}is-maxheight,
+.#{iv.$class-prefix}modal-content.#{iv.$class-prefix}is-maxheight
+	height: calc(100vh - #{cv.getVar("modal-card-spacing")})
+
+.#{iv.$class-prefix}modal-card.#{iv.$class-prefix}is-maxheight > .#{iv.$class-prefix}modal-card-body 
+	padding-top: 0
+	padding-bottom: 0
+
+.#{iv.$class-prefix}modal-card.#{iv.$class-prefix}is-maxwidth > .#{iv.$class-prefix}modal-card-body 
+	padding-left: 0
+	padding-right: 0
+
+.#{iv.$class-prefix}tabs.#{iv.$class-prefix}is-centered,
+.#{iv.$class-prefix}tabs.#{iv.$class-prefix}is-right
+	width: 100%
+	
+.#{iv.$class-prefix}tabs.#{iv.$class-prefix}is-centered.#{iv.$class-prefix}is-fullwidth > ul > li 
+	flex-grow: initial

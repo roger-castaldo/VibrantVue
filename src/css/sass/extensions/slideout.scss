@@ -1,0 +1,225 @@
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../node_modules/bulma/sass/utilities/mixins" as mx;
+@use "../functions.sass" as fn;
+
+@mixin overlay(){
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left:0;
+    position:absolute;
+    margin:0;
+    padding:0;
+}
+
+$slideout-z: 40 !default;
+$slideout-h: cv.getVar("scheme-h");
+$slideout-s: cv.getVar("scheme-s");
+$slideout-head-background-l: cv.getVar("dark-l");
+$slideout-foot-background-l: cv.getVar("dark-l");
+$slideout-border-l: cv.getVar("border-l") !default;
+$slideout-content-background-l: cv.getVar("background-l");
+$slideout-color-l: cv.getVar("text-l");
+$slideout-head-color-l: cv.getVar("dark-invert-l");
+$slideout-foot-color-l: cv.getVar("dark-invert-l");
+$slideout-border-l-delta: -20% !default;
+
+$slideout-background-background-color: hsla(
+  #{cv.getVar("scheme-h")},
+  #{cv.getVar("scheme-s")},
+  #{cv.getVar("scheme-invert-l")},
+  0.86
+) !default;
+
+$slideout-head-padding: calc(#{cv.getVar("slideout-radius")} / 2) !default;
+
+$slideout-title-line-height: 1 !default;
+$slideout-title-size: cv.getVar("size-4") !default;
+
+$slideout-body-padding: calc(#{cv.getVar("slideout-radius")} / 2) cv.getVar("size-normal");
+$slideout-radius: cv.getVar("radius-large") !default;
+$slideout-left-margin: 10vw;
+$slideout-min-width: 15vw;
+
+.#{iv.$class-prefix}slideout {
+    @include cv.register-vars(
+    (
+      "slideout-h": fn.getVarWithBackup("message-h",$slideout-h),
+      "slideout-s": fn.getVarWithBackup("message-s",$slideout-s),
+      "slideout-head-background-l": fn.getVarWithBackup("message-background-l",$slideout-head-background-l),
+      "slideout-foot-background-l": fn.getVarWithBackup("message-background-l",$slideout-foot-background-l),
+      "slideout-border-l": fn.getVarWithBackup("message-border-l",$slideout-border-l),
+      "slideout-content-background-l": fn.getVarWithBackup("message-background-l",$slideout-content-background-l),
+      "slideout-color-l": fn.getVarWithBackup("message-color-l",$slideout-color-l),
+      "slideout-head-color-l": fn.getVarWithBackup("message-header-color-l",$slideout-head-color-l),
+      "slideout-foot-color-l": fn.getVarWithBackup("message-header-color-l",$slideout-foot-color-l),
+      "slideout-border-l-delta": fn.getVarWithBackup("message-border-l-delta",$slideout-border-l-delta),
+      "slideout-body-padding":$slideout-body-padding,
+      "slideout-radius": $slideout-radius,
+      "slideout-left-margin":$slideout-left-margin,
+      "slideout-min-width":$slideout-min-width,
+      "slideout-body-color": cv.buildHslaString("slideout", cv.getVar("slideout-color-l")),
+      "slideout-z": fn.getVarWithBackup("modal-z",$slideout-z),
+      "slideout-background-background-color": fn.getVarWithBackup("modal-background-background-color",$slideout-background-background-color),
+      "slideout-head-background-color": cv.buildHslaString("slideout", cv.getVar("slideout-head-background-l")),
+      "slideout-foot-background-color": cv.buildHslaString("slideout", cv.getVar("slideout-foot-background-l")),
+      "slideout-content-background-color": cv.buildHslaString("slideout", cv.getVar("slideout-content-background-l")),
+      "slideout-head-padding": fn.getVarWithBackup("modal-card-head-padding",$slideout-head-padding),
+      "slideout-title-color": cv.buildHslaString("slideout", cv.getVar("slideout-head-color-l")),
+      "slideout-foot-color": cv.buildHslaString("slideout", cv.getVar("slideout-foot-color-l")),
+      "slideout-title-line-height":fn.getVarWithBackup("modal-card-title-line-height",$slideout-title-line-height),
+      "slideout-title-size":fn.getVarWithBackup("modal-card-title-size",$slideout-title-size)
+    )
+  );
+
+  @each $name, $components in dv.$colors {
+    &.#{iv.$class-prefix}is-#{$name} {
+      @include cv.register-vars(
+        (
+          "slideout-h": #{cv.getVar($name, "", "-h")},
+          "slideout-s": #{cv.getVar($name, "", "-s")},
+          "slideout-border-l":
+            calc(
+              #{cv.getVar($name, "", "-l")} + #{cv.getVar(
+                  "slideout-border-l-delta"
+                )}
+            ),
+          "slideout-color-l": #{cv.getVar($name, "", "-on-scheme-l")},
+          "slideout-head-background-l": #{cv.getVar($name, "", "-l")},
+          "slideout-head-color-l": #{cv.getVar($name, "", "-invert-l")},
+          "slideout-foot-background-l": #{cv.getVar($name, "", "-l")},
+          "slideout-foot-color-l": #{cv.getVar($name, "", "-invert-l")}
+        )
+      );
+    }
+  }
+}
+
+.#{iv.$class-prefix}slideout{
+    @include overlay();
+    left: 100vw;
+    align-items: flex-end;
+    flex-direction: column;
+    overflow: hidden;
+    position: fixed;
+    z-index: cv.getVar("slideout-z");
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+
+    &.#{iv.$class-prefix}no-animation {
+      -webkit-transition-duration: unset;
+      -moz-transition-duration: unset;
+      -o-transition-duration: unset;
+      transition-duration: unset;
+    }
+
+    // Modifiers
+    &.#{iv.$class-prefix}is-active {
+        display: flex;
+        left: 0;
+    }
+
+    &.#{iv.$class-prefix}is-fullwidth {
+      @include cv.register-vars(
+        (
+          "slideout-left-margin":50px
+        )
+      );
+    }
+
+    .#{iv.$class-prefix}slideout-background {
+        @include overlay();
+        background-color: cv.getVar("slideout-background-background-color");
+    }
+
+    .#{iv.$class-prefix}slideout-content{
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        min-height:100vh;
+        max-height:100vh;
+        overflow: hidden;
+        overflow-y: visible;
+        border-top-left-radius: cv.getVar("slideout-radius");
+        border-bottom-left-radius: cv.getVar("slideout-radius");
+        max-width: calc(100vw - #{cv.getVar("slideout-left-margin")});
+        min-width: min(calc(100vw - #{cv.getVar("slideout-left-margin")}),#{cv.getVar("slideout-min-width")});
+        background-color: cv.getVar("slideout-content-background-color");
+        color: cv.getVar("slideout-body-color");
+        position:relative;
+        border-left: solid cv.getVar("border-width") #{cv.buildHslaString("slideout", "slideout-border-l")};
+
+        .#{iv.$class-prefix}slideout-head,
+        .#{iv.$class-prefix}slideout-foot {
+            align-items: center;
+            display: flex;
+            flex-shrink: 0;
+            justify-content: flex-start;
+            padding: cv.getVar("slideout-head-padding");
+            position: relative;
+        }
+
+        .#{iv.$class-prefix}slideout-head{
+            background-color: cv.getVar("slideout-head-background-color");
+            border-top-left-radius: cv.getVar("slideout-radius");
+            color: cv.getVar("slideout-title-color");
+
+            .#{iv.$class-prefix}slideout-title {
+                flex-grow: 1;
+                flex-shrink: 0;
+                font-size: cv.getVar("slideout-title-size");
+                line-height: cv.getVar("slideout-title-line-height");
+            }
+        }
+
+        .#{iv.$class-prefix}slideout-foot {
+            background-color: cv.getVar("slideout-foot-background-color");
+            border-bottom-left-radius: cv.getVar("slideout-radius");
+            color: cv.getVar("slideout-foot-color");
+        }
+
+        .#{iv.$class-prefix}slideout-body {
+            @include mx.overflow-touch;
+            background-color: cv.getVar("slideout-content-background-color");
+            flex-grow: 1;
+            flex-shrink: 1;
+            overflow: auto;
+            padding: cv.getVar("slideout-body-padding");
+            border-top-left-radius: cv.getVar("slideout-radius");
+            border-bottom-left-radius: cv.getVar("slideout-radius");
+        }
+
+        .#{iv.$class-prefix}delete{
+            position:relative;
+            right: calc(-100% + (2 * #{cv.getVar("size-normal")}));
+            top: calc(#{cv.getVar("size-normal")} / 2);
+            z-index: calc(#{cv.getVar("slideout-z")} + 1);
+        }
+
+        &:has(.#{iv.$class-prefix}slideout-head){
+            .#{iv.$class-prefix}slideout-body {
+                border-top-left-radius: 0;
+            }
+        }
+
+        &:has(.#{iv.$class-prefix}slideout-foot){
+            .#{iv.$class-prefix}slideout-body {
+                border-bottom-left-radius: 0;
+            }
+        }
+    }
+}
+
+@include mx.mobile {
+    .#{iv.$class-prefix}slideout {
+        @include cv.register-vars(
+        (
+          "slideout-left-margin":0
+        )
+      );
+    }
+}

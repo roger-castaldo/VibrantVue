@@ -1,0 +1,64 @@
+@use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../mixins" as mx;
+@use "./_bootswatch" as bs;
+@use 'sass:color';
+@use 'sass:math';
+
+
+@include mx.bulma-theme($name: "spacelab") {
+
+    $white:    #fff !default;
+    $gray-100: #f8f9fa !default;
+    $gray-200: #eee !default;
+    $gray-300: #dee2e6 !default;
+    $gray-400: #ced4da !default;
+    $gray-500: #999 !default;
+    $gray-600: #777 !default;
+    $gray-700: #495057 !default;
+    $gray-800: #333 !default;
+    $gray-900: #2d2d2d !default;
+    $black:    #000 !default;
+
+    $blue:    #446e9b !default;
+    $indigo:  #6610f2 !default;
+    $purple:  #6f42c1 !default;
+    $pink:    #e83e8c !default;
+    $red:     #cd0200 !default;
+    $orange:  #fd7e14 !default;
+    $yellow:  #d47500 !default;
+    $green:   #3cb521 !default;
+    $teal:    #20c997 !default;
+    $cyan:    #3399f3 !default;
+
+    @include mx.override-platform-colors((
+        "primary":$blue,
+        "secondary":$gray-500,
+        "success":$green,
+        "info":$cyan,
+        "warning":$yellow,
+        "danger":$red,
+        "light":(
+            $gray-200,
+            $gray-800
+        ),
+        "dark":(
+            $gray-800,
+            $gray-200
+        ),
+        "link":$cyan
+    ));
+
+    $list:mx.define-variable("text",$gray-600,());
+
+    $list:mx.define-variable("family-primary",
+        "\"Open Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+        $list);
+
+    $list:mx.define-variable("title-color",$gray-900,$list);
+    $list:mx.define-variable("subtitle-color",$gray-900,$list);
+    
+    @include mx.output-skin-content($list);
+
+    @include bs.boot-swatch-content($white);
+}

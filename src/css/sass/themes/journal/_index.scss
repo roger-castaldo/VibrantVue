@@ -1,0 +1,64 @@
+@use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../mixins" as mx;
+@use "./_bootswatch" as bs;
+@use 'sass:color';
+@use 'sass:math';
+
+
+@include mx.bulma-theme($name: "journal") {
+
+    $white:    #fff !default;
+    $gray-100: #f8f9fa !default;
+    $gray-200: #eee !default;
+    $gray-300: #dee2e6 !default;
+    $gray-400: #ced4da !default;
+    $gray-500: #aaa !default;
+    $gray-600: #777 !default;
+    $gray-700: #495057 !default;
+    $gray-800: #333 !default;
+    $gray-900: #222 !default;
+    $black:    #000 !default;
+
+    $blue:    #eb6864 !default;
+    $indigo:  #6610f2 !default;
+    $purple:  #6f42c1 !default;
+    $pink:    #e83e8c !default;
+    $red:     #f57a00 !default;
+    $orange:  #fd7e14 !default;
+    $yellow:  #f5e625 !default;
+    $green:   #22b24c !default;
+    $teal:    #20c997 !default;
+    $cyan:    #369 !default;
+
+    @include mx.override-platform-colors((
+        "primary":$blue,
+        "success":$green,
+        "info":$cyan,
+        "warning":$yellow,
+        "danger":$red,
+        "light":(
+            $gray-100,
+            $gray-900
+        ),
+        "dark":(
+            $gray-900,
+            $gray-100
+        )
+    ));
+
+    $list:mx.define-variable("title-family",
+        "\"News Cycle\", \"Arial Narrow Bold\", sans-serif",
+        ());
+    $list:mx.define-variable("subtitle-family",
+        "\"News Cycle\", \"Arial Narrow Bold\", sans-serif",
+        $list);
+
+    $list:mx.define-variable("title-weight",700,$list);
+    $list:mx.define-variable("title-line-height",1.1,$list);
+
+    $list:mx.define-variable("button-padding-horizontal",1rem,$list);   
+
+    @include mx.output-skin-content($list);
+
+    @include bs.boot-swatch-content($white);
+}

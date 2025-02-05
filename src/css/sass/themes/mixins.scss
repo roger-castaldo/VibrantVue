@@ -1,0 +1,301 @@
+@use 'sass:list';
+@use "sass:map";
+@use "sass:string";
+@use "sass:color";
+@use "sass:math";
+@use "sass:meta";
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../../../../node_modules/bulma/sass/themes/setup" as setup;
+
+$no-palette: ("white", "black", "light", "dark");
+
+$variableMaps:(
+  "radius":(
+    "control-radius","message-radius","message-header-radius","message-body-radius",
+    "tabs-boxed-link-radius", "tabs-toggle-link-radius","panel-heading-radius",
+    "dropdown-content-radius", "tag-radius","notification-radius",
+    "input-radius","file-radius"
+  ),
+  "radius-large":(
+    "panel-radius","navbar-dropdown-radius","navbar-dropdown-boxed-radius",
+    "modal-card-head-radius","modal-card-foot-radius","box-radius"
+  ),
+  "radius-rounded":("progress-border-radius"),
+  "radius-small":("control-radius-small","menu-item-radius")
+);
+
+$classMaps:(
+    "title-":("title"),
+    "subtitle-":("subtitle"),
+    "box-":("box"),
+    "button-":("button"),
+    "table-":("table"),
+    "pagination-":("pagination"),
+    "navbar-":("navbar"),
+    "tabs-":("tabs"),
+    "progress-":("progress"),
+    "panel-":("panel"),
+    "breadcrumb-":("breadcrumb"),
+    "dropdown-":("dropdown"),
+    "content-":("content"),
+    "input-":("input","control","textarea","select select"),
+    "control-":("input","control","textarea","select select","button")
+);
+
+@function get-className($name){
+    @each $key,$value in $classMaps{
+        @if string.slice($name,1,string.length($key)) == $key {
+            @return $value;
+        }
+    }
+    @return "";
+}
+
+@function define-variable($name,$value,$list,$className:""){
+    @if $className=="" {
+        $className:get-className($name);
+    }
+    $list:list.append($list,(
+        "name":$name,
+        "value":$value,
+        "class-name":$className,
+        "type":"variable"
+    ));
+    @if map.has-key($variableMaps, $name) {
+        @each $var in map.get($variableMaps,$name){
+          $list:define-variable($var,$value,$list,$className);
+        }
+      }
+    @return $list;
+}
+
+@function define-color($name,$value,$list,$className:""){
+  @if $className=="" {
+      $className:get-className($name);
+  }
+  $list:list.append($list,(
+      "name":$name,
+      "value":$value,
+      "class-name":$className,
+      "type":"color"
+  ));
+  @if map.has-key($variableMaps, $name) {
+      @each $var in map-get($variableMaps,$name){
+        $list:define-variable($var,$value,$list,$className);
+      }
+    }
+  @return $list;
+}
+
+@function darken-color($name,$amount,$a:1){
+    @return cv.buildHslaString($name,"calc(max(#{cv.getVar($name, '', '-l')} - #{$amount}%,0%))",$a);
+}
+
+@function lighten-color($name,$amount,$a:1){
+    @return cv.buildHslaString($name,"calc(min(#{cv.getVar($name, '', '-l')} + #{$amount}%,100%))",$a);
+}
+
+@mixin gradient-y-three-colors($start,$middle,$middleSet,$end){
+  background-image: linear-gradient(
+    180deg,
+    #{$start} 0%,
+    #{$middle} #{$middleSet},
+    #{$end} 100%
+  );
+}
+
+@mixin output-skin-content($list){
+  //@include setup.setup-theme;
+
+  $classes:();
+
+  @each $value in $list {
+    @include mixin-variable($value);
+    @include mixin-color($value);
+    @if map.get($value,"class-name")!=""{
+      $names:build-classes(map.get($value,"class-name"));
+      @if list.index($classes,$names)==null {
+        $classes:list.append($classes,$names);
+      }
+    }
+  }
+
+  @each $name in $classes {
+    #{$name}{
+      @each $value in $list {
+        @if map.get($value,"class-name")!=""{
+          $names:build-classes(map.get($value,"class-name"));
+          @if $names==$name {
+            @include mixin-variable($value);
+            @include mixin-color($value);
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin mixin-variable($value){
+  @if map.get($value,"type")=="variable"{
+    @include cv.register-var(map.get($value,"name"),#{map.get($value,"value")});
+  }
+}
+
+@mixin mixin-color($value){
+  @if map.get($value,"type")=="color"{
+    @include cv.register-var(map.get($value,"name"),map.get($value,"value"));
+    @include cv.register-hsl(map.get($value,"name"),map.get($value,"value"));
+  }
+}
+
+@function build-classes($classNames){
+  $classes:'';
+  @each $class in $classNames {
+    @if $classes != ''{
+      $classes:"#{$classes},";
+    }
+    $classes:"#{$classes}.#{iv.$class-prefix}#{$class}";
+  }
+  @return $classes;
+}
+
+@mixin bulma-theme($name) {
+    :root[data-#{iv.$class-prefix}theme="#{$name}"],
+    [data-#{iv.$class-prefix}theme="#{$name}"],
+    :root.#{iv.$class-prefix}theme-#{$name},
+    .#{iv.$class-prefix}theme-#{$name} {
+      @content;
+    }
+}
+
+@mixin override-color-variables($variableName,$overrideName,$backgroundName:"background"){
+    @include cv.register-vars(
+        (
+            "#{$variableName}-h": #{cv.getVar($overrideName, "", "-h")},
+            "#{$variableName}-s": #{cv.getVar($overrideName, "", "-s")},
+            "#{$variableName}-#{$backgroundName}-l": #{cv.getVar($overrideName, "", "-l")}
+        )
+    ); 
+    @each $name,$pair in dv.$colors{
+        &.#{iv.$class-prefix}is-#{$name} {
+          @include cv.register-vars(
+            (
+              "#{$variableName}-h": #{cv.getVar($name, "", "-h")},
+              "#{$variableName}-s": #{cv.getVar($name, "", "-s")},
+              "#{$variableName}-#{$backgroundName}-l": #{cv.getVar($name, "", "-l")}
+            )
+          );
+        }
+      }
+}
+
+@mixin override-color-variable($variableName,$overrideName){
+    @include cv.register-var($variableName,#{cv.getVar($overrideName)});
+    @each $name,$pair in dv.$colors{
+        &.#{iv.$class-prefix}is-#{$name} {
+            @include cv.register-var($variableName,#{cv.getVar($name)});
+        }
+      }
+}
+
+@mixin override-platform-colors($overrideColors,$scheme-main:dv.$scheme-main){
+
+  $scheme-main-l:math.floor(color.channel($scheme-main, "lightness", $space: hsl));
+
+  @each $name, $color in $overrideColors {
+    $base: $color;
+    $invert: null;
+    $light: null;
+    $dark: null;
+
+    @if meta.type-of($color == "list") {
+      $base: list.nth($color, 1);
+
+      @if list.length($color) > 3 {
+        $invert: list.nth($color, 2);
+        $light: list.nth($color, 3);
+        $dark: list.nth($color, 4);
+      } @else if list.length($color) > 1 {
+        $invert: list.nth($color, 2);
+      }
+    }
+
+    @if list.index($no-palette, $name) {
+      @include cv.generate-basic-palette($name, $base, $invert);
+    } @else {
+      @include cv.generate-color-palette(
+        $name,
+        $base,
+        $scheme-main-l,
+        $invert,
+        $light,
+        $dark
+      );
+    }
+    @include cv.generate-on-scheme-colors($name, $base, $scheme-main);
+  }
+}
+
+@mixin override-dark-mode-basics($overrideColors,$scheme-main,$scheme-main-bis,$scheme-main-ter){
+
+  @include cv.generate-color-palette(
+                "scheme",
+                $scheme-main,
+                100%,
+                fn.bulmaFindColorInvert($scheme-main));
+
+  $colors: fn.mergeColorMaps(
+    (
+      "white": (
+        iv.$white,
+        iv.$black,
+      ),
+      "black": (
+        iv.$black,
+        iv.$white,
+      ),
+      "light": (
+        dv.$light,
+        dv.$dark,
+      ),
+      "dark": (
+        dv.$dark,
+        dv.$light,
+      ),
+      "text": dv.$text,
+      "primary": dv.$primary,
+      "link": dv.$link,
+      "info": dv.$info,
+      "success": dv.$success,
+      "warning": dv.$warning,
+      "danger": dv.$danger
+    ),
+    $overrideColors
+  );
+
+  @include override-platform-colors($overrideColors,$scheme-main);
+
+  @include cv.register-vars((
+    "scheme-main-l": math.floor(color.channel($scheme-main,"lightness", $space: hsl)),
+    "scheme-main-bis":$scheme-main-bis,
+    "scheme-main-ter":$scheme-main-ter,
+    "soft-l": iv.$dark-l,
+    "bold-l": iv.$light-l,
+    "soft-invert-l": iv.$light-l,
+    "bold-invert-l": iv.$dark-l,
+    "background-l": calc(#{cv.getVar("scheme","","-l")} + 10%),
+    "border-weak-l": 21%,
+    "border-l": 24%,
+    "text-weak-l": calc(#{cv.getVar("text","","-l")} + 37%),
+    "text-strong-l": calc(#{cv.getVar("text","","-l")} + 13%),
+    "hover-background-l-delta": 5%,
+    "active-background-l-delta": 10%,
+    "hover-border-l-delta": 10%,
+    "active-border-l-delta": 20%,
+    "hover-color-l-delta": 5%,
+    "active-color-l-delta": 10%
+  ));
+}

@@ -1,0 +1,24 @@
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+	
+div.#{iv.$class-prefix}table-container.#{iv.$class-prefix}is-fixed
+	overflow: initial !important
+
+div.#{iv.$class-prefix}table-container.#{iv.$class-prefix}is-fixed table,
+table.#{iv.$class-prefix}is-fixed
+	thead
+		position: -webkit-sticky 
+		position: sticky
+		top: 0
+		left: 0
+		z-index: 1
+		tr 
+			th
+				background-color: #{cv.getVar("table-background-color")}
+
+div.#{iv.$class-prefix}table-container.#{iv.$class-prefix}is-fixed table.#{iv.$class-prefix}is-striped,
+table.#{iv.$class-prefix}is-fixed.#{iv.$class-prefix}is-striped
+	thead
+		tr 
+			th
+				border-width: 0

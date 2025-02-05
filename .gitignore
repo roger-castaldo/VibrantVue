@@ -129,3 +129,10 @@ dist/css
 .yarn/install-state.gz
 .pnp.*
 package-lock.json
+dist/components.*
+dist/style.css
+dist/style.css.map
+
+docs/*.json
+/html
+/html

@@ -1,0 +1,119 @@
+@use "../../../../../node_modules/bulma/sass/utilities/functions" as fn;
+@use "../mixins" as mx;
+@use "./_bootswatch" as bs;
+@use 'sass:color';
+@use 'sass:math';
+
+
+@include mx.bulma-theme($name: "materia") {
+
+    $white:    #fff !default;
+    $gray-100: #f8f9fa !default;
+    $gray-200: #eee !default;
+    $gray-300: #dee2e6 !default;
+    $gray-400: #ced4da !default;
+    $gray-500: #bbb !default;
+    $gray-600: #666 !default;
+    $gray-700: #444 !default;
+    $gray-800: #222 !default;
+    $gray-900: #212121 !default;
+    $black:    #000 !default;
+
+    $blue:    #2196f3 !default;
+    $indigo:  #6610f2 !default;
+    $purple:  #6f42c1 !default;
+    $pink:    #e83e8c !default;
+    $red:     #e51c23 !default;
+    $orange:  #fd7e14 !default;
+    $yellow:  #ff9800 !default;
+    $green:   #4caf50 !default;
+    $teal:    #20c997 !default;
+    $cyan:    #9c27b0 !default;
+
+    @include mx.override-platform-colors((
+        "primary":$blue,
+        "success":$green,
+        "info":$cyan,
+        "warning":$yellow,
+        "danger":$red,
+        "light":(
+            $gray-100,
+            $gray-800
+        ),
+        "dark":(
+            $gray-800,
+            $gray-100
+        )
+    ));
+
+    $list:mx.define-variable("text",$gray-700,());
+    $list:mx.define-variable("body-size",1rem,$list);
+    $list:mx.define-variable("body-font-size",1rem,$list);
+    $list:mx.define-variable("body-font-size",1rem,$list);
+    $list:mx.define-variable("size-normal",1rem,$list);
+    $list:mx.define-variable("weight-normal",400,$list);
+
+    $list:mx.define-variable("family-primary",
+        "Roboto, -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Helvetica Neue\", Arial, sans-serif",
+        $list);
+
+    $list:mx.define-variable("button-padding-vertical",0.8rem,$list);
+    $list:mx.define-variable("button-padding-horizontal",1rem,$list);
+
+
+    $list:mx.define-variable("control-padding-vertical",1rem,$list);
+    $list:mx.define-variable("control-padding-horizontal",0,$list);
+
+    $list:mx.define-variable("input-disabled-background-color",transparent,$list);
+    /*
+
+// Forms
+$input-bg:                       transparent !default;
+$input-color:                    $gray-600 !default;
+$input-border-color:             transparent !default;
+$input-border-width:             0 !default;
+$input-border-radius:            0 !default;
+$input-border-radius-lg:         0 !default;
+$input-border-radius-sm:         0 !default;
+$input-placeholder-color:        rgba(0, 0, 0, .4) !default;
+$input-group-addon-bg:           transparent !default;
+
+// Navs
+
+$nav-link-disabled-color:       $gray-500 !default;
+$nav-tabs-border-color:         transparent !default;
+
+// Navbar
+
+$navbar-padding-y:                  1rem !default;
+$navbar-dark-color:                 rgba($white, .75) !default;
+$navbar-dark-hover-color:           $white !default;
+
+// Cards
+
+$card-border-width:                 0 !default;
+$card-border-color:                 transparent !default;
+
+// Tooltips
+
+$tooltip-bg:                        $gray-700 !default;
+
+// Modals
+
+$modal-content-border-color:        transparent !default;
+
+// Progress bars
+
+$progress-height:               .375rem !default;
+$progress-border-radius:        0 !default;
+
+// Close
+
+$btn-close-color:            $white !default;
+$btn-close-opacity:          .6 !default;
+$btn-close-hover-opacity:    1 !default;*/
+
+    @include mx.output-skin-content($list);
+
+    @include bs.boot-swatch-content($white, $gray-600, $gray-900, $gray-400, $blue);
+}

@@ -1,0 +1,53 @@
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv
+@use "../../../../node_modules/bulma/sass/utilities/derived-variables" as dv
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+    
+$border-sides: 'left','right','top','bottom'
+$border-styles: 'dotted','dashed','double','groove','ridge','inset','outset'
+
+.#{iv.$class-prefix}is-bordered
+    border-width: 1px
+    border-style: solid
+    &.#{iv.$class-prefix}is-rounded
+        border-radius: #{cv.getVar("radius")}
+    @each $name, $pair in dv.$colors
+        &.#{iv.$class-prefix}is-#{$name}
+            border-color: #{cv.getVar($name,"","-invert")}
+
+@each $side in $border-sides
+    .#{iv.$class-prefix}is-bordered-#{$side}
+        border-#{$side}-width: 1px
+        border-#{$side}-style: solid
+        &.#{iv.$class-prefix}is-rounded 
+            border-radius: #{cv.getVar("radius")}
+        @each $name, $pair in dv.$colors
+            &.#{iv.$class-prefix}is-#{$name}
+                border-#{$side}-color: #{cv.getVar($name,"","-invert")}
+
+@each $style in $border-styles
+    .#{iv.$class-prefix}is-bordered-#{$style}
+        border-width: 1px 
+        border-style: $style 
+        &.#{iv.$class-prefix}is-rounded 
+            border-radius: #{cv.getVar("radius")}
+        @each $name, $pair in dv.$colors
+            &.#{iv.$class-prefix}is-#{$name}
+                border-color: #{cv.getVar($name,"","-invert")}
+    @each $side in $border-sides 
+        .#{iv.$class-prefix}is-bordered-#{$side}-#{$style}
+            border-#{$side}-style: $style
+            border-#{$side}-width: 1px  
+            &.#{iv.$class-prefix}is-rounded 
+                border-radius: #{cv.getVar("radius")}
+            @each $name, $pair in dv.$colors
+                &.#{iv.$class-prefix}is-#{$name}
+                    border-#{$side}-color: #{cv.getVar($name,"","-invert")}
+
+@for $i from 1 through 12
+    .#{iv.$class-prefix}is-bordered 
+        &.#{iv.$class-prefix}has-border-size-#{$i}
+            border-width: #{$i}px
+    @each $side in $border-sides
+        .#{iv.$class-prefix}is-bordered-#{$side}
+            &.#{iv.$class-prefix}has-border-size-#{$i}
+                border-#{$side}-width: #{$i}px
