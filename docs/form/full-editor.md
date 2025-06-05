@@ -6,7 +6,6 @@ A full editor style of form input (uses SummerNote)
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
-| inputId | string ||  | |
 | name | string ||  | The name of the form element|
 | disabled | boolean ||  | Indicates if it is currently disabled|
 ## Events

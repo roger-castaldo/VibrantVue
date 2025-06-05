@@ -5,10 +5,9 @@ A date input used in a form
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
-| disabled | boolean || false | Indicates if it is currently disabled|
+| inputId | string ||  | definied internal during form construction to ensure all labels and inputs maintain unique ids and support proper ids for accessibility|
 | name | string ||  | The name of the form element|
-| inputId | string ||  | |
-| label | string ||  | Label to use|
+| disabled | boolean || false | Indicates if it is currently disabled|
 | includeTime | boolean ||  | Indicates if this is for a date and time or just a date|
 ## Events
 

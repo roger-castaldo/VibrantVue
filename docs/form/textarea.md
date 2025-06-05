@@ -6,9 +6,9 @@ A text area input for the form
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
-| disabled | boolean ||  | Indicates if it is currently disabled|
+| inputId | string ||  | definied internal during form construction to ensure all labels and inputs maintain unique ids and support proper ids for accessibility|
 | name | string ||  | The name of the form element|
-| inputId | string ||  | |
+| disabled | boolean ||  | Indicates if it is currently disabled|
 | maxlength | number ||  | |
 | rows | number ||  | |
 | cols | number ||  | |

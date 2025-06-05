@@ -6,9 +6,9 @@ A text input for the form
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
-| disabled | boolean ||  | Indicates if it is currently disabled|
+| inputId | string ||  | definied internal during form construction to ensure all labels and inputs maintain unique ids and support proper ids for accessibility|
 | name | string ||  | The name of the form element|
-| inputId | string ||  | |
+| disabled | boolean ||  | Indicates if it is currently disabled|
 | subtype | string || 'text' | The subtype to use for a text input, such as password, text, etc.|
 | maxlength | number ||  | The maxLength to apply to the text box|
 ## Events
