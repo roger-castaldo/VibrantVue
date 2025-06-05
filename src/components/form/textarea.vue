@@ -1,17 +1,17 @@
 ﻿<template>
-    <textarea class="textarea" :id="props.name" :name="props.name" :rows="props.rows" :cols="props.cols" :maxlength="props.maxlength" :disabled="props.disabled" @keydown="keyPressed" v-model="value"/>
+    <textarea class="textarea" :id="props.inputId" :name="props.name" :rows="props.rows" :cols="props.cols" :maxlength="props.maxlength" :disabled="props.disabled" @keydown="keyPressed" v-model="value"/>
 </template>
 
 <script lang="ts">
     import { watch,ref } from 'vue';
-    import { coreFieldProps } from './common';
+    import { internalCoreFieldProps } from './common';
     import { ValueChangedEvent } from './typeDefinitions';
 
     const tabKeyCode = 9;
     const tab = String.fromCharCode(tabKeyCode);
     const newLine = String.fromCharCode(10);
 
-    interface fieldProps extends coreFieldProps{
+    interface fieldProps extends internalCoreFieldProps{
         maxlength?:number,
         rows?:number,
         cols?:number,

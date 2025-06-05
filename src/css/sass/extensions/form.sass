@@ -1,0 +1,12 @@
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv
+@use "../../../../node_modules/bulma/sass/utilities/derived-variables" as dv
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv
+
+.#{iv.$class-prefix}field
+    .#{iv.$class-prefix}label
+        .#{iv.$class-prefix}is-required-marker
+            display: inline-block
+            margin-right: 0.5em
+            color: cv.getVar("danger")
+            font-size: cv.getVar("help-size")
+            margin-top: .25rem

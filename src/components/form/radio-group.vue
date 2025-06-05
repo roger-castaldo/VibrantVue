@@ -2,9 +2,9 @@
     <div>
         <Promised :promise="Values">
             <template v-slot="{response}">
-                <template v-for="val in (response as ListItemValue[])" v-if="values!=null">
-                    <label class="radio is-block" v-show="!hiddenValues.some(v=>v===val.value.toString())">
-                        <input type="radio" :name="props.name" :value="val.value" class="radio" :disabled="props.disabled||disabledValues.some(v=>v===val.value.toString())"/>
+                <template v-for="(val,index) in (response as ListItemValue[])" v-if="values!=null">
+                    <label class="radio is-block" v-show="!hiddenValues.some(v=>v===val.value.toString())" :for="`${props.inputId}-${index}`">
+                        <input type="radio" :name="props.name" :value="val.value" class="radio" :disabled="props.disabled||disabledValues.some(v=>v===val.value.toString())" :id="`${props.inputId}-${index}`"/>
                         {{Translator(val.label)}}
                     </label>
                 </template>
@@ -20,13 +20,13 @@
     import { ref, computed, watch, inject } from 'vue';
     import Promised from '../common/Promised.vue';
     import {ListItemValue, ValueChangedEvent } from './typeDefinitions';
-    import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
-    import {Progress,Notification} from '../common/';
+    import { internalCommonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
+    import {Notification} from '../common/';
     import {NoticeTypes} from '../../enums';
     import { useLanguage } from '../shared';
     import translate from '../../messages/messages.js';
 
-    interface fieldProps extends commonFieldProps {
+    interface fieldProps extends internalCommonFieldProps {
         /**
          * The values to build the radio group from
          */

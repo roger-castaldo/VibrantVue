@@ -8,6 +8,7 @@ A text input for the form
 | -------- | ------- | -------- | ------- | ------- |
 | disabled | boolean ||  | Indicates if it is currently disabled|
 | name | string ||  | The name of the form element|
+| inputId | string ||  | |
 | subtype | string || 'text' | The subtype to use for a text input, such as password, text, etc.|
 | maxlength | number ||  | The maxLength to apply to the text box|
 ## Events

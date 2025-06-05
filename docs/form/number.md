@@ -8,6 +8,7 @@ A number input
 | -------- | ------- | -------- | ------- | ------- |
 | disabled | boolean || false | Indicates if it is currently disabled|
 | name | string ||  | The name of the form element|
+| inputId | string ||  | |
 | min | number ||  | The minimum value|
 | max | number ||  | The maximum value|
 | step | number ||  | The step value|

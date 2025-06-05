@@ -7,6 +7,7 @@ Used to create form within a form (a way of collecting child inputs that maybe h
 | -------- | ------- | -------- | ------- | ------- |
 | disabled | boolean || false | Indicates if it is currently disabled|
 | name | string ||  | The name of the form element|
+| inputId | string ||  | |
 | fields | [FormInputType](../types.md#FormInputType)\[\] ||  | The form components for this subform|
 ## Events
 

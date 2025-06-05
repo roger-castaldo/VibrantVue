@@ -23,6 +23,7 @@
     "build:bulma": "sass --style=compressed --load-path=node_modules src/css/sass/bulma-skins.scss dist/vibrantvue.min.css",
     "build:full_code": "npm run build:docs && npm run build:minify && npm run build:bulma",
     "build:full": "npm run build:translations && npm run build:full_code",
+    "check_duplicates": "sass --load-path=node_modules src/css/sass/bulma-skins.scss dist/vibrantvue.css && node checkDuplicateVars.cjs",
     "serve": "node index.js",
     "test": "vitest",
     "test:coverage": "vitest run --coverage"

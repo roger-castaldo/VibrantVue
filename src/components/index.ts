@@ -10,6 +10,7 @@ import * as utilities from './utilities.ts';
 import * as extended from './extended/index.ts';
 import {AutoCompleteEntry} from './extended/typeDefinitions.ts';
 import {Tab} from './layout/interfaces.ts';
+import { provideLanguage, useLanguage, provideIconSet, provideAceJS, provideAnimation, provideChatJS, provideFontAwesome, provideSummerNote} from './shared.ts';
 
 export const {Animation,Button,ButtonsContainer,ButtonAdd,ButtonCancel,ButtonDelete,ButtonDisable,ButtonDownload,
     ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonUpload,
@@ -28,4 +29,5 @@ export const {ColorTypes,NoticeTypes,Sizes,AnimationSpeeds,AnimationTypes,IconSi
     BadgePositions, ToolTipPositions,ToolTipTextAlignments,ButtonAlignments,SectionSizes} = enums;
 export const {loadNonEs6Module} = utilities;
 export const {Chart,CodeWriter,Grid,ProgressGroup} = extended;
+export { provideLanguage, useLanguage, provideIconSet, provideAceJS, provideAnimation, provideChatJS, provideFontAwesome, provideSummerNote};
 export type {ValueChangedEvent,ListItemValue,WizardStep,DropDownItem,DropDownBlock,SelectListItemValue,FormInputType,TranslateMethod,MenuItem,ParentMenuItem,AutoCompleteEntry,Tab};

@@ -6,6 +6,7 @@ Used to create a form with a given set of elements
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
 | translate | TranslateMethod ||  | The translate call method used to translate a given value (field title, element name, etc) into a desired language|
+| inputId | string ||  | |
 | elements | [FormInputType](../types.md#FormInputType)\[\] ||  | The elements of the form|
 | disabled | boolean || false | Indicates if the form is disabled|
 ## Events

@@ -5,7 +5,8 @@
         ref="inp"/>
     <Paragraph v-else-if="props.input.type===FormInputTypes.paragraph" 
         :name="props.input.name" 
-        :label="props.input.label" 
+        :label="props.input.label"
+        :input-id="inputId" 
         ref="inp"/>
     <Button v-else-if="props.input.type===FormInputTypes.button"
         v-bind="inputProps" 
@@ -13,9 +14,9 @@
         @buttonClicked="buttonClicked" 
         ref="inp"/>
     <template v-else>
-        <label class="label" :for="props.input.name" v-if="hasLabel">
+        <label class="label" :for="inputId" v-if="hasLabel">
             {{Translator(props.input.label??'')}}
-            <span class="help is-danger" v-if="props.input.required">*</span>
+            <span class="is-required-marker" v-if="props.input.required">*</span>
         </label>
         <div class="control">
             <component :is="inputType" v-bind="inputProps" @valueChanged="valueChanged" ref="inp"/>
@@ -24,7 +25,7 @@
 </template>
 
 <script lang="ts">
-    import { onMounted, computed, ref,readonly,inject } from 'vue';
+    import { onMounted, computed, ref,readonly,inject, useId } from 'vue';
     import Autocomplete from './autocomplete.vue';
     import Button from './button.vue';
     import CheckboxGroup from './checkbox-group.vue';
@@ -63,11 +64,12 @@
 
 <script lang="ts" setup>
 /**
- * A date input used in a form
+ * A wrapper for all for input elements
  * 
  * @displayName FormComponent
  */
     const inp = ref<any>(null);
+    const inputId = useId();
 
     const emit = defineEmits<{
         /**
@@ -156,6 +158,8 @@
             }
             delete result.additional;
         }
+        result.inputId = inputId;
+        console.log(result);
         return result;
     });
 

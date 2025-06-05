@@ -6,6 +6,7 @@ A select input
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
+| inputId | string ||  | |
 | name | string ||  | The name of the form element|
 | disabled | boolean ||  | Indicates if it is currently disabled|
 | translate | TranslateMethod ||  | The translate call method used to translate a given value (field title, element name, etc) into a desired language|

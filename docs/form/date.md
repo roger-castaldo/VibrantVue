@@ -7,6 +7,7 @@ A date input used in a form
 | -------- | ------- | -------- | ------- | ------- |
 | disabled | boolean || false | Indicates if it is currently disabled|
 | name | string ||  | The name of the form element|
+| inputId | string ||  | |
 | label | string ||  | Label to use|
 | includeTime | boolean ||  | Indicates if this is for a date and time or just a date|
 ## Events

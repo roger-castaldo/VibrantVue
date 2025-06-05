@@ -4,12 +4,21 @@ import { TranslateMethod } from "./typeDefinitions";
 export const HIDDEN_FIELDS_PROPERTY = "HiddenFields";
 export const DISABLED_FIELDS_PROPERTY = "DisabledFields";
 
+interface internalBaseFieldProps{
+    /**
+     * definied internal during form construction to ensure all labels and inputs maintain unique ids and support proper ids for accessibility
+     */
+    inputId:string;
+};
+
 export interface translateFieldProps{
     /**
      * The translate call method used to translate a given value (field title, element name, etc) into a desired language
      */
     translate?:TranslateMethod;
-}
+};
+
+export interface internalTranslateFieldProps extends internalBaseFieldProps,translateFieldProps{};
 
 export interface coreFieldProps{
     /**
@@ -22,7 +31,11 @@ export interface coreFieldProps{
     disabled:boolean;
 };
 
+export interface internalCoreFieldProps extends internalBaseFieldProps,coreFieldProps{};
+
 export interface commonFieldProps extends coreFieldProps,translateFieldProps{};
+
+export interface internalCommonFieldProps extends internalCoreFieldProps,internalTranslateFieldProps{};
 
 const defaultTranslate : TranslateMethod = (value:string)=>value;
 

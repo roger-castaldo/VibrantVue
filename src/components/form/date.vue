@@ -1,7 +1,7 @@
 ﻿<template>
     <div>
         <div class="control has-icons-left has-icons-right">
-            <input class="input is-expanded" :name="props.name" :id="props.name" type="text" v-model="value" :placeholder="'DD-MM-YYYY'+(props.includeTime ? ' HH:mm' : '')" :disabled="props.disabled">
+            <input class="input is-expanded" :name="props.name" :id="props.inputId" type="text" v-model="value" :placeholder="'DD-MM-YYYY'+(props.includeTime ? ' HH:mm' : '')" :disabled="props.disabled">
             <span class="icon is-small is-left is-clickable" @click="calendarClicked">
                 <Icon icon="calendar-alt" :size="IconSizes.xlarge"/>
             </span>
@@ -67,7 +67,7 @@
     import Time from './time.vue';
     import translate from '../../messages/messages.js';
     import { ValueChangedEvent } from './typeDefinitions';
-    import { coreFieldProps } from './common';
+    import { internalCoreFieldProps } from './common';
     import { useLanguage } from '../shared';
     import { ModalCard, ColumnContainer, Table } from '../layout/';
     import { IconSizes } from '../../enums';
@@ -82,11 +82,7 @@
         isSelected:boolean
     };
 
-    interface fieldProps extends coreFieldProps {
-        /**
-         * Label to use
-         */
-        label:string;
+    interface fieldProps extends internalCoreFieldProps {
         /**
          * Indicates if this is for a date and time or just a date
          */

@@ -1,13 +1,13 @@
 ﻿<template>
-    <input :type="subtype" class="input" :name="name" :disabled="disabled" :maxlength="props.maxlength" v-model="value">
+    <input :id="props.inputId" :type="subtype" class="input" :name="name" :disabled="disabled" :maxlength="props.maxlength" v-model="value">
 </template>
 
 <script lang="ts">
     import { ref, watch } from 'vue';
-    import { coreFieldProps } from './common';
+    import { internalCoreFieldProps } from './common';
     import { ValueChangedEvent } from './typeDefinitions';
 
-    interface fieldProps extends coreFieldProps{
+    interface fieldProps extends internalCoreFieldProps{
         /**
          * The subtype to use for a text input, such as password, text, etc.
          */

@@ -8,6 +8,7 @@ A text area input for the form
 | -------- | ------- | -------- | ------- | ------- |
 | disabled | boolean ||  | Indicates if it is currently disabled|
 | name | string ||  | The name of the form element|
+| inputId | string ||  | |
 | maxlength | number ||  | |
 | rows | number ||  | |
 | cols | number ||  | |
