@@ -1,6 +1,6 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import Panel from '../../../components/layout/panel.vue';
 import { stripCommentNodes } from '../../common';
 import { ColorTypes } from '../../../enums';
@@ -8,16 +8,17 @@ import { ColorTypes } from '../../../enums';
 
 describe('Panel', () => {
   test('check accessibility',async() => {
-    const {container} = render(Panel, {
-      props: {},
-      slots:{
-        header:()=>'Test Header',
-        tabs:()=>'Test Tabs',
-        default:()=>'Test Panel Block'
-      }
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const {container} = render(Panel, {
+        props: {},
+        slots:{
+          header:()=>'Test Header',
+          tabs:()=>'Test Tabs',
+          default:()=>'Test Panel Block'
+        }
+      });
+      return container;
     });
-
-    const accessibilityScanResults =  await axe.run(container);
 
     expect(accessibilityScanResults.violations).toEqual([]);
   }),

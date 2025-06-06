@@ -1,22 +1,22 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import filter from '../../../components/common/filter.vue';
 import { stripCommentNodes } from '../../common';
 import translate from '../../../messages/messages.js';
-import {sleep} from '../../common';
 import { userEvent } from '@vitest/browser/context'
 
 describe('Filter', () => {
     test('check accessibility',async() => {
-      const {container} = render(filter, {
-        props: {
-          text:'Sample text'
-        },
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+        const {container} = render(filter, {
+          props: {
+            text:'Sample text'
+          },
+        });
+        return container;
       });
-  
-      const accessibilityScanResults =  await axe.run(container);
-  
+
       expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('renders a basic filter', async () => {

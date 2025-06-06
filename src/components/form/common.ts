@@ -8,7 +8,7 @@ interface internalBaseFieldProps{
     /**
      * definied internal during form construction to ensure all labels and inputs maintain unique ids and support proper ids for accessibility
      */
-    inputId:string;
+    inputId?:string;
 };
 
 export interface translateFieldProps{

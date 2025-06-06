@@ -1,18 +1,19 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
 import Badge from '../../../components/common/badge.vue';
 import { BadgePositions,ColorTypes } from '../../../enums';
+import { ExecuteAccessibilityChecks } from '../../common';
 
 describe('Badge', () => {
   test('check accessibility',async() => {
-    const {container} = render(Badge, {
-      props: {
-        text:'Sample text'
-      },
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const {container} = render(Badge, {
+          props: {
+            text:'Sample text'
+          },
+      });
+      return container;
     });
-
-    const accessibilityScanResults =  await axe.run(container);
 
     expect(accessibilityScanResults.violations).toEqual([]);
   }),

@@ -1,6 +1,6 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import Table from '../../../components/layout/table.vue';
 import { stripCommentNodes } from '../../common';
 import {h} from 'vue';
@@ -19,16 +19,17 @@ const footerRow = h('tr',null,[footerCell]);
 
 describe('Table', () => {
   test('check accessibility',async() => {
-    const {container} = render(Table, {
-      props: {},
-      slots:{
-        thead:()=>headerRow,
-        tbody:()=>bodyRow,
-        tfoot:()=>footerRow
-      }
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const {container} = render(Table, {
+        props: {},
+        slots:{
+          thead:()=>headerRow,
+          tbody:()=>bodyRow,
+          tfoot:()=>footerRow
+        }
+      });
+      return container;
     });
-
-    const accessibilityScanResults =  await axe.run(container);
 
     expect(accessibilityScanResults.violations).toEqual([]);
   }),

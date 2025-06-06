@@ -1,6 +1,5 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
 import Button from '../../../components/common/buttons/button.vue';
 import ButtonAdd from '../../../components/common/buttons/button-add.vue';
 import ButtonCancel from '../../../components/common/buttons/button-cancel.vue';
@@ -15,7 +14,7 @@ import buttonRefresh from '../../../components/common/buttons/button-refresh.vue
 import buttonSave from '../../../components/common/buttons/button-save.vue';
 import buttonSubmit from '../../../components/common/buttons/button-submit.vue';
 import buttonUpload from '../../../components/common/buttons/button-upload.vue';
-import { stripCommentNodes } from '../../common';
+import { ExecuteAccessibilityChecks, stripCommentNodes } from '../../common';
 import { ColorTypes, Sizes } from '../../../enums';
 import translate from '../../../messages/messages';
 import { userEvent } from '@vitest/browser/context';
@@ -39,13 +38,14 @@ const extractIcon = function(button:HTMLElement):HTMLElement {
 
 describe('Button', () => {
     test('check accessibility',async() => {
-      const {container} = render(Button, {
-        props: {
-          title:'Sample Button'
-        },
-      });
-  
-      const accessibilityScanResults =  await axe.run(container);
+        const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+            const {container} = render(Button, {
+                props: {
+                title:'Sample Button'
+                },
+            });
+            return container;
+        });
   
       expect(accessibilityScanResults.violations).toEqual([]);
     }),

@@ -1,16 +1,17 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import buttonsContainer from '../../../components/common/buttons-container.vue';
 import { ButtonAlignments, Sizes } from '../../../enums';
 import { stripCommentNodes } from '../../common';
 
 describe('ButtonsContainer', () => {
     test('check accessibility',async() => {
-        const {container} = render(buttonsContainer, {});
-    
-        const accessibilityScanResults =  await axe.run(container);
-    
+        const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+            const {container} = render(buttonsContainer, {});
+            return container;
+        });
+
         expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('check slot content',async() => {

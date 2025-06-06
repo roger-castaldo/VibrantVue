@@ -1,24 +1,25 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import Card from '../../../components/layout/card.vue';
 import { stripCommentNodes } from '../../common';
 
 
 describe('Card', () => {
   test('check accessibility',async() => {
-    const {container} = render(Card, {
-      props: {
-        icon:'person'
-      },
-      slots:{
-        header:()=>'Test Header',
-        content:()=>'Test Content',
-        footer:()=>'Test Footer'
-      }
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const {container} = render(Card, {
+        props: {
+          icon:'person'
+        },
+        slots:{
+          header:()=>'Test Header',
+          content:()=>'Test Content',
+          footer:()=>'Test Footer'
+        }
+      });
+      return container;
     });
-
-    const accessibilityScanResults =  await axe.run(container);
 
     expect(accessibilityScanResults.violations).toEqual([]);
   }),

@@ -1,6 +1,6 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import dropdown from '../../../components/common/dropdown.vue';
 import { stripCommentNodes } from '../../common';
 import { DropDownItem } from '../../../components';
@@ -8,14 +8,15 @@ import { userEvent } from '@vitest/browser/context'
 
 describe('DropDown', () => {
   test('check accessibility',async() => {
-    const {container} = render(dropdown, {
-      props: {
-        title:'testing',
-        items:[]
-      },
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const {container} = render(dropdown, {
+        props: {
+          title:'testing',
+          items:[]
+        },
+      });
+      return container;
     });
-
-    const accessibilityScanResults =  await axe.run(container);
 
     expect(accessibilityScanResults.violations).toEqual([]);
   }),

@@ -1,20 +1,21 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import Box from '../../../components/layout/box.vue';
 import { stripCommentNodes } from '../../common';
 
 
 describe('Box', () => {
   test('check accessibility',async() => {
-    const {container} = render(Box, {
-      props: {},
-      slots:{
-        default:()=>'Test Content'
-      }
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const {container} = render(Box, {
+        props: {},
+        slots:{
+          default:()=>'Test Content'
+        }
+      });
+      return container;
     });
-
-    const accessibilityScanResults =  await axe.run(container);
 
     expect(accessibilityScanResults.violations).toEqual([]);
   }),

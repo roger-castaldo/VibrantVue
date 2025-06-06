@@ -1,6 +1,6 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import ProgressGroup from '../../../components/extended/progress-group.vue';
 import { ColorTypes,Sizes } from '../../../enums';
 import { ProgressEntry } from '../../../components/extended/typeDefinitions';
@@ -8,18 +8,19 @@ import { stripCommentNodes } from '../../common';
 
 describe('Progress Group', () => {
     test('check accessibility',async() => {
-      const {container} = render(ProgressGroup, {
-        props:{
-          values:[
-            {type:ColorTypes.info,value:20},
-            {type:ColorTypes.success,value:35}
-          ],
-          max:100
-        }
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+        const {container} = render(ProgressGroup, {
+          props:{
+            values:[
+              {type:ColorTypes.info,value:20},
+              {type:ColorTypes.success,value:35}
+            ],
+            max:100
+          }
+        });
+        return container;
       });
-  
-      const accessibilityScanResults =  await axe.run(container);
-  
+
       expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('check default values',async() => {

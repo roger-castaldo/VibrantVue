@@ -1,6 +1,6 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import Banner from '../../../components/layout/banner.vue';
 import { stripCommentNodes } from '../../common';
 import { ColorTypes } from '../../../enums';
@@ -8,13 +8,14 @@ import { ColorTypes } from '../../../enums';
 
 describe('Banner', () => {
   test('check accessibility',async() => {
-    const {container} = render(Banner, {
-      props: {
-        title:'Sample text'
-      },
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const {container} = render(Banner, {
+        props: {
+          title:'Sample text'
+        },
+      });
+      return container;
     });
-
-    const accessibilityScanResults =  await axe.run(container);
 
     expect(accessibilityScanResults.violations).toEqual([]);
   }),
