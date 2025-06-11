@@ -15,19 +15,31 @@ export const sleep = async function(ms:number) {
     await new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export const ExecuteAccessibilityChecks = async function(renderElement: ()=>HTMLElement, sleepMS?:number) : Promise<axe.AxeResults> {
+export const ExecuteAccessibilityChecks = async function(renderElement: ()=>HTMLElement|HTMLElement[], sleepMS?:number) : Promise<axe.AxeResults> {
     
     const container = document.createElement('div');
 
     for(let x=0;x<AVAIABLE_SKINS.length;x++){
         // Create the wrapper div
-        const wrapper = document.createElement('div')
-        wrapper.className = `theme-${AVAIABLE_SKINS[x]}`;
+        const themeWrapper = document.createElement('div')
+        themeWrapper.className = `theme-${AVAIABLE_SKINS[x]}`;
+
+        const contentWrapper = document.createElement('div');
+        contentWrapper.style.background = 'var(--bulma-scheme-main)';
 
         // Move the rendered component into the wrapper
-        wrapper.appendChild(renderElement())
+        const element = renderElement();
+        if (element instanceof HTMLElement){
+            contentWrapper.append(element as HTMLElement);
+        }else{
+            const elements = element as HTMLElement[];
+            for(let y=0;y<elements.length;y++){
+                contentWrapper.appendChild(elements[y]);
+            }
+        }
 
-        container.append(wrapper);
+        themeWrapper.append(contentWrapper);
+        container.append(themeWrapper);
     }
 
     document.body.append(container);

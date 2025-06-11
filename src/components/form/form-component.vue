@@ -159,7 +159,6 @@
             delete result.additional;
         }
         result.inputId = inputId;
-        console.log(result);
         return result;
     });
 

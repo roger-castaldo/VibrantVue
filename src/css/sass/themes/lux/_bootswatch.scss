@@ -15,15 +15,6 @@
       @include cv.register-var("button-border-width",2px);
     }
 
-    &.#{iv.$class-prefix}is-warning {
-      &,
-      &:hover,
-      &:not([disabled]):not(.#{iv.$class-prefix}is-disabled):active,
-      &:focus {
-        color: $white;
-      }
-    }
-
     &.#{iv.$class-prefix}is-small{
       @include cv.register-vars((
         "button-padding-vertical":0.5rem,

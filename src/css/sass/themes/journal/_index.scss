@@ -60,5 +60,5 @@
 
     @include mx.output-skin-content($list);
 
-    @include bs.boot-swatch-content($white);
+    @include bs.boot-swatch-content($white, $gray-800);
 }

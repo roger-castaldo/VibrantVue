@@ -56,9 +56,12 @@
         )
     ));
 
+    $list:mx.define-variable("danger-invert-l", #{cv.getVar("danger-05-l")},());
+    $list:mx.define-variable("primary-invert-l", #{cv.getVar("primary-10-l")},$list);
+
     $list:mx.define-variable("family-primary",
         "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
-        ());
+        $list);
     $list:mx.define-variable("family-secondary",
         "Georgia, Cambria, \"Times New Roman\", Times, serif",
         $list);

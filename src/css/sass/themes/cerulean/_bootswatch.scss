@@ -50,7 +50,7 @@ $text-shadow: 0 1px 0 rgba(0, 0, 0, .05) !default;
 }
 
 @mixin boot-swatch-content(){
-
+  
   // Navbar
 
   .#{iv.$class-prefix}navbar {
@@ -83,6 +83,18 @@ $text-shadow: 0 1px 0 rgba(0, 0, 0, .05) !default;
       &:active,
       .#{iv.$class-prefix}is-active{
         @include btn-shadow-active("button");
+      }
+    }
+
+    &.#{iv.$class-prefix}is-outlined {
+      &.#{iv.$class-prefix}is-light{
+        @include cv.register-var("button-l",45%);
+      }
+      &.#{iv.$class-prefix}is-primary{
+        @include cv.register-var("button-l",40%);
+      }
+      &.#{iv.$class-prefix}is-success{
+        @include cv.register-var("button-l",34%);
       }
     }
   }

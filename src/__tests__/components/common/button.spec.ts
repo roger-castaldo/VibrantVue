@@ -19,7 +19,7 @@ import { ColorTypes, Sizes } from '../../../enums';
 import translate from '../../../messages/messages';
 import { userEvent } from '@vitest/browser/context';
 
-const extractIcon = function(button:HTMLElement):HTMLElement {
+const extractIcon = function(button:HTMLElement, size?:Sizes):HTMLElement {
     const strippedChildren = stripCommentNodes(button);
 
     expect(strippedChildren.length).toBeGreaterThanOrEqual(1);
@@ -27,7 +27,24 @@ const extractIcon = function(button:HTMLElement):HTMLElement {
     const iconContainer = strippedChildren[0] as HTMLElement;
 
     expect(iconContainer.classList).toContain('icon');
-    expect(iconContainer.classList).toContain('is-small');
+    if (size!==undefined){
+        switch(size){
+            case Sizes.small:
+                expect(iconContainer.classList).toContain('is-small');
+                expect(iconContainer.classList).not.toContain('is-large');
+                break;
+            case Sizes.normal:
+            case Sizes.medium:
+                expect(iconContainer.classList).not.toContain('is-small');
+                expect(iconContainer.classList).not.toContain('is-large');
+                break;
+            case Sizes.large:
+                expect(iconContainer.classList).not.toContain('is-small');
+                expect(iconContainer.classList).toContain('is-large');
+                break;
+        }
+    }
+    
 
     const strippedIconChildren = stripCommentNodes(iconContainer);
 
@@ -39,12 +56,26 @@ const extractIcon = function(button:HTMLElement):HTMLElement {
 describe('Button', () => {
     test('check accessibility',async() => {
         const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-            const {container} = render(Button, {
-                props: {
-                title:'Sample Button'
-                },
-            });
-            return container;
+            let result : HTMLElement[] = [];
+            for (const key in ColorTypes) {
+                const renderResult1 = render(Button, {
+                    props: {
+                        type:ColorTypes[key],
+                        title:'Sample Button'
+                    },
+                });
+                result.push(renderResult1.container);
+
+                const renderResult2 = render(Button, {
+                    props: {
+                        type:ColorTypes[key],
+                        title:'Sample Button',
+                        is_outlined: true
+                    },
+                });
+                result.push(renderResult2.container);
+            }
+            return result;
         });
   
       expect(accessibilityScanResults.violations).toEqual([]);

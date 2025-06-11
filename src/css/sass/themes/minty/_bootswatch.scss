@@ -62,11 +62,6 @@
       color: $gray-700;
     }
 
-    &.#{iv.$class-prefix}is-link,
-    &.#{iv.$class-prefix}is-link:hover {
-      color: #{cv.getVar("primary")};
-    }
-
     &.#{iv.$class-prefix}is-link.disabled:hover {
       color: $gray-600;
     }

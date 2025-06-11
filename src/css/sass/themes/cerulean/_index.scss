@@ -22,8 +22,8 @@
     $pink:    #e83e8c !default;
     $red:     #c71c22 !default;
     $orange:  #fd7e14 !default;
-    $yellow:  #dd5600 !default;
-    $green:   #73a839 !default;
+    $yellow:  #cc4e00 !default;
+    $green:   #72a739 !default;
     $teal:    #20c997 !default;
     $cyan:    #2fa4e7 !default;
 
@@ -43,7 +43,9 @@
         )
     ));
 
-    $list:mx.define-variable("text",$gray-700,());
+    $list:mx.define-variable("warning-invert-l", 100%, ());
+
+    $list:mx.define-variable("text",$gray-700, $list);
     $list:mx.define-variable("title-color",$cyan,$list);
     $list:mx.define-variable("subtitle-color",$cyan,$list);
 

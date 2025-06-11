@@ -1,6 +1,9 @@
 <template>
     <button :class="Classes" :disabled="props.disabled" @click="emit('click')">
-        <span class="icon is-small" v-if="props.icon">
+        <span :class="['icon',
+            (props.size === Sizes.small ? 'is-small' : ''),
+            (props.size === Sizes.large ? 'is-medium' : '')
+        ]" v-if="props.icon">
             <Icon :icon="props.icon"/>
         </span>
         <span v-if="props.title">{{props.title}}</span>
@@ -22,7 +25,13 @@ import { IButtonProperties } from '../typeDefinitions';
  */
     const props = withDefaults(defineProps<IButtonProperties>(),{
         type:ColorTypes.primary,
-        size:Sizes.normal
+        size:Sizes.normal,
+        hide_desktop:false,
+        hide_mobile:false,
+        hide_tablet:false,
+        is_rounded:false,
+        is_outlined:false,
+        disabled:false
     });
 
     const emit = defineEmits<{
@@ -41,7 +50,8 @@ import { IButtonProperties } from '../typeDefinitions';
             (props.is_rounded ? 'is-rounded' : ''),
             (props.hide_mobile ? 'is-hidden-mobile' : ''),
             (props.hide_tablet ? 'is-hidden-tablet-only' : ''),
-            (props.hide_desktop ? 'is-hidden-desktop is-hidden-widescreen' : '' )
+            (props.hide_desktop ? 'is-hidden-desktop is-hidden-widescreen' : '' ),
+            (props.is_outlined ? 'is-outlined' : '')
         ];
     });
 </script>

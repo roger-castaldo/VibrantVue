@@ -8,12 +8,25 @@ import { NoticeTypes } from '../../../enums';
 describe('Notification', () => {
     test('check accessibility',async() => {
       const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-        const {container} = render(notification, {
-          props:{
-              message:'test message'
+        let result : HTMLElement[] = [];
+          for (const key in NoticeTypes) {
+            const renderResult1 = render(notification, {
+              props:{
+                  message:'test message',
+                  type: NoticeTypes[key],
+              }
+            });
+            result.push(renderResult1.container);
+            const renderResult2 = render(notification, {
+              props:{
+                  message:'test message',
+                  type: NoticeTypes[key],
+                  light:true
+              }
+            });
+            result.push(renderResult2.container);
           }
-        });
-        return container;
+          return result;
       });
 
       expect(accessibilityScanResults.violations).toEqual([]);

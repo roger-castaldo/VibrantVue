@@ -123,6 +123,10 @@ export interface IButtonBasicProperties{
      * Inidicates if it is rounded
      */
     is_rounded?:boolean 
+    /**
+     * Indicates if it is oultined
+     */
+    is_outlined?:boolean
 };
 
 export interface IButtonProperties extends IButtonBasicProperties{

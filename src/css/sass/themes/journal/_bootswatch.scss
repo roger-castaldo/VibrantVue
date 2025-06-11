@@ -3,7 +3,7 @@
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
 @use "../mixins" as lmx;
 
-@mixin boot-swatch-content($white){
+@mixin boot-swatch-content($white, $gray-800){
 
   .#{iv.$class-prefix}pagination-previous,
   .#{iv.$class-prefix}pagination-next,
@@ -39,7 +39,7 @@
 
   .#{iv.$class-prefix}button {
     &.#{iv.$class-prefix}is-warning {
-      color: $white;
+      color: $gray-800;
     }
   }
 

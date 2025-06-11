@@ -201,19 +201,13 @@
 
   .#{iv.$class-prefix}button{
     position: relative;
-    color: $gray-700;
     @include shadow($gray-200);
-
-    &:focus {
-      color: $gray-700;
-    }
 
     &:hover,
     &:focus,
     &:active,
     &:active:focus {
       @include shadow($gray-200);
-      color: $gray-700;
     }
 
     &:active,
