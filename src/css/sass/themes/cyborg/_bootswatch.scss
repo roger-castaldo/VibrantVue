@@ -40,14 +40,28 @@
     }
   }
 
-  // .#{iv.$class-prefix}button {
-  //   &.#{iv.$class-prefix}is-outlined {
-  //     &.#{iv.$class-prefix}is-success{
-  //       @include cv.register-var("button-l",34%);
-  //     }
-  //     &.#{iv.$class-prefix}is-warning{
-  //       @include cv.register-var("button-l",48%);
-  //     }
-  //   }
-  // }
+  .#{iv.$class-prefix}button {
+
+    &.#{iv.$class-prefix}is-warning{
+      @include cv.register-var("button-background-l",43%);
+    }
+
+    &.#{iv.$class-prefix}is-outlined {
+      &.#{iv.$class-prefix}is-black{
+        @include cv.register-var("button-l",49%);
+      }
+      &.#{iv.$class-prefix}is-light{
+        @include cv.register-var("button-l",47%);
+      }
+      &.#{iv.$class-prefix}is-link{
+        @include cv.register-var("button-l",66%);
+      }
+      &.#{iv.$class-prefix}is-info{
+        @include cv.register-var("button-l",57%);
+      }
+      &.#{iv.$class-prefix}is-danger{
+        @include cv.register-var("button-l",47%);
+      }
+    }
+  }
 }

@@ -4,4 +4,26 @@
 @use "../mixins" as lmx;
 
 @mixin boot-swatch-content(){
+
+  .#{iv.$class-prefix}button {
+
+    &.#{iv.$class-prefix}is-outlined {
+      
+      &.#{iv.$class-prefix}is-light{
+        @include cv.register-var("button-l",47%);
+      }
+
+      &.#{iv.$class-prefix}is-info{
+        @include cv.register-var("button-l",32%);
+      }
+
+      &.#{iv.$class-prefix}is-success{
+        @include cv.register-var("button-l",34%);
+      }
+
+      &.#{iv.$class-prefix}is-warning{
+        @include cv.register-var("button-l",33%);
+      }
+    }
+  }
 }

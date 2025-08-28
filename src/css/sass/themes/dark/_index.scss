@@ -1,0 +1,22 @@
+@use "../../../../../node_modules/bulma/sass/themes/dark" as dark;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../mixins" as mx;
+
+@include mx.bulma-theme($name: "dark") {
+    @include dark.dark-theme;
+
+    .#{iv.$class-prefix}button {
+        &.#{iv.$class-prefix}is-outlined {
+            &.#{iv.$class-prefix}is-black{
+                @include cv.register-var("button-l",53%);
+            }
+            &.#{iv.$class-prefix}is-dark{
+                @include cv.register-var("button-l",53%);
+            }
+            &.#{iv.$class-prefix}is-link{
+                @include cv.register-var("button-l",69%);
+            }
+        }
+    }
+}

@@ -15,22 +15,23 @@
   },
   "types": "./dist/index.d.ts",
   "scripts": {
+    "update_themes": "node ./generateFinalize.cjs",
     "build": "vite build --config vite.config.js",
     "build:docs": "node generateDocs.cjs",
     "build:translations": "node ./src/messages/runTranslations.js",
     "build:minify": "npm run build && uglifyjs ./dist/vibrantvue.esm.js --compress --output ./dist/vibrantvue.esm.min.js",
     "build:serve": "npm run build:minify && node index.js",
-    "build:bulma": "sass --style=compressed --load-path=node_modules src/css/sass/bulma-skins.scss dist/vibrantvue.min.css",
+    "build:bulma": "sass --style=expanded --source-map --load-path=node_modules src/css/sass/bulma-skins.scss dist/vibrantvue.css && postcss dist/vibrantvue.css --no-map --use cssnano --output dist/vibrantvue.min.css",
     "build:full_code": "npm run build:docs && npm run build:minify && npm run build:bulma",
     "build:full": "npm run build:translations && npm run build:full_code",
-    "check_duplicates": "sass --load-path=node_modules src/css/sass/bulma-skins.scss dist/vibrantvue.css && node checkDuplicateVars.cjs",
+    "check_duplicates": "npm run build:bulma && node checkDuplicateVars.cjs",
     "serve": "node index.js",
     "test": "vitest",
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "uuid": "^9.0.1",
-    "vue": "^3.4.21"
+    "vue": "^3.5.18"
   },
   "devDependencies": {
     "@testing-library/vue": "^8.1.0",
@@ -55,6 +56,8 @@
     "vitest": "^2.1.0",
     "vitest-browser-vue": "^0.0.1",
     "vue-docgen-api": "^4.78.0",
-    "vue-tsc": "^1.8.27"
+    "vue-tsc": "^1.8.27",
+    "cssnano": "^7.0.6",
+    "postcss-cli": "^11.0.1"
   }
 }

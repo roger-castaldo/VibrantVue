@@ -79,4 +79,25 @@
     background-color:$gray-500;
   }
 
+  .#{iv.$class-prefix}button {
+
+    &.#{iv.$class-prefix}is-outlined {
+      
+      &.#{iv.$class-prefix}is-black{
+        @include cv.register-var("button-l",57%);
+      }
+      
+      &.#{iv.$class-prefix}is-warning{
+        @include cv.register-var("button-l",54%);
+      }
+
+      &.#{iv.$class-prefix}is-danger{
+        @include cv.register-var("button-l",62%);
+      }
+
+      &.#{iv.$class-prefix}is-info{
+        @include cv.register-var("button-l",52%);
+      }
+    }
+  }
 }

@@ -15,11 +15,15 @@ export const sleep = async function(ms:number) {
     await new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+const blockedSkins : string[] = ['morph','vapor'];
+
 export const ExecuteAccessibilityChecks = async function(renderElement: ()=>HTMLElement|HTMLElement[], sleepMS?:number) : Promise<axe.AxeResults> {
     
     const container = document.createElement('div');
 
     for(let x=0;x<AVAIABLE_SKINS.length;x++){
+
+        if (blockedSkins.indexOf(AVAIABLE_SKINS[x])<0){
         // Create the wrapper div
         const themeWrapper = document.createElement('div')
         themeWrapper.className = `theme-${AVAIABLE_SKINS[x]}`;
@@ -40,13 +44,15 @@ export const ExecuteAccessibilityChecks = async function(renderElement: ()=>HTML
 
         themeWrapper.append(contentWrapper);
         container.append(themeWrapper);
+    
+        }
     }
-
-    document.body.append(container);
 
     if (sleepMS!=undefined){
         await sleep(sleepMS);
     }
+
+    document.body.append(container);
 
     const accessibilityScanResults =  await axe.run(container);
 

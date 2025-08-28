@@ -61,4 +61,34 @@
       text-decoration: underline;
     }
   }
+
+  .#{iv.$class-prefix}button {
+
+    &.#{iv.$class-prefix}is-outlined {
+      
+      &.#{iv.$class-prefix}is-light{
+        @include cv.register-var("button-l",47%);
+      }
+      
+      &.#{iv.$class-prefix}is-primary{
+        @include cv.register-var("button-l",54%);
+      }
+
+      &.#{iv.$class-prefix}is-info{
+        @include cv.register-var("button-l",32%);
+      }
+
+      &.#{iv.$class-prefix}is-success{
+        @include cv.register-var("button-l",27%);
+      }
+
+      &.#{iv.$class-prefix}is-warning{
+        @include cv.register-var("button-l",35%);
+      }
+
+      &.#{iv.$class-prefix}is-danger{
+        @include cv.register-var("button-l",53%);
+      }
+    }
+  }
 }

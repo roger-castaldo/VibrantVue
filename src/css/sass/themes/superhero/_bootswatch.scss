@@ -53,19 +53,25 @@
     background-color: $gray-600;
   }
 
-  // // Typography
+  .#{iv.$class-prefix}button {
 
-  // .dropdown-menu {
-  //   font-size: $font-size-sm;
-  // }
+    &.#{iv.$class-prefix}is-outlined {
+      
+      &.#{iv.$class-prefix}is-black{
+        @include cv.register-var("button-l",56%);
+      }
 
-  // .dropdown-header {
-  //   font-size: $font-size-sm;
-  // }
+      &.#{iv.$class-prefix}is-dark{
+        @include cv.register-var("button-l",55%);
+      }
 
-  // .blockquote-footer {
-  //   color: $body-color;
-  // }
+      &.#{iv.$class-prefix}is-link{
+        @include cv.register-var("button-l",71%);
+      }
 
-  // Tables
+      &.#{iv.$class-prefix}is-danger{
+        @include cv.register-var("button-l",62%);
+      }
+    }
+  }
 }

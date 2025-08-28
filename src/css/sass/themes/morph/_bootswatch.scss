@@ -201,7 +201,20 @@
 
   .#{iv.$class-prefix}button{
     position: relative;
-    @include shadow($gray-200);
+    @include cv.register-vars((
+      "button-h":color.channel(color.to-space($gray-200,hsl), "hue"),
+      "button-s":color.channel(color.to-space($gray-200,hsl), "saturation"),
+      "button-background-l":color.channel(color.to-space($gray-200,hsl), "lightness")
+    ));
+    @include shadow(hsl(
+      #{cv.getVar("button-h")},
+      #{cv.getVar("button-s")},
+      calc(
+        #{cv.getVar("button-background-l")} + #{cv.getVar(
+            "button-background-l-delta"
+          )}
+      )
+    ));
 
     &:hover,
     &:focus,
@@ -219,6 +232,14 @@
     @each $color,$value in dv.$colors {
       &.#{iv.$class-prefix}is-#{$color} {
 
+        @include cv.register-vars(
+          (
+            "button-h": #{cv.getVar($color, "", "-h")},
+            "button-s": #{cv.getVar($color, "", "-s")},
+            "button-background-l": #{cv.getVar($color, "", "-l")}
+          )
+        );
+
         &:active,
         &:active:focus {
           @if ($color == light) {
@@ -231,27 +252,15 @@
         }
 
         &.#{iv.$class-prefix}is-outlined{
-          background-color: $value;
+          //background-color: $value;
           border: none;
           box-shadow: 5px 5px 10px rgba($black, .2), -5px -5px 10px rgba($white, .1);
-    
-          @if ($color == light) {
-            color: $gray-700;
-          } @else {
-            color: $white;
-          }
     
           &:hover,
           &:focus {
             background-color: $value;
             border: none;
             box-shadow: 5px 5px 10px rgba($black, .2), -5px -5px 10px rgba($white, .1);
-    
-            @if ($color == light) {
-              color: $gray-700;
-            } @else {
-              color: $white;
-            }
           }
     
           &:active,
@@ -259,12 +268,6 @@
             background-color: $value;
             border: none;
             box-shadow: inset 2px 3px 6px rgba($black, .1), inset -3px -2px 6px rgba($white, .1);
-    
-            @if ($color == light) {
-              color: $gray-700;
-            } @else {
-              color: $white;
-            }
           }
         }
       }

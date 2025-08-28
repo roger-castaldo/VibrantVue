@@ -302,4 +302,39 @@
   //   border-top-right-radius: 0;
   // }
 
+  .#{iv.$class-prefix}button {
+
+    &.#{iv.$class-prefix}is-primary,
+    &.#{iv.$class-prefix}is-link{
+      @include cv.register-var("button-background-l-delta",0);
+    }
+
+    &.#{iv.$class-prefix}is-danger{
+      @include cv.register-var("button-background-l-delta",0.005%);
+    }
+
+    &.#{iv.$class-prefix}is-outlined {
+      
+      &.#{iv.$class-prefix}is-light{
+        @include cv.register-var("button-l",45%);
+      }
+
+      &.#{iv.$class-prefix}is-info{
+        @include cv.register-var("button-l",37%);
+      }
+
+      &.#{iv.$class-prefix}is-success{
+        @include cv.register-var("button-l",36%);
+      }
+
+      &.#{iv.$class-prefix}is-warning{
+        @include cv.register-var("button-l",33%);
+      }
+
+      &.#{iv.$class-prefix}is-danger{
+        @include cv.register-var("button-l",47%);
+      }
+    }
+  }
+
 }

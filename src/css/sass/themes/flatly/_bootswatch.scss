@@ -45,4 +45,29 @@
     border: none;
   }
   
+  .#{iv.$class-prefix}button {
+
+    &.#{iv.$class-prefix}is-outlined {
+      
+      &.#{iv.$class-prefix}is-light{
+        @include cv.register-var("button-l",47%);
+      }
+      
+      &.#{iv.$class-prefix}is-link{
+        @include cv.register-var("button-l",29%);
+      }
+
+      &.#{iv.$class-prefix}is-info{
+        @include cv.register-var("button-l",42%);
+      }
+
+      &.#{iv.$class-prefix}is-success{
+        @include cv.register-var("button-l",29%);
+      }
+
+      &.#{iv.$class-prefix}is-warning{
+        @include cv.register-var("button-l",34%);
+      }
+    }
+  }
 }

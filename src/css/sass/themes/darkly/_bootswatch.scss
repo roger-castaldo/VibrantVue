@@ -38,4 +38,30 @@
     }
   }
 
+
+  .#{iv.$class-prefix}button {
+
+    &.#{iv.$class-prefix}is-outlined {
+      
+      &.#{iv.$class-prefix}is-black{
+        @include cv.register-var("button-l",56%);
+      }
+      
+      &.#{iv.$class-prefix}is-dark{
+        @include cv.register-var("button-l",54%);
+      }
+      
+      &.#{iv.$class-prefix}is-primary{
+        @include cv.register-var("button-l",55%);
+      }
+
+      &.#{iv.$class-prefix}is-link{
+        @include cv.register-var("button-l",71%);
+      }
+
+      &.#{iv.$class-prefix}is-danger{
+        @include cv.register-var("button-l",60%);
+      }
+    }
+  }
 }

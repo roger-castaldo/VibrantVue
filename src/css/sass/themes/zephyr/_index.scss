@@ -30,7 +30,7 @@
     $yellow:  #f4bd61 !default;
     $green:   #2fb380 !default;
     $teal:    #20c997 !default;
-    $cyan:    #287bb5 !default;
+    $cyan:    hsl(205, 64%, 42%) !default;
 
     @include mx.override-platform-colors((
         "primary":$blue,

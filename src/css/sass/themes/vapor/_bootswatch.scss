@@ -154,7 +154,7 @@
 
   .#{iv.$class-prefix}button {
     @each $name, $value in dv.$colors {
-      @if (($name != dark) or ($name != link)) {
+      @if ($name != link) {
         .#{iv.$class-prefix}is-#{$name}{
           @include box-shadow($name);
         }
@@ -163,10 +163,6 @@
       &.#{iv.$class-prefix}is-#{$name} {
         @include text-shadow-sm("white");
       }
-    }
-
-    &.#{iv.$class-prefix}is-dark {
-      @include box-shadow("primary");
     }
 
     &.#{iv.$class-prefix}is-link {
@@ -324,5 +320,4 @@
     }
     @include header-shadow("white");
   }
-
 }

@@ -43,4 +43,25 @@
     }
   }
 
+  .#{iv.$class-prefix}button {
+
+    &.#{iv.$class-prefix}is-outlined {
+      
+      &.#{iv.$class-prefix}is-light{
+        @include cv.register-var("button-l",47%);
+      }
+      
+      &.#{iv.$class-prefix}is-primary{
+        @include cv.register-var("button-l",51%);
+      }
+
+      &.#{iv.$class-prefix}is-success{
+        @include cv.register-var("button-l",31%);
+      }
+
+      &.#{iv.$class-prefix}is-danger{
+        @include cv.register-var("button-l",36%);
+      }
+    }
+  }
 }
