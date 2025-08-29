@@ -373,31 +373,15 @@
     }
   }
 
-  // .tooltip {
-  //   --bs-tooltip-bg: var(--bs-tertiary-bg);
-  //   --bs-tooltip-color: var(--bs-emphasis-color);
-  // }
-
-  // // Containers
-
-  // .list-group {
-  //   &-item {
-  //     color: $white;
-
-  //     &-light {
-  //       color: $dark;
-  //     }
-  //   }
-
-  //   &-item-action:hover {
-  //     background-color: shade-color($gray-900, 10%);
-  //   }
-
-  //   @each $color, $value in $theme-colors {
-  //     &-item-#{$color} {
-  //       background-color: $value;
-  //       border-color: $list-group-border-color;
-  //     }
-  //   }
-  // }
+  .#{iv.$class-prefix}dropdown{
+    .#{iv.$class-prefix}dropdown-trigger{
+      .#{iv.$class-prefix}button {
+        @include cv.register-vars((
+          "button-background-l":9%,
+          "button-color-l":51%
+        ));
+        
+      } 
+    }
+  }
 }

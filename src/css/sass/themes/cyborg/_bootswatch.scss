@@ -64,4 +64,16 @@
       }
     }
   }
+
+  .#{iv.$class-prefix}dropdown{
+    .#{iv.$class-prefix}dropdown-trigger{
+      .#{iv.$class-prefix}button {
+        @include cv.register-vars((
+          "button-background-l":5%,
+          "button-color-l":50%
+        ));
+        
+      } 
+    }
+  }
 }
