@@ -28609,6 +28609,30 @@ form.container.is-fullhd section .columns {
   --bulma-button-background-l: 5%;
   --bulma-button-color-l: 50%;
 }
+:root[data-theme=cyborg] .notification.is-light.is-info,
+[data-theme=cyborg] .notification.is-light.is-info,
+:root.theme-cyborg .notification.is-light.is-info,
+.theme-cyborg .notification.is-light.is-info {
+  color: hsl(var(--bulma-notification-h), var(--bulma-notification-s), 47%);
+}
+:root[data-theme=cyborg] .notification.is-light.is-danger,
+[data-theme=cyborg] .notification.is-light.is-danger,
+:root.theme-cyborg .notification.is-light.is-danger,
+.theme-cyborg .notification.is-light.is-danger {
+  color: hsl(var(--bulma-notification-h), var(--bulma-notification-s), 37%);
+}
+:root[data-theme=cyborg] .notification.is-success,
+[data-theme=cyborg] .notification.is-success,
+:root.theme-cyborg .notification.is-success,
+.theme-cyborg .notification.is-success {
+  color: hsl(var(--bulma-notification-h), var(--bulma-notification-s), 12%);
+}
+:root[data-theme=cyborg] .notification.is-warning,
+[data-theme=cyborg] .notification.is-warning,
+:root.theme-cyborg .notification.is-warning,
+.theme-cyborg .notification.is-warning {
+  color: hsl(var(--bulma-notification-h), var(--bulma-notification-s), 10%);
+}
 
 :root[data-theme=dark],
 [data-theme=dark],
@@ -45688,6 +45712,12 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-sandstone .notification.is-light a:not(.button) {
   color: var(--bulma-text);
 }
+:root[data-theme=sandstone] .notification.is-info,
+[data-theme=sandstone] .notification.is-info,
+:root.theme-sandstone .notification.is-info,
+.theme-sandstone .notification.is-info {
+  color: hsl(var(--bulma-notification-h), var(--bulma-notification-s), 17%);
+}
 
 :root[data-theme=simplex],
 [data-theme=simplex],
@@ -46946,6 +46976,12 @@ fieldset[disabled] .theme-quartz .select select {
 :root.theme-simplex .button.is-outlined.is-warning,
 .theme-simplex .button.is-outlined.is-warning {
   --bulma-button-l: 38%;
+}
+:root[data-theme=simplex] .notification.is-success,
+[data-theme=simplex] .notification.is-success,
+:root.theme-simplex .notification.is-success,
+.theme-simplex .notification.is-success {
+  color: hsl(var(--bulma-notification-h), var(--bulma-notification-s), 7%);
 }
 
 :root[data-theme=sketchy],

@@ -76,4 +76,41 @@
       } 
     }
   }
+
+  .#{iv.$class-prefix}notification{
+    
+    &.#{iv.$class-prefix}is-light{
+      &.#{iv.$class-prefix}is-info{
+        color: hsl(
+          cv.getVar("notification-h"),
+          cv.getVar("notification-s"),
+          47%
+        );
+      }
+
+      &.#{iv.$class-prefix}is-danger{
+        color: hsl(
+          cv.getVar("notification-h"),
+          cv.getVar("notification-s"),
+          37%
+        );
+      }
+    }
+
+    &.#{iv.$class-prefix}is-success{
+      color: hsl(
+        cv.getVar("notification-h"),
+        cv.getVar("notification-s"),
+        12%
+      );
+    }
+
+    &.#{iv.$class-prefix}is-warning{
+      color: hsl(
+        cv.getVar("notification-h"),
+        cv.getVar("notification-s"),
+        10%
+      );
+    }
+  }
 }
