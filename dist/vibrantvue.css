@@ -29489,6 +29489,13 @@ form.container.is-fullhd section .columns {
   --bulma-button-background-l: 7%;
   --bulma-button-color-l: 49%;
 }
+:root[data-theme=darkly] .message .message-body,
+[data-theme=darkly] .message .message-body,
+:root.theme-darkly .message .message-body,
+.theme-darkly .message .message-body {
+  --bulma-message-background-l: 19%;
+  --bulma-message-color-l: 63%;
+}
 
 :root[data-theme=flatly],
 [data-theme=flatly],
@@ -51072,6 +51079,13 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-button-background-l: 9%;
   --bulma-button-color-l: 51%;
 }
+:root[data-theme=slate] .message .message-body,
+[data-theme=slate] .message .message-body,
+:root.theme-slate .message .message-body,
+.theme-slate .message .message-body {
+  --bulma-message-background-l: 23%;
+  --bulma-message-color-l: 69%;
+}
 
 :root[data-theme=solar],
 [data-theme=solar],
@@ -52377,6 +52391,13 @@ fieldset[disabled] .theme-sketchy .select select {
 :root.theme-solar .button.is-outlined.is-info,
 .theme-solar .button.is-outlined.is-info {
   --bulma-button-l: 52%;
+}
+:root[data-theme=solar] .message .message-body,
+[data-theme=solar] .message .message-body,
+:root.theme-solar .message .message-body,
+.theme-solar .message .message-body {
+  --bulma-message-background-l: 14%;
+  --bulma-message-color-l: 50%;
 }
 
 :root[data-theme=spacelab],
@@ -54716,6 +54737,13 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-superhero .dropdown .dropdown-trigger .button {
   --bulma-button-background-l: 8%;
   --bulma-button-color-l: 49%;
+}
+:root[data-theme=superhero] .message .message-body,
+[data-theme=superhero] .message .message-body,
+:root.theme-superhero .message .message-body,
+.theme-superhero .message .message-body {
+  --bulma-message-background-l: 18%;
+  --bulma-message-color-l: 65%;
 }
 
 :root[data-theme=united],

@@ -384,4 +384,13 @@
       } 
     }
   }
+
+  .#{iv.$class-prefix}message{
+    .#{iv.$class-prefix}message-body{
+      @include cv.register-vars((
+          "message-background-l":23%,
+          "message-color-l":69%
+        ));
+    }
+  }
 }
