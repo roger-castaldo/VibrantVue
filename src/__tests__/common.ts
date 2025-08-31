@@ -34,11 +34,11 @@ export const ExecuteAccessibilityChecks = async function(renderElement: ()=>HTML
         // Move the rendered component into the wrapper
         const element = renderElement();
         if (element instanceof HTMLElement){
-            contentWrapper.append(element as HTMLElement);
+            contentWrapper.append(FixAriaLabel(element as HTMLElement, AVAIABLE_SKINS[x]));
         }else{
             const elements = element as HTMLElement[];
             for(let y=0;y<elements.length;y++){
-                contentWrapper.appendChild(elements[y]);
+                contentWrapper.appendChild(FixAriaLabel(elements[y], AVAIABLE_SKINS[x]));
             }
         }
 
@@ -59,4 +59,16 @@ export const ExecuteAccessibilityChecks = async function(renderElement: ()=>HTML
     document.body.removeChild(container);
 
     return accessibilityScanResults;
+}
+
+function FixAriaLabel(element: HTMLElement, skinName: string): HTMLElement {
+    if (element.getAttribute("aria-label")!==null){
+        element.setAttribute("aria-label",`${element.getAttribute("aria-label")}-${skinName}`);
+    }
+    for(let x=0;x<element.childNodes.length;x++){
+        if (element.childNodes.item(x) instanceof HTMLElement){
+            element.replaceChild(element.childNodes.item(x),FixAriaLabel(element.childNodes.item(x) as HTMLElement,skinName));
+        }
+    }
+    return element;
 }

@@ -28633,6 +28633,12 @@ form.container.is-fullhd section .columns {
 .theme-cyborg .notification.is-warning {
   color: hsl(var(--bulma-notification-h), var(--bulma-notification-s), 10%);
 }
+:root[data-theme=cyborg] .pagination,
+[data-theme=cyborg] .pagination,
+:root.theme-cyborg .pagination,
+.theme-cyborg .pagination {
+  --bulma-pagination-item-color-l: 47%;
+}
 
 :root[data-theme=dark],
 [data-theme=dark],
@@ -29519,6 +29525,12 @@ form.container.is-fullhd section .columns {
 .theme-darkly .message .message-body {
   --bulma-message-background-l: 19%;
   --bulma-message-color-l: 63%;
+}
+:root[data-theme=darkly] .pagination,
+[data-theme=darkly] .pagination,
+:root.theme-darkly .pagination,
+.theme-darkly .pagination {
+  --bulma-pagination-item-color-l: 54%;
 }
 
 :root[data-theme=flatly],
@@ -38550,89 +38562,89 @@ fieldset[disabled] .theme-materia .button.is-link:active:hover {
   --bulma-breadcrumb-item-separator-color: #fff;
   --bulma-breadcrumb-item-active-color: #fff;
 }
-:root[data-theme=minty] .pagination-previous,
-:root[data-theme=minty] .pagination-next,
-:root[data-theme=minty] .pagination-link,
-:root[data-theme=minty] .pagination-ellipsis,
-[data-theme=minty] .pagination-previous,
-[data-theme=minty] .pagination-next,
-[data-theme=minty] .pagination-link,
-[data-theme=minty] .pagination-ellipsis,
-:root.theme-minty .pagination-previous,
-:root.theme-minty .pagination-next,
-:root.theme-minty .pagination-link,
-:root.theme-minty .pagination-ellipsis,
-.theme-minty .pagination-previous,
-.theme-minty .pagination-next,
-.theme-minty .pagination-link,
-.theme-minty .pagination-ellipsis {
+:root[data-theme=minty] .pagination .pagination-previous,
+:root[data-theme=minty] .pagination .pagination-next,
+:root[data-theme=minty] .pagination .pagination-link,
+:root[data-theme=minty] .pagination .pagination-ellipsis,
+[data-theme=minty] .pagination .pagination-previous,
+[data-theme=minty] .pagination .pagination-next,
+[data-theme=minty] .pagination .pagination-link,
+[data-theme=minty] .pagination .pagination-ellipsis,
+:root.theme-minty .pagination .pagination-previous,
+:root.theme-minty .pagination .pagination-next,
+:root.theme-minty .pagination .pagination-link,
+:root.theme-minty .pagination .pagination-ellipsis,
+.theme-minty .pagination .pagination-previous,
+.theme-minty .pagination .pagination-next,
+.theme-minty .pagination .pagination-link,
+.theme-minty .pagination .pagination-ellipsis {
   color: #fff;
-  background-color: var(--bulma-primary);
-  border-color: var(--bulma-primary);
+  background-color: hsl(var(--bulma-primary-h), var(--bulma-primary-s), calc(var(--bulma-primary-l) + var(--bulma-pagination-item-background-l-delta)));
+  border-color: hsl(var(--bulma-primary-h), var(--bulma-primary-s), calc(var(--bulma-primary-l) + var(--bulma-pagination-item-border-l-delta)));
 }
-:root[data-theme=minty] .pagination-previous:hover, :root[data-theme=minty] .pagination-previous:active, :root[data-theme=minty] .pagination-previous.is-active,
-:root[data-theme=minty] .pagination-next:hover,
-:root[data-theme=minty] .pagination-next:active,
-:root[data-theme=minty] .pagination-next.is-active,
-:root[data-theme=minty] .pagination-link:hover,
-:root[data-theme=minty] .pagination-link:active,
-:root[data-theme=minty] .pagination-link.is-active,
-[data-theme=minty] .pagination-previous:hover,
-[data-theme=minty] .pagination-previous:active,
-[data-theme=minty] .pagination-previous.is-active,
-[data-theme=minty] .pagination-next:hover,
-[data-theme=minty] .pagination-next:active,
-[data-theme=minty] .pagination-next.is-active,
-[data-theme=minty] .pagination-link:hover,
-[data-theme=minty] .pagination-link:active,
-[data-theme=minty] .pagination-link.is-active,
-:root.theme-minty .pagination-previous:hover,
-:root.theme-minty .pagination-previous:active,
-:root.theme-minty .pagination-previous.is-active,
-:root.theme-minty .pagination-next:hover,
-:root.theme-minty .pagination-next:active,
-:root.theme-minty .pagination-next.is-active,
-:root.theme-minty .pagination-link:hover,
-:root.theme-minty .pagination-link:active,
-:root.theme-minty .pagination-link.is-active,
-.theme-minty .pagination-previous:hover,
-.theme-minty .pagination-previous:active,
-.theme-minty .pagination-previous.is-active,
-.theme-minty .pagination-next:hover,
-.theme-minty .pagination-next:active,
-.theme-minty .pagination-next.is-active,
-.theme-minty .pagination-link:hover,
-.theme-minty .pagination-link:active,
-.theme-minty .pagination-link.is-active {
-  background-color: var(--bulma-secondary);
-  border-color: var(--bulma-secondary);
+:root[data-theme=minty] .pagination .pagination-previous:hover, :root[data-theme=minty] .pagination .pagination-previous:active, :root[data-theme=minty] .pagination .pagination-previous.is-active,
+:root[data-theme=minty] .pagination .pagination-next:hover,
+:root[data-theme=minty] .pagination .pagination-next:active,
+:root[data-theme=minty] .pagination .pagination-next.is-active,
+:root[data-theme=minty] .pagination .pagination-link:hover,
+:root[data-theme=minty] .pagination .pagination-link:active,
+:root[data-theme=minty] .pagination .pagination-link.is-active,
+[data-theme=minty] .pagination .pagination-previous:hover,
+[data-theme=minty] .pagination .pagination-previous:active,
+[data-theme=minty] .pagination .pagination-previous.is-active,
+[data-theme=minty] .pagination .pagination-next:hover,
+[data-theme=minty] .pagination .pagination-next:active,
+[data-theme=minty] .pagination .pagination-next.is-active,
+[data-theme=minty] .pagination .pagination-link:hover,
+[data-theme=minty] .pagination .pagination-link:active,
+[data-theme=minty] .pagination .pagination-link.is-active,
+:root.theme-minty .pagination .pagination-previous:hover,
+:root.theme-minty .pagination .pagination-previous:active,
+:root.theme-minty .pagination .pagination-previous.is-active,
+:root.theme-minty .pagination .pagination-next:hover,
+:root.theme-minty .pagination .pagination-next:active,
+:root.theme-minty .pagination .pagination-next.is-active,
+:root.theme-minty .pagination .pagination-link:hover,
+:root.theme-minty .pagination .pagination-link:active,
+:root.theme-minty .pagination .pagination-link.is-active,
+.theme-minty .pagination .pagination-previous:hover,
+.theme-minty .pagination .pagination-previous:active,
+.theme-minty .pagination .pagination-previous.is-active,
+.theme-minty .pagination .pagination-next:hover,
+.theme-minty .pagination .pagination-next:active,
+.theme-minty .pagination .pagination-next.is-active,
+.theme-minty .pagination .pagination-link:hover,
+.theme-minty .pagination .pagination-link:active,
+.theme-minty .pagination .pagination-link.is-active {
+  background-color: hsl(var(--bulma-secondary-h), var(--bulma-secondary-s), calc(var(--bulma-secondary-l) + var(--bulma-pagination-item-background-l-delta)));
+  border-color: hsl(var(--bulma-secondary-h), var(--bulma-secondary-s), calc(var(--bulma-secondary-l) + var(--bulma-pagination-item-border-l-delta)));
 }
-:root[data-theme=minty] .pagination-previous:hover,
-:root[data-theme=minty] .pagination-next:hover,
-:root[data-theme=minty] .pagination-link:hover,
-[data-theme=minty] .pagination-previous:hover,
-[data-theme=minty] .pagination-next:hover,
-[data-theme=minty] .pagination-link:hover,
-:root.theme-minty .pagination-previous:hover,
-:root.theme-minty .pagination-next:hover,
-:root.theme-minty .pagination-link:hover,
-.theme-minty .pagination-previous:hover,
-.theme-minty .pagination-next:hover,
-.theme-minty .pagination-link:hover {
+:root[data-theme=minty] .pagination .pagination-previous:hover,
+:root[data-theme=minty] .pagination .pagination-next:hover,
+:root[data-theme=minty] .pagination .pagination-link:hover,
+[data-theme=minty] .pagination .pagination-previous:hover,
+[data-theme=minty] .pagination .pagination-next:hover,
+[data-theme=minty] .pagination .pagination-link:hover,
+:root.theme-minty .pagination .pagination-previous:hover,
+:root.theme-minty .pagination .pagination-next:hover,
+:root.theme-minty .pagination .pagination-link:hover,
+.theme-minty .pagination .pagination-previous:hover,
+.theme-minty .pagination .pagination-next:hover,
+.theme-minty .pagination .pagination-link:hover {
   color: #fff;
 }
-:root[data-theme=minty] .pagination-previous.is-disabled,
-:root[data-theme=minty] .pagination-next.is-disabled,
-:root[data-theme=minty] .pagination-link.is-disabled,
-[data-theme=minty] .pagination-previous.is-disabled,
-[data-theme=minty] .pagination-next.is-disabled,
-[data-theme=minty] .pagination-link.is-disabled,
-:root.theme-minty .pagination-previous.is-disabled,
-:root.theme-minty .pagination-next.is-disabled,
-:root.theme-minty .pagination-link.is-disabled,
-.theme-minty .pagination-previous.is-disabled,
-.theme-minty .pagination-next.is-disabled,
-.theme-minty .pagination-link.is-disabled {
+:root[data-theme=minty] .pagination .pagination-previous.is-disabled,
+:root[data-theme=minty] .pagination .pagination-next.is-disabled,
+:root[data-theme=minty] .pagination .pagination-link.is-disabled,
+[data-theme=minty] .pagination .pagination-previous.is-disabled,
+[data-theme=minty] .pagination .pagination-next.is-disabled,
+[data-theme=minty] .pagination .pagination-link.is-disabled,
+:root.theme-minty .pagination .pagination-previous.is-disabled,
+:root.theme-minty .pagination .pagination-next.is-disabled,
+:root.theme-minty .pagination .pagination-link.is-disabled,
+.theme-minty .pagination .pagination-previous.is-disabled,
+.theme-minty .pagination .pagination-next.is-disabled,
+.theme-minty .pagination .pagination-link.is-disabled {
   color: #fff;
   background-color: #cce8e0;
   border-color: #cce8e0;
@@ -38754,6 +38766,12 @@ fieldset[disabled] .theme-materia .button.is-link:active:hover {
 :root.theme-minty .button.is-outlined.is-danger,
 .theme-minty .button.is-outlined.is-danger {
   --bulma-button-l: 44%;
+}
+:root[data-theme=minty] .pagination,
+[data-theme=minty] .pagination,
+:root.theme-minty .pagination,
+.theme-minty .pagination {
+  --bulma-pagination-item-background-l-delta: -25%;
 }
 
 :root[data-theme=morph],
@@ -45259,6 +45277,20 @@ fieldset[disabled] .theme-quartz .select select {
   --bulma-breadcrumb-item-padding-vertical: 0.375rem;
   --bulma-breadcrumb-item-padding-horizontal: 0.75rem;
 }
+:root[data-theme=sandstone],
+[data-theme=sandstone],
+:root.theme-sandstone,
+.theme-sandstone {
+  --bulma-gray-600-h: 48deg;
+  --bulma-gray-600-s: 4%;
+  --bulma-gray-600-l: 54%;
+  --bulma-gray-200-h: 38deg;
+  --bulma-gray-200-s: 36%;
+  --bulma-gray-200-l: 96%;
+  --bulma-gray-300-h: 37deg;
+  --bulma-gray-300-s: 25%;
+  --bulma-gray-300-l: 83%;
+}
 :root[data-theme=sandstone] a.dropdown-item,
 :root[data-theme=sandstone] button.dropdown-item,
 [data-theme=sandstone] a.dropdown-item,
@@ -45267,7 +45299,7 @@ fieldset[disabled] .theme-quartz .select select {
 :root.theme-sandstone button.dropdown-item,
 .theme-sandstone a.dropdown-item,
 .theme-sandstone button.dropdown-item {
-  color: #8e8c84;
+  color: hsl(var(--bulma-gray-600-h), var(--bulma-gray-600-s), var(--bulma-gray-600-l));
 }
 :root[data-theme=sandstone] a.dropdown-item:hover,
 :root[data-theme=sandstone] button.dropdown-item:hover,
@@ -45277,8 +45309,8 @@ fieldset[disabled] .theme-quartz .select select {
 :root.theme-sandstone button.dropdown-item:hover,
 .theme-sandstone a.dropdown-item:hover,
 .theme-sandstone button.dropdown-item:hover {
-  color: #8e8c84;
-  background-color: #f8f5f0;
+  color: hsl(var(--bulma-gray-600-h), var(--bulma-gray-600-s), var(--bulma-gray-600-l));
+  background-color: hsl(var(--bulma-gray-200-h), var(--bulma-gray-200-s), var(--bulma-gray-200-l));
 }
 :root[data-theme=sandstone] a.dropdown-item:active,
 :root[data-theme=sandstone] button.dropdown-item:active,
@@ -45288,8 +45320,8 @@ fieldset[disabled] .theme-quartz .select select {
 :root.theme-sandstone button.dropdown-item:active,
 .theme-sandstone a.dropdown-item:active,
 .theme-sandstone button.dropdown-item:active {
-  color: #8e8c84;
-  background-color: #f8f5f0;
+  color: hsl(var(--bulma-gray-600-h), var(--bulma-gray-600-s), var(--bulma-gray-600-l));
+  background-color: hsl(var(--bulma-gray-200-h), var(--bulma-gray-200-s), var(--bulma-gray-200-l));
 }
 :root[data-theme=sandstone] .pagination-previous,
 :root[data-theme=sandstone] .pagination-next,
@@ -45307,9 +45339,9 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-sandstone .pagination-next,
 .theme-sandstone .pagination-link,
 .theme-sandstone .pagination-ellipsis {
-  color: #8e8c84;
-  background-color: #f8f5f0;
-  border-color: #dfd7ca;
+  color: hsl(var(--bulma-gray-600-h), var(--bulma-gray-600-s), calc(var(--bulma-gray-600-l) + var(--bulma-pagination-item-l-delta)));
+  background-color: hsl(var(--bulma-gray-200-h), var(--bulma-gray-200-s), calc(var(--bulma-gray-200-l) + var(--bulma-pagination-item-background-l-delta)));
+  border-color: hsl(var(--bulma-gray-300-h), var(--bulma-gray-300-s), calc(var(--bulma-gray-300-l) + var(--bulma-pagination-item-border-l-delta)));
 }
 :root[data-theme=sandstone] .pagination-previous:hover,
 :root[data-theme=sandstone] .pagination-next:hover,
@@ -45323,7 +45355,7 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-sandstone .pagination-previous:hover,
 .theme-sandstone .pagination-next:hover,
 .theme-sandstone .pagination-link:hover {
-  color: #8e8c84;
+  color: hsl(var(--bulma-gray-600-h), var(--bulma-gray-600-s), calc(var(--bulma-gray-600-l) + var(--bulma-pagination-item-l-delta)));
 }
 :root[data-theme=sandstone] .pagination-previous:active,
 :root[data-theme=sandstone] .pagination-next:active,
@@ -45337,9 +45369,9 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-sandstone .pagination-previous:active,
 .theme-sandstone .pagination-next:active,
 .theme-sandstone .pagination-link:active {
-  color: #8e8c84;
-  background-color: #dfd7ca;
-  border-color: #dfd7ca;
+  color: hsl(var(--bulma-gray-600-h), var(--bulma-gray-600-s), calc(var(--bulma-gray-600-l) + var(--bulma-pagination-item-l-delta)));
+  background-color: hsl(var(--bulma-gray-300-h), var(--bulma-gray-300-s), calc(var(--bulma-gray-300-l) + var(--bulma-pagination-item-background-l-delta)));
+  border-color: hsl(var(--bulma-gray-300-h), var(--bulma-gray-300-s), calc(var(--bulma-gray-300-l) + var(--bulma-pagination-item-border-l-delta)));
 }
 :root[data-theme=sandstone] .pagination-previous[disabled], :root[data-theme=sandstone] .pagination-previous.is-disabled,
 :root[data-theme=sandstone] .pagination-next[disabled],
@@ -45364,9 +45396,9 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-sandstone .pagination-next.is-disabled,
 .theme-sandstone .pagination-link[disabled],
 .theme-sandstone .pagination-link.is-disabled {
-  color: #dfd7ca;
-  background-color: #f8f5f0;
-  border-color: #dfd7ca;
+  color: hsl(var(--bulma-gray-300-h), var(--bulma-gray-300-s), calc(var(--bulma-gray-300-l) + var(--bulma-pagination-item-l-delta)));
+  background-color: hsl(var(--bulma-gray-200-h), var(--bulma-gray-200-s), calc(var(--bulma-gray-200-l) + var(--bulma-pagination-item-background-l-delta)));
+  border-color: hsl(var(--bulma-gray-300-h), var(--bulma-gray-300-s), calc(var(--bulma-gray-200-l) + var(--bulma-pagination-item-border-l-delta)));
 }
 :root[data-theme=sandstone] .card,
 [data-theme=sandstone] .card,
@@ -45382,13 +45414,13 @@ fieldset[disabled] .theme-quartz .select select {
 :root.theme-sandstone .modal-card,
 .theme-sandstone .modal-content,
 .theme-sandstone .modal-card {
-  border-color: #dfd7ca;
+  border-color: hsl(var(--bulma-gray-300-h), var(--bulma-gray-300-s), var(--bulma-gray-300-l));
 }
 :root[data-theme=sandstone] .breadcrumb,
 [data-theme=sandstone] .breadcrumb,
 :root.theme-sandstone .breadcrumb,
 .theme-sandstone .breadcrumb {
-  background-color: #f8f5f0;
+  background-color: hsl(var(--bulma-gray-200-h), var(--bulma-gray-200-s), var(--bulma-gray-200-l));
   border-radius: 0.25rem;
 }
 :root[data-theme=sandstone] .progress,
@@ -45631,15 +45663,15 @@ fieldset[disabled] .theme-quartz .select select {
 [data-theme=sandstone] .tabs li,
 :root.theme-sandstone .tabs li,
 .theme-sandstone .tabs li {
-  background-color: #f8f5f0;
-  border-color: #dfd7ca;
+  background-color: hsl(var(--bulma-gray-200-h), var(--bulma-gray-200-s), var(--bulma-gray-200-l));
+  border-color: hsl(var(--bulma-gray-300-h), var(--bulma-gray-300-s), var(--bulma-gray-300-l));
 }
 :root[data-theme=sandstone] .tabs li.is-disabled,
 [data-theme=sandstone] .tabs li.is-disabled,
 :root.theme-sandstone .tabs li.is-disabled,
 .theme-sandstone .tabs li.is-disabled {
-  background-color: #f8f5f0;
-  border-color: #dfd7ca;
+  background-color: hsl(var(--bulma-gray-200-h), var(--bulma-gray-200-s), var(--bulma-gray-200-l));
+  border-color: hsl(var(--bulma-gray-300-h), var(--bulma-gray-300-s), var(--bulma-gray-300-l));
 }
 :root[data-theme=sandstone] .tabs li.is-disabled a,
 :root[data-theme=sandstone] .tabs li.is-disabled a:hover,
@@ -45653,7 +45685,7 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-sandstone .tabs li.is-disabled a,
 .theme-sandstone .tabs li.is-disabled a:hover,
 .theme-sandstone .tabs li.is-disabled a:focus {
-  color: #8e8c84;
+  color: hsl(var(--bulma-gray-600-h), var(--bulma-gray-600-s), var(--bulma-gray-600-l));
 }
 :root[data-theme=sandstone] .tabs a,
 :root[data-theme=sandstone] .tabs a:hover,
@@ -45667,13 +45699,13 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-sandstone .tabs a,
 .theme-sandstone .tabs a:hover,
 .theme-sandstone .tabs a:focus {
-  color: #8e8c84;
+  color: hsl(var(--bulma-gray-600-h), var(--bulma-gray-600-s), var(--bulma-gray-600-l));
 }
 :root[data-theme=sandstone] .breadcrumb,
 [data-theme=sandstone] .breadcrumb,
 :root.theme-sandstone .breadcrumb,
 .theme-sandstone .breadcrumb {
-  border: 1px solid #dfd7ca;
+  border: 1px solid hsl(var(--bulma-gray-300-h), var(--bulma-gray-300-s), var(--bulma-gray-300-l));
 }
 :root[data-theme=sandstone] .pagination .pagination-previous:hover,
 :root[data-theme=sandstone] .pagination .pagination-next:hover,
@@ -45717,6 +45749,12 @@ fieldset[disabled] .theme-quartz .select select {
 :root.theme-sandstone .notification.is-info,
 .theme-sandstone .notification.is-info {
   color: hsl(var(--bulma-notification-h), var(--bulma-notification-s), 17%);
+}
+:root[data-theme=sandstone] .pagination,
+[data-theme=sandstone] .pagination,
+:root.theme-sandstone .pagination,
+.theme-sandstone .pagination {
+  --bulma-gray-600-l: 50%;
 }
 
 :root[data-theme=simplex],
@@ -58420,6 +58458,17 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-breadcrumb-item-padding-vertical: 0.375rem;
   --bulma-breadcrumb-item-padding-horizontal: 0.75rem;
 }
+:root[data-theme=yeti],
+[data-theme=yeti],
+:root.theme-yeti,
+.theme-yeti {
+  --bulma-gray-600-h: 0deg;
+  --bulma-gray-600-s: 0%;
+  --bulma-gray-600-l: 53%;
+  --bulma-gray-400-h: 0deg;
+  --bulma-gray-400-s: 0%;
+  --bulma-gray-400-l: 80%;
+}
 :root[data-theme=yeti] .pagination-previous,
 :root[data-theme=yeti] .pagination-next,
 :root[data-theme=yeti] .pagination-link,
@@ -58436,7 +58485,7 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-yeti .pagination-next,
 .theme-yeti .pagination-link,
 .theme-yeti .pagination-ellipsis {
-  color: #888;
+  color: hsl(var(--bulma-gray-600-h), var(--bulma-gray-600-s), var(--bulma-gray-600-l));
 }
 :root[data-theme=yeti] .pagination-previous:active,
 :root[data-theme=yeti] .pagination-next:active,
@@ -58476,7 +58525,7 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-yeti .pagination-link[disabled],
 .theme-yeti .pagination-link.is-disabled {
   background-color: transparent;
-  color: #ccc;
+  color: hsl(var(--bulma-gray-400-h), var(--bulma-gray-400-s), var(--bulma-gray-400-l));
 }
 :root[data-theme=yeti] .pagination-previous.is-current, :root[data-theme=yeti] .pagination-previous.is-selected,
 :root[data-theme=yeti] .pagination-next.is-current,
@@ -58645,6 +58694,12 @@ fieldset[disabled] .theme-sketchy .select select {
 :root.theme-yeti .button.is-outlined.is-danger,
 .theme-yeti .button.is-outlined.is-danger {
   --bulma-button-l: 47%;
+}
+:root[data-theme=yeti] .pagination,
+[data-theme=yeti] .pagination,
+:root.theme-yeti .pagination,
+.theme-yeti .pagination {
+  --bulma-gray-600-l: 46%;
 }
 
 :root[data-theme=zephyr],

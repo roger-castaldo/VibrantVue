@@ -5,11 +5,20 @@
 
 @mixin boot-swatch-content($gray-600, $gray-400, $white){
 
+  &{
+    @include cv.register-hsl("gray-600",$gray-600);
+    @include cv.register-hsl("gray-400",$gray-400);
+  }
+
   .#{iv.$class-prefix}pagination-previous,
   .#{iv.$class-prefix}pagination-next,
   .#{iv.$class-prefix}pagination-link,
   .#{iv.$class-prefix}pagination-ellipsis {
-    color: $gray-600;
+    color: hsl(
+      #{cv.getVar("gray-600-h")},
+      #{cv.getVar("gray-600-s")},
+      #{cv.getVar("gray-600-l")}
+    );
   }
 
   .#{iv.$class-prefix}pagination-previous,
@@ -22,7 +31,11 @@
     &[disabled],
     &.#{iv.$class-prefix}is-disabled {
       background-color:transparent;
-      color: $gray-400;
+      color: hsl(
+        #{cv.getVar("gray-400-h")},
+        #{cv.getVar("gray-400-s")},
+        #{cv.getVar("gray-400-l")}
+      );
     }
 
     &.#{iv.$class-prefix}is-current,
@@ -335,6 +348,10 @@
         @include cv.register-var("button-l",47%);
       }
     }
+  }
+
+  .#{iv.$class-prefix}pagination {
+    @include cv.register-var("gray-600-l",46%);
   }
 
 }

@@ -113,4 +113,8 @@
       );
     }
   }
+
+  .#{iv.$class-prefix}pagination {
+    @include cv.register-var("pagination-item-color-l",47%);
+  }
 }
