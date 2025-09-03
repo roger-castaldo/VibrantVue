@@ -95,4 +95,12 @@
         ));
     }
   }
+
+  .#{iv.$class-prefix}section {
+      @include cv.register-vars((
+          "text-l":56%,
+          "body-color":hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},#{cv.getVar("text-l")})
+      ));
+      color: #{cv.getVar("body-color")};
+  }
 }

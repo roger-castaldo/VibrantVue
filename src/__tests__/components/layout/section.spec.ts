@@ -4,6 +4,7 @@ import { ExecuteAccessibilityChecks } from '../../common';
 import Section from '../../../components/layout/section.vue';
 import { stripCommentNodes } from '../../common';
 import { SectionSizes } from '../../../enums';
+import {h} from 'vue';
 
 
 describe('Section', () => {
@@ -12,7 +13,7 @@ describe('Section', () => {
       const {container} = render(Section, {
         props: {},
         slots:{
-          default:()=>'Test Content'
+          default:()=>h('p',null,'Test Content')
         }
       });
       return container;

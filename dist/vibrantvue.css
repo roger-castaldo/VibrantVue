@@ -28639,6 +28639,14 @@ form.container.is-fullhd section .columns {
 .theme-cyborg .pagination {
   --bulma-pagination-item-color-l: 47%;
 }
+:root[data-theme=cyborg] .section,
+[data-theme=cyborg] .section,
+:root.theme-cyborg .section,
+.theme-cyborg .section {
+  --bulma-text-l: 49%;
+  --bulma-body-color: hsl(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l));
+  color: var(--bulma-body-color);
+}
 
 :root[data-theme=dark],
 [data-theme=dark],
@@ -28708,6 +28716,14 @@ form.container.is-fullhd section .columns {
 :root.theme-dark .button.is-outlined.is-link,
 .theme-dark .button.is-outlined.is-link {
   --bulma-button-l: 69%;
+}
+:root[data-theme=dark] .section,
+[data-theme=dark] .section,
+:root.theme-dark .section,
+.theme-dark .section {
+  --bulma-text-l: 53%;
+  --bulma-body-color: hsl(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l));
+  color: var(--bulma-body-color);
 }
 
 :root[data-theme=darkly],
@@ -29531,6 +29547,14 @@ form.container.is-fullhd section .columns {
 :root.theme-darkly .pagination,
 .theme-darkly .pagination {
   --bulma-pagination-item-color-l: 54%;
+}
+:root[data-theme=darkly] .section,
+[data-theme=darkly] .section,
+:root.theme-darkly .section,
+.theme-darkly .section {
+  --bulma-text-l: 56%;
+  --bulma-body-color: hsl(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l));
+  color: var(--bulma-body-color);
 }
 
 :root[data-theme=flatly],
@@ -51160,6 +51184,14 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-message-background-l: 23%;
   --bulma-message-color-l: 69%;
 }
+:root[data-theme=slate] .section,
+[data-theme=slate] .section,
+:root.theme-slate .section,
+.theme-slate .section {
+  --bulma-text-l: 60%;
+  --bulma-body-color: hsl(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l));
+  color: var(--bulma-body-color);
+}
 
 :root[data-theme=solar],
 [data-theme=solar],
@@ -52472,6 +52504,14 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-solar .message .message-body {
   --bulma-message-background-l: 14%;
   --bulma-message-color-l: 50%;
+}
+:root[data-theme=solar] .section,
+[data-theme=solar] .section,
+:root.theme-solar .section,
+.theme-solar .section {
+  --bulma-text-l: 57%;
+  --bulma-body-color: hsl(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l));
+  color: var(--bulma-body-color);
 }
 
 :root[data-theme=spacelab],
@@ -54818,6 +54858,14 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-superhero .message .message-body {
   --bulma-message-background-l: 18%;
   --bulma-message-color-l: 65%;
+}
+:root[data-theme=superhero] .section,
+[data-theme=superhero] .section,
+:root.theme-superhero .section,
+.theme-superhero .section {
+  --bulma-text-l: 56%;
+  --bulma-body-color: hsl(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l));
+  color: var(--bulma-body-color);
 }
 
 :root[data-theme=united],
