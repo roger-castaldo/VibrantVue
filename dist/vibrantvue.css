@@ -28657,19 +28657,29 @@ form.container.is-fullhd section .columns {
 :root[data-theme=cyborg] .level,
 :root[data-theme=cyborg] .media,
 :root[data-theme=cyborg] .card,
+:root[data-theme=cyborg] .modal-card,
 [data-theme=cyborg] .box,
 [data-theme=cyborg] .level,
 [data-theme=cyborg] .media,
 [data-theme=cyborg] .card,
+[data-theme=cyborg] .modal-card,
 :root.theme-cyborg .box,
 :root.theme-cyborg .level,
 :root.theme-cyborg .media,
 :root.theme-cyborg .card,
+:root.theme-cyborg .modal-card,
 .theme-cyborg .box,
 .theme-cyborg .level,
 .theme-cyborg .media,
-.theme-cyborg .card {
+.theme-cyborg .card,
+.theme-cyborg .modal-card {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 49%);
+}
+:root[data-theme=cyborg] .modal-card-foot,
+[data-theme=cyborg] .modal-card-foot,
+:root.theme-cyborg .modal-card-foot,
+.theme-cyborg .modal-card-foot {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
 }
 
 :root[data-theme=dark],
@@ -28751,18 +28761,26 @@ form.container.is-fullhd section .columns {
 }
 :root[data-theme=dark] .level,
 :root[data-theme=dark] .media,
+:root[data-theme=dark] .modal-card,
 [data-theme=dark] .level,
 [data-theme=dark] .media,
+[data-theme=dark] .modal-card,
 :root.theme-dark .level,
 :root.theme-dark .media,
+:root.theme-dark .modal-card,
 .theme-dark .level,
-.theme-dark .media {
+.theme-dark .media,
+.theme-dark .modal-card {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 53%);
 }
 :root[data-theme=dark] .footer,
+:root[data-theme=dark] .modal-card-foot,
 [data-theme=dark] .footer,
+[data-theme=dark] .modal-card-foot,
 :root.theme-dark .footer,
-.theme-dark .footer {
+:root.theme-dark .modal-card-foot,
+.theme-dark .footer,
+.theme-dark .modal-card-foot {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 54%);
 }
 
@@ -29600,19 +29618,29 @@ form.container.is-fullhd section .columns {
 :root[data-theme=darkly] .level,
 :root[data-theme=darkly] .media,
 :root[data-theme=darkly] .card,
+:root[data-theme=darkly] .modal-card,
 [data-theme=darkly] .box,
 [data-theme=darkly] .level,
 [data-theme=darkly] .media,
 [data-theme=darkly] .card,
+[data-theme=darkly] .modal-card,
 :root.theme-darkly .box,
 :root.theme-darkly .level,
 :root.theme-darkly .media,
 :root.theme-darkly .card,
+:root.theme-darkly .modal-card,
 .theme-darkly .box,
 .theme-darkly .level,
 .theme-darkly .media,
-.theme-darkly .card {
+.theme-darkly .card,
+.theme-darkly .modal-card {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 56%);
+}
+:root[data-theme=darkly] .modal-card-foot,
+[data-theme=darkly] .modal-card-foot,
+:root.theme-darkly .modal-card-foot,
+.theme-darkly .modal-card-foot {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
 }
 
 :root[data-theme=flatly],
@@ -51254,19 +51282,29 @@ fieldset[disabled] .theme-sketchy .select select {
 :root[data-theme=slate] .level,
 :root[data-theme=slate] .media,
 :root[data-theme=slate] .card,
+:root[data-theme=slate] .modal-card,
 [data-theme=slate] .box,
 [data-theme=slate] .level,
 [data-theme=slate] .media,
 [data-theme=slate] .card,
+[data-theme=slate] .modal-card,
 :root.theme-slate .box,
 :root.theme-slate .level,
 :root.theme-slate .media,
 :root.theme-slate .card,
+:root.theme-slate .modal-card,
 .theme-slate .box,
 .theme-slate .level,
 .theme-slate .media,
-.theme-slate .card {
+.theme-slate .card,
+.theme-slate .modal-card {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 59%);
+}
+:root[data-theme=slate] .modal-card-foot,
+[data-theme=slate] .modal-card-foot,
+:root.theme-slate .modal-card-foot,
+.theme-slate .modal-card-foot {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
 }
 
 :root[data-theme=solar],
@@ -52593,19 +52631,29 @@ fieldset[disabled] .theme-sketchy .select select {
 :root[data-theme=solar] .level,
 :root[data-theme=solar] .media,
 :root[data-theme=solar] .card,
+:root[data-theme=solar] .modal-card,
 [data-theme=solar] .box,
 [data-theme=solar] .level,
 [data-theme=solar] .media,
 [data-theme=solar] .card,
+[data-theme=solar] .modal-card,
 :root.theme-solar .box,
 :root.theme-solar .level,
 :root.theme-solar .media,
 :root.theme-solar .card,
+:root.theme-solar .modal-card,
 .theme-solar .box,
 .theme-solar .level,
 .theme-solar .media,
-.theme-solar .card {
+.theme-solar .card,
+.theme-solar .modal-card {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
+}
+:root[data-theme=solar] .modal-card-foot,
+[data-theme=solar] .modal-card-foot,
+:root.theme-solar .modal-card-foot,
+.theme-solar .modal-card-foot {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
 }
 
 :root[data-theme=spacelab],
@@ -54965,19 +55013,29 @@ fieldset[disabled] .theme-sketchy .select select {
 :root[data-theme=superhero] .level,
 :root[data-theme=superhero] .media,
 :root[data-theme=superhero] .card,
+:root[data-theme=superhero] .modal-card,
 [data-theme=superhero] .box,
 [data-theme=superhero] .level,
 [data-theme=superhero] .media,
 [data-theme=superhero] .card,
+[data-theme=superhero] .modal-card,
 :root.theme-superhero .box,
 :root.theme-superhero .level,
 :root.theme-superhero .media,
 :root.theme-superhero .card,
+:root.theme-superhero .modal-card,
 .theme-superhero .box,
 .theme-superhero .level,
 .theme-superhero .media,
-.theme-superhero .card {
+.theme-superhero .card,
+.theme-superhero .modal-card {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
+}
+:root[data-theme=superhero] .modal-card-foot,
+[data-theme=superhero] .modal-card-foot,
+:root.theme-superhero .modal-card-foot,
+.theme-superhero .modal-card-foot {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
 }
 
 :root[data-theme=united],

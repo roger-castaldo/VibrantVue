@@ -29,11 +29,17 @@
     }
 
     .#{iv.$class-prefix}level,
-    .#{iv.$class-prefix}media {
+    .#{iv.$class-prefix}media,
+    .#{iv.$class-prefix}modal-card {
         color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},53%);
     }
 
-    .#{iv.$class-prefix}footer {
+    .#{iv.$class-prefix}footer,
+    .#{iv.$class-prefix}modal-card-foot {
         color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},54%);
     }
+
+    // .#{iv.$class-prefix}modal-card-foot {
+    //     color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},47%);
+    // }
 }
