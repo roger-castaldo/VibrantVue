@@ -28747,6 +28747,12 @@ form.container.is-fullhd section .columns {
 .theme-dark .level {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 53%);
 }
+:root[data-theme=dark] .footer,
+[data-theme=dark] .footer,
+:root.theme-dark .footer,
+.theme-dark .footer {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 54%);
+}
 
 :root[data-theme=darkly],
 [data-theme=darkly],

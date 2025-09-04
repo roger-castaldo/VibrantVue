@@ -31,4 +31,8 @@
     .#{iv.$class-prefix}level {
         color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},53%);
     }
+
+    .#{iv.$class-prefix}footer {
+        color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},54%);
+    }
 }
