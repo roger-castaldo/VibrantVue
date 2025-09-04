@@ -10,6 +10,7 @@ describe('Level', () => {
     const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
       const {container} = render(Level, {
         props: {
+          aria_label:'level',
           left_slots:['left'],
           right_slots:['right'],
           slots:['slot']
@@ -30,6 +31,7 @@ describe('Level', () => {
 
     const {container} = render(Level,{
       props:{
+        aria_label:'level',
         left_slots:['slot1','slot2']
       },
       slots:{
@@ -64,6 +66,7 @@ describe('Level', () => {
 
     const {container} = render(Level,{
       props:{
+        aria_label:'level',
         right_slots:['slot1','slot2']
       },
       slots:{
@@ -98,6 +101,7 @@ describe('Level', () => {
 
     const {container} = render(Level,{
       props:{
+        aria_label:'level',
         slots:['slot1','slot2']
       },
       slots:{

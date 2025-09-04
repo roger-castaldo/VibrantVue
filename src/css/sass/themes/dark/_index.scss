@@ -27,4 +27,8 @@
         ));
         color: #{cv.getVar("body-color")};
     }
+
+    .#{iv.$class-prefix}level {
+        color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},53%);
+    }
 }

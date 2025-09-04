@@ -28654,9 +28654,13 @@ form.container.is-fullhd section .columns {
   color: var(--bulma-body-color);
 }
 :root[data-theme=cyborg] .box,
+:root[data-theme=cyborg] .level,
 [data-theme=cyborg] .box,
+[data-theme=cyborg] .level,
 :root.theme-cyborg .box,
-.theme-cyborg .box {
+:root.theme-cyborg .level,
+.theme-cyborg .box,
+.theme-cyborg .level {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 49%);
 }
 
@@ -28736,6 +28740,12 @@ form.container.is-fullhd section .columns {
   --bulma-text-l: 53%;
   --bulma-body-color: hsl(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l));
   color: var(--bulma-body-color);
+}
+:root[data-theme=dark] .level,
+[data-theme=dark] .level,
+:root.theme-dark .level,
+.theme-dark .level {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 53%);
 }
 
 :root[data-theme=darkly],
@@ -29569,9 +29579,13 @@ form.container.is-fullhd section .columns {
   color: var(--bulma-body-color);
 }
 :root[data-theme=darkly] .box,
+:root[data-theme=darkly] .level,
 [data-theme=darkly] .box,
+[data-theme=darkly] .level,
 :root.theme-darkly .box,
-.theme-darkly .box {
+:root.theme-darkly .level,
+.theme-darkly .box,
+.theme-darkly .level {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 56%);
 }
 
@@ -51211,9 +51225,13 @@ fieldset[disabled] .theme-sketchy .select select {
   color: var(--bulma-body-color);
 }
 :root[data-theme=slate] .box,
+:root[data-theme=slate] .level,
 [data-theme=slate] .box,
+[data-theme=slate] .level,
 :root.theme-slate .box,
-.theme-slate .box {
+:root.theme-slate .level,
+.theme-slate .box,
+.theme-slate .level {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 59%);
 }
 
@@ -52538,9 +52556,13 @@ fieldset[disabled] .theme-sketchy .select select {
   color: var(--bulma-body-color);
 }
 :root[data-theme=solar] .box,
+:root[data-theme=solar] .level,
 [data-theme=solar] .box,
+[data-theme=solar] .level,
 :root.theme-solar .box,
-.theme-solar .box {
+:root.theme-solar .level,
+.theme-solar .box,
+.theme-solar .level {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
 }
 
@@ -54898,9 +54920,13 @@ fieldset[disabled] .theme-sketchy .select select {
   color: var(--bulma-body-color);
 }
 :root[data-theme=superhero] .box,
+:root[data-theme=superhero] .level,
 [data-theme=superhero] .box,
+[data-theme=superhero] .level,
 :root.theme-superhero .box,
-.theme-superhero .box {
+:root.theme-superhero .level,
+.theme-superhero .box,
+.theme-superhero .level {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
 }
 
