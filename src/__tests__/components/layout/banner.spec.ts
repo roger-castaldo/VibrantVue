@@ -9,12 +9,17 @@ import { ColorTypes } from '../../../enums';
 describe('Banner', () => {
   test('check accessibility',async() => {
     const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(Banner, {
-        props: {
-          title:'Sample text'
-        },
-      });
-      return container;
+      let result : HTMLElement[] = [];
+      for( const key in ColorTypes){
+        const renderResult = render(Banner,{
+          props: {
+            title:'Sample text',
+            type:ColorTypes[key]
+          },
+        });
+        result.push(renderResult.container);
+      }
+      return result;
     });
 
     expect(accessibilityScanResults.violations).toEqual([]);

@@ -16,7 +16,7 @@
  */
     import { ColorTypes } from '../../enums';
 
-    const props = defineProps<{
+    const props = withDefaults(defineProps<{
         /**
          * The color of the banner
          */
@@ -29,5 +29,7 @@
          * The sub title of the banner
          */
         subtitle?:string|null
-    }>();
+    }>(),{
+        type:ColorTypes.primary
+    });
 </script>

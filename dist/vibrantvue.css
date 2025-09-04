@@ -27087,6 +27087,12 @@ form.container.is-fullhd section .columns {
 .theme-cerulean .button.is-outlined.is-success {
   --bulma-button-l: 34%;
 }
+:root[data-theme=cerulean] .hero .is-black,
+[data-theme=cerulean] .hero .is-black,
+:root.theme-cerulean .hero .is-black,
+.theme-cerulean .hero .is-black {
+  --bulma-hero-color-l: 35%;
+}
 
 :root[data-theme=cosmo],
 [data-theme=cosmo],
@@ -28647,6 +28653,12 @@ form.container.is-fullhd section .columns {
   --bulma-body-color: hsl(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l));
   color: var(--bulma-body-color);
 }
+:root[data-theme=cyborg] .box,
+[data-theme=cyborg] .box,
+:root.theme-cyborg .box,
+.theme-cyborg .box {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 49%);
+}
 
 :root[data-theme=dark],
 [data-theme=dark],
@@ -29555,6 +29567,12 @@ form.container.is-fullhd section .columns {
   --bulma-text-l: 56%;
   --bulma-body-color: hsl(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l));
   color: var(--bulma-body-color);
+}
+:root[data-theme=darkly] .box,
+[data-theme=darkly] .box,
+:root.theme-darkly .box,
+.theme-darkly .box {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 56%);
 }
 
 :root[data-theme=flatly],
@@ -51192,6 +51210,12 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-body-color: hsl(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l));
   color: var(--bulma-body-color);
 }
+:root[data-theme=slate] .box,
+[data-theme=slate] .box,
+:root.theme-slate .box,
+.theme-slate .box {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 59%);
+}
 
 :root[data-theme=solar],
 [data-theme=solar],
@@ -52512,6 +52536,12 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-text-l: 57%;
   --bulma-body-color: hsl(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l));
   color: var(--bulma-body-color);
+}
+:root[data-theme=solar] .box,
+[data-theme=solar] .box,
+:root.theme-solar .box,
+.theme-solar .box {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
 }
 
 :root[data-theme=spacelab],
@@ -54866,6 +54896,12 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-text-l: 56%;
   --bulma-body-color: hsl(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l));
   color: var(--bulma-body-color);
+}
+:root[data-theme=superhero] .box,
+[data-theme=superhero] .box,
+:root.theme-superhero .box,
+.theme-superhero .box {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
 }
 
 :root[data-theme=united],
