@@ -28656,15 +28656,19 @@ form.container.is-fullhd section .columns {
 :root[data-theme=cyborg] .box,
 :root[data-theme=cyborg] .level,
 :root[data-theme=cyborg] .media,
+:root[data-theme=cyborg] .card,
 [data-theme=cyborg] .box,
 [data-theme=cyborg] .level,
 [data-theme=cyborg] .media,
+[data-theme=cyborg] .card,
 :root.theme-cyborg .box,
 :root.theme-cyborg .level,
 :root.theme-cyborg .media,
+:root.theme-cyborg .card,
 .theme-cyborg .box,
 .theme-cyborg .level,
-.theme-cyborg .media {
+.theme-cyborg .media,
+.theme-cyborg .card {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 49%);
 }
 
@@ -29595,15 +29599,19 @@ form.container.is-fullhd section .columns {
 :root[data-theme=darkly] .box,
 :root[data-theme=darkly] .level,
 :root[data-theme=darkly] .media,
+:root[data-theme=darkly] .card,
 [data-theme=darkly] .box,
 [data-theme=darkly] .level,
 [data-theme=darkly] .media,
+[data-theme=darkly] .card,
 :root.theme-darkly .box,
 :root.theme-darkly .level,
 :root.theme-darkly .media,
+:root.theme-darkly .card,
 .theme-darkly .box,
 .theme-darkly .level,
-.theme-darkly .media {
+.theme-darkly .media,
+.theme-darkly .card {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 56%);
 }
 
@@ -51245,15 +51253,19 @@ fieldset[disabled] .theme-sketchy .select select {
 :root[data-theme=slate] .box,
 :root[data-theme=slate] .level,
 :root[data-theme=slate] .media,
+:root[data-theme=slate] .card,
 [data-theme=slate] .box,
 [data-theme=slate] .level,
 [data-theme=slate] .media,
+[data-theme=slate] .card,
 :root.theme-slate .box,
 :root.theme-slate .level,
 :root.theme-slate .media,
+:root.theme-slate .card,
 .theme-slate .box,
 .theme-slate .level,
-.theme-slate .media {
+.theme-slate .media,
+.theme-slate .card {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 59%);
 }
 
@@ -52580,15 +52592,19 @@ fieldset[disabled] .theme-sketchy .select select {
 :root[data-theme=solar] .box,
 :root[data-theme=solar] .level,
 :root[data-theme=solar] .media,
+:root[data-theme=solar] .card,
 [data-theme=solar] .box,
 [data-theme=solar] .level,
 [data-theme=solar] .media,
+[data-theme=solar] .card,
 :root.theme-solar .box,
 :root.theme-solar .level,
 :root.theme-solar .media,
+:root.theme-solar .card,
 .theme-solar .box,
 .theme-solar .level,
-.theme-solar .media {
+.theme-solar .media,
+.theme-solar .card {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
 }
 
@@ -54948,15 +54964,19 @@ fieldset[disabled] .theme-sketchy .select select {
 :root[data-theme=superhero] .box,
 :root[data-theme=superhero] .level,
 :root[data-theme=superhero] .media,
+:root[data-theme=superhero] .card,
 [data-theme=superhero] .box,
 [data-theme=superhero] .level,
 [data-theme=superhero] .media,
+[data-theme=superhero] .card,
 :root.theme-superhero .box,
 :root.theme-superhero .level,
 :root.theme-superhero .media,
+:root.theme-superhero .card,
 .theme-superhero .box,
 .theme-superhero .level,
-.theme-superhero .media {
+.theme-superhero .media,
+.theme-superhero .card {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
 }
 
