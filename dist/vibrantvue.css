@@ -28655,12 +28655,16 @@ form.container.is-fullhd section .columns {
 }
 :root[data-theme=cyborg] .box,
 :root[data-theme=cyborg] .level,
+:root[data-theme=cyborg] .media,
 [data-theme=cyborg] .box,
 [data-theme=cyborg] .level,
+[data-theme=cyborg] .media,
 :root.theme-cyborg .box,
 :root.theme-cyborg .level,
+:root.theme-cyborg .media,
 .theme-cyborg .box,
-.theme-cyborg .level {
+.theme-cyborg .level,
+.theme-cyborg .media {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 49%);
 }
 
@@ -28742,9 +28746,13 @@ form.container.is-fullhd section .columns {
   color: var(--bulma-body-color);
 }
 :root[data-theme=dark] .level,
+:root[data-theme=dark] .media,
 [data-theme=dark] .level,
+[data-theme=dark] .media,
 :root.theme-dark .level,
-.theme-dark .level {
+:root.theme-dark .media,
+.theme-dark .level,
+.theme-dark .media {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 53%);
 }
 :root[data-theme=dark] .footer,
@@ -29586,12 +29594,16 @@ form.container.is-fullhd section .columns {
 }
 :root[data-theme=darkly] .box,
 :root[data-theme=darkly] .level,
+:root[data-theme=darkly] .media,
 [data-theme=darkly] .box,
 [data-theme=darkly] .level,
+[data-theme=darkly] .media,
 :root.theme-darkly .box,
 :root.theme-darkly .level,
+:root.theme-darkly .media,
 .theme-darkly .box,
-.theme-darkly .level {
+.theme-darkly .level,
+.theme-darkly .media {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 56%);
 }
 
@@ -51232,12 +51244,16 @@ fieldset[disabled] .theme-sketchy .select select {
 }
 :root[data-theme=slate] .box,
 :root[data-theme=slate] .level,
+:root[data-theme=slate] .media,
 [data-theme=slate] .box,
 [data-theme=slate] .level,
+[data-theme=slate] .media,
 :root.theme-slate .box,
 :root.theme-slate .level,
+:root.theme-slate .media,
 .theme-slate .box,
-.theme-slate .level {
+.theme-slate .level,
+.theme-slate .media {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 59%);
 }
 
@@ -52563,12 +52579,16 @@ fieldset[disabled] .theme-sketchy .select select {
 }
 :root[data-theme=solar] .box,
 :root[data-theme=solar] .level,
+:root[data-theme=solar] .media,
 [data-theme=solar] .box,
 [data-theme=solar] .level,
+[data-theme=solar] .media,
 :root.theme-solar .box,
 :root.theme-solar .level,
+:root.theme-solar .media,
 .theme-solar .box,
-.theme-solar .level {
+.theme-solar .level,
+.theme-solar .media {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
 }
 
@@ -54927,12 +54947,16 @@ fieldset[disabled] .theme-sketchy .select select {
 }
 :root[data-theme=superhero] .box,
 :root[data-theme=superhero] .level,
+:root[data-theme=superhero] .media,
 [data-theme=superhero] .box,
 [data-theme=superhero] .level,
+[data-theme=superhero] .media,
 :root.theme-superhero .box,
 :root.theme-superhero .level,
+:root.theme-superhero .media,
 .theme-superhero .box,
-.theme-superhero .level {
+.theme-superhero .level,
+.theme-superhero .media {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
 }
 

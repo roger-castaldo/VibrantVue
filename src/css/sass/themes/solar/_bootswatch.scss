@@ -119,7 +119,8 @@
   }
 
   .#{iv.$class-prefix}box,
-  .#{iv.$class-prefix}level {
+  .#{iv.$class-prefix}level,
+  .#{iv.$class-prefix}media {
     color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},57%);
   }
 }
