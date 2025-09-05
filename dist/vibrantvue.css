@@ -28693,6 +28693,12 @@ form.container.is-fullhd section .columns {
 .theme-cyborg .panel .panel-block {
   --bulma-panel-block-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 49%);
 }
+:root[data-theme=cyborg] .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+[data-theme=cyborg] .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+:root.theme-cyborg .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+.theme-cyborg .table.is-striped tbody tr:not(.is-selected):nth-child(even) td {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
+}
 
 :root[data-theme=dark],
 [data-theme=dark],
@@ -29677,6 +29683,12 @@ form.container.is-fullhd section .columns {
 :root.theme-darkly .panel .panel-tabs,
 .theme-darkly .panel .panel-tabs {
   color: hsl(var(--bulma-panel-h), var(--bulma-panel-s), 54%);
+}
+:root[data-theme=darkly] .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+[data-theme=darkly] .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+:root.theme-darkly .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+.theme-darkly .table.is-striped tbody tr:not(.is-selected):nth-child(even) td {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
 }
 
 :root[data-theme=flatly],
@@ -51354,6 +51366,22 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-slate .panel .panel-tabs {
   color: hsl(var(--bulma-panel-h), var(--bulma-panel-s), 58%);
 }
+:root[data-theme=slate] .table th,
+:root[data-theme=slate] .table td,
+[data-theme=slate] .table th,
+[data-theme=slate] .table td,
+:root.theme-slate .table th,
+:root.theme-slate .table td,
+.theme-slate .table th,
+.theme-slate .table td {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 60%);
+}
+:root[data-theme=slate] .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+[data-theme=slate] .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+:root.theme-slate .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+.theme-slate .table.is-striped tbody tr:not(.is-selected):nth-child(even) td {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 64%);
+}
 
 :root[data-theme=solar],
 [data-theme=solar],
@@ -52714,6 +52742,22 @@ fieldset[disabled] .theme-sketchy .select select {
 :root.theme-solar .panel .panel-tabs,
 .theme-solar .panel .panel-tabs {
   color: hsl(var(--bulma-panel-h), var(--bulma-panel-s), 45%);
+}
+:root[data-theme=solar] .table th,
+:root[data-theme=solar] .table td,
+[data-theme=solar] .table th,
+[data-theme=solar] .table td,
+:root.theme-solar .table th,
+:root.theme-solar .table td,
+.theme-solar .table th,
+.theme-solar .table td {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
+}
+:root[data-theme=solar] .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+[data-theme=solar] .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+:root.theme-solar .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+.theme-solar .table.is-striped tbody tr:not(.is-selected):nth-child(even) td {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 62%);
 }
 
 :root[data-theme=spacelab],
@@ -55108,6 +55152,24 @@ fieldset[disabled] .theme-sketchy .select select {
 :root.theme-superhero .panel .panel-tabs,
 .theme-superhero .panel .panel-tabs {
   color: hsl(var(--bulma-panel-h), var(--bulma-panel-s), 53%);
+}
+:root[data-theme=superhero] .table th,
+[data-theme=superhero] .table th,
+:root.theme-superhero .table th,
+.theme-superhero .table th {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 28%);
+}
+:root[data-theme=superhero] .table td,
+[data-theme=superhero] .table td,
+:root.theme-superhero .table td,
+.theme-superhero .table td {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
+}
+:root[data-theme=superhero] .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+[data-theme=superhero] .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+:root.theme-superhero .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
+.theme-superhero .table.is-striped tbody tr:not(.is-selected):nth-child(even) td {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 60%);
 }
 
 :root[data-theme=united],

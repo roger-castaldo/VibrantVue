@@ -151,4 +151,18 @@
       @include cv.register-var("panel-block-color",hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},49%));
     }
   }
+
+  .#{iv.$class-prefix}table {
+    &.#{iv.$class-prefix}is-striped {
+      tbody {
+        tr:not(.#{iv.$class-prefix}is-selected) {
+          &:nth-child(even) {
+            td{
+              color:hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},47%);
+            }
+          }
+        }
+      }
+    }
+  }
 }

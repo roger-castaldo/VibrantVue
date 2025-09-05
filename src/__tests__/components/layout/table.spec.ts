@@ -15,6 +15,7 @@ const footerCell = h('td',null,footerContent);
 
 const headerRow = h('tr',null,[headerCell]);
 const bodyRow = h('tr',null,[bodyCell]);
+const selectedBodyRow = h('tr',{class:'is-selected'},[bodyCell]);
 const footerRow = h('tr',null,[footerCell]);
 
 describe('Table', () => {
@@ -23,9 +24,9 @@ describe('Table', () => {
       const {container} = render(Table, {
         props: {},
         slots:{
-          thead:()=>headerRow,
-          tbody:()=>bodyRow,
-          tfoot:()=>footerRow
+          thead:()=>[headerRow,headerRow],
+          tbody:()=>[bodyRow,bodyRow,selectedBodyRow,selectedBodyRow],
+          tfoot:()=>[footerRow,footerRow]
         }
       });
       return container;

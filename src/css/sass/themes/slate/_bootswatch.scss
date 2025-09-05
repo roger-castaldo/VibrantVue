@@ -424,4 +424,23 @@
       );
     }
   }
+
+  .#{iv.$class-prefix}table {
+    th,
+    td{
+      color:hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},60%);
+    }
+
+    &.#{iv.$class-prefix}is-striped {
+      tbody {
+        tr:not(.#{iv.$class-prefix}is-selected) {
+          &:nth-child(even) {
+            td{
+              color:hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},64%);
+            }
+          }
+        }
+      }
+    }
+  }
 }
