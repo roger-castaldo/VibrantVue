@@ -137,4 +137,18 @@
   .#{iv.$class-prefix}modal-card-foot {
     color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},47%);
   }
+
+  .#{iv.$class-prefix}panel {
+    .#{iv.$class-prefix}panel-tabs {
+      color: hsl(
+        cv.getVar("panel-h"),
+        cv.getVar("panel-s"),
+        cv.getVar("panel-heading-color-l")
+      );
+    }
+
+    .#{iv.$class-prefix}panel-block {
+      @include cv.register-var("panel-block-color",hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},49%));
+    }
+  }
 }

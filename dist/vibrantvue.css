@@ -28681,6 +28681,18 @@ form.container.is-fullhd section .columns {
 .theme-cyborg .modal-card-foot {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
 }
+:root[data-theme=cyborg] .panel .panel-tabs,
+[data-theme=cyborg] .panel .panel-tabs,
+:root.theme-cyborg .panel .panel-tabs,
+.theme-cyborg .panel .panel-tabs {
+  color: hsl(var(--bulma-panel-h), var(--bulma-panel-s), var(--bulma-panel-heading-color-l));
+}
+:root[data-theme=cyborg] .panel .panel-block,
+[data-theme=cyborg] .panel .panel-block,
+:root.theme-cyborg .panel .panel-block,
+.theme-cyborg .panel .panel-block {
+  --bulma-panel-block-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 49%);
+}
 
 :root[data-theme=dark],
 [data-theme=dark],
@@ -28782,6 +28794,18 @@ form.container.is-fullhd section .columns {
 .theme-dark .footer,
 .theme-dark .modal-card-foot {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 54%);
+}
+:root[data-theme=dark] .panel,
+[data-theme=dark] .panel,
+:root.theme-dark .panel,
+.theme-dark .panel {
+  --bulma-panel-heading-color-l: 35%;
+}
+:root[data-theme=dark] .panel .panel-tabs,
+[data-theme=dark] .panel .panel-tabs,
+:root.theme-dark .panel .panel-tabs,
+.theme-dark .panel .panel-tabs {
+  color: hsl(var(--bulma-panel-h), var(--bulma-panel-s), var(--bulma-panel-color-l));
 }
 
 :root[data-theme=darkly],
@@ -29641,6 +29665,18 @@ form.container.is-fullhd section .columns {
 :root.theme-darkly .modal-card-foot,
 .theme-darkly .modal-card-foot {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
+}
+:root[data-theme=darkly] .panel,
+[data-theme=darkly] .panel,
+:root.theme-darkly .panel,
+.theme-darkly .panel {
+  --bulma-panel-block-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 56%);
+}
+:root[data-theme=darkly] .panel .panel-tabs,
+[data-theme=darkly] .panel .panel-tabs,
+:root.theme-darkly .panel .panel-tabs,
+.theme-darkly .panel .panel-tabs {
+  color: hsl(var(--bulma-panel-h), var(--bulma-panel-s), 54%);
 }
 
 :root[data-theme=flatly],
@@ -51306,6 +51342,18 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-slate .modal-card-foot {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
 }
+:root[data-theme=slate] .panel,
+[data-theme=slate] .panel,
+:root.theme-slate .panel,
+.theme-slate .panel {
+  --bulma-panel-block-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 60%);
+}
+:root[data-theme=slate] .panel .panel-tabs,
+[data-theme=slate] .panel .panel-tabs,
+:root.theme-slate .panel .panel-tabs,
+.theme-slate .panel .panel-tabs {
+  color: hsl(var(--bulma-panel-h), var(--bulma-panel-s), 58%);
+}
 
 :root[data-theme=solar],
 [data-theme=solar],
@@ -52654,6 +52702,18 @@ fieldset[disabled] .theme-sketchy .select select {
 :root.theme-solar .modal-card-foot,
 .theme-solar .modal-card-foot {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
+}
+:root[data-theme=solar] .panel,
+[data-theme=solar] .panel,
+:root.theme-solar .panel,
+.theme-solar .panel {
+  --bulma-panel-block-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
+}
+:root[data-theme=solar] .panel .panel-tabs,
+[data-theme=solar] .panel .panel-tabs,
+:root.theme-solar .panel .panel-tabs,
+.theme-solar .panel .panel-tabs {
+  color: hsl(var(--bulma-panel-h), var(--bulma-panel-s), 45%);
 }
 
 :root[data-theme=spacelab],
@@ -55036,6 +55096,18 @@ fieldset[disabled] .theme-sketchy .select select {
 :root.theme-superhero .modal-card-foot,
 .theme-superhero .modal-card-foot {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
+}
+:root[data-theme=superhero] .panel,
+[data-theme=superhero] .panel,
+:root.theme-superhero .panel,
+.theme-superhero .panel {
+  --bulma-panel-block-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
+}
+:root[data-theme=superhero] .panel .panel-tabs,
+[data-theme=superhero] .panel .panel-tabs,
+:root.theme-superhero .panel .panel-tabs,
+.theme-superhero .panel .panel-tabs {
+  color: hsl(var(--bulma-panel-h), var(--bulma-panel-s), 53%);
 }
 
 :root[data-theme=united],
