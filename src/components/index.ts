@@ -13,7 +13,7 @@ import {Tab} from './layout/interfaces.ts';
 import { provideLanguage, useLanguage, provideIconSet, provideAceJS, provideAnimation, provideChatJS, provideFontAwesome, provideSummerNote} from './shared.ts';
 
 export const {Animation,Button,ButtonsContainer,ButtonAdd,ButtonCancel,ButtonDelete,ButtonDisable,ButtonDownload,
-    ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonUpload,
+    ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonSubmit,ButtonUpload,
     CheckMark,DropDown,DynamicSlot,Filter,Icon,Message,Notification,PageNotification,Pagination,Promised,
     Progress,NavBar,Menu,MenuLabel,MenuList,MenuEntry,ToolTip,Badge,Tag,Tags} = common;
 export const {DraggableItem,DropZone,Sortable} = dragging;

@@ -187,13 +187,15 @@ $frosted-opacity: .3 !default;
 
   // Body
 
-  body {
-    background-image: linear-gradient(
+  $gradientBackgroundImage: linear-gradient(
       90deg,
       color.adjust($cyan,$lightness: -10%) 0%,
       color.adjust($purple,$lightness: -10%) 50%,
       color.adjust($pink,$lightness: -5%) 100%
     );
+
+  body {
+    background-image: $gradientBackgroundImage;
   }
 
   // Forms
@@ -405,6 +407,14 @@ $frosted-opacity: .3 !default;
 
       &.#{iv.$class-prefix}is-danger{
         @include cv.register-var("button-l",38%);
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}slideout{
+    .#{iv.$class-prefix}slideout-content{
+      .#{iv.$class-prefix}slideout-body{
+        background-image:$gradientBackgroundImage;
       }
     }
   }

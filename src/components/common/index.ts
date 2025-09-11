@@ -11,6 +11,7 @@ import ButtonOkay from './buttons/button-okay.vue';
 import ButtonPrint from './buttons/button-print.vue';
 import ButtonRefresh from './buttons/button-refresh.vue';
 import ButtonSave from './buttons/button-save.vue';
+import ButtonSubmit from './buttons/button-submit.vue';
 import ButtonUpload from './buttons/button-upload.vue';
 import ButtonsContainer from './buttons-container.vue';
 import CheckMark from './check-mark.vue'
@@ -35,6 +36,6 @@ import Tag from './tag.vue';
 import Tags from './tags.vue';
 
 export { Animation,Button,ButtonAdd,ButtonCancel,ButtonDelete,ButtonDisable,ButtonDownload,
-ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonUpload,ButtonsContainer,
+ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonSubmit,ButtonUpload,ButtonsContainer,
 CheckMark,DropDown,DynamicSlot,Filter,Icon,Message,Notification,PageNotification,Pagination,Promised,Progress,
 NavBar,Menu,MenuLabel,MenuList,MenuEntry,Badge,ToolTip,Tag,Tags};

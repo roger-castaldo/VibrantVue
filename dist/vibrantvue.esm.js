@@ -1,14 +1,14 @@
-import { computed as k, defineComponent as D, inject as z, createBlock as R, createElementBlock as i, openBlock as r, Transition as na, withCtx as E, renderSlot as P, normalizeClass as F, ref as x, watch as j, createCommentVNode as A, createVNode as B, toDisplayString as T, mergeProps as Y, toValue as re, createElementVNode as M, unref as g, Fragment as C, renderList as W, resolveDynamicComponent as pe, createTextVNode as q, onMounted as ce, withDirectives as H, vModelText as De, vShow as ne, normalizeProps as me, resolveComponent as mt, useSlots as ie, readonly as ye, vModelCheckbox as je, normalizeStyle as Ae, guardReactiveProps as fe, reactive as oa, createSlots as xe, withAsyncContext as ra, onUnmounted as ua, vModelSelect as ia, vModelDynamic as da, useId as ca, provide as Re, markRaw as pa } from "vue";
-const Be = (e) => new Promise((l) => {
+import { computed as k, defineComponent as D, inject as E, createBlock as R, createElementBlock as d, openBlock as r, Transition as na, withCtx as z, renderSlot as B, normalizeClass as F, ref as P, watch as U, createCommentVNode as A, unref as g, createVNode as x, toDisplayString as T, mergeProps as q, toValue as re, createElementVNode as M, Fragment as C, renderList as W, resolveDynamicComponent as pe, createTextVNode as X, onMounted as ce, withDirectives as H, vModelText as De, vShow as ne, normalizeProps as me, resolveComponent as mt, useSlots as ue, readonly as ye, vModelCheckbox as Ue, normalizeStyle as Ae, guardReactiveProps as fe, reactive as oa, createSlots as Pe, withAsyncContext as ra, onUnmounted as ia, vModelSelect as ua, vModelDynamic as da, useId as ca, provide as Re, markRaw as pa } from "vue";
+const xe = (e) => new Promise((l) => {
   let t = [], a = document.head || document.getElementsByTagName("head")[0];
   (Array.isArray(e) ? e : [e]).forEach((s, o) => {
     if (s.toLowerCase().endsWith(".css") || (s += ".css"), document.querySelectorAll('link[server_path="' + s + '"]').length == 0) {
-      let d = document.createElement("link"), c = new Promise((u) => {
-        d.onload = function() {
+      let i = document.createElement("link"), c = new Promise((u) => {
+        i.onload = function() {
           u(s);
         };
       });
-      t[o] = c, a.appendChild(d), d.setAttribute("rel", "stylesheet"), d.setAttribute("type", "text/css"), d.setAttribute("server_path", s), d.setAttribute("href", s);
+      t[o] = c, a.appendChild(i), i.setAttribute("rel", "stylesheet"), i.setAttribute("type", "text/css"), i.setAttribute("server_path", s), i.setAttribute("href", s);
     } else
       t[o] = Promise.resolve(s);
   }), Promise.all(t).then((s) => {
@@ -31,14 +31,14 @@ const Be = (e) => new Promise((l) => {
     });
     let s = document.createElement("script");
     s.onload = () => {
-      let n = ve.findIndex((d) => d.path === e);
+      let n = ve.findIndex((i) => i.path === e);
       if (l === void 0)
         ve[n].result = void 0;
       else {
-        let d = {};
+        let i = {};
         l.forEach((c) => {
-          d[c] = window[c];
-        }), ve[n].result = d;
+          i[c] = window[c];
+        }), ve[n].result = i;
       }
       t(ve[n].result);
     }, s.setAttribute("src", e), (document.head || document.getElementsByTagName("head")[0]).appendChild(s);
@@ -49,11 +49,11 @@ const Be = (e) => new Promise((l) => {
   return typeof self.crypto < "u" && (e = self.crypto, l = (t = e.randomUUID) == null ? void 0 : t.call(e)), l || "";
 }, ma = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  css: Be,
+  css: xe,
   generateUUID: ht,
   loadNonEs6Module: Ge
 }, Symbol.toStringTag, { value: "Module" }));
-var X = /* @__PURE__ */ ((e) => (e.white = "white", e.black = "black", e.light = "light", e.dark = "dark", e.primary = "primary", e.link = "link", e.info = "info", e.success = "success", e.warning = "warning", e.danger = "danger", e))(X || {}), ue = /* @__PURE__ */ ((e) => (e.info = "info", e.success = "success", e.warning = "warning", e.danger = "danger", e))(ue || {}), Z = /* @__PURE__ */ ((e) => (e.small = "small", e.normal = "normal", e.medium = "medium", e.large = "large", e))(Z || {}), ge = /* @__PURE__ */ ((e) => (e.slower = "slower", e.slow = "slow", e.fast = "fast", e.faster = "faster", e))(ge || {}), we = /* @__PURE__ */ ((e) => (e.bounce = "bounce", e.flash = "flash", e.pulse = "pulse", e.rubberBand = "rubberBand", e.shakeX = "shakeX", e.shakeY = "shakeY", e.headShake = "headShake", e.swing = "swing", e.tada = "tada", e.wobble = "wobble", e.jello = "jello", e.heartBeat = "heartBeat", e.backOutDown = "backOutDown", e.backOutLeft = "backOutLeft", e.backOutRight = "backOutRight", e.backOutUp = "backOutUp", e.bounceIn = "bounceIn", e.bounceInDown = "bounceInDown", e.bounceInLeft = "bounceInLeft", e.bounceInRight = "bounceInRight", e.bounceInUp = "bounceInUp", e.bounceOut = "bounceOut", e.boundOutDown = "boundOutDown", e.bounceOutLeft = "bounceOutLeft", e.boundOutRight = "boundOutRight", e.bounceOutUp = "bounceOutUp", e.fadeIn = "fadeIn", e.fadeInDown = "fadeInDown", e.fadeInDownBig = "fadeInDownBig", e.fadeInLeft = "fadeInLeft", e.fadeInLeftBig = "fadeInLeftBig", e.fadeInRight = "fadeInRight", e.fadeInRightBig = "fadeInRightBig", e.fadeInUp = "fadeInUp", e.fadeInUpBig = "fadeInUpBig", e.fadeInTopLeft = "fadeInTopLeft", e.fadeInTopRight = "fadeInTopRight", e.fadeInBottomLeft = "fadeInBottomLeft", e.fadeInBottomRight = "fadeInBottomRight", e.fadeOut = "fadeOut", e.fadeOutDown = "fadeOutDown", e.fadeOutDownBig = "fadeOutDownBig", e.fadeOutLeft = "fadeOutLeft", e.fadeOutLeftBig = "fadeOutLeftBig", e.fadeOutRight = "fadeOutRight", e.fadeOutRightBig = "fadeOutRightBig", e.fadeOutUp = "fadeOutUp", e.fadeOutUpBig = "fadeOutUpBig", e.fadeOutTopLeft = "fadeOutTopLeft", e.fadeOutTopRight = "fadeOutTopRight", e.fadeOutBottomRight = "fadeOutBottomRight", e.fadeOutBottomLeft = "fadeOutBottomLeft", e.flip = "flip", e.flipInX = "flipInX", e.flipInY = "flipInY", e.flipOutX = "flipOutX", e.flipOutY = "flipOutY", e.lightSpeedInRight = "lightSpeedInRight", e.lightSpeedInLeft = "lightSpeedInLeft", e.lightSpeedOutRight = "lightSpeedOutRight", e.lightSpeedOutLeft = "lightSpeedOutLeft", e.rotateIn = "rotateIn", e.rotateInDownLeft = "rotateInDownLeft", e.rotateInDownRight = "rotateInDownRight", e.rotateInUpLeft = "rotateInUpLeft", e.rotateInUpRight = "rotateInUpRight", e.rotateOut = "rotateOut", e.rotateOutDownLeft = "rotateOutDownLeft", e.rotateOutDownRight = "rotateOutDownRight", e.rotateOutUpLeft = "rotateOutUpLeft", e.rotateOutUpRight = "rotateOutUpRight", e.hinge = "hinge", e.jackInTheBox = "jackInTheBox", e.rollIn = "rollIn", e.rollOut = "rollOut", e.zoomIn = "zoomIn", e.zoomInDown = "zoomInDown", e.zoomInLeft = "zoomInLeft", e.zoomInRight = "zoomInRight", e.zoomInUp = "zoomInUp", e.zoomOut = "zoomOut", e.zoomOutDown = "zoomOutDown", e.zoomOutLeft = "zoomOutLeft", e.zoomOutRight = "zoomOutRight", e.zoomOutUp = "zoomOutUp", e.slideInDown = "slideInDown", e.slideInLeft = "slideInLeft", e.slideInRight = "slideInRight", e.slideInUp = "slideInUp", e.slideOutDown = "slideOutDown", e.slideOutLeft = "slideOutLeft", e.slideOutRight = "slideOutRight", e.slideOutUp = "slideOutUp", e))(we || {}), bt = /* @__PURE__ */ ((e) => (e.area = "area", e.bar = "bar", e.bubble = "bubble", e.doughnut = "doughnut", e.pie = "pie", e.line = "line", e.polarArea = "polarArea", e.radar = "radar", e.scatter = "scatter", e))(bt || {}), He = /* @__PURE__ */ ((e) => (e.top = "top", e.left = "left", e.bottom = "bottom", e.right = "right", e.chartArea = "chartArea", e))(He || {}), oe = /* @__PURE__ */ ((e) => (e.xxsmall = "2xs", e.xsmall = "xs", e.small = "sm", e.normal = "", e.large = "lg", e.xlarge = "xl", e.xxlarge = "2xl", e))(oe || {}), se = /* @__PURE__ */ ((e) => (e.center = "center", e.topLeft = "topLeft", e.bottomLeft = "bottomLeft", e.topRight = "topRight", e.bottomRight = "bottomRight", e.top = "top", e.bottom = "bottom", e))(se || {}), Oe = /* @__PURE__ */ ((e) => (e.centered = "centered", e.right = "right", e.left = "left", e))(Oe || {}), vt = /* @__PURE__ */ ((e) => (e.arrow = "arrow", e.button = "button", e.dot = "dot", e.succeeds = "succeeds", e))(vt || {}), Ke = /* @__PURE__ */ ((e) => (e.mobile = "mobile", e.desktop = "desktop", e.gapless = "gapless", e.multiline = "multiline", e.centered = "centered", e.borderleft = "borderleft", e.borderright = "borderright", e.borderbottom = "borderbottom", e.bordertop = "bordertop", e.fullWidth = "fullwidth", e.fullHeight = "fullheight", e))(Ke || {}), le = /* @__PURE__ */ ((e) => (e.three_quarters = "three-quarters", e.two_thirds = "two-thirds", e.half = "half", e.one_third = "one-third", e.one_quarter = "one-quarter", e.full = "full", e.one_fifth = "one-fifth", e.two_fifths = "two-fifths", e.three_fifths = "three-fifths", e.four_fifths = "four-fifths", e.one = "1", e.two = "2", e.three = "3", e.four = "4", e.five = "5", e.six = "6", e.seven = "7", e.eight = "8", e.nine = "9", e.ten = "10", e.eleven = "11", e.twelve = "12", e.narrow = "narrow", e.wide = "wide", e))(le || {}), gt = /* @__PURE__ */ ((e) => (e.three_quarters = "three-quarters", e.two_thirds = "two-thirds", e.half = "half", e.one_third = "one-third", e.one_quarter = "one-quarter", e.one_fifth = "one-fifth", e.two_fifths = "two-fifths", e.three_fifths = "three-fifths", e.four_fifths = "four-fifths", e.one = "1", e.two = "2", e.three = "3", e.four = "4", e.five = "5", e.six = "6", e.seven = "7", e.eight = "8", e.nine = "9", e.ten = "10", e.eleven = "11", e))(gt || {}), Ye = /* @__PURE__ */ ((e) => (e.left = "left", e.right = "right", e.bottom = "bottom", e.top = "top", e.all = "all", e))(Ye || {}), qe = /* @__PURE__ */ ((e) => (e.centered = "centered", e.right = "right", e.left = "left", e))(qe || {}), yt = /* @__PURE__ */ ((e) => (e.boxed = "boxed", e.toggled = "toggled", e.roundToggle = "roundToggle", e))(yt || {}), ft = /* @__PURE__ */ ((e) => (e.one = "1", e.two = "2", e.three = "3", e.four = "4", e.five = "5", e.six = "6", e.seven = "7", e.eight = "8", e.nine = "9", e.ten = "10", e.eleven = "11", e.twelve = "12", e))(ft || {}), _t = /* @__PURE__ */ ((e) => (e.parent = "parent", e.child = "child", e.ancestor = "ancestor", e))(_t || {}), Te = /* @__PURE__ */ ((e) => (e.top = "is-fixed-top", e.bottom = "is-fixed-bottom", e))(Te || {}), kt = /* @__PURE__ */ ((e) => (e.left = "left", e.right = "right", e))(kt || {}), Ze = /* @__PURE__ */ ((e) => (e.topLeft = "top-left", e.top = "top", e.topRight = "top-right", e.right = "right", e.bottomRight = "bottom-right", e.bottom = "bottom", e.bottomLeft = "bottom-left", e.left = "left", e))(Ze || {}), Ce = /* @__PURE__ */ ((e) => (e.left = "left", e.right = "right", e.bottom = "bottom", e.top = "top", e))(Ce || {}), Qe = /* @__PURE__ */ ((e) => (e.left = "left", e.centered = "centered", e.right = "right", e))(Qe || {}), St = /* @__PURE__ */ ((e) => (e.centered = "centered", e.right = "right", e.left = "left", e))(St || {}), Xe = /* @__PURE__ */ ((e) => (e.cerulean = "cerulean", e.cosmo = "cosmo", e.cyborg = "cyborg", e.dark = "dark", e.darkly = "darkly", e.default = "default", e.flatly = "flatly", e.journal = "journal", e.light = "light", e.litera = "litera", e.lumen = "lumen", e.lux = "lux", e.materia = "materia", e.minty = "minty", e.morph = "morph", e.pulse = "pulse", e.quartz = "quartz", e.sandstone = "sandstone", e.simplex = "simplex", e.sketchy = "sketchy", e.slate = "slate", e.solar = "solar", e.spacelab = "spacelab", e.superhero = "superhero", e.united = "united", e.vapor = "vapor", e.yeti = "yeti", e.zephyr = "zephyr", e))(Xe || {}), Mt = /* @__PURE__ */ ((e) => (e.medium = "medium", e.large = "large", e))(Mt || {}), Pe = /* @__PURE__ */ ((e) => (e.default = "default", e.verticalRight = "is-vertical-right", e.verticalLeft = "is-vertical-left", e))(Pe || {});
+var Z = /* @__PURE__ */ ((e) => (e.white = "white", e.black = "black", e.light = "light", e.dark = "dark", e.primary = "primary", e.link = "link", e.info = "info", e.success = "success", e.warning = "warning", e.danger = "danger", e))(Z || {}), ie = /* @__PURE__ */ ((e) => (e.info = "info", e.success = "success", e.warning = "warning", e.danger = "danger", e))(ie || {}), K = /* @__PURE__ */ ((e) => (e.small = "small", e.normal = "normal", e.medium = "medium", e.large = "large", e))(K || {}), ge = /* @__PURE__ */ ((e) => (e.slower = "slower", e.slow = "slow", e.fast = "fast", e.faster = "faster", e))(ge || {}), we = /* @__PURE__ */ ((e) => (e.bounce = "bounce", e.flash = "flash", e.pulse = "pulse", e.rubberBand = "rubberBand", e.shakeX = "shakeX", e.shakeY = "shakeY", e.headShake = "headShake", e.swing = "swing", e.tada = "tada", e.wobble = "wobble", e.jello = "jello", e.heartBeat = "heartBeat", e.backOutDown = "backOutDown", e.backOutLeft = "backOutLeft", e.backOutRight = "backOutRight", e.backOutUp = "backOutUp", e.bounceIn = "bounceIn", e.bounceInDown = "bounceInDown", e.bounceInLeft = "bounceInLeft", e.bounceInRight = "bounceInRight", e.bounceInUp = "bounceInUp", e.bounceOut = "bounceOut", e.boundOutDown = "boundOutDown", e.bounceOutLeft = "bounceOutLeft", e.boundOutRight = "boundOutRight", e.bounceOutUp = "bounceOutUp", e.fadeIn = "fadeIn", e.fadeInDown = "fadeInDown", e.fadeInDownBig = "fadeInDownBig", e.fadeInLeft = "fadeInLeft", e.fadeInLeftBig = "fadeInLeftBig", e.fadeInRight = "fadeInRight", e.fadeInRightBig = "fadeInRightBig", e.fadeInUp = "fadeInUp", e.fadeInUpBig = "fadeInUpBig", e.fadeInTopLeft = "fadeInTopLeft", e.fadeInTopRight = "fadeInTopRight", e.fadeInBottomLeft = "fadeInBottomLeft", e.fadeInBottomRight = "fadeInBottomRight", e.fadeOut = "fadeOut", e.fadeOutDown = "fadeOutDown", e.fadeOutDownBig = "fadeOutDownBig", e.fadeOutLeft = "fadeOutLeft", e.fadeOutLeftBig = "fadeOutLeftBig", e.fadeOutRight = "fadeOutRight", e.fadeOutRightBig = "fadeOutRightBig", e.fadeOutUp = "fadeOutUp", e.fadeOutUpBig = "fadeOutUpBig", e.fadeOutTopLeft = "fadeOutTopLeft", e.fadeOutTopRight = "fadeOutTopRight", e.fadeOutBottomRight = "fadeOutBottomRight", e.fadeOutBottomLeft = "fadeOutBottomLeft", e.flip = "flip", e.flipInX = "flipInX", e.flipInY = "flipInY", e.flipOutX = "flipOutX", e.flipOutY = "flipOutY", e.lightSpeedInRight = "lightSpeedInRight", e.lightSpeedInLeft = "lightSpeedInLeft", e.lightSpeedOutRight = "lightSpeedOutRight", e.lightSpeedOutLeft = "lightSpeedOutLeft", e.rotateIn = "rotateIn", e.rotateInDownLeft = "rotateInDownLeft", e.rotateInDownRight = "rotateInDownRight", e.rotateInUpLeft = "rotateInUpLeft", e.rotateInUpRight = "rotateInUpRight", e.rotateOut = "rotateOut", e.rotateOutDownLeft = "rotateOutDownLeft", e.rotateOutDownRight = "rotateOutDownRight", e.rotateOutUpLeft = "rotateOutUpLeft", e.rotateOutUpRight = "rotateOutUpRight", e.hinge = "hinge", e.jackInTheBox = "jackInTheBox", e.rollIn = "rollIn", e.rollOut = "rollOut", e.zoomIn = "zoomIn", e.zoomInDown = "zoomInDown", e.zoomInLeft = "zoomInLeft", e.zoomInRight = "zoomInRight", e.zoomInUp = "zoomInUp", e.zoomOut = "zoomOut", e.zoomOutDown = "zoomOutDown", e.zoomOutLeft = "zoomOutLeft", e.zoomOutRight = "zoomOutRight", e.zoomOutUp = "zoomOutUp", e.slideInDown = "slideInDown", e.slideInLeft = "slideInLeft", e.slideInRight = "slideInRight", e.slideInUp = "slideInUp", e.slideOutDown = "slideOutDown", e.slideOutLeft = "slideOutLeft", e.slideOutRight = "slideOutRight", e.slideOutUp = "slideOutUp", e))(we || {}), bt = /* @__PURE__ */ ((e) => (e.area = "area", e.bar = "bar", e.bubble = "bubble", e.doughnut = "doughnut", e.pie = "pie", e.line = "line", e.polarArea = "polarArea", e.radar = "radar", e.scatter = "scatter", e))(bt || {}), He = /* @__PURE__ */ ((e) => (e.top = "top", e.left = "left", e.bottom = "bottom", e.right = "right", e.chartArea = "chartArea", e))(He || {}), oe = /* @__PURE__ */ ((e) => (e.xxsmall = "2xs", e.xsmall = "xs", e.small = "sm", e.normal = "", e.large = "lg", e.xlarge = "xl", e.xxlarge = "2xl", e))(oe || {}), se = /* @__PURE__ */ ((e) => (e.center = "center", e.topLeft = "topLeft", e.bottomLeft = "bottomLeft", e.topRight = "topRight", e.bottomRight = "bottomRight", e.top = "top", e.bottom = "bottom", e))(se || {}), Oe = /* @__PURE__ */ ((e) => (e.centered = "centered", e.right = "right", e.left = "left", e))(Oe || {}), vt = /* @__PURE__ */ ((e) => (e.arrow = "arrow", e.button = "button", e.dot = "dot", e.succeeds = "succeeds", e))(vt || {}), Ke = /* @__PURE__ */ ((e) => (e.mobile = "mobile", e.desktop = "desktop", e.gapless = "gapless", e.multiline = "multiline", e.centered = "centered", e.borderleft = "borderleft", e.borderright = "borderright", e.borderbottom = "borderbottom", e.bordertop = "bordertop", e.fullWidth = "fullwidth", e.fullHeight = "fullheight", e))(Ke || {}), le = /* @__PURE__ */ ((e) => (e.three_quarters = "three-quarters", e.two_thirds = "two-thirds", e.half = "half", e.one_third = "one-third", e.one_quarter = "one-quarter", e.full = "full", e.one_fifth = "one-fifth", e.two_fifths = "two-fifths", e.three_fifths = "three-fifths", e.four_fifths = "four-fifths", e.one = "1", e.two = "2", e.three = "3", e.four = "4", e.five = "5", e.six = "6", e.seven = "7", e.eight = "8", e.nine = "9", e.ten = "10", e.eleven = "11", e.twelve = "12", e.narrow = "narrow", e.wide = "wide", e))(le || {}), gt = /* @__PURE__ */ ((e) => (e.three_quarters = "three-quarters", e.two_thirds = "two-thirds", e.half = "half", e.one_third = "one-third", e.one_quarter = "one-quarter", e.one_fifth = "one-fifth", e.two_fifths = "two-fifths", e.three_fifths = "three-fifths", e.four_fifths = "four-fifths", e.one = "1", e.two = "2", e.three = "3", e.four = "4", e.five = "5", e.six = "6", e.seven = "7", e.eight = "8", e.nine = "9", e.ten = "10", e.eleven = "11", e))(gt || {}), Ye = /* @__PURE__ */ ((e) => (e.left = "left", e.right = "right", e.bottom = "bottom", e.top = "top", e.all = "all", e))(Ye || {}), qe = /* @__PURE__ */ ((e) => (e.centered = "centered", e.right = "right", e.left = "left", e))(qe || {}), yt = /* @__PURE__ */ ((e) => (e.boxed = "boxed", e.toggled = "toggled", e.roundToggle = "roundToggle", e))(yt || {}), ft = /* @__PURE__ */ ((e) => (e.one = "1", e.two = "2", e.three = "3", e.four = "4", e.five = "5", e.six = "6", e.seven = "7", e.eight = "8", e.nine = "9", e.ten = "10", e.eleven = "11", e.twelve = "12", e))(ft || {}), _t = /* @__PURE__ */ ((e) => (e.parent = "parent", e.child = "child", e.ancestor = "ancestor", e))(_t || {}), Te = /* @__PURE__ */ ((e) => (e.top = "is-fixed-top", e.bottom = "is-fixed-bottom", e))(Te || {}), kt = /* @__PURE__ */ ((e) => (e.left = "left", e.right = "right", e))(kt || {}), Ze = /* @__PURE__ */ ((e) => (e.topLeft = "top-left", e.top = "top", e.topRight = "top-right", e.right = "right", e.bottomRight = "bottom-right", e.bottom = "bottom", e.bottomLeft = "bottom-left", e.left = "left", e))(Ze || {}), Ce = /* @__PURE__ */ ((e) => (e.left = "left", e.right = "right", e.bottom = "bottom", e.top = "top", e))(Ce || {}), Qe = /* @__PURE__ */ ((e) => (e.left = "left", e.centered = "centered", e.right = "right", e))(Qe || {}), St = /* @__PURE__ */ ((e) => (e.centered = "centered", e.right = "right", e.left = "left", e))(St || {}), Xe = /* @__PURE__ */ ((e) => (e.cerulean = "cerulean", e.cosmo = "cosmo", e.cyborg = "cyborg", e.dark = "dark", e.darkly = "darkly", e.default = "default", e.flatly = "flatly", e.journal = "journal", e.light = "light", e.litera = "litera", e.lumen = "lumen", e.lux = "lux", e.materia = "materia", e.minty = "minty", e.morph = "morph", e.pulse = "pulse", e.quartz = "quartz", e.sandstone = "sandstone", e.simplex = "simplex", e.sketchy = "sketchy", e.slate = "slate", e.solar = "solar", e.spacelab = "spacelab", e.superhero = "superhero", e.united = "united", e.vapor = "vapor", e.yeti = "yeti", e.zephyr = "zephyr", e))(Xe || {}), Mt = /* @__PURE__ */ ((e) => (e.medium = "medium", e.large = "large", e))(Mt || {}), Be = /* @__PURE__ */ ((e) => (e.default = "default", e.verticalRight = "is-vertical-right", e.verticalLeft = "is-vertical-left", e))(Be || {});
 const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   AnimationSpeeds: ge,
@@ -65,7 +65,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   ButtonAlignments: St,
   ChartLegendPositions: He,
   ChartTypes: bt,
-  ColorTypes: X,
+  ColorTypes: Z,
   ColumnContainerModifiers: Ke,
   ColumnOffsetSizes: gt,
   ColumnSizes: le,
@@ -73,24 +73,24 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   FixedMenuPositions: kt,
   FixedNavBarPositions: Te,
   IconSizes: oe,
-  NoticeTypes: ue,
+  NoticeTypes: ie,
   SectionSizes: Mt,
-  Sizes: Z,
+  Sizes: K,
   SkinTypes: Xe,
-  StepWizardOrientations: Pe,
+  StepWizardOrientations: Be,
   TabAlignments: qe,
   TabStyles: yt,
   TileSizes: ft,
   TileTypes: _t,
   ToolTipPositions: Ce,
   ToolTipTextAlignments: Qe
-}, Symbol.toStringTag, { value: "Module" })), Dt = "Language", $o = (e, l) => l(Dt, e), Q = (e) => {
+}, Symbol.toStringTag, { value: "Module" })), Dt = "Language", Do = (e, l) => l(Dt, e), Q = (e) => {
   const l = e(Dt, "en");
   return k(() => l);
-}, $t = "IconSet", Ao = (e, l) => l($t, e), ba = (e) => {
+}, $t = "IconSet", $o = (e, l) => l($t, e), ba = (e) => {
   const l = e($t, "solid");
   return k(() => l);
-}, At = "SummerNoteCDN", Jo = (e, l) => l(At, e), va = (e) => e(At, "https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.0/"), Jt = "FontAwesomeCDN", No = (e, l) => l(Jt, e), ga = (e) => e(Jt, "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/"), Nt = "AnimateCDN", Fo = (e, l) => l(Nt, e), ya = (e) => e(Nt, "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/"), Ft = "ChartJSCDN", wo = (e, l) => l(Ft, e), fa = (e) => e(Ft, "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.7/"), wt = "AceJSCDN", Oo = (e, l) => l(wt, e), _a = (e) => e(wt, "https://cdn.jsdelivr.net/npm/ace-builds@1.37.3/"), Ot = /* @__PURE__ */ D({
+}, At = "SummerNoteCDN", Ao = (e, l) => l(At, e), va = (e) => e(At, "https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.0/"), Jt = "FontAwesomeCDN", Jo = (e, l) => l(Jt, e), ga = (e) => e(Jt, "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/"), Nt = "AnimateCDN", No = (e, l) => l(Nt, e), ya = (e) => e(Nt, "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/"), Ft = "ChartJSCDN", Fo = (e, l) => l(Ft, e), fa = (e) => e(Ft, "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.7/"), wt = "AceJSCDN", wo = (e, l) => l(wt, e), _a = (e) => e(wt, "https://cdn.jsdelivr.net/npm/ace-builds@1.37.3/"), Ot = /* @__PURE__ */ D({
   __name: "animation",
   props: {
     incoming: {},
@@ -102,8 +102,8 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     repeating: {}
   },
   setup(e) {
-    const l = ya(z);
-    Be(`${l}animate.min.css`);
+    const l = ya(E);
+    xe(`${l}animate.min.css`);
     const t = e, a = (p) => {
       switch (p) {
         case ge.slower:
@@ -118,7 +118,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     }, s = (p) => p === void 0 ? "" : `animate__${p}`, o = (p) => p === void 0 ? "animate__slow" : `animate__${p}`, n = k(() => ({
       enter: a(t.speedIn ?? t.speed),
       leave: a(t.speedOut ?? t.speed)
-    })), d = k(() => [
+    })), i = k(() => [
       "animate__animated",
       s(t.incoming ?? t.inout),
       o(t.speedIn ?? t.speed)
@@ -132,24 +132,24 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       s(t.repeating),
       o(t.speed)
     ].join(" "));
-    return (p, h) => t.repeating ? (r(), i("div", {
+    return (p, h) => t.repeating ? (r(), d("div", {
       key: 1,
       class: F(u.value)
     }, [
-      P(p.$slots, "default")
+      B(p.$slots, "default")
     ], 2)) : (r(), R(na, {
       key: 0,
-      "enter-active-class": d.value,
+      "enter-active-class": i.value,
       "leave-active-class": c.value,
       duration: n.value
     }, {
-      default: E(() => [
-        P(p.$slots, "default")
+      default: z(() => [
+        B(p.$slots, "default")
       ]),
       _: 3
     }, 8, ["enter-active-class", "leave-active-class", "duration"]));
   }
-}), ka = "brands.min.css", Sa = "all.min.css", rt = "icon_styles", Ma = /\.fa-([^: ]+):before/g, Da = /url\(([^)]+)\)/g, Me = x([]), Ie = x(!1), ut = async (e, l) => {
+}), ka = "brands.min.css", Sa = "all.min.css", rt = "icon_styles", Ma = /\.fa-([^: ]+):before/g, Da = /url\(([^)]+)\)/g, Me = P([]), Ie = P(!1), it = async (e, l) => {
   if (!Ie.value) {
     Ie.value = !0;
     let t;
@@ -167,34 +167,31 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       s = s.replace(o[0], `url(${new URL(o[1], e)})`);
     }), t.innerText = s, Me.value.splice(0, 1), Ie.value = !1;
   }
-}, K = /* @__PURE__ */ D({
+}, Y = /* @__PURE__ */ D({
   __name: "icon",
   props: {
     icon: {},
     size: {}
   },
   setup(e) {
-    const l = ga(z), t = ba(z);
-    Me.value.length === 0 ? ut(l, t.value) : j(t, () => ut(l, t.value));
+    const l = ga(E), t = ba(E);
+    Me.value.length === 0 ? it(l, t.value) : U(t, () => it(l, t.value));
     const a = e, s = k(() => {
       let o = [];
       return a.icon !== void 0 && a.icon !== null && (Me.value.indexOf(a.icon) >= 0 ? o.push("fa-brands") : (o.push("fa-ico"), o.push(`fa-${t.value}`)), o.push((a.icon.indexOf("fa-") == -1 ? " fa-" : " ") + a.icon)), a.size !== void 0 && a.size !== null && a.size !== oe.normal && o.push(`fa-${a.size}`), o;
     });
-    return (o, n) => (r(), i("i", {
+    return (o, n) => (r(), d("i", {
       class: F(s.value)
     }, null, 2));
   }
-}), $a = ["disabled"], Aa = {
-  key: 0,
-  class: "icon is-small"
-}, Ja = { key: 1 }, te = /* @__PURE__ */ D({
+}), $a = ["disabled"], Aa = { key: 1 }, te = /* @__PURE__ */ D({
   __name: "button",
   props: {
     icon: {},
-    type: { default: X.primary },
+    type: { default: Z.primary },
     title: {},
     disabled: { type: Boolean, default: !1 },
-    size: { default: Z.normal },
+    size: { default: K.normal },
     hide_mobile: { type: Boolean, default: !1 },
     hide_tablet: { type: Boolean, default: !1 },
     hide_desktop: { type: Boolean, default: !1 },
@@ -205,8 +202,8 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   setup(e, { emit: l }) {
     const t = e, a = l, s = k(() => [
       "button",
-      `is-${t.size ?? Z.normal}`,
-      `is-${t.type ?? X.primary}`,
+      `is-${t.size ?? K.normal}`,
+      `is-${t.type ?? Z.primary}`,
       t.disabled ? "disabled" : "",
       t.is_rounded ? "is-rounded" : "",
       t.hide_mobile ? "is-hidden-mobile" : "",
@@ -214,28 +211,35 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       t.hide_desktop ? "is-hidden-desktop is-hidden-widescreen" : "",
       t.is_outlined ? "is-outlined" : ""
     ]);
-    return (o, n) => (r(), i("button", {
+    return (o, n) => (r(), d("button", {
       class: F(s.value),
       disabled: t.disabled,
-      onClick: n[0] || (n[0] = (d) => a("click"))
+      onClick: n[0] || (n[0] = (i) => a("click"))
     }, [
-      t.icon ? (r(), i("span", Aa, [
-        B(K, {
+      t.icon ? (r(), d("span", {
+        key: 0,
+        class: F([
+          "icon",
+          t.size === g(K).small ? "is-small" : "",
+          t.size === g(K).large ? "is-medium" : ""
+        ])
+      }, [
+        x(Y, {
           icon: t.icon
         }, null, 8, ["icon"])
-      ])) : A("", !0),
-      t.title ? (r(), i("span", Ja, T(t.title), 1)) : A("", !0)
+      ], 2)) : A("", !0),
+      t.title ? (r(), d("span", Aa, T(t.title), 1)) : A("", !0)
     ], 10, $a));
   }
-}), Na = '{"en":{"Add":"Add","Cancel":"Cancel","Delete":"Delete","Disable":"Disable","Download":"Download","Edit":"Edit","Enable":"Enable","Okay":"Okay","Print":"Print","Refresh":"Refresh","Save":"Save","Submit":"Submit","Upload":"Upload"},"ar":{"Add":"مضافا","Cancel":"إلغاء","Delete":"تحذف","Disable":"العجز","Download":"تحميل","Edit":"Edit","Enable":"التمكين","Okay":"حسناً","Print":"الطباعة","Refresh":"التجديد","Save":"أنقذ","Submit":"Submit","Upload":"تحميل"},"az":{"Add":"Axtarış","Cancel":"Tarix","Delete":"Delete","Disable":"Qeydiyyat","Download":"Qeydiyyat","Edit":"Tarix","Enable":"Qeydiyyat","Okay":" Okay","Print":"Çap","Refresh":"Axtarış","Save":"Yadda","Submit":"Qeydiyyat","Upload":"Tarix"},"bg":{"Add":"Добавяне","Cancel":"Отмяна","Delete":"Изтриване","Disable":"Изключване","Download":"Изтегляне","Edit":"Редактиране","Enable":"Включване","Okay":"Добре","Print":"Печат","Refresh":"Обновяване","Save":"Запис","Submit":"Подаване","Upload":"Качване"},"bn":{"Add":"যোগ","Cancel":"বাতিল","Delete":"মুছে","Disable":"নিষ্ক্রিয়","Download":"ডাউনলোড","Edit":"সম্পাদনা","Enable":"সক্রিয়","Okay":"ঠিক","Print":"প্রিন্ট","Refresh":"নতুন","Save":"সংরক্ষণ","Submit":"জমা","Upload":"আপলোড"},"ca":{"Add":"Afegeix","Cancel":"Cancel·","Delete":"Esborra","Disable":"Deshabilita","Download":"Descarrega","Edit":"Edita","Enable":"Habilita","Okay":"Bé","Print":"Imprimeix","Refresh":"Refresca","Save":"Desa","Submit":"Envia","Upload":"Puja"},"cs":{"Add":"Přidat","Cancel":"Zrušit","Delete":"Smazat","Disable":"Zakázat","Download":"Stáhnout","Edit":"Upravit","Enable":"Povolit","Okay":"Dobře","Print":"Tisk","Refresh":"Obnovit","Save":"Uložit","Submit":"Odeslat","Upload":"Načíst"},"da":{"Add":"Tilføj","Cancel":"Annullér","Delete":"Slet","Disable":"Deaktivér","Download":"Download","Edit":"Redigér","Enable":"Aktivér","Okay":"Okay","Print":"Udskriv","Refresh":"Genopfrisk","Save":"Gem","Submit":"Indsend","Upload":"Upload"},"de":{"Add":"Hinzufügen","Cancel":"Abbrechen","Delete":"Löschen","Disable":"Deaktivieren","Download":"Herunterladen","Edit":"Bearbeiten","Enable":"Aktivieren","Okay":"Okay","Print":"Drucken","Refresh":"Aktualisieren","Save":"Speichern","Submit":"Senden","Upload":"Hochladen"},"el":{"Add":"Προσθήκη","Cancel":"Ακύρωση","Delete":"Διαγραφή","Disable":"Απενεργοποίηση","Download":"Λήψη","Edit":"Επεξεργασία","Enable":"Ενεργοποίηση","Okay":"Εντάξει","Print":"Εκτύπωση","Refresh":"Ανανέωση","Save":"Αποθήκευση","Submit":"Υποβολή","Upload":"Αποστολή"},"eo":{"Add":"Aldonu","Cancel":"Cancel","Delete":"Delete","Disable":"Distingebla","Download":"Elŝutu","Edit":"Edit","Enable":"Enable","Okay":"Bone","Print":"Presaĵo","Refresh":"Refresh","Save":"Savi","Submit":"Submit","Upload":"Ĝis"},"es":{"Add":"Añadir","Cancel":"Cancelar","Delete":"Suprimir","Disable":"Inhabilitación","Download":"Descargar","Edit":"Editar","Enable":"Habilitación","Okay":"Está","Print":"Imprimir","Refresh":"Refresh","Save":"Guardar","Submit":"Submit","Upload":"Subir"},"et":{"Add":"Lisa","Cancel":"Tühistage","Delete":"Kustuta","Disable":"Keela","Download":"Laadi","Edit":"Edit","Enable":"Luba","Okay":"Olgu","Print":"Printi","Refresh":"Värskenda","Save":"Päästa","Submit":"Esita","Upload":"Laadi"},"eu":{"Add":"Gehitu","Cancel":"Utzi","Delete":"Ezabatu","Disable":"Desgaitu","Download":"Deskargatu","Edit":"Editatu","Enable":"Gaitu","Okay":"Ados","Print":"Inprimatu","Refresh":"Freskatu","Save":"Gorde","Submit":"Bidali","Upload":"Igo"},"fa":{"Add":"Add","Cancel":"لغو","Delete":"حذف","Disable":"Disable","Download":"Download","Edit":"ویرایش","Enable":"گزینه","Okay":"خوب","Print":"Print","Refresh":"بازسازی","Save":"Save","Submit":"ارسال","Upload":"آپلود"},"fi":{"Add":"Lisää","Cancel":"Peruuta","Delete":"Poista","Disable":"Poista","Download":"Lataa","Edit":"Muuta","Enable":"Käytä","Okay":"Selvä","Print":"Tulosta","Refresh":"Päivitä","Save":"Tallenna","Submit":"Lähetä","Upload":"Lähetä"},"fr":{"Add":"Ajouter","Cancel":"Annuler","Delete":"Supprimer","Disable":"Désactiver","Download":"Télécharger","Edit":"Modifier","Enable":"Activer","Okay":"Très","Print":"Imprimer","Refresh":"Actualiser","Save":"Enregistrer","Submit":"Soumettre","Upload":"Envoi"},"ga":{"Add":"Déan","Cancel":"Cealaigh","Delete":"Scriosta","Disable":"Díroghnaigh","Download":"Íoslódáil","Edit":"Toir","Enable":"Cumasaigh","Okay":"Riachtanais","Print":"Priontáil","Refresh":"Athraigh","Save":"Sábháil","Submit":"Cuir","Upload":"Uaslódáil"},"gl":{"Add":"Add","Cancel":"Cancelar","Delete":"Eliminar","Disable":"Disable","Download":"Baixar","Edit":"Edit","Enable":"Habilitar","Okay":"Ok","Print":"Imprimir","Refresh":"Refresco","Save":"Save","Submit":"Presentación","Upload":"Upload"},"he":{"Add":"הוסף","Cancel":"ביטול","Delete":"Delete","Disable":"אכזבה","Download":"הורד","Edit":"Editעריכה","Enable":"אפשרות","Okay":"בסדר","Print":"הדפסה","Refresh":"מרעננים","Save":"להציל","Submit":"הגשת","Upload":"Upload"},"hi":{"Add":"जोड़ें","Cancel":"रद्द","Delete":"डिलीट","Disable":"अक्षम","Download":"डाउनलोड","Edit":"संपादित","Enable":"सक्षम","Okay":"ओके","Print":"छाप","Refresh":"रिफ्रेश","Save":"सहेजें","Submit":"जमा","Upload":"अपलोड"},"hu":{"Add":"Hozzáadás","Cancel":"Törlés","Delete":"Törlés","Disable":"Kikapcsolás","Download":"Letöltés","Edit":"Szerkesztés","Enable":"Beállítás","Okay":"Oké","Print":"Nyomtatás","Refresh":"Frissítés","Save":"Mentés","Submit":"Küldés","Upload":"Feltöltés"},"id":{"Add":"Tambah","Cancel":"Batal","Delete":"Hapus","Disable":"Matikan","Download":"Unduh","Edit":"Sunting","Enable":"Aktifkan","Okay":"Oke","Print":"Cetak","Refresh":"Segarkan","Save":"Simpan","Submit":"Kirim","Upload":"Unggah"},"it":{"Add":"Aggiungi","Cancel":"Annulla","Delete":"Cancella","Disable":"Disattivare","Download":"Scarica","Edit":"Modifica","Enable":"Abilitare","Okay":"Ok","Print":"Stampa","Refresh":"Rifiuti","Save":"Salva","Submit":"Inviare","Upload":"Caricamento"},"ja":{"Add":"追加する","Cancel":"キャンセル","Delete":"削除","Disable":"免責事項","Download":"ダウンロード","Edit":"編集","Enable":"アクセス","Okay":"お問い合わせ","Print":"プリント","Refresh":"リフレッシュ","Save":"保存する","Submit":"送信する","Upload":"アップロード"},"ko":{"Add":"기타","Cancel":"이름","Delete":"기타","Disable":"기타","Download":"다운로드","Edit":"제품정보","Enable":"이름","Okay":"이름","Print":"제품정보","Refresh":"지원하다","Save":"제품","Submit":"제출하기","Upload":"제품정보"},"lt":{"Add":"Pridėti","Cancel":"Atsisakyti","Delete":"Trinti","Disable":"Išjungti","Download":"Atsisiųsti","Edit":"Keisti","Enable":"Įjungti","Okay":"Gerai","Print":"Spausdinti","Refresh":"Atnaujinti","Save":"Įrašyti","Submit":"Siųsti","Upload":"Siųsti"},"lv":{"Add":"Pievienot","Cancel":"Atcelt","Delete":"Dzēst","Disable":"Atslēgt","Download":"Lejupielādēt","Edit":"Rediģēt","Enable":"Ieslēgt","Okay":"Labi","Print":"Drukāt","Refresh":"Atsvaidzināt","Save":"Saglabāt","Submit":"Nosūtīt","Upload":"Augšupielāde"},"ms":{"Add":"Tambah","Cancel":"Batal","Delete":"Dihapus","Disable":"Matikan","Download":"Muaturun","Edit":"Edit","Enable":"Hidupkan","Okay":"Oke","Print":"Cetakan","Refresh":"Segarkan","Save":"Simpan","Submit":"Diserahkan","Upload":"Unggah"},"nb":{"Add":"Legg","Cancel":"Avbryt","Delete":"Slett","Disable":"Slå","Download":"Last","Edit":"Rediger","Enable":"Slå","Okay":"Ok","Print":"Skriv","Refresh":"Oppdater","Save":"Lagre","Submit":"Send","Upload":"Last"},"nl":{"Add":"Voeg","Cancel":"Annuleren","Delete":"Verwijderen","Disable":"Uitschakelen","Download":"Downloaden","Edit":"Bewerken","Enable":"Inschakelen","Okay":"Oké","Print":"Afdrukken","Refresh":"Verversen","Save":"Opslaan","Submit":"Verzenden","Upload":"Uploaden"},"pl":{"Add":"Dodaj","Cancel":"Anuluj","Delete":"Usuń","Disable":"Wyłącz","Download":"Pobierz","Edit":"Edycja","Enable":"Włącz","Okay":"Dobrze","Print":"Drukuj","Refresh":"Odśwież","Save":"Zapisz","Submit":"Prześlij","Upload":"Wyślij"},"pt":{"Add":"Adicionar","Cancel":"Cancelar","Delete":"Excluir","Disable":"Deficiência","Download":"Baixar","Edit":"Editar","Enable":"Habilitar","Okay":"Está","Print":"Impressão","Refresh":"Atualizar","Save":"Salvar","Submit":"Submeter-me","Upload":"Carregar"},"ro":{"Add":"Adaugă","Cancel":"Renunță","Delete":"Șterge","Disable":"Dezactivează","Download":"Descărcare","Edit":"Editare","Enable":"Activează","Okay":"Bine","Print":"Tipărește","Refresh":"Reîmprospătează","Save":"Salvează","Submit":"Trimite","Upload":"Încarcă"},"ru":{"Add":"Добавить","Cancel":"Отменить","Delete":"Исключить","Disable":"Инвалид","Download":"Скачать","Edit":"Редактировать","Enable":"Допускать","Okay":"Хорошо","Print":"Печать","Refresh":"Освежить","Save":"Спасти","Submit":"Представить","Upload":"Загрузить"},"sk":{"Add":"Pridať","Cancel":"Zrušiť","Delete":"Odstrániť","Disable":"Zakázať","Download":"Stiahnuť","Edit":"Upraviť","Enable":"Povoliť","Okay":"Dobre","Print":"Tlač","Refresh":"Obnoviť","Save":"Uložiť","Submit":"Predložiť","Upload":"Odoslať"},"sl":{"Add":"Dodaj","Cancel":"Prekliči","Delete":"Zbriši","Disable":"Onemogoči","Download":"Prenesi","Edit":"Uredi","Enable":"Omogoči","Okay":"V","Print":"Natisni","Refresh":"Osveži","Save":"Shrani","Submit":"Pošlji","Upload":"Pošlji"},"sq":{"Add":"_Shto","Cancel":"Anullo","Delete":"Elemino","Disable":"Jo","Download":"Shkarkimi","Edit":"Ndrysho","Enable":"Aktivo","Okay":"Mirë","Print":"Printo","Refresh":"Rifresko","Save":"Ruaj","Submit":"Dërgo","Upload":"Ngarko"},"sv":{"Add":"Lägg","Cancel":"Avbokning","Delete":"Delete","Disable":"Inaktivera","Download":"Ladda","Edit":"Edit","Enable":"Aktivera","Okay":"Okej","Print":"Print","Refresh":"Refresh","Save":"Spara","Submit":"Inlämning","Upload":"Upload"},"th":{"Add":"เพิ่ม","Cancel":"ยกเลิก","Delete":"ลบ","Disable":"ปิดการใช้งาน","Download":"ดาวน์โหลด","Edit":"แก้ไข","Enable":"เปิด","Okay":"โอเค","Print":"พิมพ์","Refresh":"ปรับปรุงใหม่","Save":"บันทึก","Submit":"ส่ง","Upload":"อัปโหลด"},"tl":{"Add":"Magdagdag","Cancel":"Huwag","Delete":"Ibagsak","Disable":"Hindi","Download":"Ibaba","Edit":"Baguhin","Enable":"Kaibig","Okay":"Okay","Print":"Nakalimbag","Refresh":"Nakapagpapasigla","Save":"Mag","Submit":"Pagpapasakop","Upload":"Itaas"},"tr":{"Add":"Add","Cancel":"Cancel","Delete":"Delete","Disable":"Engelliler","Download":"Download","Edit":"Edit","Enable":"Enable","Okay":"Tamam","Print":"Baskı","Refresh":"Yenileme","Save":"Kaydet","Submit":"Gönder","Upload":"Download"},"uk":{"Add":"Додати","Cancel":"Зареєструватися","Delete":"Делет","Disable":"Вимкнути","Download":"Завантажити","Edit":"Редагування","Enable":"Увімкнути","Okay":"Проксимус","Print":"Друк","Refresh":"Реверс","Save":"Зберегти","Submit":"Подати","Upload":"Завантажити"},"ur":{"Add":"_شامل","Cancel":"منسوخ","Delete":"حذف","Disable":"منسوخ","Download":"اوپر","Edit":"مرتب","Enable":"فعال","Okay":"ٹھیک","Print":"پرنٹ","Refresh":"خوشی","Save":"محفوظ","Submit":"غیر","Upload":"اپ"},"zh":{"Add":"添加","Cancel":"取消","Delete":"删除","Disable":"禁用","Download":"下载","Edit":"编辑","Enable":"启用","Okay":"还好","Print":"打印","Refresh":"刷新","Save":"保存","Submit":"提交","Upload":"上传"},"zt":{"Add":"添加","Cancel":"取消","Delete":"刪除","Disable":"禁用","Download":"下載","Edit":"編輯","Enable":"開啟","Okay":"好吧","Print":"打印","Refresh":"刷新","Save":"保存","Submit":"提交","Upload":"上傳"}}', Fa = '{"en":{"Filter":"Filter"},"ar":{"Filter":"فيلم"},"az":{"Filter":" Filter"},"bg":{"Filter":"Филтър"},"bn":{"Filter":"ফিল্টার"},"ca":{"Filter":"Filtre"},"cs":{"Filter":"Filtr"},"da":{"Filter":"Filter"},"de":{"Filter":"Filter"},"el":{"Filter":"Φίλτρο"},"eo":{"Filter":"Filtero"},"es":{"Filter":"Filtro"},"et":{"Filter":"Filter"},"eu":{"Filter":"Iragazkia"},"fa":{"Filter":"فیلتر"},"fi":{"Filter":"Suodatin"},"fr":{"Filter":"Filtre"},"ga":{"Filter":"Scagaire"},"gl":{"Filter":"Filtrar"},"he":{"Filter":"Filter"},"hi":{"Filter":"फिल्टर"},"hu":{"Filter":"Szűrő"},"id":{"Filter":"Filter"},"it":{"Filter":"Filtro"},"ja":{"Filter":"フィルター"},"ko":{"Filter":"제품정보"},"lt":{"Filter":"Filtras"},"lv":{"Filter":"Filtrs"},"ms":{"Filter":"Penapis"},"nb":{"Filter":"Filtrer"},"nl":{"Filter":"Filter"},"pl":{"Filter":"Filtr"},"pt":{"Filter":"Filtro"},"ro":{"Filter":"Filtru"},"ru":{"Filter":"Фильтр"},"sk":{"Filter":"Filter"},"sl":{"Filter":"Filter"},"sq":{"Filter":"Filtra"},"sv":{"Filter":"Filter"},"th":{"Filter":"กรอง"},"tl":{"Filter":"Pansala"},"tr":{"Filter":"Filtre"},"uk":{"Filter":"Фільтри"},"ur":{"Filter":"فائلز"},"zh":{"Filter":"过滤器"},"zt":{"Filter":"分頁"}}', wa = '{"en":{"Previous":"Previous","Next":"Next","Older":"Older","Newer":"Newer","GoToPage":"Go To Page"},"ar":{"Previous":"سابقا","Next":"التالي","Older":"كبار","Newer":"Newer","GoToPage":"الذهاب إلى الصفحة"},"az":{"Previous":" Previous","Next":" Next","Older":"Yaşlı","Newer":"Yeniyetmə","GoToPage":"Qeydiyyat"},"bg":{"Previous":"Предишен","Next":"Следващият","Older":"По-","Newer":"По-","GoToPage":"Отиване на страница"},"bn":{"Previous":"পূর্ববর্তী","Next":"পরবর্তী","Older":"বয়স্ক","Newer":"নিউকার","GoToPage":"চিহ্নিত স্থানে চলুন"},"ca":{"Previous":"Anterior","Next":"Següent","Older":"Vella","Newer":"Més","GoToPage":"Vés a la pàgina"},"cs":{"Previous":"Předchozí","Next":"Další","Older":"Starší","Newer":"Novější","GoToPage":"Přejít na stránku"},"da":{"Previous":"Forrige","Next":"Næste","Older":"Ældre","Newer":"Nyere","GoToPage":"Gå til side"},"de":{"Previous":"Vorherige","Next":"Nach","Older":"Ältere","Newer":"Neuer","GoToPage":"Zur Seite gehen"},"el":{"Previous":"Προηγούμενο","Next":"Επόμενο","Older":"Μεγαλύτερος","Newer":"Νεότερα","GoToPage":"Μετάβαση στη σελίδα"},"eo":{"Previous":"Antaŭa","Next":"La","Older":"Pli","Newer":"Pli","GoToPage":"Iru al paĝo"},"es":{"Previous":"Anterior","Next":"Siguiente","Older":"Older","Newer":"Newer","GoToPage":"Ir a la página"},"et":{"Previous":"Eelmine","Next":"Järgmine","Older":"Vanem","Newer":"Uuem","GoToPage":"Mine lehele"},"eu":{"Previous":"Aurrekoa","Next":"Hurrengoa","Older":"Zaharragoa","Newer":"Newer","GoToPage":"Joan orrira"},"fa":{"Previous":"Previous","Next":"بعدی","Older":"مسن","Newer":"Newer","GoToPage":"به صفحه بروید"},"fi":{"Previous":"Edellinen","Next":"Seuraava","Older":"Vanhempi","Newer":"Uusi","GoToPage":"Siirry sivulle"},"fr":{"Previous":"Précédent","Next":"Suivant","Older":"Plus","Newer":"Plus","GoToPage":"Aller à la page"},"ga":{"Previous":"Roimhe","Next":"Ar","Older":"Sean","Newer":"Nuashonraigh","GoToPage":"Téigh go Leathanach"},"gl":{"Previous":"Anterior","Next":"Seguinte","Older":"Idade","Newer":"Newer","GoToPage":"Ir á páxina"},"he":{"Previous":"הקודם","Next":"הבא","Older":"מבוגר","Newer":"חדש","GoToPage":"ללכת לדף"},"hi":{"Previous":"पिछला","Next":"अगला","Older":"पुराना","Newer":"नया","GoToPage":"पृष्ठ पर जाएं"},"hu":{"Previous":"Előző","Next":"Következő","Older":"Idősebb","Newer":"Újabb","GoToPage":"Ugrás az oldalra"},"id":{"Previous":"Sebelumnya","Next":"Berikutnya","Older":"Lebih","Newer":"Baru","GoToPage":"Ke Halaman"},"it":{"Previous":"Precedente","Next":"Il","Older":"Vecchio","Newer":"Nuovo","GoToPage":"Vai alla pagina"},"ja":{"Previous":"新着情報","Next":"次へ","Older":"古い投稿","Newer":"ニュース","GoToPage":"サイトマップ"},"ko":{"Previous":"이름","Next":"이름","Older":"인기있는","Newer":"더","GoToPage":"본문 바로가기"},"lt":{"Previous":"Ankstesnis","Next":"Sekantis","Older":"Senesni","Newer":"Naujokas","GoToPage":"Pereiti į puslapį"},"lv":{"Previous":"Iepriekšējais","Next":"Nākamais","Older":"Vecāki","Newer":"Jaunāks","GoToPage":"Iet uz lapu"},"ms":{"Previous":"Sebelumnya","Next":"Next","Older":"♪","Newer":"Perancis","GoToPage":"Pergi Ke Halaman"},"nb":{"Previous":"Forrige","Next":"Neste","Older":"Eldre","Newer":"Nyere","GoToPage":"Gå til siden"},"nl":{"Previous":"Vorige","Next":"Volgende","Older":"Ouder","Newer":"Nieuwer","GoToPage":"Ga naar pagina"},"pl":{"Previous":"Poprzedni","Next":"Następny","Older":"Starszy","Newer":"Nowsza","GoToPage":"Przejdź do strony"},"pt":{"Previous":"Anterior","Next":"Próximo","Older":"O","Newer":"Mais","GoToPage":"Ir para a página"},"ro":{"Previous":"Precedent","Next":"Înainte","Older":"Mai","Newer":"Mai","GoToPage":"Du-te la pagina"},"ru":{"Previous":"Предыдущий","Next":"Следующий","Older":"Старше","Newer":"Новый","GoToPage":"Перейти на страницу"},"sk":{"Previous":"Predchádzajúca","Next":"Nasledujúci","Older":"Staršie","Newer":"Novšie","GoToPage":"Prejsť na stránku"},"sl":{"Previous":"Prejšnja","Next":"Naprej","Older":"Starejši","Newer":"Novejši","GoToPage":"Pojdi na stran"},"sq":{"Previous":"Paraardhëse","Next":"Në","Older":"Më","Newer":"Ri","GoToPage":"Shko tek faqja"},"sv":{"Previous":"Föregående","Next":"Nästa","Older":"Äldre","Newer":"Nyare","GoToPage":"Gå till Page"},"th":{"Previous":"ก่อนหน้า","Next":"ต่อไป","Older":"อายุ","Newer":"สร้างใหม่","GoToPage":"ไปยังหน้า"},"tl":{"Previous":"Bago","Next":"Susunod","Older":"Mas","Newer":"Mas","GoToPage":"Pumunta sa Pahina"},"tr":{"Previous":"Önceki","Next":"Sonraki","Older":"Yaşlı","Newer":"Newer","GoToPage":"Go To Page"},"uk":{"Previous":"Попереднє","Next":"Про","Older":"Старші","Newer":"Нова","GoToPage":"Перейти на сторінку"},"ur":{"Previous":"پہلے","Next":"اگلا","Older":"عمررسیدہ","Newer":"نیا","GoToPage":"صفحہ ۲۴ پر جائیں"},"zh":{"Previous":"上一个","Next":"下一个","Older":"老年人","Newer":"更新","GoToPage":"转到页面"},"zt":{"Previous":"前一個","Next":"下一頁","Older":"老了","Newer":"更新","GoToPage":"跳至頁面"}}', Oa = `{"en":{"Weekdays":{"Sun":"Sun","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sat","Sunday":"Sunday","Monday":"Monday","Tuesday":"Tuesday","Wednesday":"Wednesday","Thursday":"Thursday","Friday":"Friday","Saturday":"Saturday"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"May","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Oct","Nov":"Nov","Dec":"Dec","January":"January","February":"February","March":"March","April":"April","June":"June","July":"July","August":"August","September":"September","October":"October","November":"November","December":"December"},"Today":"Today"},"ar":{"Weekdays":{"Sun":"الشمس","Mon":"مون","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"فري","Sat":"Sat","Sunday":"الأحد","Monday":"الاثنين","Tuesday":"الثلاثاء","Wednesday":"الأربعاء","Thursday":"الخميس","Friday":"الجمعة","Saturday":"السبت"},"Months":{"Jan":"يان","Feb":"شباط/فبراير","Mar":"Mar","Apr":"Apr","May":"أيار/مايو","Jun":"جون","Jul":"(جول)","Aug":"آب/أغسطس","Sep":"Sep","Oct":"Oct","Nov":"Nov","Dec":"Dec","January":"كانون","February":"شباط/فبراير","March":"آذار/مارس","April":"نيسان/أبريل","June":"حزيران/يونيه","July":"تموز/يوليه","August":"آب/أغسطس","September":"أيلول/سبتمبر","October":"تشرين","November":"تشرين","December":"كانون"},"Today":"اليوم"},"az":{"Weekdays":{"Sun":"Qalereya","Mon":"Bakı","Tue":"Qalereya","Wed":"Biznes","Thu":"Qalereya","Fri":"Bakı","Sat":"Bakı","Sunday":"Bakı","Monday":"Bakı","Tuesday":"Bakı","Wednesday":"Bakı","Thursday":"Bakı","Friday":"Bakı","Saturday":"Bakı"},"Months":{"Jan":"Axtarış","Feb":"Bakı","Mar":"Bakı","Apr":"Bakı","May":"İyul","Jun":"Bakı","Jul":"Bakı","Aug":"Axtarış","Sep":"Bakı","Oct":"Axtarış","Nov":"Bakı","Dec":"Elan","January":"Yanvar","February":"Fevral","March":"Bakı","April":"Bakı","June":"İyun","July":"İyul","August":"Avqust","September":"Bakı","October":"Bakı","November":"Bakı","December":"Bakı"},"Today":"Bu"},"bg":{"Weekdays":{"Sun":"Слънце","Mon":"Мон","Tue":"Туе","Wed":"Сватба","Thu":"Thu","Fri":"Fri","Sat":"Сат","Sunday":"Неделя","Monday":"Понеделник","Tuesday":"Вторник","Wednesday":"Сряда","Thursday":"Четвъртък","Friday":"Петък","Saturday":"Събота"},"Months":{"Jan":"Ян","Feb":"Февруари","Mar":"Мар","Apr":"Apr","May":"Май","Jun":"Джун","Jul":"Юли","Aug":"Aug","Sep":"Сеп","Oct":"Окт","Nov":"Nov","Dec":"Дек","January":"Януари","February":"Февруари","March":"Март","April":"Април","June":"Юни","July":"Юли","August":"Август","September":"Септември","October":"Октомври","November":"Ноември","December":"Декември"},"Today":"Днес"},"bn":{"Weekdays":{"Sun":"রবি","Mon":"মন","Tue":"মঙ্গল","Wed":"অস্বীকৃত","Thu":"বৃহঃ","Fri":"ফ্রিসেল","Sat":"শনি","Sunday":"রবিবার","Monday":"সোমবার","Tuesday":"মঙ্গলবার","Wednesday":"বুধবার","Thursday":"বৃহস্পতিবার","Friday":"শুক্রবার","Saturday":"শনিবার"},"Months":{"Jan":"জানুয়ারী","Feb":"ফেব্রুয়ারীMarch","Mar":"মার্চApril","Apr":"এপ্রিল","May":"মে","Jun":"জুনিউ","Jul":"জুমি","Aug":"আগস্ট","Sep":"সেপ্টেম্বরOctober","Oct":"অক্টোবর","Nov":"নভেম্বর","Dec":"ডিসেম্বর","January":"জানুয়ারী","February":"ফেব্রুয়ারী","March":"মার্চ","April":"এপ্রিল","June":"জুন","July":"জুলাই","August":"আগস্ট","September":"সেপ্টেম্বর","October":"অক্টোবর","November":"নভেম্বর","December":"সদস্য"},"Today":"আজ"},"ca":{"Weekdays":{"Sun":"Sol","Mon":"Dl","Tue":"Dt","Wed":"Dc","Thu":"Dj","Fri":"DvSaturday","Sat":"DsSunday","Sunday":"Diumenge","Monday":"Dilluns","Tuesday":"Dimarts","Wednesday":"Dimecres","Thursday":"Dijous","Friday":"Divendres","Saturday":"Dissabte"},"Months":{"Jan":"Mare","Feb":"FebMarch","Mar":"Mar","Apr":"AbrMay","May":"Maig","Jun":"JunJuly","Jul":"JulAugust","Aug":"AgoSeptember","Sep":"Set","Oct":"Oct","Nov":"Nov","Dec":"Des","January":"Gener","February":"Febrer","March":"Març","April":"Abril","June":"Juny","July":"Juliol","August":"Agost","September":"Setembre","October":"Octubre","November":"Novembre","December":"Desembre"},"Today":"Avui"},"cs":{"Weekdays":{"Sun":"Slunce","Mon":"Po","Tue":"Tue","Wed":"St","Thu":"Thu","Fri":"Fri","Sat":"Sad","Sunday":"Neděle","Monday":"Pondělí","Tuesday":"Úterý","Wednesday":"Středa","Thursday":"Čtvrtek","Friday":"Pátek","Saturday":"Sobota"},"Months":{"Jan":"Jan","Feb":"Únor","Mar":"Březen","Apr":"Duben","May":"May","Jun":"Jun","Jul":"Jul","Aug":"Srpen","Sep":"Září","Oct":"Říjen","Nov":"Listopad","Dec":"Prosinec","January":"Leden","February":"Únor","March":"Březen","April":"Duben","June":"Červen","July":"Červenec","August":"Srpen","September":"Září","October":"Říjen","November":"Listopad","December":"Prosinec"},"Today":"Dnes"},"da":{"Weekdays":{"Sun":"Sol","Mon":"Mon","Tue":"Tir","Wed":"On","Thu":"Thu","Fri":"Fri","Sat":"Lø","Sunday":"Søndag","Monday":"Mandag","Tuesday":"Tirsdag","Wednesday":"Onsdag","Thursday":"Torsdag","Friday":"Fredag","Saturday":"Lørdag"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Maj","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Januar","February":"Februar","March":"Marts","April":"April","June":"Juni","July":"Juli","August":"August","September":"September","October":"Oktober","November":"November","December":"December"},"Today":"I"},"de":{"Weekdays":{"Sun":"Sonne","Mon":"Mo","Tue":"Di","Wed":"Mi","Thu":"Do","Fri":"Fri","Sat":"Sa","Sunday":"Sonntag","Monday":"Montag","Tuesday":"Dienstag","Wednesday":"Mittwoch","Thursday":"Donnerstag","Friday":"Freitag","Saturday":"Samstag"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mär","Apr":"Apr","May":"Mai","Jun":"Jun","Jul":"Juli","Aug":"Aug","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dez","January":"Januar","February":"Februar","March":"März","April":"April","June":"Juni","July":"Juli","August":"August","September":"September","October":"Oktober","November":"November","December":"Dezember"},"Today":"Heute"},"el":{"Weekdays":{"Sun":"Ήλιος","Mon":"Δευ","Tue":"Τεύχος","Wed":"Τετ","Thu":"Θου","Fri":"Παρ","Sat":"Σάβ","Sunday":"Κυριακή","Monday":"Δευτέρα","Tuesday":"Τρίτη","Wednesday":"Τετάρτη","Thursday":"Πέμπτη","Friday":"Παρασκευή","Saturday":"Σάββατο"},"Months":{"Jan":"Ιαν","Feb":"Φεβ","Mar":"Μαρ","Apr":"Απρ","May":"Μάιος","Jun":"Ιουν","Jul":"Ιουλ","Aug":"Αυγ","Sep":"Σεπ","Oct":"Οκτ","Nov":"Νοε","Dec":"Δεκ","January":"Ιανουάριος","February":"Φεβρουάριος","March":"Μάρτιος","April":"Απρίλιος","June":"Ιούνιος","July":"Ιούλιος","August":"Αύγουστος","September":"Σεπτέμβριος","October":"Οκτώβριος","November":"Νοέμβριος","December":"Δεκέμβριος"},"Today":"Σήμερα"},"eo":{"Weekdays":{"Sun":"Suno","Mon":"Mon","Tue":"Tue","Wed":"Ni","Thu":"Tumulto","Fri":"Frio","Sat":"Sidanta","Sunday":"Dimanĉo","Monday":"Lundo","Tuesday":"Marŝi","Wednesday":"Merkredo","Thursday":"Ĵaŭdon","Friday":"Vendrede","Saturday":"Sabato"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Marŝa","Apr":"Apr","May":"Majo","Jun":"Jun","Jul":"Jul","Aug":"Aŭgusto","Sep":"Sep","Oct":"Oktobro","Nov":"Nov-Zelando","Dec":"Dec","January":"Januaro","February":"Februaro","March":"Marto","April":"April","June":"Junio","July":"Julio","August":"Aŭgusto","September":"Septembro","October":"Oktobro","November":"Novembro","December":"Decembro"},"Today":"Hodiaŭ"},"es":{"Weekdays":{"Sun":"Sol","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sat","Sunday":"Domingo","Monday":"Lunes","Tuesday":"Martes","Wednesday":"Miércoles","Thursday":"Jueves","Friday":"Viernes","Saturday":"Sábado"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Mayo","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Oct","Nov":"Nov","Dec":"Dec","January":"Enero","February":"Febrero","March":"Marzo","April":"Abril","June":"Junio","July":"Julio","August":"Agosto","September":"Septiembre","October":"Octubre","November":"Noviembre","December":"Diciembre"},"Today":"Hoy"},"et":{"Weekdays":{"Sun":"Päike","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sattus","Sunday":"Pühapäev","Monday":"Esmaspäev","Tuesday":"Teisipäev","Wednesday":"Kolmapäev","Thursday":"Neljapäeval","Friday":"Reede","Saturday":"Laupäev"},"Months":{"Jan":"Jan","Feb":"Veebruar","Mar":"Mar","Apr":"Apr","May":"May","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Oktoober","Nov":"Nov","Dec":"Dec","January":"Jaanuar","February":"Veebruar","March":"Märts","April":"Aprill","June":"Juuni","July":"Juuli","August":"August","September":"September","October":"Oktoober","November":"November","December":"Detsember"},"Today":"Täna"},"eu":{"Weekdays":{"Sun":"Sun","Mon":"Mon","Tue":"Tue","Wed":"Apustua","Thu":"Og","Fri":"Fri","Sat":"Sat","Sunday":"Igandea","Monday":"Astelehena","Tuesday":"Asteartea","Wednesday":"Asteazkena","Thursday":"Osteguna","Friday":"Ostirala","Saturday":"Larunbata"},"Months":{"Jan":"Jan","Feb":"Ots","Mar":"Marmar","Apr":"Apr","May":"Maiatza","Jun":"Jun","Jul":"Jul","Aug":"Abusua","Sep":"Ira","Oct":"Oct","Nov":"Aza","Dec":"Abendua","January":"Urtarrila","February":"Otsaila","March":"Martxoa","April":"Apirila","June":"Ekaina","July":"Uztaila","August":"Abuztua","September":"Iraila","October":"Urria","November":"Azaroa","December":"Abendua"},"Today":"Gaur"},"fa":{"Weekdays":{"Sun":"خورشید","Mon":"مون","Tue":"Tue","Wed":"Wed","Thu":"تو","Fri":"Fri","Sat":"Sat","Sunday":"یکشنبه","Monday":"دوشنبه","Tuesday":"سه","Wednesday":"چهارشنبه","Thursday":"پنجشنبه","Friday":"جمعه","Saturday":"شنبه"},"Months":{"Jan":"ژانویه","Feb":"فوریه","Mar":"Mar","Apr":"آوریل","May":"ممکن","Jun":"Jun","Jul":"جول","Aug":"آگوست","Sep":"سپتامبر","Oct":"اکتبر","Nov":"نوامبر","Dec":"دسامبر","January":"ژانویه","February":"فوریه","March":"مارس","April":"آوریل","June":"ژوئن","July":"جولای","August":"آگوست","September":"سپتامبر","October":"اکتبر","November":"نوامبر","December":"دسامبر"},"Today":"امروز"},"fi":{"Weekdays":{"Sun":"Su","Mon":"Ma","Tue":"Ti","Wed":"Ke","Thu":"To","Fri":"Pe","Sat":"La","Sunday":"Sunnuntai","Monday":"Maanantai","Tuesday":"Tiistai","Wednesday":"Keskiviikko","Thursday":"Torstai","Friday":"Perjantai","Saturday":"Lauantai"},"Months":{"Jan":"Tammi","Feb":"Helmi","Mar":"Maalis","Apr":"Huhti","May":"Toukokuu","Jun":"Kesä","Jul":"Heinä","Aug":"Elo","Sep":"Syys","Oct":"Loka","Nov":"Marras","Dec":"Joulu","January":"Tammikuu","February":"Helmikuu","March":"Maaliskuu","April":"Huhtikuu","June":"Kesäkuu","July":"Heinäkuu","August":"Elokuu","September":"Syyskuu","October":"Lokakuu","November":"Marraskuu","December":"Joulukuu"},"Today":"Tänään"},"fr":{"Weekdays":{"Sun":"Soleil","Mon":"Mon","Tue":"Tu","Wed":"Mariage","Thu":"Jeu","Fri":"Ven","Sat":"Sat","Sunday":"Dimanche","Monday":"Lundi","Tuesday":"Mardi","Wednesday":"Mercredi","Thursday":"Jeudi","Friday":"Vendredi","Saturday":"Samedi"},"Months":{"Jan":"Janvier","Feb":"Fév","Mar":"Mars","Apr":"Avr","May":"Mai","Jun":"Juin","Jul":"Juillet","Aug":"Août","Sep":"Sep","Oct":"Oct","Nov":"Nov","Dec":"Déc","January":"Janvier","February":"Février","March":"Mars","April":"Avril","June":"Juin","July":"Juillet","August":"Août","September":"Septembre","October":"Octobre","November":"Novembre","December":"Décembre"},"Today":"Aujourd'hui"},"ga":{"Weekdays":{"Sun":"Ghrian","Mon":"Uisce","Tue":"Déan","Wed":"Táimid","Thu":"Thuama","Fri":"Múirín","Sat":"Sábháil","Sunday":"Domhnach","Monday":"Dé","Tuesday":"Dé","Wednesday":"Dé","Thursday":"Déardaoin","Friday":"Dé","Saturday":"Dé"},"Months":{"Jan":"An","Feb":"Is","Mar":"Mar","Apr":"Aibreán","May":"Bealtaine","Jun":"Amharc","Jul":"Jul","Aug":"Lúnasa","Sep":"Meán","Oct":"Deireadh","Nov":"Cineál","Dec":"Déan","January":"Irl","February":"Amharc","March":"Márta","April":"Amharc","June":"Meitheamh","July":"Irl","August":"Amharc","September":"Meán","October":"Deireadh","November":"Samhain","December":"Nollaig"},"Today":"Sa"},"gl":{"Weekdays":{"Sun":"Sol","Mon":"Mon","Tue":"Tue","Wed":"Apostamos","Thu":"Tu","Fri":"Frio","Sat":"Sat","Sunday":"Domingo","Monday":"Luns","Tuesday":"Martes","Wednesday":"Miércoles","Thursday":"Xoves","Friday":"Venres","Saturday":"Sábado"},"Months":{"Jan":"Jan","Feb":"Febreiro","Mar":"Mar","Apr":"Abril","May":"Maio","Jun":"Jun","Jul":"Xullo","Aug":"Aug","Sep":"Sep","Oct":"Oct","Nov":"Novidade","Dec":"Dec","January":"Xaneiro","February":"Febreiro","March":"Marzo","April":"Abril","June":"Xuño","July":"Xullo","August":"Agosto","September":"Setembro","October":"Outubro","November":"Novembro","December":"Decembro"},"Today":"Hoxe"},"he":{"Weekdays":{"Sun":"השמש","Mon":"מונמון","Tue":"Tue","Wed":"Wed","Thu":"תור","Fri":"פרי","Sat":"Sat","Sunday":"יום","Monday":"יום","Tuesday":"יום","Wednesday":"יום","Thursday":"יום","Friday":"יום","Saturday":"יום"},"Months":{"Jan":"יאן","Feb":"פברואר","Mar":"Mar","Apr":"אנגלית","May":"במאי","Jun":"ג'ון","Jul":"יולי","Aug":"אוגוסט","Sep":"ספרד","Oct":"באוקטובר","Nov":"נובמבר","Dec":"דצמבר","January":"ינואר","February":"פברואר","March":"מרץ","April":"אפריל","June":"יוני","July":"יולי","August":"אוגוסט","September":"ספטמבר","October":"אוקטובר","November":"נובמבר","December":"דצמבר"},"Today":"היום"},"hi":{"Weekdays":{"Sun":"सूर्य","Mon":"सोम","Tue":"मंगल","Wed":"Wed","Thu":"गुरु","Fri":"शुक्र","Sat":"सत","Sunday":"रविवार","Monday":"सोमवार","Tuesday":"मंगलवार","Wednesday":"बुधवार","Thursday":"गुरुवार","Friday":"शुक्रवार","Saturday":"शनिवार"},"Months":{"Jan":"जनवरी","Feb":"फ़रवरी","Mar":"मार्च","Apr":"अप्रैल","May":"मई","Jun":"जून","Jul":"जुलाई","Aug":"अगस्त","Sep":"सितंबर","Oct":"अक्टूबर","Nov":"नवम्बर","Dec":"दिसम्बर","January":"जनवरी","February":"फ़रवरी","March":"मार्च","April":"अप्रैल","June":"जून","July":"जुलाई","August":"अगस्त","September":"सितंबर","October":"अक्टूबर","November":"नवंबर","December":"दिसम्बर"},"Today":"आज"},"hu":{"Weekdays":{"Sun":"Nap","Mon":"H","Tue":"Sze","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sat","Sunday":"Vasárnap","Monday":"Hétfő","Tuesday":"Kedd","Wednesday":"Szerda","Thursday":"Csütörtök","Friday":"Péntek","Saturday":"Szombat"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Május","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sz","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Január","February":"Február","March":"Március","April":"Április","June":"Június","July":"Július","August":"Augusztus","September":"Szeptember","October":"Október","November":"November","December":"December"},"Today":"Ma"},"id":{"Weekdays":{"Sun":"Matahari","Mon":"Mon","Tue":"Tue","Wed":"Busana","Thu":"Thu","Fri":"Fri","Sat":"Sab","Sunday":"Minggu","Monday":"Senin","Tuesday":"Selasa","Wednesday":"Rabu","Thursday":"Kamis","Friday":"Jumat","Saturday":"Sabtu"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Mei","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Januari","February":"Februari","March":"Maret","April":"April","June":"Juni","July":"Juli","August":"Agustus","September":"September","October":"Oktober","November":"November","December":"Desember"},"Today":"Hari"},"it":{"Weekdays":{"Sun":"Sole","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Gio","Fri":"Fri","Sat":"Rasoio","Sunday":"Domenica","Monday":"Lunedì","Tuesday":"Martedì","Wednesday":"Mercoledì","Thursday":"Giovedì","Friday":"Venerdì","Saturday":"Sabato"},"Months":{"Jan":"Jan","Feb":"Febbraio","Mar":"Mar","Apr":"Aprile","May":"Maggio","Jun":"Jun","Jul":"Jul","Aug":"Agosto","Sep":"Articolo","Oct":"Ottobre","Nov":"No","Dec":"Dec","January":"Gennaio","February":"Febbraio","March":"Marzo","April":"Aprile","June":"Giugno","July":"Luglio","August":"Agosto","September":"Settembre","October":"Ottobre","November":"Novembre","December":"Dicembre"},"Today":"Oggi"},"ja":{"Weekdays":{"Sun":"日曜日","Mon":"モンド","Tue":"火曜日","Wed":"お問い合わせ","Thu":"日","Fri":"フリガナ","Sat":"スタッフ","Sunday":"日曜日","Monday":"月曜日～金曜日","Tuesday":"火曜日","Wednesday":"水曜日","Thursday":"木曜日","Friday":"金曜日","Saturday":"土曜日"},"Months":{"Jan":"1月1日","Feb":"1月2日","Mar":"マーキー","Apr":"4月4日","May":"5月5日","Jun":"ジュンジュン","Jul":"7月7日","Aug":"8月8日","Sep":"9月9日","Oct":"10月10日","Nov":"11月11日","Dec":"12月12日","January":"1月1日","February":"2月2日","March":"3月3日","April":"4月4日","June":"6月6日","July":"7月7日","August":"8月8日","September":"9月9日","October":"10月10日","November":"11月11日","December":"12月12日"},"Today":"今日更新"},"ko":{"Weekdays":{"Sun":"(주)","Mon":"담당자","Tue":" ","Wed":"사이트맵","Thu":"₢","Fri":"₢","Sat":"·","Sunday":"주","Monday":"월요일,","Tuesday":"*","Wednesday":"-","Thursday":"주","Friday":"월~금","Saturday":"·"},"Months":{"Jan":"1","Feb":"2월","Mar":"3","Apr":"4","May":"5","Jun":"주","Jul":"7","Aug":"8","Sep":"9월","Oct":"10월","Nov":"11월","Dec":"12월","January":"1월","February":"2","March":"3","April":"4","June":"6월","July":"7","August":"8","September":"9","October":"10월","November":"11","December":"12"},"Today":"으로"},"lt":{"Weekdays":{"Sun":"Saulė","Mon":"Mon","Tue":"Tue","Wed":"WEd","Thu":"Thu","Fri":"FrNAME","Sat":"Sat","Sunday":"Sekmadienis","Monday":"Pirmadienis","Tuesday":"Antradienis","Wednesday":"Trečiadienis","Thursday":"Ketvirtadienis","Friday":"Penktadienis","Saturday":"Šeštadienis"},"Months":{"Jan":"Sau","Feb":"Vas","Mar":"Mar","Apr":"Bal","May":"Gegužės","Jun":"Bir","Jul":"Lie","Aug":"Rgp","Sep":"Rp","Oct":"Spalis","Nov":"Nr","Dec":"Gruodis","January":"Sausis","February":"Vasaris","March":"Kovas","April":"Balandis","June":"Birželis","July":"Liepa","August":"Rugpjūtis","September":"Rugsėjis","October":"Spalis","November":"Lapkritis","December":"Gruodis"},"Today":"Šiandien"},"lv":{"Weekdays":{"Sun":"Saule","Mon":"N","Tue":"Otr","Wed":"Tre","Thu":"Cet","Fri":"Pie","Sat":"Ses","Sunday":"Svētdiena","Monday":"Pirmdiena","Tuesday":"Otrdiena","Wednesday":"Trešdiena","Thursday":"Ceturtdiena","Friday":"Piektdiena","Saturday":"Sestdiena"},"Months":{"Jan":"Janvāris","Feb":"Febr","Mar":"Mar","Apr":"Apr","May":"Maijs","Jun":"Jūn","Jul":"Jūl","Aug":"Aug","Sep":"Sept","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Janvāris","February":"Februāris","March":"Marts","April":"Aprīlis","June":"Jūnijs","July":"Jūlijs","August":"Augusts","September":"Septembris","October":"Oktobris","November":"Novembris","December":"Decembris"},"Today":"Šodien"},"ms":{"Weekdays":{"Sun":"Sun","Mon":"Mon","Tue":"Perancis","Wed":"♪","Thu":"Khaw","Fri":"Perancis","Sat":"♪","Sunday":"Ahad","Monday":"Isnin","Tuesday":"Selasa","Wednesday":"Rabu","Thursday":"Khamis","Friday":"Jumat","Saturday":"Sabtu"},"Months":{"Jan":"Jan","Feb":"Perancis","Mar":"Perancis","Apr":"Apr","May":"Mei","Jun":"Juni","Jul":"♪","Aug":"Aug","Sep":"Perancis","Oct":"Takh","Nov":"Nov","Dec":"Amerika","January":"Januari","February":"2010,","March":"2010,","April":"April","June":"Juni","July":"Juli","August":"Ogos","September":"Perancis","October":"Oktober","November":"November","December":"Amerika"},"Today":"Hari"},"nb":{"Weekdays":{"Sun":"Sun","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sat","Sunday":"Søndag","Monday":"Mandag","Tuesday":"Tirsdag","Wednesday":"Onsdag","Thursday":"Torsdag","Friday":"Fredag","Saturday":"Lørdag"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Mai","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Januar","February":"Februar","March":"Mars","April":"April","June":"Juni","July":"Juli","August":"August","September":"September","October":"Oktober","November":"November","December":"Desember"},"Today":"I"},"nl":{"Weekdays":{"Sun":"Zon","Mon":"Ma","Tue":"Di","Wed":"Wo","Thu":"Do","Fri":"Vr","Sat":"Zat","Sunday":"Zondag","Monday":"Maandag","Tuesday":"Dinsdag","Wednesday":"Woensdag","Thursday":"Donderdag","Friday":"Vrijdag","Saturday":"Zaterdag"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Mei","Jun":"Juni","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Januari","February":"Februari","March":"Maart","April":"April","June":"Juni","July":"Juli","August":"Augustus","September":"September","October":"Oktober","November":"November","December":"December"},"Today":"Vandaag"},"pl":{"Weekdays":{"Sun":"Słońce","Mon":"Mon","Tue":"Wtyczka","Wed":"Środ","Thu":"Thu","Fri":"Fri","Sat":"Sat","Sunday":"Niedziela","Monday":"Poniedziałek","Tuesday":"Wtorek","Wednesday":"Środa","Thursday":"Czwartek","Friday":"Piątek","Saturday":"Sobota"},"Months":{"Jan":"Jan","Feb":"Luty","Mar":"Mar","Apr":"Kwiecień","May":"Maj","Jun":"Czerwiec","Jul":"Lipiec","Aug":"Sierpień","Sep":"Wrzesień","Oct":"Październik","Nov":"Nov","Dec":"Grudzień","January":"Styczeń","February":"Luty","March":"Marzec","April":"Kwiecień","June":"Czerwiec","July":"Lipiec","August":"Sierpień","September":"Wrzesień","October":"Październik","November":"Listopad","December":"Grudzień"},"Today":"Dzisiaj"},"pt":{"Weekdays":{"Sun":"Sol","Mon":"Monsenhor","Tue":"Tue","Wed":"Wed","Thu":"Tu","Fri":"Frio","Sat":"Satisfeito","Sunday":"Domingo","Monday":"Segunda-feira","Tuesday":"Terça-feira","Wednesday":"Quarta-feira","Thursday":"Quinta-feira","Friday":"Sexta-feira","Saturday":"Sábado"},"Months":{"Jan":"Jan","Feb":"Fev","Mar":"Mar","Apr":"Abr","May":"Maio","Jun":"Jun","Jul":"Jul","Aug":"A","Sep":"Sep","Oct":"O","Nov":"Não","Dec":"Dez","January":"Janeiro","February":"Fevereiro","March":"Março","April":"Abril","June":"Junho","July":"Julho","August":"Agosto","September":"Setembro","October":"Outubro","November":"Novembro","December":"Dezembro"},"Today":"Hoje"},"ro":{"Weekdays":{"Sun":"Soare","Mon":"Luni","Tue":"Tue","Wed":"Căsătorie","Thu":"Thu","Fri":"Vine","Sat":"Sat","Sunday":"Duminică","Monday":"Luni","Tuesday":"Marţi","Wednesday":"Miercuri","Thursday":"Joi","Friday":"Vineri","Saturday":"Sâmbătă"},"Months":{"Jan":"Jan","Feb":"Februarie","Mar":"Mar","Apr":"Apr","May":"May","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Oct","Nov":"Nov","Dec":"Dec","January":"Ianuarie","February":"Februarie","March":"Martie","April":"Aprilie","June":"Iunie","July":"Iulie","August":"August","September":"Septembrie","October":"Octombrie","November":"Noiembrie","December":"Decembrie"},"Today":"Astăzi"},"ru":{"Weekdays":{"Sun":"Солнце","Mon":"Мон","Tue":"Туи","Wed":"Свадьба","Thu":"Ту","Fri":"Фри","Sat":"Сидеть","Sunday":"Воскресенье","Monday":"Понедельник","Tuesday":"Вторник","Wednesday":"Среда","Thursday":"Четверг","Friday":"Пятница","Saturday":"Суббота"},"Months":{"Jan":"Ян","Feb":"Февраль","Mar":"Мар","Apr":"Апр","May":"Май","Jun":"Джун","Jul":"Джул","Aug":"Ауг","Sep":"Сеп","Oct":"Октября","Nov":"Ноябрь","Dec":"Декларация","January":"Январь","February":"Февраль","March":"Март","April":"Апрель","June":"Июнь","July":"Июль","August":"Август","September":"Сентябрь","October":"Октября","November":"Ноябрь","December":"Декабрь"},"Today":"Сегодня"},"sk":{"Weekdays":{"Sun":"Slnko","Mon":"Po","Tue":"Ut","Wed":"Str","Thu":"Št","Fri":"Pi","Sat":"So","Sunday":"Nedeľa","Monday":"Pondelok","Tuesday":"Utorok","Wednesday":"Streda","Thursday":"Štvrtok","Friday":"Piatok","Saturday":"Sobota"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apríl","May":"Máj","Jun":"Jún","Jul":"Júl","Aug":"August","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Január","February":"Február","March":"Marec","April":"Apríl","June":"Jún","July":"Júl","August":"August","September":"September","October":"Október","November":"November","December":"December"},"Today":"Dnes"},"sl":{"Weekdays":{"Sun":"Sonce","Mon":"Naslednji","Tue":"Tor","Wed":"Sre","Thu":"Čet","Fri":"Fri","Sat":"Sob","Sunday":"Nedelja","Monday":"Ponedeljek","Tuesday":"Torek","Wednesday":"Sreda","Thursday":"Četrtek","Friday":"Petek","Saturday":"Sobota"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Maj","Jun":"Jun","Jul":"Jul","Aug":"Avg","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Januar","February":"Februar","March":"Marec","April":"April","June":"Junij","July":"Julij","August":"Avgust","September":"September","October":"Oktober","November":"November","December":"December"},"Today":"Danes"},"sq":{"Weekdays":{"Sun":"Dielli","Mon":"Mon","Tue":"Tue","Wed":"Mer","Thu":"Tsu","Fri":"Pre","Sat":"Sat","Sunday":"E","Monday":"E","Tuesday":"E","Wednesday":"E","Thursday":"E","Friday":"E","Saturday":"E"},"Months":{"Jan":"Jan","Feb":"Fb","Mar":"Meri","Apr":"Për","May":"Maj","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Tetor","Nov":"Nov","Dec":"Dhjetor","January":"Janar","February":"Shkurt","March":"Mars","April":"Prill","June":"Qershor","July":"Korrik","August":"Gusht","September":"Shtator","October":"Tetor","November":"Nëntor","December":"Dhjetor"},"Today":"Sot"},"sv":{"Weekdays":{"Sun":"Sol","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sattar","Sunday":"Söndag","Monday":"Måndag","Tuesday":"Tisdag","Wednesday":"Onsdag","Thursday":"Torsdag","Friday":"Fredag","Saturday":"Lördag"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Maj","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Januari","February":"Februari","March":"Mars","April":"April","June":"Juni","July":"Juli","August":"Augusti","September":"September","October":"Oktober","November":"November","December":"December"},"Today":"Idag"},"th":{"Weekdays":{"Sun":"อาทิตย์","Mon":"นิ้ว","Tue":"Tue","Wed":"เว็บ","Thu":"ทู","Fri":"เนื้อ","Sat":"ที่นั่ง","Sunday":"อาทิตย์","Monday":"จันทร์","Tuesday":"อังคาร","Wednesday":"วันพุธ","Thursday":"พฤหัสบดี","Friday":"ศุกร์","Saturday":"เสาร์"},"Months":{"Jan":"ไม่นะ","Feb":"ก.","Mar":"ขนาด","Apr":"ขนาด","May":"พฤษภาคม","Jun":"จุน","Jul":"ก.","Aug":"อัก","Sep":"เซพ","Oct":"ตลับหมึก","Nov":"นอฟ","Dec":"ธ.","January":"มกราคม","February":"กุมภาพันธ์","March":"มีนาคม","April":"เมษายน","June":"มิถุนายน","July":"กรกฎาคม","August":"สิงหาคม","September":"กันยายน","October":"ตุลาคม","November":"พฤศจิกายน","December":"ธันวาคม"},"Today":"วันนี้"},"tl":{"Weekdays":{"Sun":"Araw","Mon":"Buwan","Tue":"Tue","Wed":"Damo","Thu":"Thu","Fri":"Kaibigan","Sat":"Sat","Sunday":"Linggo","Monday":"Lunes","Tuesday":"Martes","Wednesday":"Miyerkules","Thursday":"Huwebes","Friday":"Biyernes","Saturday":"Sabado"},"Months":{"Jan":"Jan","Feb":"Sanggol","Mar":"Mar","Apr":"Apr","May":"Mayo","Jun":"Jun","Jul":"Juul","Aug":"Ug","Sep":"Sep","Oct":"Oct","Nov":"Nov","Dec":"Pagpapasiya","January":"Enero","February":"Pebrero","March":"Marso","April":"Abril","June":"Hunyo","July":"Hulyo","August":"Agosto","September":"Setyembre","October":"Oktubre","November":"Nobyembre","December":"Disyembre"},"Today":"Ngayon"},"tr":{"Weekdays":{"Sun":"Güneş","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sat","Sunday":"Pazar","Monday":"Pazartesi","Tuesday":"Salı","Wednesday":"Çarşamba","Thursday":"Perşembe","Friday":"Cuma","Saturday":"Cumartesi"},"Months":{"Jan":"Jan","Feb":"Şubat","Mar":"Mar","Apr":"Apr","May":"Mayıs","Jun":"Jun","Jul":"Temmuz","Aug":"Ağu","Sep":"Eylül","Oct":"Ekim","Nov":"Kasım","Dec":"Aralık","January":"Ocak","February":"Şubat","March":"Mart","April":"Nisan","June":"Haziran","July":"Temmuz","August":"Ağustos","September":"Eylül","October":"Ekim","November":"Kasım","December":"Aralık"},"Today":"Bugün"},"uk":{"Weekdays":{"Sun":"Сонце","Mon":"Навігація","Tue":"Твитнуть","Wed":"Про","Thu":"Чорти","Fri":"П'ятниця","Sat":"Сонце","Sunday":"Неділя","Monday":"Понеділок","Tuesday":"П'ятниця","Wednesday":"Середа","Thursday":"Четвер","Friday":"П'ятниця","Saturday":"Субота"},"Months":{"Jan":"Мар","Feb":"Мар","Mar":"Мар","Apr":"Мар","May":"Травень","Jun":"Мар","Jul":"Мар","Aug":"Мар","Sep":"Мар","Oct":"Мар","Nov":"Мар","Dec":"Мар","January":"Січень","February":"Лютий","March":"Березень","April":"Квітень","June":"Червень","July":"Липень","August":"Серпень","September":"Вересень","October":"Жовтень","November":"Листопад","December":"Грудень"},"Today":"Сьогодні"},"ur":{"Weekdays":{"Sun":"سورج","Mon":"مون","Tue":"ٹو","Wed":"وے","Thu":"چو","Fri":"فری","Sat":"شطرنج","Sunday":"اتوار","Monday":"منگل","Tuesday":"منگل","Wednesday":"بدھ","Thursday":"جمعرات","Friday":"جمعہ","Saturday":"سبت"},"Months":{"Jan":"یان","Feb":"فیب","Mar":"مار","Apr":"پرنٹ","May":"مئی","Jun":"جون","Jul":"یول","Aug":"آغ","Sep":"سیپ","Oct":"پرنٹ","Nov":"ن","Dec":"سوال","January":"جنوری","February":"فروری","March":"مارچ","April":"اپریل","June":"جون","July":"جولائی","August":"اگست","September":"ستمبر","October":"اکتوبر","November":"نومبر","December":"دسمبر"},"Today":"آج"},"zh":{"Weekdays":{"Sun":"太阳","Mon":"月号","Tue":"图","Wed":"结婚","Thu":"图","Fri":"弗里语Name","Sat":"座位","Sunday":"礼拜","Monday":"星期一","Tuesday":"星期二","Wednesday":"星期三","Thursday":"星期四","Friday":"星期五","Saturday":"星期六(上午)"},"Months":{"Jan":"扬","Feb":"二月","Mar":"马来","Apr":"农历四月","May":"5月","Jun":"军","Jul":"朱尔","Aug":"奥格","Sep":"九月","Oct":"十月(简体)","Nov":"页:1","Dec":"12月(中文)","January":"页:1","February":"2月(半天会议)","March":"3月(半天会议)","April":"4月(半天会议)","June":"6月份","July":"7月(半天会议)","August":"8月(半天)","September":"9月(半天会议)","October":"10月(半天会议)","November":"11月(半天会议)","December":"12月(半天)"},"Today":"现在"},"zt":{"Weekdays":{"Sun":"太阳","Mon":"月","Tue":"二等分","Wed":"有婚","Thu":"三月","Fri":"弗里","Sat":"有","Sunday":"星期天","Monday":"星期一","Tuesday":"星期二","Wednesday":"星期三","Thursday":"星期四","Friday":"星期五","Saturday":"星期六"},"Months":{"Jan":"1月","Feb":"二月","Mar":"三月","Apr":"四月","May":"五月","Jun":"三月","Jul":"二月","Aug":"8月","Sep":"九月","Oct":"十月","Nov":"11月","Dec":"二月","January":"1月","February":"二月","March":"三月","April":"4月","June":"6月","July":"7月","August":"8月","September":"9月","October":"10月","November":"11月","December":"12月"},"Today":"今天"}}`, Ta = '{"en":{"Error":"Error","AutoComplete":{"NoResults":"No Results"}},"ar":{"Error":"الرعب","AutoComplete":{"NoResults":"لا نتائج"}},"az":{"Error":"Qeyd","AutoComplete":{"NoResults":"Qeydlər"}},"bg":{"Error":"Грешка","AutoComplete":{"NoResults":"Няма резултати"}},"bn":{"Error":"ত্রুটি","AutoComplete":{"NoResults":"কোনো ফলাফল পাওয়া যায়নি"}},"ca":{"Error":"Error","AutoComplete":{"NoResults":"Sense resultats"}},"cs":{"Error":"Chyba","AutoComplete":{"NoResults":"Žádné výsledky"}},"da":{"Error":"Fejl","AutoComplete":{"NoResults":"Ingen resultater"}},"de":{"Error":"Fehler","AutoComplete":{"NoResults":"Keine Ergebnisse"}},"el":{"Error":"Σφάλμα","AutoComplete":{"NoResults":"Χωρίς αποτελέσματα"}},"eo":{"Error":"Eraro","AutoComplete":{"NoResults":"Neniuj rezultoj"}},"es":{"Error":"Error","AutoComplete":{"NoResults":"No hay resultados"}},"et":{"Error":"Viga","AutoComplete":{"NoResults":"Tulemused puuduvad"}},"eu":{"Error":"Errorea","AutoComplete":{"NoResults":"Emaitzarik ez"}},"fa":{"Error":"خطای","AutoComplete":{"NoResults":"نتایج"}},"fi":{"Error":"Virhe","AutoComplete":{"NoResults":"Ei tuloksia"}},"fr":{"Error":"Erreur","AutoComplete":{"NoResults":"Aucun résultat"}},"ga":{"Error":"Amharc","AutoComplete":{"NoResults":"Gan a bheith ráite"}},"gl":{"Error":"Erro","AutoComplete":{"NoResults":"Sen resultados"}},"he":{"Error":"טעות","AutoComplete":{"NoResults":"לא תוצאות"}},"hi":{"Error":"त्रुटि","AutoComplete":{"NoResults":"परिणाम"}},"hu":{"Error":"Hiba","AutoComplete":{"NoResults":"Nincs eredmény"}},"id":{"Error":"Galat","AutoComplete":{"NoResults":"Tidak ada hasil"}},"it":{"Error":"Errore","AutoComplete":{"NoResults":"Nessun risultato"}},"ja":{"Error":"エラー","AutoComplete":{"NoResults":"結果なし"}},"ko":{"Error":"계정","AutoComplete":{"NoResults":"결과 없음"}},"lt":{"Error":"Klaida","AutoComplete":{"NoResults":"Nr rezultatai"}},"lv":{"Error":"Kļūda","AutoComplete":{"NoResults":"Nav rezultātu"}},"ms":{"Error":"Error","AutoComplete":{"NoResults":"Hasil No"}},"nb":{"Error":"Feil","AutoComplete":{"NoResults":"Ingen resultater"}},"nl":{"Error":"Fout","AutoComplete":{"NoResults":"Geen resultaten"}},"pl":{"Error":"Błąd","AutoComplete":{"NoResults":"Brak wyników"}},"pt":{"Error":"Erro","AutoComplete":{"NoResults":"Sem resultados"}},"ro":{"Error":"Eroare","AutoComplete":{"NoResults":"Niciun rezultat"}},"ru":{"Error":"Ошибка","AutoComplete":{"NoResults":"Нет результатов"}},"sk":{"Error":"Chyba","AutoComplete":{"NoResults":"Žiadne výsledky"}},"sl":{"Error":"Napaka","AutoComplete":{"NoResults":"Brez rezultatov"}},"sq":{"Error":"Gabim","AutoComplete":{"NoResults":"Asnjë rezultat"}},"sv":{"Error":"Fel","AutoComplete":{"NoResults":"Inga resultat"}},"th":{"Error":"ผิดพลาด","AutoComplete":{"NoResults":"ไม่มีผลลัพธ์"}},"tl":{"Error":"Pagkakamali","AutoComplete":{"NoResults":"Walang Resulta"}},"tr":{"Error":"Hata","AutoComplete":{"NoResults":"Sonuçlar yok"}},"uk":{"Error":"Помилка","AutoComplete":{"NoResults":"Немає результатів"}},"ur":{"Error":"خامی","AutoComplete":{"NoResults":"کوئی نتیجہ"}},"zh":{"Error":"错误","AutoComplete":{"NoResults":"无结果"}},"zt":{"Error":"錯誤","AutoComplete":{"NoResults":"沒有結果"}}}', Pa = '{"en":{"Done":"Done"},"ar":{"Done":"تم"},"az":{"Done":" Don"},"bg":{"Done":"Готово"},"bn":{"Done":"সম্পন্ন"},"ca":{"Done":"Fet"},"cs":{"Done":"Hotovo"},"da":{"Done":"Færdig"},"de":{"Done":"Fertig"},"el":{"Done":"Έγινε"},"eo":{"Done":"Done"},"es":{"Done":"Hecho"},"et":{"Done":"Tehtud"},"eu":{"Done":"Eginda"},"fa":{"Done":"انجام"},"fi":{"Done":"Tehty"},"fr":{"Done":"Fait"},"ga":{"Done":"Arna"},"gl":{"Done":"Feito"},"he":{"Done":"נעשה"},"hi":{"Done":"दान"},"hu":{"Done":"Kész"},"id":{"Done":"Selesai"},"it":{"Done":"Fatto"},"ja":{"Done":"ログイン"},"ko":{"Done":"한국어"},"lt":{"Done":"@"},"lv":{"Done":"Pabeigts"},"ms":{"Done":"Selesai"},"nb":{"Done":"Ferdig"},"nl":{"Done":"Klaar"},"pl":{"Done":"Gotowe"},"pt":{"Done":"Feito"},"ro":{"Done":"Gata"},"ru":{"Done":"Сделано"},"sk":{"Done":"Hotovo"},"sl":{"Done":"Končano"},"sq":{"Done":"U"},"sv":{"Done":"Done"},"th":{"Done":"เสร็จแล้ว"},"tl":{"Done":"Tapos"},"tr":{"Done":"Done"},"uk":{"Done":"Сонце"},"ur":{"Done":"بند"},"zh":{"Done":"完成"},"zt":{"Done":"完成"}}', xa = {
-  Button: JSON.parse(Na),
-  Filter: JSON.parse(Fa),
-  Pagination: JSON.parse(wa),
-  Date: JSON.parse(Oa),
-  Form: JSON.parse(Ta),
-  Wizard: JSON.parse(Pa)
+}), Ja = '{"en":{"Add":"Add","Cancel":"Cancel","Delete":"Delete","Disable":"Disable","Download":"Download","Edit":"Edit","Enable":"Enable","Okay":"Okay","Print":"Print","Refresh":"Refresh","Save":"Save","Submit":"Submit","Upload":"Upload"},"ar":{"Add":"مضافا","Cancel":"إلغاء","Delete":"تحذف","Disable":"العجز","Download":"تحميل","Edit":"Edit","Enable":"التمكين","Okay":"حسناً","Print":"الطباعة","Refresh":"التجديد","Save":"أنقذ","Submit":"Submit","Upload":"تحميل"},"az":{"Add":"Axtarış","Cancel":"Tarix","Delete":"Delete","Disable":"Qeydiyyat","Download":"Qeydiyyat","Edit":"Tarix","Enable":"Qeydiyyat","Okay":" Okay","Print":"Çap","Refresh":"Axtarış","Save":"Yadda","Submit":"Qeydiyyat","Upload":"Tarix"},"bg":{"Add":"Добавяне","Cancel":"Отмяна","Delete":"Изтриване","Disable":"Изключване","Download":"Изтегляне","Edit":"Редактиране","Enable":"Включване","Okay":"Добре","Print":"Печат","Refresh":"Обновяване","Save":"Запис","Submit":"Подаване","Upload":"Качване"},"bn":{"Add":"যোগ","Cancel":"বাতিল","Delete":"মুছে","Disable":"নিষ্ক্রিয়","Download":"ডাউনলোড","Edit":"সম্পাদনা","Enable":"সক্রিয়","Okay":"ঠিক","Print":"প্রিন্ট","Refresh":"নতুন","Save":"সংরক্ষণ","Submit":"জমা","Upload":"আপলোড"},"ca":{"Add":"Afegeix","Cancel":"Cancel·","Delete":"Esborra","Disable":"Deshabilita","Download":"Descarrega","Edit":"Edita","Enable":"Habilita","Okay":"Bé","Print":"Imprimeix","Refresh":"Refresca","Save":"Desa","Submit":"Envia","Upload":"Puja"},"cs":{"Add":"Přidat","Cancel":"Zrušit","Delete":"Smazat","Disable":"Zakázat","Download":"Stáhnout","Edit":"Upravit","Enable":"Povolit","Okay":"Dobře","Print":"Tisk","Refresh":"Obnovit","Save":"Uložit","Submit":"Odeslat","Upload":"Načíst"},"da":{"Add":"Tilføj","Cancel":"Annullér","Delete":"Slet","Disable":"Deaktivér","Download":"Download","Edit":"Redigér","Enable":"Aktivér","Okay":"Okay","Print":"Udskriv","Refresh":"Genopfrisk","Save":"Gem","Submit":"Indsend","Upload":"Upload"},"de":{"Add":"Hinzufügen","Cancel":"Abbrechen","Delete":"Löschen","Disable":"Deaktivieren","Download":"Herunterladen","Edit":"Bearbeiten","Enable":"Aktivieren","Okay":"Okay","Print":"Drucken","Refresh":"Aktualisieren","Save":"Speichern","Submit":"Senden","Upload":"Hochladen"},"el":{"Add":"Προσθήκη","Cancel":"Ακύρωση","Delete":"Διαγραφή","Disable":"Απενεργοποίηση","Download":"Λήψη","Edit":"Επεξεργασία","Enable":"Ενεργοποίηση","Okay":"Εντάξει","Print":"Εκτύπωση","Refresh":"Ανανέωση","Save":"Αποθήκευση","Submit":"Υποβολή","Upload":"Αποστολή"},"eo":{"Add":"Aldonu","Cancel":"Cancel","Delete":"Delete","Disable":"Distingebla","Download":"Elŝutu","Edit":"Edit","Enable":"Enable","Okay":"Bone","Print":"Presaĵo","Refresh":"Refresh","Save":"Savi","Submit":"Submit","Upload":"Ĝis"},"es":{"Add":"Añadir","Cancel":"Cancelar","Delete":"Suprimir","Disable":"Inhabilitación","Download":"Descargar","Edit":"Editar","Enable":"Habilitación","Okay":"Está","Print":"Imprimir","Refresh":"Refresh","Save":"Guardar","Submit":"Submit","Upload":"Subir"},"et":{"Add":"Lisa","Cancel":"Tühistage","Delete":"Kustuta","Disable":"Keela","Download":"Laadi","Edit":"Edit","Enable":"Luba","Okay":"Olgu","Print":"Printi","Refresh":"Värskenda","Save":"Päästa","Submit":"Esita","Upload":"Laadi"},"eu":{"Add":"Gehitu","Cancel":"Utzi","Delete":"Ezabatu","Disable":"Desgaitu","Download":"Deskargatu","Edit":"Editatu","Enable":"Gaitu","Okay":"Ados","Print":"Inprimatu","Refresh":"Freskatu","Save":"Gorde","Submit":"Bidali","Upload":"Igo"},"fa":{"Add":"Add","Cancel":"لغو","Delete":"حذف","Disable":"Disable","Download":"Download","Edit":"ویرایش","Enable":"گزینه","Okay":"خوب","Print":"Print","Refresh":"بازسازی","Save":"Save","Submit":"ارسال","Upload":"آپلود"},"fi":{"Add":"Lisää","Cancel":"Peruuta","Delete":"Poista","Disable":"Poista","Download":"Lataa","Edit":"Muuta","Enable":"Käytä","Okay":"Selvä","Print":"Tulosta","Refresh":"Päivitä","Save":"Tallenna","Submit":"Lähetä","Upload":"Lähetä"},"fr":{"Add":"Ajouter","Cancel":"Annuler","Delete":"Supprimer","Disable":"Désactiver","Download":"Télécharger","Edit":"Modifier","Enable":"Activer","Okay":"Très","Print":"Imprimer","Refresh":"Actualiser","Save":"Enregistrer","Submit":"Soumettre","Upload":"Envoi"},"ga":{"Add":"Déan","Cancel":"Cealaigh","Delete":"Scriosta","Disable":"Díroghnaigh","Download":"Íoslódáil","Edit":"Toir","Enable":"Cumasaigh","Okay":"Riachtanais","Print":"Priontáil","Refresh":"Athraigh","Save":"Sábháil","Submit":"Cuir","Upload":"Uaslódáil"},"gl":{"Add":"Add","Cancel":"Cancelar","Delete":"Eliminar","Disable":"Disable","Download":"Baixar","Edit":"Edit","Enable":"Habilitar","Okay":"Ok","Print":"Imprimir","Refresh":"Refresco","Save":"Save","Submit":"Presentación","Upload":"Upload"},"he":{"Add":"הוסף","Cancel":"ביטול","Delete":"Delete","Disable":"אכזבה","Download":"הורד","Edit":"Editעריכה","Enable":"אפשרות","Okay":"בסדר","Print":"הדפסה","Refresh":"מרעננים","Save":"להציל","Submit":"הגשת","Upload":"Upload"},"hi":{"Add":"जोड़ें","Cancel":"रद्द","Delete":"डिलीट","Disable":"अक्षम","Download":"डाउनलोड","Edit":"संपादित","Enable":"सक्षम","Okay":"ओके","Print":"छाप","Refresh":"रिफ्रेश","Save":"सहेजें","Submit":"जमा","Upload":"अपलोड"},"hu":{"Add":"Hozzáadás","Cancel":"Törlés","Delete":"Törlés","Disable":"Kikapcsolás","Download":"Letöltés","Edit":"Szerkesztés","Enable":"Beállítás","Okay":"Oké","Print":"Nyomtatás","Refresh":"Frissítés","Save":"Mentés","Submit":"Küldés","Upload":"Feltöltés"},"id":{"Add":"Tambah","Cancel":"Batal","Delete":"Hapus","Disable":"Matikan","Download":"Unduh","Edit":"Sunting","Enable":"Aktifkan","Okay":"Oke","Print":"Cetak","Refresh":"Segarkan","Save":"Simpan","Submit":"Kirim","Upload":"Unggah"},"it":{"Add":"Aggiungi","Cancel":"Annulla","Delete":"Cancella","Disable":"Disattivare","Download":"Scarica","Edit":"Modifica","Enable":"Abilitare","Okay":"Ok","Print":"Stampa","Refresh":"Rifiuti","Save":"Salva","Submit":"Inviare","Upload":"Caricamento"},"ja":{"Add":"追加する","Cancel":"キャンセル","Delete":"削除","Disable":"免責事項","Download":"ダウンロード","Edit":"編集","Enable":"アクセス","Okay":"お問い合わせ","Print":"プリント","Refresh":"リフレッシュ","Save":"保存する","Submit":"送信する","Upload":"アップロード"},"ko":{"Add":"기타","Cancel":"이름","Delete":"기타","Disable":"기타","Download":"다운로드","Edit":"제품정보","Enable":"이름","Okay":"이름","Print":"제품정보","Refresh":"지원하다","Save":"제품","Submit":"제출하기","Upload":"제품정보"},"lt":{"Add":"Pridėti","Cancel":"Atsisakyti","Delete":"Trinti","Disable":"Išjungti","Download":"Atsisiųsti","Edit":"Keisti","Enable":"Įjungti","Okay":"Gerai","Print":"Spausdinti","Refresh":"Atnaujinti","Save":"Įrašyti","Submit":"Siųsti","Upload":"Siųsti"},"lv":{"Add":"Pievienot","Cancel":"Atcelt","Delete":"Dzēst","Disable":"Atslēgt","Download":"Lejupielādēt","Edit":"Rediģēt","Enable":"Ieslēgt","Okay":"Labi","Print":"Drukāt","Refresh":"Atsvaidzināt","Save":"Saglabāt","Submit":"Nosūtīt","Upload":"Augšupielāde"},"ms":{"Add":"Tambah","Cancel":"Batal","Delete":"Dihapus","Disable":"Matikan","Download":"Muaturun","Edit":"Edit","Enable":"Hidupkan","Okay":"Oke","Print":"Cetakan","Refresh":"Segarkan","Save":"Simpan","Submit":"Diserahkan","Upload":"Unggah"},"nb":{"Add":"Legg","Cancel":"Avbryt","Delete":"Slett","Disable":"Slå","Download":"Last","Edit":"Rediger","Enable":"Slå","Okay":"Ok","Print":"Skriv","Refresh":"Oppdater","Save":"Lagre","Submit":"Send","Upload":"Last"},"nl":{"Add":"Voeg","Cancel":"Annuleren","Delete":"Verwijderen","Disable":"Uitschakelen","Download":"Downloaden","Edit":"Bewerken","Enable":"Inschakelen","Okay":"Oké","Print":"Afdrukken","Refresh":"Verversen","Save":"Opslaan","Submit":"Verzenden","Upload":"Uploaden"},"pl":{"Add":"Dodaj","Cancel":"Anuluj","Delete":"Usuń","Disable":"Wyłącz","Download":"Pobierz","Edit":"Edycja","Enable":"Włącz","Okay":"Dobrze","Print":"Drukuj","Refresh":"Odśwież","Save":"Zapisz","Submit":"Prześlij","Upload":"Wyślij"},"pt":{"Add":"Adicionar","Cancel":"Cancelar","Delete":"Excluir","Disable":"Deficiência","Download":"Baixar","Edit":"Editar","Enable":"Habilitar","Okay":"Está","Print":"Impressão","Refresh":"Atualizar","Save":"Salvar","Submit":"Submeter-me","Upload":"Carregar"},"ro":{"Add":"Adaugă","Cancel":"Renunță","Delete":"Șterge","Disable":"Dezactivează","Download":"Descărcare","Edit":"Editare","Enable":"Activează","Okay":"Bine","Print":"Tipărește","Refresh":"Reîmprospătează","Save":"Salvează","Submit":"Trimite","Upload":"Încarcă"},"ru":{"Add":"Добавить","Cancel":"Отменить","Delete":"Исключить","Disable":"Инвалид","Download":"Скачать","Edit":"Редактировать","Enable":"Допускать","Okay":"Хорошо","Print":"Печать","Refresh":"Освежить","Save":"Спасти","Submit":"Представить","Upload":"Загрузить"},"sk":{"Add":"Pridať","Cancel":"Zrušiť","Delete":"Odstrániť","Disable":"Zakázať","Download":"Stiahnuť","Edit":"Upraviť","Enable":"Povoliť","Okay":"Dobre","Print":"Tlač","Refresh":"Obnoviť","Save":"Uložiť","Submit":"Predložiť","Upload":"Odoslať"},"sl":{"Add":"Dodaj","Cancel":"Prekliči","Delete":"Zbriši","Disable":"Onemogoči","Download":"Prenesi","Edit":"Uredi","Enable":"Omogoči","Okay":"V","Print":"Natisni","Refresh":"Osveži","Save":"Shrani","Submit":"Pošlji","Upload":"Pošlji"},"sq":{"Add":"_Shto","Cancel":"Anullo","Delete":"Elemino","Disable":"Jo","Download":"Shkarkimi","Edit":"Ndrysho","Enable":"Aktivo","Okay":"Mirë","Print":"Printo","Refresh":"Rifresko","Save":"Ruaj","Submit":"Dërgo","Upload":"Ngarko"},"sv":{"Add":"Lägg","Cancel":"Avbokning","Delete":"Delete","Disable":"Inaktivera","Download":"Ladda","Edit":"Edit","Enable":"Aktivera","Okay":"Okej","Print":"Print","Refresh":"Refresh","Save":"Spara","Submit":"Inlämning","Upload":"Upload"},"th":{"Add":"เพิ่ม","Cancel":"ยกเลิก","Delete":"ลบ","Disable":"ปิดการใช้งาน","Download":"ดาวน์โหลด","Edit":"แก้ไข","Enable":"เปิด","Okay":"โอเค","Print":"พิมพ์","Refresh":"ปรับปรุงใหม่","Save":"บันทึก","Submit":"ส่ง","Upload":"อัปโหลด"},"tl":{"Add":"Magdagdag","Cancel":"Huwag","Delete":"Ibagsak","Disable":"Hindi","Download":"Ibaba","Edit":"Baguhin","Enable":"Kaibig","Okay":"Okay","Print":"Nakalimbag","Refresh":"Nakapagpapasigla","Save":"Mag","Submit":"Pagpapasakop","Upload":"Itaas"},"tr":{"Add":"Add","Cancel":"Cancel","Delete":"Delete","Disable":"Engelliler","Download":"Download","Edit":"Edit","Enable":"Enable","Okay":"Tamam","Print":"Baskı","Refresh":"Yenileme","Save":"Kaydet","Submit":"Gönder","Upload":"Download"},"uk":{"Add":"Додати","Cancel":"Зареєструватися","Delete":"Делет","Disable":"Вимкнути","Download":"Завантажити","Edit":"Редагування","Enable":"Увімкнути","Okay":"Проксимус","Print":"Друк","Refresh":"Реверс","Save":"Зберегти","Submit":"Подати","Upload":"Завантажити"},"ur":{"Add":"_شامل","Cancel":"منسوخ","Delete":"حذف","Disable":"منسوخ","Download":"اوپر","Edit":"مرتب","Enable":"فعال","Okay":"ٹھیک","Print":"پرنٹ","Refresh":"خوشی","Save":"محفوظ","Submit":"غیر","Upload":"اپ"},"zh":{"Add":"添加","Cancel":"取消","Delete":"删除","Disable":"禁用","Download":"下载","Edit":"编辑","Enable":"启用","Okay":"还好","Print":"打印","Refresh":"刷新","Save":"保存","Submit":"提交","Upload":"上传"},"zt":{"Add":"添加","Cancel":"取消","Delete":"刪除","Disable":"禁用","Download":"下載","Edit":"編輯","Enable":"開啟","Okay":"好吧","Print":"打印","Refresh":"刷新","Save":"保存","Submit":"提交","Upload":"上傳"}}', Na = '{"en":{"Filter":"Filter"},"ar":{"Filter":"فيلم"},"az":{"Filter":" Filter"},"bg":{"Filter":"Филтър"},"bn":{"Filter":"ফিল্টার"},"ca":{"Filter":"Filtre"},"cs":{"Filter":"Filtr"},"da":{"Filter":"Filter"},"de":{"Filter":"Filter"},"el":{"Filter":"Φίλτρο"},"eo":{"Filter":"Filtero"},"es":{"Filter":"Filtro"},"et":{"Filter":"Filter"},"eu":{"Filter":"Iragazkia"},"fa":{"Filter":"فیلتر"},"fi":{"Filter":"Suodatin"},"fr":{"Filter":"Filtre"},"ga":{"Filter":"Scagaire"},"gl":{"Filter":"Filtrar"},"he":{"Filter":"Filter"},"hi":{"Filter":"फिल्टर"},"hu":{"Filter":"Szűrő"},"id":{"Filter":"Filter"},"it":{"Filter":"Filtro"},"ja":{"Filter":"フィルター"},"ko":{"Filter":"제품정보"},"lt":{"Filter":"Filtras"},"lv":{"Filter":"Filtrs"},"ms":{"Filter":"Penapis"},"nb":{"Filter":"Filtrer"},"nl":{"Filter":"Filter"},"pl":{"Filter":"Filtr"},"pt":{"Filter":"Filtro"},"ro":{"Filter":"Filtru"},"ru":{"Filter":"Фильтр"},"sk":{"Filter":"Filter"},"sl":{"Filter":"Filter"},"sq":{"Filter":"Filtra"},"sv":{"Filter":"Filter"},"th":{"Filter":"กรอง"},"tl":{"Filter":"Pansala"},"tr":{"Filter":"Filtre"},"uk":{"Filter":"Фільтри"},"ur":{"Filter":"فائلز"},"zh":{"Filter":"过滤器"},"zt":{"Filter":"分頁"}}', Fa = '{"en":{"Previous":"Previous","Next":"Next","Older":"Older","Newer":"Newer","GoToPage":"Go To Page"},"ar":{"Previous":"سابقا","Next":"التالي","Older":"كبار","Newer":"Newer","GoToPage":"الذهاب إلى الصفحة"},"az":{"Previous":" Previous","Next":" Next","Older":"Yaşlı","Newer":"Yeniyetmə","GoToPage":"Qeydiyyat"},"bg":{"Previous":"Предишен","Next":"Следващият","Older":"По-","Newer":"По-","GoToPage":"Отиване на страница"},"bn":{"Previous":"পূর্ববর্তী","Next":"পরবর্তী","Older":"বয়স্ক","Newer":"নিউকার","GoToPage":"চিহ্নিত স্থানে চলুন"},"ca":{"Previous":"Anterior","Next":"Següent","Older":"Vella","Newer":"Més","GoToPage":"Vés a la pàgina"},"cs":{"Previous":"Předchozí","Next":"Další","Older":"Starší","Newer":"Novější","GoToPage":"Přejít na stránku"},"da":{"Previous":"Forrige","Next":"Næste","Older":"Ældre","Newer":"Nyere","GoToPage":"Gå til side"},"de":{"Previous":"Vorherige","Next":"Nach","Older":"Ältere","Newer":"Neuer","GoToPage":"Zur Seite gehen"},"el":{"Previous":"Προηγούμενο","Next":"Επόμενο","Older":"Μεγαλύτερος","Newer":"Νεότερα","GoToPage":"Μετάβαση στη σελίδα"},"eo":{"Previous":"Antaŭa","Next":"La","Older":"Pli","Newer":"Pli","GoToPage":"Iru al paĝo"},"es":{"Previous":"Anterior","Next":"Siguiente","Older":"Older","Newer":"Newer","GoToPage":"Ir a la página"},"et":{"Previous":"Eelmine","Next":"Järgmine","Older":"Vanem","Newer":"Uuem","GoToPage":"Mine lehele"},"eu":{"Previous":"Aurrekoa","Next":"Hurrengoa","Older":"Zaharragoa","Newer":"Newer","GoToPage":"Joan orrira"},"fa":{"Previous":"Previous","Next":"بعدی","Older":"مسن","Newer":"Newer","GoToPage":"به صفحه بروید"},"fi":{"Previous":"Edellinen","Next":"Seuraava","Older":"Vanhempi","Newer":"Uusi","GoToPage":"Siirry sivulle"},"fr":{"Previous":"Précédent","Next":"Suivant","Older":"Plus","Newer":"Plus","GoToPage":"Aller à la page"},"ga":{"Previous":"Roimhe","Next":"Ar","Older":"Sean","Newer":"Nuashonraigh","GoToPage":"Téigh go Leathanach"},"gl":{"Previous":"Anterior","Next":"Seguinte","Older":"Idade","Newer":"Newer","GoToPage":"Ir á páxina"},"he":{"Previous":"הקודם","Next":"הבא","Older":"מבוגר","Newer":"חדש","GoToPage":"ללכת לדף"},"hi":{"Previous":"पिछला","Next":"अगला","Older":"पुराना","Newer":"नया","GoToPage":"पृष्ठ पर जाएं"},"hu":{"Previous":"Előző","Next":"Következő","Older":"Idősebb","Newer":"Újabb","GoToPage":"Ugrás az oldalra"},"id":{"Previous":"Sebelumnya","Next":"Berikutnya","Older":"Lebih","Newer":"Baru","GoToPage":"Ke Halaman"},"it":{"Previous":"Precedente","Next":"Il","Older":"Vecchio","Newer":"Nuovo","GoToPage":"Vai alla pagina"},"ja":{"Previous":"新着情報","Next":"次へ","Older":"古い投稿","Newer":"ニュース","GoToPage":"サイトマップ"},"ko":{"Previous":"이름","Next":"이름","Older":"인기있는","Newer":"더","GoToPage":"본문 바로가기"},"lt":{"Previous":"Ankstesnis","Next":"Sekantis","Older":"Senesni","Newer":"Naujokas","GoToPage":"Pereiti į puslapį"},"lv":{"Previous":"Iepriekšējais","Next":"Nākamais","Older":"Vecāki","Newer":"Jaunāks","GoToPage":"Iet uz lapu"},"ms":{"Previous":"Sebelumnya","Next":"Next","Older":"♪","Newer":"Perancis","GoToPage":"Pergi Ke Halaman"},"nb":{"Previous":"Forrige","Next":"Neste","Older":"Eldre","Newer":"Nyere","GoToPage":"Gå til siden"},"nl":{"Previous":"Vorige","Next":"Volgende","Older":"Ouder","Newer":"Nieuwer","GoToPage":"Ga naar pagina"},"pl":{"Previous":"Poprzedni","Next":"Następny","Older":"Starszy","Newer":"Nowsza","GoToPage":"Przejdź do strony"},"pt":{"Previous":"Anterior","Next":"Próximo","Older":"O","Newer":"Mais","GoToPage":"Ir para a página"},"ro":{"Previous":"Precedent","Next":"Înainte","Older":"Mai","Newer":"Mai","GoToPage":"Du-te la pagina"},"ru":{"Previous":"Предыдущий","Next":"Следующий","Older":"Старше","Newer":"Новый","GoToPage":"Перейти на страницу"},"sk":{"Previous":"Predchádzajúca","Next":"Nasledujúci","Older":"Staršie","Newer":"Novšie","GoToPage":"Prejsť na stránku"},"sl":{"Previous":"Prejšnja","Next":"Naprej","Older":"Starejši","Newer":"Novejši","GoToPage":"Pojdi na stran"},"sq":{"Previous":"Paraardhëse","Next":"Në","Older":"Më","Newer":"Ri","GoToPage":"Shko tek faqja"},"sv":{"Previous":"Föregående","Next":"Nästa","Older":"Äldre","Newer":"Nyare","GoToPage":"Gå till Page"},"th":{"Previous":"ก่อนหน้า","Next":"ต่อไป","Older":"อายุ","Newer":"สร้างใหม่","GoToPage":"ไปยังหน้า"},"tl":{"Previous":"Bago","Next":"Susunod","Older":"Mas","Newer":"Mas","GoToPage":"Pumunta sa Pahina"},"tr":{"Previous":"Önceki","Next":"Sonraki","Older":"Yaşlı","Newer":"Newer","GoToPage":"Go To Page"},"uk":{"Previous":"Попереднє","Next":"Про","Older":"Старші","Newer":"Нова","GoToPage":"Перейти на сторінку"},"ur":{"Previous":"پہلے","Next":"اگلا","Older":"عمررسیدہ","Newer":"نیا","GoToPage":"صفحہ ۲۴ پر جائیں"},"zh":{"Previous":"上一个","Next":"下一个","Older":"老年人","Newer":"更新","GoToPage":"转到页面"},"zt":{"Previous":"前一個","Next":"下一頁","Older":"老了","Newer":"更新","GoToPage":"跳至頁面"}}', wa = `{"en":{"Weekdays":{"Sun":"Sun","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sat","Sunday":"Sunday","Monday":"Monday","Tuesday":"Tuesday","Wednesday":"Wednesday","Thursday":"Thursday","Friday":"Friday","Saturday":"Saturday"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"May","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Oct","Nov":"Nov","Dec":"Dec","January":"January","February":"February","March":"March","April":"April","June":"June","July":"July","August":"August","September":"September","October":"October","November":"November","December":"December"},"Today":"Today"},"ar":{"Weekdays":{"Sun":"الشمس","Mon":"مون","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"فري","Sat":"Sat","Sunday":"الأحد","Monday":"الاثنين","Tuesday":"الثلاثاء","Wednesday":"الأربعاء","Thursday":"الخميس","Friday":"الجمعة","Saturday":"السبت"},"Months":{"Jan":"يان","Feb":"شباط/فبراير","Mar":"Mar","Apr":"Apr","May":"أيار/مايو","Jun":"جون","Jul":"(جول)","Aug":"آب/أغسطس","Sep":"Sep","Oct":"Oct","Nov":"Nov","Dec":"Dec","January":"كانون","February":"شباط/فبراير","March":"آذار/مارس","April":"نيسان/أبريل","June":"حزيران/يونيه","July":"تموز/يوليه","August":"آب/أغسطس","September":"أيلول/سبتمبر","October":"تشرين","November":"تشرين","December":"كانون"},"Today":"اليوم"},"az":{"Weekdays":{"Sun":"Qalereya","Mon":"Bakı","Tue":"Qalereya","Wed":"Biznes","Thu":"Qalereya","Fri":"Bakı","Sat":"Bakı","Sunday":"Bakı","Monday":"Bakı","Tuesday":"Bakı","Wednesday":"Bakı","Thursday":"Bakı","Friday":"Bakı","Saturday":"Bakı"},"Months":{"Jan":"Axtarış","Feb":"Bakı","Mar":"Bakı","Apr":"Bakı","May":"İyul","Jun":"Bakı","Jul":"Bakı","Aug":"Axtarış","Sep":"Bakı","Oct":"Axtarış","Nov":"Bakı","Dec":"Elan","January":"Yanvar","February":"Fevral","March":"Bakı","April":"Bakı","June":"İyun","July":"İyul","August":"Avqust","September":"Bakı","October":"Bakı","November":"Bakı","December":"Bakı"},"Today":"Bu"},"bg":{"Weekdays":{"Sun":"Слънце","Mon":"Мон","Tue":"Туе","Wed":"Сватба","Thu":"Thu","Fri":"Fri","Sat":"Сат","Sunday":"Неделя","Monday":"Понеделник","Tuesday":"Вторник","Wednesday":"Сряда","Thursday":"Четвъртък","Friday":"Петък","Saturday":"Събота"},"Months":{"Jan":"Ян","Feb":"Февруари","Mar":"Мар","Apr":"Apr","May":"Май","Jun":"Джун","Jul":"Юли","Aug":"Aug","Sep":"Сеп","Oct":"Окт","Nov":"Nov","Dec":"Дек","January":"Януари","February":"Февруари","March":"Март","April":"Април","June":"Юни","July":"Юли","August":"Август","September":"Септември","October":"Октомври","November":"Ноември","December":"Декември"},"Today":"Днес"},"bn":{"Weekdays":{"Sun":"রবি","Mon":"মন","Tue":"মঙ্গল","Wed":"অস্বীকৃত","Thu":"বৃহঃ","Fri":"ফ্রিসেল","Sat":"শনি","Sunday":"রবিবার","Monday":"সোমবার","Tuesday":"মঙ্গলবার","Wednesday":"বুধবার","Thursday":"বৃহস্পতিবার","Friday":"শুক্রবার","Saturday":"শনিবার"},"Months":{"Jan":"জানুয়ারী","Feb":"ফেব্রুয়ারীMarch","Mar":"মার্চApril","Apr":"এপ্রিল","May":"মে","Jun":"জুনিউ","Jul":"জুমি","Aug":"আগস্ট","Sep":"সেপ্টেম্বরOctober","Oct":"অক্টোবর","Nov":"নভেম্বর","Dec":"ডিসেম্বর","January":"জানুয়ারী","February":"ফেব্রুয়ারী","March":"মার্চ","April":"এপ্রিল","June":"জুন","July":"জুলাই","August":"আগস্ট","September":"সেপ্টেম্বর","October":"অক্টোবর","November":"নভেম্বর","December":"সদস্য"},"Today":"আজ"},"ca":{"Weekdays":{"Sun":"Sol","Mon":"Dl","Tue":"Dt","Wed":"Dc","Thu":"Dj","Fri":"DvSaturday","Sat":"DsSunday","Sunday":"Diumenge","Monday":"Dilluns","Tuesday":"Dimarts","Wednesday":"Dimecres","Thursday":"Dijous","Friday":"Divendres","Saturday":"Dissabte"},"Months":{"Jan":"Mare","Feb":"FebMarch","Mar":"Mar","Apr":"AbrMay","May":"Maig","Jun":"JunJuly","Jul":"JulAugust","Aug":"AgoSeptember","Sep":"Set","Oct":"Oct","Nov":"Nov","Dec":"Des","January":"Gener","February":"Febrer","March":"Març","April":"Abril","June":"Juny","July":"Juliol","August":"Agost","September":"Setembre","October":"Octubre","November":"Novembre","December":"Desembre"},"Today":"Avui"},"cs":{"Weekdays":{"Sun":"Slunce","Mon":"Po","Tue":"Tue","Wed":"St","Thu":"Thu","Fri":"Fri","Sat":"Sad","Sunday":"Neděle","Monday":"Pondělí","Tuesday":"Úterý","Wednesday":"Středa","Thursday":"Čtvrtek","Friday":"Pátek","Saturday":"Sobota"},"Months":{"Jan":"Jan","Feb":"Únor","Mar":"Březen","Apr":"Duben","May":"May","Jun":"Jun","Jul":"Jul","Aug":"Srpen","Sep":"Září","Oct":"Říjen","Nov":"Listopad","Dec":"Prosinec","January":"Leden","February":"Únor","March":"Březen","April":"Duben","June":"Červen","July":"Červenec","August":"Srpen","September":"Září","October":"Říjen","November":"Listopad","December":"Prosinec"},"Today":"Dnes"},"da":{"Weekdays":{"Sun":"Sol","Mon":"Mon","Tue":"Tir","Wed":"On","Thu":"Thu","Fri":"Fri","Sat":"Lø","Sunday":"Søndag","Monday":"Mandag","Tuesday":"Tirsdag","Wednesday":"Onsdag","Thursday":"Torsdag","Friday":"Fredag","Saturday":"Lørdag"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Maj","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Januar","February":"Februar","March":"Marts","April":"April","June":"Juni","July":"Juli","August":"August","September":"September","October":"Oktober","November":"November","December":"December"},"Today":"I"},"de":{"Weekdays":{"Sun":"Sonne","Mon":"Mo","Tue":"Di","Wed":"Mi","Thu":"Do","Fri":"Fri","Sat":"Sa","Sunday":"Sonntag","Monday":"Montag","Tuesday":"Dienstag","Wednesday":"Mittwoch","Thursday":"Donnerstag","Friday":"Freitag","Saturday":"Samstag"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mär","Apr":"Apr","May":"Mai","Jun":"Jun","Jul":"Juli","Aug":"Aug","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dez","January":"Januar","February":"Februar","March":"März","April":"April","June":"Juni","July":"Juli","August":"August","September":"September","October":"Oktober","November":"November","December":"Dezember"},"Today":"Heute"},"el":{"Weekdays":{"Sun":"Ήλιος","Mon":"Δευ","Tue":"Τεύχος","Wed":"Τετ","Thu":"Θου","Fri":"Παρ","Sat":"Σάβ","Sunday":"Κυριακή","Monday":"Δευτέρα","Tuesday":"Τρίτη","Wednesday":"Τετάρτη","Thursday":"Πέμπτη","Friday":"Παρασκευή","Saturday":"Σάββατο"},"Months":{"Jan":"Ιαν","Feb":"Φεβ","Mar":"Μαρ","Apr":"Απρ","May":"Μάιος","Jun":"Ιουν","Jul":"Ιουλ","Aug":"Αυγ","Sep":"Σεπ","Oct":"Οκτ","Nov":"Νοε","Dec":"Δεκ","January":"Ιανουάριος","February":"Φεβρουάριος","March":"Μάρτιος","April":"Απρίλιος","June":"Ιούνιος","July":"Ιούλιος","August":"Αύγουστος","September":"Σεπτέμβριος","October":"Οκτώβριος","November":"Νοέμβριος","December":"Δεκέμβριος"},"Today":"Σήμερα"},"eo":{"Weekdays":{"Sun":"Suno","Mon":"Mon","Tue":"Tue","Wed":"Ni","Thu":"Tumulto","Fri":"Frio","Sat":"Sidanta","Sunday":"Dimanĉo","Monday":"Lundo","Tuesday":"Marŝi","Wednesday":"Merkredo","Thursday":"Ĵaŭdon","Friday":"Vendrede","Saturday":"Sabato"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Marŝa","Apr":"Apr","May":"Majo","Jun":"Jun","Jul":"Jul","Aug":"Aŭgusto","Sep":"Sep","Oct":"Oktobro","Nov":"Nov-Zelando","Dec":"Dec","January":"Januaro","February":"Februaro","March":"Marto","April":"April","June":"Junio","July":"Julio","August":"Aŭgusto","September":"Septembro","October":"Oktobro","November":"Novembro","December":"Decembro"},"Today":"Hodiaŭ"},"es":{"Weekdays":{"Sun":"Sol","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sat","Sunday":"Domingo","Monday":"Lunes","Tuesday":"Martes","Wednesday":"Miércoles","Thursday":"Jueves","Friday":"Viernes","Saturday":"Sábado"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Mayo","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Oct","Nov":"Nov","Dec":"Dec","January":"Enero","February":"Febrero","March":"Marzo","April":"Abril","June":"Junio","July":"Julio","August":"Agosto","September":"Septiembre","October":"Octubre","November":"Noviembre","December":"Diciembre"},"Today":"Hoy"},"et":{"Weekdays":{"Sun":"Päike","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sattus","Sunday":"Pühapäev","Monday":"Esmaspäev","Tuesday":"Teisipäev","Wednesday":"Kolmapäev","Thursday":"Neljapäeval","Friday":"Reede","Saturday":"Laupäev"},"Months":{"Jan":"Jan","Feb":"Veebruar","Mar":"Mar","Apr":"Apr","May":"May","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Oktoober","Nov":"Nov","Dec":"Dec","January":"Jaanuar","February":"Veebruar","March":"Märts","April":"Aprill","June":"Juuni","July":"Juuli","August":"August","September":"September","October":"Oktoober","November":"November","December":"Detsember"},"Today":"Täna"},"eu":{"Weekdays":{"Sun":"Sun","Mon":"Mon","Tue":"Tue","Wed":"Apustua","Thu":"Og","Fri":"Fri","Sat":"Sat","Sunday":"Igandea","Monday":"Astelehena","Tuesday":"Asteartea","Wednesday":"Asteazkena","Thursday":"Osteguna","Friday":"Ostirala","Saturday":"Larunbata"},"Months":{"Jan":"Jan","Feb":"Ots","Mar":"Marmar","Apr":"Apr","May":"Maiatza","Jun":"Jun","Jul":"Jul","Aug":"Abusua","Sep":"Ira","Oct":"Oct","Nov":"Aza","Dec":"Abendua","January":"Urtarrila","February":"Otsaila","March":"Martxoa","April":"Apirila","June":"Ekaina","July":"Uztaila","August":"Abuztua","September":"Iraila","October":"Urria","November":"Azaroa","December":"Abendua"},"Today":"Gaur"},"fa":{"Weekdays":{"Sun":"خورشید","Mon":"مون","Tue":"Tue","Wed":"Wed","Thu":"تو","Fri":"Fri","Sat":"Sat","Sunday":"یکشنبه","Monday":"دوشنبه","Tuesday":"سه","Wednesday":"چهارشنبه","Thursday":"پنجشنبه","Friday":"جمعه","Saturday":"شنبه"},"Months":{"Jan":"ژانویه","Feb":"فوریه","Mar":"Mar","Apr":"آوریل","May":"ممکن","Jun":"Jun","Jul":"جول","Aug":"آگوست","Sep":"سپتامبر","Oct":"اکتبر","Nov":"نوامبر","Dec":"دسامبر","January":"ژانویه","February":"فوریه","March":"مارس","April":"آوریل","June":"ژوئن","July":"جولای","August":"آگوست","September":"سپتامبر","October":"اکتبر","November":"نوامبر","December":"دسامبر"},"Today":"امروز"},"fi":{"Weekdays":{"Sun":"Su","Mon":"Ma","Tue":"Ti","Wed":"Ke","Thu":"To","Fri":"Pe","Sat":"La","Sunday":"Sunnuntai","Monday":"Maanantai","Tuesday":"Tiistai","Wednesday":"Keskiviikko","Thursday":"Torstai","Friday":"Perjantai","Saturday":"Lauantai"},"Months":{"Jan":"Tammi","Feb":"Helmi","Mar":"Maalis","Apr":"Huhti","May":"Toukokuu","Jun":"Kesä","Jul":"Heinä","Aug":"Elo","Sep":"Syys","Oct":"Loka","Nov":"Marras","Dec":"Joulu","January":"Tammikuu","February":"Helmikuu","March":"Maaliskuu","April":"Huhtikuu","June":"Kesäkuu","July":"Heinäkuu","August":"Elokuu","September":"Syyskuu","October":"Lokakuu","November":"Marraskuu","December":"Joulukuu"},"Today":"Tänään"},"fr":{"Weekdays":{"Sun":"Soleil","Mon":"Mon","Tue":"Tu","Wed":"Mariage","Thu":"Jeu","Fri":"Ven","Sat":"Sat","Sunday":"Dimanche","Monday":"Lundi","Tuesday":"Mardi","Wednesday":"Mercredi","Thursday":"Jeudi","Friday":"Vendredi","Saturday":"Samedi"},"Months":{"Jan":"Janvier","Feb":"Fév","Mar":"Mars","Apr":"Avr","May":"Mai","Jun":"Juin","Jul":"Juillet","Aug":"Août","Sep":"Sep","Oct":"Oct","Nov":"Nov","Dec":"Déc","January":"Janvier","February":"Février","March":"Mars","April":"Avril","June":"Juin","July":"Juillet","August":"Août","September":"Septembre","October":"Octobre","November":"Novembre","December":"Décembre"},"Today":"Aujourd'hui"},"ga":{"Weekdays":{"Sun":"Ghrian","Mon":"Uisce","Tue":"Déan","Wed":"Táimid","Thu":"Thuama","Fri":"Múirín","Sat":"Sábháil","Sunday":"Domhnach","Monday":"Dé","Tuesday":"Dé","Wednesday":"Dé","Thursday":"Déardaoin","Friday":"Dé","Saturday":"Dé"},"Months":{"Jan":"An","Feb":"Is","Mar":"Mar","Apr":"Aibreán","May":"Bealtaine","Jun":"Amharc","Jul":"Jul","Aug":"Lúnasa","Sep":"Meán","Oct":"Deireadh","Nov":"Cineál","Dec":"Déan","January":"Irl","February":"Amharc","March":"Márta","April":"Amharc","June":"Meitheamh","July":"Irl","August":"Amharc","September":"Meán","October":"Deireadh","November":"Samhain","December":"Nollaig"},"Today":"Sa"},"gl":{"Weekdays":{"Sun":"Sol","Mon":"Mon","Tue":"Tue","Wed":"Apostamos","Thu":"Tu","Fri":"Frio","Sat":"Sat","Sunday":"Domingo","Monday":"Luns","Tuesday":"Martes","Wednesday":"Miércoles","Thursday":"Xoves","Friday":"Venres","Saturday":"Sábado"},"Months":{"Jan":"Jan","Feb":"Febreiro","Mar":"Mar","Apr":"Abril","May":"Maio","Jun":"Jun","Jul":"Xullo","Aug":"Aug","Sep":"Sep","Oct":"Oct","Nov":"Novidade","Dec":"Dec","January":"Xaneiro","February":"Febreiro","March":"Marzo","April":"Abril","June":"Xuño","July":"Xullo","August":"Agosto","September":"Setembro","October":"Outubro","November":"Novembro","December":"Decembro"},"Today":"Hoxe"},"he":{"Weekdays":{"Sun":"השמש","Mon":"מונמון","Tue":"Tue","Wed":"Wed","Thu":"תור","Fri":"פרי","Sat":"Sat","Sunday":"יום","Monday":"יום","Tuesday":"יום","Wednesday":"יום","Thursday":"יום","Friday":"יום","Saturday":"יום"},"Months":{"Jan":"יאן","Feb":"פברואר","Mar":"Mar","Apr":"אנגלית","May":"במאי","Jun":"ג'ון","Jul":"יולי","Aug":"אוגוסט","Sep":"ספרד","Oct":"באוקטובר","Nov":"נובמבר","Dec":"דצמבר","January":"ינואר","February":"פברואר","March":"מרץ","April":"אפריל","June":"יוני","July":"יולי","August":"אוגוסט","September":"ספטמבר","October":"אוקטובר","November":"נובמבר","December":"דצמבר"},"Today":"היום"},"hi":{"Weekdays":{"Sun":"सूर्य","Mon":"सोम","Tue":"मंगल","Wed":"Wed","Thu":"गुरु","Fri":"शुक्र","Sat":"सत","Sunday":"रविवार","Monday":"सोमवार","Tuesday":"मंगलवार","Wednesday":"बुधवार","Thursday":"गुरुवार","Friday":"शुक्रवार","Saturday":"शनिवार"},"Months":{"Jan":"जनवरी","Feb":"फ़रवरी","Mar":"मार्च","Apr":"अप्रैल","May":"मई","Jun":"जून","Jul":"जुलाई","Aug":"अगस्त","Sep":"सितंबर","Oct":"अक्टूबर","Nov":"नवम्बर","Dec":"दिसम्बर","January":"जनवरी","February":"फ़रवरी","March":"मार्च","April":"अप्रैल","June":"जून","July":"जुलाई","August":"अगस्त","September":"सितंबर","October":"अक्टूबर","November":"नवंबर","December":"दिसम्बर"},"Today":"आज"},"hu":{"Weekdays":{"Sun":"Nap","Mon":"H","Tue":"Sze","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sat","Sunday":"Vasárnap","Monday":"Hétfő","Tuesday":"Kedd","Wednesday":"Szerda","Thursday":"Csütörtök","Friday":"Péntek","Saturday":"Szombat"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Május","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sz","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Január","February":"Február","March":"Március","April":"Április","June":"Június","July":"Július","August":"Augusztus","September":"Szeptember","October":"Október","November":"November","December":"December"},"Today":"Ma"},"id":{"Weekdays":{"Sun":"Matahari","Mon":"Mon","Tue":"Tue","Wed":"Busana","Thu":"Thu","Fri":"Fri","Sat":"Sab","Sunday":"Minggu","Monday":"Senin","Tuesday":"Selasa","Wednesday":"Rabu","Thursday":"Kamis","Friday":"Jumat","Saturday":"Sabtu"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Mei","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Januari","February":"Februari","March":"Maret","April":"April","June":"Juni","July":"Juli","August":"Agustus","September":"September","October":"Oktober","November":"November","December":"Desember"},"Today":"Hari"},"it":{"Weekdays":{"Sun":"Sole","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Gio","Fri":"Fri","Sat":"Rasoio","Sunday":"Domenica","Monday":"Lunedì","Tuesday":"Martedì","Wednesday":"Mercoledì","Thursday":"Giovedì","Friday":"Venerdì","Saturday":"Sabato"},"Months":{"Jan":"Jan","Feb":"Febbraio","Mar":"Mar","Apr":"Aprile","May":"Maggio","Jun":"Jun","Jul":"Jul","Aug":"Agosto","Sep":"Articolo","Oct":"Ottobre","Nov":"No","Dec":"Dec","January":"Gennaio","February":"Febbraio","March":"Marzo","April":"Aprile","June":"Giugno","July":"Luglio","August":"Agosto","September":"Settembre","October":"Ottobre","November":"Novembre","December":"Dicembre"},"Today":"Oggi"},"ja":{"Weekdays":{"Sun":"日曜日","Mon":"モンド","Tue":"火曜日","Wed":"お問い合わせ","Thu":"日","Fri":"フリガナ","Sat":"スタッフ","Sunday":"日曜日","Monday":"月曜日～金曜日","Tuesday":"火曜日","Wednesday":"水曜日","Thursday":"木曜日","Friday":"金曜日","Saturday":"土曜日"},"Months":{"Jan":"1月1日","Feb":"1月2日","Mar":"マーキー","Apr":"4月4日","May":"5月5日","Jun":"ジュンジュン","Jul":"7月7日","Aug":"8月8日","Sep":"9月9日","Oct":"10月10日","Nov":"11月11日","Dec":"12月12日","January":"1月1日","February":"2月2日","March":"3月3日","April":"4月4日","June":"6月6日","July":"7月7日","August":"8月8日","September":"9月9日","October":"10月10日","November":"11月11日","December":"12月12日"},"Today":"今日更新"},"ko":{"Weekdays":{"Sun":"(주)","Mon":"담당자","Tue":" ","Wed":"사이트맵","Thu":"₢","Fri":"₢","Sat":"·","Sunday":"주","Monday":"월요일,","Tuesday":"*","Wednesday":"-","Thursday":"주","Friday":"월~금","Saturday":"·"},"Months":{"Jan":"1","Feb":"2월","Mar":"3","Apr":"4","May":"5","Jun":"주","Jul":"7","Aug":"8","Sep":"9월","Oct":"10월","Nov":"11월","Dec":"12월","January":"1월","February":"2","March":"3","April":"4","June":"6월","July":"7","August":"8","September":"9","October":"10월","November":"11","December":"12"},"Today":"으로"},"lt":{"Weekdays":{"Sun":"Saulė","Mon":"Mon","Tue":"Tue","Wed":"WEd","Thu":"Thu","Fri":"FrNAME","Sat":"Sat","Sunday":"Sekmadienis","Monday":"Pirmadienis","Tuesday":"Antradienis","Wednesday":"Trečiadienis","Thursday":"Ketvirtadienis","Friday":"Penktadienis","Saturday":"Šeštadienis"},"Months":{"Jan":"Sau","Feb":"Vas","Mar":"Mar","Apr":"Bal","May":"Gegužės","Jun":"Bir","Jul":"Lie","Aug":"Rgp","Sep":"Rp","Oct":"Spalis","Nov":"Nr","Dec":"Gruodis","January":"Sausis","February":"Vasaris","March":"Kovas","April":"Balandis","June":"Birželis","July":"Liepa","August":"Rugpjūtis","September":"Rugsėjis","October":"Spalis","November":"Lapkritis","December":"Gruodis"},"Today":"Šiandien"},"lv":{"Weekdays":{"Sun":"Saule","Mon":"N","Tue":"Otr","Wed":"Tre","Thu":"Cet","Fri":"Pie","Sat":"Ses","Sunday":"Svētdiena","Monday":"Pirmdiena","Tuesday":"Otrdiena","Wednesday":"Trešdiena","Thursday":"Ceturtdiena","Friday":"Piektdiena","Saturday":"Sestdiena"},"Months":{"Jan":"Janvāris","Feb":"Febr","Mar":"Mar","Apr":"Apr","May":"Maijs","Jun":"Jūn","Jul":"Jūl","Aug":"Aug","Sep":"Sept","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Janvāris","February":"Februāris","March":"Marts","April":"Aprīlis","June":"Jūnijs","July":"Jūlijs","August":"Augusts","September":"Septembris","October":"Oktobris","November":"Novembris","December":"Decembris"},"Today":"Šodien"},"ms":{"Weekdays":{"Sun":"Sun","Mon":"Mon","Tue":"Perancis","Wed":"♪","Thu":"Khaw","Fri":"Perancis","Sat":"♪","Sunday":"Ahad","Monday":"Isnin","Tuesday":"Selasa","Wednesday":"Rabu","Thursday":"Khamis","Friday":"Jumat","Saturday":"Sabtu"},"Months":{"Jan":"Jan","Feb":"Perancis","Mar":"Perancis","Apr":"Apr","May":"Mei","Jun":"Juni","Jul":"♪","Aug":"Aug","Sep":"Perancis","Oct":"Takh","Nov":"Nov","Dec":"Amerika","January":"Januari","February":"2010,","March":"2010,","April":"April","June":"Juni","July":"Juli","August":"Ogos","September":"Perancis","October":"Oktober","November":"November","December":"Amerika"},"Today":"Hari"},"nb":{"Weekdays":{"Sun":"Sun","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sat","Sunday":"Søndag","Monday":"Mandag","Tuesday":"Tirsdag","Wednesday":"Onsdag","Thursday":"Torsdag","Friday":"Fredag","Saturday":"Lørdag"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Mai","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Januar","February":"Februar","March":"Mars","April":"April","June":"Juni","July":"Juli","August":"August","September":"September","October":"Oktober","November":"November","December":"Desember"},"Today":"I"},"nl":{"Weekdays":{"Sun":"Zon","Mon":"Ma","Tue":"Di","Wed":"Wo","Thu":"Do","Fri":"Vr","Sat":"Zat","Sunday":"Zondag","Monday":"Maandag","Tuesday":"Dinsdag","Wednesday":"Woensdag","Thursday":"Donderdag","Friday":"Vrijdag","Saturday":"Zaterdag"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Mei","Jun":"Juni","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Januari","February":"Februari","March":"Maart","April":"April","June":"Juni","July":"Juli","August":"Augustus","September":"September","October":"Oktober","November":"November","December":"December"},"Today":"Vandaag"},"pl":{"Weekdays":{"Sun":"Słońce","Mon":"Mon","Tue":"Wtyczka","Wed":"Środ","Thu":"Thu","Fri":"Fri","Sat":"Sat","Sunday":"Niedziela","Monday":"Poniedziałek","Tuesday":"Wtorek","Wednesday":"Środa","Thursday":"Czwartek","Friday":"Piątek","Saturday":"Sobota"},"Months":{"Jan":"Jan","Feb":"Luty","Mar":"Mar","Apr":"Kwiecień","May":"Maj","Jun":"Czerwiec","Jul":"Lipiec","Aug":"Sierpień","Sep":"Wrzesień","Oct":"Październik","Nov":"Nov","Dec":"Grudzień","January":"Styczeń","February":"Luty","March":"Marzec","April":"Kwiecień","June":"Czerwiec","July":"Lipiec","August":"Sierpień","September":"Wrzesień","October":"Październik","November":"Listopad","December":"Grudzień"},"Today":"Dzisiaj"},"pt":{"Weekdays":{"Sun":"Sol","Mon":"Monsenhor","Tue":"Tue","Wed":"Wed","Thu":"Tu","Fri":"Frio","Sat":"Satisfeito","Sunday":"Domingo","Monday":"Segunda-feira","Tuesday":"Terça-feira","Wednesday":"Quarta-feira","Thursday":"Quinta-feira","Friday":"Sexta-feira","Saturday":"Sábado"},"Months":{"Jan":"Jan","Feb":"Fev","Mar":"Mar","Apr":"Abr","May":"Maio","Jun":"Jun","Jul":"Jul","Aug":"A","Sep":"Sep","Oct":"O","Nov":"Não","Dec":"Dez","January":"Janeiro","February":"Fevereiro","March":"Março","April":"Abril","June":"Junho","July":"Julho","August":"Agosto","September":"Setembro","October":"Outubro","November":"Novembro","December":"Dezembro"},"Today":"Hoje"},"ro":{"Weekdays":{"Sun":"Soare","Mon":"Luni","Tue":"Tue","Wed":"Căsătorie","Thu":"Thu","Fri":"Vine","Sat":"Sat","Sunday":"Duminică","Monday":"Luni","Tuesday":"Marţi","Wednesday":"Miercuri","Thursday":"Joi","Friday":"Vineri","Saturday":"Sâmbătă"},"Months":{"Jan":"Jan","Feb":"Februarie","Mar":"Mar","Apr":"Apr","May":"May","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Oct","Nov":"Nov","Dec":"Dec","January":"Ianuarie","February":"Februarie","March":"Martie","April":"Aprilie","June":"Iunie","July":"Iulie","August":"August","September":"Septembrie","October":"Octombrie","November":"Noiembrie","December":"Decembrie"},"Today":"Astăzi"},"ru":{"Weekdays":{"Sun":"Солнце","Mon":"Мон","Tue":"Туи","Wed":"Свадьба","Thu":"Ту","Fri":"Фри","Sat":"Сидеть","Sunday":"Воскресенье","Monday":"Понедельник","Tuesday":"Вторник","Wednesday":"Среда","Thursday":"Четверг","Friday":"Пятница","Saturday":"Суббота"},"Months":{"Jan":"Ян","Feb":"Февраль","Mar":"Мар","Apr":"Апр","May":"Май","Jun":"Джун","Jul":"Джул","Aug":"Ауг","Sep":"Сеп","Oct":"Октября","Nov":"Ноябрь","Dec":"Декларация","January":"Январь","February":"Февраль","March":"Март","April":"Апрель","June":"Июнь","July":"Июль","August":"Август","September":"Сентябрь","October":"Октября","November":"Ноябрь","December":"Декабрь"},"Today":"Сегодня"},"sk":{"Weekdays":{"Sun":"Slnko","Mon":"Po","Tue":"Ut","Wed":"Str","Thu":"Št","Fri":"Pi","Sat":"So","Sunday":"Nedeľa","Monday":"Pondelok","Tuesday":"Utorok","Wednesday":"Streda","Thursday":"Štvrtok","Friday":"Piatok","Saturday":"Sobota"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apríl","May":"Máj","Jun":"Jún","Jul":"Júl","Aug":"August","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Január","February":"Február","March":"Marec","April":"Apríl","June":"Jún","July":"Júl","August":"August","September":"September","October":"Október","November":"November","December":"December"},"Today":"Dnes"},"sl":{"Weekdays":{"Sun":"Sonce","Mon":"Naslednji","Tue":"Tor","Wed":"Sre","Thu":"Čet","Fri":"Fri","Sat":"Sob","Sunday":"Nedelja","Monday":"Ponedeljek","Tuesday":"Torek","Wednesday":"Sreda","Thursday":"Četrtek","Friday":"Petek","Saturday":"Sobota"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Maj","Jun":"Jun","Jul":"Jul","Aug":"Avg","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Januar","February":"Februar","March":"Marec","April":"April","June":"Junij","July":"Julij","August":"Avgust","September":"September","October":"Oktober","November":"November","December":"December"},"Today":"Danes"},"sq":{"Weekdays":{"Sun":"Dielli","Mon":"Mon","Tue":"Tue","Wed":"Mer","Thu":"Tsu","Fri":"Pre","Sat":"Sat","Sunday":"E","Monday":"E","Tuesday":"E","Wednesday":"E","Thursday":"E","Friday":"E","Saturday":"E"},"Months":{"Jan":"Jan","Feb":"Fb","Mar":"Meri","Apr":"Për","May":"Maj","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Tetor","Nov":"Nov","Dec":"Dhjetor","January":"Janar","February":"Shkurt","March":"Mars","April":"Prill","June":"Qershor","July":"Korrik","August":"Gusht","September":"Shtator","October":"Tetor","November":"Nëntor","December":"Dhjetor"},"Today":"Sot"},"sv":{"Weekdays":{"Sun":"Sol","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sattar","Sunday":"Söndag","Monday":"Måndag","Tuesday":"Tisdag","Wednesday":"Onsdag","Thursday":"Torsdag","Friday":"Fredag","Saturday":"Lördag"},"Months":{"Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"Maj","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Okt","Nov":"Nov","Dec":"Dec","January":"Januari","February":"Februari","March":"Mars","April":"April","June":"Juni","July":"Juli","August":"Augusti","September":"September","October":"Oktober","November":"November","December":"December"},"Today":"Idag"},"th":{"Weekdays":{"Sun":"อาทิตย์","Mon":"นิ้ว","Tue":"Tue","Wed":"เว็บ","Thu":"ทู","Fri":"เนื้อ","Sat":"ที่นั่ง","Sunday":"อาทิตย์","Monday":"จันทร์","Tuesday":"อังคาร","Wednesday":"วันพุธ","Thursday":"พฤหัสบดี","Friday":"ศุกร์","Saturday":"เสาร์"},"Months":{"Jan":"ไม่นะ","Feb":"ก.","Mar":"ขนาด","Apr":"ขนาด","May":"พฤษภาคม","Jun":"จุน","Jul":"ก.","Aug":"อัก","Sep":"เซพ","Oct":"ตลับหมึก","Nov":"นอฟ","Dec":"ธ.","January":"มกราคม","February":"กุมภาพันธ์","March":"มีนาคม","April":"เมษายน","June":"มิถุนายน","July":"กรกฎาคม","August":"สิงหาคม","September":"กันยายน","October":"ตุลาคม","November":"พฤศจิกายน","December":"ธันวาคม"},"Today":"วันนี้"},"tl":{"Weekdays":{"Sun":"Araw","Mon":"Buwan","Tue":"Tue","Wed":"Damo","Thu":"Thu","Fri":"Kaibigan","Sat":"Sat","Sunday":"Linggo","Monday":"Lunes","Tuesday":"Martes","Wednesday":"Miyerkules","Thursday":"Huwebes","Friday":"Biyernes","Saturday":"Sabado"},"Months":{"Jan":"Jan","Feb":"Sanggol","Mar":"Mar","Apr":"Apr","May":"Mayo","Jun":"Jun","Jul":"Juul","Aug":"Ug","Sep":"Sep","Oct":"Oct","Nov":"Nov","Dec":"Pagpapasiya","January":"Enero","February":"Pebrero","March":"Marso","April":"Abril","June":"Hunyo","July":"Hulyo","August":"Agosto","September":"Setyembre","October":"Oktubre","November":"Nobyembre","December":"Disyembre"},"Today":"Ngayon"},"tr":{"Weekdays":{"Sun":"Güneş","Mon":"Mon","Tue":"Tue","Wed":"Wed","Thu":"Thu","Fri":"Fri","Sat":"Sat","Sunday":"Pazar","Monday":"Pazartesi","Tuesday":"Salı","Wednesday":"Çarşamba","Thursday":"Perşembe","Friday":"Cuma","Saturday":"Cumartesi"},"Months":{"Jan":"Jan","Feb":"Şubat","Mar":"Mar","Apr":"Apr","May":"Mayıs","Jun":"Jun","Jul":"Temmuz","Aug":"Ağu","Sep":"Eylül","Oct":"Ekim","Nov":"Kasım","Dec":"Aralık","January":"Ocak","February":"Şubat","March":"Mart","April":"Nisan","June":"Haziran","July":"Temmuz","August":"Ağustos","September":"Eylül","October":"Ekim","November":"Kasım","December":"Aralık"},"Today":"Bugün"},"uk":{"Weekdays":{"Sun":"Сонце","Mon":"Навігація","Tue":"Твитнуть","Wed":"Про","Thu":"Чорти","Fri":"П'ятниця","Sat":"Сонце","Sunday":"Неділя","Monday":"Понеділок","Tuesday":"П'ятниця","Wednesday":"Середа","Thursday":"Четвер","Friday":"П'ятниця","Saturday":"Субота"},"Months":{"Jan":"Мар","Feb":"Мар","Mar":"Мар","Apr":"Мар","May":"Травень","Jun":"Мар","Jul":"Мар","Aug":"Мар","Sep":"Мар","Oct":"Мар","Nov":"Мар","Dec":"Мар","January":"Січень","February":"Лютий","March":"Березень","April":"Квітень","June":"Червень","July":"Липень","August":"Серпень","September":"Вересень","October":"Жовтень","November":"Листопад","December":"Грудень"},"Today":"Сьогодні"},"ur":{"Weekdays":{"Sun":"سورج","Mon":"مون","Tue":"ٹو","Wed":"وے","Thu":"چو","Fri":"فری","Sat":"شطرنج","Sunday":"اتوار","Monday":"منگل","Tuesday":"منگل","Wednesday":"بدھ","Thursday":"جمعرات","Friday":"جمعہ","Saturday":"سبت"},"Months":{"Jan":"یان","Feb":"فیب","Mar":"مار","Apr":"پرنٹ","May":"مئی","Jun":"جون","Jul":"یول","Aug":"آغ","Sep":"سیپ","Oct":"پرنٹ","Nov":"ن","Dec":"سوال","January":"جنوری","February":"فروری","March":"مارچ","April":"اپریل","June":"جون","July":"جولائی","August":"اگست","September":"ستمبر","October":"اکتوبر","November":"نومبر","December":"دسمبر"},"Today":"آج"},"zh":{"Weekdays":{"Sun":"太阳","Mon":"月号","Tue":"图","Wed":"结婚","Thu":"图","Fri":"弗里语Name","Sat":"座位","Sunday":"礼拜","Monday":"星期一","Tuesday":"星期二","Wednesday":"星期三","Thursday":"星期四","Friday":"星期五","Saturday":"星期六(上午)"},"Months":{"Jan":"扬","Feb":"二月","Mar":"马来","Apr":"农历四月","May":"5月","Jun":"军","Jul":"朱尔","Aug":"奥格","Sep":"九月","Oct":"十月(简体)","Nov":"页:1","Dec":"12月(中文)","January":"页:1","February":"2月(半天会议)","March":"3月(半天会议)","April":"4月(半天会议)","June":"6月份","July":"7月(半天会议)","August":"8月(半天)","September":"9月(半天会议)","October":"10月(半天会议)","November":"11月(半天会议)","December":"12月(半天)"},"Today":"现在"},"zt":{"Weekdays":{"Sun":"太阳","Mon":"月","Tue":"二等分","Wed":"有婚","Thu":"三月","Fri":"弗里","Sat":"有","Sunday":"星期天","Monday":"星期一","Tuesday":"星期二","Wednesday":"星期三","Thursday":"星期四","Friday":"星期五","Saturday":"星期六"},"Months":{"Jan":"1月","Feb":"二月","Mar":"三月","Apr":"四月","May":"五月","Jun":"三月","Jul":"二月","Aug":"8月","Sep":"九月","Oct":"十月","Nov":"11月","Dec":"二月","January":"1月","February":"二月","March":"三月","April":"4月","June":"6月","July":"7月","August":"8月","September":"9月","October":"10月","November":"11月","December":"12月"},"Today":"今天"}}`, Oa = '{"en":{"Error":"Error","AutoComplete":{"NoResults":"No Results"}},"ar":{"Error":"الرعب","AutoComplete":{"NoResults":"لا نتائج"}},"az":{"Error":"Qeyd","AutoComplete":{"NoResults":"Qeydlər"}},"bg":{"Error":"Грешка","AutoComplete":{"NoResults":"Няма резултати"}},"bn":{"Error":"ত্রুটি","AutoComplete":{"NoResults":"কোনো ফলাফল পাওয়া যায়নি"}},"ca":{"Error":"Error","AutoComplete":{"NoResults":"Sense resultats"}},"cs":{"Error":"Chyba","AutoComplete":{"NoResults":"Žádné výsledky"}},"da":{"Error":"Fejl","AutoComplete":{"NoResults":"Ingen resultater"}},"de":{"Error":"Fehler","AutoComplete":{"NoResults":"Keine Ergebnisse"}},"el":{"Error":"Σφάλμα","AutoComplete":{"NoResults":"Χωρίς αποτελέσματα"}},"eo":{"Error":"Eraro","AutoComplete":{"NoResults":"Neniuj rezultoj"}},"es":{"Error":"Error","AutoComplete":{"NoResults":"No hay resultados"}},"et":{"Error":"Viga","AutoComplete":{"NoResults":"Tulemused puuduvad"}},"eu":{"Error":"Errorea","AutoComplete":{"NoResults":"Emaitzarik ez"}},"fa":{"Error":"خطای","AutoComplete":{"NoResults":"نتایج"}},"fi":{"Error":"Virhe","AutoComplete":{"NoResults":"Ei tuloksia"}},"fr":{"Error":"Erreur","AutoComplete":{"NoResults":"Aucun résultat"}},"ga":{"Error":"Amharc","AutoComplete":{"NoResults":"Gan a bheith ráite"}},"gl":{"Error":"Erro","AutoComplete":{"NoResults":"Sen resultados"}},"he":{"Error":"טעות","AutoComplete":{"NoResults":"לא תוצאות"}},"hi":{"Error":"त्रुटि","AutoComplete":{"NoResults":"परिणाम"}},"hu":{"Error":"Hiba","AutoComplete":{"NoResults":"Nincs eredmény"}},"id":{"Error":"Galat","AutoComplete":{"NoResults":"Tidak ada hasil"}},"it":{"Error":"Errore","AutoComplete":{"NoResults":"Nessun risultato"}},"ja":{"Error":"エラー","AutoComplete":{"NoResults":"結果なし"}},"ko":{"Error":"계정","AutoComplete":{"NoResults":"결과 없음"}},"lt":{"Error":"Klaida","AutoComplete":{"NoResults":"Nr rezultatai"}},"lv":{"Error":"Kļūda","AutoComplete":{"NoResults":"Nav rezultātu"}},"ms":{"Error":"Error","AutoComplete":{"NoResults":"Hasil No"}},"nb":{"Error":"Feil","AutoComplete":{"NoResults":"Ingen resultater"}},"nl":{"Error":"Fout","AutoComplete":{"NoResults":"Geen resultaten"}},"pl":{"Error":"Błąd","AutoComplete":{"NoResults":"Brak wyników"}},"pt":{"Error":"Erro","AutoComplete":{"NoResults":"Sem resultados"}},"ro":{"Error":"Eroare","AutoComplete":{"NoResults":"Niciun rezultat"}},"ru":{"Error":"Ошибка","AutoComplete":{"NoResults":"Нет результатов"}},"sk":{"Error":"Chyba","AutoComplete":{"NoResults":"Žiadne výsledky"}},"sl":{"Error":"Napaka","AutoComplete":{"NoResults":"Brez rezultatov"}},"sq":{"Error":"Gabim","AutoComplete":{"NoResults":"Asnjë rezultat"}},"sv":{"Error":"Fel","AutoComplete":{"NoResults":"Inga resultat"}},"th":{"Error":"ผิดพลาด","AutoComplete":{"NoResults":"ไม่มีผลลัพธ์"}},"tl":{"Error":"Pagkakamali","AutoComplete":{"NoResults":"Walang Resulta"}},"tr":{"Error":"Hata","AutoComplete":{"NoResults":"Sonuçlar yok"}},"uk":{"Error":"Помилка","AutoComplete":{"NoResults":"Немає результатів"}},"ur":{"Error":"خامی","AutoComplete":{"NoResults":"کوئی نتیجہ"}},"zh":{"Error":"错误","AutoComplete":{"NoResults":"无结果"}},"zt":{"Error":"錯誤","AutoComplete":{"NoResults":"沒有結果"}}}', Ta = '{"en":{"Done":"Done"},"ar":{"Done":"تم"},"az":{"Done":" Don"},"bg":{"Done":"Готово"},"bn":{"Done":"সম্পন্ন"},"ca":{"Done":"Fet"},"cs":{"Done":"Hotovo"},"da":{"Done":"Færdig"},"de":{"Done":"Fertig"},"el":{"Done":"Έγινε"},"eo":{"Done":"Done"},"es":{"Done":"Hecho"},"et":{"Done":"Tehtud"},"eu":{"Done":"Eginda"},"fa":{"Done":"انجام"},"fi":{"Done":"Tehty"},"fr":{"Done":"Fait"},"ga":{"Done":"Arna"},"gl":{"Done":"Feito"},"he":{"Done":"נעשה"},"hi":{"Done":"दान"},"hu":{"Done":"Kész"},"id":{"Done":"Selesai"},"it":{"Done":"Fatto"},"ja":{"Done":"ログイン"},"ko":{"Done":"한국어"},"lt":{"Done":"@"},"lv":{"Done":"Pabeigts"},"ms":{"Done":"Selesai"},"nb":{"Done":"Ferdig"},"nl":{"Done":"Klaar"},"pl":{"Done":"Gotowe"},"pt":{"Done":"Feito"},"ro":{"Done":"Gata"},"ru":{"Done":"Сделано"},"sk":{"Done":"Hotovo"},"sl":{"Done":"Končano"},"sq":{"Done":"U"},"sv":{"Done":"Done"},"th":{"Done":"เสร็จแล้ว"},"tl":{"Done":"Tapos"},"tr":{"Done":"Done"},"uk":{"Done":"Сонце"},"ur":{"Done":"بند"},"zh":{"Done":"完成"},"zt":{"Done":"完成"}}', Ba = {
+  Button: JSON.parse(Ja),
+  Filter: JSON.parse(Na),
+  Pagination: JSON.parse(Fa),
+  Date: JSON.parse(wa),
+  Form: JSON.parse(Oa),
+  Wizard: JSON.parse(Ta)
 }, L = (e, l) => {
-  let t = e.split("."), a = xa[t[0]];
+  let t = e.split("."), a = Ba[t[0]];
   const s = (l == null || l == null ? null : l.value) ?? "en";
   if (a !== void 0) {
     a[s] === void 0 ? a = a.en : a = a[s];
@@ -246,7 +250,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   if (a === void 0)
     throw `unable to locate message ${e}`;
   return a;
-}, Ba = /* @__PURE__ */ D({
+}, Pa = /* @__PURE__ */ D({
   __name: "button-add",
   props: {
     disabled: { type: Boolean },
@@ -259,13 +263,13 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["click"],
   setup(e, { emit: l }) {
-    const t = l, a = Q(z), s = k(() => ({
-      title: L("Button.Add", a),
+    const t = l, a = e, s = Q(E), o = k(() => Object.assign({}, a, {
+      title: L("Button.Add", s),
       icon: "plus",
-      type: X.primary
+      type: Z.primary
     }));
-    return (o, n) => (r(), R(te, Y(s.value, {
-      onClick: n[0] || (n[0] = (d) => t("click"))
+    return (n, i) => (r(), R(te, q(o.value, {
+      onClick: i[0] || (i[0] = (c) => t("click"))
     }), null, 16));
   }
 }), Tt = /* @__PURE__ */ D({
@@ -281,16 +285,16 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["click"],
   setup(e, { emit: l }) {
-    const t = l, a = Q(z), s = k(() => ({
-      title: L("Button.Cancel", a),
+    const t = l, a = e, s = Q(E), o = k(() => Object.assign({}, a, {
+      title: L("Button.Cancel", s),
       icon: "window-close",
-      type: X.danger
+      type: Z.danger
     }));
-    return (o, n) => (r(), R(te, Y(s.value, {
-      onClick: n[0] || (n[0] = (d) => t("click"))
+    return (n, i) => (r(), R(te, q(o.value, {
+      onClick: i[0] || (i[0] = (c) => t("click"))
     }), null, 16));
   }
-}), Ca = /* @__PURE__ */ D({
+}), xa = /* @__PURE__ */ D({
   __name: "button-delete",
   props: {
     disabled: { type: Boolean },
@@ -303,16 +307,16 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["click"],
   setup(e, { emit: l }) {
-    const t = l, a = Q(z), s = k(() => ({
-      title: L("Button.Delete", a),
+    const t = l, a = e, s = Q(E), o = k(() => Object.assign({}, a, {
+      title: L("Button.Delete", s),
       icon: "trash-alt",
-      type: X.danger
+      type: Z.danger
     }));
-    return (o, n) => (r(), R(te, Y(s.value, {
-      onClick: n[0] || (n[0] = (d) => t("click"))
+    return (n, i) => (r(), R(te, q(o.value, {
+      onClick: i[0] || (i[0] = (c) => t("click"))
     }), null, 16));
   }
-}), Ea = /* @__PURE__ */ D({
+}), Ca = /* @__PURE__ */ D({
   __name: "button-disable",
   props: {
     disabled: { type: Boolean },
@@ -325,16 +329,16 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["click"],
   setup(e, { emit: l }) {
-    const t = l, a = Q(z), s = k(() => ({
-      title: L("Button.Disable", a),
+    const t = l, a = e, s = Q(E), o = k(() => Object.assign({}, a, {
+      title: L("Button.Disable", s),
       icon: "times-circle",
-      type: X.danger
+      type: Z.danger
     }));
-    return (o, n) => (r(), R(te, Y(s.value, {
-      onClick: n[0] || (n[0] = (d) => t("click"))
+    return (n, i) => (r(), R(te, q(o.value, {
+      onClick: i[0] || (i[0] = (c) => t("click"))
     }), null, 16));
   }
-}), za = /* @__PURE__ */ D({
+}), Ea = /* @__PURE__ */ D({
   __name: "button-download",
   props: {
     disabled: { type: Boolean },
@@ -347,16 +351,16 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["click"],
   setup(e, { emit: l }) {
-    const t = l, a = Q(z), s = k(() => ({
-      title: L("Button.Download", a),
+    const t = l, a = e, s = Q(E), o = k(() => Object.assign({}, a, {
+      title: L("Button.Download", s),
       icon: "download",
-      type: X.primary
+      type: Z.primary
     }));
-    return (o, n) => (r(), R(te, Y(s.value, {
-      onClick: n[0] || (n[0] = (d) => t("click"))
+    return (n, i) => (r(), R(te, q(o.value, {
+      onClick: i[0] || (i[0] = (c) => t("click"))
     }), null, 16));
   }
-}), Ra = /* @__PURE__ */ D({
+}), za = /* @__PURE__ */ D({
   __name: "button-edit",
   props: {
     disabled: { type: Boolean },
@@ -369,16 +373,16 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["click"],
   setup(e, { emit: l }) {
-    const t = l, a = Q(z), s = k(() => ({
-      title: L("Button.Edit", a),
+    const t = l, a = e, s = Q(E), o = k(() => Object.assign({}, a, {
+      title: L("Button.Edit", s),
       icon: "edit",
-      type: X.primary
+      type: Z.primary
     }));
-    return (o, n) => (r(), R(te, Y(s.value, {
-      onClick: n[0] || (n[0] = (d) => t("click"))
+    return (n, i) => (r(), R(te, q(o.value, {
+      onClick: i[0] || (i[0] = (c) => t("click"))
     }), null, 16));
   }
-}), Ia = /* @__PURE__ */ D({
+}), Ra = /* @__PURE__ */ D({
   __name: "button-enable",
   props: {
     disabled: { type: Boolean },
@@ -391,16 +395,16 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["click"],
   setup(e, { emit: l }) {
-    const t = l, a = Q(z), s = k(() => ({
-      title: L("Button.Enable", a),
+    const t = l, a = e, s = Q(E), o = k(() => Object.assign({}, a, {
+      title: L("Button.Enable", s),
       icon: "check",
-      type: X.primary
+      type: Z.primary
     }));
-    return (o, n) => (r(), R(te, Y(s.value, {
-      onClick: n[0] || (n[0] = (d) => t("click"))
+    return (n, i) => (r(), R(te, q(o.value, {
+      onClick: i[0] || (i[0] = (c) => t("click"))
     }), null, 16));
   }
-}), Pt = /* @__PURE__ */ D({
+}), Bt = /* @__PURE__ */ D({
   __name: "button-okay",
   props: {
     disabled: { type: Boolean },
@@ -413,16 +417,16 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["click"],
   setup(e, { emit: l }) {
-    const t = l, a = Q(z), s = k(() => ({
-      title: L("Button.Okay", a),
+    const t = l, a = e, s = Q(E), o = k(() => Object.assign({}, a, {
+      title: L("Button.Okay", s),
       icon: "check",
-      type: X.primary
+      type: Z.primary
     }));
-    return (o, n) => (r(), R(te, Y(s.value, {
-      onClick: n[0] || (n[0] = (d) => t("click"))
+    return (n, i) => (r(), R(te, q(o.value, {
+      onClick: i[0] || (i[0] = (c) => t("click"))
     }), null, 16));
   }
-}), Wa = /* @__PURE__ */ D({
+}), Ia = /* @__PURE__ */ D({
   __name: "button-print",
   props: {
     disabled: { type: Boolean },
@@ -435,16 +439,16 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["click"],
   setup(e, { emit: l }) {
-    const t = l, a = Q(z), s = k(() => ({
-      title: L("Button.Print", a),
+    const t = l, a = e, s = Q(E), o = k(() => Object.assign({}, a, {
+      title: L("Button.Print", s),
       icon: "print",
-      type: X.primary
+      type: Z.primary
     }));
-    return (o, n) => (r(), R(te, Y(s.value, {
-      onClick: n[0] || (n[0] = (d) => t("click"))
+    return (n, i) => (r(), R(te, q(o.value, {
+      onClick: i[0] || (i[0] = (c) => t("click"))
     }), null, 16));
   }
-}), xt = /* @__PURE__ */ D({
+}), Pt = /* @__PURE__ */ D({
   __name: "button-refresh",
   props: {
     disabled: { type: Boolean },
@@ -457,16 +461,16 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["click"],
   setup(e, { emit: l }) {
-    const t = l, a = Q(z), s = k(() => ({
-      title: L("Button.Refresh", a),
+    const t = l, a = e, s = Q(E), o = k(() => Object.assign({}, a, {
+      title: L("Button.Refresh", s),
       icon: "sync",
-      type: X.primary
+      type: Z.primary
     }));
-    return (o, n) => (r(), R(te, Y(s.value, {
-      onClick: n[0] || (n[0] = (d) => t("click"))
+    return (n, i) => (r(), R(te, q(o.value, {
+      onClick: i[0] || (i[0] = (c) => t("click"))
     }), null, 16));
   }
-}), La = /* @__PURE__ */ D({
+}), Wa = /* @__PURE__ */ D({
   __name: "button-save",
   props: {
     disabled: { type: Boolean },
@@ -479,13 +483,35 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["click"],
   setup(e, { emit: l }) {
-    const t = l, a = Q(z), s = k(() => ({
-      title: L("Button.Save", a),
+    const t = l, a = e, s = Q(E), o = k(() => Object.assign({}, a, {
+      title: L("Button.Save", s),
       icon: "save",
-      type: X.primary
+      type: Z.primary
     }));
-    return (o, n) => (r(), R(te, Y(s.value, {
-      onClick: n[0] || (n[0] = (d) => t("click"))
+    return (n, i) => (r(), R(te, q(o.value, {
+      onClick: i[0] || (i[0] = (c) => t("click"))
+    }), null, 16));
+  }
+}), La = /* @__PURE__ */ D({
+  __name: "button-submit",
+  props: {
+    disabled: { type: Boolean },
+    size: {},
+    hide_mobile: { type: Boolean },
+    hide_tablet: { type: Boolean },
+    hide_desktop: { type: Boolean },
+    is_rounded: { type: Boolean },
+    is_outlined: { type: Boolean }
+  },
+  emits: ["click"],
+  setup(e, { emit: l }) {
+    const t = l, a = e, s = Q(E), o = k(() => Object.assign({}, a, {
+      title: L("Button.Submit", s),
+      icon: "envelope-open-text",
+      type: Z.success
+    }));
+    return (n, i) => (r(), R(te, q(o.value, {
+      onClick: i[0] || (i[0] = (c) => t("click"))
     }), null, 16));
   }
 }), Va = /* @__PURE__ */ D({
@@ -501,16 +527,16 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["click"],
   setup(e, { emit: l }) {
-    const t = l, a = Q(z), s = k(() => ({
-      title: L("Button.Upload", a),
+    const t = l, a = e, s = Q(E), o = k(() => Object.assign({}, a, {
+      title: L("Button.Upload", s),
       icon: "upload",
-      type: X.primary
+      type: Z.primary
     }));
-    return (o, n) => (r(), R(te, Y(s.value, {
-      onClick: n[0] || (n[0] = (d) => t("click"))
+    return (n, i) => (r(), R(te, q(o.value, {
+      onClick: i[0] || (i[0] = (c) => t("click"))
     }), null, 16));
   }
-}), Ua = /* @__PURE__ */ D({
+}), ja = /* @__PURE__ */ D({
   __name: "buttons-container",
   props: {
     size: {},
@@ -518,13 +544,13 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   setup(e) {
     const l = e;
-    return (t, a) => (r(), i("div", {
+    return (t, a) => (r(), d("div", {
       class: F(["buttons", l.size ? `are-${l.size}` : "", l.alignment ? `is-${l.alignment}` : ""])
     }, [
-      P(t.$slots, "default")
+      B(t.$slots, "default")
     ], 2));
   }
-}), ja = /* @__PURE__ */ D({
+}), Ua = /* @__PURE__ */ D({
   __name: "check-mark",
   props: {
     checked: { type: Boolean, default: !0 },
@@ -532,7 +558,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   setup(e) {
     const l = e;
-    return (t, a) => (r(), R(K, {
+    return (t, a) => (r(), R(Y, {
       icon: `square-${l.checked ? "check" : "xmark"}`,
       size: l.size
     }, null, 8, ["icon", "size"]));
@@ -550,7 +576,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     drops_up: { type: Boolean }
   },
   setup(e) {
-    const l = ht(), t = e, a = x(!1), s = k(() => {
+    const l = ht(), t = e, a = P(!1), s = k(() => {
       let u = ["dropdown"];
       return t.is_hoverable && u.push("is-hoverable"), t.is_right_align && u.push("is-right"), t.drops_up && u.push("is-up"), a.value && u.push("is-active"), u;
     }), o = k(() => {
@@ -559,7 +585,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     }), n = (u) => {
       let p = ["dropdown-item"];
       return typeof u != "string" && u.active && p.push("is-active"), p;
-    }, d = (u) => {
+    }, i = (u) => {
       if (typeof u != "string")
         return u.href;
     }, c = (u) => {
@@ -569,7 +595,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
         p.onClick && p.onClick();
       }
     };
-    return (u, p) => (r(), i("div", {
+    return (u, p) => (r(), d("div", {
       class: F(s.value)
     }, [
       M("div", Ga, [
@@ -581,7 +607,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
         }, [
           M("span", null, T(t.title), 1),
           M("span", Ka, [
-            B(K, {
+            x(Y, {
               icon: "angle-down",
               "aria-hidden": "true"
             })
@@ -593,16 +619,16 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
         id: g(l),
         role: "menu"
       }, [
-        (r(!0), i(C, null, W(o.value, (h, _) => (r(), i("div", qa, [
-          _ > 0 ? (r(), i("hr", Za)) : A("", !0),
-          (r(!0), i(C, null, W(h.children, (m) => (r(), R(pe(typeof m == "string" ? "div" : "a"), {
+        (r(!0), d(C, null, W(o.value, (h, _) => (r(), d("div", qa, [
+          _ > 0 ? (r(), d("hr", Za)) : A("", !0),
+          (r(!0), d(C, null, W(h.children, (m) => (r(), R(pe(typeof m == "string" ? "div" : "a"), {
             class: F(n(m)),
-            href: d(m),
+            href: i(m),
             onClick: (y) => c(m)
           }, {
-            default: E(() => [
-              typeof m == "string" ? (r(), i("p", Qa, T(m), 1)) : A("", !0),
-              q(" " + T(typeof m == "string" ? null : m.title), 1)
+            default: z(() => [
+              typeof m == "string" ? (r(), d("p", Qa, T(m), 1)) : A("", !0),
+              X(" " + T(typeof m == "string" ? null : m.title), 1)
             ]),
             _: 2
           }, 1032, ["class", "href", "onClick"]))), 256))
@@ -610,7 +636,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       ], 8, Ya)
     ], 2));
   }
-}), it = async (e, l, t) => {
+}), ut = async (e, l, t) => {
   let a = await import(e);
   const s = Object.keys(a);
   return l && s.sort(l), s.filter((o) => t === void 0 || t.value === null || t.value.test(o)).map((o) => a[o]);
@@ -623,30 +649,30 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     sortMethod: { type: Function }
   },
   setup(e) {
-    const l = x(null), t = e, a = k(() => t.filter == null || t.filter == null ? null : new RegExp("^" + t.filter.replaceAll(".", "\\.").replaceAll("*", ".+") + "$"));
-    return j(() => [t.url, t.filter], async () => {
-      l.value = await it(t.url, t.sortMethod, a);
+    const l = P(null), t = e, a = k(() => t.filter == null || t.filter == null ? null : new RegExp("^" + t.filter.replaceAll(".", "\\.").replaceAll("*", ".+") + "$"));
+    return U(() => [t.url, t.filter], async () => {
+      l.value = await ut(t.url, t.sortMethod, a);
     }), ce(async () => {
-      l.value = await it(t.url, t.sortMethod, a);
-    }), (s, o) => (r(!0), i(C, null, W(l.value, (n) => (r(), R(pe(n), Y({ ref_for: !0 }, t.props), null, 16))), 256));
+      l.value = await ut(t.url, t.sortMethod, a);
+    }), (s, o) => (r(!0), d(C, null, W(l.value, (n) => (r(), R(pe(n), q({ ref_for: !0 }, t.props), null, 16))), 256));
   }
-}), tl = { class: "field" }, al = { class: "control has-icons-left" }, ll = ["placeholder"], sl = { class: "icon is-small is-left" }, Bt = /* @__PURE__ */ D({
+}), tl = { class: "field" }, al = { class: "control has-icons-left" }, ll = ["placeholder"], sl = { class: "icon is-small is-left" }, xt = /* @__PURE__ */ D({
   __name: "filter",
   props: {
     default_value: {}
   },
   emits: ["filter"],
   setup(e, { emit: l }) {
-    const t = e, a = l, s = Q(z), o = k(() => L("Filter.Filter", s)), n = x(null);
-    j([n], (c) => {
+    const t = e, a = l, s = Q(E), o = k(() => L("Filter.Filter", s)), n = P(null);
+    U([n], (c) => {
       c[0] === "" && t.default_value && (n.value = t.default_value, a("filter", n.value == "" ? null : n.value));
     });
-    const d = (c) => {
+    const i = (c) => {
       c.keyCode == 13 && a("filter", n.value == "" ? null : n.value);
     };
     return ce(() => {
       t.default_value && (n.value = t.default_value);
-    }), (c, u) => (r(), i("div", tl, [
+    }), (c, u) => (r(), d("div", tl, [
       M("p", al, [
         H(M("input", {
           role: "searchbox",
@@ -654,12 +680,12 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
           class: "input is-expanded is-rounded",
           placeholder: o.value,
           "onUpdate:modelValue": u[0] || (u[0] = (p) => n.value = p),
-          onKeypress: d
+          onKeypress: i
         }, null, 40, ll), [
           [De, n.value]
         ]),
         M("span", sl, [
-          B(K, {
+          x(Y, {
             icon: "filter",
             size: g(oe).small
           }, null, 8, ["size"])
@@ -673,30 +699,30 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
 }, ol = { class: "message-body" }, rl = /* @__PURE__ */ D({
   __name: "message",
   props: {
-    type: { default: X.primary },
+    type: { default: Z.primary },
     message: { default: null },
     has_delete: { type: Boolean, default: !1 },
     title: { default: null },
-    size: { default: Z.normal }
+    size: { default: K.normal }
   },
   emits: ["close"],
   setup(e, { emit: l }) {
-    const t = e, a = l, s = k(() => t.size === Z.normal ? null : `is-${t.size}`), o = k(() => `is-${t.type}`);
-    return (n, d) => (r(), i("article", {
+    const t = e, a = l, s = k(() => t.size === K.normal ? null : `is-${t.size}`), o = k(() => `is-${t.type}`);
+    return (n, i) => (r(), d("article", {
       class: F(["message", s.value, o.value])
     }, [
-      t.title ? (r(), i("div", nl, [
+      t.title ? (r(), d("div", nl, [
         M("p", null, T(t.title), 1),
-        t.has_delete ? (r(), i("button", {
+        t.has_delete ? (r(), d("button", {
           key: 0,
           class: "delete",
           "aria-label": "delete",
-          onClick: d[0] || (d[0] = (c) => a("close"))
+          onClick: i[0] || (i[0] = (c) => a("close"))
         })) : A("", !0)
       ])) : A("", !0),
       M("div", ol, [
-        P(n.$slots, "default", {}, () => [
-          q(T(t.message), 1)
+        B(n.$slots, "default", {}, () => [
+          X(T(t.message), 1)
         ])
       ])
     ], 2));
@@ -704,31 +730,31 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
 }), he = /* @__PURE__ */ D({
   __name: "notification",
   props: {
-    type: { default: ue.info },
+    type: { default: ie.info },
     message: { default: null },
     light: { type: Boolean, default: !1 }
   },
   setup(e) {
     const l = e;
-    return (t, a) => (r(), i("div", {
+    return (t, a) => (r(), d("div", {
       class: F(["notification", "is-" + l.type, l.light ? "is-light" : ""])
     }, [
-      P(t.$slots, "default", {}, () => [
-        q(T(l.message), 1)
+      B(t.$slots, "default", {}, () => [
+        X(T(l.message), 1)
       ])
     ], 2));
   }
-}), ul = {
+}), il = {
   key: 0,
   class: "modal-background"
-}, il = ["aria-label"], dl = {
+}, ul = ["aria-label"], dl = {
   key: 0,
   class: "title"
 }, cl = { class: "block" }, pl = /* @__PURE__ */ D({
   __name: "page-notification",
   props: {
     visible: { type: Boolean, default: !1 },
-    type: { default: ue.info },
+    type: { default: ie.info },
     message: {},
     header: {},
     block_user: { type: Boolean },
@@ -739,50 +765,50 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   setup(e, { emit: l }) {
     const t = e, a = l, s = k(() => {
       switch (t.type) {
-        case ue.info:
+        case ie.info:
           return "circle-info";
-        case ue.success:
+        case ie.success:
           return "circle-check";
-        case ue.danger:
+        case ie.danger:
           return "bug";
-        case ue.warning:
+        case ie.warning:
           return "circle-exclamation";
       }
     }), o = k(() => {
       var n = ["is-page-notification-container", `is-${t.type}`];
       return t.is_light && n.push("is-light-mode"), t.has_close === void 0 || t.has_close === null || t.has_close || n.push("has-no-close"), n;
     });
-    return (n, d) => (r(), i("div", {
+    return (n, i) => (r(), d("div", {
       class: F({ modal: t.block_user && t.visible, "is-active": t.block_user && t.visible })
     }, [
-      t.block_user && t.visible ? (r(), i("div", ul)) : A("", !0),
-      B(Ot, {
+      t.block_user && t.visible ? (r(), d("div", il)) : A("", !0),
+      x(Ot, {
         incoming: g(we).fadeIn,
         outgoing: g(we).fadeOut,
         speed: g(ge).slower
       }, {
-        default: E(() => [
-          t.visible ? (r(), i("div", {
+        default: z(() => [
+          t.visible ? (r(), d("div", {
             key: 0,
             class: F(o.value),
             role: "dialog",
             "aria-label": t.header ?? "Page Notification"
           }, [
-            B(K, {
+            x(Y, {
               icon: s.value,
               size: g(oe).xxlarge
             }, null, 8, ["icon", "size"]),
-            t.header !== null && t.header !== void 0 ? (r(), i("h1", dl, T(t.header), 1)) : A("", !0),
+            t.header !== null && t.header !== void 0 ? (r(), d("h1", dl, T(t.header), 1)) : A("", !0),
             M("div", cl, T(t.message), 1),
-            t.has_close ? (r(), R(K, {
+            t.has_close ? (r(), R(Y, {
               key: 1,
               icon: "circle-xmark",
-              onClick: d[0] || (d[0] = (c) => a("close")),
+              onClick: i[0] || (i[0] = (c) => a("close")),
               size: g(oe).large,
               role: "button",
               "aria-label": "close"
             }, null, 8, ["size"])) : A("", !0)
-          ], 10, il)) : A("", !0)
+          ], 10, ul)) : A("", !0)
         ]),
         _: 1
       }, 8, ["incoming", "outgoing", "speed"])
@@ -800,7 +826,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     use_next: { type: Boolean, default: !0 },
     has_more: { type: Boolean, default: void 0 },
     has_previous: { type: Boolean, default: void 0 },
-    size: { default: Z.small },
+    size: { default: K.small },
     rounded: { type: Boolean, default: !1 },
     button_type: {},
     total_pages: {},
@@ -809,7 +835,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["moveForward", "moveBack", "goToPage"],
   setup(e, { emit: l }) {
-    const t = e, a = l, s = Q(z), o = k(() => L(t.use_next ? "Pagination.Previous" : "Pagination.Older", s)), n = k(() => L(t.use_next ? "Pagination.Next" : "Pagination.Newer", s)), d = k(() => t.button_type ? `has-background-${t.button_type}` : ""), c = k(() => L("Pagination.GoToPage", s)), u = k(() => t.current_page === void 0 ? 0 : re(t.current_page) + (t.zero_page_index ? 1 : 0)), p = k(() => (t.has_previous ?? !1) || u.value > 0), h = k(() => (t.has_more ?? !1) || u.value < (t.total_pages === void 0 ? 0 : re(t.total_pages))), _ = k(() => {
+    const t = e, a = l, s = Q(E), o = k(() => L(t.use_next ? "Pagination.Previous" : "Pagination.Older", s)), n = k(() => L(t.use_next ? "Pagination.Next" : "Pagination.Newer", s)), i = k(() => t.button_type ? `has-background-${t.button_type}` : ""), c = k(() => L("Pagination.GoToPage", s)), u = k(() => t.current_page === void 0 ? 0 : re(t.current_page) + (t.zero_page_index ? 1 : 0)), p = k(() => (t.has_previous ?? !1) || u.value > 0), h = k(() => (t.has_more ?? !1) || u.value < (t.total_pages === void 0 ? 0 : re(t.total_pages))), _ = k(() => {
       if (t.total_pages === void 0 || t.current_page === void 0)
         return [];
       if (re(t.total_pages) > 5) {
@@ -836,40 +862,40 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     }, b = function(v) {
       a("goToPage", t.zero_page_index ? v - 1 : v);
     };
-    return (v, J) => H((r(), i("nav", {
-      class: F(["pagination", "is-centered", d.value, `is-${t.size}`, t.rounded ? "is-rounded" : ""]),
+    return (v, J) => H((r(), d("nav", {
+      class: F(["pagination", "is-centered", i.value, `is-${t.size}`, t.rounded ? "is-rounded" : ""]),
       role: "navigation",
       "aria-label": "pagination"
     }, [
       M("a", {
-        class: F(["pagination-previous", d.value]),
+        class: F(["pagination-previous", i.value]),
         title: o.value,
         onClick: m,
         disabled: p.value ? null : "disabled"
       }, [
-        B(K, {
+        x(Y, {
           icon: "backward",
           class: "mr-1",
           size: g(oe).small
         }, null, 8, ["size"]),
-        q(" " + T(o.value), 1)
+        X(" " + T(o.value), 1)
       ], 10, ml),
       M("a", {
-        class: F(["pagination-next", d.value]),
+        class: F(["pagination-next", i.value]),
         title: n.value,
         onClick: y,
         disabled: h.value ? null : "disabled"
       }, [
-        q(T(n.value) + " ", 1),
-        B(K, {
+        X(T(n.value) + " ", 1),
+        x(Y, {
           icon: "forward",
           class: "ml-1",
           size: g(oe).small
         }, null, 8, ["size"])
       ], 10, hl),
-      t.total_pages !== void 0 ? (r(), i("ul", bl, [
-        (r(!0), i(C, null, W(_.value, (N) => (r(), i("li", null, [
-          N === -1 ? (r(), i("span", vl, "…")) : (r(), i("a", {
+      t.total_pages !== void 0 ? (r(), d("ul", bl, [
+        (r(!0), d(C, null, W(_.value, (N) => (r(), d("li", null, [
+          N === -1 ? (r(), d("span", vl, "…")) : (r(), d("a", {
             key: 1,
             class: F(["pagination-link", N === u.value ? "is-current" : ""]),
             "aria-label": `${c.value} ${N}`,
@@ -887,7 +913,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     promise: {}
   },
   setup(e) {
-    const l = e, t = x(null), a = Q(z), s = k(() => `${L("Form.Error", a)}: ${t.value.message ?? t.value.toString()}`), o = x(!1), n = x(!1), d = k(() => !o.value && !n.value), c = x(null);
+    const l = e, t = P(null), a = Q(E), s = k(() => `${L("Form.Error", a)}: ${t.value.message ?? t.value.toString()}`), o = P(!1), n = P(!1), i = k(() => !o.value && !n.value), c = P(null);
     async function u(p) {
       if (o.value = !1, n.value = !1, t.value = null, p == null)
         c.value = null;
@@ -901,26 +927,26 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
         }
       }
     }
-    return j(
+    return U(
       () => l.promise,
       () => {
         u(l.promise);
       }
     ), ce(() => {
       u(l.promise);
-    }), (p, h) => (r(), i(C, null, [
-      d.value ? P(p.$slots, "pending", { key: 0 }, () => [
-        B(g(_e), {
-          size: g(Z).small
+    }), (p, h) => (r(), d(C, null, [
+      i.value ? B(p.$slots, "pending", { key: 0 }, () => [
+        x(g(_e), {
+          size: g(K).small
         }, null, 8, ["size"])
       ]) : A("", !0),
-      o.value ? P(p.$slots, "rejected", me(Y({ key: 1 }, t.value)), () => [
-        B(g(he), {
+      o.value ? B(p.$slots, "rejected", me(q({ key: 1 }, t.value)), () => [
+        x(g(he), {
           message: s.value,
-          type: g(ue).danger
+          type: g(ie).danger
         }, null, 8, ["message", "type"])
       ]) : A("", !0),
-      n.value ? P(p.$slots, "default", {
+      n.value ? B(p.$slots, "default", {
         key: 2,
         response: c.value
       }) : A("", !0)
@@ -929,14 +955,14 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
 }), yl = ["value", "max"], _e = /* @__PURE__ */ D({
   __name: "progress",
   props: {
-    type: { default: X.primary },
-    size: { default: Z.normal },
+    type: { default: Z.primary },
+    size: { default: K.normal },
     value: {},
     maximum: {}
   },
   setup(e) {
     const l = e, t = k(() => l.maximum === void 0 ? null : (l.value ?? 0) / l.maximum * 100);
-    return (a, s) => (r(), i("progress", {
+    return (a, s) => (r(), d("progress", {
       class: F(`progress is-${l.size} is-${l.type}`),
       value: l.value,
       max: l.maximum
@@ -970,35 +996,35 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       s("itemClicked"), t.onClick !== void 0 && t.onClick();
     }, s = l;
     return (o, n) => {
-      const d = mt("navbar-item", !0);
+      const i = mt("navbar-item", !0);
       return r(), R(pe(t.childItems !== void 0 ? "div" : "a"), {
         class: F(["navbar-item", t.active ? "is-active" : "", t.childItems !== void 0 ? "has-dropdown is-hoverable" : ""]),
         href: t.href,
         onClick: a,
         tabIndex: t.href === void 0 || t.href === "" ? 0 : null
       }, {
-        default: E(() => [
-          t.childItems !== void 0 ? (r(), i("a", fl, [
-            t.icon !== void 0 && t.icon !== null ? (r(), i("span", _l, [
+        default: z(() => [
+          t.childItems !== void 0 ? (r(), d("a", fl, [
+            t.icon !== void 0 && t.icon !== null ? (r(), d("span", _l, [
               M("span", kl, [
-                B(K, {
+                x(Y, {
                   icon: t.icon
                 }, null, 8, ["icon"])
               ]),
               M("span", null, T(t.title), 1)
-            ])) : (r(), i("span", Sl, T(t.title), 1))
-          ])) : (r(), i(C, { key: 1 }, [
-            t.icon !== void 0 && t.icon !== null ? (r(), i("span", Ml, [
+            ])) : (r(), d("span", Sl, T(t.title), 1))
+          ])) : (r(), d(C, { key: 1 }, [
+            t.icon !== void 0 && t.icon !== null ? (r(), d("span", Ml, [
               M("span", Dl, [
-                B(K, {
+                x(Y, {
                   icon: t.icon
                 }, null, 8, ["icon"])
               ]),
               M("span", null, T(t.title), 1)
-            ])) : (r(), i("span", $l, T(t.title), 1))
+            ])) : (r(), d("span", $l, T(t.title), 1))
           ], 64)),
-          t.childItems !== void 0 ? (r(), i("div", Al, [
-            (r(!0), i(C, null, W(t.childItems, (c) => (r(), R(d, Y({ ref_for: !0 }, c, {
+          t.childItems !== void 0 ? (r(), d("div", Al, [
+            (r(!0), d(C, null, W(t.childItems, (c) => (r(), R(i, q({ ref_for: !0 }, c, {
               onItemClicked: n[0] || (n[0] = (u) => s("itemClicked"))
             }), null, 16))), 256))
           ])) : A("", !0)
@@ -1013,7 +1039,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
 }, Ol = { style: { width: "100px" } }, Tl = {
   key: 1,
   class: "navbar-end"
-}, Pl = { style: { width: "100px" } }, xl = /* @__PURE__ */ D({
+}, Bl = { style: { width: "100px" } }, Pl = /* @__PURE__ */ D({
   __name: "navbar",
   props: {
     start_items: {},
@@ -1023,7 +1049,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     color: {}
   },
   setup(e) {
-    const l = e, t = x(!1);
+    const l = e, t = P(!1);
     return ce(() => {
       if (l.fixed_position) {
         let a = "";
@@ -1037,13 +1063,13 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
         }
         a !== "" && (document.body.classList.contains(a) || document.body.classList.add(a));
       }
-    }), (a, s) => (r(), i("nav", {
+    }), (a, s) => (r(), d("nav", {
       class: F(["navbar", l.fixed_position, l.color !== void 0 && l.color !== null ? `is-${l.color}` : ""]),
       role: "navigation",
       "aria-label": l.ariaLabel
     }, [
       M("div", Nl, [
-        P(a.$slots, "brand"),
+        B(a.$slots, "brand"),
         M("a", {
           role: "button",
           class: F(["navbar-burger", t.value ? "is-active" : ""]),
@@ -1059,38 +1085,38 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       M("div", {
         class: F(["navbar-menu", t.value ? "is-active" : ""])
       }, [
-        l.start_items !== void 0 ? (r(), i("div", wl, [
-          B(be, {
+        l.start_items !== void 0 ? (r(), d("div", wl, [
+          x(be, {
             promise: l.start_items
           }, {
-            default: E(({ response: o }) => [
-              (r(!0), i(C, null, W(o, (n) => (r(), R(dt, Y({ ref_for: !0 }, n, {
-                onItemClicked: s[1] || (s[1] = (d) => t.value = !1)
+            default: z(({ response: o }) => [
+              (r(!0), d(C, null, W(o, (n) => (r(), R(dt, q({ ref_for: !0 }, n, {
+                onItemClicked: s[1] || (s[1] = (i) => t.value = !1)
               }), null, 16))), 256))
             ]),
-            pending: E(() => [
+            pending: z(() => [
               M("div", Ol, [
-                B(_e, {
-                  size: g(Z).small
+                x(_e, {
+                  size: g(K).small
                 }, null, 8, ["size"])
               ])
             ]),
             _: 1
           }, 8, ["promise"])
         ])) : A("", !0),
-        l.end_items !== void 0 ? (r(), i("div", Tl, [
-          B(be, {
+        l.end_items !== void 0 ? (r(), d("div", Tl, [
+          x(be, {
             promise: l.end_items
           }, {
-            default: E(({ response: o }) => [
-              (r(!0), i(C, null, W(o, (n) => (r(), R(dt, Y({ ref_for: !0 }, n, {
-                onItemClicked: s[2] || (s[2] = (d) => t.value = !1)
+            default: z(({ response: o }) => [
+              (r(!0), d(C, null, W(o, (n) => (r(), R(dt, q({ ref_for: !0 }, n, {
+                onItemClicked: s[2] || (s[2] = (i) => t.value = !1)
               }), null, 16))), 256))
             ]),
-            pending: E(() => [
-              M("div", Pl, [
-                B(_e, {
-                  size: g(Z).small
+            pending: z(() => [
+              M("div", Bl, [
+                x(_e, {
+                  size: g(K).small
                 }, null, 8, ["size"])
               ])
             ]),
@@ -1100,17 +1126,17 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       ], 2)
     ], 10, Jl));
   }
-}), Bl = /* @__PURE__ */ D({
+}), xl = /* @__PURE__ */ D({
   __name: "menu",
   props: {
     fixedPosition: {}
   },
   setup(e) {
     const l = e;
-    return (t, a) => (r(), i("aside", {
+    return (t, a) => (r(), d("aside", {
       class: F(["menu", l.fixedPosition !== void 0 ? `is-fixed-menu is-fixed-menu-${l.fixedPosition}` : ""])
     }, [
-      P(t.$slots, "default")
+      B(t.$slots, "default")
     ], 2));
   }
 }), Cl = { class: "menu-label" }, El = /* @__PURE__ */ D({
@@ -1120,9 +1146,9 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   setup(e) {
     const l = e;
-    return (t, a) => (r(), i("p", Cl, [
-      q(T(l.message) + " ", 1),
-      P(t.$slots, "default")
+    return (t, a) => (r(), d("p", Cl, [
+      X(T(l.message) + " ", 1),
+      B(t.$slots, "default")
     ]));
   }
 }), zl = ["href"], Rl = {
@@ -1141,23 +1167,23 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     const l = e, t = () => {
       l.onClick !== void 0 && l.onClick();
     };
-    return (a, s) => (r(), i("li", null, [
+    return (a, s) => (r(), d("li", null, [
       M("a", {
         href: l.href,
         onClick: s[0] || (s[0] = (o) => t()),
         class: F(l.active ? "is-active" : "")
       }, [
-        l.icon !== void 0 && l.icon !== null ? (r(), i("span", Rl, [
+        l.icon !== void 0 && l.icon !== null ? (r(), d("span", Rl, [
           M("span", Il, [
-            B(K, {
+            x(Y, {
               icon: l.icon
             }, null, 8, ["icon"])
           ]),
           M("span", null, T(l.title), 1)
-        ])) : (r(), i("span", Wl, T(l.title), 1)),
-        P(a.$slots, "default")
+        ])) : (r(), d("span", Wl, T(l.title), 1)),
+        B(a.$slots, "default")
       ], 10, zl),
-      P(a.$slots, "children")
+      B(a.$slots, "children")
     ]));
   }
 }), Ll = { class: "menu-list" }, Vl = /* @__PURE__ */ D({
@@ -1169,34 +1195,34 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     const l = e;
     return (t, a) => {
       const s = mt("menu-list", !0);
-      return r(), i("ul", Ll, [
+      return r(), d("ul", Ll, [
         l.items !== null ? (r(), R(be, {
           key: 0,
           promise: l.items
         }, {
-          default: E(({ response: o }) => [
-            (r(!0), i(C, null, W(o, (n) => (r(), i("li", null, [
-              B(Et, Y({ ref_for: !0 }, n), null, 16),
+          default: z(({ response: o }) => [
+            (r(!0), d(C, null, W(o, (n) => (r(), d("li", null, [
+              x(Et, q({ ref_for: !0 }, n), null, 16),
               n.childItems !== void 0 ? (r(), R(s, {
                 key: 0,
                 items: n.childItems
               }, null, 8, ["items"])) : A("", !0)
             ]))), 256))
           ]),
-          pending: E(() => [
+          pending: z(() => [
             M("li", null, [
-              B(_e, {
-                size: g(Z).small
+              x(_e, {
+                size: g(K).small
               }, null, 8, ["size"])
             ])
           ]),
           _: 1
         }, 8, ["promise"])) : A("", !0),
-        P(t.$slots, "default")
+        B(t.$slots, "default")
       ]);
     };
   }
-}), Ul = /* @__PURE__ */ D({
+}), jl = /* @__PURE__ */ D({
   __name: "badge",
   props: {
     position: { default: Ze.topRight },
@@ -1205,11 +1231,11 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   setup(e) {
     const l = e;
-    return (t, a) => (r(), i("span", {
+    return (t, a) => (r(), d("span", {
       class: F(["badge", `is-${l.position}`, l.type === void 0 ? "" : `is-${l.type}`])
     }, [
-      q(T(l.text) + " ", 1),
-      P(t.$slots, "default")
+      X(T(l.text) + " ", 1),
+      B(t.$slots, "default")
     ], 2));
   }
 }), zt = /* @__PURE__ */ D({
@@ -1237,19 +1263,19 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       ]),
       "data-tooltip": t.text
     }, {
-      default: E(() => [
-        P(t.$slots, "default")
+      default: z(() => [
+        B(t.$slots, "default")
       ]),
       _: 3
     }, 8, ["class", "data-tooltip"]));
   }
-}), jl = /* @__PURE__ */ D({
+}), Ul = /* @__PURE__ */ D({
   __name: "tag",
   props: {
-    type: { default: X.primary },
+    type: { default: Z.primary },
     light: { type: Boolean, default: !1 },
     rounded: { type: Boolean, default: !1 },
-    size: { default: Z.normal },
+    size: { default: K.normal },
     is_delete: { type: Boolean, default: !1 },
     text: {}
   },
@@ -1258,11 +1284,11 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       let a = ["tag", `is-${l.type}`, `is-${l.size}`];
       return l.light && a.push("is-light"), l.rounded && a.push("is-rounded"), l.is_delete && a.push("is-delete"), a;
     });
-    return (a, s) => (r(), i("span", {
+    return (a, s) => (r(), d("span", {
       class: F(t.value)
     }, [
-      P(a.$slots, "default", {}, () => [
-        q(T(l.text), 1)
+      B(a.$slots, "default", {}, () => [
+        X(T(l.text), 1)
       ])
     ], 2));
   }
@@ -1274,47 +1300,48 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   setup(e) {
     const l = e;
-    return (t, a) => (r(), i("span", {
+    return (t, a) => (r(), d("span", {
       class: F(["tags", l.size === null ? "" : "are-" + l.size, l.addons ? "has-addons" : ""])
     }, [
-      P(t.$slots, "default")
+      B(t.$slots, "default")
     ], 2));
   }
 }), Hl = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   Animation: Ot,
-  Badge: Ul,
+  Badge: jl,
   Button: te,
-  ButtonAdd: Ba,
+  ButtonAdd: Pa,
   ButtonCancel: Tt,
-  ButtonDelete: Ca,
-  ButtonDisable: Ea,
-  ButtonDownload: za,
-  ButtonEdit: Ra,
-  ButtonEnable: Ia,
-  ButtonOkay: Pt,
-  ButtonPrint: Wa,
-  ButtonRefresh: xt,
-  ButtonSave: La,
+  ButtonDelete: xa,
+  ButtonDisable: Ca,
+  ButtonDownload: Ea,
+  ButtonEdit: za,
+  ButtonEnable: Ra,
+  ButtonOkay: Bt,
+  ButtonPrint: Ia,
+  ButtonRefresh: Pt,
+  ButtonSave: Wa,
+  ButtonSubmit: La,
   ButtonUpload: Va,
-  ButtonsContainer: Ua,
-  CheckMark: ja,
+  ButtonsContainer: ja,
+  CheckMark: Ua,
   DropDown: Xa,
   DynamicSlot: el,
-  Filter: Bt,
-  Icon: K,
-  Menu: Bl,
+  Filter: xt,
+  Icon: Y,
+  Menu: xl,
   MenuEntry: Et,
   MenuLabel: El,
   MenuList: Vl,
   Message: rl,
-  NavBar: xl,
+  NavBar: Pl,
   Notification: he,
   PageNotification: pl,
   Pagination: Ct,
   Progress: _e,
   Promised: be,
-  Tag: jl,
+  Tag: Ul,
   Tags: Gl,
   ToolTip: zt
 }, Symbol.toStringTag, { value: "Module" })), Kl = /* @__PURE__ */ D({
@@ -1327,10 +1354,10 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["started", "stopped"],
   setup(e, { emit: l }) {
-    const t = l, a = e, s = x(!1), o = x(!1), n = x(null), d = k(() => (a.disabled ?? !1) || o.value && a.handle_search !== null), c = k(() => {
+    const t = l, a = e, s = P(!1), o = P(!1), n = P(null), i = k(() => (a.disabled ?? !1) || o.value && a.handle_search !== null), c = k(() => {
       let h = [];
-      return d || h.push("has-cursor"), s.value ? h.push("is-move") : h.push("is-grab"), h;
-    }), u = (h) => d.value ? (h.preventDefault(), !1) : (h.stopPropagation(), h.dataTransfer.setData("value", JSON.stringify(a.copy_data)), s.value = !0, t("started"), !0), p = () => {
+      return i || h.push("has-cursor"), s.value ? h.push("is-move") : h.push("is-grab"), h;
+    }), u = (h) => i.value ? (h.preventDefault(), !1) : (h.stopPropagation(), h.dataTransfer.setData("value", JSON.stringify(a.copy_data)), s.value = !0, t("started"), !0), p = () => {
       s.value = !1, o.value = !0, t("stopped");
     };
     return ce(() => {
@@ -1346,8 +1373,8 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       onDragend: p,
       class: F(c.value)
     }, {
-      default: E(() => [
-        P(h.$slots, "default")
+      default: z(() => [
+        B(h.$slots, "default")
       ]),
       _: 3
     }, 40, ["class"]));
@@ -1360,9 +1387,9 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   },
   emits: ["itemAdded", "itemEntered", "itemExited", "itemMoved"],
   setup(e, { emit: l }) {
-    const t = e, a = l, s = x(!1), o = x(null), n = x(null);
+    const t = e, a = l, s = P(!1), o = P(null), n = P(null);
     k(() => t.tag ?? "div");
-    const d = (_) => {
+    const i = (_) => {
       const m = n.value.getBoundingClientRect(), y = {
         x: m.x + m.width / 2,
         y: m.y + m.height / 2
@@ -1370,11 +1397,11 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       let b = se.center;
       return _.x < y.x ? _.y < y.y ? b = se.topLeft : b = se.bottomLeft : _.y < y.y ? b = se.topRight : b = se.bottomRight, o.value = b, o.value;
     }, c = (_) => {
-      _.preventDefault(), s.value = !0, a("itemEntered", d(_));
+      _.preventDefault(), s.value = !0, a("itemEntered", i(_));
     }, u = (_) => {
-      s.value = !0, a("itemExited", d(_));
+      s.value = !0, a("itemExited", i(_));
     }, p = (_) => {
-      _.preventDefault(), a("itemMoved", d(_));
+      _.preventDefault(), a("itemMoved", i(_));
     }, h = (_) => {
       if (t.is_valid_child && !t.is_valid_child(JSON.parse(_.dataTransfer.getData("value"))))
         return !1;
@@ -1389,8 +1416,8 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       onDrop: h,
       onDragover: p
     }, {
-      default: E(() => [
-        P(_.$slots, "default")
+      default: z(() => [
+        B(_.$slots, "default")
       ]),
       _: 3
     }, 40, ["class"]));
@@ -1409,11 +1436,11 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     highlighted: { type: Boolean }
   },
   setup(e) {
-    const l = e, t = ie(), a = k(() => {
+    const l = e, t = ue(), a = k(() => {
       var n = ["block-list", "has-radius", `is-${l.type ?? "primary"}`];
       return l.compact && n.push("is-small"), l.outlined && n.push("is-outlined"), l.highlighted && n.push("is-highlighted"), n;
-    }), s = k(() => l.items ? l.items.map((n, d) => ({
-      name: n.name ?? `item-${d}`,
+    }), s = k(() => l.items ? l.items.map((n, i) => ({
+      name: n.name ?? `item-${i}`,
       classes: [
         n.type ? `is-${n.type}` : "",
         n.outlined ? "is-outlined" : "",
@@ -1426,22 +1453,22 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     })) : null), o = (n) => {
       n.onClick && n.onClick();
     };
-    return (n, d) => (r(), R(pe(n.numbered == null || n.numbered == null || !n.numbered ? "ul" : "ol"), {
+    return (n, i) => (r(), R(pe(n.numbered == null || n.numbered == null || !n.numbered ? "ul" : "ol"), {
       class: F(a.value)
     }, {
-      default: E(() => [
-        s.value === null ? P(n.$slots, "default", { key: 0 }) : (r(!0), i(C, { key: 1 }, W(s.value, (c) => (r(), i(C, null, [
-          g(t)[c.name] !== void 0 || g(t)[c.name] !== null || c.icon !== void 0 ? (r(), i("li", {
+      default: z(() => [
+        s.value === null ? B(n.$slots, "default", { key: 0 }) : (r(!0), d(C, { key: 1 }, W(s.value, (c) => (r(), d(C, null, [
+          g(t)[c.name] !== void 0 || g(t)[c.name] !== null || c.icon !== void 0 ? (r(), d("li", {
             key: 0,
             class: F(c.classes),
             onClick: (u) => o(c)
           }, [
-            c.icon ? (r(), i("span", Zl, [
-              B(K, {
+            c.icon ? (r(), d("span", Zl, [
+              x(Y, {
                 icon: c.icon
               }, null, 8, ["icon"])
             ])) : A("", !0),
-            P(n.$slots, c.name)
+            B(n.$slots, c.name)
           ], 10, ql)) : A("", !0)
         ], 64))), 256))
       ]),
@@ -1452,15 +1479,15 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __name: "sortable",
   props: {
     items: {},
-    type: { default: X.primary },
+    type: { default: Z.primary },
     compact: { type: Boolean, default: !1 },
     outlined: { type: Boolean, default: !1 },
     highlighted: { type: Boolean, default: !1 }
   },
   emits: ["sorted"],
   setup(e, { emit: l }) {
-    const t = e, a = l, s = x([]), o = x(-1), n = x(-1), d = x(null);
-    j(t.items, (_, m) => {
+    const t = e, a = l, s = P([]), o = P(-1), n = P(-1), i = P(null);
+    U(t.items, (_, m) => {
       s.value = [...m];
     }), ce(() => {
       t.items !== null && (s.value = [...t.items]);
@@ -1475,12 +1502,12 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     }, u = (_, m) => {
       m.stopPropagation(), o.value = _, m.dataTransfer.setData("value", null);
     }, p = (_, m) => {
-      o.value && (m.stopPropagation(), _ != o.value ? (n.value = _, d.value = c(m)) : (n.value = -1, d.value = null));
+      o.value && (m.stopPropagation(), _ != o.value ? (n.value = _, i.value = c(m)) : (n.value = -1, i.value = null));
     }, h = (_) => {
       if (o.value) {
         _.stopPropagation();
-        var m = n.value + (d.value == se.top ? 0 : 1), y = s.value.splice(m, 1)[0];
-        m >= o.value && m--, s.value.splice(m, 0, y), n.value = -1, d.value = null, o.value = -1, a("sorted", s.value);
+        var m = n.value + (i.value == se.top ? 0 : 1), y = s.value.splice(m, 1)[0];
+        m >= o.value && m--, s.value.splice(m, 0, y), n.value = -1, i.value = null, o.value = -1, a("sorted", s.value);
       }
     };
     return (_, m) => (r(), R(Rt, {
@@ -1490,18 +1517,18 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       highlighted: _.highlighted,
       onDrop: h
     }, {
-      default: E(() => [
-        (r(!0), i(C, null, W(s.value, (y, b) => (r(), i(C, null, [
+      default: z(() => [
+        (r(!0), d(C, null, W(s.value, (y, b) => (r(), d(C, null, [
           H(M("li", null, [
-            B(he, { light: !0 }, {
-              default: E(() => m[1] || (m[1] = [
-                q(" ")
+            x(he, { light: !0 }, {
+              default: z(() => m[1] || (m[1] = [
+                X(" ", -1)
               ])),
               _: 1,
               __: [1]
             })
           ], 512), [
-            [ne, n.value === b && o.value !== b && d.value === g(se).top]
+            [ne, n.value === b && o.value !== b && i.value === g(se).top]
           ]),
           M("li", {
             draggable: "true",
@@ -1510,21 +1537,21 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
             onDragover: (v) => p(b, v),
             class: F({ "has-cursor": !0, "is-move": n.value == b, "is-grab": n.value != b })
           }, [
-            P(_.$slots, "item", {
+            B(_.$slots, "item", {
               item: y,
               index: b
             })
           ], 42, Ql),
           H(M("li", null, [
-            B(he, { light: !0 }, {
-              default: E(() => m[2] || (m[2] = [
-                q(" ")
+            x(he, { light: !0 }, {
+              default: z(() => m[2] || (m[2] = [
+                X(" ", -1)
               ])),
               _: 1,
               __: [2]
             })
           ], 512), [
-            [ne, n.value === b && o.value !== b && d.value === g(se).bottom]
+            [ne, n.value === b && o.value !== b && i.value === g(se).bottom]
           ])
         ], 64))), 256))
       ]),
@@ -1541,7 +1568,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   return k(() => e.translate ?? t);
 };
 function tt(e, l) {
-  const t = l(Ee, ye(x([]))), a = l(et, ye(x([]))), s = k(() => t.value.filter((n) => n.indexOf(`${e}.`) === 0).map((n) => n.split(".")[1])), o = k(() => a.value.filter((n) => n.indexOf(`${e}.`) === 0).map((n) => n.split(".")[1]));
+  const t = l(Ee, ye(P([]))), a = l(et, ye(P([]))), s = k(() => t.value.filter((n) => n.indexOf(`${e}.`) === 0).map((n) => n.split(".")[1])), o = k(() => a.value.filter((n) => n.indexOf(`${e}.`) === 0).map((n) => n.split(".")[1]));
   return { hiddenValues: s, disabledValues: o };
 }
 async function at(e) {
@@ -1550,7 +1577,7 @@ async function at(e) {
   let a = await l, s = [];
   return a.value !== void 0 ? s = a.value : s = a, s;
 }
-const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["onClick"], ns = { key: 0 }, os = ["placeholder"], rs = { class: "dropdown-menu" }, us = { class: "dropdown-content" }, is = ["onClick"], ds = {
+const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["onClick"], ns = { key: 0 }, os = ["placeholder"], rs = { class: "dropdown-menu" }, is = { class: "dropdown-content" }, us = ["onClick"], ds = {
   key: 1,
   class: "dropdown-item"
 }, It = /* @__PURE__ */ D({
@@ -1567,8 +1594,8 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["valueChanged"],
   setup(e, { expose: l, emit: t }) {
-    const a = Q(z), s = k(() => L("Form.AutoComplete.NoResults", a)), o = t, n = e, d = de(n, z), c = x([]), u = x(null), p = x(null), h = x(null), _ = x(null);
-    j(u, async (f) => {
+    const a = Q(E), s = k(() => L("Form.AutoComplete.NoResults", a)), o = t, n = e, i = de(n, E), c = P([]), u = P(null), p = P(null), h = P(null), _ = P(null);
+    U(u, async (f) => {
       if (f != null) {
         if (f.length >= 2)
           if (n.values != null && n.values != null) {
@@ -1626,7 +1653,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       _.value.focus();
     }, w = (f) => {
       c.value.push(f), J(), o("valueChanged", { name: n.name, value: m() });
-    }, U = (f) => {
+    }, j = (f) => {
       c.value.splice(f, 1), N(), o("valueChanged", { name: n.name, value: m() });
     };
     return l({
@@ -1641,7 +1668,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
        * @returns Promise<void>
        */
       setValue: y
-    }), (f, G) => (r(), i("div", {
+    }), (f, G) => (r(), d("div", {
       class: "control autocomplete",
       onBlur: J,
       onClick: N
@@ -1649,24 +1676,24 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       M("div", {
         class: F(["tagsfield", "field", "input", "is-grouped", "is-grouped-multiline", n.disabled ? "is-disabled" : ""])
       }, [
-        (r(!0), i(C, null, W(c.value, (S, O) => (r(), i("div", {
+        (r(!0), d(C, null, W(c.value, (S, O) => (r(), d("div", {
           class: "control",
           key: O
         }, [
           M("div", as, [
-            M("a", ls, T(g(d)(S.name)), 1),
-            !S.readonly && !n.disabled ? (r(), i("a", {
+            M("a", ls, T(g(i)(S.name)), 1),
+            !S.readonly && !n.disabled ? (r(), d("a", {
               key: 0,
               class: "tag is-delete",
-              onClick: (V) => U(O)
+              onClick: (V) => j(O)
             }, null, 8, ss)) : A("", !0)
           ])
         ]))), 128)),
-        n.disabled ? A("", !0) : (r(), i("div", ns, [
+        n.disabled ? A("", !0) : (r(), d("div", ns, [
           H(M("span", {
             ref_key: "contentSpan",
             ref: _,
-            placeholder: g(d)(n.title ?? ""),
+            placeholder: g(i)(n.title ?? ""),
             contenteditable: "",
             class: F(h.value),
             onFocus: G[0] || (G[0] = (S) => {
@@ -1682,16 +1709,16 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
           ])
         ]))
       ], 2),
-      n.disabled ? A("", !0) : (r(), i("div", {
+      n.disabled ? A("", !0) : (r(), d("div", {
         key: 0,
         class: F(["dropdown", { "is-active": p.value != null && u.value != null && u.value != "" }])
       }, [
         M("div", rs, [
-          M("div", us, [
-            p.value != null && p.value.length > 0 ? (r(!0), i(C, { key: 0 }, W(p.value, (S) => (r(), i("a", {
+          M("div", is, [
+            p.value != null && p.value.length > 0 ? (r(!0), d(C, { key: 0 }, W(p.value, (S) => (r(), d("a", {
               class: "dropdown-item",
               onClick: (O) => w(S)
-            }, T(g(d)(S.name)), 9, is))), 256)) : (r(), i("a", ds, T(s.value), 1))
+            }, T(g(i)(S.name)), 9, us))), 256)) : (r(), d("a", ds, T(s.value), 1))
           ])
         ])
       ], 2))
@@ -1709,12 +1736,12 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["buttonClicked"],
   setup(e, { emit: l }) {
-    const t = e, a = l, s = de(t, z);
+    const t = e, a = l, s = de(t, E);
     return (o, n) => (r(), R(te, {
       type: t.sstyle,
       icon: t.icon,
       title: g(s)(t.label ?? ""),
-      onClick: n[0] || (n[0] = (d) => a("buttonClicked", t.name)),
+      onClick: n[0] || (n[0] = (i) => a("buttonClicked", t.name)),
       disabled: t.disabled
     }, null, 8, ["type", "icon", "title", "disabled"]));
   }
@@ -1729,7 +1756,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["valueChanged"],
   setup(e, { expose: l, emit: t }) {
-    const a = e, s = Q(z), o = k(() => L("Form.Error", s)), n = t, d = de(a, z), c = x([]), u = x(!1), p = k(async () => {
+    const a = e, s = Q(E), o = k(() => L("Form.Error", s)), n = t, i = de(a, E), c = P([]), u = P(!1), p = k(async () => {
       if (a.values === null)
         return [];
       {
@@ -1741,12 +1768,12 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
         }))), b;
       }
     });
-    j(c, (b) => {
+    U(c, (b) => {
       n("valueChanged", { name: a.name, value: h() });
     });
     const h = () => c.value.length == 0 ? null : c.value, _ = (b) => {
       u.value = !0, c.value.splice(0), b !== null && (c.value = [...b]), u.value = !1, n("valueChanged", { name: a.name, value: h() });
-    }, { hiddenValues: m, disabledValues: y } = tt(a.name, z);
+    }, { hiddenValues: m, disabledValues: y } = tt(a.name, E);
     return l({
       /**
        * Gets the current value 
@@ -1759,10 +1786,10 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
        * @returns void
        */
       setValue: _
-    }), (b, v) => (r(), i("div", null, [
-      B(be, { promise: p.value }, {
-        default: E(({ response: J }) => [
-          J !== null ? (r(!0), i(C, { key: 0 }, W(J, (N, w) => H((r(), i("label", {
+    }), (b, v) => (r(), d("div", null, [
+      x(be, { promise: p.value }, {
+        default: z(({ response: J }) => [
+          J !== null ? (r(!0), d(C, { key: 0 }, W(J, (N, w) => H((r(), d("label", {
             class: "checkbox is-block",
             for: `${a.inputId}-${w}`
           }, [
@@ -1770,20 +1797,20 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
               type: "checkbox",
               class: "checkbox",
               value: N.value,
-              "onUpdate:modelValue": v[0] || (v[0] = (U) => c.value = U),
-              disabled: a.disabled || g(y).some((U) => U === N.value.toString()),
+              "onUpdate:modelValue": v[0] || (v[0] = (j) => c.value = j),
+              disabled: a.disabled || g(y).some((j) => j === N.value.toString()),
               id: `${a.inputId}-${w}`
             }, null, 8, ps), [
-              [je, c.value]
+              [Ue, c.value]
             ]),
-            q(" " + T(g(d)(N.label)), 1)
+            X(" " + T(g(i)(N.label)), 1)
           ], 8, cs)), [
-            [ne, !g(m).some((U) => U === N.value.toString())]
+            [ne, !g(m).some((j) => j === N.value.toString())]
           ])), 256)) : A("", !0)
         ]),
-        rejected: E(() => [
-          B(g(he), {
-            type: g(ue).danger,
+        rejected: z(() => [
+          x(g(he), {
+            type: g(ie).danger,
             message: o.value
           }, null, 8, ["type", "message"])
         ]),
@@ -1806,12 +1833,12 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["valueChanged"],
   setup(e, { expose: l, emit: t }) {
-    const a = e, s = t, o = de(a, z), n = k(() => o.value(a.label)), d = x(!1);
-    return j(d, (p) => s("valueChanged", { name: a.name, value: p })), l({
+    const a = e, s = t, o = de(a, E), n = k(() => o.value(a.label)), i = P(!1);
+    return U(i, (p) => s("valueChanged", { name: a.name, value: p })), l({
       /**
        * Gets the current value 
        */
-      getValue: () => d.value,
+      getValue: () => i.value,
       /**
        * Sets the current value
        * 
@@ -1819,9 +1846,9 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
        * @returns void
        */
       setValue: (p) => {
-        d.value = p;
+        i.value = p;
       }
-    }), (p, h) => (r(), i("label", {
+    }), (p, h) => (r(), d("label", {
       class: "checkbox",
       for: a.inputId
     }, [
@@ -1830,13 +1857,13 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
         class: "checkbox",
         name: a.name,
         disabled: a.disabled,
-        "onUpdate:modelValue": h[0] || (h[0] = (_) => d.value = _),
+        "onUpdate:modelValue": h[0] || (h[0] = (_) => i.value = _),
         id: a.inputId
       }, null, 8, hs), [
-        [je, d.value]
+        [Ue, i.value]
       ]),
-      q(" " + T(n.value) + " ", 1),
-      a.required ? (r(), i("span", bs, "*")) : A("", !0)
+      X(" " + T(n.value) + " ", 1),
+      a.required ? (r(), d("span", bs, "*")) : A("", !0)
     ], 8, ms));
   }
 }), We = (e, l) => {
@@ -1908,15 +1935,15 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
     case "z":
     case "zz":
     case "zzz":
-      let n = t.getTimezoneOffset() * -1, d = parseInt((n / 60).toFixed(0)), c = n - Math.abs(d) * 60;
+      let n = t.getTimezoneOffset() * -1, i = parseInt((n / 60).toFixed(0)), c = n - Math.abs(i) * 60;
       switch (e) {
         case "K":
         case "zzz":
-          a += `${d < 0 ? "-" : "+"}${ee(Math.abs(d).toString(), "0", 2) + ":" + ee(Math.abs(c).toString(), "0", 2)}`;
+          a += `${i < 0 ? "-" : "+"}${ee(Math.abs(i).toString(), "0", 2) + ":" + ee(Math.abs(c).toString(), "0", 2)}`;
           break;
         case "z":
         case "zz":
-          a += `${d < 0 ? "-" : "+"}${ee(Math.abs(d).toString(), "0", e.length)}`;
+          a += `${i < 0 ? "-" : "+"}${ee(Math.abs(i).toString(), "0", e.length)}`;
           break;
       }
       break;
@@ -2032,7 +2059,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["valueChanged"],
   setup(e, { expose: l, emit: t }) {
-    const a = e, s = t, o = x(null), n = k(() => {
+    const a = e, s = t, o = P(null), n = k(() => {
       if (o.value === null || o.value === "")
         return null;
       var u = Number(o.value.substring(3, 5)), p = Number(o.value.substring(0, 2)) % 12 + u / 60;
@@ -2040,7 +2067,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
         backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><circle cx='20' cy='20' r='2' fill='%23222' stroke='%23222' stroke-width='2' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,4 20.5,4 21.5,24.5 Z' fill='%23222' style='transform:rotate(${360 * u / 60}deg); transform-origin: 50% 50%;' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,8.5 20.5,8.5 21.5,24.5 Z' style='transform:rotate(${360 * p / 12}deg); transform-origin: 50% 50%;' /></svg>")`
       };
     });
-    return j(o, (u) => {
+    return U(o, (u) => {
       s("valueChanged", { name: a.name, value: u });
     }), l({
       /**
@@ -2062,7 +2089,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
         }
         o.value = u;
       }
-    }), (u, p) => (r(), i("div", vs, [
+    }), (u, p) => (r(), d("div", vs, [
       H(M("input", {
         class: "input is-time",
         id: a.inputId,
@@ -2082,26 +2109,26 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
 }, ks = /* @__PURE__ */ D({
   __name: "banner",
   props: {
-    type: {},
+    type: { default: Z.primary },
     title: {},
     subtitle: {}
   },
   setup(e) {
     const l = e;
-    return (t, a) => (r(), i("section", {
+    return (t, a) => (r(), d("section", {
       class: F(["hero", "is-small", "has-text-centered", t.type === void 0 ? "" : "is-" + l.type])
     }, [
       M("div", ys, [
         M("p", fs, T(l.title), 1),
-        l.subtitle ? (r(), i("p", _s, T(l.subtitle), 1)) : A("", !0)
+        l.subtitle ? (r(), d("p", _s, T(l.subtitle), 1)) : A("", !0)
       ])
     ], 2));
   }
 }), Ss = { class: "box" }, Vt = /* @__PURE__ */ D({
   __name: "box",
   setup(e) {
-    return (l, t) => (r(), i("div", Ss, [
-      P(l.$slots, "default")
+    return (l, t) => (r(), d("div", Ss, [
+      B(l.$slots, "default")
     ]));
   }
 }), Ms = { key: 0 }, Ds = ["onClick"], $s = /* @__PURE__ */ D({
@@ -2109,36 +2136,36 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   props: {
     breadCrumbs: {},
     alignment: { default: Oe.left },
-    size: { default: Z.normal },
+    size: { default: K.normal },
     seperator: {}
   },
   setup(e) {
     const l = e, t = k(() => {
       let s = ["breadcrumb"];
-      return l.alignment && l.alignment !== Oe.left && s.push(`is-${l.alignment}`), l.size && l.size !== Z.normal && s.push(`is-${l.size}`), l.seperator && s.push(`has-${l.seperator}-seperator`), s;
+      return l.alignment && l.alignment !== Oe.left && s.push(`is-${l.alignment}`), l.size && l.size !== K.normal && s.push(`is-${l.size}`), l.seperator && s.push(`has-${l.seperator}-seperator`), s;
     }), a = (s) => {
       s !== void 0 && s();
     };
-    return (s, o) => (r(), i("nav", {
+    return (s, o) => (r(), d("nav", {
       class: F(t.value),
       "aria-label": "breadcrumbs"
     }, [
-      l.breadCrumbs !== null ? (r(), i("ul", Ms, [
-        (r(!0), i(C, null, W(l.breadCrumbs, (n) => (r(), i("li", {
+      l.breadCrumbs !== null ? (r(), d("ul", Ms, [
+        (r(!0), d(C, null, W(l.breadCrumbs, (n) => (r(), d("li", {
           class: F({ "is-active": n.active })
         }, [
           M("a", {
-            onClick: (d) => a(n.onClick)
+            onClick: (i) => a(n.onClick)
           }, [
-            n.icon ? (r(), i("span", {
+            n.icon ? (r(), d("span", {
               key: 0,
               class: F(["icon", n.onClick ? "is-clickable" : ""])
             }, [
-              B(g(K), {
+              x(g(Y), {
                 icon: n.icon
               }, null, 8, ["icon"])
             ], 2)) : A("", !0),
-            q(" " + T(n.title), 1)
+            X(" " + T(n.title), 1)
           ], 8, Ds)
         ], 2))), 256))
       ])) : A("", !0)
@@ -2156,7 +2183,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
 }, ws = {
   key: 3,
   class: "card-footer"
-}, Ut = /* @__PURE__ */ D({
+}, jt = /* @__PURE__ */ D({
   __name: "card",
   props: {
     full_width: { type: Boolean, default: !1 },
@@ -2164,31 +2191,31 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
     icon: {}
   },
   setup(e) {
-    const l = ie(), t = e, a = {
+    const l = ue(), t = e, a = {
       addon_class: "card-footer-item"
     }, s = {
       header_class: "card-header-title has-text-centered",
       addon_class: "card-header-icon"
     };
-    return (o, n) => (r(), i("div", {
+    return (o, n) => (r(), d("div", {
       class: F(["card", { "is-fullwidth": t.full_width, "is-fullheight": t.full_height }])
     }, [
-      t.icon ? (r(), i("div", As, [
+      t.icon ? (r(), d("div", As, [
         M("div", Js, [
-          B(K, {
+          x(Y, {
             icon: t.icon,
             size: g(oe).xxlarge
           }, null, 8, ["icon", "size"])
         ])
       ])) : A("", !0),
-      g(l).header ? (r(), i("div", Ns, [
-        P(o.$slots, "header", me(fe(s)))
+      g(l).header ? (r(), d("div", Ns, [
+        B(o.$slots, "header", me(fe(s)))
       ])) : A("", !0),
-      g(l).content ? (r(), i("div", Fs, [
-        P(o.$slots, "content")
+      g(l).content ? (r(), d("div", Fs, [
+        B(o.$slots, "content")
       ])) : A("", !0),
-      g(l).footer ? (r(), i("div", ws, [
-        P(o.$slots, "footer", me(fe(a)))
+      g(l).footer ? (r(), d("div", ws, [
+        B(o.$slots, "footer", me(fe(a)))
       ])) : A("", !0)
     ], 2));
   }
@@ -2199,45 +2226,52 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
     columns: {}
   },
   setup(e) {
-    const l = ie(), t = e, a = k(() => {
+    const l = ue(), t = e, a = k(() => {
       let o = ["columns"];
       return t.modifiers !== void 0 && t.modifiers !== null && (o = o.concat(t.modifiers.map((n) => `is-${n}`))), o;
     }), s = k(() => t.columns.map((o, n) => {
-      let d = [
+      let i = [
         "column",
         o.class ?? "",
         o.size ? `is-${o.size}` : "",
         o.offset ? `is-offset-${o.offset}` : ""
       ];
-      return o.border && (o.border.some((c) => c === Ye.all) ? d.push("is-bordered") : o.border.forEach((c) => d.push(`is-bordered-${c}`))), {
+      return o.border && (o.border.some((c) => c === Ye.all) ? i.push("is-bordered") : o.border.forEach((c) => i.push(`is-bordered-${c}`))), {
         name: o.name ?? `col-${n}`,
-        class: d
+        class: i
       };
     }));
-    return (o, n) => (r(), i("div", {
+    return (o, n) => (r(), d("div", {
       class: F(a.value)
     }, [
-      (r(!0), i(C, null, W(s.value, (d) => (r(), i(C, null, [
-        g(l)[d.name] ? (r(), i("div", {
+      (r(!0), d(C, null, W(s.value, (i) => (r(), d(C, null, [
+        g(l)[i.name] ? (r(), d("div", {
           key: 0,
-          class: F(d.class)
+          class: F(i.class)
         }, [
-          P(o.$slots, d.name)
+          B(o.$slots, i.name)
         ], 2)) : A("", !0)
       ], 64))), 256))
     ], 2));
   }
-}), Os = { class: "footer" }, Ts = /* @__PURE__ */ D({
+}), Os = ["aria-label"], Ts = /* @__PURE__ */ D({
   __name: "footer",
+  props: {
+    aria_label: { default: "footer" }
+  },
   setup(e) {
-    return (l, t) => (r(), i("footer", Os, [
-      P(l.$slots, "default")
-    ]));
+    const l = e;
+    return (t, a) => (r(), d("footer", {
+      class: "footer",
+      "aria-label": l.aria_label
+    }, [
+      B(t.$slots, "default")
+    ], 8, Os));
   }
-}), Ps = { class: "level" }, xs = {
+}), Bs = ["aria-label"], Ps = {
   key: 0,
   class: "level-left"
-}, Bs = {
+}, xs = {
   key: 0,
   class: "level-item"
 }, Cs = {
@@ -2252,33 +2286,37 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
 }, Rs = /* @__PURE__ */ D({
   __name: "level",
   props: {
+    aria_label: {},
     left_slots: {},
     right_slots: {},
     slots: {}
   },
   setup(e) {
-    const l = e, t = ie();
-    return (a, s) => (r(), i("nav", Ps, [
-      l.left_slots ? (r(), i("div", xs, [
-        (r(!0), i(C, null, W(l.left_slots, (o) => (r(), i(C, null, [
-          g(t)[o] ? (r(), i("div", Bs, [
-            P(a.$slots, o)
+    const l = e, t = ue();
+    return (a, s) => (r(), d("nav", {
+      class: "level",
+      "aria-label": l.aria_label
+    }, [
+      l.left_slots ? (r(), d("div", Ps, [
+        (r(!0), d(C, null, W(l.left_slots, (o) => (r(), d(C, null, [
+          g(t)[o] ? (r(), d("div", xs, [
+            B(a.$slots, o)
           ])) : A("", !0)
         ], 64))), 256))
       ])) : A("", !0),
-      l.slots ? (r(!0), i(C, { key: 1 }, W(l.slots, (o) => (r(), i(C, null, [
-        g(t)[o] ? (r(), i("div", Cs, [
-          P(a.$slots, o)
+      l.slots ? (r(!0), d(C, { key: 1 }, W(l.slots, (o) => (r(), d(C, null, [
+        g(t)[o] ? (r(), d("div", Cs, [
+          B(a.$slots, o)
         ])) : A("", !0)
       ], 64))), 256)) : A("", !0),
-      l.right_slots ? (r(), i("div", Es, [
-        (r(!0), i(C, null, W(l.right_slots, (o) => (r(), i(C, null, [
-          g(t)[o] ? (r(), i("div", zs, [
-            P(a.$slots, o)
+      l.right_slots ? (r(), d("div", Es, [
+        (r(!0), d(C, null, W(l.right_slots, (o) => (r(), d(C, null, [
+          g(t)[o] ? (r(), d("div", zs, [
+            B(a.$slots, o)
           ])) : A("", !0)
         ], 64))), 256))
       ])) : A("", !0)
-    ]));
+    ], 8, Bs));
   }
 }), Is = { class: "media" }, Ws = {
   key: 0,
@@ -2286,23 +2324,23 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
 }, Ls = { class: "media-content" }, Vs = {
   key: 1,
   class: "media-right"
-}, Us = /* @__PURE__ */ D({
+}, js = /* @__PURE__ */ D({
   __name: "media",
   setup(e) {
-    const l = ie();
-    return (t, a) => (r(), i("article", Is, [
-      g(l).left_figure ? (r(), i("figure", Ws, [
-        P(t.$slots, "left_figure")
+    const l = ue();
+    return (t, a) => (r(), d("article", Is, [
+      g(l).left_figure ? (r(), d("figure", Ws, [
+        B(t.$slots, "left_figure")
       ])) : A("", !0),
       M("div", Ls, [
-        P(t.$slots, "content")
+        B(t.$slots, "content")
       ]),
-      g(l).right_section ? (r(), i("div", Vs, [
-        P(t.$slots, "right_section")
+      g(l).right_section ? (r(), d("div", Vs, [
+        B(t.$slots, "right_section")
       ])) : A("", !0)
     ]));
   }
-}), js = { class: "modal-content" }, Gs = /* @__PURE__ */ D({
+}), Us = { class: "modal-content" }, Gs = /* @__PURE__ */ D({
   __name: "modal",
   props: {
     display: { type: Boolean, default: !0 },
@@ -2312,15 +2350,15 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   emits: ["close"],
   setup(e, { emit: l }) {
     const t = e, a = l;
-    return (s, o) => (r(), i("div", {
+    return (s, o) => (r(), d("div", {
       class: F({ modal: !0, "is-active": t.display }),
       style: Ae(`z-index:${t.z_index}`)
     }, [
       o[1] || (o[1] = M("div", { class: "modal-background" }, null, -1)),
-      M("div", js, [
-        P(s.$slots, "default")
+      M("div", Us, [
+        B(s.$slots, "default")
       ]),
-      t.has_close ? (r(), i("button", {
+      t.has_close ? (r(), d("button", {
         key: 0,
         class: "modal-close is-large",
         "aria-label": "close",
@@ -2340,7 +2378,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
 }, Zs = {
   key: 3,
   class: "modal-card-foot"
-}, jt = /* @__PURE__ */ D({
+}, Ut = /* @__PURE__ */ D({
   __name: "modal-card",
   props: {
     show: { type: Boolean },
@@ -2353,44 +2391,44 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["close"],
   setup(e, { emit: l }) {
-    const t = ie(), a = e, s = l, o = {
+    const t = ue(), a = e, s = l, o = {
       addon_class: "card-footer-item"
     }, n = {
       header_class: "modal-card-title has-text-centered",
       addon_class: "card-header-icon"
-    }, d = k(() => {
+    }, i = k(() => {
       var c = [];
       return a.full_width && c.push("is-fullwidth"), a.full_height && c.push("is-fullheight"), a.max_width && c.push("is-maxwidth"), a.max_height && c.push("is-maxheight"), c;
     });
-    return (c, u) => (r(), i("div", {
+    return (c, u) => (r(), d("div", {
       class: F(["modal", { "is-active": a.show }])
     }, [
       u[1] || (u[1] = M("div", { class: "modal-background" }, null, -1)),
       M("div", {
-        class: F(["modal-card", d.value])
+        class: F(["modal-card", i.value])
       }, [
-        a.icon ? (r(), i("div", Hs, [
+        a.icon ? (r(), d("div", Hs, [
           M("div", Ks, [
-            B(K, {
+            x(Y, {
               icon: a.icon,
               size: g(oe).xxlarge
             }, null, 8, ["icon", "size"])
           ])
         ])) : A("", !0),
-        g(t).header ? (r(), i("div", Ys, [
-          P(c.$slots, "header", me(fe(n))),
-          a.has_close ? (r(), i("button", {
+        g(t).header ? (r(), d("div", Ys, [
+          B(c.$slots, "header", me(fe(n))),
+          a.has_close ? (r(), d("button", {
             key: 0,
             class: "delete",
             "aria-label": "close",
             onClick: u[0] || (u[0] = (p) => s("close"))
           })) : A("", !0)
         ])) : A("", !0),
-        g(t).content ? (r(), i("div", qs, [
-          P(c.$slots, "content")
+        g(t).content ? (r(), d("div", qs, [
+          B(c.$slots, "content")
         ])) : A("", !0),
-        g(t).footer ? (r(), i("div", Zs, [
-          P(c.$slots, "footer", me(fe(o)))
+        g(t).footer ? (r(), d("div", Zs, [
+          B(c.$slots, "footer", me(fe(o)))
         ])) : A("", !0)
       ], 2)
     ], 2));
@@ -2414,29 +2452,29 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
     hidden_sections: {}
   },
   setup(e) {
-    const l = ie(), t = e, a = k(() => t.block_names ?? ["default"]), s = k(() => [
+    const l = ue(), t = e, a = k(() => t.block_names ?? ["default"]), s = k(() => [
       t.type ? `is-${t.type}` : "",
       t.full_width ? "is-fullwidth" : "",
       t.full_height ? "is-fullheight" : ""
     ]);
-    return (o, n) => (r(), i("div", {
+    return (o, n) => (r(), d("div", {
       class: F(["panel", s.value])
     }, [
-      g(l).header ? H((r(), i("div", Qs, [
-        P(o.$slots, "header")
+      g(l).header ? H((r(), d("div", Qs, [
+        B(o.$slots, "header")
       ], 512)), [
         [ne, !(t.hidden_sections ?? []).includes("header")]
       ]) : A("", !0),
-      g(l).tabs ? H((r(), i("div", Xs, [
-        P(o.$slots, "tabs")
+      g(l).tabs ? H((r(), d("div", Xs, [
+        B(o.$slots, "tabs")
       ], 512)), [
         [ne, !(t.hidden_sections ?? []).includes("tabs")]
       ]) : A("", !0),
-      (r(!0), i(C, null, W(a.value, (d) => (r(), i(C, null, [
-        g(l)[d] ? H((r(), i("div", en, [
-          P(o.$slots, d)
+      (r(!0), d(C, null, W(a.value, (i) => (r(), d(C, null, [
+        g(l)[i] ? H((r(), d("div", en, [
+          B(o.$slots, i)
         ], 512)), [
-          [ne, !(t.hidden_sections ?? []).includes(d)]
+          [ne, !(t.hidden_sections ?? []).includes(i)]
         ]) : A("", !0)
       ], 64))), 256))
     ], 2));
@@ -2448,10 +2486,10 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   setup(e) {
     const l = e;
-    return (t, a) => (r(), i("section", {
+    return (t, a) => (r(), d("section", {
       class: F(["section", l.size ? `is-${l.size}` : ""])
     }, [
-      P(t.$slots, "default")
+      B(t.$slots, "default")
     ], 2));
   }
 }), ln = { key: 0 }, sn = { key: 1 }, nn = { key: 2 }, nt = /* @__PURE__ */ D({
@@ -2463,7 +2501,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
     narrow: { type: Boolean }
   },
   setup(e) {
-    const l = ie(), t = e, a = k(() => [
+    const l = ue(), t = e, a = k(() => [
       t.scrollable ? "table-container" : "",
       t.fixed_header && !t.scrollable ? "is-fixed" : ""
     ]), s = k(() => [
@@ -2474,20 +2512,20 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       t.full_width ? "is-fullwidth" : "",
       t.narrow ? "is-narrow" : ""
     ]);
-    return (o, n) => (r(), i("div", {
+    return (o, n) => (r(), d("div", {
       class: F(a.value)
     }, [
       M("table", {
         class: F(s.value)
       }, [
-        g(l).thead ? (r(), i("thead", ln, [
-          P(o.$slots, "thead")
+        g(l).thead ? (r(), d("thead", ln, [
+          B(o.$slots, "thead")
         ])) : A("", !0),
-        g(l).tbody ? (r(), i("tbody", sn, [
-          P(o.$slots, "tbody")
+        g(l).tbody ? (r(), d("tbody", sn, [
+          B(o.$slots, "tbody")
         ])) : A("", !0),
-        g(l).tfoot ? (r(), i("tfoot", nn, [
-          P(o.$slots, "tfoot")
+        g(l).tfoot ? (r(), d("tfoot", nn, [
+          B(o.$slots, "tfoot")
         ])) : A("", !0)
       ], 2)
     ], 2));
@@ -2512,34 +2550,34 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
     ]), a = (s, o) => {
       (o.href === null || o.href === void 0) && o.onClick !== void 0 && (s.preventDefault(), o.onClick());
     };
-    return (s, o) => (r(), i("div", {
+    return (s, o) => (r(), d("div", {
       class: F(t.value)
     }, [
       M("ul", null, [
-        B(g(be), {
+        x(g(be), {
           promise: l.tabs
         }, {
-          default: E(({ response: n }) => [
-            (r(!0), i(C, null, W(n, (d) => (r(), i("li", {
-              class: F({ "is-active": d.active })
+          default: z(({ response: n }) => [
+            (r(!0), d(C, null, W(n, (i) => (r(), d("li", {
+              class: F({ "is-active": i.active })
             }, [
               M("a", {
-                href: d.href,
-                onClick: (c) => a(c, d)
+                href: i.href,
+                onClick: (c) => a(c, i)
               }, [
-                d.icon ? (r(), i("span", rn, [
-                  B(g(K), {
-                    icon: d.icon
+                i.icon ? (r(), d("span", rn, [
+                  x(g(Y), {
+                    icon: i.icon
                   }, null, 8, ["icon"])
                 ])) : A("", !0),
-                M("span", null, T(d.title), 1)
+                M("span", null, T(i.title), 1)
               ], 8, on)
             ], 2))), 256))
           ]),
-          pending: E(() => [
+          pending: z(() => [
             M("li", un, [
-              B(g(_e), {
-                size: g(Z).small
+              x(g(_e), {
+                size: g(K).small
               }, null, 8, ["size"])
             ])
           ]),
@@ -2565,41 +2603,41 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["close"],
   setup(e, { emit: l }) {
-    const t = ie(), a = {
+    const t = ue(), a = {
       addon_class: ""
     }, s = {
       header_class: "slideout-title has-text-centered",
       addon_class: ""
-    }, o = e, n = l, d = k(() => [
+    }, o = e, n = l, i = k(() => [
       "slideout",
       o.show ? "is-active" : "",
       o.type !== void 0 && o.type !== null ? `is-${o.type}` : "",
       o.full_width ? "is-fullwidth" : "",
       o.not_animated ? "no-animation" : ""
     ]);
-    return (c, u) => (r(), i("div", {
-      class: F(d.value)
+    return (c, u) => (r(), d("div", {
+      class: F(i.value)
     }, [
       M("div", {
         class: "slideout-background",
         onClick: u[0] || (u[0] = (p) => n("close"))
       }),
       M("div", cn, [
-        o.has_close ? (r(), i("button", {
+        o.has_close ? (r(), d("button", {
           key: 0,
           class: "delete",
           "aria-label": "close",
           onClick: u[1] || (u[1] = (p) => n("close"))
         })) : A("", !0),
-        g(t).header ? (r(), i("div", pn, [
-          P(c.$slots, "header", me(fe(s)))
+        g(t).header ? (r(), d("div", pn, [
+          B(c.$slots, "header", me(fe(s)))
         ])) : A("", !0),
         M("div", mn, [
-          g(t).content ? P(c.$slots, "content", { key: 0 }) : A("", !0),
-          P(c.$slots, "default")
+          g(t).content ? B(c.$slots, "content", { key: 0 }) : A("", !0),
+          B(c.$slots, "default")
         ]),
-        g(t).footer ? (r(), i("div", hn, [
-          P(c.$slots, "footer", me(fe(a)))
+        g(t).footer ? (r(), d("div", hn, [
+          B(c.$slots, "footer", me(fe(a)))
         ])) : A("", !0)
       ])
     ], 2));
@@ -2618,14 +2656,14 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   props: {
     steps: {},
     use_previous_next: { type: Boolean, default: !0 },
-    size: { default: Z.normal },
+    size: { default: K.normal },
     starting_index: {},
-    orientation: { default: Pe.default }
+    orientation: { default: Be.default }
   },
   emits: ["done", "changedStep"],
   setup(e, { expose: l, emit: t }) {
-    const a = ie(), s = Q(z), o = k(() => L("Pagination.Previous", s)), n = k(() => L("Pagination.Next", s)), d = k(() => L("Wizard.Done", s)), c = e, u = t, p = x(c.starting_index ?? 0);
-    return j(p, (h, _) => {
+    const a = ue(), s = Q(E), o = k(() => L("Pagination.Previous", s)), n = k(() => L("Pagination.Next", s)), i = k(() => L("Wizard.Done", s)), c = e, u = t, p = P(c.starting_index ?? 0);
+    return U(p, (h, _) => {
       u("changedStep", h);
     }), l({
       /**
@@ -2636,44 +2674,44 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       moveToStep: (h) => {
         p.value = h;
       }
-    }), (h, _) => (r(), i("div", {
-      class: F(["steps-container", c.orientation === g(Pe).default ? "" : `${c.orientation}`])
+    }), (h, _) => (r(), d("div", {
+      class: F(["steps-container", c.orientation === g(Be).default ? "" : `${c.orientation}`])
     }, [
       M("ul", {
-        class: F(["steps", c.size === g(Z).normal ? "" : `is-${c.size}`])
+        class: F(["steps", c.size === g(K).normal ? "" : `is-${c.size}`])
       }, [
-        (r(!0), i(C, null, W(c.steps, (m, y) => (r(), i("li", {
+        (r(!0), d(C, null, W(c.steps, (m, y) => (r(), d("li", {
           class: F(["step-item", y < p.value ? "is-completed" : "", y === p.value ? "is-active" : "", m.type ? `is-${m.type}` : ""])
         }, [
           M("div", {
             class: "step-marker is-clickable",
             onClick: (b) => u("changedStep", y)
           }, [
-            m.icon ? (r(), R(K, {
+            m.icon ? (r(), R(Y, {
               key: 0,
               icon: m.icon
-            }, null, 8, ["icon"])) : (r(), i("span", gn, T(y + 1), 1))
+            }, null, 8, ["icon"])) : (r(), d("span", gn, T(y + 1), 1))
           ], 8, vn),
-          m.title !== "" ? (r(), i("div", yn, [
+          m.title !== "" ? (r(), d("div", yn, [
             M("p", fn, T(m.title), 1),
-            m.description ? (r(), i("p", _n, T(m.description), 1)) : A("", !0)
+            m.description ? (r(), d("p", _n, T(m.description), 1)) : A("", !0)
           ])) : A("", !0)
         ], 2))), 256))
       ], 2),
       M("div", kn, [
-        (r(!0), i(C, null, W(c.steps, (m, y) => (r(), i(C, null, [
-          g(a)[m.name] ? (r(), i("div", {
+        (r(!0), d(C, null, W(c.steps, (m, y) => (r(), d(C, null, [
+          g(a)[m.name] ? (r(), d("div", {
             key: 0,
             class: F(["step-content", y === p.value ? "is-active" : ""])
           }, [
-            P(h.$slots, m.name)
+            B(h.$slots, m.name)
           ], 2)) : A("", !0)
         ], 64))), 256))
       ]),
       M("div", Sn, [
-        c.use_previous_next ? (r(), i(C, { key: 0 }, [
+        c.use_previous_next ? (r(), d(C, { key: 0 }, [
           M("div", Mn, [
-            B(te, {
+            x(te, {
               title: o.value,
               disabled: p.value === 0,
               onClick: _[0] || (_[0] = () => {
@@ -2681,8 +2719,8 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
               })
             }, null, 8, ["title", "disabled"])
           ]),
-          p.value + 1 < c.steps.length ? (r(), i("div", Dn, [
-            B(te, {
+          p.value + 1 < c.steps.length ? (r(), d("div", Dn, [
+            x(te, {
               title: n.value,
               disabled: !(c.steps[p.value].is_valid === void 0 || c.steps[p.value].is_valid),
               onClick: _[1] || (_[1] = () => {
@@ -2690,19 +2728,19 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
               })
             }, null, 8, ["title", "disabled"])
           ])) : A("", !0),
-          p.value + 1 === c.steps.length ? (r(), i("div", $n, [
-            B(te, {
-              title: d.value,
+          p.value + 1 === c.steps.length ? (r(), d("div", $n, [
+            x(te, {
+              title: i.value,
               disabled: !(c.steps[p.value].is_valid === void 0 || c.steps[p.value].is_valid),
               onClick: _[2] || (_[2] = () => {
                 u("done");
               })
             }, null, 8, ["title", "disabled"])
           ])) : A("", !0)
-        ], 64)) : (r(), i(C, { key: 1 }, [
-          g(a).actions ? P(h.$slots, "actions", { key: 0 }) : A("", !0),
-          (r(!0), i(C, null, W(c.steps, (m, y) => (r(), i(C, null, [
-            g(a)[`actions-${m.name}`] && y === p.value ? P(h.$slots, `actions-${m.name}`, { key: 0 }) : A("", !0)
+        ], 64)) : (r(), d(C, { key: 1 }, [
+          g(a).actions ? B(h.$slots, "actions", { key: 0 }) : A("", !0),
+          (r(!0), d(C, null, W(c.steps, (m, y) => (r(), d(C, null, [
+            g(a)[`actions-${m.name}`] && y === p.value ? B(h.$slots, `actions-${m.name}`, { key: 0 }) : A("", !0)
           ], 64))), 256))
         ], 64))
       ])
@@ -2713,14 +2751,14 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   Banner: ks,
   Box: Vt,
   Breadcrumbs: $s,
-  Card: Ut,
+  Card: jt,
   ColumnContainer: st,
   Footer: Ts,
   Level: Rs,
   List: Rt,
-  Media: Us,
+  Media: js,
   Modal: Gs,
-  ModalCard: jt,
+  ModalCard: Ut,
   Panel: tn,
   Section: an,
   Slideout: bn,
@@ -2740,11 +2778,11 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["valueChanged"],
   setup(e, { expose: l, emit: t }) {
-    const a = x(), s = e, o = t, n = x(!1), d = x(null), c = x(null), u = oa({
+    const a = P(), s = e, o = t, n = P(!1), i = P(null), c = P(null), u = oa({
       Month: (/* @__PURE__ */ new Date()).getMonth(),
       Year: (/* @__PURE__ */ new Date()).getFullYear(),
       Today: (/* @__PURE__ */ new Date()).getDate()
-    }), p = Q(z), h = ye({
+    }), p = Q(E), h = ye({
       Sun: k(() => L("Date.Weekdays.Sun", p)),
       Mon: k(() => L("Date.Weekdays.Mon", p)),
       Tue: k(() => L("Date.Weekdays.Tue", p)),
@@ -2752,17 +2790,17 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       Thu: k(() => L("Date.Weekdays.Thu", p)),
       Fri: k(() => L("Date.Weekdays.Fri", p)),
       Sat: k(() => L("Date.Weekdays.Sat", p))
-    }), _ = k(() => d.value !== null && (s.includeTime ? Ne : $e).test(d.value)), m = () => {
-      if (d.value === null || d.value === "")
+    }), _ = k(() => i.value !== null && (s.includeTime ? Ne : $e).test(i.value)), m = () => {
+      if (i.value === null || i.value === "")
         return null;
       {
-        if (!Ne.test(d.value) && s.includeTime)
+        if (!Ne.test(i.value) && s.includeTime)
           return null;
-        if (!s.includeTime && !$e.test(d.value))
+        if (!s.includeTime && !$e.test(i.value))
           return null;
-        if ($e.test(d.value) && s.includeTime)
+        if ($e.test(i.value) && s.includeTime)
           return null;
-        let S = s.includeTime ? Ne.exec(d.value) : $e.exec(d.value);
+        let S = s.includeTime ? Ne.exec(i.value) : $e.exec(i.value);
         return new Date(
           parseInt(S[3]),
           parseInt(S[2]) - 1,
@@ -2774,14 +2812,14 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
         );
       }
     };
-    j(d, (S) => {
+    U(i, (S) => {
       if (S === null)
         o("valueChanged", { name: s.name, value: null }), u.Month = (/* @__PURE__ */ new Date()).getMonth(), u.Year = (/* @__PURE__ */ new Date()).getFullYear();
       else if (!$e.test(S) && !Ne.test(S)) {
         S = S.replaceAll(/[^0-9]/g, "");
         for (var O = [], V = 0; V < S.length; V += 2)
           V == 4 ? (O.push(S.substring(V, Math.min(S.length - V, 4) + V)), V += 2) : O.push(S.substring(V, Math.min(S.length - V, 2) + V));
-        O.length > 0 && (/^([0-1]|(0[1-9])|(1[0-2]))$/.test(O[0]) || O.splice(0), O.length > 1 && (/^[0-3]/.test(O[1]) ? /^(01|03|05|07|08|10|12)$/.test(O[0]) ? /^([0-3]|(0[1-9])|([1-2][0-9])|(3[0-1]))$/.test(O[1]) || O.splice(1) : /^(02|04|06|09|11)$/.test(O[0]) ? /^([0-3]|(0[1-9])|([1-2][0-9])|(30))$/.test(O[1]) || O.splice(1) : /^([0-2]|(0[1-9])|([1-2][0-9]))$/.test(O[1]) || O.splice(1) : O.splice(1)), O.length > 3 && (/^([0-2]|([0-1][0-9])|(2[0-3]))$/.test(O[3]) || O.splice(3)), O.length > 4 && (/^[0-5][0-9]?$/.test(O[4]) || O.splice(4))), S = O.join(""), !s.includeTime && S.length > 8 && (S = S.substring(0, 8)), S.length >= 2 && (S = S.substring(0, 2) + "-" + (S.length > 2 ? S.substring(2) : "")), S.length >= 5 && (S = S.substring(0, 5) + "-" + (S.length > 5 ? S.substring(5) : "")), S.length >= 9 && s.includeTime && (S = S.substring(0, 9) + " " + (S.length > 9 ? S.substring(9) : "")), S.length >= 11 && (S = S.substring(0, 11) + ":" + (S.length > 11 ? S.substring(11) : "")), d.value = S;
+        O.length > 0 && (/^([0-1]|(0[1-9])|(1[0-2]))$/.test(O[0]) || O.splice(0), O.length > 1 && (/^[0-3]/.test(O[1]) ? /^(01|03|05|07|08|10|12)$/.test(O[0]) ? /^([0-3]|(0[1-9])|([1-2][0-9])|(3[0-1]))$/.test(O[1]) || O.splice(1) : /^(02|04|06|09|11)$/.test(O[0]) ? /^([0-3]|(0[1-9])|([1-2][0-9])|(30))$/.test(O[1]) || O.splice(1) : /^([0-2]|(0[1-9])|([1-2][0-9]))$/.test(O[1]) || O.splice(1) : O.splice(1)), O.length > 3 && (/^([0-2]|([0-1][0-9])|(2[0-3]))$/.test(O[3]) || O.splice(3)), O.length > 4 && (/^[0-5][0-9]?$/.test(O[4]) || O.splice(4))), S = O.join(""), !s.includeTime && S.length > 8 && (S = S.substring(0, 8)), S.length >= 2 && (S = S.substring(0, 2) + "-" + (S.length > 2 ? S.substring(2) : "")), S.length >= 5 && (S = S.substring(0, 5) + "-" + (S.length > 5 ? S.substring(5) : "")), S.length >= 9 && s.includeTime && (S = S.substring(0, 9) + " " + (S.length > 9 ? S.substring(9) : "")), S.length >= 11 && (S = S.substring(0, 11) + ":" + (S.length > 11 ? S.substring(11) : "")), i.value = S;
       } else {
         var ae = m();
         _ && o("valueChanged", { name: s.name, value: ae }), u.Month = (ae == null ? void 0 : ae.getMonth()) ?? (/* @__PURE__ */ new Date()).getMonth(), u.Year = (ae == null ? void 0 : ae.getFullYear()) ?? (/* @__PURE__ */ new Date()).getFullYear();
@@ -2814,47 +2852,47 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
        * @returns void
        */
       setValue: function(S) {
-        S === null ? d.value = null : d.value = ke(S, p, `dd-MM-yyyy${s.includeTime ? " HH:mm" : ""}`);
+        S === null ? i.value = null : i.value = ke(S, p, `dd-MM-yyyy${s.includeTime ? " HH:mm" : ""}`);
       }
     });
     const J = (S) => {
-      S.value == null ? d.value != null && (d.value = d.value.split(" ")[0]) : d.value != null ? d.value = d.value.split(" ")[0] + " " + S.value : d.value = `${ee((u.Month == (/* @__PURE__ */ new Date()).getMonth() ? (/* @__PURE__ */ new Date()).getDate() : 1).toString(), "0", 2)}-${ee((u.Month + 1).toString(), "0", 2)}-${u.Year} ${S.value}`;
+      S.value == null ? i.value != null && (i.value = i.value.split(" ")[0]) : i.value != null ? i.value = i.value.split(" ")[0] + " " + S.value : i.value = `${ee((u.Month == (/* @__PURE__ */ new Date()).getMonth() ? (/* @__PURE__ */ new Date()).getDate() : 1).toString(), "0", 2)}-${ee((u.Month + 1).toString(), "0", 2)}-${u.Year} ${S.value}`;
     }, N = (S) => {
       var V;
       if (!S.Disabled && !S.isSelected)
-        if (d.value === null)
-          d.value = `${ee(S.Number.toString(), "0", 2)}-${ee((u.Month + 1).toString(), "0", 2)}-${u.Year}` + (s.includeTime ? ((V = a.value) == null ? void 0 : V.getValue()) == null ? "" : " " + a.value.getValue() : "");
+        if (i.value === null)
+          i.value = `${ee(S.Number.toString(), "0", 2)}-${ee((u.Month + 1).toString(), "0", 2)}-${u.Year}` + (s.includeTime ? ((V = a.value) == null ? void 0 : V.getValue()) == null ? "" : " " + a.value.getValue() : "");
         else {
-          var O = d.value.split(" ");
-          O[0] = `${ee(S.Number.toString(), "0", 2)}-${ee((u.Month + 1).toString(), "0", 2)}-${u.Year}`, d.value = `${O[0]}${O.length > 1 ? " " + O[1] : ""}`;
+          var O = i.value.split(" ");
+          O[0] = `${ee(S.Number.toString(), "0", 2)}-${ee((u.Month + 1).toString(), "0", 2)}-${u.Year}`, i.value = `${O[0]}${O.length > 1 ? " " + O[1] : ""}`;
         }
     }, w = () => {
-      d.value = c.value, n.value = !1;
-    }, U = () => {
-      s.disabled || (c.value = d.value, n.value = !0);
+      i.value = c.value, n.value = !1;
+    }, j = () => {
+      s.disabled || (c.value = i.value, n.value = !0);
     }, f = () => {
-      s.disabled || (d.value = null);
+      s.disabled || (i.value = null);
     }, G = (S) => {
       u.Month + S == -1 ? (u.Year = u.Year - 1, u.Month = 11) : u.Month + S == 12 ? (u.Year = u.Year + 1, u.Month = 0) : u.Month += S;
     };
-    return (S, O) => (r(), i("div", null, [
+    return (S, O) => (r(), d("div", null, [
       M("div", Nn, [
         H(M("input", {
           class: "input is-expanded",
           name: s.name,
           id: s.inputId,
           type: "text",
-          "onUpdate:modelValue": O[0] || (O[0] = (V) => d.value = V),
+          "onUpdate:modelValue": O[0] || (O[0] = (V) => i.value = V),
           placeholder: "DD-MM-YYYY" + (s.includeTime ? " HH:mm" : ""),
           disabled: s.disabled
         }, null, 8, Fn), [
-          [De, d.value]
+          [De, i.value]
         ]),
         M("span", {
           class: "icon is-small is-left is-clickable",
-          onClick: U
+          onClick: j
         }, [
-          B(g(K), {
+          x(g(Y), {
             icon: "calendar-alt",
             size: g(oe).xlarge
           }, null, 8, ["size"])
@@ -2863,33 +2901,33 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
           class: "icon is-small is-right is-clickable",
           onClick: f
         }, [
-          B(g(K), {
+          x(g(Y), {
             icon: "window-close",
             size: g(oe).xlarge
           }, null, 8, ["size"])
         ])
       ]),
-      B(g(jt), {
+      x(g(Ut), {
         show: n.value,
         icon: "calendar-alt"
       }, {
-        header: E(() => [
-          B(g(st), {
+        header: z(() => [
+          x(g(st), {
             class: "card-header-title",
             columns: [{ name: "left" }, { name: "title", class: "has-text-centered" }, { name: "right", class: "has-text-right" }]
           }, {
-            left: E(() => [
-              B(g(K), {
+            left: z(() => [
+              x(g(Y), {
                 class: "is-clickable",
                 icon: "arrow-circle-left",
                 onClick: O[1] || (O[1] = (V) => G(-1))
               })
             ]),
-            title: E(() => [
-              q(T(y.value) + " " + T(u.Year), 1)
+            title: z(() => [
+              X(T(y.value) + " " + T(u.Year), 1)
             ]),
-            right: E(() => [
-              B(g(K), {
+            right: z(() => [
+              x(g(Y), {
                 class: "is-clickable",
                 icon: "arrow-circle-right",
                 onClick: O[2] || (O[2] = (V) => G(1))
@@ -2898,9 +2936,9 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
             _: 1
           })
         ]),
-        content: E(() => [
-          B(g(nt), { full_width: !0 }, xe({
-            thead: E(() => [
+        content: z(() => [
+          x(g(nt), { full_width: !0 }, Pe({
+            thead: z(() => [
               M("tr", null, [
                 M("th", null, T(g(h).Sun), 1),
                 M("th", null, T(g(h).Mon), 1),
@@ -2911,9 +2949,9 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
                 M("th", null, T(g(h).Sat), 1)
               ])
             ]),
-            tbody: E(() => [
-              (r(!0), i(C, null, W(b.value, (V) => (r(), i("tr", null, [
-                (r(!0), i(C, null, W(V, (ae) => (r(), i("td", {
+            tbody: z(() => [
+              (r(!0), d(C, null, W(b.value, (V) => (r(), d("tr", null, [
+                (r(!0), d(C, null, W(V, (ae) => (r(), d("td", {
                   class: F(["is-unselectable has-text-centered", ae.Disabled ? "has-text-primary-dark has-background-primary-light" : "is-clickable", ae.isToday ? "has-background-primary-dark has-text-primary-light" : "", ae.isSelected ? "has-background-success-dark has-text-success-light" : ""]),
                   onClick: (ze) => N(ae)
                 }, T(ae.Number), 11, wn))), 256))
@@ -2923,10 +2961,10 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
           }, [
             s.includeTime ? {
               name: "tfoot",
-              fn: E(() => [
+              fn: z(() => [
                 M("tr", null, [
                   M("td", On, [
-                    B(lt, {
+                    x(lt, {
                       ref: a.value,
                       name: `${s.name}-time`,
                       disabled: s.disabled,
@@ -2939,13 +2977,13 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
             } : void 0
           ]), 1024)
         ]),
-        footer: E(({ addon_class: V }) => [
-          B(g(Pt), {
+        footer: z(({ addon_class: V }) => [
+          x(g(Bt), {
             class: F(V),
             disabled: !_.value,
             onClick: O[3] || (O[3] = (ae) => n.value = !1)
           }, null, 8, ["class", "disabled"]),
-          B(g(Tt), {
+          x(g(Tt), {
             class: F(V),
             onClick: w
           }, null, 8, ["class"])
@@ -2963,10 +3001,10 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   emits: ["valueChanged"],
   async setup(e, { expose: l, emit: t }) {
     let a, s;
-    const o = va(z);
-    Be([`${o}summernote-lite.min.css`]), [a, s] = ra(() => import(`${o}summernote`)), await a, s();
-    const n = x(null), d = e, c = t;
-    return j(() => d.disabled, (h) => {
+    const o = va(E);
+    xe([`${o}summernote-lite.min.css`]), [a, s] = ra(() => import(`${o}summernote`)), await a, s();
+    const n = P(null), i = e, c = t;
+    return U(() => i.disabled, (h) => {
       n.value != null && $(n.value).summernote(h ? "disable" : "enable");
     }), l({
       /**
@@ -2987,13 +3025,13 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
         height: 400,
         callbacks: {
           onChange: function(h) {
-            c("valueChanged", { name: d.name, value: h });
+            c("valueChanged", { name: i.name, value: h });
           }
         }
-      }), (d.disabled ?? !1) && $(n.value).summernote("disable");
-    }), ua(() => {
+      }), (i.disabled ?? !1) && $(n.value).summernote("disable");
+    }), ia(() => {
       $(n.value).summernote("destroy");
-    }), (h, _) => (r(), i("div", {
+    }), (h, _) => (r(), d("div", {
       class: "summernote",
       ref_key: "snote",
       ref: n
@@ -3007,10 +3045,10 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
     translate: {}
   },
   setup(e) {
-    const l = e, t = de(l, z);
+    const l = e, t = de(l, E);
     return (a, s) => (r(), R(pe(l.subtype), null, {
-      default: E(() => [
-        q(T(g(t)(l.label ?? "")), 1)
+      default: z(() => [
+        X(T(g(t)(l.label ?? "")), 1)
       ]),
       _: 1
     }));
@@ -3022,8 +3060,8 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["valueChanged"],
   setup(e, { expose: l, emit: t }) {
-    const a = e, s = t, o = x(null);
-    return j(o, (c) => s("valueChanged", { name: a.name, value: c })), l({
+    const a = e, s = t, o = P(null);
+    return U(o, (c) => s("valueChanged", { name: a.name, value: c })), l({
       /**
        * Gets the current value 
        */
@@ -3037,7 +3075,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       setValue: (c) => {
         o.value = c;
       }
-    }), (c, u) => H((r(), i("input", {
+    }), (c, u) => H((r(), d("input", {
       type: "hidden",
       name: a.name,
       "onUpdate:modelValue": u[0] || (u[0] = (p) => o.value = p)
@@ -3045,7 +3083,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       [De, o.value]
     ]);
   }
-}), Pn = ["id", "name", "disabled", "min", "max", "step"], Yt = /* @__PURE__ */ D({
+}), Bn = ["id", "name", "disabled", "min", "max", "step"], Yt = /* @__PURE__ */ D({
   __name: "number",
   props: {
     min: {},
@@ -3057,15 +3095,15 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["valueChanged"],
   setup(e, { expose: l, emit: t }) {
-    const a = e, s = t, o = x(null), n = () => {
+    const a = e, s = t, o = P(null), n = () => {
       if (o.value === "" || o.value === null)
         return null;
       let c = parseInt(o.value);
       return a.min !== void 0 && c < a.min * 1 || a.max !== void 0 && c > a.max * 1 ? null : c;
-    }, d = (c) => {
+    }, i = (c) => {
       o.value = c === null ? "" : c.toString();
     };
-    return j([o], (c) => s("valueChanged", { name: a.name, value: n() })), l({
+    return U([o], (c) => s("valueChanged", { name: a.name, value: n() })), l({
       /**
        * Gets the current value 
        */
@@ -3076,8 +3114,8 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
        * @param value number|string|null
        * @returns void
        */
-      setValue: d
-    }), (c, u) => H((r(), i("input", {
+      setValue: i
+    }), (c, u) => H((r(), d("input", {
       type: "number",
       class: "input",
       id: a.inputId,
@@ -3087,11 +3125,11 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       min: a.min,
       max: a.max,
       step: a.step
-    }, null, 8, Pn)), [
+    }, null, 8, Bn)), [
       [De, o.value]
     ]);
   }
-}), xn = ["id"], Ue = /* @__PURE__ */ D({
+}), Pn = ["id"], je = /* @__PURE__ */ D({
   __name: "paragraph",
   props: {
     label: {},
@@ -3100,12 +3138,12 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
     translate: { type: Function }
   },
   setup(e) {
-    const l = e, t = de(l, z);
-    return (a, s) => (r(), i("p", {
+    const l = e, t = de(l, E);
+    return (a, s) => (r(), d("p", {
       id: l.inputId
-    }, T(g(t)(l.label ?? "")), 9, xn));
+    }, T(g(t)(l.label ?? "")), 9, Pn));
   }
-}), Bn = ["for"], Cn = ["name", "value", "disabled", "id"], qt = /* @__PURE__ */ D({
+}), xn = ["for"], Cn = ["name", "value", "disabled", "id"], qt = /* @__PURE__ */ D({
   __name: "radio-group",
   props: {
     values: { type: [Array, Promise, Function, null] },
@@ -3116,8 +3154,8 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["valueChanged"],
   setup(e, { expose: l, emit: t }) {
-    const a = e, s = Q(z), o = k(() => L("Form.Error", s)), n = t, d = de(a, z), c = x(null), u = () => c.value;
-    j(c, (y) => {
+    const a = e, s = Q(E), o = k(() => L("Form.Error", s)), n = t, i = de(a, E), c = P(null), u = () => c.value;
+    U(c, (y) => {
       n("valueChanged", { name: a.name, value: u() });
     });
     const p = k(async () => {
@@ -3134,7 +3172,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       }
     }), h = (y) => {
       c.value = y;
-    }, { hiddenValues: _, disabledValues: m } = tt(a.name, z);
+    }, { hiddenValues: _, disabledValues: m } = tt(a.name, E);
     return l({
       /**
        * Gets the current value 
@@ -3147,10 +3185,10 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
        * @returns void
        */
       setValue: h
-    }), (y, b) => (r(), i("div", null, [
-      B(be, { promise: p.value }, {
-        default: E(({ response: v }) => [
-          y.values != null ? (r(!0), i(C, { key: 0 }, W(v, (J, N) => H((r(), i("label", {
+    }), (y, b) => (r(), d("div", null, [
+      x(be, { promise: p.value }, {
+        default: z(({ response: v }) => [
+          y.values != null ? (r(!0), d(C, { key: 0 }, W(v, (J, N) => H((r(), d("label", {
             class: "radio is-block",
             for: `${a.inputId}-${N}`
           }, [
@@ -3162,14 +3200,14 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
               disabled: a.disabled || g(m).some((w) => w === J.value.toString()),
               id: `${a.inputId}-${N}`
             }, null, 8, Cn),
-            q(" " + T(g(d)(J.label)), 1)
-          ], 8, Bn)), [
+            X(" " + T(g(i)(J.label)), 1)
+          ], 8, xn)), [
             [ne, !g(_).some((w) => w === J.value.toString())]
           ])), 256)) : A("", !0)
         ]),
-        rejected: E(() => [
-          B(g(he), {
-            type: g(ue).danger,
+        rejected: z(() => [
+          x(g(he), {
+            type: g(ie).danger,
             message: o.value
           }, null, 8, ["type", "message"])
         ]),
@@ -3177,7 +3215,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       }, 8, ["promise"])
     ]));
   }
-}), En = { class: "select" }, zn = ["id", "name", "multiple", "disabled"], Rn = ["value", "selected", "disabled"], In = ["label", "disabled"], Wn = ["value", "selected", "disabled"], Zt = (e, l, t) => {
+}), En = ["id", "name", "multiple", "disabled"], zn = ["value", "selected", "disabled"], Rn = ["label", "disabled"], In = ["value", "selected", "disabled"], Zt = (e, l, t) => {
   let a = {
     label: e === null ? l.label : `${e}->${l.label}`,
     values: [],
@@ -3198,25 +3236,25 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["valueChanged"],
   setup(e, { expose: l, emit: t }) {
-    const a = e, s = Q(z), o = k(() => L("Form.Error", s)), n = t, d = de(a, z), c = x(null), u = x(!1), p = k(async () => {
+    const a = e, s = Q(E), o = k(() => L("Form.Error", s)), n = t, i = de(a, E), c = P(null), u = P(!1), p = k(async () => {
       var b;
       if (a.values == null)
         return [];
       {
         let v = await at(a.values), J = v.filter((w) => w.selected).map((w) => w.value);
         v.some((w) => w.values !== void 0) && v.filter((w) => w.values !== void 0).forEach((w) => {
-          var U;
+          var j;
           J = J.concat(
-            (U = w.values) == null ? void 0 : U.filter((f) => f.selected).map((f) => f.value)
+            (j = w.values) == null ? void 0 : j.filter((f) => f.selected).map((f) => f.value)
           );
         }), c.value === null || c.value.length === 0 ? c.value = null : (v = v.map((w) => {
-          let U = w;
-          return U.values !== void 0 && (U.values = U.values.map((f) => {
+          let j = w;
+          return j.values !== void 0 && (j.values = j.values.map((f) => {
             var G;
             return f.selected = (G = c.value) == null ? void 0 : G.some((S) => S === f.value), f;
-          })), U;
+          })), j;
         }), (b = c.value) == null || b.forEach((w) => {
-          v.some((U) => U.value !== void 0 && U.value === w || U.values !== void 0 && U.values.some((f) => f.value === w)) || v.push({
+          v.some((j) => j.value !== void 0 && j.value === w || j.values !== void 0 && j.values.some((f) => f.value === w)) || v.push({
             label: w,
             value: w
           });
@@ -3227,14 +3265,14 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
         }), N;
       }
     }), h = () => c.value == null || c.value.length == 0 ? null : a.multiple ? c.value.slice() : Array.isArray(c.value) ? c.value[0] : c.value;
-    j(c, () => {
+    U(c, () => {
       u.value || n("valueChanged", { name: a.name, value: h() });
-    }), j(u, (b) => {
+    }), U(u, (b) => {
       b || n("valueChanged", { name: a.name, value: h() });
     });
     const _ = (b) => {
       u.value = !0, b != null ? c.value = Array.isArray(b) ? b : [b] : a.multiple ? c.value = [] : c.value = null, u.value = !1;
-    }, { hiddenValues: m, disabledValues: y } = tt(a.name, z);
+    }, { hiddenValues: m, disabledValues: y } = tt(a.name, E);
     return l({
       /**
        * Gets the current value 
@@ -3247,12 +3285,14 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
        * @returns void
        */
       setValue: _
-    }), (b, v) => (r(), i("div", En, [
+    }), (b, v) => (r(), d("div", {
+      class: F({ select: !0, "is-multiple": a.multiple })
+    }, [
       p.value != null ? (r(), R(be, {
         key: 0,
         promise: p.value
       }, {
-        default: E(({ response: J }) => [
+        default: z(({ response: J }) => [
           H(M("select", {
             id: a.inputId,
             name: a.name,
@@ -3261,46 +3301,46 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
             "onUpdate:modelValue": v[0] || (v[0] = (N) => c.value = N),
             disabled: a.disabled
           }, [
-            J != null ? (r(!0), i(C, { key: 0 }, W(J, (N) => (r(), i(C, null, [
-              N.values === void 0 ? H((r(), i("option", {
+            J != null ? (r(!0), d(C, { key: 0 }, W(J, (N) => (r(), d(C, null, [
+              N.values === void 0 ? H((r(), d("option", {
                 key: 0,
                 value: N.value,
                 selected: N.selected,
                 disabled: g(y).some((w) => w === N.value.toString())
-              }, T(g(d)(N.label)), 9, Rn)), [
+              }, T(g(i)(N.label)), 9, zn)), [
                 [ne, !g(m).some((w) => w === N.value.toString())]
               ]) : A("", !0),
-              N.values !== void 0 ? H((r(), i("optgroup", {
+              N.values !== void 0 ? H((r(), d("optgroup", {
                 key: 1,
-                label: g(d)(N.label),
+                label: g(i)(N.label),
                 disabled: g(y).some((w) => w === N.value.toString())
               }, [
-                (r(!0), i(C, null, W(N.values, (w) => H((r(), i("option", {
+                (r(!0), d(C, null, W(N.values, (w) => H((r(), d("option", {
                   value: w.value,
                   selected: w.selected,
-                  disabled: g(y).some((U) => U === w.value.toString())
-                }, T(g(d)(w.label)), 9, Wn)), [
-                  [ne, !g(m).some((U) => U === w.value.toString())]
+                  disabled: g(y).some((j) => j === w.value.toString())
+                }, T(g(i)(w.label)), 9, In)), [
+                  [ne, !g(m).some((j) => j === w.value.toString())]
                 ])), 256))
-              ], 8, In)), [
+              ], 8, Rn)), [
                 [ne, !g(m).some((w) => w === N.value.toString())]
               ]) : A("", !0)
             ], 64))), 256)) : A("", !0)
-          ], 10, zn), [
-            [ia, c.value]
+          ], 10, En), [
+            [ua, c.value]
           ])
         ]),
-        rejected: E(() => [
-          B(g(he), {
-            type: g(ue).danger,
+        rejected: z(() => [
+          x(g(he), {
+            type: g(ie).danger,
             message: o.value
           }, null, 8, ["type", "message"])
         ]),
         _: 1
       }, 8, ["promise"])) : A("", !0)
-    ]));
+    ], 2));
   }
-}), Ln = { class: "field" }, Vn = ["id", "name", "disabled"], Un = ["for"], jn = {
+}), Wn = { class: "field" }, Ln = ["id", "name", "disabled"], Vn = ["for"], jn = {
   key: 0,
   class: "help is-danger"
 }, Xt = /* @__PURE__ */ D({
@@ -3315,8 +3355,8 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["valueChanged"],
   setup(e, { expose: l, emit: t }) {
-    const a = e, s = t, o = de(a, z), n = x(!1);
-    return j(n, (u) => s("valueChanged", { name: a.name, value: u })), l({
+    const a = e, s = t, o = de(a, E), n = P(!1);
+    return U(n, (u) => s("valueChanged", { name: a.name, value: u })), l({
       /**
        * Gets the current value 
        */
@@ -3330,7 +3370,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       setValue: (u) => {
         n.value = u;
       }
-    }), (u, p) => (r(), i("div", Ln, [
+    }), (u, p) => (r(), d("div", Wn, [
       H(M("input", {
         type: "checkbox",
         class: "switch is-rounded",
@@ -3338,18 +3378,18 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
         name: a.name,
         "onUpdate:modelValue": p[0] || (p[0] = (h) => n.value = h),
         disabled: a.disabled
-      }, null, 8, Vn), [
-        [je, n.value]
+      }, null, 8, Ln), [
+        [Ue, n.value]
       ]),
       M("label", {
         for: u.$props.inputId
       }, [
-        q(T(g(o)(a.label)) + " ", 1),
-        a.required ? (r(), i("span", jn, "*")) : A("", !0)
-      ], 8, Un)
+        X(T(g(o)(a.label)) + " ", 1),
+        a.required ? (r(), d("span", jn, "*")) : A("", !0)
+      ], 8, Vn)
     ]));
   }
-}), Gn = ["id", "type", "name", "disabled", "maxlength"], ea = /* @__PURE__ */ D({
+}), Un = ["id", "type", "name", "disabled", "maxlength"], ea = /* @__PURE__ */ D({
   __name: "text",
   props: {
     subtype: { default: "text" },
@@ -3360,8 +3400,8 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["valueChanged"],
   setup(e, { expose: l, emit: t }) {
-    const a = e, s = t, o = x(null);
-    return j(o, (c) => s("valueChanged", { name: a.name, value: c })), l({
+    const a = e, s = t, o = P(null);
+    return U(o, (c) => s("valueChanged", { name: a.name, value: c })), l({
       /**
        * Gets the current value 
        */
@@ -3375,7 +3415,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       setValue: (c) => {
         o.value = c;
       }
-    }), (c, u) => H((r(), i("input", {
+    }), (c, u) => H((r(), d("input", {
       id: a.inputId,
       type: c.subtype,
       class: "input",
@@ -3383,11 +3423,11 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       disabled: c.disabled,
       maxlength: a.maxlength,
       "onUpdate:modelValue": u[0] || (u[0] = (p) => o.value = p)
-    }, null, 8, Gn)), [
+    }, null, 8, Un)), [
       [da, o.value]
     ]);
   }
-}), Hn = ["id", "name", "rows", "cols", "maxlength", "disabled"], ta = 9, Se = String.fromCharCode(ta), Fe = `
+}), Gn = ["id", "name", "rows", "cols", "maxlength", "disabled"], ta = 9, Se = String.fromCharCode(ta), Fe = `
 `, aa = /* @__PURE__ */ D({
   __name: "textarea",
   props: {
@@ -3401,11 +3441,11 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["valueChanged"],
   setup(e, { expose: l, emit: t }) {
-    const a = e, s = t, o = x(null);
-    j(o, (u) => {
+    const a = e, s = t, o = P(null);
+    U(o, (u) => {
       s("valueChanged", { name: a.name, value: u });
     });
-    const n = () => o.value, d = (u) => {
+    const n = () => o.value, i = (u) => {
       o.value = u;
     };
     l({
@@ -3419,7 +3459,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
        * @param value string|null
        * @returns void
        */
-      setValue: d
+      setValue: i
     });
     const c = (u) => {
       if (a.supportsTab) {
@@ -3439,14 +3479,14 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
                   u.shiftKey && N.startsWith(Se) ? N = N.substring(1) : u.shiftKey || (N = Se + N), b += N + (w === J.length - 1 ? "" : Fe);
                 }), v && (b += Fe);
               }
-              return p = m + b + y, h += b.length == 1 ? 1 : 0, _ = h + (b.length == 1 ? 0 : b.length), d(p), u.target.selectionStart = h, u.target.selectionEnd = _, u.target.focus(), u.preventDefault != null && u.preventDefault(), !1;
+              return p = m + b + y, h += b.length == 1 ? 1 : 0, _ = h + (b.length == 1 ? 0 : b.length), i(p), u.target.selectionStart = h, u.target.selectionEnd = _, u.target.focus(), u.preventDefault != null && u.preventDefault(), !1;
             default:
               return !0;
           }
       }
       return !0;
     };
-    return (u, p) => H((r(), i("textarea", {
+    return (u, p) => H((r(), d("textarea", {
       class: "textarea",
       id: a.inputId,
       name: a.name,
@@ -3456,11 +3496,11 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       disabled: a.disabled,
       onKeydown: c,
       "onUpdate:modelValue": p[0] || (p[0] = (h) => o.value = h)
-    }, null, 40, Hn)), [
+    }, null, 40, Gn)), [
       [De, o.value]
     ]);
   }
-}), Kn = (e) => {
+}), Hn = (e) => {
   let l = le.twelve;
   if (e !== void 0)
     switch (e) {
@@ -3511,17 +3551,17 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   emits: ["valueChanged", "buttonClicked"],
   setup(e, { expose: l, emit: t }) {
     const a = (m) => ({
-      size: Kn(m.form_columns),
+      size: Hn(m.form_columns),
       class: "field"
     }), s = e, o = t;
     let n = [];
-    const d = k(() => {
+    const i = k(() => {
       let m = [], y = [], b = 0;
-      return n = s.fields.map((v, J) => x(null)), s.fields.forEach((v, J) => {
+      return n = s.fields.map((v, J) => P(null)), s.fields.forEach((v, J) => {
         let N = v.form_columns ?? 12;
         b + N > 12 && (m.push(y), y = [], b = 0), y.push({ ...v, refIndex: J }), b += N, b === 12 && (m.push(y), y = [], b = 0);
       }), y.length > 0 && m.push(y), m;
-    }), c = z(Ee), u = z(et);
+    }), c = E(Ee), u = E(et);
     return l({
       /**
        * Called to set the value for a component in the row
@@ -3562,15 +3602,15 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
        * Called to see if all the copmonents in this row are valid.
        */
       isValid: () => !n.some((m) => !(m.value.isValid === void 0 || m.value.isValid()))
-    }), (m, y) => (r(), i("section", null, [
-      (r(!0), i(C, null, W(d.value, (b) => (r(), R(st, {
+    }), (m, y) => (r(), d("section", null, [
+      (r(!0), d(C, null, W(i.value, (b) => (r(), R(st, {
         modifiers: [g(Ke).gapless],
         columns: b.map((v) => a(v))
-      }, xe({ _: 2 }, [
+      }, Pe({ _: 2 }, [
         W(b.map((v, J) => ({ input: v, index: J })).filter((v) => !g(c).some((J) => J === v.input.name)), (v) => ({
           name: `col-${v.index}`,
-          fn: E(() => [
-            B(sa, {
+          fn: z(() => [
+            x(sa, {
               ref_for: !0,
               ref: (J) => g(n)[v.input.refIndex].value = J,
               input: v.input,
@@ -3583,7 +3623,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       ]), 1032, ["modifiers", "columns"]))), 256))
     ]));
   }
-}), Yn = /* @__PURE__ */ D({
+}), Kn = /* @__PURE__ */ D({
   __name: "subform",
   props: {
     fields: {},
@@ -3592,7 +3632,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["valueChanged", "buttonClicked"],
   setup(e, { expose: l, emit: t }) {
-    const a = e, s = t, o = x(null), n = z(Ee, ye(x([]))), d = k(() => n ? n.value.some((h) => h === a.name) : !1);
+    const a = e, s = t, o = P(null), n = E(Ee, ye(P([]))), i = k(() => n ? n.value.some((h) => h === a.name) : !1);
     return l({
       /**
        * Called to set the value of 1 or more copmonents inside this sub form
@@ -3615,8 +3655,8 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       id: a.name,
       name: a.name
     }, {
-      default: E(() => [
-        B(la, {
+      default: z(() => [
+        x(la, {
           fields: a.fields,
           ref_key: "inputs",
           ref: o,
@@ -3627,15 +3667,15 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
       ]),
       _: 1
     }, 8, ["id", "name"])), [
-      [ne, !d.value]
+      [ne, !i.value]
     ]);
   }
 });
 var I = /* @__PURE__ */ ((e) => (e.autocomplete = "autocomplete", e.button = "button", e.checkbox_group = "checkbox-group", e.checkbox = "checkbox", e.date = "date", e.full_editor = "full-editor", e.header = "header", e.hidden = "hidden", e.number = "number", e.paragraph = "paragraph", e.radio_group = "radio-group", e.select = "select", e.subform = "subform", e.switch = "switch", e.text = "text", e.textarea = "textarea", e.time = "time", e))(I || {});
-const qn = ["for"], Zn = {
+const Yn = ["for"], qn = {
   key: 0,
   class: "is-required-marker"
-}, Qn = { class: "control" }, Xn = [I.autocomplete, I.checkbox_group, I.date, I.number, I.radio_group, I.select, I.text, I.textarea, I.time, I.subform], eo = [I.subform, I.switch, I.select, I.radio_group, I.paragraph, I.header, I.checkbox_group, I.checkbox, I.button, I.autocomplete], sa = /* @__PURE__ */ D({
+}, Zn = { class: "control" }, Qn = [I.autocomplete, I.checkbox_group, I.date, I.number, I.radio_group, I.select, I.text, I.textarea, I.time, I.subform], Xn = [I.subform, I.switch, I.select, I.radio_group, I.paragraph, I.header, I.checkbox_group, I.checkbox, I.button, I.autocomplete], sa = /* @__PURE__ */ D({
   __name: "form-component",
   props: {
     input: {},
@@ -3644,7 +3684,7 @@ const qn = ["for"], Zn = {
   },
   emits: ["valueChanged", "buttonClicked"],
   setup(e, { expose: l, emit: t }) {
-    const a = x(null), s = ca(), o = t, n = e, d = de(n, z), c = ye(x(n.input.type)), u = k(() => {
+    const a = P(null), s = ca(), o = t, n = e, i = de(n, E), c = ye(P(n.input.type)), u = k(() => {
       let f = null;
       switch (n.input.type) {
         case I.autocomplete:
@@ -3675,7 +3715,7 @@ const qn = ["for"], Zn = {
           f = Yt;
           break;
         case I.paragraph:
-          f = Ue;
+          f = je;
           break;
         case I.radio_group:
           f = qt;
@@ -3696,7 +3736,7 @@ const qn = ["for"], Zn = {
           f = lt;
           break;
         case I.subform:
-          f = Yn;
+          f = Kn;
           break;
       }
       return f;
@@ -3706,9 +3746,9 @@ const qn = ["for"], Zn = {
     ce(() => {
       a.value !== null && n.input.value !== void 0 && n.input.value !== null && p(n.input.value);
     });
-    const h = k(() => n.input.disabled ?? n.disabled ?? !1), _ = k(() => n.input.name), m = k(() => n.input.name), y = k(() => Xn.some((f) => f === n.input.type) && n.input.label !== void 0 && n.input.label !== null), b = k(() => {
+    const h = k(() => n.input.disabled ?? n.disabled ?? !1), _ = k(() => n.input.name), m = k(() => n.input.name), y = k(() => Qn.some((f) => f === n.input.type) && n.input.label !== void 0 && n.input.label !== null), b = k(() => {
       let f = Object.assign({}, n.input ?? {});
-      if (delete f.type, y.value && delete f.label, f.className != null && delete f.className, f.form_columns != null && delete f.form_columns, eo.some((G) => G === n.input.type) && (f.translate = n.translate), f.disabled = n.disabled, f.additional !== void 0) {
+      if (delete f.type, y.value && delete f.label, f.className != null && delete f.className, f.form_columns != null && delete f.form_columns, Xn.some((G) => G === n.input.type) && (f.translate = n.translate), f.disabled = n.disabled, f.additional !== void 0) {
         for (const G in f.additional)
           f[G] = f.additional[G];
         delete f.additional;
@@ -3785,29 +3825,29 @@ const qn = ["for"], Zn = {
       label: n.input.label,
       ref_key: "inp",
       ref: a
-    }, null, 8, ["subtype", "label"])) : n.input.type === g(I).paragraph ? (r(), R(Ue, {
+    }, null, 8, ["subtype", "label"])) : n.input.type === g(I).paragraph ? (r(), R(je, {
       key: 1,
       name: n.input.name,
       label: n.input.label,
       "input-id": g(s),
       ref_key: "inp",
       ref: a
-    }, null, 8, ["name", "label", "input-id"])) : n.input.type === g(I).button ? (r(), R(Le, Y({ key: 2 }, b.value, {
+    }, null, 8, ["name", "label", "input-id"])) : n.input.type === g(I).button ? (r(), R(Le, q({ key: 2 }, b.value, {
       disabled: h.value,
       onButtonClicked: J,
       ref_key: "inp",
       ref: a
-    }), null, 16, ["disabled"])) : (r(), i(C, { key: 3 }, [
-      y.value ? (r(), i("label", {
+    }), null, 16, ["disabled"])) : (r(), d(C, { key: 3 }, [
+      y.value ? (r(), d("label", {
         key: 0,
         class: "label",
         for: g(s)
       }, [
-        q(T(g(d)(n.input.label ?? "")) + " ", 1),
-        n.input.required ? (r(), i("span", Zn, "*")) : A("", !0)
-      ], 8, qn)) : A("", !0),
-      M("div", Qn, [
-        (r(), R(pe(u.value), Y(b.value, {
+        X(T(g(i)(n.input.label ?? "")) + " ", 1),
+        n.input.required ? (r(), d("span", qn, "*")) : A("", !0)
+      ], 8, Yn)) : A("", !0),
+      M("div", Zn, [
+        (r(), R(pe(u.value), q(b.value, {
           onValueChanged: v,
           ref_key: "inp",
           ref: a
@@ -3815,10 +3855,10 @@ const qn = ["for"], Zn = {
       ])
     ], 64));
   }
-}), to = {
+}), eo = {
   onsubmit: "return false;",
   class: "container is-fullhd"
-}, ao = /* @__PURE__ */ D({
+}, to = /* @__PURE__ */ D({
   __name: "component-form",
   props: {
     elements: {},
@@ -3827,23 +3867,23 @@ const qn = ["for"], Zn = {
   },
   emits: ["valueChanged", "buttonClicked"],
   setup(e, { expose: l, emit: t }) {
-    const a = e, s = t, o = de(a, z);
+    const a = e, s = t, o = de(a, E);
     Re("Translate", (v) => o.value(v));
-    const n = x(null), d = () => n.value !== null ? n.value.getValue() : null, c = (v) => {
+    const n = P(null), i = () => n.value !== null ? n.value.getValue() : null, c = (v) => {
       n.value !== null && n.value.setValue(v);
-    }, u = () => n.value !== null ? n.value.isValid() : !1, p = x([]);
+    }, u = () => n.value !== null ? n.value.isValid() : !1, p = P([]);
     Re(Ee, ye(p));
     const h = (v) => {
       Array.isArray(v) ? p.value = [...p.value, ...v] : p.value.push(v);
     }, _ = (v) => {
       Array.isArray(v) ? p.value = p.value.filter((J) => v.indexOf(J) >= 0) : p.value = p.value.filter((J) => J !== v);
-    }, m = x([]);
+    }, m = P([]);
     return Re(et, ye(m)), l({
       /**
        * Returns the values of the given form elements as an object where the property name is the name of the form element and the property value is 
        * that elements value
        */
-      getValues: d,
+      getValues: i,
       /**
        * Called to set the values on the form elements using an object where the property name is the name of the form element
        * 
@@ -3882,8 +3922,8 @@ const qn = ["for"], Zn = {
       enableField: (v) => {
         Array.isArray(v) ? m.value = m.value.filter((J) => v.indexOf(J) >= 0) : m.value = m.value.filter((J) => J !== v);
       }
-    }), (v, J) => (r(), i("form", to, [
-      B(la, {
+    }), (v, J) => (r(), d("form", eo, [
+      x(la, {
         fields: a.elements,
         ref_key: "inputs",
         ref: n,
@@ -3893,20 +3933,20 @@ const qn = ["for"], Zn = {
       }, null, 8, ["fields", "disabled"])
     ]));
   }
-}), lo = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}), ao = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   AutoComplete: It,
   Button: Le,
   Checkbox: Lt,
   CheckboxGroup: Wt,
-  ComponentForm: ao,
+  ComponentForm: to,
   DateField: Gt,
   FormComponent: sa,
   FullEditor: Ht,
   Header: Ve,
   Hidden: Kt,
   NumberField: Yt,
-  Paragraph: Ue,
+  Paragraph: je,
   RadioGroup: qt,
   Select: Qt,
   Switch: Xt,
@@ -3914,14 +3954,14 @@ const qn = ["for"], Zn = {
   TextArea: aa,
   Time: lt
 }, Symbol.toStringTag, { value: "Module" })), pt = document.currentScript === null || document.currentScript === void 0 ? import.meta.url : document.currentScript.src;
-Be(`${pt.substring(0, pt.lastIndexOf("/"))}/vibrantvue.min.css`);
-const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) => {
+xe(`${pt.substring(0, pt.lastIndexOf("/"))}/vibrantvue.min.css`);
+const lo = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), so = (e) => {
   document.getElementsByTagName("html")[0].setAttribute("data-theme", `${e || ""}`);
-}, oo = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, no = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  AVAIABLE_SKINS: so,
-  setSkin: no
-}, Symbol.toStringTag, { value: "Module" })), ro = /* @__PURE__ */ D({
+  AVAIABLE_SKINS: lo,
+  setSkin: so
+}, Symbol.toStringTag, { value: "Module" })), oo = /* @__PURE__ */ D({
   __name: "chart",
   props: {
     labels: {},
@@ -3937,26 +3977,26 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
   },
   emits: ["legendItemClick"],
   setup(e, { emit: l }) {
-    const t = `${fa(z)}chart.umd.min.js`, a = x(null), s = e, o = l;
+    const t = `${fa(E)}chart.umd.min.js`, a = P(null), s = e, o = l;
     let n = null;
-    const d = () => {
+    const i = () => {
       n != null && n.update();
     }, c = k(() => {
       var u = "";
       return s.width && (u = `width:${s.width}px;`), s.height && (u += `height:${s.height}px;`), u;
     });
-    return j(() => s.type, (u) => {
+    return U(() => s.type, (u) => {
       n != null && (n.type = u ?? "line");
-    }), j(
+    }), U(
       () => s.labels,
       (u) => {
-        n != null && (n.data.labels = u, (s.show_refresh == null || !s.show_refresh) && d());
+        n != null && (n.data.labels = u, (s.show_refresh == null || !s.show_refresh) && i());
       },
       { deep: !0 }
-    ), j(
+    ), U(
       () => s.datasets,
       (u) => {
-        n != null && (n.data.datasets = u, (s.show_refresh == null || !s.show_refresh) && d());
+        n != null && (n.data.datasets = u, (s.show_refresh == null || !s.show_refresh) && i());
       },
       { deep: !0 }
     ), ce(async () => {
@@ -3987,8 +4027,8 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
         },
         options: u
       }), n.update();
-    }), (u, p) => (r(), R(Ut, null, xe({
-      content: E(() => [
+    }), (u, p) => (r(), R(jt, null, Pe({
+      content: z(() => [
         M("canvas", {
           ref_key: "canvas",
           ref: a,
@@ -3999,7 +4039,7 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
     }, [
       s.title ? {
         name: "header",
-        fn: E((h) => [
+        fn: z((h) => [
           M("h3", {
             class: F(h.header_class)
           }, T(s.title), 3)
@@ -4008,17 +4048,17 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
       } : void 0,
       s.show_refresh != null && s.show_refresh != null && s.show_refresh ? {
         name: "footer",
-        fn: E((h) => [
-          B(xt, {
+        fn: z((h) => [
+          x(Pt, {
             class: F(h.addon_class),
-            onClick: d
+            onClick: i
           }, null, 8, ["class"])
         ]),
         key: "1"
       } : void 0
     ]), 1024));
   }
-}), uo = /* @__PURE__ */ D({
+}), ro = /* @__PURE__ */ D({
   __name: "code-writer",
   props: {
     language: {},
@@ -4028,17 +4068,17 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
   },
   emits: ["valueChanged"],
   setup(e, { expose: l, emit: t }) {
-    const a = `${_a(z)}src-noconflict/ace.js`, s = e, o = t, n = x(null), d = x(null), c = function() {
-      return d.value.getValue() == "" ? null : d.value.getValue();
+    const a = `${_a(E)}src-noconflict/ace.js`, s = e, o = t, n = P(null), i = P(null), c = function() {
+      return i.value.getValue() == "" ? null : i.value.getValue();
     }, u = function(h) {
-      d.value.setValue(h ?? "");
+      i.value.setValue(h ?? "");
     };
-    j(() => s.readonly, (h) => {
-      d.value.setReadOnly(h == null || h == null ? !1 : h);
-    }), j(() => s.value, (h) => {
+    U(() => s.readonly, (h) => {
+      i.value.setReadOnly(h == null || h == null ? !1 : h);
+    }), U(() => s.value, (h) => {
       u(h);
-    }), j(() => s.language, (h) => {
-      d.value.getSession().setMode(h);
+    }), U(() => s.language, (h) => {
+      i.value.getSession().setMode(h);
     });
     const p = k(() => {
       let h = Number.MAX_SAFE_INTEGER;
@@ -4070,16 +4110,16 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
       setValue: u
     }), ce(async () => {
       const { ace: h } = await Ge(a, ["ace"]);
-      d.value = pa(h.edit(n.value.$el, {
+      i.value = pa(h.edit(n.value.$el, {
         mode: s.language,
         selectionStyle: "text",
         minLines: 20,
         maxLines: 50,
         enableBasicAutocompletion: !0
-      })), d.value.setReadOnly(s.readonly === void 0 || s.readonly === null ? !1 : s.readonly), s.value !== null && s.value !== void 0 && d.value.setValue(s.value), d.value.on("change", () => o("valueChanged", c())), s.autocompletes !== null && s.autocompletes !== void 0 && (d.value.setOptions({
+      })), i.value.setReadOnly(s.readonly === void 0 || s.readonly === null ? !1 : s.readonly), s.value !== null && s.value !== void 0 && i.value.setValue(s.value), i.value.on("change", () => o("valueChanged", c())), s.autocompletes !== null && s.autocompletes !== void 0 && (i.value.setOptions({
         enableBasicAutocompletion: !0,
         enableLiveAutocompletion: !0
-      }), d.value.completers = [{
+      }), i.value.completers = [{
         identifierRegexps: [/[a-zA-Z0-9_\.]+/],
         getCompletions: function(_, m, y, b, v) {
           var J = [];
@@ -4096,13 +4136,13 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
           }));
         }
       }]);
-    }), (h, _) => (r(), i("div", {
+    }), (h, _) => (r(), d("div", {
       class: "editor",
       ref_key: "container",
       ref: n
     }, null, 512));
   }
-}), io = { key: 0 }, co = { colspan: "100%" }, po = ["colspan", "rowspan"], mo = ["onClick"], ho = { class: "icon" }, bo = { key: 0 }, vo = { colspan: "100%" }, go = ["colspan", "rowspan", "onClick"], yo = { key: 1 }, fo = { colspan: "100%" }, _o = /* @__PURE__ */ D({
+}), io = { key: 0 }, uo = { colspan: "100%" }, co = ["colspan", "rowspan"], po = ["onClick"], mo = { class: "icon" }, ho = { key: 0 }, bo = { colspan: "100%" }, vo = ["colspan", "rowspan", "onClick"], go = { key: 1 }, yo = { colspan: "100%" }, fo = /* @__PURE__ */ D({
   __name: "grid",
   props: {
     columns: {},
@@ -4120,7 +4160,7 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
     use_next: { type: Boolean, default: !0 },
     has_more: { type: Boolean, default: void 0 },
     has_previous: { type: Boolean, default: void 0 },
-    size: { default: Z.small },
+    size: { default: K.small },
     rounded: { type: Boolean, default: !1 },
     button_type: {},
     total_pages: {},
@@ -4129,7 +4169,7 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
   },
   emits: ["moveForward", "moveBack", "goToPage", "cellClicked", "sort", "filter"],
   setup(e, { emit: l }) {
-    const t = ie(), a = e, s = l, o = {
+    const t = ue(), a = e, s = l, o = {
       scrollable: a.scrollable,
       fixed_header: a.fixed_header,
       full_width: a.full_width,
@@ -4143,7 +4183,7 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
       button_type: a.button_type,
       total_pages: a.total_pages,
       current_page: a.current_page
-    }, d = k(() => !!(a.has_previous || a.has_more || a.current_page !== void 0 && a.total_pages !== void 0 && re(a.total_pages) > 1)), c = k(() => a.column_rows === void 0 || a.column_rows.length === 0 ? a.columns : a.column_rows.map((m) => m.map((y) => a.columns.filter((b) => b.some((v) => v.id === y))[0].find((b) => b.id === y)))), u = k(
+    }, i = k(() => !!(a.has_previous || a.has_more || a.current_page !== void 0 && a.total_pages !== void 0 && re(a.total_pages) > 1)), c = k(() => a.column_rows === void 0 || a.column_rows.length === 0 ? a.columns : a.column_rows.map((m) => m.map((y) => a.columns.filter((b) => b.some((v) => v.id === y))[0].find((b) => b.id === y)))), u = k(
       () => c.value.filter((m) => m.some((y) => !(y.headerOnly ?? !1)))
     ), p = (m) => {
       a.current_sort !== void 0 && a.current_sort !== null && a.current_sort.column === m ? s("sort", {
@@ -4168,89 +4208,89 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
       }
       return J;
     };
-    return (m, y) => (r(), R(nt, me(fe(o)), xe({
-      thead: E(() => [
-        a.has_filter ?? !1 ? (r(), i("tr", io, [
-          M("th", co, [
-            B(Bt, {
+    return (m, y) => (r(), R(nt, me(fe(o)), Pe({
+      thead: z(() => [
+        a.has_filter ?? !1 ? (r(), d("tr", io, [
+          M("th", uo, [
+            x(xt, {
               onFilter: y[0] || (y[0] = (b) => s("filter", b))
             })
           ])
         ])) : A("", !0),
-        (r(!0), i(C, null, W(a.columns, (b) => (r(), i("tr", null, [
-          (r(!0), i(C, null, W(b, (v) => (r(), i("th", {
+        (r(!0), d(C, null, W(a.columns, (b) => (r(), d("tr", null, [
+          (r(!0), d(C, null, W(b, (v) => (r(), d("th", {
             colspan: v.headerColspan,
             rowspan: v.headerRowspan,
             class: F(v.headerClass)
           }, [
-            P(m.$slots, `head-${v.id}`, {}, () => [
-              a.current_sort !== void 0 && a.current_sort !== null && (v.canSort ?? !1) && v.id === a.current_sort.column ? (r(), i("span", {
+            B(m.$slots, `head-${v.id}`, {}, () => [
+              a.current_sort !== void 0 && a.current_sort !== null && (v.canSort ?? !1) && v.id === a.current_sort.column ? (r(), d("span", {
                 key: 0,
                 class: "icon-text is-clickable",
                 onClick: (J) => p(v.id)
               }, [
-                M("span", ho, [
-                  B(K, {
+                M("span", mo, [
+                  x(Y, {
                     icon: a.current_sort.ascending ? "arrow-up" : "arrow-down"
                   }, null, 8, ["icon"])
                 ]),
                 M("span", null, T(v.title), 1)
-              ], 8, mo)) : (r(), i(C, { key: 1 }, [
-                q(T(v.title), 1)
+              ], 8, po)) : (r(), d(C, { key: 1 }, [
+                X(T(v.title), 1)
               ], 64))
             ])
-          ], 10, po))), 256))
+          ], 10, co))), 256))
         ]))), 256))
       ]),
-      tbody: E(() => [
-        a.data === null || a.is_loading || a.data.length === 0 ? (r(), i("tr", bo, [
-          M("td", vo, [
+      tbody: z(() => [
+        a.data === null || a.is_loading || a.data.length === 0 ? (r(), d("tr", ho, [
+          M("td", bo, [
             a.data === null || a.is_loading ? (r(), R(_e, { key: 0 })) : (r(), R(he, {
               key: 1,
               message: a.empty_message ?? "No data available"
             }, null, 8, ["message"]))
           ])
-        ])) : (r(!0), i(C, { key: 1 }, W(a.data, (b, v) => (r(), i(C, null, [
-          (r(!0), i(C, null, W(u.value, (J, N) => (r(), i("tr", {
+        ])) : (r(!0), d(C, { key: 1 }, W(a.data, (b, v) => (r(), d(C, null, [
+          (r(!0), d(C, null, W(u.value, (J, N) => (r(), d("tr", {
             key: `row-${v}-${N}`,
             class: F(h(v, b))
           }, [
-            (r(!0), i(C, null, W(J.filter((w) => !(w.headerOnly ?? !1)), (w) => (r(), i("td", {
+            (r(!0), d(C, null, W(J.filter((w) => !(w.headerOnly ?? !1)), (w) => (r(), d("td", {
               key: `data-${v}-${N}`,
               colspan: w.dataColspan,
               rowspan: w.dataRowspan,
               class: F(_(v, w, b, w.propertyName ? b[w.propertyName] : void 0)),
-              onClick: (U) => s("cellClicked", { rowIndex: v, data: w.propertyName ? b[w.propertyName] : null, row: b })
+              onClick: (j) => s("cellClicked", { rowIndex: v, data: w.propertyName ? b[w.propertyName] : null, row: b })
             }, [
-              P(m.$slots, `body-${w.id}`, Y({ ref_for: !0 }, { rowIndex: v, data: w.propertyName ? b[w.propertyName] : null, row: b }), () => [
-                q(T(w.propertyName ? b[w.propertyName] : null), 1)
+              B(m.$slots, `body-${w.id}`, q({ ref_for: !0 }, { rowIndex: v, data: w.propertyName ? b[w.propertyName] : null, row: b }), () => [
+                X(T(w.propertyName ? b[w.propertyName] : null), 1)
               ])
-            ], 10, go))), 128))
+            ], 10, vo))), 128))
           ], 2))), 128))
         ], 64))), 256))
       ]),
       _: 2
     }, [
-      d.value || g(t).tfoot_head || g(t).tfoot_bottom ? {
+      i.value || g(t).tfoot_head || g(t).tfoot_bottom ? {
         name: "tfoot",
-        fn: E(() => [
-          g(t).tfoot_head ? P(m.$slots, "tfoot_head", { key: 0 }) : A("", !0),
-          d.value ? (r(), i("tr", yo, [
-            M("td", fo, [
-              B(Ct, Y(n, {
+        fn: z(() => [
+          g(t).tfoot_head ? B(m.$slots, "tfoot_head", { key: 0 }) : A("", !0),
+          i.value ? (r(), d("tr", go, [
+            M("td", yo, [
+              x(Ct, q(n, {
                 onMoveForward: y[1] || (y[1] = (b) => s("moveForward")),
                 onMoveBack: y[2] || (y[2] = (b) => s("moveBack")),
                 onGoToPage: y[3] || (y[3] = (b) => s("goToPage", b))
               }), null, 16)
             ])
           ])) : A("", !0),
-          g(t).tfoot_bottom ? P(m.$slots, "tfoot_bottom", { key: 2 }) : A("", !0)
+          g(t).tfoot_bottom ? B(m.$slots, "tfoot_bottom", { key: 2 }) : A("", !0)
         ]),
         key: "0"
       } : void 0
     ]), 1040));
   }
-}), ko = { class: "progress-group" }, So = /* @__PURE__ */ D({
+}), _o = { class: "progress-group" }, ko = /* @__PURE__ */ D({
   __name: "progress-group",
   props: {
     size: {},
@@ -4264,37 +4304,37 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
         o += l.values[n].value;
       return o;
     }), a = k(() => l.values.map((o) => ({
-      size: l.size ?? Z.normal,
+      size: l.size ?? K.normal,
       type: o.type,
       percentage: o.value / (l.max ?? t.value) * 100,
       caption: o.caption ?? `${o.value}`,
       onClick: o.onClick
     }))), s = k(() => l.max !== void 0 ? {
-      size: l.size ?? Z.normal,
+      size: l.size ?? K.normal,
       type: null,
       percentage: (l.max - t.value) / l.max * 100,
       caption: null
     } : null);
-    return (o, n) => (r(), i("div", ko, [
-      (r(!0), i(C, null, W(a.value, (d, c) => (r(), R(g(zt), {
+    return (o, n) => (r(), d("div", _o, [
+      (r(!0), d(C, null, W(a.value, (i, c) => (r(), R(g(zt), {
         is: "progress",
-        class: F(`progress is-${d.size} is-${d.type} ${d.onClick !== void 0 ? "is-clickable" : ""}`),
+        class: F(`progress is-${i.size} is-${i.type} ${i.onClick !== void 0 ? "is-clickable" : ""}`),
         key: c,
-        text: d.caption ?? "",
+        text: i.caption ?? "",
         position: g(Ce).bottom,
-        style: Ae({ width: `${d.percentage}%` }),
+        style: Ae({ width: `${i.percentage}%` }),
         value: "100",
         max: "100",
         onClick: () => {
-          d.onClick !== void 0 && d.onClick();
+          i.onClick !== void 0 && i.onClick();
         }
       }, {
-        default: E(() => [
-          q(T(`${d.percentage}%`), 1)
+        default: z(() => [
+          X(T(`${i.percentage}%`), 1)
         ]),
         _: 2
       }, 1032, ["class", "text", "position", "style", "onClick"]))), 128)),
-      s.value != null ? (r(), i("progress", {
+      s.value != null ? (r(), d("progress", {
         key: 0,
         class: F(`progress is-${s.value.size} is-${s.value.type}`),
         style: Ae({ width: `${s.value.percentage}%` }),
@@ -4303,27 +4343,28 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
       }, T(`${s.value.percentage}%`), 7)) : A("", !0)
     ]));
   }
-}), Mo = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}), So = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Chart: ro,
-  CodeWriter: uo,
-  Grid: _o,
-  ProgressGroup: So
+  Chart: oo,
+  CodeWriter: ro,
+  Grid: fo,
+  ProgressGroup: ko
 }, Symbol.toStringTag, { value: "Module" })), {
-  Animation: To,
-  Button: Po,
-  ButtonsContainer: xo,
-  ButtonAdd: Bo,
-  ButtonCancel: Co,
-  ButtonDelete: Eo,
-  ButtonDisable: zo,
-  ButtonDownload: Ro,
-  ButtonEdit: Io,
-  ButtonEnable: Wo,
-  ButtonOkay: Lo,
-  ButtonPrint: Vo,
-  ButtonRefresh: Uo,
+  Animation: Oo,
+  Button: To,
+  ButtonsContainer: Bo,
+  ButtonAdd: Po,
+  ButtonCancel: xo,
+  ButtonDelete: Co,
+  ButtonDisable: Eo,
+  ButtonDownload: zo,
+  ButtonEdit: Ro,
+  ButtonEnable: Io,
+  ButtonOkay: Wo,
+  ButtonPrint: Lo,
+  ButtonRefresh: Vo,
   ButtonSave: jo,
+  ButtonSubmit: Uo,
   ButtonUpload: Go,
   CheckMark: Ho,
   DropDown: Ko,
@@ -4340,8 +4381,8 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
   Menu: nr,
   MenuLabel: or,
   MenuList: rr,
-  MenuEntry: ur,
-  ToolTip: ir,
+  MenuEntry: ir,
+  ToolTip: ur,
   Badge: dr,
   Tag: cr,
   Tags: pr
@@ -4363,10 +4404,10 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
   TextArea: wr,
   Time: Or,
   FormComponent: Tr
-} = lo, {
-  Banner: Pr,
-  Box: xr,
-  Breadcrumbs: Br,
+} = ao, {
+  Banner: Br,
+  Box: Pr,
+  Breadcrumbs: xr,
   Card: Cr,
   ColumnContainer: Er,
   Footer: zr,
@@ -4375,105 +4416,106 @@ const so = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), no = (e) =
   Media: Wr,
   Modal: Lr,
   ModalCard: Vr,
-  Panel: Ur,
-  Section: jr,
+  Panel: jr,
+  Section: Ur,
   Table: Gr,
   Tabs: Hr,
   Slideout: Kr,
   StepWizard: Yr
-} = Jn, { AVAIABLE_SKINS: qr, setSkin: Zr } = oo, {
+} = Jn, { AVAIABLE_SKINS: qr, setSkin: Zr } = no, {
   ColorTypes: Qr,
   NoticeTypes: Xr,
-  Sizes: eu,
-  AnimationSpeeds: tu,
-  AnimationTypes: au,
-  IconSizes: lu,
-  ChartLegendPositions: su,
-  ChartTypes: nu,
-  DropZoneQuadrants: ou,
-  BreadCrumbAlignments: ru,
-  BreadCrumbSeperators: uu,
-  ColumnContainerModifiers: iu,
-  ColumnSizes: du,
-  ColumnOffsetSizes: cu,
-  BorderTypes: pu,
-  TabAlignments: mu,
-  TabStyles: hu,
-  TileSizes: bu,
-  TileTypes: vu,
-  FixedNavBarPositions: gu,
-  FixedMenuPositions: yu,
-  BadgePositions: fu,
-  ToolTipPositions: _u,
-  ToolTipTextAlignments: ku,
-  ButtonAlignments: Su,
-  SectionSizes: Mu
-} = ha, { loadNonEs6Module: Du } = ma, { Chart: $u, CodeWriter: Au, Grid: Ju, ProgressGroup: Nu } = Mo;
+  Sizes: ei,
+  AnimationSpeeds: ti,
+  AnimationTypes: ai,
+  IconSizes: li,
+  ChartLegendPositions: si,
+  ChartTypes: ni,
+  DropZoneQuadrants: oi,
+  BreadCrumbAlignments: ri,
+  BreadCrumbSeperators: ii,
+  ColumnContainerModifiers: ui,
+  ColumnSizes: di,
+  ColumnOffsetSizes: ci,
+  BorderTypes: pi,
+  TabAlignments: mi,
+  TabStyles: hi,
+  TileSizes: bi,
+  TileTypes: vi,
+  FixedNavBarPositions: gi,
+  FixedMenuPositions: yi,
+  BadgePositions: fi,
+  ToolTipPositions: _i,
+  ToolTipTextAlignments: ki,
+  ButtonAlignments: Si,
+  SectionSizes: Mi
+} = ha, { loadNonEs6Module: Di } = ma, { Chart: $i, CodeWriter: Ai, Grid: Ji, ProgressGroup: Ni } = So;
 export {
   qr as AVAIABLE_SKINS,
-  To as Animation,
-  tu as AnimationSpeeds,
-  au as AnimationTypes,
+  Oo as Animation,
+  ti as AnimationSpeeds,
+  ai as AnimationTypes,
   vr as AutoComplete,
   dr as Badge,
-  fu as BadgePositions,
-  Pr as Banner,
-  pu as BorderTypes,
-  xr as Box,
-  ru as BreadCrumbAlignments,
-  uu as BreadCrumbSeperators,
-  Br as Breadcrumbs,
-  Po as Button,
-  Bo as ButtonAdd,
-  Su as ButtonAlignments,
-  Co as ButtonCancel,
-  Eo as ButtonDelete,
-  zo as ButtonDisable,
-  Ro as ButtonDownload,
-  Io as ButtonEdit,
-  Wo as ButtonEnable,
-  Lo as ButtonOkay,
-  Vo as ButtonPrint,
-  Uo as ButtonRefresh,
+  fi as BadgePositions,
+  Br as Banner,
+  pi as BorderTypes,
+  Pr as Box,
+  ri as BreadCrumbAlignments,
+  ii as BreadCrumbSeperators,
+  xr as Breadcrumbs,
+  To as Button,
+  Po as ButtonAdd,
+  Si as ButtonAlignments,
+  xo as ButtonCancel,
+  Co as ButtonDelete,
+  Eo as ButtonDisable,
+  zo as ButtonDownload,
+  Ro as ButtonEdit,
+  Io as ButtonEnable,
+  Wo as ButtonOkay,
+  Lo as ButtonPrint,
+  Vo as ButtonRefresh,
   jo as ButtonSave,
+  Uo as ButtonSubmit,
   Go as ButtonUpload,
-  xo as ButtonsContainer,
+  Bo as ButtonsContainer,
   Cr as Card,
-  $u as Chart,
-  su as ChartLegendPositions,
-  nu as ChartTypes,
+  $i as Chart,
+  si as ChartLegendPositions,
+  ni as ChartTypes,
   Ho as CheckMark,
   yr as Checkbox,
   gr as CheckboxGroup,
-  Au as CodeWriter,
+  Ai as CodeWriter,
   Qr as ColorTypes,
   Er as ColumnContainer,
-  iu as ColumnContainerModifiers,
-  cu as ColumnOffsetSizes,
-  du as ColumnSizes,
+  ui as ColumnContainerModifiers,
+  ci as ColumnOffsetSizes,
+  di as ColumnSizes,
   _r as ComponentForm,
   fr as DateField,
   mr as DraggableItem,
   Ko as DropDown,
   hr as DropZone,
-  ou as DropZoneQuadrants,
+  oi as DropZoneQuadrants,
   Yo as DynamicSlot,
   qo as Filter,
-  yu as FixedMenuPositions,
-  gu as FixedNavBarPositions,
+  yi as FixedMenuPositions,
+  gi as FixedNavBarPositions,
   zr as Footer,
   Tr as FormComponent,
   kr as FullEditor,
-  Ju as Grid,
+  Ji as Grid,
   Sr as Header,
   Mr as Hidden,
   Zo as Icon,
-  lu as IconSizes,
+  li as IconSizes,
   Rr as Level,
   Ir as List,
   Wr as Media,
   nr as Menu,
-  ur as MenuEntry,
+  ir as MenuEntry,
   or as MenuLabel,
   rr as MenuList,
   Qo as Message,
@@ -4485,42 +4527,42 @@ export {
   Dr as NumberField,
   er as PageNotification,
   tr as Pagination,
-  Ur as Panel,
+  jr as Panel,
   $r as Paragraph,
   lr as Progress,
-  Nu as ProgressGroup,
+  Ni as ProgressGroup,
   ar as Promised,
   Ar as RadioGroup,
-  jr as Section,
-  Mu as SectionSizes,
+  Ur as Section,
+  Mi as SectionSizes,
   Jr as Select,
-  eu as Sizes,
+  ei as Sizes,
   Kr as Slideout,
   br as Sortable,
   Yr as StepWizard,
   Nr as Switch,
-  mu as TabAlignments,
-  hu as TabStyles,
+  mi as TabAlignments,
+  hi as TabStyles,
   Gr as Table,
   Hr as Tabs,
   cr as Tag,
   pr as Tags,
   Fr as Text,
   wr as TextArea,
-  bu as TileSizes,
-  vu as TileTypes,
+  bi as TileSizes,
+  vi as TileTypes,
   Or as Time,
-  ir as ToolTip,
-  _u as ToolTipPositions,
-  ku as ToolTipTextAlignments,
-  Du as loadNonEs6Module,
-  Oo as provideAceJS,
-  Fo as provideAnimation,
-  wo as provideChatJS,
-  No as provideFontAwesome,
-  Ao as provideIconSet,
-  $o as provideLanguage,
-  Jo as provideSummerNote,
+  ur as ToolTip,
+  _i as ToolTipPositions,
+  ki as ToolTipTextAlignments,
+  Di as loadNonEs6Module,
+  wo as provideAceJS,
+  No as provideAnimation,
+  Fo as provideChatJS,
+  Jo as provideFontAwesome,
+  $o as provideIconSet,
+  Do as provideLanguage,
+  Ao as provideSummerNote,
   Zr as setSkin,
   Q as useLanguage
 };

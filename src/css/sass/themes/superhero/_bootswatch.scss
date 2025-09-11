@@ -148,4 +148,11 @@
       }
     }
   }
+
+  .#{iv.$class-prefix}tabs {
+    @include cv.register-vars((
+      "tabs-link-active-color":hsla(#{cv.getVar("link-h")}, #{cv.getVar("link-s")}, 72%, 1),
+      "tabs-link-color":hsl(#{cv.getVar("text-h")}, #{cv.getVar("text-s")}, 65%)
+    ));
+  }
 }

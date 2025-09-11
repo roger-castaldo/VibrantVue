@@ -1,5 +1,5 @@
 ﻿<template>
-    <div class="select">
+    <div :class="{'select':true,'is-multiple':props.multiple}">
         <Promised v-if="Values!=null" :promise="Values">
             <template v-slot="{response}">
                 <select :id="props.inputId" :name="props.name" :multiple="props.multiple" :class="(props.multiple ? 'is-multiple' : '')" v-model="vals" :disabled="props.disabled">

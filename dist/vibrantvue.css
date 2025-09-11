@@ -25466,8 +25466,7 @@ form.container.is-fullhd section .columns {
   }
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme]),
-  :root[data-theme=""] {
+  :root {
     --bulma-white-on-scheme-l: 100%;
     --bulma-white-on-scheme: hsla(var(--bulma-white-h), var(--bulma-white-s), var(--bulma-white-on-scheme-l), 1);
     --bulma-black-on-scheme-l: -51%;
@@ -25517,8 +25516,7 @@ form.container.is-fullhd section .columns {
   }
 }
 @media (prefers-color-scheme: light) {
-  :root:not([data-theme]),
-  :root[data-theme=""] {
+  :root {
     --bulma-scheme-h: 221;
     --bulma-scheme-s: 14%;
     --bulma-light-l: 90%;
@@ -28699,6 +28697,13 @@ form.container.is-fullhd section .columns {
 .theme-cyborg .table.is-striped tbody tr:not(.is-selected):nth-child(even) td {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
 }
+:root[data-theme=cyborg] .tabs,
+[data-theme=cyborg] .tabs,
+:root.theme-cyborg .tabs,
+.theme-cyborg .tabs {
+  --bulma-tabs-link-active-color: hsla(var(--bulma-link-h), var(--bulma-link-s), 67%, 1);
+  --bulma-tabs-link-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 50%);
+}
 
 :root[data-theme=dark],
 [data-theme=dark],
@@ -29689,6 +29694,13 @@ form.container.is-fullhd section .columns {
 :root.theme-darkly .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
 .theme-darkly .table.is-striped tbody tr:not(.is-selected):nth-child(even) td {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
+}
+:root[data-theme=darkly] .tabs,
+[data-theme=darkly] .tabs,
+:root.theme-darkly .tabs,
+.theme-darkly .tabs {
+  --bulma-tabs-link-active-color: hsla(var(--bulma-link-h), var(--bulma-link-s), 71%, 1);
+  --bulma-tabs-link-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 56%);
 }
 
 :root[data-theme=flatly],
@@ -38931,6 +38943,12 @@ fieldset[disabled] .theme-materia .button.is-link:active:hover {
 .theme-minty .pagination {
   --bulma-pagination-item-background-l-delta: -25%;
 }
+:root[data-theme=minty] .tabs,
+[data-theme=minty] .tabs,
+:root.theme-minty .tabs,
+.theme-minty .tabs {
+  --bulma-tabs-link-active-color: hsla(var(--bulma-link-h), var(--bulma-link-s), 60%, 1);
+}
 
 :root[data-theme=morph],
 [data-theme=morph],
@@ -44577,6 +44595,12 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-quartz .button.is-outlined.is-danger {
   --bulma-button-l: 38%;
 }
+:root[data-theme=quartz] .slideout .slideout-content .slideout-body,
+[data-theme=quartz] .slideout .slideout-content .slideout-body,
+:root.theme-quartz .slideout .slideout-content .slideout-body,
+.theme-quartz .slideout .slideout-content .slideout-body {
+  background-image: linear-gradient(90deg, rgb(7.0099009901, 189.8712871287, 249.9900990099) 0%, rgb(70.5213270142, 76.3981042654, 177.4786729858) 50%, rgb(193.05, 21.45, 98.3125) 100%);
+}
 
 :root[data-theme=sandstone],
 [data-theme=sandstone],
@@ -45817,19 +45841,30 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-sandstone .button.is-outlinedis-danger {
   color: var(--bulma-danger);
 }
+:root[data-theme=sandstone] .tabs,
+[data-theme=sandstone] .tabs,
+:root.theme-sandstone .tabs,
+.theme-sandstone .tabs {
+  --bulma-tabs-link-background-color: hsl(var(--bulma-gray-200-h), var(--bulma-gray-200-s), var(--bulma-gray-200-l));
+  --bulma-tabs-link-disabled-background-color: hsl(var(--bulma-gray-200-h), var(--bulma-gray-200-s), var(--bulma-gray-200-l));
+  --bulma-tabs-border-bottom-color: hsl(var(--bulma-gray-300-h), var(--bulma-gray-300-s), var(--bulma-gray-300-l));
+  --bulma-tabs-toggle-link-border-color: hsl(var(--bulma-gray-300-h), var(--bulma-gray-300-s), var(--bulma-gray-300-l));
+  --bulma-tabs-link-disabled-color: hsl(var(--bulma-gray-300-h), var(--bulma-gray-300-s), var(--bulma-gray-300-l));
+  --bulma-tabs-link-active-color: hsla(var(--bulma-gray-600-h), var(--bulma-gray-600-s), 43%, 1);
+  --bulma-tabs-link-color: hsla(var(--bulma-gray-600-h), var(--bulma-gray-600-s), 43%, 1);
+}
 :root[data-theme=sandstone] .tabs li,
 [data-theme=sandstone] .tabs li,
 :root.theme-sandstone .tabs li,
 .theme-sandstone .tabs li {
-  background-color: hsl(var(--bulma-gray-200-h), var(--bulma-gray-200-s), var(--bulma-gray-200-l));
-  border-color: hsl(var(--bulma-gray-300-h), var(--bulma-gray-300-s), var(--bulma-gray-300-l));
+  background-color: var(--bulma-tabs-link-background-color);
 }
 :root[data-theme=sandstone] .tabs li.is-disabled,
 [data-theme=sandstone] .tabs li.is-disabled,
 :root.theme-sandstone .tabs li.is-disabled,
 .theme-sandstone .tabs li.is-disabled {
-  background-color: hsl(var(--bulma-gray-200-h), var(--bulma-gray-200-s), var(--bulma-gray-200-l));
-  border-color: hsl(var(--bulma-gray-300-h), var(--bulma-gray-300-s), var(--bulma-gray-300-l));
+  background-color: var(--bulma-tabs-link-disabled-background-color);
+  border-color: var(--bulma-tabs-border-bottom-color);
 }
 :root[data-theme=sandstone] .tabs li.is-disabled a,
 :root[data-theme=sandstone] .tabs li.is-disabled a:hover,
@@ -45843,7 +45878,7 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-sandstone .tabs li.is-disabled a,
 .theme-sandstone .tabs li.is-disabled a:hover,
 .theme-sandstone .tabs li.is-disabled a:focus {
-  color: hsl(var(--bulma-gray-600-h), var(--bulma-gray-600-s), var(--bulma-gray-600-l));
+  color: var(--bulma-tabs-link-active-color);
 }
 :root[data-theme=sandstone] .tabs a,
 :root[data-theme=sandstone] .tabs a:hover,
@@ -45857,7 +45892,7 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-sandstone .tabs a,
 .theme-sandstone .tabs a:hover,
 .theme-sandstone .tabs a:focus {
-  color: hsl(var(--bulma-gray-600-h), var(--bulma-gray-600-s), var(--bulma-gray-600-l));
+  color: var(--bulma-tabs-link-color);
 }
 :root[data-theme=sandstone] .breadcrumb,
 [data-theme=sandstone] .breadcrumb,
@@ -52759,6 +52794,13 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-solar .table.is-striped tbody tr:not(.is-selected):nth-child(even) td {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 62%);
 }
+:root[data-theme=solar] .tabs,
+[data-theme=solar] .tabs,
+:root.theme-solar .tabs,
+.theme-solar .tabs {
+  --bulma-tabs-link-active-color: hsla(var(--bulma-link-h), var(--bulma-link-s), 57%, 1);
+  --bulma-tabs-link-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
+}
 
 :root[data-theme=spacelab],
 [data-theme=spacelab],
@@ -55170,6 +55212,13 @@ fieldset[disabled] .theme-sketchy .select select {
 :root.theme-superhero .table.is-striped tbody tr:not(.is-selected):nth-child(even) td,
 .theme-superhero .table.is-striped tbody tr:not(.is-selected):nth-child(even) td {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 60%);
+}
+:root[data-theme=superhero] .tabs,
+[data-theme=superhero] .tabs,
+:root.theme-superhero .tabs,
+.theme-superhero .tabs {
+  --bulma-tabs-link-active-color: hsla(var(--bulma-link-h), var(--bulma-link-s), 72%, 1);
+  --bulma-tabs-link-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 65%);
 }
 
 :root[data-theme=united],
