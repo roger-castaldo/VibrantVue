@@ -3,7 +3,7 @@
         <template #thead>
             <tr v-if="props.has_filter??false">
                 <th colspan="100%">
-                    <Filter @filter="(value)=>emit('filter',value)"/>
+                    <Filter :min_length="props.filter_min_length" @filter="(value)=>emit('filter',value)"/>
                 </th>
             </tr>
             <tr v-for="row in props.columns">

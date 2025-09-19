@@ -172,4 +172,8 @@
       "tabs-link-color":hsl(#{cv.getVar("text-h")}, #{cv.getVar("text-s")}, 50%)
     ));
   }
+
+  .#{iv.$class-prefix}slideout {
+    @include cv.register-var("slideout-color-l",53%);
+  }
 }

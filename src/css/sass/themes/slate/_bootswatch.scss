@@ -443,4 +443,8 @@
       }
     }
   }
+
+  .#{iv.$class-prefix}slideout {
+    @include cv.register-var("slideout-color-l",70%);
+  }
 }

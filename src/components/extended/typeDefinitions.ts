@@ -139,6 +139,10 @@ export interface IGridProperties
      */
     has_filter?:boolean,
     /**
+     * Indicates the minimum length of the filter value to trigger a filter event on if desired other than Enter
+     */
+    filter_min_length?:number,
+    /**
      * Defines how the data is currently sorted
      */
     current_sort?:GridSort,

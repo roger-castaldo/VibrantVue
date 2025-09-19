@@ -28704,6 +28704,12 @@ form.container.is-fullhd section .columns {
   --bulma-tabs-link-active-color: hsla(var(--bulma-link-h), var(--bulma-link-s), 67%, 1);
   --bulma-tabs-link-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 50%);
 }
+:root[data-theme=cyborg] .slideout,
+[data-theme=cyborg] .slideout,
+:root.theme-cyborg .slideout,
+.theme-cyborg .slideout {
+  --bulma-slideout-color-l: 53%;
+}
 
 :root[data-theme=dark],
 [data-theme=dark],
@@ -29701,6 +29707,12 @@ form.container.is-fullhd section .columns {
 .theme-darkly .tabs {
   --bulma-tabs-link-active-color: hsla(var(--bulma-link-h), var(--bulma-link-s), 71%, 1);
   --bulma-tabs-link-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 56%);
+}
+:root[data-theme=darkly] .slideout,
+[data-theme=darkly] .slideout,
+:root.theme-darkly .slideout,
+.theme-darkly .slideout {
+  --bulma-slideout-color-l: 65%;
 }
 
 :root[data-theme=flatly],
@@ -51417,6 +51429,12 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-slate .table.is-striped tbody tr:not(.is-selected):nth-child(even) td {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 64%);
 }
+:root[data-theme=slate] .slideout,
+[data-theme=slate] .slideout,
+:root.theme-slate .slideout,
+.theme-slate .slideout {
+  --bulma-slideout-color-l: 70%;
+}
 
 :root[data-theme=solar],
 [data-theme=solar],
@@ -52800,6 +52818,12 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-solar .tabs {
   --bulma-tabs-link-active-color: hsla(var(--bulma-link-h), var(--bulma-link-s), 57%, 1);
   --bulma-tabs-link-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
+}
+:root[data-theme=solar] .slideout,
+[data-theme=solar] .slideout,
+:root.theme-solar .slideout,
+.theme-solar .slideout {
+  --bulma-slideout-color-l: 54%;
 }
 
 :root[data-theme=spacelab],
@@ -55219,6 +55243,12 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-superhero .tabs {
   --bulma-tabs-link-active-color: hsla(var(--bulma-link-h), var(--bulma-link-s), 72%, 1);
   --bulma-tabs-link-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 65%);
+}
+:root[data-theme=superhero] .slideout,
+[data-theme=superhero] .slideout,
+:root.theme-superhero .slideout,
+.theme-superhero .slideout {
+  --bulma-slideout-color-l: 67%;
 }
 
 :root[data-theme=united],
