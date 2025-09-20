@@ -14,6 +14,10 @@ describe('Breadcrumbs', () => {
         props: {
           breadCrumbs:[
             {
+              active:false,
+              title:'first'
+            },
+            {
               active:true,
               title:'test breadcrumb'
             }

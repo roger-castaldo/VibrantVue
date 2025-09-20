@@ -170,4 +170,14 @@
       "tabs-link-active-color":hsla(#{cv.getVar("link-h")}, #{cv.getVar("link-s")}, 60%, 1)
     ));
   }
+
+  .#{iv.$class-prefix}breadcrumb {
+    @include cv.register-vars(
+      (
+        "breadcrumb-item-l":54%,
+        "breadcrumb-item-color": hsl(#{cv.getVar("link-h")}, #{cv.getVar("link-s")}, #{cv.getVar("breadcrumb-item-l")}),
+        "breadcrumb-item-active-color": hsl(#{cv.getVar("link-h")}, #{cv.getVar("link-s")}, calc(#{cv.getVar("breadcrumb-item-l")} + #{cv.getVar("active-color-l-delta")}))
+      )
+    );
+  }
 }

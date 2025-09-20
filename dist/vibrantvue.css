@@ -28710,6 +28710,14 @@ form.container.is-fullhd section .columns {
 .theme-cyborg .slideout {
   --bulma-slideout-color-l: 53%;
 }
+:root[data-theme=cyborg] .breadcrumb,
+[data-theme=cyborg] .breadcrumb,
+:root.theme-cyborg .breadcrumb,
+.theme-cyborg .breadcrumb {
+  --bulma-breadcrumb-item-l: 66%;
+  --bulma-breadcrumb-item-color: hsl(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-breadcrumb-item-l));
+  --bulma-breadcrumb-item-active-color: hsl(var(--bulma-link-h), var(--bulma-link-s), calc(var(--bulma-breadcrumb-item-l) + var(--bulma-active-color-l-delta)));
+}
 
 :root[data-theme=dark],
 [data-theme=dark],
@@ -29713,6 +29721,14 @@ form.container.is-fullhd section .columns {
 :root.theme-darkly .slideout,
 .theme-darkly .slideout {
   --bulma-slideout-color-l: 65%;
+}
+:root[data-theme=darkly] .breadcrumb,
+[data-theme=darkly] .breadcrumb,
+:root.theme-darkly .breadcrumb,
+.theme-darkly .breadcrumb {
+  --bulma-breadcrumb-item-l: 71%;
+  --bulma-breadcrumb-item-color: hsl(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-breadcrumb-item-l));
+  --bulma-breadcrumb-item-active-color: hsl(var(--bulma-link-h), var(--bulma-link-s), calc(var(--bulma-breadcrumb-item-l) + var(--bulma-active-color-l-delta)));
 }
 
 :root[data-theme=flatly],
@@ -38960,6 +38976,14 @@ fieldset[disabled] .theme-materia .button.is-link:active:hover {
 :root.theme-minty .tabs,
 .theme-minty .tabs {
   --bulma-tabs-link-active-color: hsla(var(--bulma-link-h), var(--bulma-link-s), 60%, 1);
+}
+:root[data-theme=minty] .breadcrumb,
+[data-theme=minty] .breadcrumb,
+:root.theme-minty .breadcrumb,
+.theme-minty .breadcrumb {
+  --bulma-breadcrumb-item-l: 54%;
+  --bulma-breadcrumb-item-color: hsl(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-breadcrumb-item-l));
+  --bulma-breadcrumb-item-active-color: hsl(var(--bulma-link-h), var(--bulma-link-s), calc(var(--bulma-breadcrumb-item-l) + var(--bulma-active-color-l-delta)));
 }
 
 :root[data-theme=morph],
@@ -54909,10 +54933,10 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-progress-border-radius: 0;
   --bulma-breadcrumb-item-padding-vertical: 0.375rem;
   --bulma-breadcrumb-item-padding-horizontal: 0.75rem;
-  --bulma-breadcrumb-item-color: var(--bulma-primary);
-  --bulma-breadcrumb-item-hover-color: hsla(var(--bulma-primary-h), var(--bulma-primary-s), calc(max(var(--bulma-primary-l) - 10%,0%)), 1);
+  --bulma-breadcrumb-item-color: hsla(var(--bulma-primary-h), var(--bulma-primary-s), calc(min(var(--bulma-primary-l) + 34%,100%)), 1);
+  --bulma-breadcrumb-item-hover-color: hsla(var(--bulma-primary-h), var(--bulma-primary-s), calc(max(var(--bulma-primary-l) - 15%,0%)), 1);
   --bulma-breadcrumb-item-separator-color: var(--bulma-text);
-  --bulma-breadcrumb-item-active-color: var(--bulma-text);
+  --bulma-breadcrumb-item-active-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 84%);
   --bulma-modal-card-head-background-color: rgba(255, 255, 255, 0.075);
   --bulma-modal-card-foot-background-color: rgba(255, 255, 255, 0.075);
 }
@@ -55038,10 +55062,10 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-superhero .breadcrumb {
   --bulma-breadcrumb-item-padding-vertical: 0.375rem;
   --bulma-breadcrumb-item-padding-horizontal: 0.75rem;
-  --bulma-breadcrumb-item-color: var(--bulma-primary);
-  --bulma-breadcrumb-item-hover-color: hsla(var(--bulma-primary-h), var(--bulma-primary-s), calc(max(var(--bulma-primary-l) - 10%,0%)), 1);
+  --bulma-breadcrumb-item-color: hsla(var(--bulma-primary-h), var(--bulma-primary-s), calc(min(var(--bulma-primary-l) + 34%,100%)), 1);
+  --bulma-breadcrumb-item-hover-color: hsla(var(--bulma-primary-h), var(--bulma-primary-s), calc(max(var(--bulma-primary-l) - 15%,0%)), 1);
   --bulma-breadcrumb-item-separator-color: var(--bulma-text);
-  --bulma-breadcrumb-item-active-color: var(--bulma-text);
+  --bulma-breadcrumb-item-active-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 84%);
 }
 :root[data-theme=superhero] .control.has-icons-left .icon, :root[data-theme=superhero] .control.has-icons-right .icon,
 [data-theme=superhero] .control.has-icons-left .icon,
