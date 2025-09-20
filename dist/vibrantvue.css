@@ -43950,7 +43950,8 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-quartz .pagination-next.is-current,
 .theme-quartz .pagination-link:active,
 .theme-quartz .pagination-link.is-current {
-  background-color: var(--bulma-primary);
+  background-color: hsl(var(--bulma-primary-h), var(--bulma-primary-s), 43%);
+  color: hsl(var(--bulma-pagination-selected-item-h), var(--bulma-pagination-selected-item-s), 90%);
 }
 :root[data-theme=quartz] .card,
 [data-theme=quartz] .card,

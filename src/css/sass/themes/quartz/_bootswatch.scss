@@ -175,7 +175,8 @@ $frosted-opacity: .3 !default;
 
     &:active,
     &.#{iv.$class-prefix}is-current {
-      background-color:#{cv.getVar("primary")};
+      background-color: hsl(#{cv.getVar("primary-h")},#{cv.getVar("primary-s")},43%);
+      color: hsl(#{cv.getVar("pagination-selected-item-h")},#{cv.getVar("pagination-selected-item-s")},90%);
     }
   }
 
@@ -418,5 +419,4 @@ $frosted-opacity: .3 !default;
       }
     }
   }
-
 }
