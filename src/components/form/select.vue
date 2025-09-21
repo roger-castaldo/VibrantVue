@@ -89,7 +89,7 @@
 
     const Translator = useTranslator(props,inject);
 
-    const vals = ref<any[]|null>(null);
+    const vals = ref<any[]|null>((props.multiple ? [] : null));
     const locked = ref<boolean>(false);
     
     const Values = computed<Promise<SelectListItemValue[]>>(async () => {
@@ -107,7 +107,7 @@
                 });
             }
             if (vals.value === null || vals.value.length === 0) {
-                vals.value = null;
+                vals.value = (props.multiple ? [] : null);
             } else {
                 result = result.map(r=>{
                     let t = r;
@@ -142,7 +142,7 @@
     });
 
     const getValue = ():any[]|any=> { 
-        return (vals.value == null ? null : (vals.value.length == 0 ? null : (props.multiple ? vals.value.slice() : (Array.isArray(vals.value) ? vals.value[0] : vals.value)))); 
+        return (vals.value === null ? null : (vals.value.length === 0 ? null : (props.multiple ? vals.value.slice() : (Array.isArray(vals.value) ? vals.value[0] : vals.value)))); 
     };
 
     watch(vals, () => {

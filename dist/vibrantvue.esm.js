@@ -659,7 +659,8 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
 }), tl = { class: "field" }, al = { class: "control has-icons-left" }, ll = ["placeholder"], sl = { class: "icon is-small is-left" }, xt = /* @__PURE__ */ D({
   __name: "filter",
   props: {
-    default_value: {}
+    default_value: {},
+    min_length: {}
   },
   emits: ["filter"],
   setup(e, { emit: l }) {
@@ -668,7 +669,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       c[0] === "" && t.default_value && (n.value = t.default_value, a("filter", n.value == "" ? null : n.value));
     });
     const i = (c) => {
-      c.keyCode == 13 && a("filter", n.value == "" ? null : n.value);
+      c.keyCode === 13 ? a("filter", n.value === "" ? null : n.value) : t.min_length !== void 0 && t.min_length !== null && (n.value === "" ? a("filter", null) : n.value !== null && n.value.length >= t.min_length && a("filter", n.value.trimEnd()));
     };
     return ce(() => {
       t.default_value && (n.value = t.default_value);
@@ -680,7 +681,7 @@ const ha = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
           class: "input is-expanded is-rounded",
           placeholder: o.value,
           "onUpdate:modelValue": u[0] || (u[0] = (p) => n.value = p),
-          onKeypress: i
+          onKeyup: i
         }, null, 40, ll), [
           [De, n.value]
         ]),
@@ -3046,7 +3047,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   setup(e) {
     const l = e, t = de(l, E);
-    return (a, s) => (r(), R(pe(l.subtype), null, {
+    return (a, s) => (r(), R(pe(l.subtype), { class: "title" }, {
       default: z(() => [
         X(T(g(t)(l.label ?? "")), 1)
       ]),
@@ -3140,6 +3141,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   setup(e) {
     const l = e, t = de(l, E);
     return (a, s) => (r(), d("p", {
+      class: "is-form-paragraph",
       id: l.inputId
     }, T(g(t)(l.label ?? "")), 9, Pn));
   }
@@ -3236,7 +3238,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
   },
   emits: ["valueChanged"],
   setup(e, { expose: l, emit: t }) {
-    const a = e, s = Q(E), o = k(() => L("Form.Error", s)), n = t, i = de(a, E), c = P(null), u = P(!1), p = k(async () => {
+    const a = e, s = Q(E), o = k(() => L("Form.Error", s)), n = t, i = de(a, E), c = P(a.multiple ? [] : null), u = P(!1), p = k(async () => {
       var b;
       if (a.values == null)
         return [];
@@ -3247,7 +3249,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
           J = J.concat(
             (j = w.values) == null ? void 0 : j.filter((f) => f.selected).map((f) => f.value)
           );
-        }), c.value === null || c.value.length === 0 ? c.value = null : (v = v.map((w) => {
+        }), c.value === null || c.value.length === 0 ? c.value = a.multiple ? [] : null : (v = v.map((w) => {
           let j = w;
           return j.values !== void 0 && (j.values = j.values.map((f) => {
             var G;
@@ -3264,7 +3266,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
           w.values === void 0 ? N.push(w) : N = Zt(null, w, N);
         }), N;
       }
-    }), h = () => c.value == null || c.value.length == 0 ? null : a.multiple ? c.value.slice() : Array.isArray(c.value) ? c.value[0] : c.value;
+    }), h = () => c.value === null || c.value.length === 0 ? null : a.multiple ? c.value.slice() : Array.isArray(c.value) ? c.value[0] : c.value;
     U(c, () => {
       u.value || n("valueChanged", { name: a.name, value: h() });
     }), U(u, (b) => {
@@ -3382,6 +3384,7 @@ const as = { class: "tags has-addons" }, ls = { class: "tag is-link" }, ss = ["o
         [Ue, n.value]
       ]),
       M("label", {
+        class: "label",
         for: u.$props.inputId
       }, [
         X(T(g(o)(a.label)) + " ", 1),
@@ -4150,6 +4153,7 @@ const lo = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), so = (e) =
     empty_message: {},
     column_rows: {},
     has_filter: { type: Boolean },
+    filter_min_length: {},
     current_sort: {},
     is_loading: {},
     getRowColor: {},
@@ -4213,8 +4217,9 @@ const lo = Object.values(Xe).filter((e, l, t) => t.indexOf(e) === l), so = (e) =
         a.has_filter ?? !1 ? (r(), d("tr", io, [
           M("th", uo, [
             x(xt, {
+              min_length: a.filter_min_length,
               onFilter: y[0] || (y[0] = (b) => s("filter", b))
-            })
+            }, null, 8, ["min_length"])
           ])
         ])) : A("", !0),
         (r(!0), d(C, null, W(a.columns, (b) => (r(), d("tr", null, [
