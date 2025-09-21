@@ -170,4 +170,24 @@
   .#{iv.$class-prefix}slideout {
     @include cv.register-var("slideout-color-l",54%);
   }
+
+  $labelShitL:57%;
+
+  form {
+    @include cv.register-vars((
+      "label-color":hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},$labelShitL)
+    ));
+
+    .#{iv.$class-prefix}field{
+        .#{iv.$class-prefix}checkbox,
+        .#{iv.$class-prefix}is-form-paragraph,
+        .#{iv.$class-prefix}title{
+            color: hsl(
+                #{cv.getVar("text-h")},
+                #{cv.getVar("text-s")},
+                $labelShitL
+            );
+        }
+    }
+  }
 }

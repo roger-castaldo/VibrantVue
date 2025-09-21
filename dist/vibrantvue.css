@@ -27091,6 +27091,12 @@ form.container.is-fullhd section .columns {
 .theme-cerulean .hero .is-black {
   --bulma-hero-color-l: 35%;
 }
+:root[data-theme=cerulean] form .title,
+[data-theme=cerulean] form .title,
+:root.theme-cerulean form .title,
+.theme-cerulean form .title {
+  --bulma-title-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 50%);
+}
 
 :root[data-theme=cosmo],
 [data-theme=cosmo],
@@ -28718,6 +28724,16 @@ form.container.is-fullhd section .columns {
   --bulma-breadcrumb-item-color: hsl(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-breadcrumb-item-l));
   --bulma-breadcrumb-item-active-color: hsl(var(--bulma-link-h), var(--bulma-link-s), calc(var(--bulma-breadcrumb-item-l) + var(--bulma-active-color-l-delta)));
 }
+:root[data-theme=cyborg] form .field .checkbox,
+:root[data-theme=cyborg] form .field .is-form-paragraph,
+[data-theme=cyborg] form .field .checkbox,
+[data-theme=cyborg] form .field .is-form-paragraph,
+:root.theme-cyborg form .field .checkbox,
+:root.theme-cyborg form .field .is-form-paragraph,
+.theme-cyborg form .field .checkbox,
+.theme-cyborg form .field .is-form-paragraph {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 49%);
+}
 
 :root[data-theme=dark],
 [data-theme=dark],
@@ -28831,6 +28847,22 @@ form.container.is-fullhd section .columns {
 :root.theme-dark .panel .panel-tabs,
 .theme-dark .panel .panel-tabs {
   color: hsl(var(--bulma-panel-h), var(--bulma-panel-s), var(--bulma-panel-color-l));
+}
+:root[data-theme=dark] form,
+[data-theme=dark] form,
+:root.theme-dark form,
+.theme-dark form {
+  --bulma-label-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 53%);
+}
+:root[data-theme=dark] form .field .checkbox,
+:root[data-theme=dark] form .field .is-form-paragraph,
+[data-theme=dark] form .field .checkbox,
+[data-theme=dark] form .field .is-form-paragraph,
+:root.theme-dark form .field .checkbox,
+:root.theme-dark form .field .is-form-paragraph,
+.theme-dark form .field .checkbox,
+.theme-dark form .field .is-form-paragraph {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 53%);
 }
 
 :root[data-theme=darkly],
@@ -29729,6 +29761,22 @@ form.container.is-fullhd section .columns {
   --bulma-breadcrumb-item-l: 71%;
   --bulma-breadcrumb-item-color: hsl(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-breadcrumb-item-l));
   --bulma-breadcrumb-item-active-color: hsl(var(--bulma-link-h), var(--bulma-link-s), calc(var(--bulma-breadcrumb-item-l) + var(--bulma-active-color-l-delta)));
+}
+:root[data-theme=darkly] form,
+[data-theme=darkly] form,
+:root.theme-darkly form,
+.theme-darkly form {
+  --bulma-label-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 56%);
+}
+:root[data-theme=darkly] form .field .checkbox,
+:root[data-theme=darkly] form .field .is-form-paragraph,
+[data-theme=darkly] form .field .checkbox,
+[data-theme=darkly] form .field .is-form-paragraph,
+:root.theme-darkly form .field .checkbox,
+:root.theme-darkly form .field .is-form-paragraph,
+.theme-darkly form .field .checkbox,
+.theme-darkly form .field .is-form-paragraph {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 56%);
 }
 
 :root[data-theme=flatly],
@@ -51460,6 +51508,22 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-slate .slideout {
   --bulma-slideout-color-l: 70%;
 }
+:root[data-theme=slate] form,
+[data-theme=slate] form,
+:root.theme-slate form,
+.theme-slate form {
+  --bulma-label-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 59%);
+}
+:root[data-theme=slate] form .field .checkbox,
+:root[data-theme=slate] form .field .is-form-paragraph,
+[data-theme=slate] form .field .checkbox,
+[data-theme=slate] form .field .is-form-paragraph,
+:root.theme-slate form .field .checkbox,
+:root.theme-slate form .field .is-form-paragraph,
+.theme-slate form .field .checkbox,
+.theme-slate form .field .is-form-paragraph {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 59%);
+}
 
 :root[data-theme=solar],
 [data-theme=solar],
@@ -52849,6 +52913,26 @@ fieldset[disabled] .theme-sketchy .select select {
 :root.theme-solar .slideout,
 .theme-solar .slideout {
   --bulma-slideout-color-l: 54%;
+}
+:root[data-theme=solar] form,
+[data-theme=solar] form,
+:root.theme-solar form,
+.theme-solar form {
+  --bulma-label-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
+}
+:root[data-theme=solar] form .field .checkbox,
+:root[data-theme=solar] form .field .is-form-paragraph,
+:root[data-theme=solar] form .field .title,
+[data-theme=solar] form .field .checkbox,
+[data-theme=solar] form .field .is-form-paragraph,
+[data-theme=solar] form .field .title,
+:root.theme-solar form .field .checkbox,
+:root.theme-solar form .field .is-form-paragraph,
+:root.theme-solar form .field .title,
+.theme-solar form .field .checkbox,
+.theme-solar form .field .is-form-paragraph,
+.theme-solar form .field .title {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 57%);
 }
 
 :root[data-theme=spacelab],
@@ -55274,6 +55358,22 @@ fieldset[disabled] .theme-sketchy .select select {
 :root.theme-superhero .slideout,
 .theme-superhero .slideout {
   --bulma-slideout-color-l: 67%;
+}
+:root[data-theme=superhero] form,
+[data-theme=superhero] form,
+:root.theme-superhero form,
+.theme-superhero form {
+  --bulma-label-color: hsl(var(--bulma-text-h), var(--bulma-text-s), 56%);
+}
+:root[data-theme=superhero] form .field .checkbox,
+:root[data-theme=superhero] form .field .is-form-paragraph,
+[data-theme=superhero] form .field .checkbox,
+[data-theme=superhero] form .field .is-form-paragraph,
+:root.theme-superhero form .field .checkbox,
+:root.theme-superhero form .field .is-form-paragraph,
+.theme-superhero form .field .checkbox,
+.theme-superhero form .field .is-form-paragraph {
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 56%);
 }
 
 :root[data-theme=united],

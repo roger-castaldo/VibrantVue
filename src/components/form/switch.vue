@@ -1,7 +1,7 @@
 ﻿<template>
     <div class="field">
         <input type="checkbox" class="switch is-rounded" :id="props.inputId" :name="props.name" v-model="isChecked" :disabled="props.disabled"/>
-        <label :for="$props.inputId">
+        <label class="label" :for="$props.inputId">
             {{Translator(props.label)}}
             <span class="help is-danger" v-if="props.required">*</span>
         </label>

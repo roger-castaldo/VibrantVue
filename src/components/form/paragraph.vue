@@ -1,5 +1,5 @@
 ﻿<template>
-    <p :id="props.inputId">{{Translator(props.label??'')}}</p>
+    <p class="is-form-paragraph" :id="props.inputId">{{Translator(props.label??'')}}</p>
 </template>
 
 <script lang="ts">
