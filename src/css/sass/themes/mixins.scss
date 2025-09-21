@@ -279,6 +279,7 @@ $classMaps:(
   @include override-platform-colors($overrideColors,$scheme-main);
 
   @include cv.register-vars((
+    "scheme-brightness": "dark",
     "scheme-main-l": math.floor(color.channel($scheme-main,"lightness", $space: hsl)),
     "scheme-main-bis":$scheme-main-bis,
     "scheme-main-ter":$scheme-main-ter,

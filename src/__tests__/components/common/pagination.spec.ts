@@ -1,21 +1,22 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import pagination from '../../../components/common/pagination.vue';
 import { stripCommentNodes } from '../../common';
 import translate from '../../../messages/messages';
 
 describe('Pagination', () => {
     test('check accessibility',async() => {
-      const {container} = render(pagination, {
-        props:{
-            current_page:5,
-            total_pages:10
-        }
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+        const {container} = render(pagination, {
+          props:{
+              current_page:5,
+              total_pages:10
+          }
+        });
+        return container;
       });
-  
-      const accessibilityScanResults =  await axe.run(container);
-  
+
       expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('check using Next/Previous',async() => {

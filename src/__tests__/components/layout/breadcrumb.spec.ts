@@ -1,6 +1,6 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import Breadcrumbs from '../../../components/layout/breadcrumbs.vue';
 import { stripCommentNodes } from '../../common';
 import { BreadCrumb } from '../../../components/layout/interfaces';
@@ -9,18 +9,23 @@ import { BreadCrumbAlignments, BreadCrumbSeperators, Sizes } from '../../../enum
 
 describe('Breadcrumbs', () => {
   test('check accessibility',async() => {
-    const {container} = render(Breadcrumbs, {
-      props: {
-        breadCrumbs:[
-          {
-            active:true,
-            title:'test breadcrumb'
-          }
-        ]
-      }
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const {container} = render(Breadcrumbs, {
+        props: {
+          breadCrumbs:[
+            {
+              active:false,
+              title:'first'
+            },
+            {
+              active:true,
+              title:'test breadcrumb'
+            }
+          ]
+        }
+      });
+      return container;
     });
-
-    const accessibilityScanResults =  await axe.run(container);
 
     expect(accessibilityScanResults.violations).toEqual([]);
   }),

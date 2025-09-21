@@ -1,0 +1,12 @@
+@use "../../../../node_modules/bulma/sass/themes/light" as light;
+@use "../../../../node_modules/bulma/sass/themes/dark" as dark;
+
+:root {
+    @media (prefers-color-scheme: "dark") {
+        @include dark.dark-theme;
+    }
+
+    @media (prefers-color-scheme: "light") {
+        @include light.light-theme;
+    }
+}

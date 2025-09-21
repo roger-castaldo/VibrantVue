@@ -1,6 +1,6 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import Tabs from '../../../components/layout/tabs.vue';
 import { sleep, stripCommentNodes } from '../../common';
 import { Tab } from '../../../components/layout/interfaces';
@@ -9,19 +9,18 @@ import { userEvent } from '@vitest/browser/context';
 
 describe('Tabs', () => {
   test('check accessibility',async() => {
-    const {container} = render(Tabs, {
-      props: {
-        tabs:[
-          {active:true,title:'Tab1',icon:'person'},
-          {title:'Tab2'},
-          {title:'Tab3'}
-        ]
-      }
-    });
-
-    await sleep(100);
-
-    const accessibilityScanResults =  await axe.run(container);
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const {container} = render(Tabs, {
+        props: {
+          tabs:[
+            {active:true,title:'Tab1',icon:'person'},
+            {title:'Tab2'},
+            {title:'Tab3'}
+          ]
+        }
+      });
+      return container;
+    }, 100);
 
     expect(accessibilityScanResults.violations).toEqual([]);
   }),

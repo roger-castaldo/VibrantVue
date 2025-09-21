@@ -6,8 +6,9 @@ A checkbox used in a form but styled as a switch
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
-| name | string ||  | The name of the form element|
 | disabled | boolean ||  | Indicates if it is currently disabled|
+| name | string ||  | The name of the form element|
+| inputId | string ||  | definied internal during form construction to ensure all labels and inputs maintain unique ids and support proper ids for accessibility|
 | translate | TranslateMethod ||  | The translate call method used to translate a given value (field title, element name, etc) into a desired language|
 | label | string ||  | The label for the switch|
 | required | boolean ||  | Indicates if this is required|

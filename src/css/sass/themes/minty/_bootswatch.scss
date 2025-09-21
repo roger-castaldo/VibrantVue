@@ -5,33 +5,67 @@
 
 @mixin boot-swatch-content($white, $gray-700, $gray-600){
 
-  .#{iv.$class-prefix}pagination-previous,
-  .#{iv.$class-prefix}pagination-next,
-  .#{iv.$class-prefix}pagination-link,
-  .#{iv.$class-prefix}pagination-ellipsis {
-    color:$white;
-    background-color:#{cv.getVar("primary")};
-    border-color:#{cv.getVar("primary")};
-  }
-
-  .#{iv.$class-prefix}pagination-previous,
-  .#{iv.$class-prefix}pagination-next,
-  .#{iv.$class-prefix}pagination-link{
-    &:hover,
-    &:active,
-    &.#{iv.$class-prefix}is-active{
-      background-color:#{cv.getVar("secondary")};
-      border-color:#{cv.getVar("secondary")};
+  .#{iv.$class-prefix}pagination {
+    .#{iv.$class-prefix}pagination-previous,
+    .#{iv.$class-prefix}pagination-next,
+    .#{iv.$class-prefix}pagination-link,
+    .#{iv.$class-prefix}pagination-ellipsis {
+        color:$white;
+        background-color: hsl(
+          #{cv.getVar("primary-h")},
+          #{cv.getVar("primary-s")},
+          calc(
+            #{cv.getVar("primary-l")} + #{cv.getVar(
+                "pagination-item-background-l-delta"
+              )}
+          )
+        );
+        border-color: hsl(
+          #{cv.getVar("primary-h")},
+          #{cv.getVar("primary-s")},
+          calc(
+            #{cv.getVar("primary-l")} + #{cv.getVar(
+                "pagination-item-border-l-delta"
+              )}
+          )
+        );
     }
 
-    &:hover{
-      color:$white;
-    }
+    .#{iv.$class-prefix}pagination-previous,
+    .#{iv.$class-prefix}pagination-next,
+    .#{iv.$class-prefix}pagination-link{
+      &:hover,
+      &:active,
+      &.#{iv.$class-prefix}is-active{
+        background-color: hsl(
+          #{cv.getVar("secondary-h")},
+          #{cv.getVar("secondary-s")},
+          calc(
+            #{cv.getVar("secondary-l")} + #{cv.getVar(
+                "pagination-item-background-l-delta"
+              )}
+          )
+        );
+        border-color: hsl(
+          #{cv.getVar("secondary-h")},
+          #{cv.getVar("secondary-s")},
+          calc(
+            #{cv.getVar("secondary-l")} + #{cv.getVar(
+                "pagination-item-border-l-delta"
+              )}
+          )
+        );
+      }
 
-    &.#{iv.$class-prefix}is-disabled{
-      color:$white;
-      background-color:#cce8e0;
-      border-color:#cce8e0;
+      &:hover{
+        color:$white;
+      }
+
+      &.#{iv.$class-prefix}is-disabled{
+        color:$white;
+        background-color:#cce8e0;
+        border-color:#cce8e0;
+      }
     }
   }
 
@@ -60,11 +94,6 @@
     &.#{iv.$class-prefix}is-light,
     &.#{iv.$class-prefix}is-light:hover {
       color: $gray-700;
-    }
-
-    &.#{iv.$class-prefix}is-link,
-    &.#{iv.$class-prefix}is-link:hover {
-      color: #{cv.getVar("primary")};
     }
 
     &.#{iv.$class-prefix}is-link.disabled:hover {
@@ -106,4 +135,49 @@
     }
   }
 
+  .#{iv.$class-prefix}button {
+
+    &.#{iv.$class-prefix}is-outlined {
+      
+      &.#{iv.$class-prefix}is-primary{
+        @include cv.register-var("button-l",37%);
+      }
+
+      &.#{iv.$class-prefix}is-info{
+        @include cv.register-var("button-l",36%);
+      }
+
+      &.#{iv.$class-prefix}is-success{
+        @include cv.register-var("button-l",33%);
+      }
+
+      &.#{iv.$class-prefix}is-warning{
+        @include cv.register-var("button-l",30%);
+      }
+
+      &.#{iv.$class-prefix}is-danger{
+        @include cv.register-var("button-l",44%);
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}pagination {
+    @include cv.register-var("pagination-item-background-l-delta",-25%);
+  }
+
+  .#{iv.$class-prefix}tabs {
+    @include cv.register-vars((
+      "tabs-link-active-color":hsla(#{cv.getVar("link-h")}, #{cv.getVar("link-s")}, 60%, 1)
+    ));
+  }
+
+  .#{iv.$class-prefix}breadcrumb {
+    @include cv.register-vars(
+      (
+        "breadcrumb-item-l":54%,
+        "breadcrumb-item-color": hsl(#{cv.getVar("link-h")}, #{cv.getVar("link-s")}, #{cv.getVar("breadcrumb-item-l")}),
+        "breadcrumb-item-active-color": hsl(#{cv.getVar("link-h")}, #{cv.getVar("link-s")}, calc(#{cv.getVar("breadcrumb-item-l")} + #{cv.getVar("active-color-l-delta")}))
+      )
+    );
+  }
 }

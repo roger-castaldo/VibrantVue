@@ -1,22 +1,22 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import filter from '../../../components/common/filter.vue';
 import { stripCommentNodes } from '../../common';
 import translate from '../../../messages/messages.js';
-import {sleep} from '../../common';
 import { userEvent } from '@vitest/browser/context'
 
 describe('Filter', () => {
     test('check accessibility',async() => {
-      const {container} = render(filter, {
-        props: {
-          text:'Sample text'
-        },
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+        const {container} = render(filter, {
+          props: {
+            text:'Sample text'
+          },
+        });
+        return container;
       });
-  
-      const accessibilityScanResults =  await axe.run(container);
-  
+
       expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('renders a basic filter', async () => {
@@ -80,7 +80,7 @@ describe('Filter', () => {
         expect(currentFilterValue).toBe(defaultValue);
 
       }),
-      test('renders a filter and interacts with it to filter', async () => {
+      test('renders a filter and interacts with it to filter using enter', async () => {
         const searchValue:string = 'Find me';
         let currentFilterValue:string|null = null;
         const { getByRole } = render(filter, {
@@ -100,6 +100,30 @@ describe('Filter', () => {
 
         await userEvent.clear(filterInput);
         await userEvent.type(filterInput,'{enter}');
+
+        expect(currentFilterValue).toBeNull();
+
+      }),
+      test('renders a filter and interacts with it to filter with min length', async () => {
+        const searchValue:string = 'Fin';
+        let currentFilterValue:string|null = null;
+        const { getByRole } = render(filter, {
+          props: {
+            onFilter:(val)=>currentFilterValue=val,
+            min_length:3
+          },
+        });
+    
+        const filterInput = getByRole('searchbox');
+        
+        expect(currentFilterValue).toBeNull();
+
+        await userEvent.type(filterInput,`${searchValue}`);
+
+        expect(currentFilterValue).toBe(searchValue);
+        currentFilterValue=null;
+
+        await userEvent.clear(filterInput);
 
         expect(currentFilterValue).toBeNull();
 

@@ -1,0 +1,71 @@
+@use "../../../../../node_modules/bulma/sass/themes/dark" as dark;
+@use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
+@use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../mixins" as mx;
+
+@include mx.bulma-theme($name: "dark") {
+    @include dark.dark-theme;
+
+    .#{iv.$class-prefix}button {
+        &.#{iv.$class-prefix}is-outlined {
+            &.#{iv.$class-prefix}is-black{
+                @include cv.register-var("button-l",53%);
+            }
+            &.#{iv.$class-prefix}is-dark{
+                @include cv.register-var("button-l",53%);
+            }
+            &.#{iv.$class-prefix}is-link{
+                @include cv.register-var("button-l",69%);
+            }
+        }
+    }
+
+    .#{iv.$class-prefix}section {
+        @include cv.register-vars((
+            "text-l":53%,
+            "body-color":hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},#{cv.getVar("text-l")})
+        ));
+        color: #{cv.getVar("body-color")};
+    }
+
+    .#{iv.$class-prefix}level,
+    .#{iv.$class-prefix}media,
+    .#{iv.$class-prefix}modal-card,
+    .#{iv.$class-prefix}steps-container {
+        color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},53%);
+    }
+
+    .#{iv.$class-prefix}footer,
+    .#{iv.$class-prefix}modal-card-foot {
+        color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},54%);
+    }
+
+    .#{iv.$class-prefix}panel {
+        @include cv.register-var("panel-heading-color-l",35%);
+
+        .#{iv.$class-prefix}panel-tabs {
+            color: hsl(
+                cv.getVar("panel-h"),
+                cv.getVar("panel-s"),
+                cv.getVar("panel-color-l")
+            );
+        }
+    }
+
+    form {
+        @include cv.register-vars((
+            "label-color":hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},53%)
+        ));
+
+        .#{iv.$class-prefix}field{
+            .#{iv.$class-prefix}checkbox,
+            .#{iv.$class-prefix}is-form-paragraph{
+                color: hsl(
+                    #{cv.getVar("text-h")},
+                    #{cv.getVar("text-s")},
+                    53%
+                );
+            }
+        }
+    }
+}

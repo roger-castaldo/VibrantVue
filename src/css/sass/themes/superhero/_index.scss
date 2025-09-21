@@ -24,7 +24,7 @@
     $indigo:  #6610f2 !default;
     $purple:  #6f42c1 !default;
     $pink:    #e83e8c !default;
-    $red:     #d9534f !default;
+    $red:     #d23732 !default;
     $orange:  #df6919 !default;
     $yellow:  #ffc107 !default;
     $green:   #5cb85c !default;
@@ -112,10 +112,10 @@
 
     $list:mx.define-variable("breadcrumb-item-padding-vertical",0.375rem,$list);
     $list:mx.define-variable("breadcrumb-item-padding-horizontal",0.75rem,$list);
-    $list:mx.define-variable("breadcrumb-item-color",cv.getVar("primary"),$list);
-    $list:mx.define-variable("breadcrumb-item-hover-color",mx.darken-color("primary",10),$list);
+    $list:mx.define-variable("breadcrumb-item-color",mx.lighten-color("primary",34),$list);
+    $list:mx.define-variable("breadcrumb-item-hover-color",mx.darken-color("primary",15),$list);
     $list:mx.define-variable("breadcrumb-item-separator-color",cv.getVar("text"),$list);
-    $list:mx.define-variable("breadcrumb-item-active-color",cv.getVar("text"),$list);
+    $list:mx.define-variable("breadcrumb-item-active-color",hsl(cv.getVar("text-h"),cv.getVar("text-s"),84%),$list);
 
     $list:mx.define-variable("modal-card-head-background-color",rgba($white, .075),$list);
     $list:mx.define-variable("modal-card-foot-background-color",rgba($white, .075),$list);

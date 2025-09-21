@@ -1,5 +1,5 @@
 ﻿<template>
-    <section :class="['hero','is-small','has-text-centered',(type==null ? '' : 'is-'+props.type)]">
+    <section :class="['hero','is-small','has-text-centered',(type===undefined ? '' : 'is-'+props.type)]">
         <div class="hero-body">
             <p class="title">{{props.title}}</p>
             <p class="subtitle" v-if="props.subtitle">{{props.subtitle}}</p>
@@ -16,11 +16,11 @@
  */
     import { ColorTypes } from '../../enums';
 
-    const props = defineProps<{
+    const props = withDefaults(defineProps<{
         /**
          * The color of the banner
          */
-        type:ColorTypes,
+        type?:ColorTypes,
         /**
          * The title of the banner
          */
@@ -29,5 +29,7 @@
          * The sub title of the banner
          */
         subtitle?:string|null
-    }>();
+    }>(),{
+        type:ColorTypes.primary
+    });
 </script>

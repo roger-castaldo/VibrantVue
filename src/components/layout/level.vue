@@ -1,5 +1,5 @@
 <template>
-    <nav class="level">
+    <nav class="level" :aria-label="props.aria_label">
         <div class="level-left" v-if="props.left_slots">
             <template v-for="name in props.left_slots">
                 <div class="level-item" v-if="slots[name]">
@@ -44,6 +44,7 @@ import { useSlots } from 'vue';
  */
 
     const props = defineProps<{
+        aria_label:string,
         left_slots?:string[],
         right_slots?:string[],
         slots?:string[]

@@ -1,6 +1,6 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import StepWizard from '../../../components/layout/step-wizard.vue';
 import { sleep, stripCommentNodes } from '../../common';
 import translate from '../../../messages/messages.js';
@@ -11,20 +11,21 @@ import {mount} from '@vue/test-utils';
 
 describe('Step Wizard', () => {
   test('check accessibility',async() => {
-    const {container} = render(StepWizard, {
-      props: {
-        steps:[
-          {name:'step1',title:'Step 1',description:'This is step 1'},
-          {name:'step2',title:'Step 2',description:'This is step 2'}
-        ]
-      },
-      slots:{
-        step1:()=>'This is the slot content for step 1',
-        step2:()=>'This is the slot content for step 2'
-      }
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const {container} = render(StepWizard, {
+        props: {
+          steps:[
+            {name:'step1',title:'Step 1',description:'This is step 1'},
+            {name:'step2',title:'Step 2',description:'This is step 2'}
+          ]
+        },
+        slots:{
+          step1:()=>'This is the slot content for step 1',
+          step2:()=>'This is the slot content for step 2'
+        }
+      });
+      return container;
     });
-
-    const accessibilityScanResults =  await axe.run(container);
 
     expect(accessibilityScanResults.violations).toEqual([]);
   }),

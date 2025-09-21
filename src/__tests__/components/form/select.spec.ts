@@ -135,7 +135,8 @@ describe('Select',()=>{
 
         await sleep(100);
 
-        expect(root.className).toBe('select');
+        expect(root.className).toContain('select');
+        expect(root.className).toContain('is-multiple');
 
         const rootChildren = stripCommentNodes(root).map(n=>n as HTMLElement);
 

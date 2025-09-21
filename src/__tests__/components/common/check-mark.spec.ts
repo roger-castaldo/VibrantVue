@@ -1,15 +1,16 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import checkMark from '../../../components/common/check-mark.vue';
 import { IconSizes } from '../../../enums';
 
 describe('CheckMark', () => {
     test('check accessibility',async() => {
-        const {container} = render(checkMark, {});
-    
-        const accessibilityScanResults =  await axe.run(container);
-    
+        const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+            const {container} = render(checkMark, {});
+            return container;
+        });
+
         expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('check default',async() => {

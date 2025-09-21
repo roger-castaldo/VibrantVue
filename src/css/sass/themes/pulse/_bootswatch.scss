@@ -38,10 +38,6 @@
       outline: none;
     }
 
-    &.#{iv.$class-prefix}is-warning {
-      color: $white;
-    }
-
     @each $color,$value in dv.$colors{
       &.#{iv.$class-prefix}is-#{$color}:focus{
         box-shadow: 0 0 5px #{lmx.lighten-color($color,10)};
@@ -81,4 +77,26 @@
     }
   }*/
 
+
+  .#{iv.$class-prefix}button {
+
+    &.#{iv.$class-prefix}is-outlined {
+      
+      &.#{iv.$class-prefix}is-light{
+        @include cv.register-var("button-l",58%);
+      }
+
+      &.#{iv.$class-prefix}is-info{
+        @include cv.register-var("button-l",34%);
+      }
+
+      &.#{iv.$class-prefix}is-success{
+        @include cv.register-var("button-l",29%);
+      }
+
+      &.#{iv.$class-prefix}is-warning{
+        @include cv.register-var("button-l",34%);
+      }
+    }
+  }
 }

@@ -6,8 +6,9 @@ A number input
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
-| disabled | boolean || false | Indicates if it is currently disabled|
+| inputId | string ||  | definied internal during form construction to ensure all labels and inputs maintain unique ids and support proper ids for accessibility|
 | name | string ||  | The name of the form element|
+| disabled | boolean || false | Indicates if it is currently disabled|
 | min | number ||  | The minimum value|
 | max | number ||  | The maximum value|
 | step | number ||  | The step value|

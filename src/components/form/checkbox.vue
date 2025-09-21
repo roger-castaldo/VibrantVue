@@ -1,6 +1,6 @@
 ﻿<template>
-    <label class="checkbox">
-        <input type="checkbox" class="checkbox" :name="props.name" :disabled="props.disabled" v-model="value"/>
+    <label class="checkbox" :for="props.inputId">
+        <input type="checkbox" class="checkbox" :name="props.name" :disabled="props.disabled" v-model="value" :id="props.inputId"/>
         {{Label}}
         <span class="help is-danger" v-if="props.required">*</span>
     </label>
@@ -8,10 +8,10 @@
 
 <script lang="ts">
     import { ref, watch,computed, inject} from 'vue';
-    import { commonFieldProps,useTranslator} from './common';
+    import { internalCommonFieldProps,useTranslator} from './common';
     import { ValueChangedEvent } from './typeDefinitions';
 
-    interface fieldProps extends commonFieldProps {
+    interface fieldProps extends internalCommonFieldProps {
         /**
          * The label for the checkbox
          */

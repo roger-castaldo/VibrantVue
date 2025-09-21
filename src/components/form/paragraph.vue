@@ -1,12 +1,12 @@
 ﻿<template>
-    <p :id="props.name">{{Translator(props.label??'')}}</p>
+    <p class="is-form-paragraph" :id="props.inputId">{{Translator(props.label??'')}}</p>
 </template>
 
 <script lang="ts">
-    import { useTranslator,translateFieldProps } from './common';
+    import { useTranslator,internalTranslateFieldProps } from './common';
     import { inject } from 'vue';
 
-    interface fieldProps extends translateFieldProps {
+    interface fieldProps extends internalTranslateFieldProps {
         /**
          * The content of the paragraph
          */

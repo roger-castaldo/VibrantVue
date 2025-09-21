@@ -26,10 +26,10 @@ import { IButtonBasicProperties, IButtonProperties } from '../typeDefinitions';
     const props = defineProps<IButtonBasicProperties>();
     const Language = useLanguage(inject);
     const Properties = computed<IButtonProperties>(()=>{
-        return {
+        return Object.assign({},props,{
             title:translate('Button.Download',Language),
             icon:'download',
             type:ColorTypes.primary
-        }||props;
+        });
     });
 </script>

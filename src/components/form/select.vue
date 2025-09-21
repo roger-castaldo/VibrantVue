@@ -1,8 +1,8 @@
 ﻿<template>
-    <div class="select">
+    <div :class="{'select':true,'is-multiple':props.multiple}">
         <Promised v-if="Values!=null" :promise="Values">
             <template v-slot="{response}">
-                <select :id="props.name" :name="props.name" :multiple="props.multiple" :class="(props.multiple ? 'is-multiple' : '')" v-model="vals" :disabled="props.disabled">
+                <select :id="props.inputId" :name="props.name" :multiple="props.multiple" :class="(props.multiple ? 'is-multiple' : '')" v-model="vals" :disabled="props.disabled">
                     <template  v-if="response!=null" v-for="val in (response as SelectListItemValue[])">
                         <option v-if="val.values===undefined" :value="val.value" :selected="val.selected" v-show="!hiddenValues.some(h=>h===val.value.toString())" :disabled="disabledValues.some(d=>d===val.value.toString())">{{Translator(val.label)}}</option>
                         <optgroup v-if="val.values!==undefined" :label="Translator(val.label)" v-show="!hiddenValues.some(h=>h===val.value.toString())" :disabled="disabledValues.some(d=>d===val.value.toString())">
@@ -30,7 +30,7 @@
     import { ref, watch, inject,computed, toRaw } from 'vue';
     import Promised from '../common/Promised.vue';
     import { SelectListItemValue, ValueChangedEvent} from './typeDefinitions';
-    import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
+    import { internalCommonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
     import {Notification} from '../common/';
     import {NoticeTypes} from '../../enums';
     import translate from '../../messages/messages.js';
@@ -57,7 +57,7 @@
         return dest;
     };
 
-    interface fieldProps extends commonFieldProps{
+    interface fieldProps extends internalCommonFieldProps{
         /**
          * The values to supply for the select box
          */
@@ -89,7 +89,7 @@
 
     const Translator = useTranslator(props,inject);
 
-    const vals = ref<any[]|null>(null);
+    const vals = ref<any[]|null>((props.multiple ? [] : null));
     const locked = ref<boolean>(false);
     
     const Values = computed<Promise<SelectListItemValue[]>>(async () => {
@@ -107,7 +107,7 @@
                 });
             }
             if (vals.value === null || vals.value.length === 0) {
-                vals.value = null;
+                vals.value = (props.multiple ? [] : null);
             } else {
                 result = result.map(r=>{
                     let t = r;
@@ -142,7 +142,7 @@
     });
 
     const getValue = ():any[]|any=> { 
-        return (vals.value == null ? null : (vals.value.length == 0 ? null : (props.multiple ? vals.value.slice() : (Array.isArray(vals.value) ? vals.value[0] : vals.value)))); 
+        return (vals.value === null ? null : (vals.value.length === 0 ? null : (props.multiple ? vals.value.slice() : (Array.isArray(vals.value) ? vals.value[0] : vals.value)))); 
     };
 
     watch(vals, () => {

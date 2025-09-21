@@ -175,7 +175,8 @@ $frosted-opacity: .3 !default;
 
     &:active,
     &.#{iv.$class-prefix}is-current {
-      background-color:#{cv.getVar("primary")};
+      background-color: hsl(#{cv.getVar("primary-h")},#{cv.getVar("primary-s")},43%);
+      color: hsl(#{cv.getVar("pagination-selected-item-h")},#{cv.getVar("pagination-selected-item-s")},90%);
     }
   }
 
@@ -187,13 +188,15 @@ $frosted-opacity: .3 !default;
 
   // Body
 
-  body {
-    background-image: linear-gradient(
+  $gradientBackgroundImage: linear-gradient(
       90deg,
       color.adjust($cyan,$lightness: -10%) 0%,
       color.adjust($purple,$lightness: -10%) 50%,
       color.adjust($pink,$lightness: -5%) 100%
     );
+
+  body {
+    background-image: $gradientBackgroundImage;
   }
 
   // Forms
@@ -383,4 +386,37 @@ $frosted-opacity: .3 !default;
     }
   }
 
+  .#{iv.$class-prefix}button {
+
+    &.#{iv.$class-prefix}is-outlined {
+      
+      &.#{iv.$class-prefix}is-light{
+        @include cv.register-var("button-l",45%);
+      }
+
+      &.#{iv.$class-prefix}is-info{
+        @include cv.register-var("button-l",33%);
+      }
+
+      &.#{iv.$class-prefix}is-success{
+        @include cv.register-var("button-l",30%);
+      }
+
+      &.#{iv.$class-prefix}is-warning{
+        @include cv.register-var("button-l",29%);
+      }
+
+      &.#{iv.$class-prefix}is-danger{
+        @include cv.register-var("button-l",38%);
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}slideout{
+    .#{iv.$class-prefix}slideout-content{
+      .#{iv.$class-prefix}slideout-body{
+        background-image:$gradientBackgroundImage;
+      }
+    }
+  }
 }

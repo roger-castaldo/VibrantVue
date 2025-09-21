@@ -1,19 +1,20 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
 import tag from '../../../components/common/tag.vue';
 import { ColorTypes, Sizes } from '../../../enums';
+import { ExecuteAccessibilityChecks } from '../../common';
 
 describe('Tag', () => {
     test('check accessibility',async() => {
-      const {container} = render(tag, {
-        props:{
-          text:'test tag'
-        },
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+        const {container} = render(tag, {
+          props:{
+            text:'test tag'
+          },
+        });
+        return container;
       });
-  
-      const accessibilityScanResults =  await axe.run(container);
-  
+
       expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('check default values',async() => {

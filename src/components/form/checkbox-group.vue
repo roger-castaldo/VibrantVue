@@ -2,9 +2,9 @@
     <div>
         <Promised :promise="Values">
             <template v-slot="{response}">
-                <template v-for="value in (response as ListItemValue[])" v-if="response!==null">
-                    <label class="checkbox is-block" v-show="!hiddenValues.some(v=>v===value.value.toString())">
-                        <input type="checkbox" class="checkbox" :value="value.value" v-model="checks" :disabled="props.disabled||disabledValues.some(v=>v===value.value.toString())" />
+                <template v-for="(value,index) in (response as ListItemValue[])" v-if="response!==null">
+                    <label class="checkbox is-block" v-show="!hiddenValues.some(v=>v===value.value.toString())" :for="`${props.inputId}-${index}`">
+                        <input type="checkbox" class="checkbox" :value="value.value" v-model="checks" :disabled="props.disabled||disabledValues.some(v=>v===value.value.toString())" :id="`${props.inputId}-${index}`"/>
                         {{Translator(value.label)}}
                     </label>
                 </template>
@@ -20,13 +20,13 @@
     import { ref, computed, watch, inject } from 'vue';
     import Promised from '../common/Promised.vue';
     import {ListItemValue, ValueChangedEvent } from './typeDefinitions';
-    import { commonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
+    import { internalCommonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
     import { Notification} from '../common/';
     import {NoticeTypes} from '../../enums';
     import { useLanguage } from '../shared';
     import translate from '../../messages/messages.js';
 
-    interface fieldProps extends commonFieldProps {
+    interface fieldProps extends internalCommonFieldProps {
         /**
          * The available values to create the list of checkboxes from
          */

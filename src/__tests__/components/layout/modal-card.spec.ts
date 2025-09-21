@@ -1,25 +1,26 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import ModalCard from '../../../components/layout/modal-card.vue';
 import { stripCommentNodes } from '../../common';
 
 
 describe('ModalCard', () => {
   test('check accessibility',async() => {
-    const {container} = render(ModalCard, {
-      props: {
-        icon:'person',
-        show:true
-      },
-      slots:{
-        header:()=>'Test Header',
-        content:()=>'Test Content',
-        footer:()=>'Test Footer'
-      }
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const {container} = render(ModalCard, {
+        props: {
+          icon:'person',
+          show:true
+        },
+        slots:{
+          header:()=>'Test Header',
+          content:()=>'Test Content',
+          footer:()=>'Test Footer'
+        }
+      });
+      return container;
     });
-
-    const accessibilityScanResults =  await axe.run(container);
 
     expect(accessibilityScanResults.violations).toEqual([]);
   }),

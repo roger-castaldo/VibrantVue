@@ -4,6 +4,7 @@
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
+| aria_label | string ||  | |
 | left_slots | string\[\] ||  | |
 | right_slots | string\[\] ||  | |
 | slots | string\[\] ||  | |

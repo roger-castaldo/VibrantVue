@@ -355,31 +355,116 @@
     }
   }
 
-  // .tooltip {
-  //   --bs-tooltip-bg: var(--bs-tertiary-bg);
-  //   --bs-tooltip-color: var(--bs-emphasis-color);
-  // }
+  .#{iv.$class-prefix}button {
 
-  // // Containers
+    &.#{iv.$class-prefix}is-outlined {
+      
+      &.#{iv.$class-prefix}is-black{
+        @include cv.register-var("button-l",57%);
+      }
+      
+      &.#{iv.$class-prefix}is-dark{
+        @include cv.register-var("button-l",56%);
+      }
 
-  // .list-group {
-  //   &-item {
-  //     color: $white;
+      &.#{iv.$class-prefix}is-primary{
+        @include cv.register-var("button-l",56%);
+      }
+    }
+  }
 
-  //     &-light {
-  //       color: $dark;
-  //     }
-  //   }
+  .#{iv.$class-prefix}dropdown{
+    .#{iv.$class-prefix}dropdown-trigger{
+      .#{iv.$class-prefix}button {
+        @include cv.register-vars((
+          "button-background-l":9%,
+          "button-color-l":51%
+        ));
+        
+      } 
+    }
+  }
 
-  //   &-item-action:hover {
-  //     background-color: shade-color($gray-900, 10%);
-  //   }
+  .#{iv.$class-prefix}message{
+    .#{iv.$class-prefix}message-body{
+      @include cv.register-vars((
+          "message-background-l":23%,
+          "message-color-l":69%
+        ));
+    }
+  }
 
-  //   @each $color, $value in $theme-colors {
-  //     &-item-#{$color} {
-  //       background-color: $value;
-  //       border-color: $list-group-border-color;
-  //     }
-  //   }
-  // }
+  .#{iv.$class-prefix}section {
+      @include cv.register-vars((
+          "text-l":60%,
+          "body-color":hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},#{cv.getVar("text-l")})
+      ));
+      color: #{cv.getVar("body-color")};
+  }
+
+  .#{iv.$class-prefix}box,
+  .#{iv.$class-prefix}level,
+  .#{iv.$class-prefix}media,
+  .#{iv.$class-prefix}card,
+  .#{iv.$class-prefix}modal-card,
+  .#{iv.$class-prefix}steps-container {
+    color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},59%);
+  }
+
+  .#{iv.$class-prefix}modal-card-foot {
+    color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},47%);
+  }
+
+  .#{iv.$class-prefix}panel {
+    @include cv.register-var("panel-block-color",hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},60%));
+    .#{iv.$class-prefix}panel-tabs {
+      color: hsl(
+        cv.getVar("panel-h"),
+        cv.getVar("panel-s"),
+        58%
+      );
+    }
+  }
+
+  .#{iv.$class-prefix}table {
+    th,
+    td{
+      color:hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},60%);
+    }
+
+    &.#{iv.$class-prefix}is-striped {
+      tbody {
+        tr:not(.#{iv.$class-prefix}is-selected) {
+          &:nth-child(even) {
+            td{
+              color:hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},64%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}slideout {
+    @include cv.register-var("slideout-color-l",70%);
+  }
+
+  $labelShitL:59%;
+
+  form {
+    @include cv.register-vars((
+      "label-color":hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},$labelShitL)
+    ));
+
+    .#{iv.$class-prefix}field{
+        .#{iv.$class-prefix}checkbox,
+        .#{iv.$class-prefix}is-form-paragraph{
+            color: hsl(
+                #{cv.getVar("text-h")},
+                #{cv.getVar("text-s")},
+                $labelShitL
+            );
+        }
+    }
+  }
 }

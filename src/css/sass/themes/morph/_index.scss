@@ -15,7 +15,7 @@
     $gray-400: #bed1e6 !default;
     $gray-500: #adb5bd !default;
     $gray-600: #7f8a99 !default;
-    $gray-700: #7b8ab8 !default;
+    $gray-700: #7a8ab8 !default;
     $gray-800: #444b40 !default;
     $gray-900: #212529 !default;
     $black:    #000 !default;
@@ -56,6 +56,9 @@
     ));
 
     $list:mx.define-variable("text",$gray-700,());
+    $list:mx.define-variable("scheme-h",color.channel(color.to-space($gray-700,hsl), "hue"),$list);
+    $list:mx.define-variable("scheme-s",color.channel(color.to-space($gray-700,hsl), "saturation"),$list);
+    $list:mx.define-variable("scheme-main-l",color.channel(color.to-space($gray-700,hsl), "lightness"),$list);
     $list:mx.define-variable("text-muted",color.adjust($gray-700,$lightness: 15%),$list);
     $list:mx.define-variable("body-background-color",$body-bg,$list);
     

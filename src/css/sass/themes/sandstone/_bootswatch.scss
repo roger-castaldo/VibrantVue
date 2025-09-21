@@ -4,18 +4,44 @@
 @use "../mixins" as lmx;
 
 @mixin boot-swatch-content($gray-600, $gray-200, $gray-300, $white){
+  &{
+    @include cv.register-hsl("gray-600",$gray-600);
+    @include cv.register-hsl("gray-200",$gray-200);
+    @include cv.register-hsl("gray-300",$gray-300);
+  }
+
 
   a.#{iv.$class-prefix}dropdown-item,
   button.#{iv.$class-prefix}dropdown-item {
-    color: $gray-600;
+    color: hsl(
+      #{cv.getVar("gray-600-h")},
+      #{cv.getVar("gray-600-s")},
+      #{cv.getVar("gray-600-l")}
+    );
     &:hover {
-      color: $gray-600;
-      background-color: $gray-200;
+      color: hsl(
+        #{cv.getVar("gray-600-h")},
+        #{cv.getVar("gray-600-s")},
+        #{cv.getVar("gray-600-l")}
+      );
+      background-color: hsl(
+        #{cv.getVar("gray-200-h")},
+        #{cv.getVar("gray-200-s")},
+        #{cv.getVar("gray-200-l")}
+      );
     }
 
     &:active {
-      color: $gray-600;
-      background-color: $gray-200;
+      color: hsl(
+        #{cv.getVar("gray-600-h")},
+        #{cv.getVar("gray-600-s")},
+        #{cv.getVar("gray-600-l")}
+      );
+      background-color: hsl(
+        #{cv.getVar("gray-200-h")},
+        #{cv.getVar("gray-200-s")},
+        #{cv.getVar("gray-200-l")}
+      );
     }
   }
 
@@ -23,29 +49,69 @@
   .#{iv.$class-prefix}pagination-next,
   .#{iv.$class-prefix}pagination-link,
   .#{iv.$class-prefix}pagination-ellipsis {
-    color: $gray-600;
-    background-color: $gray-200;
-    border-color: $gray-300;
+    color: hsl(
+      #{cv.getVar("gray-600-h")},
+      #{cv.getVar("gray-600-s")},
+      calc( #{cv.getVar("gray-600-l")} + #{cv.getVar("pagination-item-l-delta")} )
+    );
+    background-color: hsl(
+      #{cv.getVar("gray-200-h")},
+      #{cv.getVar("gray-200-s")},
+      calc( #{cv.getVar("gray-200-l")} + #{cv.getVar("pagination-item-background-l-delta")} )
+    );
+    border-color: hsl(
+      #{cv.getVar("gray-300-h")},
+      #{cv.getVar("gray-300-s")},
+      calc( #{cv.getVar("gray-300-l")} + #{cv.getVar("pagination-item-border-l-delta")} )
+    );
   }
 
   .#{iv.$class-prefix}pagination-previous,
   .#{iv.$class-prefix}pagination-next,
   .#{iv.$class-prefix}pagination-link {
     &:hover{
-      color: $gray-600;
+      color: hsl(
+        #{cv.getVar("gray-600-h")},
+        #{cv.getVar("gray-600-s")},
+        calc( #{cv.getVar("gray-600-l")} + #{cv.getVar("pagination-item-l-delta")} )
+      );
     }
 
     &:active{
-      color: $gray-600;
-      background-color: $gray-300;
-      border-color: $gray-300;
+      color: hsl(
+        #{cv.getVar("gray-600-h")},
+        #{cv.getVar("gray-600-s")},
+        calc( #{cv.getVar("gray-600-l")} + #{cv.getVar("pagination-item-l-delta")} )
+      );
+      background-color: hsl(
+        #{cv.getVar("gray-300-h")},
+        #{cv.getVar("gray-300-s")},
+        calc( #{cv.getVar("gray-300-l")} + #{cv.getVar("pagination-item-background-l-delta")} )
+      );
+      border-color: hsl(
+        #{cv.getVar("gray-300-h")},
+        #{cv.getVar("gray-300-s")},
+        calc( #{cv.getVar("gray-300-l")} + #{cv.getVar("pagination-item-border-l-delta")} )
+      );
     }
 
     &[disabled],
     &.#{iv.$class-prefix}is-disabled {
-      color: $gray-300;
-      background-color: $gray-200;
-      border-color: $gray-300;
+      color: hsl(
+        #{cv.getVar("gray-300-h")},
+        #{cv.getVar("gray-300-s")},
+        calc( #{cv.getVar("gray-300-l")} + #{cv.getVar("pagination-item-l-delta")} )
+      );
+      background-color: hsl(
+        #{cv.getVar("gray-200-h")},
+        #{cv.getVar("gray-200-s")},
+        calc( #{cv.getVar("gray-200-l")} + #{cv.getVar("pagination-item-background-l-delta")} )
+      );
+      border-color: hsl(
+        #{cv.getVar("gray-300-h")},
+        #{cv.getVar("gray-300-s")},
+        calc( #{cv.getVar("gray-200-l")} + #{cv.getVar("pagination-item-border-l-delta")} )
+      );
     }
   }
 
@@ -55,11 +121,19 @@
 
   .#{iv.$class-prefix}modal-content,
   .#{iv.$class-prefix}modal-card {
-    border-color: $gray-300;
+    border-color: hsl(
+      #{cv.getVar("gray-300-h")},
+      #{cv.getVar("gray-300-s")},
+      #{cv.getVar("gray-300-l")}
+    );
   }
 
   .#{iv.$class-prefix}breadcrumb {
-    background-color: $gray-200;
+    background-color: hsl(
+      #{cv.getVar("gray-200-h")},
+      #{cv.getVar("gray-200-s")},
+      #{cv.getVar("gray-200-l")}
+    );
     border-radius: .25rem;
   }
 
@@ -119,18 +193,27 @@
   // }
 
   .#{iv.$class-prefix}tabs {
+    @include cv.register-vars((
+      "tabs-link-background-color":hsl(#{cv.getVar("gray-200-h")},#{cv.getVar("gray-200-s")},#{cv.getVar("gray-200-l")}),
+      "tabs-link-disabled-background-color":hsl(#{cv.getVar("gray-200-h")},#{cv.getVar("gray-200-s")},#{cv.getVar("gray-200-l")}),
+      "tabs-border-bottom-color":hsl(#{cv.getVar("gray-300-h")},#{cv.getVar("gray-300-s")},#{cv.getVar("gray-300-l")}),
+      "tabs-toggle-link-border-color":hsl(#{cv.getVar("gray-300-h")},#{cv.getVar("gray-300-s")},#{cv.getVar("gray-300-l")}),
+      "tabs-link-disabled-color":hsl(#{cv.getVar("gray-300-h")},#{cv.getVar("gray-300-s")},#{cv.getVar("gray-300-l")}),
+      "tabs-link-active-color":hsla(#{cv.getVar("gray-600-h")}, #{cv.getVar("gray-600-s")}, 43%, 1),
+      "tabs-link-color":hsla(#{cv.getVar("gray-600-h")}, #{cv.getVar("gray-600-s")}, 43%, 1)
+    ));
+
     li {
       @extend .sandstone;
-      background-color: $gray-200;
-      border-color: $gray-300;
+      background-color: cv.getVar("tabs-link-background-color");
 
       &.#{iv.$class-prefix}is-disabled{
-        background-color: $gray-200;
-        border-color: $gray-300;
+        background-color: cv.getVar("tabs-link-disabled-background-color");
+        border-color: cv.getVar("tabs-border-bottom-color");
         a,
         a:hover,
         a:focus {
-          color: $gray-600;
+          color: cv.getVar("tabs-link-active-color");
         }
       }
     }
@@ -138,7 +221,7 @@
     a,
     a:hover,
     a:focus {
-      color: $gray-600;
+      color: cv.getVar("tabs-link-color");
     }
   }
 
@@ -167,7 +250,11 @@
 
   .#{iv.$class-prefix}breadcrumb {
     @extend .sandstone;
-    border: 1px solid $gray-300;
+    border: 1px solid hsl(
+        #{cv.getVar("gray-300-h")},
+        #{cv.getVar("gray-300-s")},
+        #{cv.getVar("gray-300-l")}
+      );
   }
 
   .#{iv.$class-prefix}pagination {
@@ -206,18 +293,19 @@
     }
   }
 
-  // .tooltip {
-  //   @extend .sandstone;
-  // }
+  .#{iv.$class-prefix}notification{
+    
+    &.#{iv.$class-prefix}is-info{
+      color: hsl(
+        cv.getVar("notification-h"),
+        cv.getVar("notification-s"),
+        17%
+      );
+    }
 
-  // // Containers
+  }
 
-  // .modal,
-  // .toast,
-  // .offcanvas {
-  //   .btn-close {
-  //     background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$gray-300}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/></svg>"));
-  //   }
-  // }
-
+  .#{iv.$class-prefix}pagination {
+    @include cv.register-var("gray-600-l",50%);
+  }
 }

@@ -1,5 +1,7 @@
 <template>
-    <component :is="(props.childItems!==undefined ? 'div' : 'a')" :class="['navbar-item',(props.active?'is-active':''),(props.childItems!==undefined?'has-dropdown is-hoverable':'')]" :href="props.href" @click="processClick">
+    <component :is="(props.childItems!==undefined ? 'div' : 'a')" :class="['navbar-item',(props.active?'is-active':''),(props.childItems!==undefined?'has-dropdown is-hoverable':'')]" 
+        :href="props.href" @click="processClick"
+        :tabIndex="(props.href===undefined || props.href==='' ? 0 : null)">
         <template v-if="props.childItems!==undefined" class="navbar-link">
             <a class="navbar-link">
                 <span v-if="props.icon!==undefined && props.icon!==null" class="icon-text">

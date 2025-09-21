@@ -27,10 +27,10 @@ import { IButtonBasicProperties,IButtonProperties } from '../typeDefinitions';
     const props = defineProps<IButtonBasicProperties>();
     const Language = useLanguage(inject);
     const Properties = computed<IButtonProperties>(()=>{
-        return {
+        return Object.assign({},props,{
             title:translate('Button.Submit',Language),
             icon:'envelope-open-text',
             type:ColorTypes.success
-        }||props;
+        });
     });
 </script>

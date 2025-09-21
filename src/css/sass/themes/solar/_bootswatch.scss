@@ -79,4 +79,116 @@
     background-color:$gray-500;
   }
 
+  .#{iv.$class-prefix}button {
+
+    &.#{iv.$class-prefix}is-outlined {
+      
+      &.#{iv.$class-prefix}is-black{
+        @include cv.register-var("button-l",57%);
+      }
+      
+      &.#{iv.$class-prefix}is-warning{
+        @include cv.register-var("button-l",54%);
+      }
+
+      &.#{iv.$class-prefix}is-danger{
+        @include cv.register-var("button-l",62%);
+      }
+
+      &.#{iv.$class-prefix}is-info{
+        @include cv.register-var("button-l",52%);
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}message{
+    .#{iv.$class-prefix}message-body{
+      @include cv.register-vars((
+          "message-background-l":14%,
+          "message-color-l":50%
+        ));
+    }
+  }
+
+  .#{iv.$class-prefix}section {
+      @include cv.register-vars((
+          "text-l":57%,
+          "body-color":hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},#{cv.getVar("text-l")})
+      ));
+      color: #{cv.getVar("body-color")};
+  }
+
+  .#{iv.$class-prefix}box,
+  .#{iv.$class-prefix}level,
+  .#{iv.$class-prefix}media,
+  .#{iv.$class-prefix}card,
+  .#{iv.$class-prefix}modal-card,
+  .#{iv.$class-prefix}steps-container {
+    color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},57%);
+  }
+
+  .#{iv.$class-prefix}modal-card-foot {
+    color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},47%);
+  }
+
+  .#{iv.$class-prefix}panel {
+    @include cv.register-var("panel-block-color",hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},57%));
+    .#{iv.$class-prefix}panel-tabs {
+      color: hsl(
+        cv.getVar("panel-h"),
+        cv.getVar("panel-s"),
+        45%
+      );
+    }
+  }
+
+  .#{iv.$class-prefix}table {
+    th,
+    td{
+      color:hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},57%);
+    }
+
+    &.#{iv.$class-prefix}is-striped {
+      tbody {
+        tr:not(.#{iv.$class-prefix}is-selected) {
+          &:nth-child(even) {
+            td{
+              color:hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},62%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}tabs {
+    @include cv.register-vars((
+      "tabs-link-active-color":hsla(#{cv.getVar("link-h")}, #{cv.getVar("link-s")}, 57%, 1),
+      "tabs-link-color":hsl(#{cv.getVar("text-h")}, #{cv.getVar("text-s")}, 57%)
+    ));
+  }
+
+  .#{iv.$class-prefix}slideout {
+    @include cv.register-var("slideout-color-l",54%);
+  }
+
+  $labelShitL:57%;
+
+  form {
+    @include cv.register-vars((
+      "label-color":hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},$labelShitL)
+    ));
+
+    .#{iv.$class-prefix}field{
+        .#{iv.$class-prefix}checkbox,
+        .#{iv.$class-prefix}is-form-paragraph,
+        .#{iv.$class-prefix}title{
+            color: hsl(
+                #{cv.getVar("text-h")},
+                #{cv.getVar("text-s")},
+                $labelShitL
+            );
+        }
+    }
+  }
 }

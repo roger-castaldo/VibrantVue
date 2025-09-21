@@ -1,20 +1,34 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import notification from '../../../components/common/notification.vue';
 import { stripCommentNodes } from '../../common';
 import { NoticeTypes } from '../../../enums';
 
 describe('Notification', () => {
     test('check accessibility',async() => {
-      const {container} = render(notification, {
-        props:{
-            message:'test message'
-        }
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+        let result : HTMLElement[] = [];
+          for (const key in NoticeTypes) {
+            const renderResult1 = render(notification, {
+              props:{
+                  message:'test message',
+                  type: NoticeTypes[key],
+              }
+            });
+            result.push(renderResult1.container);
+            const renderResult2 = render(notification, {
+              props:{
+                  message:'test message',
+                  type: NoticeTypes[key],
+                  light:true
+              }
+            });
+            result.push(renderResult2.container);
+          }
+          return result;
       });
-  
-      const accessibilityScanResults =  await axe.run(container);
-  
+
       expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('check basic content',async() => {

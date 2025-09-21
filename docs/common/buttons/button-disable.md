@@ -12,6 +12,7 @@ Uses times-circle icon, danger color and Disable for text
 | hide_tablet | boolean ||  | Inidicates if it is hidden when on table|
 | hide_desktop | boolean ||  | Inidicates if it is hidden when on desktop|
 | is_rounded | boolean ||  | Inidicates if it is rounded|
+| is_outlined | boolean ||  | Indicates if it is oultined|
 ## Events
 
 | Name    | Params | Description |

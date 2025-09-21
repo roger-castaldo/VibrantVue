@@ -40,4 +40,164 @@
     }
   }
 
+  .#{iv.$class-prefix}button {
+
+    &.#{iv.$class-prefix}is-warning{
+      @include cv.register-var("button-background-l",43%);
+    }
+
+    &.#{iv.$class-prefix}is-outlined {
+      &.#{iv.$class-prefix}is-black{
+        @include cv.register-var("button-l",49%);
+      }
+      &.#{iv.$class-prefix}is-light{
+        @include cv.register-var("button-l",47%);
+      }
+      &.#{iv.$class-prefix}is-link{
+        @include cv.register-var("button-l",66%);
+      }
+      &.#{iv.$class-prefix}is-info{
+        @include cv.register-var("button-l",57%);
+      }
+      &.#{iv.$class-prefix}is-danger{
+        @include cv.register-var("button-l",47%);
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}dropdown{
+    .#{iv.$class-prefix}dropdown-trigger{
+      .#{iv.$class-prefix}button {
+        @include cv.register-vars((
+          "button-background-l":5%,
+          "button-color-l":50%
+        ));
+        
+      } 
+    }
+  }
+
+  .#{iv.$class-prefix}notification{
+    
+    &.#{iv.$class-prefix}is-light{
+      &.#{iv.$class-prefix}is-info{
+        color: hsl(
+          cv.getVar("notification-h"),
+          cv.getVar("notification-s"),
+          47%
+        );
+      }
+
+      &.#{iv.$class-prefix}is-danger{
+        color: hsl(
+          cv.getVar("notification-h"),
+          cv.getVar("notification-s"),
+          37%
+        );
+      }
+    }
+
+    &.#{iv.$class-prefix}is-success{
+      color: hsl(
+        cv.getVar("notification-h"),
+        cv.getVar("notification-s"),
+        12%
+      );
+    }
+
+    &.#{iv.$class-prefix}is-warning{
+      color: hsl(
+        cv.getVar("notification-h"),
+        cv.getVar("notification-s"),
+        10%
+      );
+    }
+  }
+
+  .#{iv.$class-prefix}pagination {
+    @include cv.register-var("pagination-item-color-l",47%);
+  }
+
+  .#{iv.$class-prefix}section {
+    @include cv.register-vars((
+      "text-l":49%,
+      "body-color":hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},#{cv.getVar("text-l")})
+    ));
+    color: #{cv.getVar("body-color")};
+  }
+
+  .#{iv.$class-prefix}box,
+  .#{iv.$class-prefix}level,
+  .#{iv.$class-prefix}media,
+  .#{iv.$class-prefix}card,
+  .#{iv.$class-prefix}modal-card,
+  .#{iv.$class-prefix}steps-container {
+    color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},49%);
+  }
+
+  .#{iv.$class-prefix}modal-card-foot {
+    color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},47%);
+  }
+
+  .#{iv.$class-prefix}panel {
+    .#{iv.$class-prefix}panel-tabs {
+      color: hsl(
+        cv.getVar("panel-h"),
+        cv.getVar("panel-s"),
+        cv.getVar("panel-heading-color-l")
+      );
+    }
+
+    .#{iv.$class-prefix}panel-block {
+      @include cv.register-var("panel-block-color",hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},49%));
+    }
+  }
+
+  .#{iv.$class-prefix}table {
+    &.#{iv.$class-prefix}is-striped {
+      tbody {
+        tr:not(.#{iv.$class-prefix}is-selected) {
+          &:nth-child(even) {
+            td{
+              color:hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},47%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}tabs {
+    @include cv.register-vars((
+      "tabs-link-active-color":hsla(#{cv.getVar("link-h")}, #{cv.getVar("link-s")}, 67%, 1),
+      "tabs-link-color":hsl(#{cv.getVar("text-h")}, #{cv.getVar("text-s")}, 50%)
+    ));
+  }
+
+  .#{iv.$class-prefix}slideout {
+    @include cv.register-var("slideout-color-l",53%);
+  }
+
+  .#{iv.$class-prefix}breadcrumb {
+    @include cv.register-vars(
+      (
+        "breadcrumb-item-l":66%,
+        "breadcrumb-item-color": hsl(#{cv.getVar("link-h")}, #{cv.getVar("link-s")}, #{cv.getVar("breadcrumb-item-l")}),
+        "breadcrumb-item-active-color": hsl(#{cv.getVar("link-h")}, #{cv.getVar("link-s")}, calc(#{cv.getVar("breadcrumb-item-l")} + #{cv.getVar("active-color-l-delta")}))
+      )
+    );
+  }
+
+  form {    
+    .#{iv.$class-prefix}field{
+      .#{iv.$class-prefix}checkbox,
+      .#{iv.$class-prefix}is-form-paragraph{
+        color: hsl(
+          #{cv.getVar("text-h")},
+          #{cv.getVar("text-s")},
+          49%
+        );
+      }
+    }
+  }
 }

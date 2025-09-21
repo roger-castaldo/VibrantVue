@@ -5,8 +5,9 @@ A time input for the form
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
-| name | string ||  | The name of the form element|
 | disabled | boolean ||  | Indicates if it is currently disabled|
+| name | string ||  | The name of the form element|
+| inputId | string ||  | definied internal during form construction to ensure all labels and inputs maintain unique ids and support proper ids for accessibility|
 ## Events
 
 | Name    | Params | Description |

@@ -1,12 +1,12 @@
 ﻿<template>
     <div class="control">
-        <input class="input is-time" :name="props.name" :id="props.name" type="time" v-model="value" :disabled="props.disabled" :style="styles">
+        <input class="input is-time" :id="props.inputId" :name="props.name" type="time" v-model="value" :disabled="props.disabled" :style="styles">
     </div>
 </template>
 
 <script lang="ts">
     import { ref, watch, computed } from 'vue';
-    import { coreFieldProps } from './common';
+    import { internalCoreFieldProps } from './common';
     import { ValueChangedEvent } from './typeDefinitions';
 
     const regTime = RegExp('^(\\d{2}):(\\d{2}) (AM|PM)$');
@@ -18,7 +18,7 @@
  * 
  * @displayName Time
  */
-    const props = defineProps<coreFieldProps>();
+    const props = defineProps<internalCoreFieldProps>();
         const emit = defineEmits<{
         /**
          * Emitted when the value changes

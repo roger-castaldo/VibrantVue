@@ -1,20 +1,21 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import icon from '../../../components/common/icon.vue';
 import { IconSizes } from '../../../enums';
 
 describe('Icon', () => {
     test('check accessibility',async() => {
-      const {container} = render(icon, {
-        props:{
-            icon:'edit'
-        }
-      });
-  
-      const accessibilityScanResults =  await axe.run(container);
-  
-      expect(accessibilityScanResults.violations).toEqual([]);
+        const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+            const {container} = render(icon, {
+            props:{
+                icon:'edit'
+            }
+            });
+            return container;
+        });
+
+        expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('check basic icon styles',async() => {
         const {container} = render(icon, {

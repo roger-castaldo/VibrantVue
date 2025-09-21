@@ -1,21 +1,22 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import message from '../../../components/common/message.vue';
 import { stripCommentNodes } from '../../common';
 import { ColorTypes, Sizes } from '../../../enums';
 
 describe('Message', () => {
     test('check accessibility',async() => {
-      const {container} = render(message, {
-        props:{
-            message:'test message',
-            title:'test title'
-        }
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+        const {container} = render(message, {
+          props:{
+              message:'test message',
+              title:'test title'
+          }
+        });
+        return container;
       });
-  
-      const accessibilityScanResults =  await axe.run(container);
-  
+
       expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('check with title',async() => {

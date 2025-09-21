@@ -7,6 +7,7 @@ This is a built form style component used to create a basic filter input
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
 | default_value | string ||  | The default value to set the filter to when it is cleared|
+| min_length | number ||  | The minimum length of characters to trigger a filter if desired other than the enter key|
 ## Events
 
 | Name    | Params | Description |

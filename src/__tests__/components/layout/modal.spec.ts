@@ -1,6 +1,5 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
 import Modal from '../../../components/layout/modal.vue';
 import { stripCommentNodes } from '../../common';
 

@@ -1,6 +1,6 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import Grid from '../../../components/extended/grid.vue';
 import { mount } from '@vue/test-utils';
 import { stripCommentNodes } from '../../common';
@@ -12,29 +12,30 @@ import { h } from 'vue';
 
 describe('Grid', () => {
     test('check accessibility',async() => {
-      const {container} = render(Grid, {
-        props:{
-          total_pages:20,
-          current_page:10,
-          columns:[
-            [
-                {id:'col1',title:'Column 1',propertyName:'prop1'},
-                {id:'col2',title:'Column 2',propertyName:'prop2'},
-                {id:'col3',title:'Column 3',propertyName:'prop3'}
-            ]
-          ],
-          data:[
-            {prop1:'Item 1 Prop 1',prop2:'Item 1 Prop 2',prop3:'Item 1 Prop 3'},
-            {prop1:'Item 2 Prop 1',prop2:'Item 2 Prop 2',prop3:'Item 2 Prop 3'},
-            {prop1:'Item 3 Prop 1',prop2:'Item 3 Prop 2',prop3:'Item 3 Prop 3'}
-          ],
-          has_filter:true
-        }
-      });
-  
-      const accessibilityScanResults =  await axe.run(container);
-  
-      expect(accessibilityScanResults.violations).toEqual([]);
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+            const {container} = render(Grid, {
+                props:{
+                    total_pages:20,
+                    current_page:10,
+                    columns:[
+                        [
+                            {id:'col1',title:'Column 1',propertyName:'prop1'},
+                            {id:'col2',title:'Column 2',propertyName:'prop2'},
+                            {id:'col3',title:'Column 3',propertyName:'prop3'}
+                        ]
+                    ],
+                    data:[
+                        {prop1:'Item 1 Prop 1',prop2:'Item 1 Prop 2',prop3:'Item 1 Prop 3'},
+                        {prop1:'Item 2 Prop 1',prop2:'Item 2 Prop 2',prop3:'Item 2 Prop 3'},
+                        {prop1:'Item 3 Prop 1',prop2:'Item 3 Prop 2',prop3:'Item 3 Prop 3'}
+                    ],
+                    has_filter:true
+                }
+            });
+            return container;
+        });
+
+        expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('check structure',async()=>{
         const columns: GridColumn[][] = [

@@ -1,6 +1,6 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import Media from '../../../components/layout/media.vue';
 import { stripCommentNodes } from '../../common';
 import {h} from 'vue';
@@ -10,16 +10,17 @@ const imageElement = h('img',{alt:'sample image',src:'data:image/png;base64,iVBO
 
 describe('Media', () => {
   test('check accessibility',async() => {
-    const {container} = render(Media, {
-      props: {},
-      slots:{
-        left_figure:()=>imageElement,
-        content:()=>'This is media content',
-        right_section:()=>'This is the right side'
-      }
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const {container} = render(Media, {
+        props: {},
+        slots:{
+          left_figure:()=>imageElement,
+          content:()=>'This is media content',
+          right_section:()=>'This is the right side'
+        }
+      });
+      return container;
     });
-
-    const accessibilityScanResults =  await axe.run(container);
 
     expect(accessibilityScanResults.violations).toEqual([]);
   }),

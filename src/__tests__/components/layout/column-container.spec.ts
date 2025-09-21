@@ -3,7 +3,6 @@ import { render } from 'vitest-browser-vue'
 import ColumnContainer from '../../../components/layout/column-container.vue';
 import { stripCommentNodes } from '../../common';
 import { BorderTypes, ColumnContainerModifiers, ColumnOffsetSizes, ColumnSizes } from '../../../enums';
-import { Column } from '../../../components/layout/typeDefinitions';
 
 describe('ColumnContainer', () => {
     test('check empty container', async () => {

@@ -26,10 +26,10 @@
     const props = defineProps<IButtonBasicProperties>();
     const Language = useLanguage(inject);
     const Properties = computed<IButtonProperties>(()=>{
-        return {
+        return Object.assign({},props,{
             title:translate('Button.Cancel',Language),
             icon:'window-close',
             type:ColorTypes.danger,
-        }||props;
+        });
     });
 </script>

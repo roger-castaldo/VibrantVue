@@ -1,6 +1,6 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import pageNotification from '../../../components/common/page-notification.vue';
 import { stripCommentNodes } from '../../common';
 import { NoticeTypes } from '../../../enums';
@@ -8,15 +8,16 @@ import { userEvent } from '@vitest/browser/context';
 
 describe('Page Notification', () => {
     test('check accessibility',async() => {
-      const {container} = render(pageNotification, {
-        props:{
-            visible:true,
-            message:'test message'
-        }
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+        const {container} = render(pageNotification, {
+          props:{
+              visible:true,
+              message:'test message'
+          }
+        });
+        return container;
       });
-  
-      const accessibilityScanResults =  await axe.run(container);
-  
+
       expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('check basic content',async() => {

@@ -1,17 +1,18 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
 import progress from '../../../components/common/progress.vue';
 import { ColorTypes,Sizes } from '../../../enums';
+import { ExecuteAccessibilityChecks } from '../../common';
 
 describe('Progress', () => {
     test('check accessibility',async() => {
-      const {container} = render(progress, {
-        props:{}
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+        const {container} = render(progress, {
+          props:{}
+        });
+        return container;
       });
-  
-      const accessibilityScanResults =  await axe.run(container);
-  
+
       expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('check default values',async() => {

@@ -21,11 +21,13 @@ and implemented with minimal parts such as defining the tbody or a loop for the 
 | fixed_header | boolean ||  | Indicates if the table header should be fixed|
 | scrollable | boolean ||  | Indicates of the table is scrollable|
 | columns | [GridColumn](../types.md#GridColumn)\[\]\[\] ||  | The columns to define the grid with|
-| data | tuple\|null ||  | The data belonging to the grid|
+| data | any\[\]\|null ||  | The data belonging to the grid|
 | empty_message | string ||  | A custom empty data message if desired|
 | column_rows | string\[\]\[\] ||  | Allows modifying how the columns are layed out within the grid by supplying the column ids.<br/>Otherwise it simply goes in the order defined, left to right.|
 | has_filter | boolean ||  | Indicates if a Filter should be placed in the header|
+| filter_min_length | number ||  | Indicates the minimum length of the filter value to trigger a filter event on if desired other than Enter|
 | current_sort | [GridSort](../types.md#GridSort) ||  | Defines how the data is currently sorted|
+| is_loading | MaybeRef\<boolean\> ||  | Defines if the data is currently loading|
 | getRowColor | ()=>The color for the table body row if desired ||  | Called to get a color for a given table body row|
 ## Events
 

@@ -1,26 +1,28 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import Level from '../../../components/layout/level.vue';
 import { stripCommentNodes } from '../../common';
 
 
 describe('Level', () => {
   test('check accessibility',async() => {
-    const {container} = render(Level, {
-      props: {
-        left_slots:['left'],
-        right_slots:['right'],
-        slots:['slot']
-      },
-      slots:{
-        left:()=>'This is left',
-        right:()=>'This is right',
-        slot:()=>'This is middle'
-      }
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const {container} = render(Level, {
+        props: {
+          aria_label:'level',
+          left_slots:['left'],
+          right_slots:['right'],
+          slots:['slot']
+        },
+        slots:{
+          left:()=>'This is left',
+          right:()=>'This is right',
+          slot:()=>'This is middle'
+        }
+      });
+      return container;
     });
-
-    const accessibilityScanResults =  await axe.run(container);
 
     expect(accessibilityScanResults.violations).toEqual([]);
   }),
@@ -29,6 +31,7 @@ describe('Level', () => {
 
     const {container} = render(Level,{
       props:{
+        aria_label:'level',
         left_slots:['slot1','slot2']
       },
       slots:{
@@ -63,6 +66,7 @@ describe('Level', () => {
 
     const {container} = render(Level,{
       props:{
+        aria_label:'level',
         right_slots:['slot1','slot2']
       },
       slots:{
@@ -97,6 +101,7 @@ describe('Level', () => {
 
     const {container} = render(Level,{
       props:{
+        aria_label:'level',
         slots:['slot1','slot2']
       },
       slots:{

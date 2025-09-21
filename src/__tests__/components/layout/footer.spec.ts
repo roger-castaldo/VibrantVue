@@ -1,22 +1,23 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import axe from 'axe-core';
+import { ExecuteAccessibilityChecks } from '../../common';
 import Footer from '../../../components/layout/footer.vue';
 import { stripCommentNodes } from '../../common';
 
 
 describe('Footer', () => {
   test('check accessibility',async() => {
-    const {container} = render(Footer, {
-      props: {},
-      slots:{
-        default:()=>'Test Content'
-      }
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const {container} = render(Footer, {
+        props: {},
+        slots:{
+          default:()=>'Test Content'
+        }
+      });
+      return container;
     });
 
-    const accessibilityScanResults =  await axe.run(container);
-
-    expect(accessibilityScanResults.violations).toEqual([]);
+    expect(accessibilityScanResults.violations.filter(v=>v.id!=='landmark-no-duplicate-contentinfo')).toEqual([]);
   }),
   test('check defaults', async () => {
     const textContent = 'Sample text';

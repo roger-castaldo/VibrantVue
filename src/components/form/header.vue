@@ -1,5 +1,5 @@
 ﻿<template>
-    <component :is="props.subtype">{{Translator(props.label??'')}}</component>
+    <component :is="props.subtype" class="title">{{Translator(props.label??'')}}</component>
 </template>
 
 <script lang="ts">

@@ -1,13 +1,13 @@
 ﻿<template>
-    <input type="number" class="input" :id="props.name" :name="props.name" v-model="value" :disabled="props.disabled" :min="props.min" :max="props.max" :step="props.step"/>
+    <input type="number" class="input" :id="props.inputId" :name="props.name" v-model="value" :disabled="props.disabled" :min="props.min" :max="props.max" :step="props.step"/>
 </template>
 
 <script lang="ts">
     import { ref, watch } from 'vue';
-    import { coreFieldProps } from './common';
+    import { internalCoreFieldProps } from './common';
     import { ValueChangedEvent } from './typeDefinitions';
 
-    interface fieldProps extends coreFieldProps {
+    interface fieldProps extends internalCoreFieldProps {
         /**
          * The minimum value
          */
