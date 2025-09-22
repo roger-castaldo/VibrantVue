@@ -239,13 +239,15 @@ $classMaps:(
   }
 }
 
-@mixin override-dark-mode-basics($overrideColors,$scheme-main,$scheme-main-bis,$scheme-main-ter){
+@mixin override-dark-mode-basics($overrideColors,$scheme-main){
 
   @include cv.generate-color-palette(
                 "scheme",
                 $scheme-main,
                 100%,
                 fn.bulmaFindColorInvert($scheme-main));
+
+  $schema-l: color.channel($scheme-main, "lightness", $space: hsl);
 
   $colors: fn.mergeColorMaps(
     (
@@ -281,8 +283,8 @@ $classMaps:(
   @include cv.register-vars((
     "scheme-brightness": "dark",
     "scheme-main-l": math.floor(color.channel($scheme-main,"lightness", $space: hsl)),
-    "scheme-main-bis":$scheme-main-bis,
-    "scheme-main-ter":$scheme-main-ter,
+    "scheme-main-bis-l":($schema-l+5%),
+    "scheme-main-ter-l":($schema-l+10%),
     "soft-l": iv.$dark-l,
     "bold-l": iv.$light-l,
     "soft-invert-l": iv.$light-l,
