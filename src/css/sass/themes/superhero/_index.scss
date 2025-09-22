@@ -49,7 +49,7 @@
             color.adjust($gray-600, $lightness: 35%)
         )
     ),
-    $body-bg,$black,$gray-700);
+    $body-bg);
 
     $body-color: $gray-100;
     $nav-link-disabled-color: rgba(255, 255, 255, .4) !default;

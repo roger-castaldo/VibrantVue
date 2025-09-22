@@ -58,7 +58,7 @@
         ),
         "link":$green
     ),
-    $body-bg,$black,$gray-700);
+    $body-bg);
 
     $component-active-color:      rgba(255, 255, 255, .75) !default;
     $component-active-bg:         $gray-800 !default;

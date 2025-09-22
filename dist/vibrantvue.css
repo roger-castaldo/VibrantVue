@@ -28453,8 +28453,8 @@ form.container.is-fullhd section .columns {
   --bulma-dark-on-scheme: hsla(var(--bulma-dark-h), var(--bulma-dark-s), var(--bulma-dark-on-scheme-l), 1);
   --bulma-scheme-brightness: dark;
   --bulma-scheme-main-l: 2%;
-  --bulma-scheme-main-bis: #282828;
-  --bulma-scheme-main-ter: #555;
+  --bulma-scheme-main-bis-l: 7.3529411765%;
+  --bulma-scheme-main-ter-l: 12.3529411765%;
   --bulma-soft-l: 20%;
   --bulma-bold-l: 90%;
   --bulma-soft-invert-l: 90%;
@@ -29533,8 +29533,8 @@ form.container.is-fullhd section .columns {
   --bulma-dark-on-scheme: hsla(var(--bulma-dark-h), var(--bulma-dark-s), var(--bulma-dark-on-scheme-l), 1);
   --bulma-scheme-brightness: dark;
   --bulma-scheme-main-l: 13%;
-  --bulma-scheme-main-bis: #303030;
-  --bulma-scheme-main-ter: #444;
+  --bulma-scheme-main-bis-l: 18.3333333333%;
+  --bulma-scheme-main-ter-l: 23.3333333333%;
   --bulma-soft-l: 20%;
   --bulma-bold-l: 90%;
   --bulma-soft-invert-l: 90%;
@@ -49949,8 +49949,8 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-link-on-scheme: hsla(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-link-on-scheme-l), 1);
   --bulma-scheme-brightness: dark;
   --bulma-scheme-main-l: 17%;
-  --bulma-scheme-main-bis: #52575c;
-  --bulma-scheme-main-ter: #7a8288;
+  --bulma-scheme-main-bis-l: 22.0588235294%;
+  --bulma-scheme-main-ter-l: 27.0588235294%;
   --bulma-soft-l: 20%;
   --bulma-bold-l: 90%;
   --bulma-soft-invert-l: 90%;
@@ -52413,8 +52413,8 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-link-on-scheme: hsla(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-link-on-scheme-l), 1);
   --bulma-scheme-brightness: dark;
   --bulma-scheme-main-l: 10%;
-  --bulma-scheme-main-bis: #000;
-  --bulma-scheme-main-ter: #495057;
+  --bulma-scheme-main-bis-l: 15.5882352941%;
+  --bulma-scheme-main-ter-l: 20.5882352941%;
   --bulma-soft-l: 20%;
   --bulma-bold-l: 90%;
   --bulma-soft-invert-l: 90%;
@@ -54867,8 +54867,8 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-dark-on-scheme: hsla(var(--bulma-dark-h), var(--bulma-dark-s), var(--bulma-dark-on-scheme-l), 1);
   --bulma-scheme-brightness: dark;
   --bulma-scheme-main-l: 13%;
-  --bulma-scheme-main-bis: #000;
-  --bulma-scheme-main-ter: #495057;
+  --bulma-scheme-main-bis-l: 18.7254901961%;
+  --bulma-scheme-main-ter-l: 23.7254901961%;
   --bulma-soft-l: 20%;
   --bulma-bold-l: 90%;
   --bulma-soft-invert-l: 90%;
@@ -56963,8 +56963,8 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-link-on-scheme: hsla(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-link-on-scheme-l), 1);
   --bulma-scheme-brightness: dark;
   --bulma-scheme-main-l: 11%;
-  --bulma-scheme-main-bis: #000;
-  --bulma-scheme-main-ter: #495057;
+  --bulma-scheme-main-bis-l: 16.7647058824%;
+  --bulma-scheme-main-ter-l: 21.7647058824%;
   --bulma-soft-l: 20%;
   --bulma-bold-l: 90%;
   --bulma-soft-invert-l: 90%;
