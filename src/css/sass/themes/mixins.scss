@@ -163,8 +163,8 @@ $classMaps:(
 }
 
 @mixin bulma-theme($name) {
-    :root[data-#{iv.$class-prefix}theme="#{$name}"],
-    [data-#{iv.$class-prefix}theme="#{$name}"],
+    :root[data-theme="#{$name}"],
+    [data-theme="#{$name}"],
     :root.#{iv.$class-prefix}theme-#{$name},
     .#{iv.$class-prefix}theme-#{$name} {
       @content;
@@ -283,8 +283,10 @@ $classMaps:(
   @include cv.register-vars((
     "scheme-brightness": "dark",
     "scheme-main-l": math.floor(color.channel($scheme-main,"lightness", $space: hsl)),
-    "scheme-main-bis-l":($schema-l+5%),
-    "scheme-main-ter-l":($schema-l+10%),
+    "scheme-main-bis-l":math.floor($schema-l+5),
+    "scheme-main-bis": hsl(#{cv.getVar("scheme-main-h")},#{cv.getVar("scheme-main-s")},#{cv.getVar("scheme-main-bis-l")}),
+    "scheme-main-ter-l":math.floor($schema-l+10),
+    "scheme-main-ter": hsl(#{cv.getVar("scheme-main-h")},#{cv.getVar("scheme-main-s")},#{cv.getVar("scheme-main-ter-l")}),
     "soft-l": iv.$dark-l,
     "bold-l": iv.$light-l,
     "soft-invert-l": iv.$light-l,
@@ -299,6 +301,7 @@ $classMaps:(
     "hover-border-l-delta": 10%,
     "active-border-l-delta": 20%,
     "hover-color-l-delta": 5%,
-    "active-color-l-delta": 10%
+    "active-color-l-delta": 10%,
+    "text-l":71%
   ));
 }

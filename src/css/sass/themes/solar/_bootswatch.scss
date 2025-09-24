@@ -140,6 +140,14 @@
         45%
       );
     }
+
+    .#{iv.$class-prefix}panel-heading {
+      color: hsl(
+        cv.getVar("panel-h"),
+        cv.getVar("panel-s"),
+        30%
+      );
+    }
   }
 
   .#{iv.$class-prefix}table {

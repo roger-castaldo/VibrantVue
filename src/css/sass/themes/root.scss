@@ -1,12 +1,24 @@
 @use "../../../../node_modules/bulma/sass/themes/light" as light;
 @use "../../../../node_modules/bulma/sass/themes/dark" as dark;
+@use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
 
-:root {
+:root,
+:root[data-theme="default"],
+[data-theme="default"],
+:root.#{iv.$class-prefix}theme-default,
+.#{iv.$class-prefix}theme-default {
+    @include light.light-theme;
+    
     @media (prefers-color-scheme: "dark") {
         @include dark.dark-theme;
     }
 
-    @media (prefers-color-scheme: "light") {
-        @include light.light-theme;
+    & {
+        .#{iv.$class-prefix}footer{
+            @include cv.register-vars((
+                "footer-color":hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},#{cv.getVar("text-l")})
+            ));
+        }
     }
 }

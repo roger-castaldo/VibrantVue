@@ -27,7 +27,7 @@
  * @displayName Select
  * @link https://bulma.io/documentation/form/select/
  */
-    import { ref, watch, inject,computed, toRaw } from 'vue';
+    import { ref, watch, inject,computed } from 'vue';
     import Promised from '../common/Promised.vue';
     import { SelectListItemValue, ValueChangedEvent} from './typeDefinitions';
     import { internalCommonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
@@ -119,15 +119,9 @@
                     }
                     return t;
                 });
-                vals.value?.forEach(v=>{
-                    if (!result.some(r=>(r.value!==undefined && r.value===v)
-                    || (r.values!==undefined && r.values.some(sr=>sr.value===v)))){
-                        result.push({
-                            label:v,
-                            value:v
-                        });
-                    }
-                });
+                if (vals.value!==null && Array.isArray(vals.value)){
+                    vals.value = vals.value.filter(v=>result.some(r=>r.value===v));
+                }
             }
             let dest:SelectListItemValue[] = [];
             result.forEach(r=>{

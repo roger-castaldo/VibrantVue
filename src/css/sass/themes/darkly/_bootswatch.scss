@@ -121,19 +121,13 @@
         54%
       );
     }
-  }
 
-  .#{iv.$class-prefix}table {
-    &.#{iv.$class-prefix}is-striped {
-      tbody {
-        tr:not(.#{iv.$class-prefix}is-selected) {
-          &:nth-child(even) {
-            td{
-              color:hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},47%);
-            }
-          }
-        }
-      }
+    .#{iv.$class-prefix}panel-heading {
+      color: hsl(
+        cv.getVar("panel-h"),
+        cv.getVar("panel-s"),
+        37%
+      );
     }
   }
 
