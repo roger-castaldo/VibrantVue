@@ -124,3 +124,7 @@
 .#{iv.$class-prefix}subtitle {
     font-family:#{cv.getVar("subtitle-family")};
 }
+
+.#{iv.$class-prefix}footer {
+    color: cv.getVar("footer-color");
+}

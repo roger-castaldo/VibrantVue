@@ -136,7 +136,7 @@
   }
 
   .#{iv.$class-prefix}modal-card-foot {
-    color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},47%);
+    color: hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},52%);
   }
 
   .#{iv.$class-prefix}panel {
@@ -151,19 +151,13 @@
     .#{iv.$class-prefix}panel-block {
       @include cv.register-var("panel-block-color",hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},49%));
     }
-  }
 
-  .#{iv.$class-prefix}table {
-    &.#{iv.$class-prefix}is-striped {
-      tbody {
-        tr:not(.#{iv.$class-prefix}is-selected) {
-          &:nth-child(even) {
-            td{
-              color:hsl(#{cv.getVar("text-h")},#{cv.getVar("text-s")},47%);
-            }
-          }
-        }
-      }
+    .#{iv.$class-prefix}panel-heading {
+      color: hsl(
+        cv.getVar("panel-h"),
+        cv.getVar("panel-s"),
+        37%
+      );
     }
   }
 
@@ -196,6 +190,55 @@
           #{cv.getVar("text-h")},
           #{cv.getVar("text-s")},
           49%
+        );
+      }
+    }
+  }
+
+  .#{iv.$class-prefix}hero {
+    &.#{iv.$class-prefix}is-white {
+      $color: hsl(
+        #{cv.getVar("hero-h")},
+        #{cv.getVar("hero-s")},
+        53%
+      );
+
+      color:$color;
+
+      .#{iv.$class-prefix}navbar {
+        @include cv.register-vars(
+          (
+            "navbar-item-color": $color,
+            "navbar-item-hover-background-color": $color,
+            "navbar-item-active-background-color": $color
+          )
+        );
+      }
+
+      .#{iv.$class-prefix}tabs {
+        @include cv.register-vars(
+          (
+            "tabs-link-color": $color,
+            "tabs-boxed-link-active-background-color": $color
+          )
+        );
+      }
+
+      .#{iv.$class-prefix}subtitle {
+        @include cv.register-vars(
+          (
+            "subtitle-color": $color,
+            "subtitle-strong-color": $color,
+          )
+        );
+      }
+
+      .#{iv.$class-prefix}title {
+        @include cv.register-vars(
+          (
+            "title-color": $color,
+            "title-strong-color": $color,
+          )
         );
       }
     }
