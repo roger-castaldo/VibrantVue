@@ -28703,7 +28703,7 @@ form.container.is-fullhd section .columns {
 [data-theme=cyborg] .modal-card-foot,
 :root.theme-cyborg .modal-card-foot,
 .theme-cyborg .modal-card-foot {
-  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 52%);
 }
 :root[data-theme=cyborg] .panel .panel-tabs,
 [data-theme=cyborg] .panel .panel-tabs,
@@ -29787,7 +29787,7 @@ form.container.is-fullhd section .columns {
 [data-theme=darkly] .modal-card-foot,
 :root.theme-darkly .modal-card-foot,
 .theme-darkly .modal-card-foot {
-  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 61%);
 }
 :root[data-theme=darkly] .panel,
 [data-theme=darkly] .panel,
@@ -51545,7 +51545,7 @@ fieldset[disabled] .theme-sketchy .select select {
 [data-theme=slate] .modal-card-foot,
 :root.theme-slate .modal-card-foot,
 .theme-slate .modal-card-foot {
-  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 65%);
 }
 :root[data-theme=slate] .panel,
 [data-theme=slate] .panel,
@@ -52957,7 +52957,7 @@ fieldset[disabled] .theme-sketchy .select select {
 [data-theme=solar] .modal-card-foot,
 :root.theme-solar .modal-card-foot,
 .theme-solar .modal-card-foot {
-  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 65%);
 }
 :root[data-theme=solar] .panel,
 [data-theme=solar] .panel,
@@ -55413,7 +55413,7 @@ fieldset[disabled] .theme-sketchy .select select {
 [data-theme=superhero] .modal-card-foot,
 :root.theme-superhero .modal-card-foot,
 .theme-superhero .modal-card-foot {
-  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 47%);
+  color: hsl(var(--bulma-text-h), var(--bulma-text-s), 63%);
 }
 :root[data-theme=superhero] .panel,
 [data-theme=superhero] .panel,
