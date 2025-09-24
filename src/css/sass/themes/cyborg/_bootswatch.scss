@@ -194,4 +194,53 @@
       }
     }
   }
+
+  .#{iv.$class-prefix}hero {
+    &.#{iv.$class-prefix}is-white {
+      $color: hsl(
+        #{cv.getVar("hero-h")},
+        #{cv.getVar("hero-s")},
+        53%
+      );
+
+      color:$color;
+
+      .#{iv.$class-prefix}navbar {
+        @include cv.register-vars(
+          (
+            "navbar-item-color": $color,
+            "navbar-item-hover-background-color": $color,
+            "navbar-item-active-background-color": $color
+          )
+        );
+      }
+
+      .#{iv.$class-prefix}tabs {
+        @include cv.register-vars(
+          (
+            "tabs-link-color": $color,
+            "tabs-boxed-link-active-background-color": $color
+          )
+        );
+      }
+
+      .#{iv.$class-prefix}subtitle {
+        @include cv.register-vars(
+          (
+            "subtitle-color": $color,
+            "subtitle-strong-color": $color,
+          )
+        );
+      }
+
+      .#{iv.$class-prefix}title {
+        @include cv.register-vars(
+          (
+            "title-color": $color,
+            "title-strong-color": $color,
+          )
+        );
+      }
+    }
+  }
 }

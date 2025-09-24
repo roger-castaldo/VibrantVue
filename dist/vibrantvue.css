@@ -28754,6 +28754,41 @@ form.container.is-fullhd section .columns {
 .theme-cyborg form .field .is-form-paragraph {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 49%);
 }
+:root[data-theme=cyborg] .hero.is-white,
+[data-theme=cyborg] .hero.is-white,
+:root.theme-cyborg .hero.is-white,
+.theme-cyborg .hero.is-white {
+  color: hsl(var(--bulma-hero-h), var(--bulma-hero-s), 53%);
+}
+:root[data-theme=cyborg] .hero.is-white .navbar,
+[data-theme=cyborg] .hero.is-white .navbar,
+:root.theme-cyborg .hero.is-white .navbar,
+.theme-cyborg .hero.is-white .navbar {
+  --bulma-navbar-item-color: hsl(var(--bulma-hero-h), var(--bulma-hero-s), 53%);
+  --bulma-navbar-item-hover-background-color: hsl(var(--bulma-hero-h), var(--bulma-hero-s), 53%);
+  --bulma-navbar-item-active-background-color: hsl(var(--bulma-hero-h), var(--bulma-hero-s), 53%);
+}
+:root[data-theme=cyborg] .hero.is-white .tabs,
+[data-theme=cyborg] .hero.is-white .tabs,
+:root.theme-cyborg .hero.is-white .tabs,
+.theme-cyborg .hero.is-white .tabs {
+  --bulma-tabs-link-color: hsl(var(--bulma-hero-h), var(--bulma-hero-s), 53%);
+  --bulma-tabs-boxed-link-active-background-color: hsl(var(--bulma-hero-h), var(--bulma-hero-s), 53%);
+}
+:root[data-theme=cyborg] .hero.is-white .subtitle,
+[data-theme=cyborg] .hero.is-white .subtitle,
+:root.theme-cyborg .hero.is-white .subtitle,
+.theme-cyborg .hero.is-white .subtitle {
+  --bulma-subtitle-color: hsl(var(--bulma-hero-h), var(--bulma-hero-s), 53%);
+  --bulma-subtitle-strong-color: hsl(var(--bulma-hero-h), var(--bulma-hero-s), 53%);
+}
+:root[data-theme=cyborg] .hero.is-white .title,
+[data-theme=cyborg] .hero.is-white .title,
+:root.theme-cyborg .hero.is-white .title,
+.theme-cyborg .hero.is-white .title {
+  --bulma-title-color: hsl(var(--bulma-hero-h), var(--bulma-hero-s), 53%);
+  --bulma-title-strong-color: hsl(var(--bulma-hero-h), var(--bulma-hero-s), 53%);
+}
 
 :root[data-theme=dark],
 [data-theme=dark],
