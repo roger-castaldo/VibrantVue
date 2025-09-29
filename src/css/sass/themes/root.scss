@@ -7,13 +7,13 @@
 :root[data-theme="default"],
 [data-theme="default"],
 :root.#{iv.$class-prefix}theme-default,
-.#{iv.$class-prefix}theme-default {
+.#{iv.$class-prefix}theme-default,
+:root[data-theme="light"],
+[data-theme="light"],
+:root.#{iv.$class-prefix}theme-light,
+.#{iv.$class-prefix}theme-light {
     @include light.light-theme;
     
-    @media (prefers-color-scheme: "dark") {
-        @include dark.dark-theme;
-    }
-
     & {
         .#{iv.$class-prefix}footer{
             @include cv.register-vars((

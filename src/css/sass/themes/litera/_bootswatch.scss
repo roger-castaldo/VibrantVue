@@ -85,10 +85,6 @@
       &.#{iv.$class-prefix}is-warning{
         @include cv.register-var("button-l",35%);
       }
-
-      &.#{iv.$class-prefix}is-danger{
-        @include cv.register-var("button-l",53%);
-      }
     }
   }
 }

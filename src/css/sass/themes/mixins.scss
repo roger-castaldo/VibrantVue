@@ -283,9 +283,9 @@ $classMaps:(
   @include cv.register-vars((
     "scheme-brightness": "dark",
     "scheme-main-l": math.floor(color.channel($scheme-main,"lightness", $space: hsl)),
-    "scheme-main-bis-l":math.floor($schema-l+5),
+    "scheme-main-bis-l":math.floor($schema-l+2%),
     "scheme-main-bis": hsl(#{cv.getVar("scheme-main-h")},#{cv.getVar("scheme-main-s")},#{cv.getVar("scheme-main-bis-l")}),
-    "scheme-main-ter-l":math.floor($schema-l+10),
+    "scheme-main-ter-l":math.floor($schema-l+4%),
     "scheme-main-ter": hsl(#{cv.getVar("scheme-main-h")},#{cv.getVar("scheme-main-s")},#{cv.getVar("scheme-main-ter-l")}),
     "soft-l": iv.$dark-l,
     "bold-l": iv.$light-l,
