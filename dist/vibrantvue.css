@@ -58444,78 +58444,12 @@ fieldset[disabled] .theme-sketchy .select select {
 :root.theme-zephyr .pagination,
 .theme-zephyr .pagination {
   padding: 0.5rem 0;
-}
-:root[data-theme=zephyr] .pagination-previous,
-:root[data-theme=zephyr] .pagination-next,
-:root[data-theme=zephyr] .pagination-link,
-:root[data-theme=zephyr] .pagination-ellipsis,
-[data-theme=zephyr] .pagination-previous,
-[data-theme=zephyr] .pagination-next,
-[data-theme=zephyr] .pagination-link,
-[data-theme=zephyr] .pagination-ellipsis,
-:root.theme-zephyr .pagination-previous,
-:root.theme-zephyr .pagination-next,
-:root.theme-zephyr .pagination-link,
-:root.theme-zephyr .pagination-ellipsis,
-.theme-zephyr .pagination-previous,
-.theme-zephyr .pagination-next,
-.theme-zephyr .pagination-link,
-.theme-zephyr .pagination-ellipsis {
-  color: var(--bulma-primary);
-}
-:root[data-theme=zephyr] .pagination-previous:focus,
-:root[data-theme=zephyr] .pagination-next:focus,
-:root[data-theme=zephyr] .pagination-link:focus,
-[data-theme=zephyr] .pagination-previous:focus,
-[data-theme=zephyr] .pagination-next:focus,
-[data-theme=zephyr] .pagination-link:focus,
-:root.theme-zephyr .pagination-previous:focus,
-:root.theme-zephyr .pagination-next:focus,
-:root.theme-zephyr .pagination-link:focus,
-.theme-zephyr .pagination-previous:focus,
-.theme-zephyr .pagination-next:focus,
-.theme-zephyr .pagination-link:focus {
-  color: var(--bulma-primary);
-}
-:root[data-theme=zephyr] .pagination-previous:hover,
-:root[data-theme=zephyr] .pagination-next:hover,
-:root[data-theme=zephyr] .pagination-link:hover,
-[data-theme=zephyr] .pagination-previous:hover,
-[data-theme=zephyr] .pagination-next:hover,
-[data-theme=zephyr] .pagination-link:hover,
-:root.theme-zephyr .pagination-previous:hover,
-:root.theme-zephyr .pagination-next:hover,
-:root.theme-zephyr .pagination-link:hover,
-.theme-zephyr .pagination-previous:hover,
-.theme-zephyr .pagination-next:hover,
-.theme-zephyr .pagination-link:hover {
-  color: var(--bulma-primary);
-  background-color: var(--bulma-secondary);
-}
-:root[data-theme=zephyr] .pagination-previous.is-current, :root[data-theme=zephyr] .pagination-previous.is-selected,
-:root[data-theme=zephyr] .pagination-next.is-current,
-:root[data-theme=zephyr] .pagination-next.is-selected,
-:root[data-theme=zephyr] .pagination-link.is-current,
-:root[data-theme=zephyr] .pagination-link.is-selected,
-[data-theme=zephyr] .pagination-previous.is-current,
-[data-theme=zephyr] .pagination-previous.is-selected,
-[data-theme=zephyr] .pagination-next.is-current,
-[data-theme=zephyr] .pagination-next.is-selected,
-[data-theme=zephyr] .pagination-link.is-current,
-[data-theme=zephyr] .pagination-link.is-selected,
-:root.theme-zephyr .pagination-previous.is-current,
-:root.theme-zephyr .pagination-previous.is-selected,
-:root.theme-zephyr .pagination-next.is-current,
-:root.theme-zephyr .pagination-next.is-selected,
-:root.theme-zephyr .pagination-link.is-current,
-:root.theme-zephyr .pagination-link.is-selected,
-.theme-zephyr .pagination-previous.is-current,
-.theme-zephyr .pagination-previous.is-selected,
-.theme-zephyr .pagination-next.is-current,
-.theme-zephyr .pagination-next.is-selected,
-.theme-zephyr .pagination-link.is-current,
-.theme-zephyr .pagination-link.is-selected {
-  color: #fff;
+  --bulma-pagination-item-h: var(--bulma-primary-h);
+  --bulma-pagination-item-s: var(--bulma-primary-s);
+  --bulma-pagination-item-l: var(--bulma-primary-l);
+  --bulma-pagination-selected-item-h: 0deg;
+  --bulma-pagination-selected-item-s: 0%;
+  --bulma-pagination-selected-item-l: 100%;
 }
 :root[data-theme=zephyr] .breadcrumb li + li::before,
 [data-theme=zephyr] .breadcrumb li + li::before,

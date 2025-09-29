@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
 @use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
 @use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
@@ -43,31 +44,16 @@
 
   .#{iv.$class-prefix}pagination {
     padding: .5rem 0;
-  }
-
-  .#{iv.$class-prefix}pagination-previous,
-  .#{iv.$class-prefix}pagination-next,
-  .#{iv.$class-prefix}pagination-link,
-  .#{iv.$class-prefix}pagination-ellipsis {
-    color: #{cv.getVar("primary")};
-  }
-
-  .#{iv.$class-prefix}pagination-previous,
-  .#{iv.$class-prefix}pagination-next,
-  .#{iv.$class-prefix}pagination-link{
-    &:focus{
-      color: #{cv.getVar("primary")};
-    }
-
-    &:hover{
-      color: #{cv.getVar("primary")};
-      background-color: #{cv.getVar("secondary")};
-    }
-
-    &.#{iv.$class-prefix}is-current,
-    &.#{iv.$class-prefix}is-selected{
-      color: $white;
-    }
+    @include cv.register-vars(
+      (
+        "pagination-item-h": #{cv.getVar("primary-h")},
+        "pagination-item-s": #{cv.getVar("primary-s")},
+        "pagination-item-l": #{cv.getVar("primary-l")},
+        "pagination-selected-item-h": #{color.channel($white,"hue", $space: hsl)},
+        "pagination-selected-item-s": #{color.channel($white,"saturation", $space: hsl)},
+        "pagination-selected-item-l": #{color.channel($white,"lightness", $space: hsl)},
+      )
+    )
   }
 
   .#{iv.$class-prefix}breadcrumb {
