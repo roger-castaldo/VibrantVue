@@ -3,15 +3,7 @@
 @use "../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
 @use "../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
 
-:root,
-:root[data-theme="default"],
-[data-theme="default"],
-:root.#{iv.$class-prefix}theme-default,
-.#{iv.$class-prefix}theme-default,
-:root[data-theme="light"],
-[data-theme="light"],
-:root.#{iv.$class-prefix}theme-light,
-.#{iv.$class-prefix}theme-light {
+:root {
     @include light.light-theme;
     
     & {

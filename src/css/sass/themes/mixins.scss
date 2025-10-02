@@ -278,7 +278,7 @@ $classMaps:(
     $overrideColors
   );
 
-  @include override-platform-colors($overrideColors,$scheme-main);
+  @include override-platform-colors($overrideColors,hsl(color.channel($scheme-main, "hue", $space: hsl), color.channel($scheme-main, "saturation", $space: hsl), color.channel($scheme-main, "lightness", $space: hsl)));
 
   @include cv.register-vars((
     "scheme-brightness": "dark",
@@ -304,4 +304,13 @@ $classMaps:(
     "active-color-l-delta": 10%,
     "text-l":71%
   ));
+
+  .#{iv.$class-prefix}block-list {
+      @each $name, $l in ("white", #{cv.getVar("white-l")}), ("black", #{cv.getVar("black-invert-l")}) {
+        li.#{iv.$class-prefix}is-#{$name}.#{iv.$class-prefix}is-outlined,
+        &.#{iv.$class-prefix}is-#{$name}.#{iv.$class-prefix}is-outlined > li {
+          @include cv.register-var("block-list-color",hsl(#{cv.getVar($name,"","-h")},#{cv.getVar($name,"","-s")}, $l));
+        }
+      }  
+  }
 }

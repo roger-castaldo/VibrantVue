@@ -2,14 +2,22 @@
 import fs from "fs";
 import postcss from "postcss";
 
+const colors = ['white','black','light','dark','text','primary','link','info','success','warning','danger'];
+const colorVars = colors.map(val=>`--bulma-${val}`)
+.concat(colors.map(val=>`--bulma-${val}-invert`))
+.concat(colors.map(val=>`--bulma-${val}-on-scheme`));
+
 function collectVarsFromRoot(root) {
   const vars = {};
   root.walkRules(rule => {
-    const themeMatch = rule.selector.match(/^\.theme-default,?$/m);
+    const themeMatch = rule.selector.match(/^\:root$/m);
     if (!themeMatch){ return; }
     
     rule.walkDecls(/^--/, decl => {
       vars[decl.prop.trim()] = decl.value.trim();
+      if (colorVars.indexOf(decl.prop.trim())>=0){
+        decl.remove();
+      }
     });
   });
   return vars;
@@ -17,7 +25,7 @@ function collectVarsFromRoot(root) {
 
 function removeDuplicateThemeVars(root, rootVars) {
   root.walkRules(rule => {
-    if (rule.selector.match(/\.theme-default/)){ return; }
+    if (rule.selector.match(/^\:root,?$/m)){ return; }
     const themeMatch = rule.selector.match(/\.theme-([\w-]+)/);
     if (!themeMatch) return;
 
@@ -50,6 +58,7 @@ const outputPath = 'dist/vibrantvue-cleaned.css';
 
 const cssContent = fs.readFileSync(inputPath, "utf8");
 const cleanedCss = processCss(cssContent);
+
 fs.writeFileSync(outputPath, cleanedCss, "utf8");
 
 console.log(`Cleaned CSS written to ${outputPath}`);

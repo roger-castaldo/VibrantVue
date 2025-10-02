@@ -9,24 +9,69 @@ import { h } from 'vue'
 describe('List', () => {
   test('check accessibility',async() => {
     const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(List, {
-        props: {
-          items:[
-            {
-              icon:'person',
-              name:'item1'
-            },
-            {
-              name:'item2'
-            }
-          ] 
-        },
-        slots:{
-          item1:()=>'Item 1',
-          item2:()=>'Item 2'
-        }
-      });
-      return container;
+      let result : HTMLElement[] = [];
+      for( const key in ColorTypes){
+        const renderResult = render(List, {
+          props: {
+            items:[
+              {
+                icon:'person',
+                name:'item1'
+              },
+              {
+                name:'item2',
+              }
+            ],
+            type:ColorTypes[key] 
+          },
+          slots:{
+            item1:()=>'Item 1',
+            item2:()=>'Item 2'
+          }
+        });
+        result.push(renderResult.container);
+        const renderHighlightResult = render(List, {
+          props: {
+            items:[
+              {
+                icon:'person',
+                name:'item1'
+              },
+              {
+                name:'item2'
+              }
+            ],
+            type:ColorTypes[key],
+            highlighted:true 
+          },
+          slots:{
+            item1:()=>'Item 1',
+            item2:()=>'Item 2'
+          }
+        });
+        result.push(renderHighlightResult.container);
+        const renderOutlinedResult = render(List, {
+          props: {
+            items:[
+              {
+                icon:'person',
+                name:'item1'
+              },
+              {
+                name:'item2'
+              }
+            ],
+            type:ColorTypes[key],
+            outlined:true 
+          },
+          slots:{
+            item1:()=>'Item 1',
+            item2:()=>'Item 2'
+          }
+        });
+        result.push(renderOutlinedResult.container);
+      }
+      return result;
     });
 
     expect(accessibilityScanResults.violations).toEqual([]);

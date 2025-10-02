@@ -23836,12 +23836,16 @@ form.container.is-fullhd section .columns {
 }
 
 .block-list {
+  --bulma-block-list-background: var(--bulma-body-background-color);
+  --bulma-block-list-border-color: var(--bulma-dark);
+  --bulma-block-list-color: var(--bulma-text);
   list-style: none;
 }
 .block-list li {
   padding: calc(var(--bulma-gap) / 2);
-  background: var(--bulma-light);
+  background: var(--bulma-block-list-background);
   margin-bottom: 0.25rem;
+  color: var(--bulma-block-list-color);
 }
 .block-list li.is-left, .block-list.is-left > li {
   text-align: left;
@@ -23853,317 +23857,151 @@ form.container.is-fullhd section .columns {
   text-align: right;
 }
 .block-list li.is-small, .block-list.is-small > li {
-  font-size: var(--bulma-size-small);
+  font-size: var(--bulma-is-small);
+  padding: calc(var(--bulma-gap) / 3);
 }
 .block-list li.is-normal, .block-list.is-normal > li {
-  font-size: var(--bulma-size-normal);
-}
-.block-list li.is-medium, .block-list.is-medium > li {
-  font-size: var(--bulma-size-medium);
+  font-size: var(--bulma-is-normal);
 }
 .block-list li.is-large, .block-list.is-large > li {
-  font-size: var(--bulma-size-large);
-}
-.block-list li.is-small, .block-list.is-small > li {
-  padding: calc(var(--bulma-gap) / 3);
+  font-size: var(--bulma-is-large);
 }
 .block-list li.has-radius, .block-list.has-radius > li {
   border-radius: var(--bulma-radius);
 }
 .block-list li.is-highlighted, .block-list.is-highlighted > li {
-  border-left: 5px var(--bulma-dark) solid;
+  border-left: 5px var(--bulma-block-list-border-color) solid;
 }
 .block-list li.is-outlined, .block-list.is-outlined > li {
-  background: transparent;
-  color: var(--bulma-border);
-  border: 1px solid var(--bulma-border);
-  color: var(--bulma-text);
+  --bulma-block-list-background: transparent;
+  --bulma-block-list-border-color: var(--bulma-light);
+  border: 1px solid var(--bulma-block-list-border-color);
+}
+.block-list li.has-icon {
+  display: flex;
+}
+.block-list li.has-icon .icon {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  margin-right: 1em;
+}
+.block-list li.has-icon span {
+  flex-grow: 1;
+}
+.block-list li.has-icon.is-right .icon {
+  margin-right: 0;
+  margin-left: 1em;
 }
 .block-list li.is-white, .block-list.is-white > li {
-  background: var(--bulma-white);
-  color: var(--bulma-white-invert);
+  --bulma-block-list-background: var(--bulma-white);
+  --bulma-block-list-border-color: var(--bulma-white-75);
+  --bulma-block-list-color: var(--bulma-white-invert);
 }
-.block-list li.is-white.is-outlined, .block-list.is-white > li.is-outlined {
-  background: transparent;
-  color: var(--bulma-white);
-  border: 1px solid var(--bulma-white);
-}
-.block-list li.is-white.is-highlighted, .block-list.is-white > li.is-highlighted {
-  background: transparent;
-  color: var(--bulma-white);
-  border: 1px solid var(--bulma-white);
-  border-left: 5px var(--bulma-white) solid;
-}
-.block-list.is-white li.is-outlined, .block-list.is-white.is-outlined > li {
-  background: transparent;
-  color: var(--bulma-white);
-  border: 1px solid var(--bulma-white);
-}
-.block-list.is-white li.is-highlighted, .block-list.is-white.is-highlighted > li {
-  background: transparent;
-  color: var(--bulma-white);
-  border: 1px solid var(--bulma-white);
-  border-left: 5px var(--bulma-white) solid;
+.block-list li.is-white.is-outlined, .block-list.is-white.is-outlined > li, .block-list.is-outlined > li.is-white {
+  --bulma-block-list-background: transparent;
+  --bulma-block-list-border-color: var(--bulma-white);
+  --bulma-block-list-color: var(--bulma-white-on-scheme);
 }
 .block-list li.is-black, .block-list.is-black > li {
-  background: var(--bulma-black);
-  color: var(--bulma-black-invert);
+  --bulma-block-list-background: var(--bulma-black);
+  --bulma-block-list-border-color: var(--bulma-black-75);
+  --bulma-block-list-color: var(--bulma-black-invert);
 }
-.block-list li.is-black.is-outlined, .block-list.is-black > li.is-outlined {
-  background: transparent;
-  color: var(--bulma-black);
-  border: 1px solid var(--bulma-black);
-}
-.block-list li.is-black.is-highlighted, .block-list.is-black > li.is-highlighted {
-  background: transparent;
-  color: var(--bulma-black);
-  border: 1px solid var(--bulma-black);
-  border-left: 5px var(--bulma-black) solid;
-}
-.block-list.is-black li.is-outlined, .block-list.is-black.is-outlined > li {
-  background: transparent;
-  color: var(--bulma-black);
-  border: 1px solid var(--bulma-black);
-}
-.block-list.is-black li.is-highlighted, .block-list.is-black.is-highlighted > li {
-  background: transparent;
-  color: var(--bulma-black);
-  border: 1px solid var(--bulma-black);
-  border-left: 5px var(--bulma-black) solid;
+.block-list li.is-black.is-outlined, .block-list.is-black.is-outlined > li, .block-list.is-outlined > li.is-black {
+  --bulma-block-list-background: transparent;
+  --bulma-block-list-border-color: var(--bulma-black);
+  --bulma-block-list-color: var(--bulma-black-on-scheme);
 }
 .block-list li.is-light, .block-list.is-light > li {
-  background: var(--bulma-light);
-  color: var(--bulma-light-invert);
+  --bulma-block-list-background: var(--bulma-light);
+  --bulma-block-list-border-color: var(--bulma-light-75);
+  --bulma-block-list-color: var(--bulma-light-invert);
 }
-.block-list li.is-light.is-outlined, .block-list.is-light > li.is-outlined {
-  background: transparent;
-  color: var(--bulma-light);
-  border: 1px solid var(--bulma-light);
-}
-.block-list li.is-light.is-highlighted, .block-list.is-light > li.is-highlighted {
-  background: transparent;
-  color: var(--bulma-light);
-  border: 1px solid var(--bulma-light);
-  border-left: 5px var(--bulma-light) solid;
-}
-.block-list.is-light li.is-outlined, .block-list.is-light.is-outlined > li {
-  background: transparent;
-  color: var(--bulma-light);
-  border: 1px solid var(--bulma-light);
-}
-.block-list.is-light li.is-highlighted, .block-list.is-light.is-highlighted > li {
-  background: transparent;
-  color: var(--bulma-light);
-  border: 1px solid var(--bulma-light);
-  border-left: 5px var(--bulma-light) solid;
+.block-list li.is-light.is-outlined, .block-list.is-light.is-outlined > li, .block-list.is-outlined > li.is-light {
+  --bulma-block-list-background: transparent;
+  --bulma-block-list-border-color: var(--bulma-light);
+  --bulma-block-list-color: var(--bulma-light-on-scheme);
 }
 .block-list li.is-dark, .block-list.is-dark > li {
-  background: var(--bulma-dark);
-  color: var(--bulma-dark-invert);
+  --bulma-block-list-background: var(--bulma-dark);
+  --bulma-block-list-border-color: var(--bulma-dark-75);
+  --bulma-block-list-color: var(--bulma-dark-invert);
 }
-.block-list li.is-dark.is-outlined, .block-list.is-dark > li.is-outlined {
-  background: transparent;
-  color: var(--bulma-dark);
-  border: 1px solid var(--bulma-dark);
-}
-.block-list li.is-dark.is-highlighted, .block-list.is-dark > li.is-highlighted {
-  background: transparent;
-  color: var(--bulma-dark);
-  border: 1px solid var(--bulma-dark);
-  border-left: 5px var(--bulma-dark) solid;
-}
-.block-list.is-dark li.is-outlined, .block-list.is-dark.is-outlined > li {
-  background: transparent;
-  color: var(--bulma-dark);
-  border: 1px solid var(--bulma-dark);
-}
-.block-list.is-dark li.is-highlighted, .block-list.is-dark.is-highlighted > li {
-  background: transparent;
-  color: var(--bulma-dark);
-  border: 1px solid var(--bulma-dark);
-  border-left: 5px var(--bulma-dark) solid;
+.block-list li.is-dark.is-outlined, .block-list.is-dark.is-outlined > li, .block-list.is-outlined > li.is-dark {
+  --bulma-block-list-background: transparent;
+  --bulma-block-list-border-color: var(--bulma-dark);
+  --bulma-block-list-color: var(--bulma-dark-on-scheme);
 }
 .block-list li.is-text, .block-list.is-text > li {
-  background: var(--bulma-text);
-  color: var(--bulma-text-invert);
+  --bulma-block-list-background: var(--bulma-text);
+  --bulma-block-list-border-color: var(--bulma-text-75);
+  --bulma-block-list-color: var(--bulma-text-invert);
 }
-.block-list li.is-text.is-outlined, .block-list.is-text > li.is-outlined {
-  background: transparent;
-  color: var(--bulma-text);
-  border: 1px solid var(--bulma-text);
-}
-.block-list li.is-text.is-highlighted, .block-list.is-text > li.is-highlighted {
-  background: transparent;
-  color: var(--bulma-text);
-  border: 1px solid var(--bulma-text);
-  border-left: 5px var(--bulma-text) solid;
-}
-.block-list.is-text li.is-outlined, .block-list.is-text.is-outlined > li {
-  background: transparent;
-  color: var(--bulma-text);
-  border: 1px solid var(--bulma-text);
-}
-.block-list.is-text li.is-highlighted, .block-list.is-text.is-highlighted > li {
-  background: transparent;
-  color: var(--bulma-text);
-  border: 1px solid var(--bulma-text);
-  border-left: 5px var(--bulma-text) solid;
+.block-list li.is-text.is-outlined, .block-list.is-text.is-outlined > li, .block-list.is-outlined > li.is-text {
+  --bulma-block-list-background: transparent;
+  --bulma-block-list-border-color: var(--bulma-text);
+  --bulma-block-list-color: var(--bulma-text-on-scheme);
 }
 .block-list li.is-primary, .block-list.is-primary > li {
-  background: var(--bulma-primary);
-  color: var(--bulma-primary-invert);
+  --bulma-block-list-background: var(--bulma-primary);
+  --bulma-block-list-border-color: var(--bulma-primary-75);
+  --bulma-block-list-color: var(--bulma-primary-invert);
 }
-.block-list li.is-primary.is-outlined, .block-list.is-primary > li.is-outlined {
-  background: transparent;
-  color: var(--bulma-primary);
-  border: 1px solid var(--bulma-primary);
-}
-.block-list li.is-primary.is-highlighted, .block-list.is-primary > li.is-highlighted {
-  background: transparent;
-  color: var(--bulma-primary);
-  border: 1px solid var(--bulma-primary);
-  border-left: 5px var(--bulma-primary) solid;
-}
-.block-list.is-primary li.is-outlined, .block-list.is-primary.is-outlined > li {
-  background: transparent;
-  color: var(--bulma-primary);
-  border: 1px solid var(--bulma-primary);
-}
-.block-list.is-primary li.is-highlighted, .block-list.is-primary.is-highlighted > li {
-  background: transparent;
-  color: var(--bulma-primary);
-  border: 1px solid var(--bulma-primary);
-  border-left: 5px var(--bulma-primary) solid;
+.block-list li.is-primary.is-outlined, .block-list.is-primary.is-outlined > li, .block-list.is-outlined > li.is-primary {
+  --bulma-block-list-background: transparent;
+  --bulma-block-list-border-color: var(--bulma-primary);
+  --bulma-block-list-color: var(--bulma-primary-on-scheme);
 }
 .block-list li.is-link, .block-list.is-link > li {
-  background: var(--bulma-link);
-  color: var(--bulma-link-invert);
+  --bulma-block-list-background: var(--bulma-link);
+  --bulma-block-list-border-color: var(--bulma-link-75);
+  --bulma-block-list-color: var(--bulma-link-invert);
 }
-.block-list li.is-link.is-outlined, .block-list.is-link > li.is-outlined {
-  background: transparent;
-  color: var(--bulma-link);
-  border: 1px solid var(--bulma-link);
-}
-.block-list li.is-link.is-highlighted, .block-list.is-link > li.is-highlighted {
-  background: transparent;
-  color: var(--bulma-link);
-  border: 1px solid var(--bulma-link);
-  border-left: 5px var(--bulma-link) solid;
-}
-.block-list.is-link li.is-outlined, .block-list.is-link.is-outlined > li {
-  background: transparent;
-  color: var(--bulma-link);
-  border: 1px solid var(--bulma-link);
-}
-.block-list.is-link li.is-highlighted, .block-list.is-link.is-highlighted > li {
-  background: transparent;
-  color: var(--bulma-link);
-  border: 1px solid var(--bulma-link);
-  border-left: 5px var(--bulma-link) solid;
+.block-list li.is-link.is-outlined, .block-list.is-link.is-outlined > li, .block-list.is-outlined > li.is-link {
+  --bulma-block-list-background: transparent;
+  --bulma-block-list-border-color: var(--bulma-link);
+  --bulma-block-list-color: var(--bulma-link-on-scheme);
 }
 .block-list li.is-info, .block-list.is-info > li {
-  background: var(--bulma-info);
-  color: var(--bulma-info-invert);
+  --bulma-block-list-background: var(--bulma-info);
+  --bulma-block-list-border-color: var(--bulma-info-75);
+  --bulma-block-list-color: var(--bulma-info-invert);
 }
-.block-list li.is-info.is-outlined, .block-list.is-info > li.is-outlined {
-  background: transparent;
-  color: var(--bulma-info);
-  border: 1px solid var(--bulma-info);
-}
-.block-list li.is-info.is-highlighted, .block-list.is-info > li.is-highlighted {
-  background: transparent;
-  color: var(--bulma-info);
-  border: 1px solid var(--bulma-info);
-  border-left: 5px var(--bulma-info) solid;
-}
-.block-list.is-info li.is-outlined, .block-list.is-info.is-outlined > li {
-  background: transparent;
-  color: var(--bulma-info);
-  border: 1px solid var(--bulma-info);
-}
-.block-list.is-info li.is-highlighted, .block-list.is-info.is-highlighted > li {
-  background: transparent;
-  color: var(--bulma-info);
-  border: 1px solid var(--bulma-info);
-  border-left: 5px var(--bulma-info) solid;
+.block-list li.is-info.is-outlined, .block-list.is-info.is-outlined > li, .block-list.is-outlined > li.is-info {
+  --bulma-block-list-background: transparent;
+  --bulma-block-list-border-color: var(--bulma-info);
+  --bulma-block-list-color: var(--bulma-info-on-scheme);
 }
 .block-list li.is-success, .block-list.is-success > li {
-  background: var(--bulma-success);
-  color: var(--bulma-success-invert);
+  --bulma-block-list-background: var(--bulma-success);
+  --bulma-block-list-border-color: var(--bulma-success-75);
+  --bulma-block-list-color: var(--bulma-success-invert);
 }
-.block-list li.is-success.is-outlined, .block-list.is-success > li.is-outlined {
-  background: transparent;
-  color: var(--bulma-success);
-  border: 1px solid var(--bulma-success);
-}
-.block-list li.is-success.is-highlighted, .block-list.is-success > li.is-highlighted {
-  background: transparent;
-  color: var(--bulma-success);
-  border: 1px solid var(--bulma-success);
-  border-left: 5px var(--bulma-success) solid;
-}
-.block-list.is-success li.is-outlined, .block-list.is-success.is-outlined > li {
-  background: transparent;
-  color: var(--bulma-success);
-  border: 1px solid var(--bulma-success);
-}
-.block-list.is-success li.is-highlighted, .block-list.is-success.is-highlighted > li {
-  background: transparent;
-  color: var(--bulma-success);
-  border: 1px solid var(--bulma-success);
-  border-left: 5px var(--bulma-success) solid;
+.block-list li.is-success.is-outlined, .block-list.is-success.is-outlined > li, .block-list.is-outlined > li.is-success {
+  --bulma-block-list-background: transparent;
+  --bulma-block-list-border-color: var(--bulma-success);
+  --bulma-block-list-color: var(--bulma-success-on-scheme);
 }
 .block-list li.is-warning, .block-list.is-warning > li {
-  background: var(--bulma-warning);
-  color: var(--bulma-warning-invert);
+  --bulma-block-list-background: var(--bulma-warning);
+  --bulma-block-list-border-color: var(--bulma-warning-75);
+  --bulma-block-list-color: var(--bulma-warning-invert);
 }
-.block-list li.is-warning.is-outlined, .block-list.is-warning > li.is-outlined {
-  background: transparent;
-  color: var(--bulma-warning);
-  border: 1px solid var(--bulma-warning);
-}
-.block-list li.is-warning.is-highlighted, .block-list.is-warning > li.is-highlighted {
-  background: transparent;
-  color: var(--bulma-warning);
-  border: 1px solid var(--bulma-warning);
-  border-left: 5px var(--bulma-warning) solid;
-}
-.block-list.is-warning li.is-outlined, .block-list.is-warning.is-outlined > li {
-  background: transparent;
-  color: var(--bulma-warning);
-  border: 1px solid var(--bulma-warning);
-}
-.block-list.is-warning li.is-highlighted, .block-list.is-warning.is-highlighted > li {
-  background: transparent;
-  color: var(--bulma-warning);
-  border: 1px solid var(--bulma-warning);
-  border-left: 5px var(--bulma-warning) solid;
+.block-list li.is-warning.is-outlined, .block-list.is-warning.is-outlined > li, .block-list.is-outlined > li.is-warning {
+  --bulma-block-list-background: transparent;
+  --bulma-block-list-border-color: var(--bulma-warning);
+  --bulma-block-list-color: var(--bulma-warning-on-scheme);
 }
 .block-list li.is-danger, .block-list.is-danger > li {
-  background: var(--bulma-danger);
-  color: var(--bulma-danger-invert);
+  --bulma-block-list-background: var(--bulma-danger);
+  --bulma-block-list-border-color: var(--bulma-danger-75);
+  --bulma-block-list-color: var(--bulma-danger-invert);
 }
-.block-list li.is-danger.is-outlined, .block-list.is-danger > li.is-outlined {
-  background: transparent;
-  color: var(--bulma-danger);
-  border: 1px solid var(--bulma-danger);
-}
-.block-list li.is-danger.is-highlighted, .block-list.is-danger > li.is-highlighted {
-  background: transparent;
-  color: var(--bulma-danger);
-  border: 1px solid var(--bulma-danger);
-  border-left: 5px var(--bulma-danger) solid;
-}
-.block-list.is-danger li.is-outlined, .block-list.is-danger.is-outlined > li {
-  background: transparent;
-  color: var(--bulma-danger);
-  border: 1px solid var(--bulma-danger);
-}
-.block-list.is-danger li.is-highlighted, .block-list.is-danger.is-highlighted > li {
-  background: transparent;
-  color: var(--bulma-danger);
-  border: 1px solid var(--bulma-danger);
-  border-left: 5px var(--bulma-danger) solid;
+.block-list li.is-danger.is-outlined, .block-list.is-danger.is-outlined > li, .block-list.is-outlined > li.is-danger {
+  --bulma-block-list-background: transparent;
+  --bulma-block-list-border-color: var(--bulma-danger);
+  --bulma-block-list-color: var(--bulma-danger-on-scheme);
 }
 
 .slideout {
@@ -25467,15 +25305,7 @@ form.container.is-fullhd section .columns {
     page-break-after: avoid;
   }
 }
-:root,
-:root[data-theme=default],
-[data-theme=default],
-:root.theme-default,
-.theme-default,
-:root[data-theme=light],
-[data-theme=light],
-:root.theme-light,
-.theme-light {
+:root {
   --bulma-scheme-h: 221;
   --bulma-scheme-s: 14%;
   --bulma-light-l: 90%;
@@ -25539,47 +25369,34 @@ form.container.is-fullhd section .columns {
   --bulma-burger-gap: 5px;
   --bulma-burger-item-height: 2px;
   --bulma-burger-item-width: 20px;
-  --bulma-white: hsla(var(--bulma-white-h), var(--bulma-white-s), var(--bulma-white-l), 1);
   --bulma-white-base: hsla(var(--bulma-white-h), var(--bulma-white-s), var(--bulma-white-l), 1);
   --bulma-white-rgb: 255, 255, 255;
   --bulma-white-h: 221deg;
   --bulma-white-s: 14%;
   --bulma-white-l: 100%;
   --bulma-white-invert-l: 4%;
-  --bulma-white-invert: hsl(221, 14%, 4%);
   --bulma-white-on-scheme-l: 35%;
-  --bulma-white-on-scheme: hsla(var(--bulma-white-h), var(--bulma-white-s), var(--bulma-white-on-scheme-l), 1);
-  --bulma-black: hsla(var(--bulma-black-h), var(--bulma-black-s), var(--bulma-black-l), 1);
   --bulma-black-base: hsla(var(--bulma-black-h), var(--bulma-black-s), var(--bulma-black-l), 1);
   --bulma-black-rgb: 8.772, 9.6764, 11.628;
   --bulma-black-h: 221deg;
   --bulma-black-s: 14%;
   --bulma-black-l: 4%;
   --bulma-black-invert-l: 100%;
-  --bulma-black-invert: hsl(221, 14%, 100%);
   --bulma-black-on-scheme-l: 4%;
-  --bulma-black-on-scheme: hsla(var(--bulma-black-h), var(--bulma-black-s), var(--bulma-black-on-scheme-l), 1);
-  --bulma-light: hsla(var(--bulma-light-h), var(--bulma-light-s), var(--bulma-light-l), 1);
   --bulma-light-base: hsla(var(--bulma-light-h), var(--bulma-light-s), var(--bulma-light-l), 1);
   --bulma-light-rgb: 243.372, 244.2764, 246.228;
   --bulma-light-h: 221deg;
   --bulma-light-s: 14%;
   --bulma-light-l: 96%;
   --bulma-light-invert-l: 21%;
-  --bulma-light-invert: hsl(221, 14%, 21%);
   --bulma-light-on-scheme-l: 36%;
-  --bulma-light-on-scheme: hsla(var(--bulma-light-h), var(--bulma-light-s), var(--bulma-light-on-scheme-l), 1);
-  --bulma-dark: hsla(var(--bulma-dark-h), var(--bulma-dark-s), var(--bulma-dark-l), 1);
   --bulma-dark-base: hsla(var(--bulma-dark-h), var(--bulma-dark-s), var(--bulma-dark-l), 1);
   --bulma-dark-rgb: 46.053, 50.8011, 61.047;
   --bulma-dark-h: 221deg;
   --bulma-dark-s: 14%;
   --bulma-dark-l: 21%;
   --bulma-dark-invert-l: 96%;
-  --bulma-dark-invert: hsl(221, 14%, 96%);
   --bulma-dark-on-scheme-l: 21%;
-  --bulma-dark-on-scheme: hsla(var(--bulma-dark-h), var(--bulma-dark-s), var(--bulma-dark-on-scheme-l), 1);
-  --bulma-text: hsla(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l), 1);
   --bulma-text-base: hsla(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l), 1);
   --bulma-text-rgb: 63.597, 70.1539, 84.303;
   --bulma-text-h: 221deg;
@@ -25670,7 +25487,6 @@ form.container.is-fullhd section .columns {
   --bulma-text-100-invert-l: var(--bulma-text-25-l);
   --bulma-text-100-invert: hsla(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-100-invert-l), 1);
   --bulma-text-invert-l: var(--bulma-text-100-l);
-  --bulma-text-invert: hsla(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-invert-l), 1);
   --bulma-text-light-l: var(--bulma-text-90-l);
   --bulma-text-light: hsla(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-light-l), 1);
   --bulma-text-light-invert-l: var(--bulma-text-20-l);
@@ -25684,8 +25500,6 @@ form.container.is-fullhd section .columns {
   --bulma-text-soft-invert: hsla(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-soft-invert-l), 1);
   --bulma-text-bold-invert: hsla(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-bold-invert-l), 1);
   --bulma-text-on-scheme-l: 29%;
-  --bulma-text-on-scheme: hsla(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-on-scheme-l), 1);
-  --bulma-primary: hsla(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-primary-l), 1);
   --bulma-primary-base: hsla(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-primary-l), 1);
   --bulma-primary-rgb: 0, 209.1, 177.735;
   --bulma-primary-h: 171deg;
@@ -25776,7 +25590,6 @@ form.container.is-fullhd section .columns {
   --bulma-primary-100-invert-l: var(--bulma-primary-15-l);
   --bulma-primary-100-invert: hsla(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-primary-100-invert-l), 1);
   --bulma-primary-invert-l: var(--bulma-primary-05-l);
-  --bulma-primary-invert: hsla(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-primary-invert-l), 1);
   --bulma-primary-light-l: var(--bulma-primary-90-l);
   --bulma-primary-light: hsla(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-primary-light-l), 1);
   --bulma-primary-light-invert-l: var(--bulma-primary-10-l);
@@ -25790,8 +25603,6 @@ form.container.is-fullhd section .columns {
   --bulma-primary-soft-invert: hsla(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-soft-invert-l), 1);
   --bulma-primary-bold-invert: hsla(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-bold-invert-l), 1);
   --bulma-primary-on-scheme-l: 21%;
-  --bulma-primary-on-scheme: hsla(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-primary-on-scheme-l), 1);
-  --bulma-link: hsla(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-link-l), 1);
   --bulma-link-base: hsla(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-link-l), 1);
   --bulma-link-rgb: 66.3, 88.315, 255;
   --bulma-link-h: 233deg;
@@ -25882,7 +25693,6 @@ form.container.is-fullhd section .columns {
   --bulma-link-100-invert-l: var(--bulma-link-50-l);
   --bulma-link-100-invert: hsla(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-link-100-invert-l), 1);
   --bulma-link-invert-l: var(--bulma-link-100-l);
-  --bulma-link-invert: hsla(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-link-invert-l), 1);
   --bulma-link-light-l: var(--bulma-link-90-l);
   --bulma-link-light: hsla(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-link-light-l), 1);
   --bulma-link-light-invert-l: var(--bulma-link-35-l);
@@ -25896,8 +25706,6 @@ form.container.is-fullhd section .columns {
   --bulma-link-soft-invert: hsla(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-soft-invert-l), 1);
   --bulma-link-bold-invert: hsla(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-bold-invert-l), 1);
   --bulma-link-on-scheme-l: 58%;
-  --bulma-link-on-scheme: hsla(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-link-on-scheme-l), 1);
-  --bulma-info: hsla(var(--bulma-info-h), var(--bulma-info-s), var(--bulma-info-l), 1);
   --bulma-info-base: hsla(var(--bulma-info-h), var(--bulma-info-s), var(--bulma-info-l), 1);
   --bulma-info-rgb: 102, 209.1, 255;
   --bulma-info-h: 198deg;
@@ -25988,7 +25796,6 @@ form.container.is-fullhd section .columns {
   --bulma-info-100-invert-l: var(--bulma-info-20-l);
   --bulma-info-100-invert: hsla(var(--bulma-info-h), var(--bulma-info-s), var(--bulma-info-100-invert-l), 1);
   --bulma-info-invert-l: var(--bulma-info-10-l);
-  --bulma-info-invert: hsla(var(--bulma-info-h), var(--bulma-info-s), var(--bulma-info-invert-l), 1);
   --bulma-info-light-l: var(--bulma-info-90-l);
   --bulma-info-light: hsla(var(--bulma-info-h), var(--bulma-info-s), var(--bulma-info-light-l), 1);
   --bulma-info-light-invert-l: var(--bulma-info-15-l);
@@ -26002,8 +25809,6 @@ form.container.is-fullhd section .columns {
   --bulma-info-soft-invert: hsla(var(--bulma-info-h), var(--bulma-info-s), var(--bulma-soft-invert-l), 1);
   --bulma-info-bold-invert: hsla(var(--bulma-info-h), var(--bulma-info-s), var(--bulma-bold-invert-l), 1);
   --bulma-info-on-scheme-l: 25%;
-  --bulma-info-on-scheme: hsla(var(--bulma-info-h), var(--bulma-info-s), var(--bulma-info-on-scheme-l), 1);
-  --bulma-success: hsla(var(--bulma-success-h), var(--bulma-success-s), var(--bulma-success-l), 1);
   --bulma-success-base: hsla(var(--bulma-success-h), var(--bulma-success-s), var(--bulma-success-l), 1);
   --bulma-success-rgb: 71.6295, 198.6705, 141.50205;
   --bulma-success-h: 153deg;
@@ -26094,7 +25899,6 @@ form.container.is-fullhd section .columns {
   --bulma-success-100-invert-l: var(--bulma-success-20-l);
   --bulma-success-100-invert: hsla(var(--bulma-success-h), var(--bulma-success-s), var(--bulma-success-100-invert-l), 1);
   --bulma-success-invert-l: var(--bulma-success-10-l);
-  --bulma-success-invert: hsla(var(--bulma-success-h), var(--bulma-success-s), var(--bulma-success-invert-l), 1);
   --bulma-success-light-l: var(--bulma-success-90-l);
   --bulma-success-light: hsla(var(--bulma-success-h), var(--bulma-success-s), var(--bulma-success-light-l), 1);
   --bulma-success-light-invert-l: var(--bulma-success-15-l);
@@ -26108,8 +25912,6 @@ form.container.is-fullhd section .columns {
   --bulma-success-soft-invert: hsla(var(--bulma-success-h), var(--bulma-success-s), var(--bulma-soft-invert-l), 1);
   --bulma-success-bold-invert: hsla(var(--bulma-success-h), var(--bulma-success-s), var(--bulma-bold-invert-l), 1);
   --bulma-success-on-scheme-l: 23%;
-  --bulma-success-on-scheme: hsla(var(--bulma-success-h), var(--bulma-success-s), var(--bulma-success-on-scheme-l), 1);
-  --bulma-warning: hsla(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-l), 1);
   --bulma-warning-base: hsla(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-l), 1);
   --bulma-warning-rgb: 255, 183.09, 15.3;
   --bulma-warning-h: 42deg;
@@ -26200,7 +26002,6 @@ form.container.is-fullhd section .columns {
   --bulma-warning-100-invert-l: var(--bulma-warning-20-l);
   --bulma-warning-100-invert: hsla(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-100-invert-l), 1);
   --bulma-warning-invert-l: var(--bulma-warning-10-l);
-  --bulma-warning-invert: hsla(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-invert-l), 1);
   --bulma-warning-light-l: var(--bulma-warning-90-l);
   --bulma-warning-light: hsla(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-light-l), 1);
   --bulma-warning-light-invert-l: var(--bulma-warning-15-l);
@@ -26214,8 +26015,6 @@ form.container.is-fullhd section .columns {
   --bulma-warning-soft-invert: hsla(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-soft-invert-l), 1);
   --bulma-warning-bold-invert: hsla(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-bold-invert-l), 1);
   --bulma-warning-on-scheme-l: 23%;
-  --bulma-warning-on-scheme: hsla(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-on-scheme-l), 1);
-  --bulma-danger: hsla(var(--bulma-danger-h), var(--bulma-danger-s), var(--bulma-danger-l), 1);
   --bulma-danger-base: hsla(var(--bulma-danger-h), var(--bulma-danger-s), var(--bulma-danger-l), 1);
   --bulma-danger-rgb: 255, 102, 132.6;
   --bulma-danger-h: 348deg;
@@ -26306,7 +26105,6 @@ form.container.is-fullhd section .columns {
   --bulma-danger-100-invert-l: var(--bulma-danger-30-l);
   --bulma-danger-100-invert: hsla(var(--bulma-danger-h), var(--bulma-danger-s), var(--bulma-danger-100-invert-l), 1);
   --bulma-danger-invert-l: var(--bulma-danger-05-l);
-  --bulma-danger-invert: hsla(var(--bulma-danger-h), var(--bulma-danger-s), var(--bulma-danger-invert-l), 1);
   --bulma-danger-light-l: var(--bulma-danger-90-l);
   --bulma-danger-light: hsla(var(--bulma-danger-h), var(--bulma-danger-s), var(--bulma-danger-light-l), 1);
   --bulma-danger-light-invert-l: var(--bulma-danger-25-l);
@@ -26320,7 +26118,6 @@ form.container.is-fullhd section .columns {
   --bulma-danger-soft-invert: hsla(var(--bulma-danger-h), var(--bulma-danger-s), var(--bulma-soft-invert-l), 1);
   --bulma-danger-bold-invert: hsla(var(--bulma-danger-h), var(--bulma-danger-s), var(--bulma-bold-invert-l), 1);
   --bulma-danger-on-scheme-l: 40%;
-  --bulma-danger-on-scheme: hsla(var(--bulma-danger-h), var(--bulma-danger-s), var(--bulma-danger-on-scheme-l), 1);
   --bulma-black-bis: hsl(221, 14%, 9%);
   --bulma-black-ter: hsl(221, 14%, 14%);
   --bulma-grey-darker: hsl(221, 14%, 21%);
@@ -26341,15 +26138,7 @@ form.container.is-fullhd section .columns {
   --bulma-size-6: 1rem;
   --bulma-size-7: 0.75rem;
 }
-:root .footer,
-:root[data-theme=default] .footer,
-[data-theme=default] .footer,
-:root.theme-default .footer,
-.theme-default .footer,
-:root[data-theme=light] .footer,
-[data-theme=light] .footer,
-:root.theme-light .footer,
-.theme-light .footer {
+:root .footer {
   --bulma-footer-color: hsl(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l));
 }
 
@@ -27368,6 +27157,29 @@ form.container.is-fullhd section .columns {
   --bulma-hover-color-l-delta: 5%;
   --bulma-active-color-l-delta: 10%;
   --bulma-text-l: 71%;
+}
+:root[data-theme=cyborg] .block-list li.is-white.is-outlined, :root[data-theme=cyborg] .block-list.is-white.is-outlined > li,
+[data-theme=cyborg] .block-list li.is-white.is-outlined,
+[data-theme=cyborg] .block-list.is-white.is-outlined > li,
+:root.theme-cyborg .block-list li.is-white.is-outlined,
+:root.theme-cyborg .block-list.is-white.is-outlined > li,
+.theme-cyborg .block-list li.is-white.is-outlined,
+.theme-cyborg .block-list.is-white.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-white-h), var(--bulma-white-s), var(--bulma-white-l));
+}
+:root[data-theme=cyborg] .block-list li.is-black.is-outlined, :root[data-theme=cyborg] .block-list.is-black.is-outlined > li,
+[data-theme=cyborg] .block-list li.is-black.is-outlined,
+[data-theme=cyborg] .block-list.is-black.is-outlined > li,
+:root.theme-cyborg .block-list li.is-black.is-outlined,
+:root.theme-cyborg .block-list.is-black.is-outlined > li,
+.theme-cyborg .block-list li.is-black.is-outlined,
+.theme-cyborg .block-list.is-black.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-black-h), var(--bulma-black-s), var(--bulma-black-invert-l));
+}
+:root[data-theme=cyborg],
+[data-theme=cyborg],
+:root.theme-cyborg,
+.theme-cyborg {
   --bulma-family-primary: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --bulma-text: #adafae;
   --bulma-title-color: #fff;
@@ -27671,6 +27483,39 @@ form.container.is-fullhd section .columns {
   --bulma-title-color: hsl(var(--bulma-hero-h), var(--bulma-hero-s), 53%);
   --bulma-title-strong-color: hsl(var(--bulma-hero-h), var(--bulma-hero-s), 53%);
 }
+:root[data-theme=cyborg] .block-list,
+[data-theme=cyborg] .block-list,
+:root.theme-cyborg .block-list,
+.theme-cyborg .block-list {
+  --bulma-warning-invert: hsl(var(--bulma-warning-h), var(--bulma-warning-s), 10%);
+}
+:root[data-theme=cyborg] .block-list li.is-light.is-outlined, :root[data-theme=cyborg] .block-list.is-light.is-outlined > li,
+[data-theme=cyborg] .block-list li.is-light.is-outlined,
+[data-theme=cyborg] .block-list.is-light.is-outlined > li,
+:root.theme-cyborg .block-list li.is-light.is-outlined,
+:root.theme-cyborg .block-list.is-light.is-outlined > li,
+.theme-cyborg .block-list li.is-light.is-outlined,
+.theme-cyborg .block-list.is-light.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-light-h), var(--bulma-light-s), 47%);
+}
+:root[data-theme=cyborg] .block-list li.is-link.is-outlined, :root[data-theme=cyborg] .block-list.is-link.is-outlined > li,
+[data-theme=cyborg] .block-list li.is-link.is-outlined,
+[data-theme=cyborg] .block-list.is-link.is-outlined > li,
+:root.theme-cyborg .block-list li.is-link.is-outlined,
+:root.theme-cyborg .block-list.is-link.is-outlined > li,
+.theme-cyborg .block-list li.is-link.is-outlined,
+.theme-cyborg .block-list.is-link.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-link-h), var(--bulma-link-s), 66%);
+}
+:root[data-theme=cyborg] .block-list li.is-info.is-outlined, :root[data-theme=cyborg] .block-list.is-info.is-outlined > li,
+[data-theme=cyborg] .block-list li.is-info.is-outlined,
+[data-theme=cyborg] .block-list.is-info.is-outlined > li,
+:root.theme-cyborg .block-list li.is-info.is-outlined,
+:root.theme-cyborg .block-list.is-info.is-outlined > li,
+.theme-cyborg .block-list li.is-info.is-outlined,
+.theme-cyborg .block-list.is-info.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-info-h), var(--bulma-info-s), 57%);
+}
 
 :root[data-theme=dark],
 [data-theme=dark],
@@ -27793,6 +27638,15 @@ form.container.is-fullhd section .columns {
 .theme-dark form .field .checkbox,
 .theme-dark form .field .is-form-paragraph {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 53%);
+}
+:root[data-theme=dark] .block-list li.is-black.is-outlined, :root[data-theme=dark] .block-list.is-black.is-outlined > li,
+[data-theme=dark] .block-list li.is-black.is-outlined,
+[data-theme=dark] .block-list.is-black.is-outlined > li,
+:root.theme-dark .block-list li.is-black.is-outlined,
+:root.theme-dark .block-list.is-black.is-outlined > li,
+.theme-dark .block-list li.is-black.is-outlined,
+.theme-dark .block-list.is-black.is-outlined > li {
+  --bulma-block-list-color: var(--bulma-black-invert);
 }
 
 :root[data-theme=darkly],
@@ -28120,6 +27974,29 @@ form.container.is-fullhd section .columns {
   --bulma-hover-color-l-delta: 5%;
   --bulma-active-color-l-delta: 10%;
   --bulma-text-l: 71%;
+}
+:root[data-theme=darkly] .block-list li.is-white.is-outlined, :root[data-theme=darkly] .block-list.is-white.is-outlined > li,
+[data-theme=darkly] .block-list li.is-white.is-outlined,
+[data-theme=darkly] .block-list.is-white.is-outlined > li,
+:root.theme-darkly .block-list li.is-white.is-outlined,
+:root.theme-darkly .block-list.is-white.is-outlined > li,
+.theme-darkly .block-list li.is-white.is-outlined,
+.theme-darkly .block-list.is-white.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-white-h), var(--bulma-white-s), var(--bulma-white-l));
+}
+:root[data-theme=darkly] .block-list li.is-black.is-outlined, :root[data-theme=darkly] .block-list.is-black.is-outlined > li,
+[data-theme=darkly] .block-list li.is-black.is-outlined,
+[data-theme=darkly] .block-list.is-black.is-outlined > li,
+:root.theme-darkly .block-list li.is-black.is-outlined,
+:root.theme-darkly .block-list.is-black.is-outlined > li,
+.theme-darkly .block-list li.is-black.is-outlined,
+.theme-darkly .block-list.is-black.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-black-h), var(--bulma-black-s), var(--bulma-black-invert-l));
+}
+:root[data-theme=darkly],
+[data-theme=darkly],
+:root.theme-darkly,
+.theme-darkly {
   --bulma-family-primary: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --bulma-text: #fff;
   --bulma-title-color: #fff;
@@ -28359,6 +28236,15 @@ form.container.is-fullhd section .columns {
 .theme-darkly form .field .checkbox,
 .theme-darkly form .field .is-form-paragraph {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 56%);
+}
+:root[data-theme=darkly] .block-list li.is-link.is-outlined, :root[data-theme=darkly] .block-list.is-link.is-outlined > li,
+[data-theme=darkly] .block-list li.is-link.is-outlined,
+[data-theme=darkly] .block-list.is-link.is-outlined > li,
+:root.theme-darkly .block-list li.is-link.is-outlined,
+:root.theme-darkly .block-list.is-link.is-outlined > li,
+.theme-darkly .block-list li.is-link.is-outlined,
+.theme-darkly .block-list.is-link.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-link-h), var(--bulma-link-s), 71%);
 }
 
 :root[data-theme=flatly],
@@ -39457,6 +39343,12 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-simplex .pagination-link:hover {
   text-decoration: none;
 }
+:root[data-theme=simplex] .button.is-success,
+[data-theme=simplex] .button.is-success,
+:root.theme-simplex .button.is-success,
+.theme-simplex .button.is-success {
+  --bulma-button-background-l-delta: -4%;
+}
 :root[data-theme=simplex] .button.is-outlined.is-link,
 [data-theme=simplex] .button.is-outlined.is-link,
 :root.theme-simplex .button.is-outlined.is-link,
@@ -39486,6 +39378,13 @@ fieldset[disabled] .theme-quartz .select select {
 :root.theme-simplex .notification.is-success,
 .theme-simplex .notification.is-success {
   color: hsl(var(--bulma-notification-h), var(--bulma-notification-s), 7%);
+}
+:root[data-theme=simplex] .block-list,
+[data-theme=simplex] .block-list,
+:root.theme-simplex .block-list,
+.theme-simplex .block-list {
+  --bulma-link-invert: hsl(var(--bulma-link-h), var(--bulma-link-s), 7%);
+  --bulma-success-invert: hsl(var(--bulma-success-h), var(--bulma-success-s), 7%);
 }
 
 :root[data-theme=sketchy],
@@ -41303,6 +41202,29 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-hover-color-l-delta: 5%;
   --bulma-active-color-l-delta: 10%;
   --bulma-text-l: 71%;
+}
+:root[data-theme=slate] .block-list li.is-white.is-outlined, :root[data-theme=slate] .block-list.is-white.is-outlined > li,
+[data-theme=slate] .block-list li.is-white.is-outlined,
+[data-theme=slate] .block-list.is-white.is-outlined > li,
+:root.theme-slate .block-list li.is-white.is-outlined,
+:root.theme-slate .block-list.is-white.is-outlined > li,
+.theme-slate .block-list li.is-white.is-outlined,
+.theme-slate .block-list.is-white.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-white-h), var(--bulma-white-s), var(--bulma-white-l));
+}
+:root[data-theme=slate] .block-list li.is-black.is-outlined, :root[data-theme=slate] .block-list.is-black.is-outlined > li,
+[data-theme=slate] .block-list li.is-black.is-outlined,
+[data-theme=slate] .block-list.is-black.is-outlined > li,
+:root.theme-slate .block-list li.is-black.is-outlined,
+:root.theme-slate .block-list.is-black.is-outlined > li,
+.theme-slate .block-list li.is-black.is-outlined,
+.theme-slate .block-list.is-black.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-black-h), var(--bulma-black-s), var(--bulma-black-invert-l));
+}
+:root[data-theme=slate],
+[data-theme=slate],
+:root.theme-slate,
+.theme-slate {
   /*
   // Breadcrumbs
 
@@ -42883,6 +42805,15 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-slate form .field .is-form-paragraph {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 59%);
 }
+:root[data-theme=slate] .block-list li.is-dark.is-outlined, :root[data-theme=slate] .block-list.is-dark.is-outlined > li,
+[data-theme=slate] .block-list li.is-dark.is-outlined,
+[data-theme=slate] .block-list.is-dark.is-outlined > li,
+:root.theme-slate .block-list li.is-dark.is-outlined,
+:root.theme-slate .block-list.is-dark.is-outlined > li,
+.theme-slate .block-list li.is-dark.is-outlined,
+.theme-slate .block-list.is-dark.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-dark-h), var(--bulma-dark-s), var(--bulma-dark-invert-l));
+}
 
 :root[data-theme=solar],
 [data-theme=solar],
@@ -43360,6 +43291,29 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-hover-color-l-delta: 5%;
   --bulma-active-color-l-delta: 10%;
   --bulma-text-l: 71%;
+}
+:root[data-theme=solar] .block-list li.is-white.is-outlined, :root[data-theme=solar] .block-list.is-white.is-outlined > li,
+[data-theme=solar] .block-list li.is-white.is-outlined,
+[data-theme=solar] .block-list.is-white.is-outlined > li,
+:root.theme-solar .block-list li.is-white.is-outlined,
+:root.theme-solar .block-list.is-white.is-outlined > li,
+.theme-solar .block-list li.is-white.is-outlined,
+.theme-solar .block-list.is-white.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-white-h), var(--bulma-white-s), var(--bulma-white-l));
+}
+:root[data-theme=solar] .block-list li.is-black.is-outlined, :root[data-theme=solar] .block-list.is-black.is-outlined > li,
+[data-theme=solar] .block-list li.is-black.is-outlined,
+[data-theme=solar] .block-list.is-black.is-outlined > li,
+:root.theme-solar .block-list li.is-black.is-outlined,
+:root.theme-solar .block-list.is-black.is-outlined > li,
+.theme-solar .block-list li.is-black.is-outlined,
+.theme-solar .block-list.is-black.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-black-h), var(--bulma-black-s), var(--bulma-black-invert-l));
+}
+:root[data-theme=solar],
+[data-theme=solar],
+:root.theme-solar,
+.theme-solar {
   /*
   // Close
 
@@ -45019,6 +44973,29 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-hover-color-l-delta: 5%;
   --bulma-active-color-l-delta: 10%;
   --bulma-text-l: 71%;
+}
+:root[data-theme=superhero] .block-list li.is-white.is-outlined, :root[data-theme=superhero] .block-list.is-white.is-outlined > li,
+[data-theme=superhero] .block-list li.is-white.is-outlined,
+[data-theme=superhero] .block-list.is-white.is-outlined > li,
+:root.theme-superhero .block-list li.is-white.is-outlined,
+:root.theme-superhero .block-list.is-white.is-outlined > li,
+.theme-superhero .block-list li.is-white.is-outlined,
+.theme-superhero .block-list.is-white.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-white-h), var(--bulma-white-s), var(--bulma-white-l));
+}
+:root[data-theme=superhero] .block-list li.is-black.is-outlined, :root[data-theme=superhero] .block-list.is-black.is-outlined > li,
+[data-theme=superhero] .block-list li.is-black.is-outlined,
+[data-theme=superhero] .block-list.is-black.is-outlined > li,
+:root.theme-superhero .block-list li.is-black.is-outlined,
+:root.theme-superhero .block-list.is-black.is-outlined > li,
+.theme-superhero .block-list li.is-black.is-outlined,
+.theme-superhero .block-list.is-black.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-black-h), var(--bulma-black-s), var(--bulma-black-invert-l));
+}
+:root[data-theme=superhero],
+[data-theme=superhero],
+:root.theme-superhero,
+.theme-superhero {
   /*
   // Close
 
@@ -45539,6 +45516,15 @@ fieldset[disabled] .theme-sketchy .select select {
 .theme-superhero form .field .checkbox,
 .theme-superhero form .field .is-form-paragraph {
   color: hsl(var(--bulma-text-h), var(--bulma-text-s), 56%);
+}
+:root[data-theme=superhero] .block-list li.is-link.is-outlined, :root[data-theme=superhero] .block-list.is-link.is-outlined > li,
+[data-theme=superhero] .block-list li.is-link.is-outlined,
+[data-theme=superhero] .block-list.is-link.is-outlined > li,
+:root.theme-superhero .block-list li.is-link.is-outlined,
+:root.theme-superhero .block-list.is-link.is-outlined > li,
+.theme-superhero .block-list li.is-link.is-outlined,
+.theme-superhero .block-list.is-link.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-link-h), var(--bulma-link-s), 71%);
 }
 
 :root[data-theme=united],
@@ -46320,6 +46306,29 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-hover-color-l-delta: 5%;
   --bulma-active-color-l-delta: 10%;
   --bulma-text-l: 71%;
+}
+:root[data-theme=vapor] .block-list li.is-white.is-outlined, :root[data-theme=vapor] .block-list.is-white.is-outlined > li,
+[data-theme=vapor] .block-list li.is-white.is-outlined,
+[data-theme=vapor] .block-list.is-white.is-outlined > li,
+:root.theme-vapor .block-list li.is-white.is-outlined,
+:root.theme-vapor .block-list.is-white.is-outlined > li,
+.theme-vapor .block-list li.is-white.is-outlined,
+.theme-vapor .block-list.is-white.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-white-h), var(--bulma-white-s), var(--bulma-white-l));
+}
+:root[data-theme=vapor] .block-list li.is-black.is-outlined, :root[data-theme=vapor] .block-list.is-black.is-outlined > li,
+[data-theme=vapor] .block-list li.is-black.is-outlined,
+[data-theme=vapor] .block-list.is-black.is-outlined > li,
+:root.theme-vapor .block-list li.is-black.is-outlined,
+:root.theme-vapor .block-list.is-black.is-outlined > li,
+.theme-vapor .block-list li.is-black.is-outlined,
+.theme-vapor .block-list.is-black.is-outlined > li {
+  --bulma-block-list-color: hsl(var(--bulma-black-h), var(--bulma-black-s), var(--bulma-black-invert-l));
+}
+:root[data-theme=vapor],
+[data-theme=vapor],
+:root.theme-vapor,
+.theme-vapor {
   /*
   // Forms
   $form-range-track-bg:             $input-bg !default;
@@ -49085,6 +49094,14 @@ fieldset[disabled] .theme-sketchy .select select {
 }
 
 :root,
+:root[data-theme=default],
+[data-theme=default],
+:root.theme-default,
+.theme-default,
+:root[data-theme=light],
+[data-theme=light],
+:root.theme-light,
+.theme-light,
 :root[data-theme=cerulean],
 [data-theme=cerulean],
 :root.theme-cerulean,
@@ -49228,6 +49245,40 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-shadow: 0 0.5em 1em -0.125em hsla(var(--bulma-shadow-h), var(--bulma-shadow-s), var(--bulma-shadow-l), 0.1), 0 0px 0 1px hsla(var(--bulma-shadow-h), var(--bulma-shadow-s), var(--bulma-shadow-l), 0.02);
   --bulma-title-family: var(--bulma-body-family);
   --bulma-subtitle-family: var(--bulma-body-family);
+  --bulma-white: hsla(var(--bulma-white-h), var(--bulma-white-s), var(--bulma-white-l), 1);
+  --bulma-white-invert: hsla(var(--bulma-white-h), var(--bulma-white-s), var(--bulma-white-invert-l), 1);
+  --bulma-white-on-scheme: hsla(var(--bulma-white-h), var(--bulma-white-s), var(--bulma-white-on-scheme-l), 1);
+  --bulma-black: hsla(var(--bulma-black-h), var(--bulma-black-s), var(--bulma-black-l), 1);
+  --bulma-black-invert: hsla(var(--bulma-black-h), var(--bulma-black-s), var(--bulma-black-invert-l), 1);
+  --bulma-black-on-scheme: hsla(var(--bulma-black-h), var(--bulma-black-s), var(--bulma-black-on-scheme-l), 1);
+  --bulma-light: hsla(var(--bulma-light-h), var(--bulma-light-s), var(--bulma-light-l), 1);
+  --bulma-light-invert: hsla(var(--bulma-light-h), var(--bulma-light-s), var(--bulma-light-invert-l), 1);
+  --bulma-light-on-scheme: hsla(var(--bulma-light-h), var(--bulma-light-s), var(--bulma-light-on-scheme-l), 1);
+  --bulma-dark: hsla(var(--bulma-dark-h), var(--bulma-dark-s), var(--bulma-dark-l), 1);
+  --bulma-dark-invert: hsla(var(--bulma-dark-h), var(--bulma-dark-s), var(--bulma-dark-invert-l), 1);
+  --bulma-dark-on-scheme: hsla(var(--bulma-dark-h), var(--bulma-dark-s), var(--bulma-dark-on-scheme-l), 1);
+  --bulma-text: hsla(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-l), 1);
+  --bulma-text-invert: hsla(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-invert-l), 1);
+  --bulma-text-on-scheme: hsla(var(--bulma-text-h), var(--bulma-text-s), var(--bulma-text-on-scheme-l), 1);
+  --bulma-primary: hsla(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-primary-l), 1);
+  --bulma-primary-invert: hsla(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-primary-invert-l), 1);
+  --bulma-primary-on-scheme: hsla(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-primary-on-scheme-l), 1);
+  --bulma-link: hsla(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-link-l), 1);
+  --bulma-link-invert: hsla(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-link-invert-l), 1);
+  --bulma-link-on-scheme: hsla(var(--bulma-link-h), var(--bulma-link-s), var(--bulma-link-on-scheme-l), 1);
+  --bulma-info: hsla(var(--bulma-info-h), var(--bulma-info-s), var(--bulma-info-l), 1);
+  --bulma-info-invert: hsla(var(--bulma-info-h), var(--bulma-info-s), var(--bulma-info-invert-l), 1);
+  --bulma-info-on-scheme: hsla(var(--bulma-info-h), var(--bulma-info-s), var(--bulma-info-on-scheme-l), 1);
+  --bulma-success: hsla(var(--bulma-success-h), var(--bulma-success-s), var(--bulma-success-l), 1);
+  --bulma-success-invert: hsla(var(--bulma-success-h), var(--bulma-success-s), var(--bulma-success-invert-l), 1);
+  --bulma-success-on-scheme: hsla(var(--bulma-success-h), var(--bulma-success-s), var(--bulma-success-on-scheme-l), 1);
+  --bulma-warning: hsla(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-l), 1);
+  --bulma-warning-invert: hsla(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-invert-l), 1);
+  --bulma-warning-on-scheme: hsla(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-on-scheme-l), 1);
+  --bulma-danger: hsla(var(--bulma-danger-h), var(--bulma-danger-s), var(--bulma-danger-l), 1);
+  --bulma-danger-invert: hsla(var(--bulma-danger-h), var(--bulma-danger-s), var(--bulma-danger-invert-l), 1);
+  --bulma-danger-on-scheme: hsla(var(--bulma-danger-h), var(--bulma-danger-s), var(--bulma-danger-on-scheme-l), 1);
+  background-color: var(--bulma-body-background-color);
 }
 
 .title {

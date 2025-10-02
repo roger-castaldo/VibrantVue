@@ -1,104 +1,128 @@
 @charset "utf-8";
+
+@use 'sass:math';
+
 @use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
-@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
 @use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../../../node_modules/bulma/sass/utilities/derived-variables" as dv;
 
 $block-list-separator: 0.25rem !default;
 $block-list-highlight-width: 5px !default;
 
-.#{iv.$class-prefix}content {
-    ul.#{iv.$class-prefix}block-list {
-      list-style: none;
-      margin-left: 0;
+.content {
+  ul.#{iv.$class-prefix}block-list {
+    list-style: none;
+    margin-left: 0;
+  }
+}
+
+.#{iv.$class-prefix}block-list {
+  @include cv.register-vars((
+    "block-list-background":#{cv.getVar("body-background-color")},
+    "block-list-border-color":#{cv.getVar("dark")},
+    "block-list-color": #{cv.getVar("text")}
+  ));
+
+  list-style: none;
+
+  li {
+    padding: calc(#{cv.getVar("gap")} / 2);
+    background: #{cv.getVar("block-list-background")};
+    margin-bottom: $block-list-separator;
+    color: #{cv.getVar("block-list-color")};
+  }
+
+  li.#{iv.$class-prefix}is-left,
+  &.#{iv.$class-prefix}is-left > li {
+    text-align: left;
+  }
+
+  li.#{iv.$class-prefix}is-centered,
+  &.#{iv.$class-prefix}is-centered > li {
+    text-align: center;
+  }
+
+  li.#{iv.$class-prefix}is-right,
+  &.#{iv.$class-prefix}is-right > li {
+    text-align: right;
+  }
+
+  li.#{iv.$class-prefix}is-small,
+  &.#{iv.$class-prefix}is-small > li {
+    font-size: #{cv.getVar("is-small")};
+    padding: calc(#{cv.getVar("gap")} / 3);
+  }
+
+  li.#{iv.$class-prefix}is-normal,
+  &.#{iv.$class-prefix}is-normal > li {
+    font-size: #{cv.getVar("is-normal")};
+  }
+
+  li.#{iv.$class-prefix}is-large,
+  &.#{iv.$class-prefix}is-large > li {
+    font-size: #{cv.getVar("is-large")};
+  }
+
+  li.#{iv.$class-prefix}has-radius,
+  &.#{iv.$class-prefix}has-radius > li {
+    border-radius: #{cv.getVar("radius")};
+  }
+
+  li.#{iv.$class-prefix}is-highlighted,
+  &.#{iv.$class-prefix}is-highlighted > li {
+    border-left: $block-list-highlight-width #{cv.getVar("block-list-border-color")} solid;
+  }
+
+  li.#{iv.$class-prefix}is-outlined,
+  &.#{iv.$class-prefix}is-outlined > li {
+    @include cv.register-vars((
+        "block-list-background": transparent,
+        "block-list-border-color":#{cv.getVar("light")}
+    ));
+
+    border: 1px solid #{cv.getVar("block-list-border-color")};
+  }
+
+  li.#{iv.$class-prefix}has-icon {
+    display: flex;
+
+    .icon {
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: auto;
+      margin-right: 1em;
+    }
+
+    span {
+      flex-grow: 1;
+    }
+
+    &.is-right {
+      .icon {
+        margin-right: 0;
+        margin-left: 1em;
+      }
     }
   }
 
-.#{iv.$class-prefix}block-list {
-    list-style: none;
-
-    li {
-        padding: calc(#{cv.getVar("gap")} / 2);
-        background: #{cv.getVar("light")};
-        margin-bottom: $block-list-separator;
+  @each $name, $pair in dv.$colors {
+    li.#{iv.$class-prefix}is-#{$name},
+    &.#{iv.$class-prefix}is-#{$name} > li {
+        @include cv.register-vars((
+            "block-list-background": #{cv.getVar($name)},
+            "block-list-border-color": #{cv.getVar($name,"","-75")},
+            "block-list-color": #{cv.getVar($name,"","-invert")}
+        ));
     }
 
-    li.#{iv.$class-prefix}is-left,
-    &.#{iv.$class-prefix}is-left > li {
-        text-align: left;
+    li.#{iv.$class-prefix}is-#{$name}.#{iv.$class-prefix}is-outlined,
+    &.#{iv.$class-prefix}is-#{$name}.#{iv.$class-prefix}is-outlined > li,
+    &.#{iv.$class-prefix}is-outlined > li.#{iv.$class-prefix}is-#{$name} {
+        @include cv.register-vars((
+            "block-list-background": transparent,
+            "block-list-border-color": #{cv.getVar($name)},
+            "block-list-color": #{cv.getVar($name,"","-on-scheme")}
+        ));
     }
-
-
-    li.#{iv.$class-prefix}is-centered,
-    &.#{iv.$class-prefix}is-centered > li {
-        text-align: center;
-    }
-
-    li.#{iv.$class-prefix}is-right,
-    &.#{iv.$class-prefix}is-right > li {
-        text-align: right;
-    }
-
-    @each $size in ("small","normal","medium","large"){
-        li.#{iv.$class-prefix}is-#{$size},
-        &.#{iv.$class-prefix}is-#{$size} > li {
-            font-size: #{cv.getVar("size-#{$size}")};
-        }    
-    }
-
-    li.#{iv.$class-prefix}is-small,
-    &.#{iv.$class-prefix}is-small > li {
-        padding: calc(#{cv.getVar("gap")} / 3);
-    }
-
-    li.#{iv.$class-prefix}has-radius,
-    &.#{iv.$class-prefix}has-radius > li {
-        border-radius: #{cv.getVar("radius")};
-    }
-
-    li.#{iv.$class-prefix}is-highlighted,
-    &.#{iv.$class-prefix}is-highlighted > li {
-        border-left: $block-list-highlight-width #{cv.getVar("dark")} solid;
-    }
-
-    @mixin outlined($color) {
-        background: transparent;
-        color: #{cv.getVar($color)};
-        border: 1px solid #{cv.getVar($color)};
-    }
-
-    li.#{iv.$class-prefix}is-outlined,
-    &.#{iv.$class-prefix}is-outlined > li {
-        @include outlined("border");
-        color: #{cv.getVar("text")};
-    }
-
-    @each $name, $pair in dv.$colors {
-        li.#{iv.$class-prefix}is-#{$name},
-        &.#{iv.$class-prefix}is-#{$name} > li {
-            background: #{cv.getVar($name)};
-            color: #{cv.getVar($name,"","-invert")};
-
-            &.#{iv.$class-prefix}is-outlined{
-                @include outlined($name);
-            }
-
-            &.#{iv.$class-prefix}is-highlighted{
-                @include outlined($name);
-                border-left: $block-list-highlight-width #{cv.getVar($name)} solid;    
-            }
-        }
-
-        &.#{iv.$class-prefix}is-#{$name} {
-            li.#{iv.$class-prefix}is-outlined,
-            &.#{iv.$class-prefix}is-outlined > li {
-                @include outlined($name);
-            }
-
-            li.#{iv.$class-prefix}is-highlighted,
-            &.#{iv.$class-prefix}is-highlighted > li {
-                @include outlined($name);
-                border-left: $block-list-highlight-width #{cv.getVar($name)} solid;
-            }
-        }
-    }
+  }
 }
