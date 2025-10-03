@@ -52,6 +52,7 @@
         "pagination-selected-item-h": #{color.channel($white,"hue", $space: hsl)},
         "pagination-selected-item-s": #{color.channel($white,"saturation", $space: hsl)},
         "pagination-selected-item-l": #{color.channel($white,"lightness", $space: hsl)},
+        "pagination-selected-item-color-l":22%
       )
     )
   }

@@ -58492,6 +58492,7 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-pagination-selected-item-h: 0deg;
   --bulma-pagination-selected-item-s: 0%;
   --bulma-pagination-selected-item-l: 100%;
+  --bulma-pagination-selected-item-color-l: 22%;
 }
 :root[data-theme=zephyr] .breadcrumb li + li::before,
 [data-theme=zephyr] .breadcrumb li + li::before,
