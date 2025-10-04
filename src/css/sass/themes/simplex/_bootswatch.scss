@@ -126,6 +126,9 @@
   }
 
   .#{iv.$class-prefix}button {
+    &.#{iv.$class-prefix}is-success{
+      @include cv.register-var("button-background-l-delta",-4%);
+    }
 
     &.#{iv.$class-prefix}is-outlined {
       
@@ -158,5 +161,10 @@
       );
     }
 
+  }
+
+  .#{iv.$class-prefix}block-list {
+    @include cv.register-var("link-invert",hsl(#{cv.getVar("link-h")},#{cv.getVar("link-s")}, 7%));
+    @include cv.register-var("success-invert",hsl(#{cv.getVar("success-h")},#{cv.getVar("success-s")}, 7%));
   }
 }

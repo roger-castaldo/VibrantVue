@@ -19,6 +19,7 @@ const varUsageMap = new Map(); // var name -> Set of skins
 
 let match;
 while ((match = skinBlockRegex.exec(css)) !== null) {
+  console.log(`checking skin: ${match[1]}`);
   const skinName = match[1];
   const bodyContent = match[2];
   const varRegex = /--([\w-]+)\s*:(.+)/g;

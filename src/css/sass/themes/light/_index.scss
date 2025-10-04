@@ -1,59 +1,37 @@
-@use "../../../../../node_modules/bulma/sass/themes/light" as light;
+@use "../../../../../node_modules/bulma/sass/themes/dark" as dark;
 @use "../../../../../node_modules/bulma/sass/utilities/css-variables" as cv;
 @use "../../../../../node_modules/bulma/sass/utilities/initial-variables" as iv;
 @use "../mixins" as mx;
 
-@mixin defaultOverrides(){
-    .#{iv.$class-prefix}button {
-        
-        &.#{iv.$class-prefix}is-outlined {
-            
-            // &.#{iv.$class-prefix}is-light,
-            // &.#{iv.$class-prefix}is-primary,
-            // &.#{iv.$class-prefix}is-info,
-            // &.#{iv.$class-prefix}is-success,
-            // &.#{iv.$class-prefix}is-warning,
-            // &.#{iv.$class-prefix}is-danger{
-            //     background-color: hsl(
-            //         #{cv.getVar("scheme-h")},
-            //         #{cv.getVar("scheme-s")},
-            //         95%
-            //     );
-            // }
+:root[data-theme="default"],
+[data-theme="default"],
+:root.#{iv.$class-prefix}theme-default,
+.#{iv.$class-prefix}theme-default,
+:root[data-theme="light"],
+[data-theme="light"],
+:root.#{iv.$class-prefix}theme-light,
+.#{iv.$class-prefix}theme-light {
 
+    .#{iv.$class-prefix}button {
+        &.#{iv.$class-prefix}is-outlined {
             &.#{iv.$class-prefix}is-light{
                 @include cv.register-var("button-l",49%);
             }
-
             &.#{iv.$class-prefix}is-primary{
-                @include cv.register-var("button-l",20%);
+                @include cv.register-var("button-l",26%);
             }
-
             &.#{iv.$class-prefix}is-info{
                 @include cv.register-var("button-l",35%);
             }
-
             &.#{iv.$class-prefix}is-success{
                 @include cv.register-var("button-l",34%);
             }
-
             &.#{iv.$class-prefix}is-warning{
                 @include cv.register-var("button-l",30%);
             }
-
             &.#{iv.$class-prefix}is-danger{
                 @include cv.register-var("button-l",46%);
             }
         }
     }
-}
-
-@include mx.bulma-theme($name: "light") {
-    @include light.light-theme;
-    @include defaultOverrides;
-}
-
-@include mx.bulma-theme($name: "default") {
-    @include light.light-theme;
-    @include defaultOverrides;
 }

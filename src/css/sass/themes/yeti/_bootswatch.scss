@@ -317,9 +317,11 @@
 
   .#{iv.$class-prefix}button {
 
-    &.#{iv.$class-prefix}is-primary,
+    &.#{iv.$class-prefix}is-primary{
+      @include cv.register-var("button-background-l-delta",1%);
+    }
     &.#{iv.$class-prefix}is-link{
-      @include cv.register-var("button-background-l-delta",0);
+      @include cv.register-var("button-background-l-delta",0%);
     }
 
     &.#{iv.$class-prefix}is-danger{

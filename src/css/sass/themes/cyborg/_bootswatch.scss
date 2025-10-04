@@ -243,4 +243,15 @@
       }
     }
   }
+
+  .#{iv.$class-prefix}block-list {
+    @include cv.register-var("warning-invert",hsl(#{cv.getVar("warning-h")},#{cv.getVar("warning-s")}, 10%));
+
+    @each $name, $l in ("light",47%), ("link",66%), ("info",57%) {
+      li.#{iv.$class-prefix}is-#{$name}.#{iv.$class-prefix}is-outlined,
+      &.#{iv.$class-prefix}is-#{$name}.#{iv.$class-prefix}is-outlined > li {
+        @include cv.register-var("block-list-color",hsl(#{cv.getVar($name,"","-h")},#{cv.getVar($name,"","-s")}, $l));
+      }
+    }
+  }
 }

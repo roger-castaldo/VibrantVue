@@ -68,4 +68,13 @@
             }
         }
     }
+
+    .#{iv.$class-prefix}block-list {
+      
+      li.#{iv.$class-prefix}is-black.#{iv.$class-prefix}is-outlined,
+      &.#{iv.$class-prefix}is-black.#{iv.$class-prefix}is-outlined > li {
+        @include cv.register-var("block-list-color",#{cv.getVar("black","","-invert")});
+      }
+
+    }
 }

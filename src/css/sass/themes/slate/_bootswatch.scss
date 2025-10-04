@@ -475,4 +475,11 @@
         }
     }
   }
+
+  .#{iv.$class-prefix}block-list {
+    li.#{iv.$class-prefix}is-dark.#{iv.$class-prefix}is-outlined,
+    &.#{iv.$class-prefix}is-dark.#{iv.$class-prefix}is-outlined > li {
+      @include cv.register-var("block-list-color",hsl(#{cv.getVar("dark-h")},#{cv.getVar("dark-s")}, #{cv.getVar("dark-invert-l")}));
+    }
+  }
 }

@@ -278,14 +278,14 @@ $classMaps:(
     $overrideColors
   );
 
-  @include override-platform-colors($overrideColors,$scheme-main);
+  @include override-platform-colors($overrideColors,hsl(color.channel($scheme-main, "hue", $space: hsl), color.channel($scheme-main, "saturation", $space: hsl), color.channel($scheme-main, "lightness", $space: hsl)));
 
   @include cv.register-vars((
     "scheme-brightness": "dark",
     "scheme-main-l": math.floor(color.channel($scheme-main,"lightness", $space: hsl)),
-    "scheme-main-bis-l":math.floor($schema-l+5),
+    "scheme-main-bis-l":math.floor($schema-l+2%),
     "scheme-main-bis": hsl(#{cv.getVar("scheme-main-h")},#{cv.getVar("scheme-main-s")},#{cv.getVar("scheme-main-bis-l")}),
-    "scheme-main-ter-l":math.floor($schema-l+10),
+    "scheme-main-ter-l":math.floor($schema-l+4%),
     "scheme-main-ter": hsl(#{cv.getVar("scheme-main-h")},#{cv.getVar("scheme-main-s")},#{cv.getVar("scheme-main-ter-l")}),
     "soft-l": iv.$dark-l,
     "bold-l": iv.$light-l,
@@ -304,4 +304,13 @@ $classMaps:(
     "active-color-l-delta": 10%,
     "text-l":71%
   ));
+
+  .#{iv.$class-prefix}block-list {
+      @each $name, $l in ("white", #{cv.getVar("white-l")}), ("black", #{cv.getVar("black-invert-l")}) {
+        li.#{iv.$class-prefix}is-#{$name}.#{iv.$class-prefix}is-outlined,
+        &.#{iv.$class-prefix}is-#{$name}.#{iv.$class-prefix}is-outlined > li {
+          @include cv.register-var("block-list-color",hsl(#{cv.getVar($name,"","-h")},#{cv.getVar($name,"","-s")}, $l));
+        }
+      }  
+  }
 }

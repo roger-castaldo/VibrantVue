@@ -170,4 +170,11 @@
         }
     }
   }
+
+  .#{iv.$class-prefix}block-list {
+    li.#{iv.$class-prefix}is-link.#{iv.$class-prefix}is-outlined,
+    &.#{iv.$class-prefix}is-link.#{iv.$class-prefix}is-outlined > li {
+      @include cv.register-var("block-list-color",hsl(#{cv.getVar("link-h")},#{cv.getVar("link-s")}, 71%));
+    }
+  }
 }
