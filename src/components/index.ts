@@ -14,7 +14,7 @@ import { provideLanguage, useLanguage, provideIconSet, provideAceJS, provideAnim
 
 export const {Animation,Button,ButtonsContainer,ButtonAdd,ButtonCancel,ButtonDelete,ButtonDisable,ButtonDownload,
     ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonSubmit,ButtonUpload,
-    CheckMark,DropDown,DynamicSlot,Filter,Icon,Message,Notification,PageNotification,Pagination,Promised,
+    CheckMark,DropDown,DynamicSlot,Filter,Icon,Image,Message,Notification,PageNotification,Pagination,Promised,
     Progress,NavBar,Menu,MenuLabel,MenuList,MenuEntry,ToolTip,Badge,Tag,Tags} = common;
 export const {DraggableItem,DropZone,Sortable} = dragging;
 export const {AutoComplete,CheckboxGroup,Checkbox,DateField,ComponentForm,FullEditor,

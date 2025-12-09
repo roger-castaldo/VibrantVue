@@ -1,4 +1,4 @@
-import { ComputedRef, computed, InjectionKey } from "vue";
+import { ComputedRef, computed, InjectionKey, defineComponent, h, ref, onMounted, nextTick, watch, unref, type PropType, type MaybeRef } from "vue";
 
 const languageKey : string = 'Language';
 
@@ -72,5 +72,46 @@ export const useAceJS = (inject: (<T>(string,T?)=> T | undefined)) : string =>
     inject<string>(aceJsKey,'https://cdn.jsdelivr.net/npm/ace-builds@1.37.3/')!;
 
 
+export const skeleton = defineComponent({
+    name: 'skeleton',
+    props:{
+        tag:{
+            type: String,
+            default: 'div'
+        },
+        is_loading:{
+            type: Boolean as PropType<MaybeRef<boolean>>,
+            default: false
+        }
+    },
+    setup(props, { slots }) {
+        const showSkeleton = ref(true); 
+        // start with skeleton=true always
 
+        onMounted(() => {
+            nextTick(() => {
+                if (!unref(props.is_loading)){
+                    showSkeleton.value = false;
+                }
+            });
+        });
+
+        // If isLoading changes after mount
+        watch(
+            () => unref(props.is_loading),
+            (loading)=>{
+                if (loading) showSkeleton.value = true;
+                else showSkeleton.value = false;
+            }
+        );
+
+        return () => {
+            return h(
+                props.tag,
+                { class: (showSkeleton.value ? 'is-skeleton' : '') },
+                slots.default ? slots.default() : null
+            );
+        };
+    }
+});
 

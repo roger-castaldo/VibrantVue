@@ -1,12 +1,12 @@
 <template>
-    <div :class="['notification','is-'+props.type,(props.light ? 'is-light' : '')]">
+    <skeleton tag="div" :is_loading="props.is_loading" :class="['notification','is-'+props.type,(props.light ? 'is-light' : '')]">
         <!--
             @slot Content of the notification if the message property is not enough
         -->
         <slot>
             {{props.message}}
         </slot>
-    </div>
+    </skeleton>
 </template>
 
 <script lang="ts" setup>
@@ -16,8 +16,9 @@
  * @displayName Notification
  * @link https://bulma.io/documentation/elements/notification/
  */
-import { MaybeRef } from 'vue';
+import { MaybeRef, Ref } from 'vue';
 import {NoticeTypes} from '../../enums';
+import {skeleton} from '../shared';
 
 const props = withDefaults(defineProps<{
     /**
@@ -31,10 +32,15 @@ const props = withDefaults(defineProps<{
     /**
      * Inidicates to use the light version of the given color
      */
-    light?:boolean
+    light?:boolean,
+    /**
+     * Indicates if the notification is loading and to render a skeleton style
+     */
+    is_loading?:Ref<boolean>|boolean
     }>(),{
         type:NoticeTypes.info,
         message:null,
-        light:false
+        light:false,
+        is_loading:false
     });
 </script>

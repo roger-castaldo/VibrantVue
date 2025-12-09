@@ -1,9 +1,11 @@
 import { expect, test,describe } from 'vitest'
 import { render } from 'vitest-browser-vue'
-import { ExecuteAccessibilityChecks } from '../../common';
+import { ExecuteAccessibilityChecks, sleep } from '../../common';
 import notification from '../../../components/common/notification.vue';
 import { stripCommentNodes } from '../../common';
 import { NoticeTypes } from '../../../enums';
+import { nextTick, ref } from 'vue';
+import { mount } from '@vue/test-utils';
 
 describe('Notification', () => {
     test('check accessibility',async() => {
@@ -44,6 +46,7 @@ describe('Notification', () => {
 
       expect(notificationElement.classList).toContain('notification');
       expect(notificationElement.classList).toContain('is-info');
+      expect(notificationElement.classList).toContain('is-skeleton');
 
       const content = stripCommentNodes(notificationElement);
 
@@ -70,6 +73,37 @@ describe('Notification', () => {
 
       expect(content).toHaveLength(1);
       expect(content[0].textContent).toBe(testMessage);
+    }),
+    test('check loading setting',async() => {
+      const testMessage = 'test message';
+
+      const props = {
+        message: testMessage,
+        is_loading: ref(true)
+      };
+
+      const wrapper = mount(notification, {
+        props:props
+      });
+  
+      let notificationElement = wrapper.element as HTMLElement;
+
+      expect(notificationElement.classList).toContain('notification');
+      expect(notificationElement.classList).toContain('is-info');
+      expect(notificationElement.classList).toContain('is-skeleton');
+
+      const content = stripCommentNodes(notificationElement);
+
+      expect(content).toHaveLength(1);
+      expect(content[0].textContent).toBe(testMessage);
+
+      props.is_loading.value = false;
+
+      await nextTick();
+
+      notificationElement = wrapper.element as HTMLElement;
+
+      expect(notificationElement.classList).not.toContain('is-skeleton');
     }),
     test('check notice types',async() => {
       for (const key in NoticeTypes){
