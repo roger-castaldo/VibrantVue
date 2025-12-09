@@ -1,23 +1,23 @@
 <template>
     <article class="media">
-        <figure class="media-left" v-if="slots.left_figure">
+        <skeleton tag="figure" :is_loading="props.is_loading" class="media-left" v-if="slots.left_figure">
             <!--
                 @slot A slot containing an image to place on the left of the article
             -->
             <slot name="left_figure"/>
-        </figure>
-        <div class="media-content">
+        </skeleton>
+        <skeleton :is_loading="props.is_loading" class="media-content">
             <!--
                 @slot The content of this media item
             -->
             <slot name="content"/>
-        </div>
-        <div class="media-right" v-if="slots.right_section">
+        </skeleton>
+        <skeleton :is_loading="props.is_loading" class="media-right" v-if="slots.right_section">
             <!--
                 @slot The content to place on the right of this article
             -->
             <slot name="right_section"/>
-        </div>
+        </skeleton>
     </article>
 </template>
 
@@ -28,7 +28,17 @@
  * @displayName Media
  * @link https://bulma.io/documentation/layout/media-object/
  */
-    import {useSlots} from 'vue';
+    import {Ref, useSlots} from 'vue';
+import { skeleton } from '../shared';
 
     const slots = useSlots();
+
+    const props = withDefaults(defineProps<{
+        /**
+         * Indicates if the media object is loading and to render a skeleton style
+         */
+        is_loading?:Ref<boolean>|boolean
+    }>(),{
+        is_loading:false
+    });
  </script>
