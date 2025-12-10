@@ -3,6 +3,8 @@ import { render } from 'vitest-browser-vue'
 import tag from '../../../components/common/tag.vue';
 import { ColorTypes, Sizes } from '../../../enums';
 import { ExecuteAccessibilityChecks } from '../../common';
+import { nextTick, ref } from 'vue';
+import { mount } from '@vue/test-utils';
 
 describe('Tag', () => {
     test('check accessibility',async() => {
@@ -31,6 +33,41 @@ describe('Tag', () => {
         expect(tagItem.classList).toContain('tag');
         expect(tagItem.classList).toContain('is-normal');
         expect(tagItem.classList).toContain('is-primary');
+        expect(tagItem.classList).toContain('is-skeleton');
+
+        expect(tagItem.innerText).toBe(testContent);
+    }),
+    test('check loading setting',async() => {
+        const testContent = 'Test Tag';
+
+        const props = {
+          text:testContent,
+          is_loading: ref(true)
+        }
+
+        const wrapper = mount(tag, {
+          props:props
+        });
+    
+        let tagItem = wrapper.element as HTMLElement;
+
+        expect(tagItem.classList).toContain('tag');
+        expect(tagItem.classList).toContain('is-normal');
+        expect(tagItem.classList).toContain('is-primary');
+        expect(tagItem.classList).toContain('is-skeleton');
+
+        expect(tagItem.innerText).toBe(testContent);
+
+        props.is_loading.value = false;
+        
+        await nextTick();
+
+        tagItem = wrapper.element as HTMLElement;
+
+        expect(tagItem.classList).toContain('tag');
+        expect(tagItem.classList).toContain('is-normal');
+        expect(tagItem.classList).toContain('is-primary');
+        expect(tagItem.classList).not.toContain('is-skeleton');
 
         expect(tagItem.innerText).toBe(testContent);
     }),

@@ -1,12 +1,12 @@
 <template>
-    <span :class="Classes">
+    <skeleton tag="span" :is_loading="props.is_loading" :class="Classes">
         <!--
             @slot used when something more than text is desired
         -->
         <slot>
             {{ props.text }}
         </slot>
-    </span>
+    </skeleton>
 </template>
 
 <script lang="ts" setup>
@@ -17,7 +17,8 @@
  * @link https://bulma.io/documentation/elements/tag/
  */
     import { ColorTypes,Sizes } from '../../enums';
-    import {computed} from 'vue';
+    import {computed, Ref} from 'vue';
+    import { skeleton } from '../shared';
 
     const props = withDefaults(defineProps<{
         /**
@@ -43,13 +44,18 @@
         /**
          * The string content of the tag
          */
-        text?:string
+        text?:string,
+        /**
+         * Indicates if the tag is loading and to render a skeleton style
+         */
+        is_loading?:Ref<boolean>|boolean
     }>(),{
         type:ColorTypes.primary,
         light:false,
         rounded:false,
         size:Sizes.normal,
-        is_delete:false
+        is_delete:false,
+        is_loading:undefined
     });
     
     const Classes = computed<string[]>(()=>{
