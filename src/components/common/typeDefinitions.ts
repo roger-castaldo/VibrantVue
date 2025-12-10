@@ -1,4 +1,4 @@
-import { MaybeRef } from "vue";
+import { MaybeRef, Ref } from "vue";
 import { ColorTypes, NoticeTypes, Sizes } from "../../enums.ts";
 
 export interface IPaginationProperties {
@@ -126,7 +126,11 @@ export interface IButtonBasicProperties{
     /**
      * Indicates if it is oultined
      */
-    is_outlined?:boolean
+    is_outlined?:boolean,
+    /**
+     * Indicates if the notification is loading and to render a skeleton style
+     */
+    is_loading?:Ref<boolean>|boolean
 };
 
 export interface IButtonProperties extends IButtonBasicProperties{

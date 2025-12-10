@@ -18,6 +18,8 @@ import { ExecuteAccessibilityChecks, stripCommentNodes } from '../../common';
 import { ColorTypes, Sizes } from '../../../enums';
 import translate from '../../../messages/messages';
 import { userEvent } from '@vitest/browser/context';
+import { mount } from '@vue/test-utils';
+import { nextTick, ref } from 'vue';
 
 const extractIcon = function(button:HTMLElement, size?:Sizes):HTMLElement {
     const strippedChildren = stripCommentNodes(button);
@@ -61,7 +63,8 @@ describe('Button', () => {
                 const renderResult1 = render(Button, {
                     props: {
                         type:ColorTypes[key],
-                        title:'Sample Button'
+                        title:'Sample Button',
+                        is_loading:false
                     },
                 });
                 result.push(renderResult1.container);
@@ -70,7 +73,8 @@ describe('Button', () => {
                     props: {
                         type:ColorTypes[key],
                         title:'Sample Button',
-                        is_outlined: true
+                        is_outlined: true,
+                        is_loading:false
                     },
                 });
                 result.push(renderResult2.container);
@@ -91,6 +95,36 @@ describe('Button', () => {
         expect(button.classList).toContain('button');
         expect(button.classList).toContain('is-normal');
         expect(button.classList).toContain('is-primary');
+        expect(button.classList).toContain("is-skeleton");
+    }),
+    test('check loading setting',async() => {
+        const props = {
+            is_loading: ref(true)
+        };
+
+        const wrapper = mount(Button, {
+            props: props,
+        });
+
+        let button = wrapper.element as HTMLElement;
+
+        expect(stripCommentNodes(button).length).toBe(0);
+        expect(button.classList).toContain('button');
+        expect(button.classList).toContain('is-normal');
+        expect(button.classList).toContain('is-primary');
+        expect(button.classList).toContain("is-skeleton");
+
+        props.is_loading.value = false;
+        
+        await nextTick();
+
+        button = wrapper.element as HTMLElement;
+
+        expect(stripCommentNodes(button).length).toBe(0);
+        expect(button.classList).toContain('button');
+        expect(button.classList).toContain('is-normal');
+        expect(button.classList).toContain('is-primary');
+        expect(button.classList).not.toContain("is-skeleton");
     }),
     test('renders a button with an icon', async () => {
         const iconName = 'file';

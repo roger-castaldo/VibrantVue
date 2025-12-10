@@ -35,7 +35,7 @@ import { skeleton } from '../shared';
     }>(),{
         size:ImageSizes.normal,
         alt:'',
-        is_loading:false
+        is_loading:undefined
     });
 </script>
 

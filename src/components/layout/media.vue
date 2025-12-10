@@ -39,6 +39,6 @@ import { skeleton } from '../shared';
          */
         is_loading?:Ref<boolean>|boolean
     }>(),{
-        is_loading:false
+        is_loading:undefined
     });
  </script>

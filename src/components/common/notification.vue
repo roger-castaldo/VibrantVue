@@ -41,6 +41,6 @@ const props = withDefaults(defineProps<{
         type:NoticeTypes.info,
         message:null,
         light:false,
-        is_loading:false
+        is_loading:undefined
     });
 </script>
