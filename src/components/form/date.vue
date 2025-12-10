@@ -1,14 +1,14 @@
 ﻿<template>
     <div>
-        <div class="control has-icons-left has-icons-right">
-            <input class="input is-expanded" :name="props.name" :id="props.inputId" type="text" v-model="value" :placeholder="'DD-MM-YYYY'+(props.includeTime ? ' HH:mm' : '')" :disabled="props.disabled">
+        <skeleton tag="div" :is_loading="props.is_loading" class="control has-icons-left has-icons-right">
+            <skeleton tag="input" :is_loading="props.is_loading" class="input is-expanded" :name="props.name" :id="props.inputId" type="text" v-model="value" :placeholder="'DD-MM-YYYY'+(props.includeTime ? ' HH:mm' : '')" :disabled="props.disabled" />
             <span class="icon is-small is-left is-clickable" @click="calendarClicked">
-                <Icon icon="calendar-alt" :size="IconSizes.xlarge"/>
+                <Icon :is_loading="props.is_loading" icon="calendar-alt" :size="IconSizes.xlarge"/>
             </span>
             <span class="icon is-small is-right is-clickable" @click="cancelClicked">
-                <Icon icon="window-close" :size="IconSizes.xlarge"/>
+                <Icon :is_loading="props.is_loading" icon="window-close" :size="IconSizes.xlarge"/>
             </span>
-        </div>
+        </skeleton>
         <ModalCard :show="showInterface" icon="calendar-alt">
             <template #header>
                 <ColumnContainer class="card-header-title" :columns="[{name:'left'},{name:'title',class:'has-text-centered'},{name:'right',class:'has-text-right'}]">
@@ -68,7 +68,7 @@
     import translate from '../../messages/messages.js';
     import { ValueChangedEvent } from './typeDefinitions';
     import { internalCoreFieldProps } from './common';
-    import { useLanguage } from '../shared';
+    import { skeleton, useLanguage } from '../shared';
     import { ModalCard, ColumnContainer, Table } from '../layout/';
     import { IconSizes } from '../../enums';
 

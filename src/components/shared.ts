@@ -107,7 +107,7 @@ export const skeleton = defineComponent({
         return () => {
             return h(
                 props.tag,
-                { class: (showSkeleton.value ? 'is-skeleton' : '') },
+                { class: (showSkeleton.value ? (slots.default===null || slots.default===undefined ? 'skeleton-block' : 'is-skeleton') : '') },
                 slots.default ? slots.default() : null
             );
         };

@@ -9,7 +9,8 @@
                     :input="inp.input" 
                     @valueChanged="emit('valueChanged',$event)" 
                     @buttonClicked="emit('buttonClicked',$event)" 
-                    :disabled="(props.disabled??false) || disabledFields!.some(f=>f===inp.input.name)"/>
+                    :disabled="(props.disabled??false) || disabledFields!.some(f=>f===inp.input.name)"
+                    :is_loading="props.is_loading"/>
             </template>
         </ColumnContainer>
     </section>
@@ -75,6 +76,10 @@
          * Indicates if the input collection is disabled
          */
          disabled?:boolean;
+         /**
+         * Indicates if the form is loading and to render a skeleton style
+         */
+        is_loading?:Ref<boolean>|boolean;
     }>();
 
     const emit = defineEmits<{

@@ -1,13 +1,14 @@
 ﻿<template>
-    <div class="control">
-        <input class="input is-time" :id="props.inputId" :name="props.name" type="time" v-model="value" :disabled="props.disabled" :style="styles">
-    </div>
+    <skeleton tag="div" :is_loading="props.is_loading" class="control">
+        <skeleton tag="input" :is_loading="props.is_loading" class="input is-time" :id="props.inputId" :name="props.name" type="time" v-model="value" :disabled="props.disabled" :style="styles"/>
+    </skeleton>
 </template>
 
 <script lang="ts">
     import { ref, watch, computed } from 'vue';
     import { internalCoreFieldProps } from './common';
     import { ValueChangedEvent } from './typeDefinitions';
+    import { skeleton } from '../shared';
 
     const regTime = RegExp('^(\\d{2}):(\\d{2}) (AM|PM)$');
 </script>

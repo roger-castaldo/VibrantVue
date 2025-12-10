@@ -1,13 +1,13 @@
 <template>
-    <div class="summernote" ref="snote"/>    
+    <skeleton tag="div" :is_loading="props.is_loading" class="summernote" ref="snote"/>    
 </template>
 
 <script lang="ts">
     import { watch, onMounted, onUnmounted, ref,inject } from 'vue';
     import { css } from '../utilities';
-    import {coreFieldProps} from './common';
+    import {internalCoreFieldProps} from './common';
     import { ValueChangedEvent } from './typeDefinitions';
-    import { useSummerNote } from '../shared';
+    import { skeleton, useSummerNote } from '../shared';
 </script>
 
 <script lang="ts" setup>
@@ -24,7 +24,7 @@
     await import(`${cdnBase}summernote`);
     const snote = ref(null);
 
-    const props = defineProps<coreFieldProps>();
+    const props = defineProps<internalCoreFieldProps>();
     const emit = defineEmits<{
         /**
          * Emitted when the value has changed

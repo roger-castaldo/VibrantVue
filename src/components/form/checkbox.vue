@@ -1,15 +1,16 @@
 ﻿<template>
-    <label class="checkbox" :for="props.inputId">
-        <input type="checkbox" class="checkbox" :name="props.name" :disabled="props.disabled" v-model="value" :id="props.inputId"/>
+    <skeleton tag="label" :is_loading="props.is_loading" class="checkbox" :for="props.inputId">
+        <skeleton tag="input" :is_loading="props.is_loading" type="checkbox" class="checkbox" :name="props.name" :disabled="props.disabled" v-model="value" :id="props.inputId"/>
         {{Label}}
         <span class="help is-danger" v-if="props.required">*</span>
-    </label>
+    </skeleton>
 </template>
 
 <script lang="ts">
     import { ref, watch,computed, inject} from 'vue';
     import { internalCommonFieldProps,useTranslator} from './common';
     import { ValueChangedEvent } from './typeDefinitions';
+import { skeleton } from '../shared';
 
     interface fieldProps extends internalCommonFieldProps {
         /**

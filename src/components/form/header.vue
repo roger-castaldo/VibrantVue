@@ -1,8 +1,9 @@
 ﻿<template>
-    <component :is="props.subtype" class="title">{{Translator(props.label??'')}}</component>
+    <skeleton :tag="props.subtype" :is_loading="props.is_loading" class="title">{{Translator(props.label??'')}}</skeleton>
 </template>
 
 <script lang="ts">
+    import { skeleton } from '../shared';
     import { useTranslator,translateFieldProps } from './common';
     import { inject } from 'vue';
 

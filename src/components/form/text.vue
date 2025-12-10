@@ -1,11 +1,12 @@
 ﻿<template>
-    <input :id="props.inputId" :type="subtype" class="input" :name="name" :disabled="disabled" :maxlength="props.maxlength" v-model="value">
+    <skeleton tag="input" :is_loading="props.is_loading" :id="props.inputId" :type="subtype" class="input" :name="name" :disabled="disabled" :maxlength="props.maxlength" v-model="value"/>
 </template>
 
 <script lang="ts">
     import { ref, watch } from 'vue';
     import { internalCoreFieldProps } from './common';
     import { ValueChangedEvent } from './typeDefinitions';
+    import { skeleton } from '../shared';
 
     interface fieldProps extends internalCoreFieldProps{
         /**

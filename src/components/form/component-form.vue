@@ -3,6 +3,7 @@
         <InputsCollection :fields="props.elements" 
             ref="inputs" 
             :disabled="props.disabled"
+            :is_loading="props.is_loading"
             @valueChanged="emit('valueChanged',$event)" 
             @buttonClicked="emit('buttonClicked',$event)"
             />
@@ -10,7 +11,7 @@
 </template>
 
 <script lang="ts">
-    import { ref,provide, inject, readonly } from 'vue';
+    import { ref,provide, inject, readonly, Ref } from 'vue';
     import { FormInputType, TranslateMethod, ValueChangedEvent } from './typeDefinitions';
     import { DISABLED_FIELDS_PROPERTY, HIDDEN_FIELDS_PROPERTY, translateFieldProps, useTranslator } from './common';
     import InputsCollection from './inputs-collection.vue';
@@ -24,6 +25,10 @@
          * Indicates if the form is disabled
          */
         disabled?:boolean;
+        /**
+         * Indicates if the form is loading and to render a skeleton style
+         */
+        is_loading?:Ref<boolean>|boolean;
     };
 </script>
 
@@ -34,7 +39,8 @@
  * @displayName ComponentForm
  */
     const props = withDefaults(defineProps<formProps>(),{
-        disabled:false
+        disabled:false,
+        is_loading:undefined
     });
 
     const emit = defineEmits<{

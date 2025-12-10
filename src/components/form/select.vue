@@ -1,8 +1,8 @@
 ﻿<template>
-    <div :class="{'select':true,'is-multiple':props.multiple}">
+    <skeleton tag="div" :is_loading="props.is_loading" :class="{'select':true,'is-multiple':props.multiple}">
         <Promised v-if="Values!=null" :promise="Values">
             <template v-slot="{response}">
-                <select :id="props.inputId" :name="props.name" :multiple="props.multiple" :class="(props.multiple ? 'is-multiple' : '')" v-model="vals" :disabled="props.disabled">
+                <skeleton tag="select" :is_loading="props.is_loading" :id="props.inputId" :name="props.name" :multiple="props.multiple" :class="(props.multiple ? 'is-multiple' : '')" v-model="vals" :disabled="props.disabled">
                     <template  v-if="response!=null" v-for="val in (response as SelectListItemValue[])">
                         <option v-if="val.values===undefined" :value="val.value" :selected="val.selected" v-show="!hiddenValues.some(h=>h===val.value.toString())" :disabled="disabledValues.some(d=>d===val.value.toString())">{{Translator(val.label)}}</option>
                         <optgroup v-if="val.values!==undefined" :label="Translator(val.label)" v-show="!hiddenValues.some(h=>h===val.value.toString())" :disabled="disabledValues.some(d=>d===val.value.toString())">
@@ -11,13 +11,13 @@
                             </option>
                         </optgroup>
                     </template>
-                </select>
+                </skeleton>
             </template>
             <template #rejected>
                 <Notification :type="NoticeTypes.danger" :message="Error"/>
             </template>
         </Promised>
-    </div>
+    </skeleton>
 </template>
 
 <script lang="ts">
@@ -34,7 +34,7 @@
     import {Notification} from '../common/';
     import {NoticeTypes} from '../../enums';
     import translate from '../../messages/messages.js';
-    import { useLanguage } from '../shared';
+    import { skeleton, useLanguage } from '../shared';
 
     const mergeValueGroups = (parent:string|null, value:SelectListItemValue, dest:SelectListItemValue[]):SelectListItemValue[]=> {
         let base:any = {

@@ -1,31 +1,37 @@
 ﻿<template>
     <Header v-if="props.input.type===FormInputTypes.header" 
         :subtype="props.input.subtype" 
-        :label="props.input.label" 
+        :label="props.input.label"
+        :is_loading="props.is_loading" 
         ref="inp"/>
     <Paragraph v-else-if="props.input.type===FormInputTypes.paragraph" 
         :name="props.input.name" 
         :label="props.input.label"
-        :input-id="inputId" 
+        :input-id="inputId"
+        :is_loading="props.is_loading" 
         ref="inp"/>
-    <Button v-else-if="props.input.type===FormInputTypes.button"
-        v-bind="inputProps" 
-        :disabled="Disabled" 
-        @buttonClicked="buttonClicked" 
-        ref="inp"/>
-    <template v-else>
-        <label class="label" :for="inputId" v-if="hasLabel">
+    <skeleton tag="div" :is_loading="props.is_loading" v-else-if="props.input.type===FormInputTypes.button" class="field">
+        <skeleton tag="div" :is_loading="props.is_loading" class="control">
+            <Button 
+                v-bind="inputProps" 
+                :disabled="Disabled" 
+                @buttonClicked="buttonClicked" 
+                ref="inp"/>
+        </skeleton>
+    </skeleton>
+    <skeleton tag="div" :is_loading="props.is_loading" class="field" v-else>
+        <skeleton tag="label" :is_loading="props.is_loading" class="label" :for="inputId" v-if="hasLabel">
             {{Translator(props.input.label??'')}}
             <span class="is-required-marker" v-if="props.input.required">*</span>
-        </label>
-        <div class="control">
+        </skeleton>
+        <skeleton tag="div" :is_loading="props.is_loading" class="control">
             <component :is="inputType" v-bind="inputProps" @valueChanged="valueChanged" ref="inp"/>
-        </div>
-    </template>
+        </skeleton tag="div" :is_loading="props.is_loading">
+    </skeleton>
 </template>
 
 <script lang="ts">
-    import { onMounted, computed, ref,readonly,inject, useId } from 'vue';
+    import { onMounted, computed, ref,readonly,inject, useId, Ref } from 'vue';
     import Autocomplete from './autocomplete.vue';
     import Button from './button.vue';
     import CheckboxGroup from './checkbox-group.vue';
@@ -46,6 +52,7 @@
     import { FormInputType, ValueChangedEvent } from './typeDefinitions';
     import {FormInputTypes} from './enums';
     import { translateFieldProps, useTranslator } from './common';
+import { skeleton } from '../shared';
 
     const LABELLED_FIELDS : FormInputTypes[] = [FormInputTypes.autocomplete, FormInputTypes.checkbox_group, FormInputTypes.date, FormInputTypes.number, FormInputTypes.radio_group, FormInputTypes.select, FormInputTypes.text, FormInputTypes.textarea, FormInputTypes.time, FormInputTypes.subform];
     const TRANSLATE_FIELDS : FormInputTypes[] = [FormInputTypes.subform,FormInputTypes.switch,FormInputTypes.select,FormInputTypes.radio_group,FormInputTypes.paragraph,FormInputTypes.header,FormInputTypes.checkbox_group,FormInputTypes.checkbox,FormInputTypes.button,FormInputTypes.autocomplete];
@@ -59,6 +66,10 @@
          * Indicates if this is disabled
          */
         disabled?:boolean,
+        /**
+         * Indicates if the form is loading and to render a skeleton style
+         */
+        is_loading?:Ref<boolean>|boolean
     };
 </script>
 
@@ -88,7 +99,8 @@
 
     const props = withDefaults(defineProps<formComponentProps>(),{
         disabled:false,
-        hidden:false
+        hidden:false,
+        is_loading:undefined
     });
 
     const Translator = useTranslator(props,inject);
@@ -151,6 +163,7 @@
             result.translate = props.translate;
         }
         result.disabled = props.disabled;
+        result.is_loading = props.is_loading;
         if (result.additional!==undefined){
             for(const key in result.additional)
             {

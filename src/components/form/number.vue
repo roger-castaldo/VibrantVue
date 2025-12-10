@@ -1,11 +1,12 @@
 ﻿<template>
-    <input type="number" class="input" :id="props.inputId" :name="props.name" v-model="value" :disabled="props.disabled" :min="props.min" :max="props.max" :step="props.step"/>
+    <skeleton tag="input" :is_loading="props.is_loading" type="number" class="input" :id="props.inputId" :name="props.name" v-model="value" :disabled="props.disabled" :min="props.min" :max="props.max" :step="props.step"/>
 </template>
 
 <script lang="ts">
     import { ref, watch } from 'vue';
     import { internalCoreFieldProps } from './common';
     import { ValueChangedEvent } from './typeDefinitions';
+import { skeleton } from '../shared';
 
     interface fieldProps extends internalCoreFieldProps {
         /**

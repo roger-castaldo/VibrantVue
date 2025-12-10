@@ -9,6 +9,10 @@ interface internalBaseFieldProps{
      * definied internal during form construction to ensure all labels and inputs maintain unique ids and support proper ids for accessibility
      */
     inputId?:string;
+    /**
+     * defined internally used to pass along the is_loading flag for skeleton purposes
+     */
+    is_loading?:Ref<boolean>|boolean;
 };
 
 export interface translateFieldProps{
@@ -16,6 +20,10 @@ export interface translateFieldProps{
      * The translate call method used to translate a given value (field title, element name, etc) into a desired language
      */
     translate?:TranslateMethod;
+    /**
+     * defined internally used to pass along the is_loading flag for skeleton purposes
+     */
+    is_loading?:Ref<boolean>|boolean;
 };
 
 export interface internalTranslateFieldProps extends internalBaseFieldProps,translateFieldProps{};

@@ -1,11 +1,11 @@
 ﻿<template>
-    <i :class="clazz" />
+    <skeleton tag="i" :is_loading="props.is_loading" :class="clazz" />
 </template>
 
 <script lang="ts">
-    import { computed,watch,inject,ref } from 'vue';
+    import { computed,watch,inject,ref, Ref } from 'vue';
     import {IconSizes} from '../../enums';
-    import { useFontAwesome, useIconSet } from '../shared';
+    import { useFontAwesome, useIconSet, skeleton } from '../shared';
 
     const brandsUrl:string = `brands.min.css`;
     const allUrl:string = `all.min.css`;
@@ -77,7 +77,11 @@
         /**
          * The size of the icon
          */
-        size?:IconSizes
+        size?:IconSizes,
+        /**
+         * Indicates if the icon is loading and to render a skeleton style
+         */
+        is_loading?:Ref<boolean>|boolean
     }>();
 
     const clazz = computed(() => {
