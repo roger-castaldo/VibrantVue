@@ -35,8 +35,10 @@ import Badge from './badge.vue';
 import ToolTip from './tooltip.vue';
 import Tag from './tag.vue';
 import Tags from './tags.vue';
+import Title from './title.vue';
+import Subtitle from './subtitle.vue';
 
 export { Animation,Button,ButtonAdd,ButtonCancel,ButtonDelete,ButtonDisable,ButtonDownload,
 ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonSubmit,ButtonUpload,ButtonsContainer,
 CheckMark,DropDown,DynamicSlot,Filter,Icon,Image,Message,Notification,PageNotification,Pagination,Promised,Progress,
-NavBar,Menu,MenuLabel,MenuList,MenuEntry,Badge,ToolTip,Tag,Tags};
+NavBar,Menu,MenuLabel,MenuList,MenuEntry,Badge,ToolTip,Tag,Tags,Title,Subtitle};
