@@ -13,6 +13,7 @@ Uses trash-alt icon, danger color and Cancel for text
 | hide_desktop | boolean ||  | Inidicates if it is hidden when on desktop|
 | is_rounded | boolean ||  | Inidicates if it is rounded|
 | is_outlined | boolean ||  | Indicates if it is oultined|
+| is_loading | Ref\|boolean ||  | Indicates if the notification is loading and to render a skeleton style|
 ## Events
 
 | Name    | Params | Description |

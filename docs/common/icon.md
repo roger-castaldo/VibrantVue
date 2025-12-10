@@ -10,3 +10,4 @@ If you desire to change the font awesome iconset to use, default is solid, injec
 | -------- | ------- | -------- | ------- | ------- |
 | icon | string ||  | The icon name to use from font awesome|
 | size | [IconSizes](../enums.md#IconSizes) |xxsmall, xsmall, small, large, xlarge, xxlarge|  | The size of the icon|
+| is_loading | Ref\|boolean ||  | Indicates if the icon is loading and to render a skeleton style|

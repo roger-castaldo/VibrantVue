@@ -9,6 +9,7 @@ Used to supply a notification component
 | type | [NoticeTypes](../enums.md#NoticeTypes)\|null |info, success, warning, danger| NoticeTypes.info | The color type to use|
 | message | MaybeRef\<string\>\|string\|null || null | The content of the notifcation|
 | light | boolean || false | Inidicates to use the light version of the given color|
+| is_loading | Ref\|boolean || undefined | Indicates if the notification is loading and to render a skeleton style|
 ## Slots
 
 | Name    | Description |

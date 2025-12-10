@@ -3,7 +3,7 @@
         <script type="importmap">
             {
              "imports": {
-                "vue":"https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.14/vue.esm-browser.min.js",
+                "vue":"https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.18/vue.esm-browser.min.js",
                 "chart":"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js",
                 "summernote":"https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.js",
                 "components":"./vibrantvue.esm.js"
@@ -42,6 +42,11 @@
             <section>
                 <Component-Form :elements="elements" :translate="translate" @value-changed="valueChanged"/>
             </section>
+            <hr/>
+            <secion>
+                <Component-Form :elements="fullElements" :translate="translate" :is_loading="true"/>
+            </secion>
+            <hr/>
 
             <section>
                 <Card icon="user">
@@ -202,7 +207,157 @@ progressGroupProperties:{
         }
     ],
     max:100
-}
+},
+fullElements:[
+            {
+              name:'autocomplete',
+              type:"autocomplete",
+              label:'autocomplete',
+              form_columns:12,
+              additional:{
+                values:[],
+                title:'autocomplete title'
+              }
+            },
+            {
+              name:'button',
+              type:"button",
+              label:'test button',
+              form_columns:11,
+              additional:{
+                icon:'person'
+              }
+            },
+            {
+              name:'checkbox-group',
+              type:"checkbox-group",
+              label:'checkbox group',
+              form_columns:10,
+              additional:{
+                values:[
+                  {value:1,label:'one'},
+                  {value:2,label:'two'},
+                  {value:3,label:'three'},
+                  {value:4,label:'four'}
+                ]
+              }
+            },
+            {
+              name:'checkbox',
+              type:"checkbox",
+              label:'checkbox label',
+              form_columns:9
+            },
+            {
+              name:'date',
+              type:"date",
+              label:'Date label',
+              form_columns:8,
+              additional:{
+                includeTime:true
+              }
+            },
+            {
+              name:'header',
+              type:"header",
+              label:'Header Label',
+              form_columns:7
+            },
+            {
+              name:'number',
+              type:"number",
+              label:'Number Label',
+              form_columns:6,
+              additional:{
+                min:0,
+                max:100,
+                step:1
+              }
+            },
+            {
+              name:'paragraph',
+              type:"paragraph",
+              label:'Paragraph content',
+              form_columns:5
+            },
+            {
+              name:'radio-group',
+              type:"radio-group",
+              label:'Radio Group Label',
+              form_columns:4,
+              additional:{
+                values:[
+                  {value:1,label:'one'},
+                  {value:2,label:'two'},
+                  {value:3,label:'three'},
+                  {value:4,label:'four'}
+                ]
+              }
+            },
+            {
+              name:'select',
+              type:"select",
+              label:'Select Label',
+              form_columns:3,
+              additional:{
+                values:[
+                  {value:1,label:'one'},
+                  {value:2,label:'two'},
+                  {value:3,label:'three'},
+                  {value:4,label:'four'}
+                ]
+              }
+            },
+            {
+              name:'select-multi',
+              type:"select",
+              label:'Select Multi Label',
+              form_columns:3,
+              additional:{
+                multiple:true,
+                values:[
+                  {value:1,label:'one'},
+                  {value:2,label:'two'},
+                  {value:3,label:'three'},
+                  {value:4,label:'four'}
+                ]
+              }
+            },
+            {
+              name:'switch',
+              type:"switch",
+              label:'switch label',
+              form_columns:2
+            },
+            {
+              name:'textarea',
+              type:"textarea",
+              label:'TextArea Label',
+              form_columns:1,
+              additional:{
+                rows:5,
+                cols:50
+              }
+            },
+            {
+              name:'time',
+              type:"time",
+              label:'Time Label'
+            },
+            {
+              name:'subform',
+              type:"subform",
+              additional:{
+                fields:[
+                  {
+                    name:'time',
+                    type:"time",
+                    label:'Time Label'
+                  }
+                ]
+              }
+            }
+          ]
                     };
                 }     ,
                 methods:{

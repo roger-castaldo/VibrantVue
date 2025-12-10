@@ -6,6 +6,7 @@ This is a stylized and customizable button
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
+| is_loading | Ref\|boolean || undefined | Indicates if the notification is loading and to render a skeleton style|
 | is_outlined | boolean || false | Indicates if it is oultined|
 | is_rounded | boolean || false | Inidicates if it is rounded|
 | hide_desktop | boolean || false | Inidicates if it is hidden when on desktop|

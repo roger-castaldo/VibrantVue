@@ -62,8 +62,7 @@
  */
     const convertInputToColumn = (input:FormInputType) : Column =>{
         return {
-            size:getColumnSize(input.form_columns),
-            class:'field'
+            size:getColumnSize(input.form_columns)
         };
     }
     

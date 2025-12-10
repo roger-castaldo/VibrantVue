@@ -10,6 +10,7 @@ Only supply a callbackurl or values do not supply both
 | name | string ||  | The name of the form element|
 | disabled | boolean ||  | Indicates if it is currently disabled|
 | translate | TranslateMethod ||  | The translate call method used to translate a given value (field title, element name, etc) into a desired language|
+| is_loading | Ref\|boolean ||  | defined internally used to pass along the is_loading flag for skeleton purposes|
 | title | string ||  | The title for the autocomplete box|
 | limit | number\|null ||  | Indicates the maximum number of items that can be selected|
 | callbackurl | string ||  | A url for making a query callback to when a character is entered to obtain a list of possible answers|

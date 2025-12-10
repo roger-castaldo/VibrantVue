@@ -8,6 +8,7 @@ Used to create a form with a given set of elements
 | translate | TranslateMethod ||  | The translate call method used to translate a given value (field title, element name, etc) into a desired language|
 | elements | [FormInputType](../types.md#FormInputType)\[\] ||  | The elements of the form|
 | disabled | boolean || false | Indicates if the form is disabled|
+| is_loading | Ref\|boolean || undefined | Indicates if the form is loading and to render a skeleton style|
 ## Events
 
 | Name    | Params | Description |

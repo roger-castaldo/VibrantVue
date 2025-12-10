@@ -5,8 +5,10 @@ Used to create form within a form (a way of collecting child inputs that maybe h
 
 | Name    | Type | Values | Default | Description |
 | -------- | ------- | -------- | ------- | ------- |
-| disabled | boolean || false | Indicates if it is currently disabled|
+| inputId | string ||  | definied internal during form construction to ensure all labels and inputs maintain unique ids and support proper ids for accessibility|
+| is_loading | Ref\|boolean ||  | defined internally used to pass along the is_loading flag for skeleton purposes|
 | name | string ||  | The name of the form element|
+| disabled | boolean || false | Indicates if it is currently disabled|
 | fields | [FormInputType](../types.md#FormInputType)\[\] ||  | The form components for this subform|
 ## Events
 

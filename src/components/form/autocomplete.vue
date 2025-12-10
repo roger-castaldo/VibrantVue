@@ -1,6 +1,6 @@
 ﻿<template>
     <div class="control autocomplete" @blur="clear" @click="focusInput">
-        <div :class="['tagsfield','field','input','is-grouped','is-grouped-multiline',(props.disabled ? 'is-disabled' : '')]">
+        <skeleton tag="div" :is_loading="props.is_loading" :class="['tagsfield','field','input','is-grouped','is-grouped-multiline',(props.disabled ? 'is-disabled' : '')]">
             <div class="control" v-for="(value,index) in selected" :key="index">
                 <div class="tags has-addons">
                     <a class="tag is-link">{{Translator(value.name)}}</a>
@@ -10,7 +10,7 @@
             <div v-if="!props.disabled">
                 <span ref="contentSpan" :placeholder="Translator(props.title??'')" contenteditable v-show="props.limit===undefined || props.limit===null || selected.length<props.limit" :class="classes" @focus="classes='is-focused';" @blur="classes=null;" @keydown="keyPress" @paste="paste"/>
             </div>
-        </div>
+        </skeleton>
         <div class="dropdown" v-if="!props.disabled" :class="{'is-active':results!=null&&searchString!=null&&searchString!=''}">
             <div class="dropdown-menu">
                 <div class="dropdown-content">
@@ -30,7 +30,7 @@
     import { watch, ref, inject, computed} from 'vue';
     import { commonFieldProps,useTranslator } from './common';
     import { ValueChangedEvent } from './typeDefinitions';
-    import { useLanguage } from '../shared';
+    import { skeleton, useLanguage } from '../shared';
     import translate from '../../messages/messages.js';
 
     type AutoCompleteItem = {

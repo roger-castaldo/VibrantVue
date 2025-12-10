@@ -341,3 +341,14 @@
 |default|default|
 |verticalRight|is-vertical-right|
 |verticalLeft|is-vertical-left|
+## [ImageSizes](#ImageSizes)
+
+| Name    | Value |
+| ------- | ------- |
+|xsmall|is-16x16|
+|small|is-24x24|
+|medium|is-32x32|
+|normal|is-48x48|
+|large|is-64x64|
+|xlarge|is-96x96|
+|xxlarge|is-128x128|
