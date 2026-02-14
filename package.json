@@ -44,7 +44,7 @@
     "@vue/test-utils": "^2.4.0-alpha.2",
     "axe-core": "^4.10.2",
     "bulma": "^1.0.4",
-    "express": "^4.19.2",
+    "express": "^4.22.1",
     "node-fetch": "^3.3.2",
     "playwright": "^1.44.1",
     "sass": "^1.72.0",
