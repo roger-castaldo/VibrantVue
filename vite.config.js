@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 import vue from "@vitejs/plugin-vue";
 import viteCompression from 'vite-plugin-compression';
+import { playwright } from '@vitest/browser-playwright'
 
 export default defineConfig({
   plugins: [
@@ -62,8 +63,16 @@ export default defineConfig({
     },
     browser: {
       enabled: true,
-      name: 'chromium',
-      provider: 'playwright',
+      provider: playwright({
+        launchOptions: {
+          slowMo: 50,
+          channel: 'chrome-beta',
+        },
+        actionTimeout: 50_000,
+      }),
+      instances: [
+        { browser: 'chromium' }
+      ]
     },
     css:true,
     setupFiles: "./src/setup-tests.ts"
