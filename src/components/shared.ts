@@ -1,4 +1,4 @@
-import { ComputedRef, computed, InjectionKey } from "vue";
+import { ComputedRef, computed, InjectionKey, defineComponent, h, ref, onMounted, nextTick, watch, unref, type PropType, type MaybeRef, inject } from "vue";
 
 const languageKey : string = 'Language';
 
@@ -71,6 +71,46 @@ export const provideAceJS = ( aceJsCDN: string,
 export const useAceJS = (inject: (<T>(string,T?)=> T | undefined)) : string => 
     inject<string>(aceJsKey,'https://cdn.jsdelivr.net/npm/ace-builds@1.37.3/')!;
 
+export const skeleton = defineComponent({
+    name: 'skeleton',
+    props:{
+        tag:{
+            type: String,
+            default: 'div'
+        },
+        is_loading:{
+            type: [Boolean, Object] as PropType<MaybeRef<boolean> | undefined>,
+            default: undefined
+        }
+    },
+    setup(props, { slots }) {
+        const showSkeleton = ref((props.is_loading===undefined ? true : unref(props.is_loading))); 
 
+        onMounted(() => {
+            nextTick(() => {
+                if (props.is_loading===undefined || !unref(props.is_loading)){
+                    showSkeleton.value = false;
+                }
+            });
+        });
 
+        if (props.is_loading!==undefined){
+            watch(
+                () => unref(props.is_loading),
+                (loading)=>{
+                    if (loading) showSkeleton.value = true;
+                    else showSkeleton.value = false;
+                }
+            );
+        }
+
+        return () => {
+            return h(
+                props.tag,
+                { class: (showSkeleton.value ? (slots.default===null || slots.default===undefined ? 'skeleton-block' : 'is-skeleton') : '') },
+                slots.default ? slots.default() : null
+            );
+        };
+    }
+});
 

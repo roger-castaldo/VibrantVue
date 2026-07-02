@@ -1,17 +1,18 @@
 ﻿<template>
-    <div class="field">
-        <input type="checkbox" class="switch is-rounded" :id="props.inputId" :name="props.name" v-model="isChecked" :disabled="props.disabled"/>
-        <label class="label" :for="$props.inputId">
+    <skeleton tag="div" :is_loading="props.is_loading" class="field">
+        <skeleton tag="input" :is_loading="props.is_loading" type="checkbox" class="switch is-rounded" :id="props.inputId" :name="props.name" v-model="isChecked" :disabled="props.disabled"/>
+        <skeleton tag="label" :is_loading="props.is_loading" class="label" :for="$props.inputId">
             {{Translator(props.label)}}
             <span class="help is-danger" v-if="props.required">*</span>
-        </label>
-    </div>
+        </skeleton>
+    </skeleton>
 </template>
 
 <script lang="ts">
     import { inject, ref, watch } from 'vue';
     import {internalCommonFieldProps, useTranslator} from './common';
     import { ValueChangedEvent } from './typeDefinitions';
+import { skeleton } from '../shared';
 
     interface fieldProps extends internalCommonFieldProps{
         /**

@@ -1,5 +1,5 @@
 <template>
-    <button :class="Classes" :disabled="props.disabled" @click="emit('click')">
+    <skeleton tag="button" :is_loading="props.is_loading" :class="Classes" :disabled="props.disabled" @click="emit('click')">
         <span :class="['icon',
             (props.size === Sizes.small ? 'is-small' : ''),
             (props.size === Sizes.large ? 'is-medium' : '')
@@ -7,14 +7,15 @@
             <Icon :icon="props.icon"/>
         </span>
         <span v-if="props.title">{{props.title}}</span>
-    </button>
+    </skeleton>
 </template>
 
 <script lang="ts">
     import Icon from '../icon.vue';
     import {ColorTypes,Sizes} from '../../../enums';
     import {computed} from 'vue';
-import { IButtonProperties } from '../typeDefinitions';
+    import { IButtonProperties } from '../typeDefinitions';
+    import { skeleton } from '../../shared';
 </script>
 
 <script lang="ts" setup>
@@ -31,7 +32,8 @@ import { IButtonProperties } from '../typeDefinitions';
         hide_tablet:false,
         is_rounded:false,
         is_outlined:false,
-        disabled:false
+        disabled:false,
+        is_loading:undefined
     });
 
     const emit = defineEmits<{

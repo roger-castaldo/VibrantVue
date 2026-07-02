@@ -8,6 +8,7 @@ A wrapper for all for input elements
 | translate | TranslateMethod ||  | The translate call method used to translate a given value (field title, element name, etc) into a desired language|
 | input | [FormInputType](../types.md#FormInputType) ||  | The type of input this form component represents|
 | disabled | boolean || false | Indicates if this is disabled|
+| is_loading | Ref\|boolean || undefined | Indicates if the form is loading and to render a skeleton style|
 | hidden |  || false | |
 ## Events
 

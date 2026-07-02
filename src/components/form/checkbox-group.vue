@@ -3,10 +3,10 @@
         <Promised :promise="Values">
             <template v-slot="{response}">
                 <template v-for="(value,index) in (response as ListItemValue[])" v-if="response!==null">
-                    <label class="checkbox is-block" v-show="!hiddenValues.some(v=>v===value.value.toString())" :for="`${props.inputId}-${index}`">
-                        <input type="checkbox" class="checkbox" :value="value.value" v-model="checks" :disabled="props.disabled||disabledValues.some(v=>v===value.value.toString())" :id="`${props.inputId}-${index}`"/>
+                    <skeleton tag="label" :is_loading="props.is_loading" class="checkbox is-block" v-show="!hiddenValues.some(v=>v===value.value.toString())" :for="`${props.inputId}-${index}`">
+                        <skeleton tag="input" :is_loading="props.is_loading" type="checkbox" class="checkbox" :value="value.value" v-model="checks" :disabled="props.disabled||disabledValues.some(v=>v===value.value.toString())" :id="`${props.inputId}-${index}`"/>
                         {{Translator(value.label)}}
-                    </label>
+                    </skeleton>
                 </template>
             </template>
             <template #rejected>
@@ -23,7 +23,7 @@
     import { internalCommonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
     import { Notification} from '../common/';
     import {NoticeTypes} from '../../enums';
-    import { useLanguage } from '../shared';
+    import { useLanguage, skeleton } from '../shared';
     import translate from '../../messages/messages.js';
 
     interface fieldProps extends internalCommonFieldProps {

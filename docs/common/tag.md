@@ -12,6 +12,7 @@ Used to supply a tag component
 | size | [Sizes](../enums.md#Sizes) |small, normal, medium, large| Sizes.normal | The size of the tag to use|
 | is_delete | boolean || false | Inidicates if this tag is a delete tag|
 | text | string ||  | The string content of the tag|
+| is_loading | Ref\|boolean || undefined | Indicates if the tag is loading and to render a skeleton style|
 ## Slots
 
 | Name    | Description |

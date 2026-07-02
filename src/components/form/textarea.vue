@@ -1,11 +1,12 @@
 ﻿<template>
-    <textarea class="textarea" :id="props.inputId" :name="props.name" :rows="props.rows" :cols="props.cols" :maxlength="props.maxlength" :disabled="props.disabled" @keydown="keyPressed" v-model="value"/>
+    <skeleton tag="textarea" :is_loading="props.is_loading" class="textarea" :id="props.inputId" :name="props.name" :rows="props.rows" :cols="props.cols" :maxlength="props.maxlength" :disabled="props.disabled" @keydown="keyPressed" v-model="value"/>
 </template>
 
 <script lang="ts">
     import { watch,ref } from 'vue';
     import { internalCoreFieldProps } from './common';
     import { ValueChangedEvent } from './typeDefinitions';
+    import { skeleton } from '../shared';
 
     const tabKeyCode = 9;
     const tab = String.fromCharCode(tabKeyCode);

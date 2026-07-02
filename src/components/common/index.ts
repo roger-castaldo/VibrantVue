@@ -19,6 +19,7 @@ import DropDown from './dropdown.vue';
 import DynamicSlot from './dynamic-slot.vue';
 import Filter from './filter.vue';
 import Icon from './icon.vue';
+import Image from './image.vue';
 import Message from './message.vue';
 import Notification from './notification.vue';
 import PageNotification from './page-notification.vue';
@@ -34,8 +35,10 @@ import Badge from './badge.vue';
 import ToolTip from './tooltip.vue';
 import Tag from './tag.vue';
 import Tags from './tags.vue';
+import Title from './title.vue';
+import Subtitle from './subtitle.vue';
 
 export { Animation,Button,ButtonAdd,ButtonCancel,ButtonDelete,ButtonDisable,ButtonDownload,
 ButtonEdit,ButtonEnable,ButtonOkay,ButtonPrint,ButtonRefresh,ButtonSave,ButtonSubmit,ButtonUpload,ButtonsContainer,
-CheckMark,DropDown,DynamicSlot,Filter,Icon,Message,Notification,PageNotification,Pagination,Promised,Progress,
-NavBar,Menu,MenuLabel,MenuList,MenuEntry,Badge,ToolTip,Tag,Tags};
+CheckMark,DropDown,DynamicSlot,Filter,Icon,Image,Message,Notification,PageNotification,Pagination,Promised,Progress,
+NavBar,Menu,MenuLabel,MenuList,MenuEntry,Badge,ToolTip,Tag,Tags,Title,Subtitle};

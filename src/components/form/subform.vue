@@ -3,6 +3,7 @@
         <InputsCollection :fields="props.fields" 
             ref="inputs" 
             :disabled="props.disabled"
+            :is_loading="props.is_loading"
             @valueChanged="emit('valueChanged',$event)" 
             @buttonClicked="emit('buttonClicked',$event)"
             />
@@ -12,11 +13,11 @@
 <script lang="ts">
     import { ref, computed,inject, readonly, Ref } from 'vue';
     import { FormInputType, ValueChangedEvent } from './typeDefinitions';
-    import { HIDDEN_FIELDS_PROPERTY, coreFieldProps} from './common';
+    import { HIDDEN_FIELDS_PROPERTY, internalCoreFieldProps} from './common';
     import InputsCollection from './inputs-collection.vue';
     import Box from '../layout/box.vue';
 
-    interface fieldProps extends coreFieldProps {
+    interface fieldProps extends internalCoreFieldProps {
         /**
          * The form components for this subform
          */

@@ -2,6 +2,11 @@
 
 The famous media object prevalent in social media interfaces, but useful in any context
 [Bulma Docs](https://bulma.io/documentation/layout/media-object/)
+## Props
+
+| Name    | Type | Values | Default | Description |
+| -------- | ------- | -------- | ------- | ------- |
+| is_loading | Ref\|boolean || undefined | Indicates if the media object is loading and to render a skeleton style|
 ## Slots
 
 | Name    | Description |

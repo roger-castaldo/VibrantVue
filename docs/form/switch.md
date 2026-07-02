@@ -8,6 +8,7 @@ A checkbox used in a form but styled as a switch
 | -------- | ------- | -------- | ------- | ------- |
 | disabled | boolean ||  | Indicates if it is currently disabled|
 | name | string ||  | The name of the form element|
+| is_loading | Ref\|boolean ||  | defined internally used to pass along the is_loading flag for skeleton purposes|
 | inputId | string ||  | definied internal during form construction to ensure all labels and inputs maintain unique ids and support proper ids for accessibility|
 | translate | TranslateMethod ||  | The translate call method used to translate a given value (field title, element name, etc) into a desired language|
 | label | string ||  | The label for the switch|

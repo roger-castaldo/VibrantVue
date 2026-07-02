@@ -3,10 +3,10 @@
         <Promised :promise="Values">
             <template v-slot="{response}">
                 <template v-for="(val,index) in (response as ListItemValue[])" v-if="values!=null">
-                    <label class="radio is-block" v-show="!hiddenValues.some(v=>v===val.value.toString())" :for="`${props.inputId}-${index}`">
-                        <input type="radio" :name="props.name" :value="val.value" class="radio" :disabled="props.disabled||disabledValues.some(v=>v===val.value.toString())" :id="`${props.inputId}-${index}`"/>
+                    <skeleton tag="label" :is_loading="props.is_loading" class="radio is-block" v-show="!hiddenValues.some(v=>v===val.value.toString())" :for="`${props.inputId}-${index}`">
+                        <skeleton tag="input" :is_loading="props.is_loading" type="radio" :name="props.name" :value="val.value" class="radio" :disabled="props.disabled||disabledValues.some(v=>v===val.value.toString())" :id="`${props.inputId}-${index}`"/>
                         {{Translator(val.label)}}
-                    </label>
+                    </skeleton>
                 </template>
             </template>
             <template #rejected>
@@ -23,7 +23,7 @@
     import { internalCommonFieldProps,resolveListItems,useTranslator, useValuesList } from './common';
     import {Notification} from '../common/';
     import {NoticeTypes} from '../../enums';
-    import { useLanguage } from '../shared';
+    import { skeleton, useLanguage } from '../shared';
     import translate from '../../messages/messages.js';
 
     interface fieldProps extends internalCommonFieldProps {
