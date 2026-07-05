@@ -160,15 +160,18 @@ var et = Object.defineProperty, me = (e, l) => {
       default: void 0
     }
   },
-  setup(e, { slots: l }) {
-    const a = C(e.is_loading === void 0 ? !0 : p(e.is_loading));
+  setup(e, { slots: l, attrs: a }) {
+    const t = C(e.is_loading === void 0 ? !0 : p(e.is_loading));
     return de(() => {
       aa(() => {
-        (e.is_loading === void 0 || !p(e.is_loading)) && (a.value = !1);
+        (e.is_loading === void 0 || !p(e.is_loading)) && (t.value = !1);
       });
-    }), e.is_loading !== void 0 && j(() => p(e.is_loading), (t) => {
-      t ? a.value = !0 : a.value = !1;
-    }), () => ea(e.tag, { class: a.value ? l.default === null || l.default === void 0 ? "skeleton-block" : "is-skeleton" : "" }, l.default ? l.default() : null);
+    }), e.is_loading !== void 0 && j(() => p(e.is_loading), (r) => {
+      r ? t.value = !0 : t.value = !1;
+    }), () => ea(e.tag, {
+      ...a,
+      class: [a.class, t.value ? l.default ? "is-skeleton" : "skeleton-block" : void 0]
+    }, l.default?.());
   }
 }), Ma = /* @__PURE__ */ M({
   __name: "animation",

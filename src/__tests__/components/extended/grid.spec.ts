@@ -204,7 +204,9 @@ describe('Grid', () => {
 
         checkGridHeaders(theadRows.slice(1),columns,slots,current_sort);
 
-        await userEvent.click((stripCommentNodes(theadRows[1])[0] as HTMLElement));
+        let firstTr = (stripCommentNodes(theadRows[1])[0] as HTMLElement)
+
+        await userEvent.click((stripCommentNodes(firstTr)[0] as HTMLElement));
 
         expect(changedSort).not.toBeNull();
         expect(changedSort!.ascending).toBe(!current_sort.ascending);

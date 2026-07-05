@@ -83,7 +83,7 @@ export const skeleton = defineComponent({
             default: undefined
         }
     },
-    setup(props, { slots }) {
+    setup(props, { slots, attrs }) {
         const showSkeleton = ref((props.is_loading===undefined ? true : unref(props.is_loading))); 
 
         onMounted(() => {
@@ -107,8 +107,16 @@ export const skeleton = defineComponent({
         return () => {
             return h(
                 props.tag,
-                { class: (showSkeleton.value ? (slots.default===null || slots.default===undefined ? 'skeleton-block' : 'is-skeleton') : '') },
-                slots.default ? slots.default() : null
+            {
+                ...attrs,
+                class: [
+                    attrs.class,
+                    showSkeleton.value
+                        ? (slots.default ? 'is-skeleton' : 'skeleton-block')
+                        : undefined
+                ]
+            },
+            slots.default?.()
             );
         };
     }
