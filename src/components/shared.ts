@@ -81,9 +81,14 @@ export const skeleton = defineComponent({
         is_loading:{
             type: [Boolean, Object] as PropType<MaybeRef<boolean> | undefined>,
             default: undefined
+        },
+        modelValue: { 
+            type: [String, Number, Boolean, Array, Object, null] as PropType<any>, 
+            default: undefined 
         }
     },
-    setup(props, { slots, attrs }) {
+    emits: ['update:modelValue'],
+    setup(props, { emit, slots, attrs }) {
         const showSkeleton = ref((props.is_loading===undefined ? true : unref(props.is_loading))); 
 
         onMounted(() => {
@@ -107,16 +112,21 @@ export const skeleton = defineComponent({
         return () => {
             return h(
                 props.tag,
-            {
-                ...attrs,
-                class: [
-                    attrs.class,
-                    showSkeleton.value
-                        ? (slots.default ? 'is-skeleton' : 'skeleton-block')
-                        : undefined
-                ]
-            },
-            slots.default?.()
+                {
+                    ...attrs,
+                    class: [
+                        attrs.class,
+                        showSkeleton.value
+                            ? (slots.default ? 'is-skeleton' : 'skeleton-block')
+                            : undefined
+                    ],
+                    value: props.modelValue,
+                    onInput: (e: Event) => {
+                        const target = e.target as HTMLInputElement
+                        emit('update:modelValue', target.type === 'number' ? target.valueAsNumber : target.value)
+                    }
+                },
+                slots.default?.()
             );
         };
     }
