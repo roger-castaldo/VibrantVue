@@ -136,7 +136,15 @@
     });
 
     const getValue = ():any[]|any=> { 
-        return (vals.value === null ? null : (vals.value.length === 0 ? null : (props.multiple ? vals.value.slice() : (Array.isArray(vals.value) ? vals.value[0] : vals.value)))); 
+        if(vals.value===null || (Array.isArray(vals.value) && vals.value.length===0))
+            return null;
+        if (props.multiple){
+            if(!Array.isArray(vals.value))
+                return [vals.value];
+            return vals.value.slice();
+        }else if (Array.isArray(vals.value))
+            return vals.value[0];
+        return vals.value;
     };
 
     watch(vals, () => {

@@ -5,7 +5,7 @@
 <script lang="ts">
     import { computed,watch,inject,ref, Ref } from 'vue';
     import {IconSizes} from '../../enums';
-    import { useFontAwesome, useIconSet, skeleton } from '../shared';
+    import { useFontAwesome, useIconSet, skeleton, GetBrands, SetBrands } from '../shared';
 
     const brandsUrl:string = `brands.min.css`;
     const allUrl:string = `all.min.css`;
@@ -13,40 +13,38 @@
 
     const reg = /\.fa-([^: ]+):before/g;
     const urlReg = /url\(([^)]+)\)/g;
-    const brands = ref<string[]>([]);
+    const brands = GetBrands();
     const loading = ref<boolean>(false);
     
     const loadStyles = async (urlBase:string,iconSet:string) : Promise<void> =>{
         if (!loading.value){
             loading.value=true;
             let el:HTMLStyleElement;
-            if (brands.value.length===0){
+            if (document.getElementById(brandsId) === null){
                 el = document.createElement('style') as HTMLStyleElement;
                 el.setAttribute('id',brandsId);
                 document.head.appendChild(el);
                 el.setAttribute('type', 'text/css');
-            }else{
-                el = document.getElementById(brandsId) as HTMLStyleElement;
+                let results = await Promise.all([
+                    fetch(`${urlBase}${brandsUrl}`),
+                    fetch(`${urlBase}${allUrl}`),
+                    fetch(`${urlBase}${iconSet}.min.css`)
+                ]);
+                let brandsList:string[] = [' '];
+                let content:string = await results[0].text();
+                [...content.matchAll(reg)].forEach(match => {
+                    brandsList.push(match[1]);
+                });
+                content = `${await results[1].text()}
+                ${await results[2].text()}
+                ${content}`;
+                [...content.matchAll(urlReg)].forEach(match=>{
+                    content=content.replace(match[0],`url(${new URL(match[1],urlBase)})`);
+                });
+                el.innerText=content;
+                SetBrands(brandsList.splice(0,1));
+                loading.value=false;
             }
-            brands.value=[' '];
-            let results = await Promise.all([
-                fetch(`${urlBase}${brandsUrl}`),
-                fetch(`${urlBase}${allUrl}`),
-                fetch(`${urlBase}${iconSet}.min.css`)
-            ]);
-            let content:string = await results[0].text();
-            [...content.matchAll(reg)].forEach(match => {
-                brands.value.push(match[1]);
-            });
-            content = `${await results[1].text()}
-    ${await results[2].text()}
-    ${content}`;
-            [...content.matchAll(urlReg)].forEach(match=>{
-                content=content.replace(match[0],`url(${new URL(match[1],urlBase)})`);
-            });
-            el.innerText=content;
-            brands.value.splice(0,1);
-            loading.value=false;
         }
     };
 </script>
@@ -63,7 +61,7 @@
     const urlBase = useFontAwesome(inject);
     const iconSet = useIconSet(inject);
 
-    if(brands.value.length===0){
+    if(brands.length===0){
         loadStyles(urlBase,iconSet.value);
     }else{
         watch(iconSet,()=>loadStyles(urlBase,iconSet.value));
@@ -87,7 +85,7 @@
     const clazz = computed(() => {
         let results = [];
         if (props.icon !== undefined && props.icon !== null) {
-            if (brands.value.indexOf(props.icon) >= 0) {
+            if (brands.indexOf(props.icon) >= 0) {
                 results.push('fa-brands');
             } else {
                 results.push('fa-ico');

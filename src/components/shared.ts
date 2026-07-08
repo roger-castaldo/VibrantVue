@@ -1,4 +1,4 @@
-import { ComputedRef, computed, InjectionKey, defineComponent, h, ref, onMounted, nextTick, watch, unref, type PropType, type MaybeRef, inject } from "vue";
+import { ComputedRef, computed, InjectionKey, defineComponent, h, ref, onMounted, nextTick, watch, unref, type PropType, type MaybeRef, type DeepReadonly, readonly } from "vue";
 
 const languageKey : string = 'Language';
 
@@ -132,3 +132,12 @@ export const skeleton = defineComponent({
     }
 });
 
+const brands = ref<string[]>([]);
+
+export const SetBrands = (brandList: string[]) : void => {
+    brands.value = brandList;
+}
+
+export const GetBrands = () : DeepReadonly<string[]> => {
+    return readonly(brands.value);
+}
