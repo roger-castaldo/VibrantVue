@@ -38,7 +38,7 @@
     "@types/node": "26.1.0",
     "@types/summernote": "0.8.10",
     "@vitejs/plugin-vue": "6.0.7",
-    "@vitest/browser": "4.1.9",
+    "@vitest/browser": "4.1.10",
     "@vitest/browser-playwright": "4.1.9",
     "@vitest/coverage-v8": "4.1.9",
     "@vitest/ui": "4.1.9",
