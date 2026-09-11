@@ -57,7 +57,7 @@
     "vite": "8.1.2",
     "vite-plugin-commonjs": "0.10.4",
     "vite-plugin-compression": "0.5.1",
-    "vitest": "4.1.9",
+    "vitest": "4.1.11",
     "vitest-browser-vue": "2.1.0",
     "vue-docgen-api": "4.79.2",
     "vue-tsc": "3.3.6"
