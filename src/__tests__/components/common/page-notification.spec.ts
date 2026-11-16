@@ -4,12 +4,12 @@ import { ExecuteAccessibilityChecks } from '../../common';
 import pageNotification from '../../../components/common/page-notification.vue';
 import { stripCommentNodes } from '../../common';
 import { NoticeTypes } from '../../../enums';
-import { userEvent } from '@vitest/browser/context';
+import { userEvent } from 'vitest/browser';
 
 describe('Page Notification', () => {
     test('check accessibility',async() => {
-      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-        const {container} = render(pageNotification, {
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+        const {container} = await render(pageNotification, {
           props:{
               visible:true,
               message:'test message'
@@ -23,7 +23,7 @@ describe('Page Notification', () => {
     test('check basic content',async() => {
       const testMessage = 'test message';
 
-      const {container} = render(pageNotification, {
+      const {container} = await render(pageNotification, {
         props:{
             visible:true,
             message:testMessage
@@ -69,7 +69,7 @@ describe('Page Notification', () => {
     test('check user blocking',async() => {
       const testMessage = 'test message';
 
-      const {container} = render(pageNotification, {
+      const {container} = await render(pageNotification, {
         props:{
             visible:true,
             block_user:true,
@@ -121,7 +121,7 @@ describe('Page Notification', () => {
     test('check light mode',async() => {
       const testMessage = 'test message';
 
-      const {container} = render(pageNotification, {
+      const {container} = await render(pageNotification, {
         props:{
             visible:true,
             is_light:true,
@@ -156,7 +156,7 @@ describe('Page Notification', () => {
     test('check Notice types',async() => {
       const testMessage = 'test message';
       for (const key in NoticeTypes){
-        const {container} = render(pageNotification, {
+        const {container} = await render(pageNotification, {
           props:{
               visible:true,
               message:testMessage,
@@ -218,7 +218,7 @@ describe('Page Notification', () => {
       const testMessage = 'test message';
       let closed=false;
 
-      const {container} = render(pageNotification, {
+      const {container} = await render(pageNotification, {
         props:{
             visible:true,
             message:testMessage,

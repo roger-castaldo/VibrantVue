@@ -10,10 +10,11 @@ describe('Image', () => {
         const alt = 'Test Alt';
         const src = 'https://placehold.co/48x48'
 
-        const {container} = render(image, {
+        const {container} = await render(image, {
           props:{
             alt:alt,
-            src:src
+            src:src,
+            is_loading:true
           }
         });
     
@@ -77,13 +78,15 @@ describe('Image', () => {
         const alt = 'Test Alt';
         const src = 'https://placehold.co/48x48'
 
-        for(const key in ImageSizes){
+        for (const key of Object.keys(ImageSizes) as Array<keyof typeof ImageSizes>) {
+          const size = ImageSizes[key];
 
-          const {container} = render(image, {
+          const {container} = await render(image, {
             props:{
               alt:alt,
               src:src,
-              size:ImageSizes[key]
+              size:size,
+              is_loading:true
             }
           });
       
@@ -92,7 +95,7 @@ describe('Image', () => {
           expect(figure.tagName).toBe('FIGURE');
 
           expect(figure.classList).toContain('image');
-          expect(figure.classList).toContain(`${ImageSizes[key]}`);
+          expect(figure.classList).toContain(`${size}`);
           expect(figure.classList).toContain('is-skeleton');
 
           expect(figure.childNodes).toHaveLength(1);

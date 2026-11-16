@@ -7,8 +7,8 @@ import { stripCommentNodes } from '../../common';
 
 describe('Level', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(Level, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(Level, {
         props: {
           aria_label:'level',
           left_slots:['left'],
@@ -29,7 +29,7 @@ describe('Level', () => {
   test('left slots',async()=>{
     const slotContent = 'This is a test slot';
 
-    const {container} = render(Level,{
+    const {container} = await render(Level,{
       props:{
         aria_label:'level',
         left_slots:['slot1','slot2']
@@ -64,7 +64,7 @@ describe('Level', () => {
   test('right slots',async()=>{
     const slotContent = 'This is a test slot';
 
-    const {container} = render(Level,{
+    const {container} = await render(Level,{
       props:{
         aria_label:'level',
         right_slots:['slot1','slot2']
@@ -99,7 +99,7 @@ describe('Level', () => {
   test('slots',async()=>{
     const slotContent = 'This is a test slot';
 
-    const {container} = render(Level,{
+    const {container} = await render(Level,{
       props:{
         aria_label:'level',
         slots:['slot1','slot2']

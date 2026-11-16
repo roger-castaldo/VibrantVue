@@ -9,8 +9,8 @@ import { sleep } from '../../common';
 
 describe('Component Form', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(Form, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(Form, {
         props: {
           elements:[
             {

@@ -8,10 +8,10 @@ import { ColorTypes } from '../../../enums';
 
 describe('Banner', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
       let result : HTMLElement[] = [];
       for( const key in ColorTypes){
-        const renderResult = render(Banner,{
+        const renderResult = await render(Banner,{
           props: {
             title:'Sample text',
             type:ColorTypes[key]
@@ -27,7 +27,7 @@ describe('Banner', () => {
   test('check defaults', async () => {
     const textContent = 'Sample text';
 
-    const { container,getByText } = render(Banner, {
+    const { container,getByText } = await render(Banner, {
       props: {
         title:textContent
       },
@@ -60,7 +60,7 @@ describe('Banner', () => {
     const textContent = 'Sample text';
     const textSubtitle = 'Sample subtitle';
 
-    const { container,getByText } = render(Banner, {
+    const { container,getByText } = await render(Banner, {
       props: {
         title:textContent,
         subtitle:textSubtitle
@@ -99,7 +99,7 @@ describe('Banner', () => {
     const textContent = 'Sample text';
 
     for (const key in ColorTypes) {
-      const { container,getByText } = render(Banner, {
+      const { container,getByText } = await render(Banner, {
         props: {
           title:textContent,
           type:ColorTypes[key]

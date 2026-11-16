@@ -11,8 +11,8 @@ import {mount} from '@vue/test-utils';
 
 describe('Step Wizard', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(StepWizard, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(StepWizard, {
         props: {
           steps:[
             {name:'step1',title:'Step 1',description:'This is step 1'},
@@ -40,7 +40,7 @@ describe('Step Wizard', () => {
       step2:()=>'This is the slot content for step 2'
     };
 
-    const {container} = render(StepWizard, {
+    const {container} = await render(StepWizard, {
       props: {
         steps:steps
       },
@@ -141,7 +141,7 @@ describe('Step Wizard', () => {
     };
 
     for(const key in Sizes){
-      const {container} = render(StepWizard, {
+      const {container} = await render(StepWizard, {
         props: {
           steps:steps,
           size:Sizes[key]
@@ -177,7 +177,7 @@ describe('Step Wizard', () => {
     };
 
     for(const key in StepWizardOrientations){
-      const {container} = render(StepWizard, {
+      const {container} = await render(StepWizard, {
         props: {
           steps:steps,
           orientation:StepWizardOrientations[key]
@@ -205,7 +205,7 @@ describe('Step Wizard', () => {
         step2:()=>'This is the slot content for step 2'
       };
 
-      const {container} = render(StepWizard, {
+      const {container} = await render(StepWizard, {
         props: {
           steps:steps
         },
@@ -311,7 +311,7 @@ describe('Step Wizard', () => {
 
     let currentStep : number = -1;
 
-    const {container} = render(StepWizard, {
+    const {container} = await render(StepWizard, {
       props: {
         steps:steps,
         onChangedStep:(val)=>currentStep=val

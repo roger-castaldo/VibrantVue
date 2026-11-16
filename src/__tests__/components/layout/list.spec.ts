@@ -8,10 +8,10 @@ import { h } from 'vue'
 
 describe('List', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
       let result : HTMLElement[] = [];
       for( const key in ColorTypes){
-        const renderResult = render(List, {
+        const renderResult = await render(List, {
           props: {
             items:[
               {
@@ -30,7 +30,7 @@ describe('List', () => {
           }
         });
         result.push(renderResult.container);
-        const renderHighlightResult = render(List, {
+        const renderHighlightResult = await render(List, {
           props: {
             items:[
               {
@@ -50,7 +50,7 @@ describe('List', () => {
           }
         });
         result.push(renderHighlightResult.container);
-        const renderOutlinedResult = render(List, {
+        const renderOutlinedResult = await render(List, {
           props: {
             items:[
               {
@@ -79,7 +79,7 @@ describe('List', () => {
   test('check defaults',async()=>{
     const itemContent = 'Test Item Content';
 
-    const {container} = render(List,{
+    const {container} = await render(List,{
       props:{
         items:[
           {
@@ -110,7 +110,7 @@ describe('List', () => {
   test('check numbered',async()=>{
     const itemContent = 'Test Item Content';
 
-    const {container} = render(List,{
+    const {container} = await render(List,{
       props:{
         numbered:true,
         items:[
@@ -142,7 +142,7 @@ describe('List', () => {
   test('check icon',async()=>{
     const itemContent = 'Test Item Content';
 
-    const {container} = render(List,{
+    const {container} = await render(List,{
       props:{
         items:[
           {
@@ -186,7 +186,7 @@ describe('List', () => {
   test('check modifiers',async()=>{
     const itemContent = 'Test Item Content';
 
-    const {container} = render(List,{
+    const {container} = await render(List,{
       props:{
         compact:true,
         outlined:true,
@@ -227,7 +227,7 @@ describe('List', () => {
     const itemContent = 'Test Item Content';
 
     for(const key in ColorTypes){
-      const {container} = render(List,{
+      const {container} = await render(List,{
         props:{
           type:ColorTypes[key],
           items:[
@@ -262,7 +262,7 @@ describe('List', () => {
     const itemContent = 'Test Item Content';
     let clicked=false;
 
-    const {container} = render(List,{
+    const {container} = await render(List,{
       props:{
         items:[
           {
@@ -298,7 +298,7 @@ describe('List', () => {
   test('check empty list',async()=>{
     const itemContent = 'Test Item Content';
 
-    const {container} = render(List,{
+    const {container} = await render(List,{
       props:{},
       slots:{
         default:()=>h('li',null,itemContent)

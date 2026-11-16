@@ -9,8 +9,8 @@ import {h} from 'vue';
 
 describe('Section', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(Section, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(Section, {
         props: {},
         slots:{
           default:()=>h('p',null,'Test Content')
@@ -24,7 +24,7 @@ describe('Section', () => {
   test('check defaults', async () => {
     const textContent = 'Sample text';
 
-    const { container,getByText } = render(Section, {
+    const { container,getByText } = await render(Section, {
       props: {},
       slots:{
         default:()=>textContent
@@ -44,7 +44,7 @@ describe('Section', () => {
     const textContent = 'Sample text';
 
     for(const key in SectionSizes){
-      const { container } = render(Section, {
+      const { container } = await render(Section, {
         props: {
           size:SectionSizes[key]
         },

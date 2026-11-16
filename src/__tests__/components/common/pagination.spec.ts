@@ -7,8 +7,8 @@ import translate from '../../../messages/messages';
 
 describe('Pagination', () => {
     test('check accessibility',async() => {
-      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-        const {container} = render(pagination, {
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+        const {container} = await render(pagination, {
           props:{
               current_page:5,
               total_pages:10
@@ -20,7 +20,7 @@ describe('Pagination', () => {
       expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('check using Next/Previous',async() => {
-        const {container,getByText} = render(pagination, {
+        const {container,getByText} = await render(pagination, {
           props:{
               use_next:true,
               has_more:true,
@@ -65,7 +65,7 @@ describe('Pagination', () => {
     test('check using Newer/Older',async() => {
       let movedBack = false;
       let movedForward=false;
-        const {container,getByText} = render(pagination, {
+        const {container,getByText} = await render(pagination, {
           props:{
               use_next:false,
               has_more:true,
@@ -118,7 +118,7 @@ describe('Pagination', () => {
         expect(nextIcon.classList).toContain('ml-1');
     }),
     test('check using total pages more than 5',async() => {
-        const {container,getByText} = render(pagination, {
+        const {container,getByText} = await render(pagination, {
           props:{
             current_page:5,
             total_pages:10
@@ -186,7 +186,7 @@ describe('Pagination', () => {
         }
     }),
     test('check using total pages less than 5',async() => {
-      const {container,getByText} = render(pagination, {
+      const {container,getByText} = await render(pagination, {
         props:{
           current_page:2,
           total_pages:4,
@@ -254,7 +254,7 @@ describe('Pagination', () => {
       let pageAssigned = -1;
       const current_page = 5;
 
-      const {container,getByText} = render(pagination, {
+      const {container,getByText} = await render(pagination, {
         props:{
           current_page:current_page,
           total_pages:10,

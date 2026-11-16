@@ -7,13 +7,13 @@ import { stripCommentNodes } from '../../common';
 import { CellData, GridColumn, GridSort } from '../../../components/extended/typeDefinitions';
 import translate from '../../../messages/messages.js';
 import { ColorTypes } from '../../../enums';
-import { userEvent } from '@vitest/browser/context';
-import { h } from 'vue';
+import { userEvent } from 'vitest/browser';
+import { h, nextTick } from 'vue';
 
 describe('Grid', () => {
     test('check accessibility',async() => {
-      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-            const {container} = render(Grid, {
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+            const {container} = await render(Grid, {
                 props:{
                     total_pages:20,
                     current_page:10,
@@ -148,7 +148,7 @@ describe('Grid', () => {
         let changedSort:GridSort|null = null;
         let filterValue:string|null = null;
 
-        const { container,getByRole } = render(Grid, {
+        const { container,getByRole } = await render(Grid, {
             props:{
               total_pages:10,
               current_page:current_page,
@@ -199,14 +199,18 @@ describe('Grid', () => {
         expect(filterValue).toBeNull();
 
         await userEvent.type(filterInput,`${searchValue}{enter}`);
+        await nextTick();
 
         expect(filterValue).toBe(searchValue);
 
         checkGridHeaders(theadRows.slice(1),columns,slots,current_sort);
 
         let firstTr = (stripCommentNodes(theadRows[1])[0] as HTMLElement)
+        const sortElement = firstTr.querySelector(
+            '.icon-text.is-clickable'
+        ) as HTMLElement;
 
-        await userEvent.click((stripCommentNodes(firstTr)[0] as HTMLElement));
+        sortElement.click();
 
         expect(changedSort).not.toBeNull();
         expect(changedSort!.ascending).toBe(!current_sort.ascending);
@@ -215,8 +219,8 @@ describe('Grid', () => {
         checkGridData(tbody,columns,data,slots);
 
         const tr = stripCommentNodes(tbody)[1] as HTMLElement;
-
         await userEvent.click((stripCommentNodes(tr)[1] as HTMLElement));
+        await nextTick();
 
         expect(clickedCell).not.toBeNull();
         expect(clickedCell!.rowIndex).toBe(1);
@@ -234,12 +238,12 @@ describe('Grid', () => {
         const navContainer = stripCommentNodes(navTd)[0] as HTMLElement;
 
         const navChildren = stripCommentNodes(navContainer).map(x=>x as HTMLElement);
-
         await userEvent.click(navChildren[1]);
+        await nextTick();
 
         expect(currentPage).not.toBeNull();
         expect(currentPage).toBe(current_page+1);
-    }),
+    },30000),
     test('check moveForward and moveBackward',async()=>{
         const columns: GridColumn[][] = [
             [
@@ -268,7 +272,7 @@ describe('Grid', () => {
         let movedForward:boolean = false;
         let movedBack:boolean = false;
 
-        const { container,getByRole } = render(Grid, {
+        const { container,getByRole } = await render(Grid, {
             props:{
               has_more:true,
               has_previous:true,

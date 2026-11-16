@@ -6,7 +6,7 @@ import { BorderTypes, ColumnContainerModifiers, ColumnOffsetSizes, ColumnSizes }
 
 describe('ColumnContainer', () => {
     test('check empty container', async () => {
-        const { container,getByText } = render(ColumnContainer, {
+        const { container,getByText } = await render(ColumnContainer, {
           props: {
             columns:[]
           },
@@ -20,7 +20,7 @@ describe('ColumnContainer', () => {
     }),
     test('check modifiers', async () => {
         for(const key in ColumnContainerModifiers){
-            const { container,getByText } = render(ColumnContainer, {
+            const { container,getByText } = await render(ColumnContainer, {
             props: {
                 columns:[],
                 modifiers:[ColumnContainerModifiers[key]]
@@ -39,7 +39,7 @@ describe('ColumnContainer', () => {
         const testContent = 'Test Content';
 
         for(const key in ColumnSizes){
-            const { container } = render(ColumnContainer, {
+            const { container } = await render(ColumnContainer, {
                 props: {
                     columns:[{name:'test',size:ColumnSizes[key]}]
                 },
@@ -67,7 +67,7 @@ describe('ColumnContainer', () => {
         const testContent = 'Test Content';
 
         for(const key in ColumnOffsetSizes){
-            const { container } = render(ColumnContainer, {
+            const { container } = await render(ColumnContainer, {
                 props: {
                     columns:[{name:'test',offset:ColumnOffsetSizes[key]}]
                 },
@@ -95,7 +95,7 @@ describe('ColumnContainer', () => {
         const testContent = 'Test Content';
 
         for(const key in BorderTypes){
-            const { container } = render(ColumnContainer, {
+            const { container } = await render(ColumnContainer, {
                 props: {
                     columns:[{name:'test',border:[BorderTypes[key]]}]
                 },
@@ -124,7 +124,7 @@ describe('ColumnContainer', () => {
         }
     }),
     test('check complex container', async () => {
-        const { container,getByText } = render(ColumnContainer, {
+        const { container,getByText } = await render(ColumnContainer, {
           props: {
             columns:[
                 {name:'test',class:'addon_class'},

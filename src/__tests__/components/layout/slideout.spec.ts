@@ -8,8 +8,8 @@ import { ColorTypes } from '../../../enums';
 
 describe('Slideout', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(Slideout, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(Slideout, {
         props: {
           show:true,
           not_animated:true
@@ -30,7 +30,7 @@ describe('Slideout', () => {
     const testContent = 'Test Content';
     const testFooter = 'Test Footer'
 
-    const { container,getByText } = render(Slideout, {
+    const { container,getByText } = await render(Slideout, {
       props: {
         show:true
       },
@@ -79,7 +79,7 @@ describe('Slideout', () => {
     const testContent = 'Test Content';
     const testFooter = 'Test Footer'
 
-    const { container,getByText } = render(Slideout, {
+    const { container,getByText } = await render(Slideout, {
       props: {
         show:false,
         not_animated:true,
@@ -131,7 +131,7 @@ describe('Slideout', () => {
     const testContent = 'Test Content';
     const testFooter = 'Test Footer'
 
-    const { container,getByText } = render(Slideout, {
+    const { container,getByText } = await render(Slideout, {
       props: {
         show:true
       },
@@ -174,7 +174,7 @@ describe('Slideout', () => {
     const testHeader = 'Test Header';
     const testContent = 'Test Content';
 
-    const { container,getByText } = render(Slideout, {
+    const { container,getByText } = await render(Slideout, {
       props: {
         show:true
       },
@@ -218,7 +218,7 @@ describe('Slideout', () => {
     const testContent = 'Test Content';
     const testFooter = 'Test Footer'
 
-    const { container,getByText } = render(Slideout, {
+    const { container,getByText } = await render(Slideout, {
       props: {
         show:true
       },
@@ -268,7 +268,7 @@ describe('Slideout', () => {
     const testFooter = 'Test Footer'
 
     for(const key in ColorTypes){
-      const { container,getByText } = render(Slideout, {
+      const { container,getByText } = await render(Slideout, {
         props: {
           show:true,
           type:ColorTypes[key]
@@ -317,7 +317,7 @@ describe('Slideout', () => {
     }
   }),
   test('check header and footer slot arguments', async () => {
-    const { container,getByText } = render(Slideout, {
+    const { container,getByText } = await render(Slideout, {
       props: {
         show:true
       },
@@ -371,7 +371,7 @@ describe('Slideout', () => {
 
     let hasClosed=false;
 
-    const { container,getByText } = render(Slideout, {
+    const { container,getByText } = await render(Slideout, {
       props: {
         show:true,
         has_close:true,

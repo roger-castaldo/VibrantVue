@@ -17,7 +17,7 @@ import buttonUpload from '../../../components/common/buttons/button-upload.vue';
 import { ExecuteAccessibilityChecks, stripCommentNodes } from '../../common';
 import { ColorTypes, Sizes } from '../../../enums';
 import translate from '../../../messages/messages';
-import { userEvent } from '@vitest/browser/context';
+import { userEvent } from 'vitest/browser';
 import { mount } from '@vue/test-utils';
 import { nextTick, ref } from 'vue';
 
@@ -57,21 +57,21 @@ const extractIcon = function(button:HTMLElement, size?:Sizes):HTMLElement {
 
 describe('Button', () => {
     test('check accessibility',async() => {
-        const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+        const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
             let result : HTMLElement[] = [];
-            for (const key in ColorTypes) {
-                const renderResult1 = render(Button, {
+            for (const colorType of Object.values(ColorTypes)) {
+                const renderResult1 = await render(Button, {
                     props: {
-                        type:ColorTypes[key],
+                        type:colorType,
                         title:'Sample Button',
                         is_loading:false
                     },
                 });
                 result.push(renderResult1.container);
 
-                const renderResult2 = render(Button, {
+                const renderResult2 = await render(Button, {
                     props: {
-                        type:ColorTypes[key],
+                        type:colorType,
                         title:'Sample Button',
                         is_outlined: true,
                         is_loading:false
@@ -85,8 +85,10 @@ describe('Button', () => {
       expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('renders a empty button', async () => {
-        const { container } = render(Button, {
-            props: {},
+        const { container } = await render(Button, {
+            props: {
+                is_loading:true
+            },
         });
 
         const button = container.childNodes[0] as HTMLElement;
@@ -129,7 +131,7 @@ describe('Button', () => {
     test('renders a button with an icon', async () => {
         const iconName = 'file';
 
-        const { container } = render(Button, {
+        const { container } = await render(Button, {
             props: {
                 icon:'file'
             },
@@ -143,7 +145,7 @@ describe('Button', () => {
     test('renders a button with text', async () => {
         const textContent = 'Sample text';
 
-        const { container,getByText } = render(Button, {
+        const { container,getByText } = await render(Button, {
             props: {
             title:textContent
             },
@@ -159,7 +161,7 @@ describe('Button', () => {
     test('renders a button with hide modifiers', async () => {
         const textContent = 'Sample text';
 
-        const { container,getByText } = render(Button, {
+        const { container,getByText } = await render(Button, {
             props: {
                 title:textContent,
                 hide_mobile:true,
@@ -182,7 +184,7 @@ describe('Button', () => {
     test('renders a rounded button', async () => {
         const textContent = 'Sample text';
 
-        const { container,getByText } = render(Button, {
+        const { container,getByText } = await render(Button, {
             props: {
                 title:textContent,
                 is_rounded:true
@@ -200,7 +202,7 @@ describe('Button', () => {
     test('renders a disabled button', async () => {
         const textContent = 'Sample text';
 
-        const { container,getByText } = render(Button, {
+        const { container,getByText } = await render(Button, {
             props: {
                 title:textContent,
                 disabled:true
@@ -217,10 +219,10 @@ describe('Button', () => {
         expect(button.classList).toContain('disabled');
     }),
     test('renders a button of each color', async () => {
-        for (const key in ColorTypes) {
-            const { container } = render(Button, {
+        for (const color of Object.values(ColorTypes)) {
+            const { container } = await render(Button, {
                 props: {
-                    type:ColorTypes[key]
+                    type:color
                 },
             });
             const button = container.childNodes[0] as HTMLElement;
@@ -228,15 +230,15 @@ describe('Button', () => {
             expect(stripCommentNodes(button).length).toBe(0);
             expect(button.classList).toContain('button');
             expect(button.classList).toContain('is-normal');
-            expect(button.classList).toContain(`is-${ColorTypes[key]}`);
+            expect(button.classList).toContain(`is-${color}`);
 
         }
     }),
     test('renders a button of each size', async () => {
-        for (const key in Sizes) {
-            const { container } = render(Button, {
+        for (const size of Object.values(Sizes)) {
+            const { container } = await render(Button, {
                 props: {
-                    size:Sizes[key]
+                    size,
                 },
             });
             const button = container.childNodes[0] as HTMLElement;
@@ -244,14 +246,14 @@ describe('Button', () => {
             expect(stripCommentNodes(button).length).toBe(0);
             expect(button.classList).toContain('button');
             expect(button.classList).toContain('is-primary');
-            expect(button.classList).toContain(`is-${Sizes[key]}`);
+            expect(button.classList).toContain(`is-${size}`);
 
         }
     }),
     test('click a button', async () => {
         let clicked = false;
 
-        const { container } = render(Button, {
+        const { container } = await render(Button, {
             props: {
                 onClick:()=>{clicked=true;}
             },
@@ -264,7 +266,7 @@ describe('Button', () => {
         expect(clicked).toBe(true);
     }),
     test('renders a Add button', async () => {
-        const { container,getByText } = render(ButtonAdd, {
+        const { container,getByText } = await render(ButtonAdd, {
             props: {},
         });
 
@@ -284,7 +286,7 @@ describe('Button', () => {
         expect(icon.classList).toContain(`fa-plus`);
     }),
     test('renders a Cancel button', async () => {
-        const { container,getByText } = render(ButtonCancel, {
+        const { container,getByText } = await render(ButtonCancel, {
             props: {},
         });
 
@@ -304,7 +306,7 @@ describe('Button', () => {
         expect(icon.classList).toContain(`fa-window-close`);
     }),
     test('renders a Delete button', async () => {
-        const { container,getByText } = render(ButtonDelete, {
+        const { container,getByText } = await render(ButtonDelete, {
             props: {},
         });
 
@@ -324,7 +326,7 @@ describe('Button', () => {
         expect(icon.classList).toContain(`fa-trash-alt`);
     }),
     test('renders a Disable button', async () => {
-        const { container,getByText } = render(buttonDisable, {
+        const { container,getByText } = await render(buttonDisable, {
             props: {},
         });
 
@@ -344,7 +346,7 @@ describe('Button', () => {
         expect(icon.classList).toContain(`fa-times-circle`);
     }),
     test('renders a Download button', async () => {
-        const { container,getByText } = render(buttonDownload, {
+        const { container,getByText } = await render(buttonDownload, {
             props: {},
         });
 
@@ -364,7 +366,7 @@ describe('Button', () => {
         expect(icon.classList).toContain(`fa-download`);
     }),
     test('renders a Edit button', async () => {
-        const { container,getByText } = render(buttonEdit, {
+        const { container,getByText } = await render(buttonEdit, {
             props: {},
         });
 
@@ -384,7 +386,7 @@ describe('Button', () => {
         expect(icon.classList).toContain(`fa-edit`);
     }),
     test('renders a Enable button', async () => {
-        const { container,getByText } = render(buttonEnable, {
+        const { container,getByText } = await render(buttonEnable, {
             props: {},
         });
 
@@ -404,7 +406,7 @@ describe('Button', () => {
         expect(icon.classList).toContain(`fa-check`);
     }),
     test('renders a Okay button', async () => {
-        const { container,getByText } = render(buttonOkay, {
+        const { container,getByText } = await render(buttonOkay, {
             props: {},
         });
 
@@ -424,7 +426,7 @@ describe('Button', () => {
         expect(icon.classList).toContain(`fa-check`);
     }),
     test('renders a Print button', async () => {
-        const { container,getByText } = render(buttonPrint, {
+        const { container,getByText } = await render(buttonPrint, {
             props: {},
         });
 
@@ -444,7 +446,7 @@ describe('Button', () => {
         expect(icon.classList).toContain(`fa-print`);
     }),
     test('renders a Refresh button', async () => {
-        const { container,getByText } = render(buttonRefresh, {
+        const { container,getByText } = await render(buttonRefresh, {
             props: {},
         });
 
@@ -464,7 +466,7 @@ describe('Button', () => {
         expect(icon.classList).toContain(`fa-sync`);
     }),
     test('renders a Save button', async () => {
-        const { container,getByText } = render(buttonSave, {
+        const { container,getByText } = await render(buttonSave, {
             props: {},
         });
 
@@ -484,7 +486,7 @@ describe('Button', () => {
         expect(icon.classList).toContain(`fa-save`);
     }),
     test('renders a Submit button', async () => {
-        const { container,getByText } = render(buttonSubmit, {
+        const { container,getByText } = await render(buttonSubmit, {
             props: {},
         });
 
@@ -504,7 +506,7 @@ describe('Button', () => {
         expect(icon.classList).toContain(`fa-envelope-open-text`);
     }),
     test('renders a Upload button', async () => {
-        const { container,getByText } = render(buttonUpload, {
+        const { container,getByText } = await render(buttonUpload, {
             props: {},
         });
 
