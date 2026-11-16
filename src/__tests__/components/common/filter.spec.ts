@@ -4,12 +4,12 @@ import { ExecuteAccessibilityChecks } from '../../common';
 import filter from '../../../components/common/filter.vue';
 import { stripCommentNodes } from '../../common';
 import translate from '../../../messages/messages.js';
-import { userEvent } from '@vitest/browser/context'
+import { userEvent } from 'vitest/browser';
 
 describe('Filter', () => {
     test('check accessibility',async() => {
-      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-        const {container} = render(filter, {
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+        const {container} = await render(filter, {
           props: {
             text:'Sample text'
           },
@@ -20,7 +20,7 @@ describe('Filter', () => {
       expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('renders a basic filter', async () => {
-      const { container,getByText } = render(filter, {
+      const { container,getByText } = await render(filter, {
         props: {},
       });
   
@@ -58,7 +58,7 @@ describe('Filter', () => {
     test('renders a filter with default value', async () => {
         const defaultValue:string = 'Test Filter Value';
         let currentFilterValue:string|null = null;
-        const { getByRole } = render(filter, {
+        const { getByRole } = await render(filter, {
           props: {
             default_value:defaultValue,
             onFilter:(val)=>currentFilterValue=val
@@ -83,7 +83,7 @@ describe('Filter', () => {
       test('renders a filter and interacts with it to filter using enter', async () => {
         const searchValue:string = 'Find me';
         let currentFilterValue:string|null = null;
-        const { getByRole } = render(filter, {
+        const { getByRole } = await render(filter, {
           props: {
             onFilter:(val)=>currentFilterValue=val
           },
@@ -107,7 +107,7 @@ describe('Filter', () => {
       test('renders a filter and interacts with it to filter with min length', async () => {
         const searchValue:string = 'Fin';
         let currentFilterValue:string|null = null;
-        const { getByRole } = render(filter, {
+        const { getByRole } = await render(filter, {
           props: {
             onFilter:(val)=>currentFilterValue=val,
             min_length:3

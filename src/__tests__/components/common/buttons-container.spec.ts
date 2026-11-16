@@ -7,8 +7,8 @@ import { stripCommentNodes } from '../../common';
 
 describe('ButtonsContainer', () => {
     test('check accessibility',async() => {
-        const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-            const {container} = render(buttonsContainer, {});
+        const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+            const {container} = await render(buttonsContainer, {});
             return container;
         });
 
@@ -17,7 +17,7 @@ describe('ButtonsContainer', () => {
     test('check slot content',async() => {
         const slotContent = 'This is test content';
 
-        const {container, getByText} = render(buttonsContainer, {
+        const {container, getByText} = await render(buttonsContainer, {
             slots:{
                 default: () => slotContent
               }
@@ -29,7 +29,7 @@ describe('ButtonsContainer', () => {
     }),
     test('Check container sizes', async () => {
         for (const key in Sizes) {
-            const { container } = render(buttonsContainer, {
+            const { container } = await render(buttonsContainer, {
                 props: {
                     size:Sizes[key]
                 },
@@ -43,7 +43,7 @@ describe('ButtonsContainer', () => {
     }),
     test('Check container alignments', async () => {
         for (const key in ButtonAlignments) {
-            const { container } = render(buttonsContainer, {
+            const { container } = await render(buttonsContainer, {
                 props: {
                     alignment:ButtonAlignments[key]
                 },

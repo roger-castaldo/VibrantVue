@@ -6,7 +6,7 @@ import { AnimationSpeeds,AnimationTypes } from '../../../enums';
 
 describe('Animation', () => {
     test('check accessibility',async() => {
-      const {container} = render(animation, {
+      const {container} = await render(animation, {
         props:{
             incoming:AnimationTypes.bounceIn,
             outgoing:AnimationTypes.bounceOut
@@ -23,7 +23,7 @@ describe('Animation', () => {
     test('check content',async() => {
         const contentMessage = 'test animation content';
 
-        const {container} = render(animation, {
+        const {container} = await render(animation, {
           props:{
               incoming:AnimationTypes.bounceIn,
               outgoing:AnimationTypes.bounceOut
@@ -37,7 +37,7 @@ describe('Animation', () => {
     }),
     test('check enter animations',async() => {
         for (const key in AnimationTypes) {
-            const { container } = render(animation, {
+            const { container } = await render(animation, {
               props: {
                 incoming:AnimationTypes[key]
               },
@@ -52,7 +52,7 @@ describe('Animation', () => {
     }),
     test('check exit animations',async() => {
         for (const key in AnimationTypes) {
-            const { container } = render(animation, {
+            const { container } = await render(animation, {
               props: {
                 outgoing:AnimationTypes[key]
               },
@@ -67,7 +67,7 @@ describe('Animation', () => {
     }),
     test('check inout animations',async() => {
         for (const key in AnimationTypes) {
-            const { container } = render(animation, {
+            const { container } = await render(animation, {
               props: {
                 inout:AnimationTypes[key]
               },
@@ -85,7 +85,7 @@ describe('Animation', () => {
     }),
     test('check enter speeds',async() => {
         for (const key in AnimationSpeeds) {
-            const { container } = render(animation, {
+            const { container } = await render(animation, {
               props: {
                 speedIn:AnimationSpeeds[key]
               },
@@ -99,7 +99,7 @@ describe('Animation', () => {
     }),
     test('check exit speeds',async() => {
         for (const key in AnimationSpeeds) {
-            const { container } = render(animation, {
+            const { container } = await render(animation, {
               props: {
                 speedOut:AnimationSpeeds[key]
               },
@@ -113,7 +113,7 @@ describe('Animation', () => {
     }),
     test('check inout speeds',async() => {
         for (const key in AnimationSpeeds) {
-            const { container } = render(animation, {
+            const { container } = await render(animation, {
               props: {
                 speed:AnimationSpeeds[key]
               },
@@ -131,7 +131,7 @@ describe('Animation', () => {
         const contentMessage = 'test animation content';
 
         for (const key in AnimationTypes) {
-            const { container } = render(animation, {
+            const { container } = await render(animation, {
               props: {
                 repeating:AnimationTypes[key]
               },
@@ -153,7 +153,7 @@ describe('Animation', () => {
         const contentMessage = 'test animation content';
 
         for (const key in AnimationSpeeds) {
-            const { container } = render(animation, {
+            const { container } = await render(animation, {
               props: {
                 speed:AnimationSpeeds[key],
                 repeating:AnimationTypes.bounce

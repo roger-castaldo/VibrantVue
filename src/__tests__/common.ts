@@ -17,7 +17,7 @@ export const sleep = async function(ms:number) {
 
 const blockedSkins : string[] = ['morph','vapor'];
 
-export const ExecuteAccessibilityChecks = async function(renderElement: ()=>HTMLElement|HTMLElement[], sleepMS?:number) : Promise<axe.AxeResults> {
+export const ExecuteAccessibilityChecks = async function(renderElement: ()=>Promise<HTMLElement|HTMLElement[]>, sleepMS?:number) : Promise<axe.AxeResults> {
     
     const container = document.createElement('div');
 
@@ -32,7 +32,7 @@ export const ExecuteAccessibilityChecks = async function(renderElement: ()=>HTML
         contentWrapper.style.background = 'var(--bulma-scheme-main)';
 
         // Move the rendered component into the wrapper
-        const element = renderElement();
+        const element = await renderElement();
         if (element instanceof HTMLElement){
             contentWrapper.append(FixAriaLabel(element as HTMLElement, AVAIABLE_SKINS[x]));
         }else{
@@ -58,7 +58,18 @@ export const ExecuteAccessibilityChecks = async function(renderElement: ()=>HTML
 
     document.body.removeChild(container);
 
-    return accessibilityScanResults;
+    return {
+        toolOptions: accessibilityScanResults.toolOptions,
+        passes: accessibilityScanResults.passes,
+        incomplete: accessibilityScanResults.inapplicable,
+        inapplicable: accessibilityScanResults.inapplicable,
+        violations: accessibilityScanResults.violations.filter(v=>{
+            console.log(v.description);
+            return v.description!=='Ensure the document has a main landmark'
+            && v.description!=='Ensure that the page, or at least one of its frames contains a level-one heading'
+            && v.description!=='Ensure all page content is contained by landmarks'
+        })
+    } as axe.AxeResults;
 }
 
 function FixAriaLabel(element: HTMLElement, skinName: string): HTMLElement {

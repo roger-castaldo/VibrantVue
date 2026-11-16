@@ -8,8 +8,8 @@ import { ColorTypes } from '../../../enums';
 
 describe('Panel', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(Panel, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(Panel, {
         props: {},
         slots:{
           header:()=>'Test Header',
@@ -27,7 +27,7 @@ describe('Panel', () => {
     const tabContent = 'Test Tabs';
     const blockContent = 'Test Panel Block';
 
-    const {container} = render(Panel, {
+    const {container} = await render(Panel, {
       props: {},
       slots:{
         header:()=>headerContent,
@@ -61,7 +61,7 @@ describe('Panel', () => {
     const tabContent = 'Test Tabs';
     const blockContent = 'Test Panel Block';
 
-    const {container} = render(Panel, {
+    const {container} = await render(Panel, {
       props: {},
       slots:{
         tabs:()=>tabContent,
@@ -90,7 +90,7 @@ describe('Panel', () => {
     const headerContent = 'Test Header';
     const blockContent = 'Test Panel Block';
 
-    const {container} = render(Panel, {
+    const {container} = await render(Panel, {
       props: {},
       slots:{
         header:()=>headerContent,
@@ -119,7 +119,7 @@ describe('Panel', () => {
     const headerContent = 'Test Header';
     const tabContent = 'Test Tabs';
 
-    const {container} = render(Panel, {
+    const {container} = await render(Panel, {
       props: {},
       slots:{
         header:()=>headerContent,
@@ -149,7 +149,7 @@ describe('Panel', () => {
     const firstBlockContent = 'First Panel Block';
     const secondBlockContent = 'Second Panel Block';
 
-    const {container} = render(Panel, {
+    const {container} = await render(Panel, {
       props: {
         block_names:['first','second']
       },
@@ -181,7 +181,7 @@ describe('Panel', () => {
     const tabContent = 'Test Tabs';
     const blockContent = 'Test Panel Block';
 
-    const {container} = render(Panel, {
+    const {container} = await render(Panel, {
       props: {
         full_height:true,
         full_width:true
@@ -222,7 +222,7 @@ describe('Panel', () => {
     const blockContent = 'Test Panel Block';
 
     for(const key in ColorTypes){
-      const {container} = render(Panel, {
+      const {container} = await render(Panel, {
         props: {
           type:ColorTypes[key]
         },
@@ -261,7 +261,7 @@ describe('Panel', () => {
     const tabContent = 'Test Tabs';
     const blockContent = 'Test Panel Block';
 
-    const {container} = render(Panel, {
+    const {container} = await render(Panel, {
       props: {
         hidden_sections:['header','tabs','default']
       },

@@ -14,7 +14,7 @@ Used to create a ChartJS chart
 | width | number ||  | The width for the chart|
 | height | number ||  | The height for the chart|
 | legend_position | [ChartLegendPositions](../enums.md#ChartLegendPositions) |top, left, bottom, right, chartArea| ChartLegendPositions.right | The position of the chart legend|
-| scales | unknown\[\] ||  | The scales to supply to the chart|
+| scales | unknown ||  | The scales to supply to the chart|
 | tooltips | unknown ||  | The tooltips to supply to the chart|
 ## Events
 

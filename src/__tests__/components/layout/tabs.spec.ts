@@ -5,12 +5,12 @@ import Tabs from '../../../components/layout/tabs.vue';
 import { sleep, stripCommentNodes } from '../../common';
 import { Tab } from '../../../components/layout/interfaces';
 import { TabStyles,TabAlignments } from '../../../enums';
-import { userEvent } from '@vitest/browser/context';
+import { userEvent } from 'vitest/browser';
 
 describe('Tabs', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(Tabs, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(Tabs, {
         props: {
           tabs:[
             {active:true,title:'Tab1',icon:'person'},
@@ -30,7 +30,7 @@ describe('Tabs', () => {
       {title:'Tab2'}
     ];
 
-    const {container} = render(Tabs, {
+    const {container} = await render(Tabs, {
       props: {
         tabs:tabs
       }
@@ -56,7 +56,7 @@ describe('Tabs', () => {
       {title:'Tab2'}
     ];
 
-    const {container} = render(Tabs, {
+    const {container} = await render(Tabs, {
       props: {
         tabs:tabs
       }
@@ -82,7 +82,7 @@ describe('Tabs', () => {
       {title:'Tab2'}
     ];
 
-    const {container} = render(Tabs, {
+    const {container} = await render(Tabs, {
       props: {
         tabs:tabs
       }
@@ -108,7 +108,7 @@ describe('Tabs', () => {
       {title:'Tab2'}
     ];
 
-    const {container} = render(Tabs, {
+    const {container} = await render(Tabs, {
       props: {
         tabs:tabs
       }
@@ -134,7 +134,7 @@ describe('Tabs', () => {
       {title:'Tab2'}
     ];
 
-    const {container} = render(Tabs, {
+    const {container} = await render(Tabs, {
       props: {
         tabs:tabs,
         full_width:true
@@ -163,7 +163,7 @@ describe('Tabs', () => {
     ];
 
     for(const key in TabAlignments){
-      const {container} = render(Tabs, {
+      const {container} = await render(Tabs, {
         props: {
           tabs:tabs,
           alignment:TabAlignments[key]
@@ -192,7 +192,7 @@ describe('Tabs', () => {
     ];
 
     for(const key in TabStyles){
-      const {container} = render(Tabs, {
+      const {container} = await render(Tabs, {
         props: {
           tabs:tabs,
           type:TabStyles[key]
@@ -223,7 +223,7 @@ describe('Tabs', () => {
       {title:'Tab2'}
     ];
 
-    const {container} = render(Tabs, {
+    const {container} = await render(Tabs, {
       props: {
         tabs:tabs
       }

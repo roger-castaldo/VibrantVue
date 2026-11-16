@@ -8,8 +8,8 @@ import { mount } from '@vue/test-utils';
 
 describe('Tag', () => {
     test('check accessibility',async() => {
-      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-        const {container} = render(tag, {
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+        const {container} = await render(tag, {
           props:{
             text:'test tag'
           },
@@ -22,9 +22,10 @@ describe('Tag', () => {
     test('check default values',async() => {
         const testContent = 'Test Tag';
 
-        const {container} = render(tag, {
+        const {container} = await render(tag, {
           props:{
-            text:testContent
+            text:testContent,
+            is_loading:true
           }
         });
     
@@ -74,7 +75,7 @@ describe('Tag', () => {
     test('check style tweaks',async() => {
       const testContent = 'Test Tag';
 
-      const {container} = render(tag, {
+      const {container} = await render(tag, {
         props:{
           text:testContent,
           rounded:true,
@@ -98,7 +99,7 @@ describe('Tag', () => {
     const testContent = 'Test Tag';
 
     for (const key in ColorTypes) {
-        const {container} = render(tag, {
+        const {container} = await render(tag, {
           props:{
             text:testContent,
             type:ColorTypes[key]
@@ -118,7 +119,7 @@ describe('Tag', () => {
     const testContent = 'Test Tag';
 
     for (const key in Sizes) {
-        const {container} = render(tag, {
+        const {container} = await render(tag, {
           props:{
             text:testContent,
             size:Sizes[key]
@@ -137,7 +138,7 @@ describe('Tag', () => {
   test('check slot content',async() => {
     const testContent = 'Test Tag';
 
-    const {container} = render(tag, {
+    const {container} = await render(tag, {
       props:{},
       slots:{
         default:()=>testContent

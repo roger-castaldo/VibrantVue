@@ -7,8 +7,8 @@ import { stripCommentNodes } from '../../common';
 
 describe('Box', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(Box, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(Box, {
         props: {},
         slots:{
           default:()=>'Test Content'
@@ -22,7 +22,7 @@ describe('Box', () => {
   test('check defaults', async () => {
     const textContent = 'Sample text';
 
-    const { container,getByText } = render(Box, {
+    const { container,getByText } = await render(Box, {
       props: {},
       slots:{
         default:()=>textContent

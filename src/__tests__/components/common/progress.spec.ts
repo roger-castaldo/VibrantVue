@@ -6,8 +6,8 @@ import { ExecuteAccessibilityChecks } from '../../common';
 
 describe('Progress', () => {
     test('check accessibility',async() => {
-      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-        const {container} = render(progress, {
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+        const {container} = await render(progress, {
           props:{}
         });
         return container;
@@ -16,7 +16,7 @@ describe('Progress', () => {
       expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('check default values',async() => {
-        const {container} = render(progress, {
+        const {container} = await render(progress, {
           props:{}
         });
     
@@ -32,7 +32,7 @@ describe('Progress', () => {
         const value = 10;
         const maximum = 100;
 
-        const {container} = render(progress, {
+        const {container} = await render(progress, {
           props:{
             value:value,
             maximum:maximum
@@ -52,7 +52,7 @@ describe('Progress', () => {
     }),
     test('check color types',async() => {
         for (const key in ColorTypes) {
-            const {container} = render(progress, {
+            const {container} = await render(progress, {
             props:{
                 type:ColorTypes[key]
             }
@@ -69,7 +69,7 @@ describe('Progress', () => {
     }),
     test('check size types',async() => {
         for (const key in Sizes) {
-            const {container} = render(progress, {
+            const {container} = await render(progress, {
             props:{
                 size:Sizes[key]
             }

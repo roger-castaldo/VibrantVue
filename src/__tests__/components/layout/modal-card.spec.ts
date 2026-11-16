@@ -7,8 +7,8 @@ import { stripCommentNodes } from '../../common';
 
 describe('ModalCard', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(ModalCard, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(ModalCard, {
         props: {
           icon:'person',
           show:true
@@ -29,7 +29,7 @@ describe('ModalCard', () => {
     const bodyContent = 'Test Content';
     const footerContent = 'Test Footer';
 
-    const {container} = render(ModalCard, {
+    const {container} = await render(ModalCard, {
       props: {
         show:true
       },
@@ -78,7 +78,7 @@ describe('ModalCard', () => {
     const bodyContent = 'Test Content';
     const footerContent = 'Test Footer';
 
-    const {container} = render(ModalCard, {
+    const {container} = await render(ModalCard, {
       props: {
         full_height:true,
         full_width:true,
@@ -131,7 +131,7 @@ describe('ModalCard', () => {
   test('check header only',async()=>{
     const headerContent = 'Test Header';
     
-    const {container} = render(ModalCard, {
+    const {container} = await render(ModalCard, {
       props: {},
       slots:{
         header:()=>headerContent
@@ -164,7 +164,7 @@ describe('ModalCard', () => {
   test('check content only',async()=>{
     const bodyContent = 'Test Content';
     
-    const {container} = render(ModalCard, {
+    const {container} = await render(ModalCard, {
       props: {},
       slots:{
         content:()=>bodyContent
@@ -197,7 +197,7 @@ describe('ModalCard', () => {
   test('check footer only',async()=>{
     const footerContent = 'Test Footer';
 
-    const {container} = render(ModalCard, {
+    const {container} = await render(ModalCard, {
       props: {},
       slots:{
         footer:()=>footerContent
@@ -233,7 +233,7 @@ describe('ModalCard', () => {
     const bodyContent = 'Test Content';
     const footerContent = 'Test Footer';
 
-    const {container} = render(ModalCard, {
+    const {container} = await render(ModalCard, {
       props: {
         icon:'person'
       },
@@ -297,7 +297,7 @@ describe('ModalCard', () => {
 
   }),
   test('check slot props',async()=>{
-    const {container} = render(ModalCard, {
+    const {container} = await render(ModalCard, {
       props: {},
       slots:{
         header:(props)=>JSON.stringify(props),
@@ -346,7 +346,7 @@ describe('ModalCard', () => {
     const bodyContent = 'Test Content';
     const footerContent = 'Test Footer';
 
-    const {container} = render(ModalCard, {
+    const {container} = await render(ModalCard, {
       props: {
         show:true,
         has_close:true,

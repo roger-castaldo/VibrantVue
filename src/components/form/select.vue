@@ -89,50 +89,68 @@
 
     const Translator = useTranslator(props,inject);
 
-    const vals = ref<any[]|null>((props.multiple ? [] : null));
+    const vals = ref<any[] | any | null>(
+        props.multiple ? [] : null
+    );
     const locked = ref<boolean>(false);
     
     const Values = computed<Promise<SelectListItemValue[]>>(async () => {
         if (props.values == null) {
             return [];
-        } else {
-            let result:SelectListItemValue[] = await resolveListItems<SelectListItemValue>(props.values);
-            let tvalues:any[] = result.filter(s=>s.selected).map(s=>s.value);
-            if (result.some(s=>s.values!==undefined)){
-                result.filter(s=>s.values!==undefined)
-                .forEach(s=>{
-                    tvalues = tvalues.concat(
-                        s.values?.filter(v=>v.selected).map(v=>v.value)
-                    );
-                });
-            }
-            if (vals.value === null || vals.value.length === 0) {
-                vals.value = (props.multiple ? [] : null);
-            } else {
-                result = result.map(r=>{
-                    let t = r;
-                    if (t.values!==undefined){
-                        t.values = t.values.map(sv=>{
-                            sv.selected=vals.value?.some(v=>v===sv.value);
-                            return sv;
-                        });
-                    }
-                    return t;
-                });
-                if (vals.value!==null && Array.isArray(vals.value)){
-                    vals.value = vals.value.filter(v=>result.some(r=>r.value===v));
-                }
-            }
-            let dest:SelectListItemValue[] = [];
-            result.forEach(r=>{
-                if (r.values===undefined){
-                    dest.push(r);
-                }else{
-                    dest=mergeValueGroups(null,r,dest);
-                }
-            });
-            return dest;
         }
+
+        let result = await resolveListItems<SelectListItemValue>(props.values);
+
+        // Extract selected values, including grouped options
+        let selectedValues: any[] = result
+            .filter(s => s.selected)
+            .map(s => s.value);
+
+        result.forEach(s => {
+            if (s.values !== undefined) {
+                selectedValues = selectedValues.concat(
+                    s.values.filter(v => v.selected).map(v => v.value)
+                );
+            }
+        });
+
+        // Initialize the model if it hasn't already been initialized
+        if (vals.value === null || vals.value.length === 0) {
+            vals.value = props.multiple
+                ? selectedValues
+                : (selectedValues.length > 0 ? selectedValues[0] : null);
+        }
+
+        // Synchronize option selection with the model
+        result = result.map(r => {
+            if (r.values !== undefined) {
+                r.values = r.values.map(sv => ({
+                    ...sv,
+                    selected: Array.isArray(vals.value)
+                        ? vals.value.includes(sv.value)
+                        : vals.value === sv.value
+                }));
+            } else {
+                r.selected = Array.isArray(vals.value)
+                    ? vals.value.includes(r.value)
+                    : vals.value === r.value;
+            }
+
+            return r;
+        });
+
+        // Existing group flattening
+        let dest: SelectListItemValue[] = [];
+
+        result.forEach(r => {
+            if (r.values === undefined) {
+                dest.push(r);
+            } else {
+                dest = mergeValueGroups(null, r, dest);
+            }
+        });
+
+        return dest;
     });
 
     const getValue = ():any[]|any=> { 

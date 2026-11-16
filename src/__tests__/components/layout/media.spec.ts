@@ -11,8 +11,8 @@ const imageElement = h('img',{alt:'sample image',src:'data:image/png;base64,iVBO
 
 describe('Media', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(Media, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(Media, {
         props: {},
         slots:{
           left_figure:()=>imageElement,
@@ -30,8 +30,10 @@ describe('Media', () => {
     const content = 'This is media content';
     const rightContent = 'This is the right side';
     
-    const {container} = render(Media, {
-      props: {},
+    const {container} = await render(Media, {
+      props: {
+        is_loading:true
+      },
       slots:{
         left_figure:()=>leftContent,
         content:()=>content,
@@ -68,8 +70,10 @@ describe('Media', () => {
     const content = 'This is media content';
     const rightContent = 'This is the right side';
     
-    const {container} = render(Media, {
-      props: {},
+    const {container} = await render(Media, {
+      props: {
+        is_loading:true
+      },
       slots:{
         content:()=>content,
         right_section:()=>rightContent
@@ -100,8 +104,10 @@ describe('Media', () => {
     const leftContent = 'This is the left side';
     const content = 'This is media content';
     
-    const {container} = render(Media, {
-      props: {},
+    const {container} = await render(Media, {
+      props: {
+        is_loading:true
+      },
       slots:{
         left_figure:()=>leftContent,
         content:()=>content

@@ -9,17 +9,17 @@ import { mount } from '@vue/test-utils';
 
 describe('Notification', () => {
     test('check accessibility',async() => {
-      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
         let result : HTMLElement[] = [];
           for (const key in NoticeTypes) {
-            const renderResult1 = render(notification, {
+            const renderResult1 = await render(notification, {
               props:{
                   message:'test message',
                   type: NoticeTypes[key],
               }
             });
             result.push(renderResult1.container);
-            const renderResult2 = render(notification, {
+            const renderResult2 = await render(notification, {
               props:{
                   message:'test message',
                   type: NoticeTypes[key],
@@ -36,9 +36,10 @@ describe('Notification', () => {
     test('check basic content',async() => {
       const testMessage = 'test message';
 
-      const {container} = render(notification, {
+      const {container} = await render(notification, {
         props:{
-            message:testMessage
+            message:testMessage,
+            is_loading:true
         }
       });
   
@@ -56,7 +57,7 @@ describe('Notification', () => {
     test('check light setting',async() => {
       const testMessage = 'test message';
 
-      const {container} = render(notification, {
+      const {container} = await render(notification, {
         props:{
             message:testMessage,
             light:true
@@ -107,7 +108,7 @@ describe('Notification', () => {
     }),
     test('check notice types',async() => {
       for (const key in NoticeTypes){
-        const {container} = render(notification, {
+        const {container} = await render(notification, {
           props:{
             message:'test message',
               type:NoticeTypes[key]

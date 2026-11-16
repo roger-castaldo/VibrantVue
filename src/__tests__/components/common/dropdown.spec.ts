@@ -4,12 +4,12 @@ import { ExecuteAccessibilityChecks } from '../../common';
 import dropdown from '../../../components/common/dropdown.vue';
 import { stripCommentNodes } from '../../common';
 import { DropDownItem } from '../../../components';
-import { userEvent } from '@vitest/browser/context'
+import { userEvent } from 'vitest/browser';
 
 describe('DropDown', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(dropdown, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(dropdown, {
         props: {
           title:'testing',
           items:[]
@@ -23,7 +23,7 @@ describe('DropDown', () => {
   test('check basic dropdown with no items',async() => {
     const testTitle = 'Sample title';
 
-    const { container,getByText } = render(dropdown, {
+    const { container,getByText } = await render(dropdown, {
       props: {
         title:testTitle,
         items:[]
@@ -46,7 +46,7 @@ describe('DropDown', () => {
   test('check dropdown as hoverable',async() => {
     const testTitle = 'Sample title';
 
-    const { container,getByText } = render(dropdown, {
+    const { container,getByText } = await render(dropdown, {
       props: {
         title:testTitle,
         items:[],
@@ -71,7 +71,7 @@ describe('DropDown', () => {
   test('check dropdown as right align',async() => {
     const testTitle = 'Sample title';
 
-    const { container,getByText } = render(dropdown, {
+    const { container,getByText } = await render(dropdown, {
       props: {
         title:testTitle,
         items:[],
@@ -96,7 +96,7 @@ describe('DropDown', () => {
   test('check dropdown as drop up',async() => {
     const testTitle = 'Sample title';
 
-    const { container,getByText } = render(dropdown, {
+    const { container,getByText } = await render(dropdown, {
       props: {
         title:testTitle,
         items:[],
@@ -122,7 +122,7 @@ describe('DropDown', () => {
     const testTitle = 'Sample title';
     const testChild = 'Sample Child'
 
-    const { container,getByText } = render(dropdown, {
+    const { container,getByText } = await render(dropdown, {
       props: {
         title:testTitle,
         items:[
@@ -170,7 +170,7 @@ describe('DropDown', () => {
       active:true
     }
 
-    const { container,getByText } = render(dropdown, {
+    const { container,getByText } = await render(dropdown, {
       props: {
         title:testTitle,
         items:[
@@ -217,7 +217,7 @@ describe('DropDown', () => {
       onClick:()=>testValue=newTestValue
     }
 
-    const { container,getByText } = render(dropdown, {
+    const { container,getByText } = await render(dropdown, {
       props: {
         title:testTitle,
         items:[
@@ -258,7 +258,7 @@ describe('DropDown', () => {
     const testChild = 'Sample Child'
     const testChild2 = 'Sample Child 2';
 
-    const { container,getByText } = render(dropdown, {
+    const { container,getByText } = await render(dropdown, {
       props: {
         title:testTitle,
         items:[[testChild],[testChild2]]

@@ -6,15 +6,15 @@ import { IconSizes } from '../../../enums';
 
 describe('CheckMark', () => {
     test('check accessibility',async() => {
-        const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-            const {container} = render(checkMark, {});
+        const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+            const {container} = await render(checkMark, {});
             return container;
         });
 
         expect(accessibilityScanResults.violations).toEqual([]);
     }),
     test('check default',async() => {
-        const {container} = render(checkMark, {
+        const {container} = await render(checkMark, {
         });
     
         const check = container.childNodes[0] as HTMLElement;
@@ -22,7 +22,7 @@ describe('CheckMark', () => {
         expect(check.classList).toContain('fa-square-check');
     }),
     test('check when checked',async() => {
-        const {container} = render(checkMark, {
+        const {container} = await render(checkMark, {
             props:{
                 checked:true
             }
@@ -33,7 +33,7 @@ describe('CheckMark', () => {
         expect(check.classList).toContain('fa-square-check');
     }),
     test('check when unchecked',async() => {
-        const {container} = render(checkMark, {
+        const {container} = await render(checkMark, {
             props:{
                 checked:false
             }
@@ -46,7 +46,7 @@ describe('CheckMark', () => {
     test('Check icon sizes', async () => {
         for (const key in IconSizes) {
             if (IconSizes[key]!==IconSizes.normal){
-                const { container } = render(checkMark, {
+                const { container } = await render(checkMark, {
                     props: {
                         size:IconSizes[key]
                     },

@@ -7,7 +7,7 @@ describe('Tags', () => {
     test('check default values',async() => {
         const testContent = 'Test Tag';
 
-        const {container} = render(tags, {
+        const {container} = await render(tags, {
           props:{},
           slots:{
             default:()=>testContent
@@ -23,7 +23,7 @@ describe('Tags', () => {
     test('check style tweaks',async() => {
       const testContent = 'Test Tag';
 
-        const {container} = render(tags, {
+        const {container} = await render(tags, {
           props:{
             addons:true
           },
@@ -43,7 +43,7 @@ describe('Tags', () => {
     const testContent = 'Test Tag';
 
     for (const key in Sizes) {
-      const {container} = render(tags, {
+      const {container} = await render(tags, {
         props:{
           size:Sizes[key]
         },

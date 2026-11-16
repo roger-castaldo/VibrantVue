@@ -14,7 +14,7 @@ describe('Promised', () => {
             rejectFunc = reject;
         });
 
-        const {container} = render(promised, {
+        const {container} = await render(promised, {
           props:{
             promise: mockPromise
           },
@@ -52,7 +52,7 @@ describe('Promised', () => {
             rejectFunc = reject;
         });
 
-        const {container} = render(promised, {
+        const {container} = await render(promised, {
           props:{
             promise: mockPromise
           },
@@ -79,7 +79,7 @@ describe('Promised', () => {
         let rejectFunc: (reason?: any) => void;
         const errorMessage = 'This is a test error message';
         
-        const {container} = render(promised, {
+        const {container} = await render(promised, {
           props:{
             promise: new Promise<string>((resolve, reject) => {
                 resolveFunc = resolve;
@@ -115,7 +115,7 @@ describe('Promised', () => {
     test('check non-promise',async() => {
       const resolveMessage = 'This is a test';
       
-      const {container} = render(promised, {
+      const {container} = await render(promised, {
         props:{
           promise: resolveMessage
         },
@@ -131,7 +131,7 @@ describe('Promised', () => {
       expect(container.innerText).toBe(resolveMessage);
   }),
   test('check null promise value',async() => {
-    const {container} = render(promised, {
+    const {container} = await render(promised, {
       props:{
         promise: null
       },

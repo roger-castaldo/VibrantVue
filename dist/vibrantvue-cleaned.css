@@ -2729,7 +2729,6 @@ button.tag:active,
   color: var(--bulma-input-disabled-placeholder-color);
 }
 
-/* Bulma Form */
 .textarea, .input {
   box-shadow: inset 0 0.0625em 0.125em hsla(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-scheme-invert-l), 0.05);
   max-width: 100%;
@@ -2890,7 +2889,6 @@ button.tag:active,
   resize: none;
 }
 
-/* Bulma Form */
 .radio, .checkbox {
   cursor: pointer;
   display: inline-block;
@@ -2915,7 +2913,6 @@ button.tag:active,
   row-gap: 0.5em;
 }
 
-/* Bulma Form */
 .select {
   --bulma-input-h: var(--bulma-scheme-h);
   --bulma-input-s: var(--bulma-scheme-s);
@@ -3108,7 +3105,6 @@ button.tag:active,
   font-size: var(--bulma-size-large);
 }
 
-/* Bulma Form */
 .file {
   --bulma-file-radius: var(--bulma-radius);
   --bulma-file-name-border-color: var(--bulma-border);
@@ -3385,7 +3381,6 @@ button.tag:active,
   font-size: 1rem;
 }
 
-/* Bulma Form */
 :root {
   --bulma-label-color: var(--bulma-text-strong);
   --bulma-label-spacing: 0.5em;
@@ -33598,20 +33593,20 @@ fieldset[disabled] .theme-materia .button.is-link:active:hover {
   --bulma-scheme-h: 224.5161290323deg;
   --bulma-scheme-s: 30.3921568627%;
   --bulma-scheme-main-l: 60%;
-  --bulma-text-muted: rgb(171.875, 181.875, 210.625);
+  --bulma-text-muted: rgb(67.4019607843%, 71.3235294118%, 82.5980392157%);
   --bulma-body-background-color: #d9e3f1;
-  --bulma-border: rgba(54.6538461538, 93.6923076923, 148.3461538462, 0.1);
+  --bulma-border: rgba(21.4328808446%, 36.742081448%, 58.1749622926%, 0.1);
   --bulma-family-primary: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --bulma-title-color: rgb(142.4615384615, 172.0769230769, 213.5384615385);
-  --bulma-subtitle-color: rgb(142.4615384615, 172.0769230769, 213.5384615385);
-  --bulma-content-heading-color: rgb(142.4615384615, 172.0769230769, 213.5384615385);
+  --bulma-title-color: rgb(55.8672699849%, 67.4811463047%, 83.7405731523%);
+  --bulma-subtitle-color: rgb(55.8672699849%, 67.4811463047%, 83.7405731523%);
+  --bulma-content-heading-color: rgb(55.8672699849%, 67.4811463047%, 83.7405731523%);
   --bulma-button-padding-vertical: 1rem;
   --bulma-button-padding-horizontal: 1.5rem;
   --bulma-border-radius-pill: 50rem;
-  --bulma-box-shadow: 5px 5px 10px rgba(54.6538461538, 93.6923076923, 148.3461538462, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
-  --bulma-box-shadow-sm: 5px 5px 10px rgba(54.6538461538, 93.6923076923, 148.3461538462, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
-  --bulma-box-shadow-lg: 5px 5px 10px rgba(54.6538461538, 93.6923076923, 148.3461538462, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
-  --bulma-box-shadow-inset: 5px 5px 10px rgba(54.6538461538, 93.6923076923, 148.3461538462, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
+  --bulma-box-shadow: 5px 5px 10px rgba(21.4328808446%, 36.742081448%, 58.1749622926%, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
+  --bulma-box-shadow-sm: 5px 5px 10px rgba(21.4328808446%, 36.742081448%, 58.1749622926%, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
+  --bulma-box-shadow-lg: 5px 5px 10px rgba(21.4328808446%, 36.742081448%, 58.1749622926%, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
+  --bulma-box-shadow-inset: 5px 5px 10px rgba(21.4328808446%, 36.742081448%, 58.1749622926%, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
   --bulma-tabs-link-active-color: #fff;
   --bulma-tabs-link-active-border-bottom-color: var(--bulma-primary);
   --bulma-tabs-toggle-link-active-background-color: var(--bulma-primary);
@@ -33632,19 +33627,19 @@ fieldset[disabled] .theme-materia .button.is-link:active:hover {
 [data-theme=morph] .title,
 :root.theme-morph .title,
 .theme-morph .title {
-  --bulma-title-color: rgb(142.4615384615, 172.0769230769, 213.5384615385);
+  --bulma-title-color: rgb(55.8672699849%, 67.4811463047%, 83.7405731523%);
 }
 :root[data-theme=morph] .subtitle,
 [data-theme=morph] .subtitle,
 :root.theme-morph .subtitle,
 .theme-morph .subtitle {
-  --bulma-subtitle-color: rgb(142.4615384615, 172.0769230769, 213.5384615385);
+  --bulma-subtitle-color: rgb(55.8672699849%, 67.4811463047%, 83.7405731523%);
 }
 :root[data-theme=morph] .content,
 [data-theme=morph] .content,
 :root.theme-morph .content,
 .theme-morph .content {
-  --bulma-content-heading-color: rgb(142.4615384615, 172.0769230769, 213.5384615385);
+  --bulma-content-heading-color: rgb(55.8672699849%, 67.4811463047%, 83.7405731523%);
 }
 :root[data-theme=morph] .button,
 [data-theme=morph] .button,
@@ -33657,10 +33652,10 @@ fieldset[disabled] .theme-materia .button.is-link:active:hover {
 [data-theme=morph] .box,
 :root.theme-morph .box,
 .theme-morph .box {
-  --bulma-box-shadow: 5px 5px 10px rgba(54.6538461538, 93.6923076923, 148.3461538462, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
-  --bulma-box-shadow-sm: 5px 5px 10px rgba(54.6538461538, 93.6923076923, 148.3461538462, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
-  --bulma-box-shadow-lg: 5px 5px 10px rgba(54.6538461538, 93.6923076923, 148.3461538462, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
-  --bulma-box-shadow-inset: 5px 5px 10px rgba(54.6538461538, 93.6923076923, 148.3461538462, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
+  --bulma-box-shadow: 5px 5px 10px rgba(21.4328808446%, 36.742081448%, 58.1749622926%, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
+  --bulma-box-shadow-sm: 5px 5px 10px rgba(21.4328808446%, 36.742081448%, 58.1749622926%, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
+  --bulma-box-shadow-lg: 5px 5px 10px rgba(21.4328808446%, 36.742081448%, 58.1749622926%, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
+  --bulma-box-shadow-inset: 5px 5px 10px rgba(21.4328808446%, 36.742081448%, 58.1749622926%, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
 }
 :root[data-theme=morph] .tabs,
 [data-theme=morph] .tabs,
@@ -36932,7 +36927,7 @@ fieldset[disabled] .theme-quartz .select select {
 [data-theme=quartz] body,
 :root.theme-quartz body,
 .theme-quartz body {
-  background-image: linear-gradient(90deg, rgb(7.0099009901, 189.8712871287, 249.9900990099) 0%, rgb(70.5213270142, 76.3981042654, 177.4786729858) 50%, rgb(193.05, 21.45, 98.3125) 100%);
+  background-image: linear-gradient(90deg, rgb(2.7489807804%, 74.4593282858%, 98.0353329451%) 0%, rgb(27.6554223585%, 29.9600408884%, 69.5994796023%) 50%, rgb(75.7058823529%, 8.4117647059%, 38.5539215686%) 100%);
 }
 :root[data-theme=quartz] .file,
 [data-theme=quartz] .file,
@@ -37652,7 +37647,7 @@ fieldset[disabled] .theme-quartz .select select {
 [data-theme=quartz] .slideout .slideout-content .slideout-body,
 :root.theme-quartz .slideout .slideout-content .slideout-body,
 .theme-quartz .slideout .slideout-content .slideout-body {
-  background-image: linear-gradient(90deg, rgb(7.0099009901, 189.8712871287, 249.9900990099) 0%, rgb(70.5213270142, 76.3981042654, 177.4786729858) 50%, rgb(193.05, 21.45, 98.3125) 100%);
+  background-image: linear-gradient(90deg, rgb(2.7489807804%, 74.4593282858%, 98.0353329451%) 0%, rgb(27.6554223585%, 29.9600408884%, 69.5994796023%) 50%, rgb(75.7058823529%, 8.4117647059%, 38.5539215686%) 100%);
 }
 
 :root[data-theme=sandstone],
@@ -38898,8 +38893,8 @@ fieldset[disabled] .theme-quartz .select select {
   --bulma-body-background-color: #fcfcfc;
   --bulma-family-primary: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --bulma-navbar-padding-vertical: 0.9rem;
-  --bulma-tabs-border-bottom-color: rgb(238.425, 238.425, 238.425);
-  --bulma-tabs-toggle-link-border-color: rgb(238.425, 238.425, 238.425);
+  --bulma-tabs-border-bottom-color: rgb(93.5%, 93.5%, 93.5%);
+  --bulma-tabs-toggle-link-border-color: rgb(93.5%, 93.5%, 93.5%);
   --bulma-tabs-link-active-color: var(--bulma-primary);
   --bulma-tabs-link-active-border-bottom-color: var(--bulma-primary);
   --bulma-tabs-toggle-link-border-color: var(--bulma-primary);
@@ -38920,8 +38915,8 @@ fieldset[disabled] .theme-quartz .select select {
 [data-theme=simplex] .tabs,
 :root.theme-simplex .tabs,
 .theme-simplex .tabs {
-  --bulma-tabs-border-bottom-color: rgb(238.425, 238.425, 238.425);
-  --bulma-tabs-toggle-link-border-color: rgb(238.425, 238.425, 238.425);
+  --bulma-tabs-border-bottom-color: rgb(93.5%, 93.5%, 93.5%);
+  --bulma-tabs-toggle-link-border-color: rgb(93.5%, 93.5%, 93.5%);
   --bulma-tabs-link-active-color: var(--bulma-primary);
   --bulma-tabs-link-active-border-bottom-color: var(--bulma-primary);
   --bulma-tabs-toggle-link-border-color: var(--bulma-primary);
@@ -38974,7 +38969,7 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-simplex .pagination-next,
 .theme-simplex .pagination-link,
 .theme-simplex .pagination-ellipsis {
-  border-color: rgb(238.425, 238.425, 238.425);
+  border-color: rgb(93.5%, 93.5%, 93.5%);
 }
 :root[data-theme=simplex] .pagination-previous:hover, :root[data-theme=simplex] .pagination-previous.is-current,
 :root[data-theme=simplex] .pagination-next:hover,
@@ -39027,13 +39022,13 @@ fieldset[disabled] .theme-quartz .select select {
 .theme-simplex .pagination-link:disabled,
 .theme-simplex .pagination-link.is-disabled {
   color: #bbb;
-  border-color: rgb(238.425, 238.425, 238.425);
+  border-color: rgb(93.5%, 93.5%, 93.5%);
 }
 :root[data-theme=simplex] .card,
 [data-theme=simplex] .card,
 :root.theme-simplex .card,
 .theme-simplex .card {
-  border-color: rgb(238.425, 238.425, 238.425);
+  border-color: rgb(93.5%, 93.5%, 93.5%);
 }
 :root[data-theme=simplex] .progress,
 [data-theme=simplex] .progress,
@@ -39327,7 +39322,7 @@ fieldset[disabled] .theme-quartz .select select {
 [data-theme=simplex] .breadcrumb,
 :root.theme-simplex .breadcrumb,
 .theme-simplex .breadcrumb {
-  border: 1px solid rgb(221.85, 221.85, 221.85);
+  border: 1px solid rgb(87%, 87%, 87%);
 }
 :root[data-theme=simplex] .pagination-previous:hover,
 :root[data-theme=simplex] .pagination-next:hover,
@@ -41312,9 +41307,9 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-tabs-link-active-color: #fff;
   --bulma-tabs-toggle-link-active-color: #fff;
   --bulma-navbar-padding-horizontal: 0;
-  --bulma-card-header-background-color: rgb(81.4761904762, 88.5, 95.5238095238);
-  --bulma-card-background-color: rgb(50.4310344828, 55.6034482759, 62.0689655172);
-  --bulma-progress-bar-background-color: rgb(27.5689655172, 30.3965517241, 33.9310344828);
+  --bulma-card-header-background-color: rgb(31.9514472456%, 34.7058823529%, 37.4603174603%);
+  --bulma-card-background-color: rgb(19.7768762677%, 21.8052738337%, 24.3407707911%);
+  --bulma-progress-bar-background-color: rgb(10.8113590264%, 11.9202163624%, 13.3062880325%);
   --bulma-breadcrumb-item-padding-vertical: 0.375rem;
   --bulma-breadcrumb-item-padding-horizontal: 0.75rem;
   --bulma-breadcrumb-item-active-color: #999;
@@ -41386,7 +41381,7 @@ fieldset[disabled] .theme-sketchy .select select {
 [data-theme=slate] .progress,
 :root.theme-slate .progress,
 .theme-slate .progress {
-  --bulma-progress-bar-background-color: rgb(27.5689655172, 30.3965517241, 33.9310344828);
+  --bulma-progress-bar-background-color: rgb(10.8113590264%, 11.9202163624%, 13.3062880325%);
 }
 :root[data-theme=slate] .breadcrumb,
 [data-theme=slate] .breadcrumb,
@@ -44949,7 +44944,7 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-dark-h: 209deg;
   --bulma-dark-s: 41%;
   --bulma-dark-invert-l: 71.4705882353%;
-  --bulma-dark-invert: rgb(170.5161290323, 182.25, 193.9838709677);
+  --bulma-dark-invert: rgb(66.8690702087%, 71.4705882353%, 76.0721062619%);
   --bulma-dark-on-scheme-l: 61.1764705882%;
   --bulma-scheme-brightness: dark;
   --bulma-scheme-main-l: 13%;
@@ -46413,7 +46408,7 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-input-background-l: 21.7647058824%;
   --bulma-input-color-l: 100%;
   --bulma-input-disabled-color: #adb5bd;
-  --bulma-input-disabled-background-color: rgb(37.05, 12.825, 72.675);
+  --bulma-input-disabled-background-color: rgb(14.5294117647%, 5.0294117647%, 28.5%);
   --bulma-input-placeholder-color: rgba(255, 255, 255, 0.4);
   --bulma-tabs-link-active-color: #fff;
   --bulma-tabs-toggle-link-active-color: #fff;
@@ -46486,7 +46481,7 @@ fieldset[disabled] .theme-sketchy .select select {
   --bulma-input-background-l: 21.7647058824%;
   --bulma-input-color-l: 100%;
   --bulma-input-disabled-color: #adb5bd;
-  --bulma-input-disabled-background-color: rgb(37.05, 12.825, 72.675);
+  --bulma-input-disabled-background-color: rgb(14.5294117647%, 5.0294117647%, 28.5%);
   --bulma-input-placeholder-color: rgba(255, 255, 255, 0.4);
 }
 :root[data-theme=vapor] .progress,

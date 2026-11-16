@@ -20,8 +20,8 @@ const footerRow = h('tr',null,[footerCell]);
 
 describe('Table', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(Table, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(Table, {
         props: {},
         slots:{
           thead:()=>[headerRow,headerRow],
@@ -35,7 +35,7 @@ describe('Table', () => {
     expect(accessibilityScanResults.violations).toEqual([]);
   }),
   test('check defaults',async() => {
-    const {container} = render(Table, {
+    const {container} = await render(Table, {
       props: {},
       slots:{
         thead:()=>headerRow,
@@ -73,7 +73,7 @@ describe('Table', () => {
     expect(tfoot.innerText.trim()).toBe(footerContent);
   }),
   test('check without thead',async() => {
-    const {container} = render(Table, {
+    const {container} = await render(Table, {
       props: {},
       slots:{
         tbody:()=>bodyRow,
@@ -106,7 +106,7 @@ describe('Table', () => {
     expect(tfoot.innerText.trim()).toBe(footerContent);
   }),
   test('check without body',async() => {
-    const {container} = render(Table, {
+    const {container} = await render(Table, {
       props: {},
       slots:{
         thead:()=>headerRow,
@@ -139,7 +139,7 @@ describe('Table', () => {
     expect(tfoot.innerText.trim()).toBe(footerContent);
   }),
   test('check without tfoot',async() => {
-    const {container} = render(Table, {
+    const {container} = await render(Table, {
       props: {},
       slots:{
         thead:()=>headerRow,
@@ -172,7 +172,7 @@ describe('Table', () => {
     expect(tbody.innerText.trim()).toBe(bodyContent);
   }),
   test('check full width',async() => {
-    const {container} = render(Table, {
+    const {container} = await render(Table, {
       props: {
         full_width:true
       },
@@ -213,7 +213,7 @@ describe('Table', () => {
     expect(tfoot.innerText.trim()).toBe(footerContent);
   }),
   test('check scrollable',async() => {
-    const {container} = render(Table, {
+    const {container} = await render(Table, {
       props: {
         scrollable:true
       },
@@ -253,7 +253,7 @@ describe('Table', () => {
     expect(tfoot.innerText.trim()).toBe(footerContent);
   }),
   test('check narrow',async() => {
-    const {container} = render(Table, {
+    const {container} = await render(Table, {
       props: {
         narrow:true
       },
@@ -294,7 +294,7 @@ describe('Table', () => {
     expect(tfoot.innerText.trim()).toBe(footerContent);
   }),
   test('check fixed header',async() => {
-    const {container} = render(Table, {
+    const {container} = await render(Table, {
       props: {
         fixed_header:true
       },
@@ -335,7 +335,7 @@ describe('Table', () => {
     expect(tfoot.innerText.trim()).toBe(footerContent);
   }),
   test('check fixed and scrollable',async() => {
-    const {container} = render(Table, {
+    const {container} = await render(Table, {
       props: {
         scrollable:true,
         fixed_header:true

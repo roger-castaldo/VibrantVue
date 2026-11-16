@@ -7,8 +7,8 @@ import { ColorTypes, Sizes } from '../../../enums';
 
 describe('Message', () => {
     test('check accessibility',async() => {
-      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-        const {container} = render(message, {
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+        const {container} = await render(message, {
           props:{
               message:'test message',
               title:'test title'
@@ -22,7 +22,7 @@ describe('Message', () => {
     test('check with title',async() => {
         const testTitle = 'Testing title';
 
-        const {container} = render(message, {
+        const {container} = await render(message, {
           props:{
               title:testTitle
           }
@@ -47,7 +47,7 @@ describe('Message', () => {
     test('check with message',async() => {
       const testMessage = 'Testing message to put inside';
 
-      const {container} = render(message, {
+      const {container} = await render(message, {
         props:{
             message:testMessage
         }
@@ -69,7 +69,7 @@ describe('Message', () => {
       expect(bodyContainer.innerText).toBe(testMessage);
   }),
   test('check with delete button',async() => {
-    const {container} = render(message, {
+    const {container} = await render(message, {
       props:{
           has_delete:true,
           title:'required'
@@ -98,7 +98,7 @@ describe('Message', () => {
   }),
   test('check message types',async() => {
     for (const key in ColorTypes){
-      const {container} = render(message, {
+      const {container} = await render(message, {
         props:{
             type:ColorTypes[key]
         }
@@ -113,7 +113,7 @@ describe('Message', () => {
   test('check message sizes',async() => {
     for (const key in Sizes){
       if (Sizes[key]!==Sizes.normal){
-        const {container} = render(message, {
+        const {container} = await render(message, {
           props:{
               size:Sizes[key]
           }

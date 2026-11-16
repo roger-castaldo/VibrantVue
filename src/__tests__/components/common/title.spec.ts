@@ -8,9 +8,10 @@ describe('Title', () => {
     test('check default values',async() => {
         const testContent = 'Test Title';
 
-        const {container} = render(title, {
+        const {container} = await render(title, {
           props:{
-            text:testContent
+            text:testContent,
+            is_loading:true
           }
         });
     
@@ -64,10 +65,11 @@ describe('Title', () => {
       const testContent = 'Test Title';
 
       for(let x=1;x<7;x++){
-        const {container} = render(title, {
+        const {container} = await render(title, {
           props:{
             text:testContent,
-            level:x
+            level:x,
+            is_loading:true
           }
         });
     
@@ -88,7 +90,7 @@ describe('Title', () => {
         let tooHigh=false;
 
         try{
-          const {container} = render(title, {
+          const {container} = await render(title, {
             props:{
               text:testContent,
               level:0
@@ -99,7 +101,7 @@ describe('Title', () => {
         }
 
         try{
-          const {container} = render(title, {
+          const {container} = await render(title, {
             props:{
               text:testContent,
               level:7

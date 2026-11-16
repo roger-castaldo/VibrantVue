@@ -7,8 +7,8 @@ import { stripCommentNodes } from '../../common';
 
 describe('Card', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(Card, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(Card, {
         props: {
           icon:'person'
         },
@@ -28,7 +28,7 @@ describe('Card', () => {
     const bodyContent = 'Test Content';
     const footerContent = 'Test Footer';
 
-    const {container} = render(Card, {
+    const {container} = await render(Card, {
       props: {},
       slots:{
         header:()=>headerContent,
@@ -64,7 +64,7 @@ describe('Card', () => {
     const bodyContent = 'Test Content';
     const footerContent = 'Test Footer';
 
-    const {container} = render(Card, {
+    const {container} = await render(Card, {
       props: {
         full_height:true,
         full_width:true
@@ -103,7 +103,7 @@ describe('Card', () => {
   test('check header only',async()=>{
     const headerContent = 'Test Header';
     
-    const {container} = render(Card, {
+    const {container} = await render(Card, {
       props: {},
       slots:{
         header:()=>headerContent
@@ -126,7 +126,7 @@ describe('Card', () => {
   test('check content only',async()=>{
     const bodyContent = 'Test Content';
     
-    const {container} = render(Card, {
+    const {container} = await render(Card, {
       props: {},
       slots:{
         content:()=>bodyContent
@@ -149,7 +149,7 @@ describe('Card', () => {
   test('check footer only',async()=>{
     const footerContent = 'Test Footer';
 
-    const {container} = render(Card, {
+    const {container} = await render(Card, {
       props: {},
       slots:{
         footer:()=>footerContent
@@ -175,7 +175,7 @@ describe('Card', () => {
     const bodyContent = 'Test Content';
     const footerContent = 'Test Footer';
 
-    const {container} = render(Card, {
+    const {container} = await render(Card, {
       props: {
         icon:'person'
       },
@@ -229,7 +229,7 @@ describe('Card', () => {
 
   }),
   test('check defaults',async()=>{
-    const {container} = render(Card, {
+    const {container} = await render(Card, {
       props: {},
       slots:{
         header:(props)=>JSON.stringify(props),

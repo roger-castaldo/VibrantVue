@@ -8,7 +8,7 @@ describe('Modal', () => {
   test('check defaults',async()=>{
     const testContent = 'Test Modal Content';
     
-    const {container} = render(Modal, {
+    const {container} = await render(Modal, {
       props: {},
       slots:{
         default:()=>testContent
@@ -36,7 +36,7 @@ describe('Modal', () => {
     let hasClosed=false;
     const testContent = 'Test Modal Content';
     
-    const {container} = render(Modal, {
+    const {container} = await render(Modal, {
       props: {
         has_close:true,
         onClose:()=>hasClosed=true
@@ -73,7 +73,7 @@ describe('Modal', () => {
   test('check z-index',async()=>{
     const testContent = 'Test Modal Content';
     
-    const {container} = render(Modal, {
+    const {container} = await render(Modal, {
       props: {
         z_index:1000
       },

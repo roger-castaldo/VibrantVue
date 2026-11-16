@@ -22,7 +22,7 @@
     import Notification from '../common/notification.vue';
     import { ref, watch,onMounted } from 'vue';
     import { ColorTypes, DropZoneQuadrants } from '../../enums';
-import { IListProperties } from '../layout/interfaces';
+    import { IListProperties } from '../layout/interfaces';
 
     interface ISortableProperties extends IListProperties{
         /**

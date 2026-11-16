@@ -6,8 +6,8 @@ import { ExecuteAccessibilityChecks } from '../../common';
 
 describe('Badge', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(Badge, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(Badge, {
           props: {
             text:'Sample text'
           },
@@ -20,7 +20,7 @@ describe('Badge', () => {
   test('renders a badge with text', async () => {
     const textContent = 'Sample text';
 
-    const { container,getByText } = render(Badge, {
+    const { container,getByText } = await render(Badge, {
       props: {
         text:textContent
       },
@@ -36,7 +36,7 @@ describe('Badge', () => {
 
     const slotContent = 'This is test content';
 
-    const { container,getByText } = render(Badge, {
+    const { container,getByText } = await render(Badge, {
       slots:{
         default: () => slotContent
       }
@@ -51,7 +51,7 @@ describe('Badge', () => {
   test('renders a badge in each position', async () => {
 
     for (const key in BadgePositions) {
-      const { container } = render(Badge, {
+      const { container } = await render(Badge, {
         props: {
           position:BadgePositions[key]
         },
@@ -66,7 +66,7 @@ describe('Badge', () => {
   test('renders a badge in with each color', async () => {
 
     for (const key in ColorTypes) {
-      const { container } = render(Badge, {
+      const { container } = await render(Badge, {
         props: {
           type:ColorTypes[key]
         },

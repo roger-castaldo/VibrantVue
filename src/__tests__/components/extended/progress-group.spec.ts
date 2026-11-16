@@ -8,8 +8,8 @@ import { stripCommentNodes } from '../../common';
 
 describe('Progress Group', () => {
     test('check accessibility',async() => {
-      const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-        const {container} = render(ProgressGroup, {
+      const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+        const {container} = await render(ProgressGroup, {
           props:{
             values:[
               {type:ColorTypes.info,value:20},
@@ -29,7 +29,7 @@ describe('Progress Group', () => {
           {type:ColorTypes.success,value:35}
         ]
 
-        const {container} = render(ProgressGroup, {
+        const {container} = await render(ProgressGroup, {
           props:{
             values:values
           }
@@ -64,7 +64,7 @@ describe('Progress Group', () => {
       ]
 
       for(const key in Sizes){
-        const {container} = render(ProgressGroup, {
+        const {container} = await render(ProgressGroup, {
           props:{
             values:values,
             size:Sizes[key]
@@ -101,7 +101,7 @@ describe('Progress Group', () => {
         {type:ColorTypes.success,value:35}
       ]
 
-      const {container} = render(ProgressGroup, {
+      const {container} = await render(ProgressGroup, {
         props:{
           values:values
         }
@@ -136,7 +136,7 @@ describe('Progress Group', () => {
       {type:ColorTypes.success,value:35}
     ]
 
-    const {container} = render(ProgressGroup, {
+    const {container} = await render(ProgressGroup, {
       props:{
         values:values,
         max:100

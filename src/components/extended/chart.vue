@@ -4,7 +4,7 @@
             <h3 :class="exts.header_class">{{props.title}}</h3>
         </template>
         <template #content>
-            <canvas ref="canvas" :style="Style"/>
+            <canvas ref="canvas" :style="Style" :width="props.width" :height="props.height"/>
         </template>
         <template #footer="exts" v-if="props.show_refresh!=null&&props.show_refresh!=undefined&&props.show_refresh">
             <ButtonRefresh :class="exts.addon_class" @click="Refresh"/>
@@ -69,7 +69,7 @@
         /**
          * The scales to supply to the chart
          */
-        scales?:unknown[], 
+        scales?:unknown, 
         /**
          * The tooltips to supply to the chart
          */
@@ -154,6 +154,12 @@
         }
         if (props.tooltips != null && props.tooltips != undefined) {
             opts.tooltips = props.tooltips;
+        }
+        if (
+            (props.width !== null && props.width !== undefined)||
+            (props.height !== null && props.height !== undefined)
+        ) {
+            opts.responsive = false;
         }
         const { Chart } = await loadNonEs6Module(chartURL,['Chart']);
         chart = new Chart(canvas.value.getContext('2d'), {

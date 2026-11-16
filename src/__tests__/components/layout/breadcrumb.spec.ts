@@ -9,8 +9,8 @@ import { BreadCrumbAlignments, BreadCrumbSeperators, Sizes } from '../../../enum
 
 describe('Breadcrumbs', () => {
   test('check accessibility',async() => {
-    const accessibilityScanResults =  await ExecuteAccessibilityChecks(()=>{
-      const {container} = render(Breadcrumbs, {
+    const accessibilityScanResults =  await ExecuteAccessibilityChecks(async ()=>{
+      const {container} = await render(Breadcrumbs, {
         props: {
           breadCrumbs:[
             {
@@ -37,7 +37,7 @@ describe('Breadcrumbs', () => {
       }
     ];
 
-    const {container} = render(Breadcrumbs,{
+    const {container} = await render(Breadcrumbs,{
       props:{
         breadCrumbs:crumbs
       }
@@ -66,7 +66,7 @@ describe('Breadcrumbs', () => {
       }
     ];
 
-    const {container} = render(Breadcrumbs,{
+    const {container} = await render(Breadcrumbs,{
       props:{
         breadCrumbs:crumbs
       }
@@ -85,7 +85,7 @@ describe('Breadcrumbs', () => {
     ];
 
     for (const key in BreadCrumbAlignments){
-      const {container} = render(Breadcrumbs,{
+      const {container} = await render(Breadcrumbs,{
         props:{
           breadCrumbs:crumbs,
           alignment:BreadCrumbAlignments[key]
@@ -111,7 +111,7 @@ describe('Breadcrumbs', () => {
     ];
 
     for (const key in Sizes){
-      const {container} = render(Breadcrumbs,{
+      const {container} = await render(Breadcrumbs,{
         props:{
           breadCrumbs:crumbs,
           size:Sizes[key]
@@ -137,7 +137,7 @@ describe('Breadcrumbs', () => {
     ];
 
     for (const key in BreadCrumbSeperators){
-      const {container} = render(Breadcrumbs,{
+      const {container} = await render(Breadcrumbs,{
         props:{
           breadCrumbs:crumbs,
           seperator:BreadCrumbSeperators[key]
@@ -164,7 +164,7 @@ describe('Breadcrumbs', () => {
       }
     ];
 
-    const {container} = render(Breadcrumbs,{
+    const {container} = await render(Breadcrumbs,{
       props:{
         breadCrumbs:crumbs
       }
